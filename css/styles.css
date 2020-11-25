@@ -14,6 +14,20 @@
       float: right;
       }
 
+
+.left-column40 {
+      width: 40%;
+      float: left;
+}
+
+.right-column50 {
+      width: 50%;
+      float: right;
+      }
+
+
+
+
 img[src*='#center'] { 
     display: block;
     margin: auto;
