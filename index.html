@@ -1,1 +1,347 @@
-Coucou le monde
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>POC - retour d’expérience</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="B. Maranget" />
+    <link href="presentation_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+background-image: url("css/pg1.jpg")
+
+---
+background-image: url("css/pg2.jpg")
+
+class: right, bottom
+
+# POC 
+## Retour d'expérience
+---
+
+
+
+
+# Objectif et participants
+
+Objectif POC : Évaluer la possibilité de cartographier les sols ARVALIS à partir de données non prévues à cet effet
+
+.pull-left[
+
+```r
+library(sf)
+library(cartography)
+reg &lt;- st_read("data/data.gpkg", "regionS", quiet = TRUE)
+equipeNO &lt;-c("Francois PIRAUX, Julie CALLENS, Béatrice MARANGET")
+equipeMP &lt;- c("Olivier DEUDON, Florent DUYME, Doriane HAMENING")
+equipeAQ &lt;- c("Fety ANDRIANASOLO, Christophe GIGOT, Emmanuelle HERITIER")
+reg$equipe &lt;- c(equipeMP, equipeNO, equipeAQ)
+png("img/equipe.png", width = 600, height = 600, res = 100)
+par(mar = c(0,0,1.2,0))
+typoLayer(reg, var = "equipe", legend.pos = "left", border = NA, legend.values.cex = 0.8, legend.title.txt = "")
+layoutLayer("Equipes Géostatathon", col = "#BFB299")
+dev.off()
+```
+]
+
+.pull-right[
+![](img/equipe.png)
+]
+
+
+---
+
+
+# Enjeux
+
+- Travail collaboratif
+  * Git
+  * code spaghetti
+- Analyse spatiale
+- Rendu / mise en forme des livrables
+
+Astuces / outils utilisés -&gt; objectif découverte / modalités d’utilisation à Arvalis
+
+---
+
+# Git (la plupart connaisse, passer rapidement)
+
+.red[ xouxou]
+
+---
+
+
+
+# Améliorer le code spaghetti ? 
+.left-column[ ![](img/spagS.png)]
+.right-column[
+
+
+
+```r
+# sol 0365
+sol_00365.vgm &lt;- variogram(sol_00365~1, DF2vigilena, cutoff=20000, width=1500) # variogramme empirique
+plot(sol_00365.vgm, pch=18, main="variogramme empirique")
+sol_00365.sph &lt;- fit.variogram(sol_00365.vgm, model=vgm(0.02,"Sph",5000,nugget=0.03)) 
+# sol 0660
+sol_00660.vgm &lt;- variogram(sol_00660~1, DF2vigilena, cutoff=40000) # variogramme empirique
+plot(sol_00660.vgm, pch=18, main="variogramme empirique")
+sol_00660.sph &lt;- fit.variogram(sol_00660.vgm, model=vgm(0.02,"Sph",10000,nugget=0.10)) 
+```
+
+]
+
+---
+
+# Appel de fichiers externes
+
+S’entendre sur une nomenclature (variable, fichiers) en début de projet ?
+
+
+```r
+# récup des donnéees
+paramAjust &lt;- read.csv2("data/paramAjustement.csv")
+knitr::kable(paramAjust)
+```
+
+
+
+|base     |  sol|semi_portee |modele | etendue|pepite |    X|
+|:--------|----:|:-----------|:------|-------:|:------|----:|
+|vigilena |  165|0.07        |Sph    |   10000|0.05   |  165|
+|df       |  165|0.07        |Sph    |   10000|0.05   |  165|
+|vigilena |  360|0.02        |Exp    |   10000|0.1    |  360|
+|alti     |  360|0.02        |Exp    |   10000|0.11   |  360|
+|df       |  360|0.07        |Sph    |   10000|0.05   |  360|
+|vigilena |  365|0.02        |Sph    |    5000|0.03   |  365|
+|alti     |  365|0.02        |Sph    |   10000|0.11   |  365|
+|df       |  365|0.07        |Sph    |   10000|0.05   |  365|
+|df       |  660|0.02        |Sph    |   10000|0.1    |  660|
+|df       | 1330|0.02        |Sph    |   10000|0.1    | 1330|
+|vigilena |  760|0.02        |Sph    |   10000|0.1    |  760|
+|df       |  760|0.07        |Sph    |   10000|0.05   |  760|
+|df       |  860|0.02        |Sph    |   10000|0.1    |  860|
+|df       | 5130|0.02        |Sph    |   10000|0.1    | 5130|
+|df       |  665|0.01        |Exp    |   10000|0.02   |  665|
+
+
+
+```r
+paramVario &lt;- read.csv2("data/paramVario.csv")
+# on isole les sources confondues
+paramAjust &lt;- paramAjust [paramAjust$base == "df",]
+paramVario
+# table equivalence pour les sols
+sol &lt;- names(DF) [5:13]
+equiv &lt;- c(665, 5130, 760, 860, 1330, 365, 165, 360, 660)
+equiv &lt;- as.data.frame(cbind (sol, equiv))
+names(equiv) &lt;- c("long", "court")
+```
+
+TODO paramVario à intégrer !
+
+
+
+```r
+nb &lt;- nrow(paramAjust)
+i &lt;- 1
+for (i in 1:nb) {
+  # recup lg parametre dans un seul vecteur
+  v &lt;- paramAjust [i, ]
+  v &lt;- merge(v, equiv, by.x = "sol", by.y = "court")
+  print(v)
+  # premier objet variogramme : df du sol (pas de spatialisation)
+  var &lt;- DF_sf [, v$long, drop = TRUE]
+  # étape transitoire : variables
+  res1.vgm &lt;-
+    variogram(var ~ 1, DF_sf, width = 1000) # variogramme empirique
+  png(paste0("img/varioNO", v$long, ".png"), width = 300, height = 300, res = 50)
+  plot(res1.vgm, pch = 18, main = "variogramme empirique")
+  # 1e kg paramAjust
+  res1.sph &lt;- fit.variogram(
+    res1.vgm,
+    model = vgm(
+      psill = as.double(v$semi_portee),
+      m = v$modele,
+      range = as.double(v$etendue),
+      nugget = as.double(v$pepite)
+    )
+  )# variogramme sphérique + pépite.
+  # Argument de vgm : psill, model, range, nugget
+  print(plot(
+    res1.vgm,
+    res1.sph,
+    pch = 19,
+    cex = 0.9,
+    lwd = 2,
+    main = v$long
+  ))
+  dev.off()
+}
+```
+
+---
+
+# Noms des variables
+
+```r
+# Table de contingence :
+tbl_eval_data_reorg &lt;- table(obs = eval_data_reorg$obs,
+                             pred = eval_data_reorg$pred)
+knitr::kable(tbl_eval_data_reorg)
+```
+# commentaires
+
+```r
+# Gestion des duplications de coordonnées
+# Ce cas se présente lorsque les coordonnées de l'échantillonnage n'ont pas été
+# renseignées. Les coordonnées enregistrées sont alors celles du barycentre de
+# la commune.
+# Proposition : On fait la moyenne des 0 et 1 pour chaque type de sol rencontré
+# aux localisations problématiques.
+my_data_silena_vigi &lt;- aggregate(my_data_silena_vigi[, names(sub_my_data)],
+                                 list(Lambert.93.X = my_data_silena_vigi$Lambert.93.X,
+                                      Lambert.93.Y = my_data_silena_vigi$Lambert.93.Y),
+                                 mean)
+```
+
+---
+
+# Analyse spatiale : package SF
+
+---
+
+
+# Pixel ou vecteur
+
+
+
+---
+# Ggplot bonus
+
+
+
+```r
+summary(cars)
+```
+
+
+---
+
+# Rendu / mise en forme des livrables : Markdown
+
+
+# Conclusion : A suivre / ressources 
+
+## Code sur Git
+
+
+```r
+plot(pressure)
+```
+
+## Mise en place page R spatial
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
