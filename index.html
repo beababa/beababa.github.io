@@ -28,27 +28,6 @@ class: right, bottom
 
 Objectif POC : Évaluer la possibilité de cartographier les sols ARVALIS à partir de données non prévues à cet effet
 
-.pull-left[
-
-```r
-library(sf)
-library(cartography)
-reg &lt;- st_read("data/data.gpkg", "regionS", quiet = TRUE)
-equipeNO &lt;-c("Francois PIRAUX, Julie CALLENS, Béatrice MARANGET")
-equipeMP &lt;- c("Olivier DEUDON, Florent DUYME, Doriane HAMENING")
-equipeAQ &lt;- c("Fety ANDRIANASOLO, Christophe GIGOT, Emmanuelle HERITIER")
-reg$equipe &lt;- c(equipeMP, equipeNO, equipeAQ)
-png("img/equipe.png", width = 600, height = 600, res = 100)
-par(mar = c(0,0,1.2,0))
-typoLayer(reg, var = "equipe", legend.pos = "left", border = NA, legend.values.cex = 0.8, legend.title.txt = "")
-layoutLayer("Equipes Géostatathon", col = "#BFB299")
-dev.off()
-```
-]
-
-.pull-right[
-![](img/equipe.png)
-]
 
 <img src="../img/equipe.png"/>
 ---
@@ -68,7 +47,6 @@ Astuces / outils utilisés -&gt; objectif découverte / modalités d’utilisati
 
 # Git (la plupart connaisse, passer rapidement)
 
-.red[ xouxou]
 
 ---
 
