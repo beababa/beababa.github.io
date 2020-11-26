@@ -80,7 +80,21 @@ plot(sol_00660.vgm, pch=18, main="variogramme empirique")
 sol_00660.sph &lt;- fit.variogram(sol_00660.vgm, model=vgm(0.02,"Sph",10000,nugget=0.10)) 
 ```
 
+
+
+
 ]
+
+--
+
+## 🤔 Possible ou impossible ?
+
+
+
+
+
+
+
 
 ---
 
@@ -107,7 +121,19 @@ knitr::kable(paramAjust)
 |alti     |  360|0.02        |Exp    |   10000|0.11   |  360|
 
 
+--
+
+## 🤔 Est ce toujours possible ?
+
+
+
 ---
+
+
+
+
+
+
 
 # Bonne pratique 2
 
@@ -119,6 +145,17 @@ tbl_eval_data_reorg &lt;- table(obs = eval_data_reorg$obs,
                              pred = eval_data_reorg$pred)
 knitr::kable(tbl_eval_data_reorg)
 ```
+
+--
+
+## 🤔 Proposition pour les variables de variogram ?
+
+
+```{r}
+  res1.vgm <-
+    variogram(var ~ 1, data_sf, width = 1000) 
+```
+
 
 ---
 
@@ -138,8 +175,44 @@ my_data_silena_vigi &lt;- aggregate(my_data_silena_vigi[, names(sub_my_data)],
                                       Lambert.93.Y = my_data_silena_vigi$Lambert.93.Y),
                                  mean)
 ```
+
+--
+
+#### 🤔 Commentaires pour le calcul des sols restants ?
+
+
+
 ---
 
+
+
+# Améliorer le code spaghetti ? 
+ ![](img/06_spagS.png#center)]
+
+
+--
+
+## 🤔 Possible ou impossible (version 2) ?
+
+
+
+
+---
+
+
+
+# Pixel ou vecteur
+
+![](img/06_solprob.jpg#center)
+![](img/06_solfinal.jpg#center)
+
+
+--
+
+#### 🤔 Est aussi simple ?
+
+
+---
 
 # Analyse spatiale
 
@@ -175,12 +248,42 @@ table(longueur)
 
 ![](img/06_doublon.jpg)
 
+--
+
+## 🤔 Cette logique peut vous apporter quelquechose ?
+
+
 ---
 
-# Pixel ou vecteur
 
-![](img/06_solprob.jpg#center)
-![](img/06_solfinal.jpg#center)
+# Région Midi Pyrénées
+
+
+
+```{r}
+# intersection pt / segment
+pt <- pt [pt$NOM_REG == "MIDI-PYRENEES",]
+segment <- segment [segment$NOM_REG == "MIDI-PYRENEES",]
+# 2582 
+ptS <-  st_intersection(pt, segment)
+```
+
+
+
+--
+
+
+
+.left-column40[### 🤔 Toujours pas ?
+ ]
+
+.right-column50[![](img/06_segment.jpg)]
+
+
+
+
+
+
 ---
 # Ggplot2 bonus
 
@@ -209,7 +312,6 @@ table(longueur)
 * Mise en place page R spatial
 
 ![](img/06_pgR.jpg#center)
-
 
 
 
