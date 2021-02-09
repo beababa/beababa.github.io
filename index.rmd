@@ -160,7 +160,18 @@ dev.off()
 ###  Une *librairie* javascript : remarks.js
 
 
+---
 
+# Mais, cela reste transparent
+
+![](img/debscript.png)
+
+--
+
+# Enfin, relativement....
+
+
+![](img/pblien.png)
 
 ---
 
