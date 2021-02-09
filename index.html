@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>POC - retour d’expérience</title>
+    <title>Presentation réunion d’équipe</title>
     <meta charset="utf-8" />
     <meta name="author" content="B. Maranget" />
-    <link href="presentation_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <meta name="date" content="2021-09-02" />
+    <link href="index_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
   </head>
   <body>
@@ -17,318 +18,158 @@ background-image: url("css/pg2.jpg")
 
 class: right, bottom
 
-# POC 
-## Retour d'expérience
+# La nature renait !
+## Balade de R à internet !
 ---
 
 
-
-
-# Le cadre
-
-* Objectif
-
-
-Évaluer la possibilité de cartographier les sols ARVALIS à partir de données non prévues à cet effet.
-
-* Participants
-
-![](img/06_equipe.jpg#center)
+background-image: url("img/perceneige.jpg")
 
 ---
 
 
-# Enjeux
-
-## 1. Travail collaboratif
-## 2. Analyse spatiale
-## 3. Rendu / Mise en forme des livrables
-
-Astuces / outils utilisés -&gt; objectif découverte / modalités d’utilisation à Arvalis
-
----
-
-# Gitpro ou github ?
+# Etapes
 
 
 
-.left-column40[![](img/06_gitequipe.jpg)
- ]
+.left-column30[ 
 
-.right-column50[![](img/06_futurgit.jpg)
+## Juste quelques mots nouveaux
 
-
-https://beababa.github.io/#1]
----
+]
 
 
-
-# Améliorer le code spaghetti ? 
-.left-column30[ ![](img/06_spagS.png)]
 .right-column70[
 
 
 
+
+
+![](img/outils.jpg#center)
+]
+
+--
+
+### 🤔 C'est très simple !
+
+---
+
+
+
+# R et markdown
+
+
+
+
+.pull-left[
+
 ```r
-# sol 0365
-sol_00365.vgm &lt;- variogram(sol_00365~1, DF2vigilena, cutoff=20000, width=1500) # variogramme empirique
-plot(sol_00365.vgm, pch=18, main="variogramme empirique")
-sol_00365.sph &lt;- fit.variogram(sol_00365.vgm, model=vgm(0.02,"Sph",5000,nugget=0.03)) 
-# sol 0660
-sol_00660.vgm &lt;- variogram(sol_00660~1, DF2vigilena, cutoff=40000) # variogramme empirique
-plot(sol_00660.vgm, pch=18, main="variogramme empirique")
-sol_00660.sph &lt;- fit.variogram(sol_00660.vgm, model=vgm(0.02,"Sph",10000,nugget=0.10)) 
+library(sf)
+library(cartography)
+reg &lt;- st_read("data/data.gpkg", "regionS", quiet = TRUE)
+reg$equipe &lt;- c("equipeMP", "equipeNO", "equipeAQ")
+png("img/06_equipe.png", width = 400, height = 400, res = 100)
+par(mar = c(0,0,1.2,0))
+typoLayer(reg, var = "NOM_REG", legend.pos = "left", border = NA, legend.values.cex = 0.8, legend.title.txt = "")
+layoutLayer("Equipes Géostatathon", col = "#BFB299")
+dev.off()
 ```
+]
+
+.pull-right[
+![](img/06_equipe.png)
+]
+
+
+--
+
+## 🤔 Du chunk à l'image !
+
+---
+
+# Git (1)
+
+## Une plateforme de "versioning"
+
+### Un logiciel de gestion de versions décentralisé (Wikipedia)
+
+![](img/github.png)
 
 
 
+---
+
+# Git (2)
+
+## Possibilité site web
+
+![](img/siteweb.png#center)
+
+### [Comment faire ?](https://putaindecode.io/articles/creer-un-site-web-gratuitement-avec-github-pages/)
+
+### [Un bon exemple](https://rcarto.github.io/carto_avec_r/)
+
+---
+
+
+
+# Site web
+
+.left-column30[ 
+
+
+![](img/arbres.png)
+
+
+]
+
+
+.right-column70[
+
+
+
+
+## 3 élements :
 
 ]
 
 --
 
-## 🤔 Possible ou impossible ?
+###  Un langage de *balise* (HTML)
 
+--
 
+###  Une cascade de *styles* (CSS)
 
+--
 
+###  Une *librairie* javascript : remarks.js
 
 
 
 
 ---
 
-# Bonne pratique 1
-
-### Appel de fichiers externes
-
-S’entendre sur une nomenclature (variable, fichiers) en début de projet ?
-
-
-```r
-# récup des donnéees
-paramAjust &lt;- read.csv2("data/paramAjustement.csv")
-knitr::kable(paramAjust)
-```
-
-
-
-|base     |  sol|semi_portee |modele | etendue|pepite |    X|
-|:--------|----:|:-----------|:------|-------:|:------|----:|
-|vigilena |  165|0.07        |Sph    |   10000|0.05   |  165|
-|df       |  165|0.07        |Sph    |   10000|0.05   |  165|
-|vigilena |  360|0.02        |Exp    |   10000|0.1    |  360|
-|alti     |  360|0.02        |Exp    |   10000|0.11   |  360|
-
-
---
-
-## 🤔 Est ce toujours possible ?
-
-
-
----
+# Tout est là
 
 
 
 
 
+.left-column30[ 
 
 
-# Bonne pratique 2
+##  [ici, cette présentation](https://github.com/beababa/beababa.github.io)
 
-### Noms des variables
-
-```r
-# Table de contingence :
-tbl_eval_data_reorg &lt;- table(obs = eval_data_reorg$obs,
-                             pred = eval_data_reorg$pred)
-knitr::kable(tbl_eval_data_reorg)
-```
-
---
-
-## 🤔 Proposition pour les variables de variogram ?
-
-
-```{r}
-  res1.vgm <-
-    variogram(var ~ 1, data_sf, width = 1000) 
-```
-
-
----
-
-# Bonne pratique 3
-
-### Commentaires
-
-```r
-# Gestion des duplications de coordonnées
-# Ce cas se présente lorsque les coordonnées de l'échantillonnage n'ont pas été
-# renseignées. Les coordonnées enregistrées sont alors celles du barycentre de
-# la commune.
-# Proposition : On fait la moyenne des 0 et 1 pour chaque type de sol rencontré
-# aux localisations problématiques.
-my_data_silena_vigi &lt;- aggregate(my_data_silena_vigi[, names(sub_my_data)],
-                                 list(Lambert.93.X = my_data_silena_vigi$Lambert.93.X,
-                                      Lambert.93.Y = my_data_silena_vigi$Lambert.93.Y),
-                                 mean)
-```
-
---
-
-#### 🤔 Commentaires pour le calcul des sols restants ?
-
-
-
----
-
-
-
-# Améliorer le code spaghetti ? 
- ![](img/06_spagS.png#center)
-
-
---
-
-### (version 2)
-
---
-
-## 🤔 Possible ou impossible  ?
-
-
-
-
----
-
-
-
-# Pixel ou vecteur
-
-
-
-
-
-
-.left-column40[![](img/06_solprob.jpg)
- ]
-
-.right-column50[![](img/06_solfinal.jpg)
 
 ]
 
---
 
+.right-column70[
 
+![](img/abyme.png)
 
-# 🤔 Est-ce aussi simple ?
-
-
----
-
-# Analyse spatiale
-
-
-
-
-
-```{r}
-DF_sf <- st_as_sf(DF, 
-                  coords = c("Lambert.93.X" ,"Lambert.93.Y"), crs = 2154)
-# récupération de tous les points uniques
-sansDoublon <- unique (DF_sf [,c("source", "geometry")] )
-# quels sont les points qui sont identiques ?
-liste <- st_equals(sansDoublon, DF_sf, sparse = TRUE)
-# tous les points en doublons seront > 1
-longueur <- sapply(liste, length)
-table(longueur)
-```
-
-|Nb de points   | Nb d'occurences |
-|:--------------|----------------:|
-|  2040         |1                |
-|  60           |2                |
-|  16           |3                |
-|  6            |4                |
-|  4            |5                |
-|  2            |7                |
-|  2            |8                |
-
----
-
-# Cartographie
-
-![](img/06_doublon.jpg)
-
---
-
-## 🤔 Cette logique peut vous apporter quelquechose ?
-
-
----
-
-
-# Région Midi Pyrénées
-
-
-
-```{r}
-# intersection pt / segment
-pt <- pt [pt$NOM_REG == "MIDI-PYRENEES",]
-segment <- segment [segment$NOM_REG == "MIDI-PYRENEES",]
-# 2582 
-ptS <-  st_intersection(pt, segment)
-```
-
-
-
---
-
-
-
-.left-column40[### 🤔 Toujours pas ?
- ]
-
-.right-column50[![](img/06_segment.jpg)]
-
-
-
-
-
-
----
-# Ggplot2 bonus
-
-[https://www.r-bloggers.com/2016/03/variography-with-gstat-and-ggplot2/](https://www.r-bloggers.com/2016/03/variography-with-gstat-and-ggplot2/)
-
-
-![](img/06_ggplot2.jpg#center)
-
----
-
-# Rendu / mise en forme des livrables 
-
-![](img/06_outils.jpg#center)
-
-
----
-
-# Conclusion
-
-### quelle suite ?
-
-* Code sur Git
-
-![](img/06_futurgit.jpg#center)
-
-* Mise en place page R spatial
-
-![](img/06_pgR.jpg#center)
-
-
-
+]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
