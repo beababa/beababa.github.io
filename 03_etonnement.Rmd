@@ -14,8 +14,8 @@ background-image: url("css/pg2.jpg")
 
 class: right, bottom
 
-# Rapport d'étonnement !
-## Une carto d'Arvalis !
+# Rapport d'étonnement
+## Non !
 ---
 
 
@@ -23,46 +23,39 @@ background-image: url("img/03_tendre.jpg")
 
 ---
 
+# Rapport de regret du pays
 
-# Un pays où il fait bon vivre
-
-
-
-.left-column30[ 
-
-## La recherche
-
+.pull-left[
+![](img/03_meteo40.jpg)
 ]
 
 
-.right-column70[
+## Celui de la recherche
 
+---
 
+# Tout ce que j'aurais voulu faire
 
+--
 
+## Script
 
-![](img/03_meteo.jpg#center)
-]
+--
 
+## Cartographie
 
+--
+
+## Projets (segment et surtout le rpg)
 
 ---
 
 
+# Tout scripter ...
 
-# R et markdown
-
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(cache = FALSE)
-# Passer la valeur suivante à TRUE pour reproduire les extractions.
-knitr::opts_chunk$set(eval = FALSE)
-knitr::opts_chunk$set(warning = FALSE)
-```
 
 .pull-left[
-```{r}
+```{r, eval=FALSE}
 library(sf)
 library(cartography)
 reg <- st_read("data/data.gpkg", "regionS", quiet = TRUE)
@@ -80,131 +73,202 @@ dev.off()
 ]
 
 
---
-
-### 🤔 Afficher le "comment" et non pas seulement le résultat !
-
-
 ---
 
-# Syntaxe adaptée au format de présentation
+# Automatiser la production des cartes météo
+
+```{r, eval = FALSE}
+  # interpolation
+  interp_IDW <- raster::interpolate(grilleR, fit_IDW)
+  # le résultat est un carré recouvrant la grille
+  # on met le fond en masque pour avoir le contour
+  interpMasque <- raster::mask(interp_IDW, fond)
+  # transformation de l'objet en sf
+  interpsf <- st_as_sf(raster::rasterToPolygons(interpMasque))
+```
+
+---
+# Faire un package R utile !
 
 .pull-left[
-![](img/mkd.png#center)
+### Pas d'image car pas d'accès au gitlab depuis internet
 ]
 .pull-right[
-![](img/res.png)
+![](img/03_rideau.jpg)
 ]
 ---
 
-# Git (1)
+# Utiliser diplyr !
 
-## Une plateforme de "versioning"
+## Transposition données colonne ligne
 
-### Un logiciel de gestion de versions décentralisé (Wikipedia)
-
-![](img/github.png)
-
----
-
-# Versioning...
-
-![](img/versioning.png)
-
----
-
-# Travailler de plusieurs machines
-
-## Trois commandes
-
-* git add . 
-* git commit -m "mon changement" 
-* git push
-
-![](img/gitpush.png)
-
-
----
-
-# Git (2)
-
-## Possibilité site web
-
-![](img/siteweb.png#center)
-
-### [Comment faire ?](https://putaindecode.io/articles/creer-un-site-web-gratuitement-avec-github-pages/)
-
-### [Un bon exemple](https://rcarto.github.io/carto_avec_r/)
+```{r, eval = FALSE}
+# parcours de dataFiltre
+nb <- length(dataFiltre$ID_CANTON)
+i <- 1
+for (i in 1:nb) {
+  surface <- dataFiltre$SURFACE [i]
+  canton <- dataFiltre$ID_CANTON [i]
+  culture <- dataFiltre$CULTURE [i]
+  df [df$ID_CANTON == canton ,  culture] <- surface
+}
+```
 
 
 
 ---
 
-# Site web
-
-.left-column30[ 
-![](img/arbres.png)
-]
-
-.right-column70[
-## 3 éléments
-]
+# Script
 
 --
 
-###  Un langage de *balise* (HTML)
+### Utiliser diplyr
+
+--
+### Tout scripter
 
 --
 
-###  Une cascade de *styles* (CSS)
+### Automatiser les cartes météo mensuelles
 
 --
 
-###  Une *librairie* javascript : remarks.js
-
----
-
-# Mais, cela reste transparent
-
-![](img/debscript.png)
+### Faire un package R arvalis avec le template
 
 --
-
-## Enfin, relativement....
-
-
-![](img/pblien.png)
-
----
-
-# Affichage du fond dans le CSS
-
-![](img/fond.png)
-
-## Contenu du répertoire CSS
-
-![](img/contenucss.png)
-
+## Autres regrets : les regrets cartographiques...
 
 
 ---
 
-# Tout est là !
+# Un fond 
+
+.pull-left[
+## La France appartient à l'Europe
+]
+.pull-right[
+![](img/03_Andorre.png)
+]
+--
+
+### Y compris l'Andorre...
+
+---
+
+# Cartographier des évolutions
 
 
-
-
-
-.left-column30[ 
-
-
-##  [ici, cette présentation](https://github.com/beababa/beababa.github.io)
-
-
+.pull-left[
+![](img/03_evolution.png)
+]
+.pull-right[
+### Basculement culture méditerranéenne
 ]
 
-.right-column70[
+---
 
-![](img/abyme.png)
+# Raster - Vecteur
 
+.pull-left[
+![](img/03_raster.png)
 ]
+
+.pull-right[
+![](img/03_vecteur.png)
+]
+
+---
+
+# interpolation et potentiel
+
+
+.pull-left[
+![](img/03_interpoler.png)
+]
+.pull-right[
+![](img/03_potentiel.png)
+]
+
+---
+
+# Lisser les cartes
+
+.pull-left[
+![](img/03_chloe.png)
+]
+.pull-right[
+![](img/03_potentiel.png)
+]
+
+---
+
+# Cartographie
+
+--
+
+### Fond européen
+
+--
+
+### Illustrer des évolutions
+
+
+--
+### différences vecteur / raster
+
+--
+
+### Interpolation et potentiel
+--
+
+### Faire des cartes lissées
+
+--
+
+## Derniers regrets : projets !
+
+---
+
+# Projet segment
+
+### Pourquoi certaines villes extraites des segments ?
+
+![](img/03_horssegment.png#center)
+
+---
+
+# Projet RPG
+
+### Requêter le RPG 
+
+![](img/03_sql.png)
+
+---
+
+# Utiliser le PHP
+
+![](img/03_php.png)
+
+---
+
+# Correspondre avec l'INRAE
+
+![](img/03_mail.jpg#center)
+
+---
+
+# Projets
+
+### Segment : les villes ?
+
+### RPG : requête, php, et mails
+
+---
+
+# Et surtout, surtout....
+
+--
+
+### Finir l'écophysiologie du blé !
+
+![](img/03_ecoGate.jpg#center)
