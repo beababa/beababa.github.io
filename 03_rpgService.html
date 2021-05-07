@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Rapport d’étonnement</title>
+    <title>RPG dans Postgis – Présentation au service</title>
     <meta charset="utf-8" />
     <meta name="author" content="B. Maranget" />
-    <meta name="date" content="2021-09-02" />
-    <script src="03_etonnement_files/header-attrs-2.7/header-attrs.js"></script>
-    <link href="03_etonnement_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="03_rpgService_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
   </head>
   <body>
@@ -19,267 +17,140 @@ background-image: url("css/pg2.jpg")
 
 class: right, bottom
 
-# Rapport d'étonnement
-## Non !
+# Markdown Xaringan Git
+## Alternative à power point
 ---
 
 
-background-image: url("img/03_tendre.jpg")
-
----
-
-# Rapport de regret du pays
-
-.pull-left[
-![](img/03_meteo40.jpg)
-]
 
 
-## Celui de la recherche
+# Cadre
 
----
+## Objet
 
-# Tout ce que j'aurais voulu faire
+Ce script présente l'import du rpg dans une base postgis et quelques requêtes.
 
---
+Il décrit également la mise en place de l'environnement wsl / ubuntu 20 / postgis
 
-## Script
+## Sources
 
---
+https://static.geotribu.fr/articles/2020/2020-10-28_gdal_windows_subsystem_linux_wsl/#installer-wsl
 
-## Cartographie
+http://data.cquest.org/registre_parcellaire_graphique/2018/
 
---
+https://georezo.net/forum/viewtopic.php?id=123178
 
-## Projets (segment et surtout le rpg)
+https://postgis.net/install/
 
----
+https://jayrobwilliams.com/posts/2020/09/spatial-sql
 
+https://freegistutorial.com/how-to-install-postgis-on-ubuntu-20-04/
 
-# Tout scripter ...
+# Installations
 
+## Pourquoi wsl ?
 
-.pull-left[
+### Retrouver la ligne de commande
 
-```r
-library(sf)
-library(cartography)
-reg &lt;- st_read("data/data.gpkg", "regionS", quiet = TRUE)
-reg$equipe &lt;- c("equipeMP", "equipeNO", "equipeAQ")
-png("img/06_equipe.png", width = 400, height = 400, res = 100)
-par(mar = c(0,0,1.2,0))
-typoLayer(reg, var = "NOM_REG", legend.pos = "left", border = NA, legend.values.cex = 0.8, legend.title.txt = "")
-layoutLayer("Equipes Géostatathon", col = "#BFB299")
-dev.off()
-```
-]
+A cause de l'habitude de la ligne de commande
 
-.pull-right[
-![](img/06_equipe.png)
-]
+![](../img/lgdecommande.png)
+
+complétion et historique
+
+### Le composant gdal
+
+![](../img/gdal.png)
+
+### La commande ogr pour l'import des tables spatiales du rpg
 
 
----
-
-# Automatiser la production des cartes météo
-
-
-```r
-  # interpolation
-  interp_IDW &lt;- raster::interpolate(grilleR, fit_IDW)
-  # le résultat est un carré recouvrant la grille
-  # on met le fond en masque pour avoir le contour
-  interpMasque &lt;- raster::mask(interp_IDW, fond)
-  # transformation de l'objet en sf
-  interpsf &lt;- st_as_sf(raster::rasterToPolygons(interpMasque))
-```
-
----
-# Faire un package R utile !
-
-.pull-left[
-### Pas d'image car pas d'accès au gitlab depuis internet
-]
-.pull-right[
-![](img/03_rideau.jpg)
-]
----
-
-# Utiliser diplyr !
-
-## Transposition données colonne ligne
-
-
-```r
-# parcours de dataFiltre
-nb &lt;- length(dataFiltre$ID_CANTON)
-i &lt;- 1
-for (i in 1:nb) {
-  surface &lt;- dataFiltre$SURFACE [i]
-  canton &lt;- dataFiltre$ID_CANTON [i]
-  culture &lt;- dataFiltre$CULTURE [i]
-  df [df$ID_CANTON == canton ,  culture] &lt;- surface
-}
+```bash
+ogr2ogr -f PostgreSQL "PG:user=tachasa dbname=tachasa password=bonbon2021" PARCELLES_GRAPHIQUES.gpkg -nln rpg2019 -nlt POLYGON -a_srs EPSG:2154
 ```
 
 
+L'import des tables se fait "rapidement".
 
----
 
-# Script
+## Installation postgis : 5 lignes !
 
---
 
-### Utiliser diplyr
+```bash
+sudo -i -u postgres
+create user tachasa
+createdb tachasa -O tachasa
+psql -d tachasa
+CREATE EXTENSION postgis;
 
---
-### Tout scripter
+et ensuite /i rqt.sql
 
---
+pb droits GRANT ALL ON nomtable TO tachasa;
+```
 
-### Automatiser les cartes météo mensuelles
 
---
+# Requêtes SQL
 
-### Faire un package R arvalis avec le template
+## Puissance du SQL
 
---
-## Autres regrets : les regrets cartographiques...
+```sql
+drop table if exists cantonrpg;
+CREATE TABLE cantonrpg AS (
+SELECT a.*
+FROM rpg2018 a JOIN canton b ON ST_WITHIN (a.wkb_geometry, b.geom)
+WHERE b.fid = 1888
+	);
+```
 
+## Une requête de dénombrement
 
----
+```sql
+SELECT a.code_cultu, count(*) AS nb
+FROM rpg2018 a
+GROUP BY code_cultu
+ORDER BY nb ASC;
+```
 
-# Un fond 
+## Plus difficile : la manipulation des données spatiales
 
-.pull-left[
-## La France appartient à l'Europe
-]
-.pull-right[
-![](img/03_Andorre.png)
-]
---
 
-### Y compris l'Andorre...
+```sql
+CREATE TABLE rpgcanton2018 AS (
+SELECT b.fid, b.id_geofla,a.code_cultu, sum(a.surf_parc)  AS surface
+FROM rpg2018 a JOIN canton b
+ON ST_INTERSECTS (st_makevalid(a.wkb_geometry), st_makevalid( b.geom))
+	GROUP BY a.code_cultu, b.fid
+	)
+```
 
----
+![](../img/erreurtopo.png)
 
-# Cartographier des évolutions
+# Et demain ?
 
+## Une personne ressource
 
-.pull-left[
-![](img/03_evolution.png)
-]
-.pull-right[
-### Basculement culture méditerranéenne
-]
+L'équipe du logiciel Rpgexplorer et Philippe Martin (merci Adelaïde !)
 
----
+![](../img/echangemartin.png)
 
-# Raster - Vecteur
+## Des données
 
-.pull-left[
-![](img/03_raster.png)
-]
+Les données de l'INRAE mises à disposition par département
 
-.pull-right[
-![](img/03_vecteur.png)
-]
+https://data.inrae.fr/dataset.xhtml?persistentId=doi:10.15454/XH84QB
 
----
 
-# interpolation et potentiel
+## Un essai
 
+Requêtes culture par culture
 
-.pull-left[
-![](img/03_interpoler.png)
-]
-.pull-right[
-![](img/03_potentiel.png)
-]
+![](../img/frequence.png)
 
----
 
-# Lisser les cartes
 
-.pull-left[
-![](img/03_chloe.png)
-]
-.pull-right[
-![](img/03_potentiel.png)
-]
 
----
 
-# Cartographie
-
---
-
-### Fond européen
-
---
-
-### Illustrer des évolutions
-
-
---
-### différences vecteur / raster
-
---
-
-### Interpolation et potentiel
---
-
-### Faire des cartes lissées
-
---
-
-## Derniers regrets : projets !
-
----
-
-# Projet segment
-
-### Pourquoi certaines villes extraites des segments ?
-
-![](img/03_horssegment.png#center)
-
----
-
-# Projet RPG
-
-### Requêter le RPG 
-
-![](img/03_sql.png)
-
----
-
-# Utiliser le PHP
-
-![](img/03_php.png)
-
----
-
-# Correspondre avec l'INRAE
-
-![](img/03_mail.jpg#center)
-
----
-
-# Projets
-
-### Segment : les villes ?
-
-### RPG : requête, php, et mails
-
----
-
-# Et surtout, surtout....
-
---
-
-### Finir l'écophysiologie du blé !
-
-![](img/03_ecoGate.jpg#center)
+frequence.png
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
