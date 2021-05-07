@@ -4,6 +4,7 @@
     <title>RPG dans Postgis – Présentation au service</title>
     <meta charset="utf-8" />
     <meta name="author" content="B. Maranget" />
+    <script src="03_rpgService_files/header-attrs-2.7/header-attrs.js"></script>
     <link href="03_rpgService_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
   </head>
@@ -17,22 +18,31 @@ background-image: url("css/pg2.jpg")
 
 class: right, bottom
 
-# Markdown Xaringan Git
-## Alternative à power point
+# RPG dans Postgis
+## Présentation au service
 ---
 
 
 
 
-# Cadre
 
-## Objet
 
-Ce script présente l'import du rpg dans une base postgis et quelques requêtes.
+# Objet
 
-Il décrit également la mise en place de l'environnement wsl / ubuntu 20 / postgis
+###  Présenter l'import du rpg dans une base postgis et quelques requêtes.
 
-## Sources
+--
+
+### Décrire également la mise en place de l'environnement wsl / ubuntu 20 / postgis
+
+--
+
+![](img/invention.jpg#center)
+
+---
+
+
+# Sources
 
 https://static.geotribu.fr/articles/2020/2020-10-28_gdal_windows_subsystem_linux_wsl/#installer-wsl
 
@@ -46,23 +56,43 @@ https://jayrobwilliams.com/posts/2020/09/spatial-sql
 
 https://freegistutorial.com/how-to-install-postgis-on-ubuntu-20-04/
 
+--
+
+#### Liste non exhaustive...
+
+
+---
+
 # Installations
 
 ## Pourquoi wsl ?
 
-### Retrouver la ligne de commande
 
-A cause de l'habitude de la ligne de commande
+---
 
-![](../img/lgdecommande.png)
+# Ligne de commande
 
-complétion et historique
+![](img/lgdecommande.png)
 
-### Le composant gdal
+####     complétion et historique
 
-![](../img/gdal.png)
+---
 
-### La commande ogr pour l'import des tables spatiales du rpg
+# Le composant gdal
+
+![](img/gdal.png)
+
+--
+
+####  - nlt
+
+--
+
+#### - makevalid
+
+---
+
+# La commande ogr pour l'import des tables spatiales du rpg
 
 
 ```bash
@@ -70,10 +100,14 @@ ogr2ogr -f PostgreSQL "PG:user=tachasa dbname=tachasa password=bonbon2021" PARCE
 ```
 
 
-L'import des tables se fait "rapidement".
+#### L'import des tables se fait *rapidement*.
 
 
-## Installation postgis : 5 lignes !
+---
+
+# Installation postgis 
+
+##     5 lignes !
 
 
 ```bash
@@ -88,6 +122,7 @@ et ensuite /i rqt.sql
 pb droits GRANT ALL ON nomtable TO tachasa;
 ```
 
+---
 
 # Requêtes SQL
 
@@ -102,7 +137,9 @@ WHERE b.fid = 1888
 	);
 ```
 
-## Une requête de dénombrement
+---
+
+# Une requête de dénombrement
 
 ```sql
 SELECT a.code_cultu, count(*) AS nb
@@ -111,7 +148,10 @@ GROUP BY code_cultu
 ORDER BY nb ASC;
 ```
 
-## Plus difficile : la manipulation des données spatiales
+
+---
+
+# Plus difficile : la manipulation des données spatiales
 
 
 ```sql
@@ -123,34 +163,73 @@ ON ST_INTERSECTS (st_makevalid(a.wkb_geometry), st_makevalid( b.geom))
 	)
 ```
 
-![](../img/erreurtopo.png)
+![](img/erreurtopo.png)
+
+---
+
+# Possibilité d'optimiser avec le queryplan ?
+
+![](img/rqtQuery.png)
+
+
+![](img/queryplan.png)
+
+---
 
 # Et demain ?
 
 ## Une personne ressource
 
-L'équipe du logiciel Rpgexplorer et Philippe Martin (merci Adelaïde !)
+#### L'équipe du logiciel Rpgexplorer et Philippe Martin
 
-![](../img/echangemartin.png)
+![](img/echangemartin.png)
 
-## Des données
+---
+# Merci Adelaïde !
+
+![](img/merci.png#center)
+
+
+---
+
+# Des données
 
 Les données de l'INRAE mises à disposition par département
 
 https://data.inrae.fr/dataset.xhtml?persistentId=doi:10.15454/XH84QB
 
+---
 
-## Un essai
+# Un essai
 
-Requêtes culture par culture
+## Requêtes culture par culture
 
-![](../img/frequence.png)
+![](img/frequence.png)
+---
+
+# Exemple : le code cultu "PRU"
+
+```sql
+CREATE TABLE rpgcanton2018 AS (
+SELECT b.fid, b.id_geofla,a.code_cultu, sum(a.surf_parc)  AS surface
+FROM rpg2018 a JOIN  canton b
+ON ST_INTERSECTS (st_makevalid(a.wkb_geometry), st_makevalid( b.geom))
+WHERE a.code_cultu LIKE 'PRU'
+	GROUP BY a.code_cultu, b.fid)
+```
+
+--
+
+Cette requête donne un résultat au bout de 5 mn.
+
+![](img/resRQT.png)
 
 
+---
 
+# Bref, j'ai encore du boulot !
 
-
-frequence.png
+![](img/fin.png)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
