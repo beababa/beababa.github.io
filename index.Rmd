@@ -1,0 +1,36 @@
+---
+title: "sommaire"
+output: 
+ html_document: 
+  number_sections: yes
+  toc: yes
+editor_options: 
+ chunk_output_type: console
+#fig_width: 6 
+#fig_height: 4
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(cache = TRUE)
+# Passer la valeur suivante à TRUE pour reproduire les extractions.
+knitr::opts_chunk$set(eval = TRUE)
+knitr::opts_chunk$set(warning = FALSE)
+#knitr::opts_chunk$set(fig.width=12, fig.height=8) 
+```
+`
+
+# Objet
+
+Presentations Arvalis année 2020-2021
+
+https://beababa.github.io/01_retourPOC#1
+
+https://beababa.github.io/02_outils#1
+
+https://beababa.github.io/03_rpgService#1
+
+https://beababa.github.io/04_etonnement#1
+
+
+
