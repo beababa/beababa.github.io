@@ -1,47 +1,94 @@
-.remark-slide-content {
- background-image: url("bg.jpg");
- background-size: cover; 
+@font-face {
+    font-family: 'roboto';
+    src: url('fonts/Roboto-Regular-webfont.eot');
+    src: url('fonts/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Roboto-Regular-webfont.woff') format('woff'),
+         url('fonts/Roboto-Regular-webfont.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+
+
+}
+
+@font-face {
+    font-family: 'roboto';
+    src: url('fonts/Roboto-Italic-webfont.eot');
+    src: url('fonts/Roboto-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Roboto-Italic-webfont.woff') format('woff'),
+         url('fonts/Roboto-Italic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+
+}
+
+@font-face {
+    font-family: 'roboto';
+    src: url('fonts/Roboto-Bold-webfont.eot');
+    src: url('fonts/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Roboto-Bold-webfont.woff') format('woff'),
+         url('fonts/Roboto-Bold-webfont.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+
 }
 
 
-.left-column30 {
-      width: 30%;
-      float: left;
+
+
+*{
+    font-family:'roboto';
 }
 
-.right-column70 {
-      width: 68%;
-      float: right;
-      }
-
-
-.left-column40 {
-      width: 40%;
-      float: left;
+/* Texte du top-header*/
+a {
+    color: #990000; 
+    font-size: 1.4rem;
 }
 
-.right-column50 {
-      width: 50%;
-      float: right;
-      }
 
 
+.navbar > li > a {
+    font-size: 0.8rem;
+}
+
+.nav-link {
+    color: white; font-size: 0.8em;
+}
 
 
-img[src*='#center'] { 
-    display: block;
-    margin: auto;
+.navbar-default {
+    background-color: #990000;
+    border-color: #610202;
+    font-family: 1em;
+}
+
+/* Couleur utilisée pour le lien actif (celui qui est affiché sur la page) */
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #555;
+    background-color: #E7E7E7;
+    font-size: 1em;
+}
+
+/* Couleur utilisée pour un menu dépliant lorsqu'il est ouvert */
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #D5D5D5;
+    font-family: 1em;
 }
 
 
 h1,h2,h3,h4,h5,h6,p,strong{
     /*display: inline-block;*/
-    font-family:'calibri';
+    font-family:'roboto';
 }
 
 h1,h2{
-    font-weight: 600;
-    margin-top: 10px;
+    font-weight: 700;
+    margin-top:120px;
 }
 
 
@@ -52,16 +99,15 @@ h3,h4{
 
 
 h1 {
-    font-size: 18px;
-    color: #CCD96C;
-    margin-top: 10px;
-    margin-left: 80px;
+    font-size: 24px;
+    color: #990000;
+    margin-top: 40px;
 }
 
 
 h2 {
-    font-size: 15px;
-    color: #BFB299;
+    font-size: 20px;
+    color: #990000;
     margin-top: 24px;
 }
  
@@ -71,8 +117,8 @@ h3 {
 } 
 
 h4 {
-    font-size: 20px;
-    color: #D9D0C1; 
+    font-size: 14px;
+    color: #1a1a1a; 
 } 
 
 
@@ -97,7 +143,20 @@ strong {
     font-style: italic;
     color: #990000; 
     font-size: 16px;
+
     margin-top: 16px;
+}
+
+
+
+/* Navbar parameters */
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    color: #fff;
+    font-size:  0.8em;
+
+    background-color: #990000;
+    border-color: #990000;
+    z-index: 2;
 }
 
 
