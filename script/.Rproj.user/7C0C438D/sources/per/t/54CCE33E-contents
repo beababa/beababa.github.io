@@ -1,0 +1,61 @@
+---
+title: "Introduction exploitation stats agricoles"
+author: "B. Maranget"
+date: "06/05/2021"
+output: 
+  html_document: 
+    number_sections: yes
+    toc: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(cache = TRUE)
+# Passer la valeur suivante à TRUE pour reproduire les extractions.
+knitr::opts_chunk$set(eval = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+
+# Enjeux
+
+Les demandes tournant autour des stats agricoles (Agreste) sont régulières et nécessitent une mise au point à plusieurs niveaux :
+
+- traitement des données récupérées
+
+Les données sont sous format .xls et en de multiples fichiers, il faut donc les transformer en .csv et les concaténer.
+
+- cartographie choroplèthe et variable de stock
+
+Les salariés demandeurs veulent une carte de surface en valeur absolue en carte choroplèthe. Cela représente clairement une hérésie en cartographie.
+
+En effet, un chiffre absolu doit être représenté par un figuré ponctuel. Les aplats de couleur sont réservés aux données relatives.
+La donnée absolue n'intègre pas la taille de l'espace sur laquelle elle repose, elle ne doit donc pas être intégrée directement dans la carte.
+
+Dans l'article suivant (https://neocarto.hypotheses.org/5717), l'auteur propose une approche plus nuancée en utilisant la notion de carte "sous opérante".
+
+- multiples cultures à cartographier
+
+Il s'agit également de reproduire une carte par culture, il est donc intéressant d'automatiser la démarche.
+
+# Détail scripts
+
+- 01_carteSimple
+
+Une boucle pour cartographier toutes les espèces demandées
+
+
+- 02_carteEvolution
+
+Ce script propose de faire 1 carte par an sur 20 mais surtout 1 carte d'évolution en utilisant les valeurs de la première et de la dernière année.
+
+- 03_carteComplexe
+
+Recherche sur les valeurs nulles et manquantes
+
+# Demandes concernées
+
+TODO extraire de liste les demandes

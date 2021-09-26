@@ -14,8 +14,8 @@
 
 <title>Statistique univariée</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -56,7 +56,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -369,9 +368,11 @@ $(document).ready(function () {
 <h2 number="1.1"><span class="header-section-number">1.1</span> Trouver des termes pour les objets en statistiques :</h2>
 <p>exemple : - variable, - observation, - valeur</p>
 <p>A vous !</p>
+<p>On retiendra pour le moment uniquement les termes : individu / population / variable et modalité</p>
 </div>
 <div id="distinguer-tableau-complet-tig-tableau-condensé" class="section level2" number="1.2">
 <h2 number="1.2"><span class="header-section-number">1.2</span> distinguer tableau complet, tig, tableau condensé</h2>
+<p>Individu -&gt; Modalité Modalité -&gt; Individus</p>
 </div>
 </div>
 <div id="lessentiel-la-forme-dune-distribution" class="section level1" number="2">
@@ -393,32 +394,107 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/2021-09-17_deces_quotidiens_departement_csv.csv&quot;</span>, <span class="at">sep =</span><span class="st">&quot;;&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(data<span class="sc">$</span>Zone)</span></code></pre></div>
 <pre><code>## [1] 37332</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> data [data<span class="sc">$</span>Date_evenement <span class="sc">==</span> <span class="st">&#39;01-août&#39;</span><span class="sc">&amp;</span>data<span class="sc">$</span>Zone <span class="sc">!=</span> <span class="st">&#39;France&#39;</span>, <span class="fu">c</span>(<span class="st">&#39;Zone&#39;</span>, <span class="st">&#39;Total_deces_2021&#39;</span>)]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(choix, <span class="st">&quot;data/choix.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="préparation-de-lexercice" class="section level3" number="2.3.2">
 <h3 number="2.3.2"><span class="header-section-number">2.3.2</span> Préparation de l’exercice</h3>
-<ol style="list-style-type: decimal">
-<li><p>Pour obtenir un TIG avec une seule variable, quelle variable choisir et pour quels individus ?</p></li>
-<li><p>Pour faire un tableau de fréquences sous Libre Office</p></li>
-</ol>
-<p>Savoirs faire</p>
+<div id="pour-obtenir-un-tig-avec-une-seule-variable-quelle-variable-choisir-et-pour-quels-individus" class="section level4" number="2.3.2.1">
+<h4 number="2.3.2.1"><span class="header-section-number">2.3.2.1</span> Pour obtenir un TIG avec une seule variable, quelle variable choisir et pour quels individus ?</h4>
+<p>Réponse : Pour un jour donné, on prend les départements (pas la France), et une colonne de total pour les décès.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##   Date_evenement   Zone Communes_a_envoi_dematerialise_Deces2021
+## 1       01-janv. France                                     1940
+## 2       02-janv. France                                     3792
+## 3       03-janv. France                                     5743
+## 4       04-janv. France                                     7714
+## 5       05-janv. France                                     9696
+## 6       06-janv. France                                    11605
+##   Total_deces_2021 Communes_a_envoi_dematerialise_Deces2020 Total_deces_2020
+## 1             2145                                     1733             1900
+## 2             4201                                     3477             3795
+## 3             6351                                     5250             5744
+## 4             8549                                     6901             7569
+## 5            10724                                     8469             9304
+## 6            12840                                    10223            11279
+##   Communes_a_envoi_dematerialise_Deces2019 Total_deces_2019
+## 1                                     1663             1816
+## 2                                     3409             3728
+## 3                                     5092             5578
+## 4                                     6822             7456
+## 5                                     8549             9345
+## 6                                    10257            11225</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> data [data<span class="sc">$</span>Date_evenement <span class="sc">==</span> <span class="st">&#39;01-janv.&#39;</span><span class="sc">&amp;</span>data<span class="sc">$</span>Zone <span class="sc">!=</span> <span class="st">&#39;France&#39;</span>, <span class="fu">c</span>(<span class="st">&#39;Zone&#39;</span>, <span class="st">&#39;Total_deces_2020&#39;</span>)]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(choix, <span class="st">&quot;data/choix.csv&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(choix))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Zone</th>
+<th align="right">Total_deces_2020</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">367</td>
+<td align="left">Dept_01</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="left">733</td>
+<td align="left">Dept_02</td>
+<td align="right">23</td>
+</tr>
+<tr class="odd">
+<td align="left">1099</td>
+<td align="left">Dept_03</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="left">1465</td>
+<td align="left">Dept_04</td>
+<td align="right">7</td>
+</tr>
+<tr class="odd">
+<td align="left">1831</td>
+<td align="left">Dept_05</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="left">2197</td>
+<td align="left">Dept_06</td>
+<td align="right">44</td>
+</tr>
+</tbody>
+</table>
+<p>Cet exercice permet d’utiliser dans le tableur :</p>
+<ul>
+<li>la suppression de colonne</li>
+<li>l’autofiltre pour sélectionner les données</li>
+<li>les 3 raccourcis clavier : CTRL + * , CTRL + C, CTRL + V</li>
+</ul>
+</div>
+<div id="tableau-de-fréquences-sous-libre-office-savoirs-faire" class="section level4" number="2.3.2.2">
+<h4 number="2.3.2.2"><span class="header-section-number">2.3.2.2</span> Tableau de fréquences sous Libre Office : savoirs faire</h4>
 <ul>
 <li>Touche de sélection et de déplacement</li>
-<li>filtre</li>
 <li>tri</li>
 <li>utilisation de la barre d’adresse</li>
-<li>cellules nommées ou fixer les valeurs (adresse absolue)</li>
-<li>formule frequence</li>
+<li>formule frequence, formule matricielle (CTRL + MAJ + ENTREE)</li>
 </ul>
-<p>(remplir le framacalc rapidement)</p>
-<ol start="3" style="list-style-type: decimal">
-<li>Quel commentaire ?</li>
-</ol>
+</div>
+</div>
+<div id="quel-commentaire" class="section level3" number="2.3.3">
+<h3 number="2.3.3"><span class="header-section-number">2.3.3</span> Quel commentaire ?</h3>
 <ul>
 <li>étendue</li>
 <li>forme de la distribution</li>
 </ul>
+<div id="proposer-une-première-représentation-graphique" class="section level4" number="2.3.3.1">
+<h4 number="2.3.3.1"><span class="header-section-number">2.3.3.1</span> Proposer une première représentation graphique</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(choix<span class="sc">$</span>Total_deces_2020, <span class="at">main =</span> <span class="st">&quot;Total décès 2020&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;classes&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;effectif&quot;</span>)</span></code></pre></div>
+<p><img src="jour1_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>résultat avec un tableur <img src="img/histogrammeLibreOffice.jpg" /></p>
+</div>
 </div>
 </div>
 </div>
@@ -429,25 +505,42 @@ $(document).ready(function () {
 <h2 number="3.1"><span class="header-section-number">3.1</span> Calcul : valeurs centrales et dispersion</h2>
 <div id="valeurs-centrales" class="section level3" number="3.1.1">
 <h3 number="3.1.1"><span class="header-section-number">3.1.1</span> Valeurs centrales</h3>
+<p>Il s’agit de caractériser une distribution par son centre.</p>
 <div id="moyenne-et-médiane" class="section level4" number="3.1.1.1">
 <h4 number="3.1.1.1"><span class="header-section-number">3.1.1.1</span> Moyenne et médiane</h4>
+<div id="calcul" class="section level5" number="3.1.1.1.1">
+<h5 number="3.1.1.1.1"><span class="header-section-number">3.1.1.1.1</span> Calcul</h5>
+<p>Le calcul de la moyenne est connu. Celui de la médiane beaucoup moins.</p>
+<p><img src="img/mediane.jpg" /></p>
 <ul>
-<li><p>Faire le calcul sur le tableau sans les formules moyenne et mediane</p></li>
-<li><p>Que retenir ?</p></li>
+<li><p>Calcul des effectifs cumulés,</p></li>
+<li><p>puis de la fréquence des effectifs (effectif cumulé / total des effectifs)</p></li>
+<li><p>Repérer le rang 50 %</p></li>
 </ul>
+<p>savoir faire tableur</p>
+<ul>
+<li><p>valeur fixe et relative (utilisation du $ et MAJ F4)</p></li>
+<li><p>au niveau graphique, rajout d’un axe par le menu insertion après double clic sur le graphique (onglet positionnement, menu déroulant valeur)</p></li>
+</ul>
+</div>
+<div id="que-retenir" class="section level5" number="3.1.1.1.2">
+<h5 number="3.1.1.1.2"><span class="header-section-number">3.1.1.1.2</span> Que retenir ?</h5>
+<p>Expliquer ces phrases issues du Chadule</p>
+<ul>
+<li><p>La médiane est dans une distribution la valeur la plus <em>proche</em> de toutes les autres</p></li>
+<li><p>les valeurs extrêmes <em>décentrent</em> la moyenne</p></li>
+</ul>
+</div>
 </div>
 <div id="la-valeur-modale" class="section level4" number="3.1.1.2">
 <h4 number="3.1.1.2"><span class="header-section-number">3.1.1.2</span> La valeur modale</h4>
 <p>La valeur la plus fréquente</p>
 <p>Quelle utilité dans notre série ?</p>
 </div>
-<div id="indicateur-de-disymétrie" class="section level4" number="3.1.1.3">
-<h4 number="3.1.1.3"><span class="header-section-number">3.1.1.3</span> Indicateur de disymétrie</h4>
-<p>En théorie, que permet de dire le rapport entre la moyenne et la médiane ? (S’aider des 3 graphiques d’en-tête)</p>
-</div>
 </div>
 <div id="dispersion-ecart-type-et-variance" class="section level3" number="3.1.2">
 <h3 number="3.1.2"><span class="header-section-number">3.1.2</span> Dispersion : Ecart-type et variance</h3>
+<p>La distribution est-elle hétérogène ?</p>
 <p>2 définitions :</p>
 <ul>
 <li><p>écart moyen des valeurs à leur moyenne arithmétique</p></li>
