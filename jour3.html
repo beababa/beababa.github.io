@@ -12,7 +12,7 @@
 <meta name="author" content="BMaranget" />
 
 
-<title>Introduction</title>
+<title>Statistiques bi variées - khi 2</title>
 
 <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -356,198 +356,72 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Introduction</h1>
+<h1 class="title toc-ignore">Statistiques bi variées - khi 2</h1>
 <h4 class="author">BMaranget</h4>
-<h4 class="date">20 septembre 2021</h4>
+<h4 class="date">16/08/2021</h4>
 
 </div>
 
 
-<div id="intitulé-du-cours" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Intitulé du cours</h1>
-<p><em>“L5GEABIM Analyses bivariées et multivariées”</em></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/presentation.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">header =</span> F)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;groupe&quot;</span>, <span class="st">&quot;heures&quot;</span>, <span class="st">&quot;enseignant&quot;</span>) )</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left">groupe</th>
-<th align="left">heures</th>
-<th align="left">enseignant</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Gr. 1</td>
-<td align="left">8h - 9h30</td>
-<td align="left">Thomas LAMY</td>
-</tr>
-<tr class="even">
-<td align="left">Gr. 2</td>
-<td align="left">9h30 - 11h</td>
-<td align="left">Béatrice MARANGET</td>
-</tr>
-<tr class="odd">
-<td align="left">Gr. 3</td>
-<td align="left">14h - 15h30</td>
-<td align="left">Béatrice MARANGET</td>
-</tr>
-</tbody>
-</table>
+<div id="données-dexemple" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Données d’exemple</h1>
+<p>hypothèse : relation entre les régions et les types de lits</p>
+<p>Deux distributions connues par classe quelque soit la nature des modalités.</p>
+<p>Attention, valeur plancher 5</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/lits.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/departements-region.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dataM <span class="ot">&lt;-</span> <span class="fu">merge</span>(data, dpt, <span class="at">by.x =</span> <span class="st">&quot;Département&quot;</span>, <span class="at">by.y =</span> <span class="st">&quot;num_dep&quot;</span> )</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>agg <span class="ot">&lt;-</span> <span class="fu">aggregate</span> (dataM[,<span class="fu">c</span>(<span class="st">&quot;réanimation&quot;</span>, <span class="st">&quot;intensifs&quot;</span>,<span class="st">&quot;surveillance&quot;</span>)], <span class="at">by =</span> <span class="fu">list</span>(dataM<span class="sc">$</span>region_name), sum)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(agg, <span class="st">&quot;data/litsRegion.csv&quot;</span>)</span></code></pre></div>
+<p>Pour l’exercice, on utilise les lits par région plutôt que par dpt</p>
 </div>
-<div id="déroulé" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Déroulé</h1>
-<p>Il va être modifié en fonction de</p>
+<div id="tableau-de-contingence" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Tableau de contingence</h1>
+<p>Au sens anglais du terme, * ce qui peut exister *</p>
+<div id="analyse-dun-tableau-de-contingence" class="section level2" number="2.1">
+<h2 number="2.1"><span class="header-section-number">2.1</span> Analyse d’un tableau de contingence</h2>
 <ul>
-<li>votre vitesse - s’il faut prendre plus de temps sur les basiques</li>
-<li>la collaboration avec Thomas Lamy</li>
+<li><p>Il faut présenter les sources, la structure et le contenu du tableau.</p></li>
+<li><p>Lister les questions susceptibles d’être posées</p></li>
+<li><p>Analyse des distributions marginales</p></li>
 </ul>
-<p>13 cours en tout. 2 cours d’intro 7 sur la stat bi-variée 3 sur la multivariée 1 cours pour un devoir sur table au mi-semestre 1 devoir maison à rendre vers la fin du semestre</p>
-<p>Au départ on utilise Libre Office (plutôt que Microsoft) puis R</p>
-<p>Question : quelle utilisation de R ? des cours cette année ?</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deroule.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Num.cours</th>
-<th align="left">date</th>
-<th align="left">thème</th>
-<th align="left">outil</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="left">20/09/21</td>
-<td align="left">statistique univariée : base</td>
-<td align="left">tableur</td>
-</tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="left">27/09/21</td>
-<td align="left">statistique univariée : indicateurs</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="left">04/10/21</td>
-<td align="left">bivariée : base</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right">4</td>
-<td align="left">04/10/21</td>
-<td align="left">Khi 2</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right">5</td>
-<td align="left">11/10/21</td>
-<td align="left">régression</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="left">18/10/21</td>
-<td align="left">contingence</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right">7</td>
-<td align="left">25/10/21</td>
-<td align="left">devoir sur table</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right">8</td>
-<td align="left">08/11/21</td>
-<td align="left">variance</td>
-<td align="left">R</td>
-</tr>
-<tr class="odd">
-<td align="right">9</td>
-<td align="left">15/11/21</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right">10</td>
-<td align="left">22/11/21</td>
-<td align="left">multivariée : multifactorielle</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right">11</td>
-<td align="left">29/11/21</td>
-<td align="left">classification</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right">12</td>
-<td align="left">06/12/21</td>
-<td align="left">régression linéaire multiple</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right">13</td>
-<td align="left">13/12/21</td>
-<td align="left">devoir à rendre</td>
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
 </div>
-<div id="présentation-rapide-vous-êtes-nombreux" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> Présentation rapide (vous êtes nombreux !)</h1>
-<p>passé / présent / futur appétence pour les stats fichier framapad, <a href="https://lite.framacalc.org/9pse-coursstatsorbonne2021" class="uri">https://lite.framacalc.org/9pse-coursstatsorbonne2021</a></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cours1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cours1.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>cours2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cours2.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>cours1<span class="sc">$</span>session <span class="ot">&lt;-</span> <span class="st">&quot;cours1&quot;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>cours2<span class="sc">$</span>session <span class="ot">&lt;-</span> <span class="st">&quot;cours2&quot;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cours1)</span></code></pre></div>
-<pre><code>## [1] &quot;prenom&quot;                                         
-## [2] &quot;adresse.mail&quot;                                   
-## [3] &quot;X20.9&quot;                                          
-## [4] &quot;passé&quot;                                          
-## [5] &quot;présent&quot;                                        
-## [6] &quot;futur&quot;                                          
-## [7] &quot;appétence.pour.les.stats.0.j.adore.4.je.déteste&quot;
-## [8] &quot;session&quot;</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cours2)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;prenom&quot;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cours <span class="ot">&lt;-</span> <span class="fu">rbind</span>(cours1, cours2)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>cours <span class="ot">&lt;-</span> cours [cours<span class="sc">$</span>prenom <span class="sc">!=</span> <span class="st">&#39;&#39;</span>,]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(cours<span class="sc">$</span>session)</span></code></pre></div>
-<pre><code>## 
-## cours1 cours2 
-##     28     29</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># export pour framapad</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(cours [<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">8</span>)], <span class="st">&quot;data/cours.csv&quot;</span>)</span></code></pre></div>
-<p>Désormais le framapad sert à l’émargement</p>
-</div>
-<div id="pratique" class="section level1" number="4">
-<h1 number="4"><span class="header-section-number">4</span> Pratique</h1>
-<p>Les exercices sont à rendre avec son <em>prénom</em> (toujours le même svp) sous moodle dans un répertoire spécifique (en attente de validation du compte moodle)</p>
-</div>
-<div id="quizz-de-cours" class="section level1" number="5">
-<h1 number="5"><span class="header-section-number">5</span> Quizz de cours</h1>
-<p>Quelques minutes en fin de chaque cours, histoire pour moi de voir s’il faut que je reprenne des notions.</p>
-<p>cours 1 <a href="https://forms.gle/vR9f156Up9zrL86B9" class="uri">https://forms.gle/vR9f156Up9zrL86B9</a></p>
-</div>
-<div id="ressources-autre-que-la-bibliographie-officielle" class="section level1" number="6">
-<h1 number="6"><span class="header-section-number">6</span> Ressources autre que la bibliographie officielle</h1>
-<p>2 cours universitaires disponibles sur internet</p>
+<div id="fréquences-conditionnelles-en-ligne-et-colonne" class="section level2" number="2.2">
+<h2 number="2.2"><span class="header-section-number">2.2</span> Fréquences conditionnelles en ligne et colonne</h2>
+<p>Pour pouvoir comparer les régions, chaque groupe est ramené à une même base égale à 100.</p>
+<p>savoir-faire tableur</p>
 <ul>
-<li><a href="http://www.ipt.univ-paris8.fr/vgodard/enseigne/statisti/framstat.htm" class="uri">http://www.ipt.univ-paris8.fr/vgodard/enseigne/statisti/framstat.htm</a></li>
-<li><a href="http://grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm" class="uri">http://grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm</a></li>
+<li><p>Objectif : saisir une seule cellule et étendre la formule. quelle élément fixer, ligne ou colonne ?</p></li>
+<li><p>Graphique par types de lit</p></li>
 </ul>
-<p>2 sites pour réfléchir</p>
+<p>commentaire</p>
 <ul>
-<li><a href="https://neocarto.hypotheses.org/" class="uri">https://neocarto.hypotheses.org/</a></li>
-<li><a href="https://bmericskay.github.io/portfolio/Disgressions.html" class="uri">https://bmericskay.github.io/portfolio/Disgressions.html</a></li>
+<li><p>répartition des régions puis lorsque ramené à une base 100, répartition des lits dans les régions (on peut comparer)</p></li>
+<li><p>les écarts au total des types de lit sont plus parlants</p></li>
 </ul>
-<p>et bien sur :</p>
-<p><a href="https://georezo.net/" class="uri">https://georezo.net/</a></p>
+<p>On fait la même étude pour les fréquences conditionnelles en colonne afin de confirmer les observations.</p>
+</div>
+<div id="effectifs-théoriques-et-observées" class="section level2" number="2.3">
+<h2 number="2.3"><span class="header-section-number">2.3</span> Effectifs théoriques et observées</h2>
+<div id="analogie-du-jeu-du-dé-et-de-la-pièce" class="section level3" number="2.3.1">
+<h3 number="2.3.1"><span class="header-section-number">2.3.1</span> Analogie du jeu du dé et de la pièce</h3>
+</div>
+<div id="tableau" class="section level3" number="2.3.2">
+<h3 number="2.3.2"><span class="header-section-number">2.3.2</span> Tableau</h3>
+<p>Pour le vérifier, les distributions univariées restent inchangées.</p>
+<p>La première case reçoit la formule :</p>
+<ul>
+<li><p>effectif / total lg * effectif / total colonne FREQUENCE CONJOINTE</p></li>
+<li><p>cette fréquence est multipliée par la totalité de l’effectif pour avoir l’ EFFECTIF</p></li>
+</ul>
+</div>
+<div id="ecarts-entre-observés-et-théoriques" class="section level3" number="2.3.3">
+<h3 number="2.3.3"><span class="header-section-number">2.3.3</span> Ecarts entre observés et théoriques</h3>
+</div>
+<div id="calcul-des-différences" class="section level3" number="2.3.4">
+<h3 number="2.3.4"><span class="header-section-number">2.3.4</span> Calcul des différences</h3>
+</div>
+</div>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
