@@ -17,7 +17,7 @@
 <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,6 +31,8 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -43,12 +45,21 @@
   ul.task-list{list-style: none;}
     </style>
 
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
 
 
 
 
 
-<link rel="stylesheet" href="css/styles.css" type="text/css" />
 
 
 
@@ -237,18 +248,18 @@ $(document).ready(function () {
   <a href="intro.html">Introduction</a>
 </li>
 <li>
-  <a href="jour1.html">Statistiques univariées 1</a>
+  <a href="jour1.html">Statistiques univariées</a>
 </li>
 <li>
-  <a href="jour2.html">Statistiques univariées 2</a>
+  <a href="jour2.html">Statistiques bi-variées base</a>
 </li>
 <li>
-  <a href="jour3.html">Statistiques bi-variées 1</a>
+  <a href="jour3.html">Statistiques bi-variées khi 2</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/beababa/coursStatSorbonne2021">
+  <a href="https://beababa.github.io/intro.html">
     <span class="fa fa-github"></span>
      
   </a>
@@ -269,10 +280,10 @@ $(document).ready(function () {
 </div>
 
 
-<div id="méthode" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Méthode</h1>
-<div id="étapes" class="section level2" number="1.1">
-<h2 number="1.1"><span class="header-section-number">1.1</span> 6 étapes</h2>
+<div id="méthode" class="section level1">
+<h1>Méthode</h1>
+<div id="étapes" class="section level2">
+<h2>6 étapes</h2>
 <ol style="list-style-type: decimal">
 <li>Hypothèse</li>
 <li>Le tableau de données</li>
@@ -282,18 +293,18 @@ $(document).ready(function () {
 <li>Explication géographique</li>
 </ol>
 </div>
-<div id="combinaisons" class="section level2" number="1.2">
-<h2 number="1.2"><span class="header-section-number">1.2</span> 3 combinaisons</h2>
-<div id="trois-types-de-variables" class="section level3" number="1.2.1">
-<h3 number="1.2.1"><span class="header-section-number">1.2.1</span> Trois types de variables</h3>
+<div id="combinaisons" class="section level2">
+<h2>3 combinaisons</h2>
+<div id="trois-types-de-variables" class="section level3">
+<h3>Trois types de variables</h3>
 <ol style="list-style-type: decimal">
 <li>par classe</li>
 <li>continu</li>
 <li>catégorie</li>
 </ol>
 </div>
-<div id="trois-méthodes" class="section level3" number="1.2.2">
-<h3 number="1.2.2"><span class="header-section-number">1.2.2</span> Trois méthodes</h3>
+<div id="trois-méthodes" class="section level3">
+<h3>Trois méthodes</h3>
 <ul>
 <li><p>Classe -&gt; Khi2</p></li>
 <li><p>Continu -&gt; Régression Correlation</p></li>
@@ -302,21 +313,21 @@ $(document).ready(function () {
 </div>
 </div>
 </div>
-<div id="exemples" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Exemples</h1>
+<div id="exemples" class="section level1">
+<h1>Exemples</h1>
 <p>Utiliser le site opendata du gouvernement, choisir une thématique.</p>
 <p>Pour chaque exemple, justifier le traitement qu’il faudra utiliser et l’hypothèse de départ.</p>
-<p>exemple de l’exemple sur le framapad</p>
+<div id="exemple-de-lexemple" class="section level2">
+<h2>exemple de l’exemple</h2>
 <p>thématique : emploi, ancienneté au chomage et niveau de formation</p>
 <p>hypothèse : relation entre l’ancienneté au chomage et niveau de formation</p>
 <p>thématique : santé et covid, type de lits par région</p>
-<p>hypothèse : les différents type de lits sont cohérents entre les régions</p>
+<p>hypothèse : les différents type de lits sont cohérents entre les régions malgré les inégalités entre région</p>
 <p>thématique : logement et urbanisme, consommation énergétique bâtiment</p>
 <p>hypothèse : relation entre consommation entre énergie électrique et les autres formes d’énergie</p>
 </div>
+</div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br>
-<small><p>L5GEABIM Analyses bivariées et multivariées</p></small>
 
 
 
