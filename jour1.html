@@ -9,7 +9,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="BMaranget" />
 
 
 <title>Statistique univariée</title>
@@ -30,6 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
@@ -303,6 +305,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -310,6 +375,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -330,18 +405,18 @@ $(document).ready(function () {
   <a href="intro.html">Introduction</a>
 </li>
 <li>
-  <a href="jour1.html">Statistiques univariées 1</a>
+  <a href="jour1.html">Statistiques univariées</a>
 </li>
 <li>
-  <a href="jour2.html">Statistiques univariées 2</a>
+  <a href="jour2.html">Statistiques bi-variées base</a>
 </li>
 <li>
-  <a href="jour3.html">Statistiques bi-variées 1</a>
+  <a href="jour3.html">Statistiques bi-variées khi 2</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/beababa/coursStatSorbonne2021">
+  <a href="https://beababa.github.io/intro.html">
     <span class="fa fa-github"></span>
      
   </a>
@@ -356,8 +431,6 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Statistique univariée</h1>
-<h4 class="author">BMaranget</h4>
-<h4 class="date">20/09/2021</h4>
 
 </div>
 
@@ -494,6 +567,9 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(choix<span class="sc">$</span>Total_deces_2020, <span class="at">main =</span> <span class="st">&quot;Total décès 2020&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;classes&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;effectif&quot;</span>)</span></code></pre></div>
 <p><img src="jour1_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>résultat avec un tableur <img src="img/histogrammeLibreOffice.jpg" /></p>
+<p>A explorer</p>
+<p>graphique en barres, lignes (lissage)</p>
+<p>Observer la disposition des bornes : elles sont utilisées comme des étiquettes et non pas comme une série de valeur.</p>
 </div>
 </div>
 </div>
@@ -511,31 +587,45 @@ $(document).ready(function () {
 <div id="calcul" class="section level5" number="3.1.1.1.1">
 <h5 number="3.1.1.1.1"><span class="header-section-number">3.1.1.1.1</span> Calcul</h5>
 <p>Le calcul de la moyenne est connu. Celui de la médiane beaucoup moins.</p>
+<div id="sur-le-tableau-complet" class="section level6" number="3.1.1.1.1.1">
+<h6 number="3.1.1.1.1.1"><span class="header-section-number">3.1.1.1.1.1</span> Sur le tableau complet</h6>
+<p>Créer une colonne rang. Et relever le rang médian</p>
 <p><img src="img/mediane.jpg" /></p>
+</div>
+<div id="sur-le-tableau-condensé" class="section level6" number="3.1.1.1.1.2">
+<h6 number="3.1.1.1.1.2"><span class="header-section-number">3.1.1.1.1.2</span> Sur le tableau condensé</h6>
 <ul>
-<li><p>Calcul des effectifs cumulés,</p></li>
-<li><p>puis de la fréquence des effectifs (effectif cumulé / total des effectifs)</p></li>
-<li><p>Repérer le rang 50 %</p></li>
+<li><p>Calcul des fréquences cumulées,</p></li>
+<li><p>puis des fréquences relative (fréquence cumulée / fréquence totale)</p></li>
+<li><p>Repérer le rang 50 % en faisant jouer les bornes</p></li>
 </ul>
-<p>savoir faire tableur</p>
+<p><img src="img/mediane2.jpg" /></p>
+</div>
+</div>
+</div>
+<div id="savoir-faire-tableur" class="section level4" number="3.1.1.2">
+<h4 number="3.1.1.2"><span class="header-section-number">3.1.1.2</span> savoir faire tableur</h4>
 <ul>
-<li><p>valeur fixe et relative (utilisation du $ et MAJ F4)</p></li>
+<li><p>valeur fixe et relative (utilisation du $ et F4)</p></li>
 <li><p>au niveau graphique, rajout d’un axe par le menu insertion après double clic sur le graphique (onglet positionnement, menu déroulant valeur)</p></li>
 </ul>
-</div>
-<div id="que-retenir" class="section level5" number="3.1.1.1.2">
-<h5 number="3.1.1.1.2"><span class="header-section-number">3.1.1.1.2</span> Que retenir ?</h5>
+<div id="que-retenir" class="section level5" number="3.1.1.2.1">
+<h5 number="3.1.1.2.1"><span class="header-section-number">3.1.1.2.1</span> Que retenir ?</h5>
 <p>Expliquer ces phrases issues du Chadule</p>
 <ul>
-<li><p>La médiane est dans une distribution la valeur la plus <em>proche</em> de toutes les autres</p></li>
-<li><p>les valeurs extrêmes <em>décentrent</em> la moyenne</p></li>
+<li>La médiane est dans une distribution la valeur la plus <em>proche</em> de toutes les autres</li>
+</ul>
+<p>Il s’agit d’une propriété mathématique de la médiane.</p>
+<ul>
+<li>les valeurs extrêmes <em>décentrent</em> la moyenne</li>
 </ul>
 </div>
 </div>
-<div id="la-valeur-modale" class="section level4" number="3.1.1.2">
-<h4 number="3.1.1.2"><span class="header-section-number">3.1.1.2</span> La valeur modale</h4>
-<p>La valeur la plus fréquente</p>
+<div id="la-valeur-modale" class="section level4" number="3.1.1.3">
+<h4 number="3.1.1.3"><span class="header-section-number">3.1.1.3</span> La valeur modale</h4>
+<p>La valeur la plus fréquente.</p>
 <p>Quelle utilité dans notre série ?</p>
+<p>Aucune, car il y a beaucoup de chiffres différents, la classe modale serait plutôt intéressante à mentionner si on avait une typologie agricole, par exemple.</p>
 </div>
 </div>
 <div id="dispersion-ecart-type-et-variance" class="section level3" number="3.1.2">
@@ -547,16 +637,73 @@ $(document).ready(function () {
 <li><p>moyenne du carré des écarts</p></li>
 </ul>
 <p>Toujours sans passer par les formules, mais avec un tableau <em>pas à pas</em>, créer les indicateurs.</p>
-<p>liste des colonnes : - écart à la moyenne - carré des écarts et à part sur une seule case : moyenne du carré des écarts (variance), l’écart type est la racine carrée.</p>
+<p>liste des colonnes :</p>
+<ul>
+<li><p>écart à la moyenne</p></li>
+<li><p>carré des écarts</p></li>
+<li><p>et à part sur une seule case : moyenne du carré des écarts (variance), l’écart type est la racine carrée.</p></li>
+</ul>
 </div>
 <div id="ecart-interquartile" class="section level3" number="3.1.3">
 <h3 number="3.1.3"><span class="header-section-number">3.1.3</span> Ecart interquartile</h3>
-<p>Passer par le tableau des fréquences cumulées</p>
+<p>Passer par le tableau des fréquences cumulées, prendre les valeurs 25 % et 75 %.</p>
 </div>
 </div>
 <div id="appliquer-apréhender-quelques-indicateurs" class="section level2" number="3.2">
 <h2 number="3.2"><span class="header-section-number">3.2</span> Appliquer : apréhender quelques indicateurs</h2>
-<p>Faire un commentaire sur ce qu’indique les indicateurs par rapport à votre série. Consigner ce commentaire dans l’évaluation finale.</p>
+<p>Faire un commentaire sur ce qu’indiquent les indicateurs par rapport à votre série. Consigner ce commentaire dans l’évaluation finale.</p>
+<div id="corrections-quelques-remarques" class="section level3" number="3.2.1">
+<h3 number="3.2.1"><span class="header-section-number">3.2.1</span> Corrections quelques remarques</h3>
+<p>L’objectif de l’exercice était d’obtenir un commentaire clair avec quelques repères statistiques.</p>
+<ul>
+<li><p>inutile de mettre toutes les décimales de vos indicateurs ! cela ne sert à rien.</p></li>
+<li><p>exemple d’un commentaire clair :</p></li>
+</ul>
+<p><em>Il y a peu de départements recensant un grand nombre de décès puisque la médiane est assez faible, la moitié des départements compte plus de 750 décès. La moyenne est influencée par les départements comptant beaucoup de décès, c’est pourquoi elle est supérieure à la médiane : de rares départements connaissent un très grand nombre de morts</em></p>
+<ul>
+<li>attention à l’erreur :</li>
+</ul>
+<p><em>Le nombre de décès est élevé dans les plus gros départements</em></p>
+<p>Ce n’est pas faux mais ce n’est pas ce qui est demandé.</p>
+<ul>
+<li>faux :</li>
+</ul>
+<p><em>mediane &lt; moyenne ainsi il y a plus de jours avec de petits nombres de décès que de jours avec des nombres importants. Il y a une distribution dysimétrique.</em></p>
+<p>Il ne s’agit pas de jour mais de nombre de décès et de nombre de départements.</p>
+<ul>
+<li>trop technique :</li>
+</ul>
+<p><em>La série est assez dissymétrique, la distribution est assez proche de la valeur de la médiane, tandis que la moyenne n’est pas pertinent en raison de ses valeurs fortes</em></p>
+</div>
+<div id="bonus" class="section level3" number="3.2.2">
+<h3 number="3.2.2"><span class="header-section-number">3.2.2</span> Bonus</h3>
+<p>Les étudiants ont choisi différentes dates.Les décès sont cumulés. La forme des distributions est-elle différente selon les dates ?</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/2021-09-17_deces_quotidiens_departement_csv.csv&quot;</span>,  <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;latin3&quot;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># on ne prend que les premiers du mois</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span>  data [<span class="fu">substring</span>(data<span class="sc">$</span>Date_evenement,<span class="dv">0</span>,<span class="dv">2</span>) <span class="sc">==</span> <span class="st">&quot;01&quot;</span>,]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Date_evenement <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(data<span class="sc">$</span>Date_evenement, <span class="at">format =</span> <span class="st">&quot;%d-%b&quot;</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># pb NA</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Date_evenement, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## 2021-01-01 2021-02-01 2021-03-01 2021-05-01 2021-06-01 2021-07-01 2021-08-01 
+##        102        102        102        102        102        102        102 
+## 2021-09-01 2021-10-01 2021-11-01 2021-12-01       &lt;NA&gt; 
+##        102        102        102        102        102</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># le mois d&#39;avril n&#39;est pas repris. </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Date_evenement [<span class="fu">is.na</span>(data<span class="sc">$</span>Date_evenement)] <span class="ot">&lt;-</span> (<span class="st">&quot;2021-04-01&quot;</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># on retire France</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>Zone <span class="sc">!=</span> <span class="st">&quot;France&quot;</span>,]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>mois <span class="ot">&lt;-</span> <span class="fu">format</span>(data<span class="sc">$</span>Date_evenement, <span class="at">format =</span> <span class="st">&quot;%m&quot;</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>mois <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(data<span class="sc">$</span>mois)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>) </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  choix <span class="ot">&lt;-</span> data [data<span class="sc">$</span>mois <span class="sc">==</span> i,]</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(choix<span class="sc">$</span>Total_deces_2020, <span class="at">main =</span> i, <span class="at">xlab =</span> <span class="st">&quot;classes&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;effectif&quot;</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="jour1_files/figure-html/unnamed-chunk-4-1.png" width="672" /><img src="jour1_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+</div>
 </div>
 </div>
 
@@ -564,6 +711,8 @@ $(document).ready(function () {
 <small><p>L5GEABIM Analyses bivariées et multivariées</p></small>
 
 
+</div>
+</div>
 
 </div>
 
@@ -596,6 +745,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
