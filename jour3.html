@@ -13,8 +13,8 @@
 
 <title>Statistiques bi variées - khi 2</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -58,6 +58,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -411,7 +412,10 @@ div.tocify {
   <a href="jour2.html">Statistiques bi-variées base</a>
 </li>
 <li>
-  <a href="jour3.html">Statistiques bi-variées khi 2</a>
+  <a href="jour3.html">bi-variées khi 2</a>
+</li>
+<li>
+  <a href="jour4.html">bi-variées regression</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -509,16 +513,104 @@ div.tocify {
 <p>rappel : métrique euclidienne plutôt que les valeurs absolues on utilise les carrés</p>
 <div id="le-khi2-partiel" class="section level4" number="2.4.0.1">
 <h4 number="2.4.0.1"><span class="header-section-number">2.4.0.1</span> Le Khi2 partiel</h4>
-<p>On met les écarts rapportés à la valeur théorique d’indépendance au carré.</p>
+<p>On met les écarts rapportés à la valeur théorique d’indépendance au carré. Puis on divise par l’effectif.</p>
 <p><img src="img/khi2partiel.png" /></p>
 </div>
 <div id="le-khi2-1" class="section level4" number="2.4.0.2">
 <h4 number="2.4.0.2"><span class="header-section-number">2.4.0.2</span> Le Khi2</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/litsRegion.csv&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [,<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>)]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># On passe en matrice</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(data)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(data)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  data
+## X-squared = 330.39, df = 24, p-value &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>freqLg <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(data,<span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(freqLg, <span class="at">title =</span> <span class="st">&quot;Fréquence conditionnelle ligne&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">réanimation</th>
+<th align="right">intensifs</th>
+<th align="right">surveillance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">32.05195</td>
+<td align="right">27.53247</td>
+<td align="right">40.41558</td>
+</tr>
+<tr class="even">
+<td align="right">24.81928</td>
+<td align="right">36.86747</td>
+<td align="right">38.31325</td>
+</tr>
+<tr class="odd">
+<td align="right">22.45467</td>
+<td align="right">33.05439</td>
+<td align="right">44.49093</td>
+</tr>
+<tr class="even">
+<td align="right">24.78754</td>
+<td align="right">21.67139</td>
+<td align="right">53.54108</td>
+</tr>
+<tr class="odd">
+<td align="right">28.35821</td>
+<td align="right">34.32836</td>
+<td align="right">37.31343</td>
+</tr>
+<tr class="even">
+<td align="right">30.23783</td>
+<td align="right">24.29219</td>
+<td align="right">45.46999</td>
+</tr>
+<tr class="odd">
+<td align="right">26.46048</td>
+<td align="right">35.28064</td>
+<td align="right">38.25888</td>
+</tr>
+<tr class="even">
+<td align="right">33.59187</td>
+<td align="right">32.14763</td>
+<td align="right">34.26050</td>
+</tr>
+<tr class="odd">
+<td align="right">29.76325</td>
+<td align="right">28.29763</td>
+<td align="right">41.93912</td>
+</tr>
+<tr class="even">
+<td align="right">27.97386</td>
+<td align="right">27.51634</td>
+<td align="right">44.50980</td>
+</tr>
+<tr class="odd">
+<td align="right">28.39433</td>
+<td align="right">31.40496</td>
+<td align="right">40.20071</td>
+</tr>
+<tr class="even">
+<td align="right">24.83829</td>
+<td align="right">32.85899</td>
+<td align="right">42.30272</td>
+</tr>
+<tr class="odd">
+<td align="right">27.55040</td>
+<td align="right">20.64753</td>
+<td align="right">51.80208</td>
+</tr>
+</tbody>
+</table>
 <p>C’est le total des khi2 partiels (dans notre exemple 224 085)</p>
 <p>degré de liberté lg -1 * col -1</p>
 <p>13 régions et 3 types de lit = quel degré de liberté ?</p>
 <p>risque 5 %</p>
-<p>lecture du khi2 38.89</p>
+<p>lecture du khi2 330</p>
 </div>
 <div id="rejet-de-h0-ou-pas" class="section level4" number="2.4.0.3">
 <h4 number="2.4.0.3"><span class="header-section-number">2.4.0.3</span> Rejet de H0 ou pas</h4>
@@ -533,8 +625,8 @@ div.tocify {
 <p><img src="img/coeff.png" /></p>
 <p><em>Savoir-faire tableur</em></p>
 <p>Utiliser les noms plutôt que les cellules fixées</p>
-<p>D’autres coefficients permet de reprendre le nombre de degrés de liberté et ainsi de s’affranchir de la taille du tableau.</p>
-<p>Dans notre cas, il est de 0.9</p>
+<p>D’autres coefficients permet de reprendre le nombre de degrés de liberté et ainsi de s’affranchir de la taille du tableau.```</p>
+<p>Dans notre cas, il est de 0.018</p>
 </div>
 </div>
 </div>
