@@ -465,71 +465,12 @@ div.tocify {
 <div id="fréquences-conditionnelles-en-ligne-et-colonne" class="section level2" number="2.2">
 <h2 number="2.2"><span class="header-section-number">2.2</span> Fréquences conditionnelles en ligne et colonne</h2>
 <p>Pour pouvoir comparer les régions, chaque groupe est ramené à une même base égale à 100.</p>
-<p>savoir-faire tableur</p>
-<ul>
-<li><p>Objectif : saisir une seule cellule et étendre la formule. quelle élément fixer, ligne ou colonne ?</p></li>
-<li><p>Graphique par types de lit</p></li>
-</ul>
-<p><img src="img/frequenceLG.png" /></p>
-<p>commentaire</p>
-<ul>
-<li><p>répartition des régions puis lorsque ramené à une base 100, répartition des lits dans les régions (on peut comparer)</p></li>
-<li><p>les écarts au total des types de lit sont plus parlants</p></li>
-</ul>
-<p><img src="img/graphEcartFreqLg.png" /></p>
-<p>Qu’apporterait une étude des fréquences conditionnelles en colonnes ?</p>
-</div>
-<div id="effectifs-théoriques-et-observées" class="section level2" number="2.3">
-<h2 number="2.3"><span class="header-section-number">2.3</span> Effectifs théoriques et observées</h2>
-<div id="analogie-du-jeu-du-dé-et-de-la-pièce" class="section level3" number="2.3.1">
-<h3 number="2.3.1"><span class="header-section-number">2.3.1</span> Analogie du jeu du dé et de la pièce</h3>
-</div>
-<div id="tableau-dindépendance" class="section level3" number="2.3.2">
-<h3 number="2.3.2"><span class="header-section-number">2.3.2</span> Tableau d’indépendance</h3>
-<p>Pour le vérifier, les distributions univariées restent inchangées.</p>
-<p>La première case reçoit la formule :</p>
-<ul>
-<li><p>effectif / total lg * effectif / total colonne FREQUENCE CONJOINTE</p></li>
-<li><p>cette fréquence est multipliée par la totalité de l’effectif pour avoir l’ EFFECTIF</p></li>
-</ul>
-<p><img src="img/effectifTheorique.png" /></p>
-</div>
-<div id="ecarts-entre-observés-et-théoriques" class="section level3" number="2.3.3">
-<h3 number="2.3.3"><span class="header-section-number">2.3.3</span> Ecarts entre observés et théoriques</h3>
-<p>Que signifie une valeur zéro ?</p>
-<p>Utiliser les notions</p>
-<ul>
-<li>d’attraction et de répulsion pour les signes.</li>
-<li>sur représentation / sous représentation</li>
-</ul>
-<p><img src="img/grapEcartTheorie.png" /></p>
-<p>On peut également le taux de liaison, c’est à dire le rapport entre la différence et l’effectif à l’indépendance.</p>
-<p><img src="img/txliaison.png" /></p>
-<p>Le commentaire sera du type : “Le nombre de lits de réanimation s’écarte de 9 % de la valeur théorique qui indiquerait une situation ou les deux modalités ne seraient pas liés”</p>
-</div>
-</div>
-<div id="le-khi2" class="section level2" number="2.4">
-<h2 number="2.4"><span class="header-section-number">2.4</span> Le Khi2</h2>
-<p>rappel : métrique euclidienne plutôt que les valeurs absolues on utilise les carrés</p>
-<div id="le-khi2-partiel" class="section level4" number="2.4.0.1">
-<h4 number="2.4.0.1"><span class="header-section-number">2.4.0.1</span> Le Khi2 partiel</h4>
-<p>On met les écarts rapportés à la valeur théorique d’indépendance au carré. Puis on divise par l’effectif.</p>
-<p><img src="img/khi2partiel.png" /></p>
-</div>
-<div id="le-khi2-1" class="section level4" number="2.4.0.2">
-<h4 number="2.4.0.2"><span class="header-section-number">2.4.0.2</span> Le Khi2</h4>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/litsRegion.csv&quot;</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [,<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>)]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># On passe en matrice</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(data)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(data)</span></code></pre></div>
-<pre><code>## 
-##  Pearson&#39;s Chi-squared test
-## 
-## data:  data
-## X-squared = 330.39, df = 24, p-value &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>freqLg <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(data,<span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(freqLg, <span class="at">title =</span> <span class="st">&quot;Fréquence conditionnelle ligne&quot;</span>)</span></code></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>freqLg <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(data,<span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(freqLg, <span class="at">title =</span> <span class="st">&quot;Fréquence conditionnelle ligne&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -606,28 +547,204 @@ div.tocify {
 </tr>
 </tbody>
 </table>
-<p>C’est le total des khi2 partiels (dans notre exemple 224 085)</p>
-<p>degré de liberté lg -1 * col -1</p>
-<p>13 régions et 3 types de lit = quel degré de liberté ?</p>
-<p>risque 5 %</p>
-<p>lecture du khi2 330</p>
+<p>savoir-faire tableur</p>
+<ul>
+<li><p>Objectif : saisir une seule cellule et étendre la formule. quelle élément fixer, ligne ou colonne ?</p></li>
+<li><p>Graphique par types de lit</p></li>
+</ul>
+<p><img src="img/frequenceLG.png" /></p>
+<p>commentaire</p>
+<ul>
+<li><p>répartition des régions puis lorsque ramené à une base 100, répartition des lits dans les régions (on peut comparer)</p></li>
+<li><p>les écarts au total des types de lit sont plus parlants</p></li>
+</ul>
+<p><img src="img/graphEcartFreqLg.png" /></p>
+<p>Qu’apporterait une étude des fréquences conditionnelles en colonnes ?</p>
 </div>
-<div id="rejet-de-h0-ou-pas" class="section level4" number="2.4.0.3">
-<h4 number="2.4.0.3"><span class="header-section-number">2.4.0.3</span> Rejet de H0 ou pas</h4>
+<div id="correction-du-quizz-sur-les-tableaux-de-contingence" class="section level2" number="2.3">
+<h2 number="2.3"><span class="header-section-number">2.3</span> Correction du quizz sur les tableaux de contingence</h2>
+<div id="données" class="section level3" number="2.3.1">
+<h3 number="2.3.1"><span class="header-section-number">2.3.1</span> Données</h3>
+<div id="mauvaise-réponse" class="section level4" number="2.3.1.1">
+<h4 number="2.3.1.1"><span class="header-section-number">2.3.1.1</span> Mauvaise réponse</h4>
+<ul>
+<li>Il y a 3 variables : les lits de réanimation, les lits intensifs et les lits de surveillance, tout cela par région*</li>
+</ul>
+</div>
+<div id="bonne-réponse" class="section level4" number="2.3.1.2">
+<h4 number="2.3.1.2"><span class="header-section-number">2.3.1.2</span> Bonne réponse</h4>
+<ul>
+<li>Les lits par région *</li>
+</ul>
+</div>
+<div id="très-bonne-réponse" class="section level4" number="2.3.1.3">
+<h4 number="2.3.1.3"><span class="header-section-number">2.3.1.3</span> Très bonne réponse</h4>
+<ul>
+<li>Il y a 2 variables : les régions et le type de lit (réanimation, surveillance et intensif) Ces deux données sont de type catégorie.*</li>
+</ul>
+</div>
+</div>
+<div id="hypothèse" class="section level3" number="2.3.2">
+<h3 number="2.3.2"><span class="header-section-number">2.3.2</span> Hypothèse</h3>
+<div id="mauvaise-réponse-1" class="section level4" number="2.3.2.1">
+<h4 number="2.3.2.1"><span class="header-section-number">2.3.2.1</span> Mauvaise réponse</h4>
+<ul>
+<li>Il serait logique que chaque région ait une capacité adaptée à sa population*</li>
+</ul>
+<p>Il n’y a pas de variable population dans les données donc pas d’hypothèse autour de la population.</p>
+</div>
+<div id="bonne-réponse-1" class="section level4" number="2.3.2.2">
+<h4 number="2.3.2.2"><span class="header-section-number">2.3.2.2</span> Bonne réponse</h4>
+<ul>
+<li>Les répartitions de type de lit ne sont pas les mêmes entre les régions*</li>
+</ul>
+</div>
+</div>
+<div id="fréquences-conditionnelles-en-ligne" class="section level3" number="2.3.3">
+<h3 number="2.3.3"><span class="header-section-number">2.3.3</span> Fréquences conditionnelles en ligne</h3>
+<div id="mauvaise-réponse-2" class="section level4" number="2.3.3.1">
+<h4 number="2.3.3.1"><span class="header-section-number">2.3.3.1</span> Mauvaise réponse</h4>
+<ul>
+<li>On peut voir sur la même base qui est 100 la différence pour les 3 données pour une seule région*</li>
+</ul>
+<p>Il manque des exemples précis.</p>
+</div>
+<div id="bonne-réponse-2" class="section level4" number="2.3.3.2">
+<h4 number="2.3.3.2"><span class="header-section-number">2.3.3.2</span> Bonne réponse</h4>
+<ul>
+<li>Les régions ont une plus forte proportion de lits de surveillance que des autres types de lit (42 % en moyenne). Les lits intensifs et de réanimation sont en part égales. Mais il y a des différences entre les régions. Par exemple, la Bretagne compte beaucoup de lits de réanimation. A l’inverse, l’Ile de France en a peu. La PAC et le centre val de Loire ont moins de lits de surveillance. Donc les répartitions sont différentes entre région.*</li>
+</ul>
+</div>
+</div>
+<div id="fréquences-conditionnelles-en-colonne" class="section level3" number="2.3.4">
+<h3 number="2.3.4"><span class="header-section-number">2.3.4</span> Fréquences conditionnelles en colonne</h3>
+<p>La bonne réponse était qu’il n’est pas nécessaire de l’étudier. En effet, la répartition des lits de réanimation entre les différentes régions ne fait que réfléter l’effectif de la population de chaque région. Or, nous n’avons pas cette variable dans le tableau.</p>
+</div>
+</div>
+<div id="effectifs-théoriques-et-observées" class="section level2" number="2.4">
+<h2 number="2.4"><span class="header-section-number">2.4</span> Effectifs théoriques et observées</h2>
+<div id="analogie-du-jeu-du-dé-et-de-la-pièce" class="section level3" number="2.4.1">
+<h3 number="2.4.1"><span class="header-section-number">2.4.1</span> Analogie du jeu du dé et de la pièce</h3>
+</div>
+<div id="tableau-dindépendance" class="section level3" number="2.4.2">
+<h3 number="2.4.2"><span class="header-section-number">2.4.2</span> Tableau d’indépendance</h3>
+<p>Pour le vérifier, les distributions univariées restent inchangées.</p>
+<p>La première case reçoit la formule :</p>
+<ul>
+<li><p>effectif / total lg * effectif / total colonne FREQUENCE CONJOINTE</p></li>
+<li><p>cette fréquence est multipliée par la totalité de l’effectif pour avoir l’ EFFECTIF</p></li>
+</ul>
+<p><img src="img/effectifTheorique.png" /></p>
+</div>
+<div id="ecarts-entre-observés-et-théoriques" class="section level3" number="2.4.3">
+<h3 number="2.4.3"><span class="header-section-number">2.4.3</span> Ecarts entre observés et théoriques</h3>
+<p>Que signifie une valeur zéro ?</p>
+<p>Utiliser les notions</p>
+<ul>
+<li>d’attraction et de répulsion pour les signes.</li>
+<li>sur représentation / sous représentation</li>
+</ul>
+<p>On peut également le taux de liaison, c’est à dire le rapport entre l’écart observé - théorique et l’effectif de l’observation.</p>
+<p><img src="img/txliaison.png" /></p>
+<p>Le commentaire sera du type : “Le nombre de lits de réanimation s’écarte de 9 % de la valeur théorique qui indiquerait une situation ou les deux modalités ne seraient pas liés”</p>
+<p><img src="img/grapEcartTheorieTxLiaison.png" /></p>
+</div>
+</div>
+<div id="le-khi2" class="section level2" number="2.5">
+<h2 number="2.5"><span class="header-section-number">2.5</span> Le Khi2</h2>
+<p>rappel : métrique euclidienne plutôt que les valeurs absolues on utilise les carrés</p>
+<div id="le-khi2-partiel" class="section level4" number="2.5.0.1">
+<h4 number="2.5.0.1"><span class="header-section-number">2.5.0.1</span> Le Khi2 partiel</h4>
+<p>On met les écarts rapportés à la valeur théorique d’indépendance au carré. Puis on divise par l’effectif.</p>
+<p><img src="img/khi2partiel.png" /></p>
+</div>
+<div id="le-khi2-1" class="section level4" number="2.5.0.2">
+<h4 number="2.5.0.2"><span class="header-section-number">2.5.0.2</span> Le Khi2</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/litsRegion.csv&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [,<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>)]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># On passe en matrice</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(data)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(data)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  data
+## X-squared = 330.39, df = 24, p-value &lt; 2.2e-16</code></pre>
+<p>C’est le total des khi2 partiels (dans notre exemple 330)</p>
+<p>On définit :</p>
+<ul>
+<li>degré de liberté lg -1 * col -1</li>
+</ul>
+<p>13 régions et 3 types de lit = 24</p>
+<ul>
+<li>risque 1, 5 et 10 %</li>
+</ul>
+<p>Sur internet, dans n’importe quelle table, on cherche les valeurs correspondantes.</p>
+</div>
+<div id="rejet-de-h0-ou-pas" class="section level4" number="2.5.0.3">
+<h4 number="2.5.0.3"><span class="header-section-number">2.5.0.3</span> Rejet de H0 ou pas</h4>
+<p><img src="img/test.png" /></p>
 <p>HO hypothèse d’indépendance. son rejet implique qu’il y a une relation.</p>
 <p>Les variables lits et régions ont une relation avec une marge d’erreur de 5 %</p>
 </div>
-<div id="intensité-de-la-liaison" class="section level3" number="2.4.1">
-<h3 number="2.4.1"><span class="header-section-number">2.4.1</span> Intensité de la liaison</h3>
+<div id="intensité-de-la-liaison" class="section level3" number="2.5.1">
+<h3 number="2.5.1"><span class="header-section-number">2.5.1</span> Intensité de la liaison</h3>
 <p>indicateur entre 0 et 1. 1 pour très forte intensité.</p>
+<div id="coefficient-de-contingence" class="section level4" number="2.5.1.1">
+<h4 number="2.5.1.1"><span class="header-section-number">2.5.1.1</span> Coefficient de contingence</h4>
 <p>Le plus simple est le coefficient de contingence peut mesurer cette relation.</p>
 <p>C’est le Khi2 rapporté à la somme Khi2 et de l’effectif total</p>
+</div>
+<div id="coefficient-de-tschuprow" class="section level4" number="2.5.1.2">
+<h4 number="2.5.1.2"><span class="header-section-number">2.5.1.2</span> Coefficient de Tschuprow</h4>
+<p>D’autres coefficients permet de reprendre le nombre de degrés de liberté et ainsi de s’affranchir de la taille du tableau.</p>
+<p>Celui de Tschuprow est le khi2 calculé rapporté à l’effectif total multiplié par la racine carré du nombre de degré de liberté.</p>
 <p><img src="img/coeff.png" /></p>
 <p><em>Savoir-faire tableur</em></p>
 <p>Utiliser les noms plutôt que les cellules fixées</p>
-<p>D’autres coefficients permet de reprendre le nombre de degrés de liberté et ainsi de s’affranchir de la taille du tableau.```</p>
-<p>Dans notre cas, il est de 0.018</p>
 </div>
+</div>
+<div id="interprétation-des-coefficients" class="section level3" number="2.5.2">
+<h3 number="2.5.2"><span class="header-section-number">2.5.2</span> Interprétation des coefficients</h3>
+<p>Ils sont très faibles, donc même si les variables sont dépendantes l’une de l’autre, l’intensité de la relation est faible.</p>
+</div>
+</div>
+</div>
+<div id="correction-du-quizz" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> Correction du quizz</h1>
+<div id="ecarts-entre-observés-et-théoriques-1" class="section level2" number="3.1">
+<h2 number="3.1"><span class="header-section-number">3.1</span> Ecarts entre observés et théoriques</h2>
+<p>Penser à utiliser les terme attraction / répulsion ou sur et sous représentation.</p>
+<div id="bonne-réponse-3" class="section level3" number="3.1.1">
+<h3 number="3.1.1"><span class="header-section-number">3.1.1</span> Bonne réponse</h3>
+<p>Sera bonne toute réponse commentant le graphique.</p>
+<div id="exemple" class="section level4" number="3.1.1.1">
+<h4 number="3.1.1.1"><span class="header-section-number">3.1.1.1</span> exemple</h4>
+<ul>
+<li>Il y a par exemple, une sur représentation du nombre de lits intensifs dans les régions PACA et Centre Val de Loire ainsi qu’une anomalie sur le nombre de lits en Bretagne *</li>
+</ul>
+<p>Bien, mais je me demande de quelle anomalie il s’agit. Si je dois aller voir le graphique pour la comprendre, ce n’est pas bon.</p>
+</div>
+<div id="meilleur-exemple" class="section level4" number="3.1.1.2">
+<h4 number="3.1.1.2"><span class="header-section-number">3.1.1.2</span> Meilleur exemple</h4>
+<ul>
+<li><p>En PACA, les lits de surveillance sont sous représentés tandis qu’en Ile de France, ils sont sur représentés *</p></li>
+<li><p>La région PACA est répulsive pour les lits de surveillance au contraire de l’Ile de France*</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="rejet-de-lhypothèse" class="section level2" number="3.2">
+<h2 number="3.2"><span class="header-section-number">3.2</span> Rejet de l’hypothèse</h2>
+<ul>
+<li>On constate que le khi2 calculé est supérieur au khi2 théorique donc nous ne sommes pas dans une situation de hasard *</li>
+</ul>
+</div>
+<div id="intensité-de-la-relation" class="section level2" number="3.3">
+<h2 number="3.3"><span class="header-section-number">3.3</span> Intensité de la relation</h2>
+<ul>
+<li>Elle existe mais elle est très faible (Proche de 0 ; 0.018)*</li>
+</ul>
 </div>
 </div>
 
