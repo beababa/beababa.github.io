@@ -11,7 +11,7 @@
 
 
 
-<title>Introduction</title>
+<title>Variance</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -439,203 +439,133 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Introduction</h1>
+<h1 class="title toc-ignore">Variance</h1>
 
 </div>
 
 
-<div id="intitulé-du-cours" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Intitulé du cours</h1>
-<p><em>“L5GEABIM Analyses bivariées et multivariées”</em></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/presentation.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">header =</span> F)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;groupe&quot;</span>, <span class="st">&quot;heures&quot;</span>, <span class="st">&quot;enseignant&quot;</span>) )</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left">groupe</th>
-<th align="left">heures</th>
-<th align="left">enseignant</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Gr. 1</td>
-<td align="left">8h - 9h30</td>
-<td align="left">Thomas LAMY</td>
-</tr>
-<tr class="even">
-<td align="left">Gr. 2</td>
-<td align="left">9h30 - 11h</td>
-<td align="left">Béatrice MARANGET</td>
-</tr>
-<tr class="odd">
-<td align="left">Gr. 3</td>
-<td align="left">14h - 15h30</td>
-<td align="left">Béatrice MARANGET</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="déroulé" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Déroulé</h1>
-<p>Il va être modifié en fonction de</p>
+<div id="intro-rappels-divers" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Intro : rappels divers</h1>
+<div id="théorie" class="section level2" number="1.1">
+<h2 number="1.1"><span class="header-section-number">1.1</span> Théorie</h2>
 <ul>
-<li>votre vitesse - s’il faut prendre plus de temps sur les basiques</li>
-<li>la collaboration avec Thomas Lamy</li>
-</ul>
-<p>13 cours en tout. 2 cours d’intro 7 sur la stat bi-variée 3 sur la multivariée 1 cours pour un devoir sur table au mi-semestre 1 devoir maison à rendre vers la fin du semestre</p>
-<p>Au départ on utilise Libre Office (plutôt que Microsoft) puis R</p>
-<p>Question : quelle utilisation de R ? des cours cette année ?</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deroule.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Num.cours</th>
-<th align="left">date</th>
-<th align="left">thème</th>
-<th align="left">outil</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="left">20/09/21</td>
-<td align="left">statistique univariée : base</td>
-<td align="left">tableur</td>
-</tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="left">27/09/21</td>
-<td align="left">statistique univariée : indicateurs</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="left">04/10/21</td>
-<td align="left">bivariée : base</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right">4</td>
-<td align="left">04/10/21</td>
-<td align="left">contingence</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right">5</td>
-<td align="left">11/10/21</td>
-<td align="left">Khi 2</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="left">18/10/21</td>
-<td align="left">régression</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right">7</td>
-<td align="left">25/10/21</td>
-<td align="left">devoir sur table</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right">8</td>
-<td align="left">08/11/21</td>
-<td align="left">variance</td>
-<td align="left">R</td>
-</tr>
-<tr class="odd">
-<td align="right">9</td>
-<td align="left">15/11/21</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right">10</td>
-<td align="left">22/11/21</td>
-<td align="left">multivariée : multifactorielle</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right">11</td>
-<td align="left">29/11/21</td>
-<td align="left">classification</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right">12</td>
-<td align="left">06/12/21</td>
-<td align="left">régression linéaire multiple</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right">13</td>
-<td align="left">13/12/21</td>
-<td align="left">devoir à rendre</td>
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="présentation-rapide-vous-êtes-nombreux" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> Présentation rapide (vous êtes nombreux !)</h1>
-<p>passé / présent / futur appétence pour les stats fichier framapad, <a href="https://lite.framacalc.org/9pse-coursstatsorbonne2021" class="uri">https://lite.framacalc.org/9pse-coursstatsorbonne2021</a></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cours1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cours1.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>cours2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cours2.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>cours1<span class="sc">$</span>session <span class="ot">&lt;-</span> <span class="st">&quot;cours1&quot;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>cours2<span class="sc">$</span>session <span class="ot">&lt;-</span> <span class="st">&quot;cours2&quot;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cours1)</span></code></pre></div>
-<pre><code>## [1] &quot;prenom&quot;                                         
-## [2] &quot;adresse.mail&quot;                                   
-## [3] &quot;X20.9&quot;                                          
-## [4] &quot;passé&quot;                                          
-## [5] &quot;présent&quot;                                        
-## [6] &quot;futur&quot;                                          
-## [7] &quot;appétence.pour.les.stats.0.j.adore.4.je.déteste&quot;
-## [8] &quot;session&quot;</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cours2)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;prenom&quot;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cours <span class="ot">&lt;-</span> <span class="fu">rbind</span>(cours1, cours2)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>cours <span class="ot">&lt;-</span> cours [cours<span class="sc">$</span>prenom <span class="sc">!=</span> <span class="st">&#39;&#39;</span>,]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(cours<span class="sc">$</span>session)</span></code></pre></div>
-<pre><code>## 
-## cours1 cours2 
-##     28     29</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># export pour framapad</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(cours [<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">8</span>)], <span class="st">&quot;data/cours.csv&quot;</span>)</span></code></pre></div>
-<p>Désormais le framapad sert à l’émargement</p>
-</div>
-<div id="pratique" class="section level1" number="4">
-<h1 number="4"><span class="header-section-number">4</span> Pratique</h1>
-<p>Les exercices sont à rendre avec son <em>prénom</em> (toujours le même svp) sous moodle dans un répertoire spécifique (en attente de validation du compte moodle)</p>
-</div>
-<div id="quizz-de-cours" class="section level1" number="5">
-<h1 number="5"><span class="header-section-number">5</span> Quizz de cours</h1>
-<p>Quelques minutes en fin de chaque cours, histoire pour moi de voir s’il faut que je reprenne des notions.</p>
-<ul>
-<li><p>Univariés <a href="https://forms.gle/vR9f156Up9zrL86B9" class="uri">https://forms.gle/vR9f156Up9zrL86B9</a></p></li>
-<li><p>Bi variés base <a href="https://forms.gle/JSEWZJJ3V1S349EZA" class="uri">https://forms.gle/JSEWZJJ3V1S349EZA</a></p></li>
-<li><p>Tableau de contingence <a href="https://forms.gle/Le8wvTBabxmw3SAg8" class="uri">https://forms.gle/Le8wvTBabxmw3SAg8</a></p></li>
-<li><p>Khi2 <a href="https://forms.gle/46Lr7fNWydQPqcCr5" class="uri">https://forms.gle/46Lr7fNWydQPqcCr5</a></p></li>
-<li><p>Régression <a href="https://forms.gle/TNpQPtgYVjfrde5ZA" class="uri">https://forms.gle/TNpQPtgYVjfrde5ZA</a></p></li>
-<li><p>Variance <a href="https://forms.gle/vS4zZzsNfnTyDHMfA" class="uri">https://forms.gle/vS4zZzsNfnTyDHMfA</a></p></li>
+<li>le khi2, la régression, et la variance</li>
+<li>démarche générale</li>
 </ul>
 </div>
-<div id="ressources-autre-que-la-bibliographie-officielle" class="section level1" number="6">
-<h1 number="6"><span class="header-section-number">6</span> Ressources autre que la bibliographie officielle</h1>
-<p>2 cours universitaires disponibles sur internet</p>
+<div id="outils" class="section level2" number="1.2">
+<h2 number="1.2"><span class="header-section-number">1.2</span> Outils</h2>
 <ul>
-<li><a href="http://www.ipt.univ-paris8.fr/vgodard/enseigne/statisti/framstat.htm" class="uri">http://www.ipt.univ-paris8.fr/vgodard/enseigne/statisti/framstat.htm</a></li>
-<li><a href="http://grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm" class="uri">http://grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm</a></li>
+<li>xls ou csv</li>
+<li>libre office ou R</li>
 </ul>
-<p>2 sites pour réfléchir</p>
+</div>
+</div>
+<div id="donnée-et-objet-de-lexercice" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Donnée et objet de l’exercice</h1>
+<p><a href="https://www.insee.fr/fr/statistiques/5009218#consulter" class="uri">https://www.insee.fr/fr/statistiques/5009218#consulter</a></p>
+<p><img src="img/06_donnee.png" /></p>
+<p>Le but de l’exercice est de décrire l’organisation spatiale en Ile de France. La variance est très souvent utilisée en géographie pour tester des groupements spatiaux.</p>
+<p>Question : observer la donnée .csv et comprendre comment elle fonctionne.</p>
+<div id="hypothèse" class="section level2" number="2.1">
+<h2 number="2.1"><span class="header-section-number">2.1</span> Hypothèse</h2>
+<p>Le niveau départemental permet de résumer l’hétérogénéïté de la richesse dans la région.</p>
+<p>On prend donc le fichier communal et on va utiliser commme variable le revenu médian.</p>
+</div>
+<div id="filtrer-la-donnée" class="section level2" number="2.2">
+<h2 number="2.2"><span class="header-section-number">2.2</span> Filtrer la donnée</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/FILO2018_DEC_COM.csv&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="fu">c</span>(<span class="st">&quot;CODGEO&quot;</span>, <span class="st">&quot;Q218&quot;</span>)]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [<span class="fu">substr</span>(data<span class="sc">$</span>CODGEO, <span class="dv">1</span>,<span class="dv">2</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;75&quot;</span>,<span class="st">&quot;77&quot;</span>,<span class="st">&quot;78&quot;</span>,<span class="st">&quot;91&quot;</span>,<span class="st">&quot;92&quot;</span>,<span class="st">&quot;93&quot;</span>,<span class="st">&quot;94&quot;</span>,<span class="st">&quot;95&quot;</span>),] </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(data, <span class="st">&quot;data/inegalite.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<div id="remarques-sur-r" class="section level3" number="2.2.1">
+<h3 number="2.2.1"><span class="header-section-number">2.2.1</span> Remarques sur R</h3>
 <ul>
-<li><a href="https://neocarto.hypotheses.org/" class="uri">https://neocarto.hypotheses.org/</a></li>
-<li><a href="https://bmericskay.github.io/portfolio/Disgressions.html" class="uri">https://bmericskay.github.io/portfolio/Disgressions.html</a></li>
+<li><p>opérateur d’assignation</p></li>
+<li><p>les accolades</p></li>
+<li><p>la complétion avec tabulation</p></li>
 </ul>
-<p>et bien sur :</p>
-<p><a href="https://georezo.net/" class="uri">https://georezo.net/</a></p>
+</div>
+<div id="résultat" class="section level3" number="2.2.2">
+<h3 number="2.2.2"><span class="header-section-number">2.2.2</span> Résultat</h3>
+<p>on a filtré la donnée de façon beaucoup plus rapide qu’avec un tableur et surtout on a gardé la trace des manipulations, le script.</p>
+</div>
+</div>
+</div>
+<div id="représentation-graphique" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> Représentation graphique</h1>
+<p>La boite à moustaches permet de comparer rapidement des distributions.</p>
+<p>On simplifie également le revenu médian</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/inegalite.csv&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>DEP <span class="ot">&lt;-</span> <span class="fu">substr</span> (data<span class="sc">$</span>CODGEO,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(data<span class="sc">$</span>Q218<span class="sc">~</span>data<span class="sc">$</span>DEP)</span></code></pre></div>
+<p><img src="jour6_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># avec un peu de présentation</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># On divise par 10 000 le revenu</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Q218s <span class="ot">&lt;-</span> data<span class="sc">$</span>Q218 <span class="sc">/</span> <span class="dv">10000</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(data<span class="sc">$</span>Q218s<span class="sc">~</span>data<span class="sc">$</span>DEP, <span class="at">xlab =</span><span class="st">&quot;Département&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Revenu médian en 2018 (dizaine de milliers)&quot;</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">8</span>))</span></code></pre></div>
+<p><img src="jour6_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<p>Petite précision, la mesure de centralité utilisée pour les revenus est la médiane car il s’agit toujours de distributions dissymétriques.</p>
+<p>Attention, il ne s’agit pas du revenu médian des individus !</p>
+</div>
+<div id="la-variance" class="section level1" number="4">
+<h1 number="4"><span class="header-section-number">4</span> La variance</h1>
+<div id="rappel" class="section level2" number="4.1">
+<h2 number="4.1"><span class="header-section-number">4.1</span> Rappel</h2>
+<p>Pour mémoire, la variance est le carré de la somme des écarts à la moyenne.</p>
+<p>Dans le tableur, nous aurions fait une série de tableaux de calcul autour des écarts à la moyennes (en mettant des carrés).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(data<span class="sc">$</span>Q218s, data<span class="sc">$</span>DEP,var)</span></code></pre></div>
+<pre><code>##        75        77        78        91        92        93        94        95 
+## 0.6977623 0.1161130 0.3560585 0.1974737 0.6528337 0.2563125 0.3415673 0.1863185</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># verif pour le cas du 77 par exemple</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dataSel <span class="ot">&lt;-</span> data [data<span class="sc">$</span>DEP <span class="sc">==</span> <span class="st">&#39;77&#39;</span>,]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((dataSel<span class="sc">$</span>Q218s <span class="sc">-</span> <span class="fu">mean</span>(dataSel<span class="sc">$</span>Q218s))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1158812</code></pre>
+</div>
+<div id="analyse-de-la-variance" class="section level2" number="4.2">
+<h2 number="4.2"><span class="header-section-number">4.2</span> Analyse de la variance</h2>
+<p>La variation est une quantité qui se décompose en :</p>
+<ul>
+<li><p>les variations à l’intérieur de chaque groupe (variation intra groupe)</p></li>
+<li><p>les variations entre les groupes (variation inter groupe)</p></li>
+</ul>
+<div id="la-formule-anova-dans-r" class="section level3" number="4.2.1">
+<h3 number="4.2.1"><span class="header-section-number">4.2.1</span> La formule ANOVA dans R</h3>
+<p>Sous R, il suffit de lancer une formule.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>DEP <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>DEP)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (Q218s <span class="sc">~</span> DEP, <span class="at">data =</span> data)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modele)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: Q218s
+##             Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## DEP          7 109.79 15.6837  70.195 &lt; 2.2e-16 ***
+## Residuals 1264 282.42  0.2234                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Sum Sq = la somme des carrés des écarts (SCE)</p>
+<p>Mean Sq = la moyenne des carrés des écarts, c’est la variance.</p>
+<p>La première ligne c’est pour la variation inter-groupe , la deuxième c’est pour l’intérieur des groupes (l’intra)</p>
+</div>
+<div id="significativité" class="section level3" number="4.2.2">
+<h3 number="4.2.2"><span class="header-section-number">4.2.2</span> Significativité</h3>
+<p>F value = Test de Fisher, c’est le test de significativité pour la variance.</p>
+<p>Le test est mesuré par le rapport entre la variance intergroupe et la variance intragroupe (avec les degrés de liberté).</p>
+<p>Concernant les degré de liberté pour les données intra, on prend tous les effectis et on enlève le nombre de départements</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1272-8</span></span></code></pre></div>
+<pre><code>## [1] 1264</code></pre>
+<p>Comme pour le khi2, on compare à un test obtenu par le hasard (donc une table). La relation est significative (la p-value est très petite) Il n’y a pas d’indépendance entre les départements et les revenus.</p>
+</div>
+<div id="intensité" class="section level3" number="4.2.3">
+<h3 number="4.2.3"><span class="header-section-number">4.2.3</span> Intensité</h3>
+<p>On mesure l’intensité, la proportion de la variation expliquée par les modalités dans la variation totale (entre 0 et 1)</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">15</span><span class="sc">/</span>(<span class="dv">15</span><span class="fl">+0.2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.9868421</code></pre>
+<p>L’intensité est très forte, plus de 98 % de la variation est expliquée par la structure départementale.</p>
+</div>
+</div>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>

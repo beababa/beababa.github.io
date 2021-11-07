@@ -13,8 +13,8 @@
 
 <title>Statistique univariée</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -58,7 +58,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -406,16 +405,22 @@ div.tocify {
   <a href="intro.html">Introduction</a>
 </li>
 <li>
-  <a href="jour1.html">Statistiques univariées</a>
+  <a href="jour1.html">univariées</a>
 </li>
 <li>
-  <a href="jour2.html">Statistiques bi-variées base</a>
+  <a href="jour2.html">bi-variées base</a>
 </li>
 <li>
   <a href="jour3.html">bi-variées khi 2</a>
 </li>
 <li>
-  <a href="jour4.html">bi-variées regression</a>
+  <a href="jour4.html">bi-variées régression</a>
+</li>
+<li>
+  <a href="jour5.html">examen</a>
+</li>
+<li>
+  <a href="jour6.html">bi-variées variance</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -689,10 +694,10 @@ div.tocify {
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># pb NA</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Date_evenement, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## 2021-01-01 2021-02-01 2021-03-01 2021-04-01 2021-05-01 2021-06-01 2021-07-01 
+## 2021-01-01 2021-02-01 2021-03-01 2021-05-01 2021-06-01 2021-07-01 2021-08-01 
 ##        102        102        102        102        102        102        102 
-## 2021-08-01 2021-09-01 2021-10-01 2021-11-01 2021-12-01       &lt;NA&gt; 
-##        102        102        102        102        102          0</code></pre>
+## 2021-09-01 2021-10-01 2021-11-01 2021-12-01       &lt;NA&gt; 
+##        102        102        102        102        102</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># le mois d&#39;avril n&#39;est pas repris. </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Date_evenement [<span class="fu">is.na</span>(data<span class="sc">$</span>Date_evenement)] <span class="ot">&lt;-</span> (<span class="st">&quot;2021-04-01&quot;</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># on retire France</span></span>

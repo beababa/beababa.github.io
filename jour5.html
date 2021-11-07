@@ -11,7 +11,7 @@
 
 
 
-<title>Introduction</title>
+<title>Examen sujet</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -439,203 +439,318 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Introduction</h1>
+<h1 class="title toc-ignore">Examen sujet</h1>
 
 </div>
 
 
-<div id="intitulé-du-cours" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Intitulé du cours</h1>
-<p><em>“L5GEABIM Analyses bivariées et multivariées”</em></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/presentation.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">header =</span> F)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;groupe&quot;</span>, <span class="st">&quot;heures&quot;</span>, <span class="st">&quot;enseignant&quot;</span>) )</span></code></pre></div>
+<div id="méthode" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Méthode</h1>
+<p>Vous avez une source de données à étudier sous l’aspect uni et bivariée.</p>
+<p>Il y a deux éléments : le formulaire et le fichier tableur</p>
+<p>Le formulaire est à remplir et à envoyer, le fichier tableur est à déposer sur l’espace commun (avec votre prénom et en format libre office)</p>
+<p>Imaginez que vous chercher à convaincre un tiers de l’intérêt de votre étude, donc attention à votre style et à la présentation de vos tableaux !</p>
+<div id="barême" class="section level2" number="1.1">
+<h2 number="1.1"><span class="header-section-number">1.1</span> Barême</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>element <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;soin&quot;</span>, <span class="st">&quot;univarié&quot;</span>, <span class="st">&quot;bi-varié&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>bareme <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">8</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">cbind</span>(element, bareme)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
-<th align="left">groupe</th>
-<th align="left">heures</th>
-<th align="left">enseignant</th>
+<th align="left">element</th>
+<th align="left">bareme</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Gr. 1</td>
-<td align="left">8h - 9h30</td>
-<td align="left">Thomas LAMY</td>
+<td align="left">soin</td>
+<td align="left">4</td>
 </tr>
 <tr class="even">
-<td align="left">Gr. 2</td>
-<td align="left">9h30 - 11h</td>
-<td align="left">Béatrice MARANGET</td>
+<td align="left">univarié</td>
+<td align="left">8</td>
 </tr>
 <tr class="odd">
-<td align="left">Gr. 3</td>
-<td align="left">14h - 15h30</td>
-<td align="left">Béatrice MARANGET</td>
+<td align="left">bi-varié</td>
+<td align="left">8</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="déroulé" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Déroulé</h1>
-<p>Il va être modifié en fonction de</p>
-<ul>
-<li>votre vitesse - s’il faut prendre plus de temps sur les basiques</li>
-<li>la collaboration avec Thomas Lamy</li>
-</ul>
-<p>13 cours en tout. 2 cours d’intro 7 sur la stat bi-variée 3 sur la multivariée 1 cours pour un devoir sur table au mi-semestre 1 devoir maison à rendre vers la fin du semestre</p>
-<p>Au départ on utilise Libre Office (plutôt que Microsoft) puis R</p>
-<p>Question : quelle utilisation de R ? des cours cette année ?</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deroule.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
+</div>
+<div id="données" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Données</h1>
+<div id="groupe-1" class="section level2" number="2.1">
+<h2 number="2.1"><span class="header-section-number">2.1</span> Groupe 1</h2>
+<p><a href="https://ec.europa.eu/eurostat/databrowser/view/ef_lus_unglass/default/table?lang=fr" class="uri">https://ec.europa.eu/eurostat/databrowser/view/ef_lus_unglass/default/table?lang=fr</a></p>
+</div>
+<div id="groupe-2" class="section level2" number="2.2">
+<h2 number="2.2"><span class="header-section-number">2.2</span> Groupe 2</h2>
+<p><a href="https://www.insee.fr/fr/statistiques/2012665" class="uri">https://www.insee.fr/fr/statistiques/2012665</a></p>
+<p>Faire un copier coller du tableau par région</p>
+</div>
+</div>
+<div id="première-approche" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> Première approche</h1>
+<p>Expliquer les variables</p>
+<p>De quel type sont les variables ? De quel type est le tableau ?</p>
+<p>Télécharger les variables et les mettre en forme de façon à obtenir un tableau .csv</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/serre.csv&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pays&quot;</span>, <span class="st">&quot;SAU&quot;</span>,<span class="st">&quot;Legumes&quot;</span>,<span class="st">&quot;Fleurs&quot;</span>,<span class="st">&quot;Cultures permanentes&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
-<th align="right">Num.cours</th>
-<th align="left">date</th>
-<th align="left">thème</th>
-<th align="left">outil</th>
+<th align="left">pays</th>
+<th align="right">SAU</th>
+<th align="left">Legumes</th>
+<th align="left">Fleurs</th>
+<th align="left">Cultures permanentes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">1</td>
-<td align="left">20/09/21</td>
-<td align="left">statistique univariée : base</td>
-<td align="left">tableur</td>
+<td align="left">Belgique</td>
+<td align="right">37340</td>
+<td align="left">1040</td>
+<td align="left">370</td>
+<td align="left">60</td>
 </tr>
 <tr class="even">
-<td align="right">2</td>
-<td align="left">27/09/21</td>
-<td align="left">statistique univariée : indicateurs</td>
-<td align="left"></td>
+<td align="left">Bulgarie</td>
+<td align="right">244860</td>
+<td align="left">5810</td>
+<td align="left">260</td>
+<td align="left">0</td>
 </tr>
 <tr class="odd">
-<td align="right">3</td>
-<td align="left">04/10/21</td>
-<td align="left">bivariée : base</td>
-<td align="left"></td>
+<td align="left">Tchéquie</td>
+<td align="right">25950</td>
+<td align="left">:</td>
+<td align="left">:</td>
+<td align="left">0</td>
 </tr>
 <tr class="even">
-<td align="right">4</td>
-<td align="left">04/10/21</td>
-<td align="left">contingence</td>
-<td align="left"></td>
+<td align="left">Danemark</td>
+<td align="right">37380</td>
+<td align="left">270</td>
+<td align="left">410</td>
+<td align="left">110</td>
 </tr>
 <tr class="odd">
-<td align="right">5</td>
-<td align="left">11/10/21</td>
-<td align="left">Khi 2</td>
-<td align="left"></td>
+<td align="left">Allemagne (jusqu’en 1990, ancien territoire de la RFA)</td>
+<td align="right">282160</td>
+<td align="left">2160</td>
+<td align="left">3900</td>
+<td align="left">220</td>
 </tr>
 <tr class="even">
-<td align="right">6</td>
-<td align="left">18/10/21</td>
-<td align="left">régression</td>
-<td align="left"></td>
+<td align="left">Estonie</td>
+<td align="right">18750</td>
+<td align="left">170</td>
+<td align="left">30</td>
+<td align="left">0</td>
 </tr>
 <tr class="odd">
-<td align="right">7</td>
-<td align="left">25/10/21</td>
-<td align="left">devoir sur table</td>
-<td align="left"></td>
+<td align="left">Irlande</td>
+<td align="right">139560</td>
+<td align="left">110</td>
+<td align="left">60</td>
+<td align="left">0</td>
 </tr>
 <tr class="even">
-<td align="right">8</td>
-<td align="left">08/11/21</td>
-<td align="left">variance</td>
-<td align="left">R</td>
+<td align="left">Grèce</td>
+<td align="right">703590</td>
+<td align="left">8460</td>
+<td align="left">680</td>
+<td align="left">110</td>
 </tr>
 <tr class="odd">
-<td align="right">9</td>
-<td align="left">15/11/21</td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left">Espagne</td>
+<td align="right">944300</td>
+<td align="left">19130</td>
+<td align="left">2600</td>
+<td align="left">650</td>
 </tr>
 <tr class="even">
-<td align="right">10</td>
-<td align="left">22/11/21</td>
-<td align="left">multivariée : multifactorielle</td>
-<td align="left"></td>
+<td align="left">France</td>
+<td align="right">463710</td>
+<td align="left">9700</td>
+<td align="left">4760</td>
+<td align="left">:</td>
 </tr>
 <tr class="odd">
-<td align="right">11</td>
-<td align="left">29/11/21</td>
-<td align="left">classification</td>
-<td align="left"></td>
+<td align="left">Croatie</td>
+<td align="right">157100</td>
+<td align="left">2320</td>
+<td align="left">970</td>
+<td align="left">0</td>
 </tr>
 <tr class="even">
-<td align="right">12</td>
-<td align="left">06/12/21</td>
-<td align="left">régression linéaire multiple</td>
-<td align="left"></td>
+<td align="left">Italie</td>
+<td align="right">1009440</td>
+<td align="left">21700</td>
+<td align="left">7040</td>
+<td align="left">190</td>
 </tr>
 <tr class="odd">
-<td align="right">13</td>
-<td align="left">13/12/21</td>
-<td align="left">devoir à rendre</td>
-<td align="left"></td>
+<td align="left">Chypre</td>
+<td align="right">35150</td>
+<td align="left">480</td>
+<td align="left">40</td>
+<td align="left">20</td>
+</tr>
+<tr class="even">
+<td align="left">Lettonie</td>
+<td align="right">80720</td>
+<td align="left">310</td>
+<td align="left">50</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Lituanie</td>
+<td align="right">171730</td>
+<td align="left">9590</td>
+<td align="left">430</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">Luxembourg</td>
+<td align="right">2060</td>
+<td align="left">10</td>
+<td align="left">10</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Hongrie</td>
+<td align="right">453090</td>
+<td align="left">12710</td>
+<td align="left">2030</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">Malte</td>
+<td align="right">9000</td>
+<td align="left">290</td>
+<td align="left">20</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Pays-Bas</td>
+<td align="right">65790</td>
+<td align="left">1520</td>
+<td align="left">2610</td>
+<td align="left">100</td>
+</tr>
+<tr class="even">
+<td align="left">Autriche</td>
+<td align="right">139610</td>
+<td align="left">810</td>
+<td align="left">740</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Pologne</td>
+<td align="right">1421560</td>
+<td align="left">13790</td>
+<td align="left">2870</td>
+<td align="left">:</td>
+</tr>
+<tr class="even">
+<td align="left">Portugal</td>
+<td align="right">263580</td>
+<td align="left">3750</td>
+<td align="left">1790</td>
+<td align="left">:</td>
+</tr>
+<tr class="odd">
+<td align="left">Roumanie</td>
+<td align="right">3563770</td>
+<td align="left">18730</td>
+<td align="left">980</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">Slovénie</td>
+<td align="right">72280</td>
+<td align="left">490</td>
+<td align="left">170</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Slovaquie</td>
+<td align="right">22050</td>
+<td align="left">160</td>
+<td align="left">40</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">Finlande</td>
+<td align="right">54230</td>
+<td align="left">850</td>
+<td align="left">620</td>
+<td align="left">:</td>
+</tr>
+<tr class="odd">
+<td align="left">Suède</td>
+<td align="right">66550</td>
+<td align="left">290</td>
+<td align="left">600</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">Norvège</td>
+<td align="right">41890</td>
+<td align="left">230</td>
+<td align="left">200</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Royaume-Uni</td>
+<td align="right">182180</td>
+<td align="left">1370</td>
+<td align="left">1250</td>
+<td align="left">:</td>
+</tr>
+<tr class="even">
+<td align="left">Macédoine du Nord</td>
+<td align="right">168990</td>
+<td align="left">7950</td>
+<td align="left">710</td>
+<td align="left">:</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="présentation-rapide-vous-êtes-nombreux" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> Présentation rapide (vous êtes nombreux !)</h1>
-<p>passé / présent / futur appétence pour les stats fichier framapad, <a href="https://lite.framacalc.org/9pse-coursstatsorbonne2021" class="uri">https://lite.framacalc.org/9pse-coursstatsorbonne2021</a></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cours1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cours1.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>cours2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cours2.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>cours1<span class="sc">$</span>session <span class="ot">&lt;-</span> <span class="st">&quot;cours1&quot;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>cours2<span class="sc">$</span>session <span class="ot">&lt;-</span> <span class="st">&quot;cours2&quot;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cours1)</span></code></pre></div>
-<pre><code>## [1] &quot;prenom&quot;                                         
-## [2] &quot;adresse.mail&quot;                                   
-## [3] &quot;X20.9&quot;                                          
-## [4] &quot;passé&quot;                                          
-## [5] &quot;présent&quot;                                        
-## [6] &quot;futur&quot;                                          
-## [7] &quot;appétence.pour.les.stats.0.j.adore.4.je.déteste&quot;
-## [8] &quot;session&quot;</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cours2)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;prenom&quot;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cours <span class="ot">&lt;-</span> <span class="fu">rbind</span>(cours1, cours2)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>cours <span class="ot">&lt;-</span> cours [cours<span class="sc">$</span>prenom <span class="sc">!=</span> <span class="st">&#39;&#39;</span>,]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(cours<span class="sc">$</span>session)</span></code></pre></div>
-<pre><code>## 
-## cours1 cours2 
-##     28     29</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># export pour framapad</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(cours [<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">8</span>)], <span class="st">&quot;data/cours.csv&quot;</span>)</span></code></pre></div>
-<p>Désormais le framapad sert à l’émargement</p>
+<div id="statistique-univariée" class="section level1" number="4">
+<h1 number="4"><span class="header-section-number">4</span> Statistique univariée</h1>
+<p>Etude de la variable SAU. Caractériser la distribution avec les valeurs centrales et celles de dispersion. Faire un graphique des fréquences et commenter la distribution</p>
 </div>
-<div id="pratique" class="section level1" number="4">
-<h1 number="4"><span class="header-section-number">4</span> Pratique</h1>
-<p>Les exercices sont à rendre avec son <em>prénom</em> (toujours le même svp) sous moodle dans un répertoire spécifique (en attente de validation du compte moodle)</p>
+<div id="statistique-bi-variée" class="section level1" number="5">
+<h1 number="5"><span class="header-section-number">5</span> Statistique bi-variée</h1>
+<div id="première-série" class="section level2" number="5.1">
+<h2 number="5.1"><span class="header-section-number">5.1</span> Première série</h2>
+<p>Faut-il conserver la variable SAU ? Pourquoi ?</p>
+<p>Faire l’analyse bi-variée de la donnée selon la méthode vue en cours.</p>
 </div>
-<div id="quizz-de-cours" class="section level1" number="5">
-<h1 number="5"><span class="header-section-number">5</span> Quizz de cours</h1>
-<p>Quelques minutes en fin de chaque cours, histoire pour moi de voir s’il faut que je reprenne des notions.</p>
-<ul>
-<li><p>Univariés <a href="https://forms.gle/vR9f156Up9zrL86B9" class="uri">https://forms.gle/vR9f156Up9zrL86B9</a></p></li>
-<li><p>Bi variés base <a href="https://forms.gle/JSEWZJJ3V1S349EZA" class="uri">https://forms.gle/JSEWZJJ3V1S349EZA</a></p></li>
-<li><p>Tableau de contingence <a href="https://forms.gle/Le8wvTBabxmw3SAg8" class="uri">https://forms.gle/Le8wvTBabxmw3SAg8</a></p></li>
-<li><p>Khi2 <a href="https://forms.gle/46Lr7fNWydQPqcCr5" class="uri">https://forms.gle/46Lr7fNWydQPqcCr5</a></p></li>
-<li><p>Régression <a href="https://forms.gle/TNpQPtgYVjfrde5ZA" class="uri">https://forms.gle/TNpQPtgYVjfrde5ZA</a></p></li>
-<li><p>Variance <a href="https://forms.gle/vS4zZzsNfnTyDHMfA" class="uri">https://forms.gle/vS4zZzsNfnTyDHMfA</a></p></li>
-</ul>
+<div id="deuxième-série" class="section level2" number="5.2">
+<h2 number="5.2"><span class="header-section-number">5.2</span> Deuxième série</h2>
+<p>PIB par habitant et GES</p>
+<p><a href="https://donnees.banquemondiale.org/indicator/NY.GDP.PCAP.PP.KD?view=chart" class="uri">https://donnees.banquemondiale.org/indicator/NY.GDP.PCAP.PP.KD?view=chart</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pib <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/PIB.csv&quot;</span>, <span class="at">skip =</span> <span class="dv">4</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pib <span class="ot">&lt;-</span> pib [pib<span class="sc">$</span>Indicator.Code <span class="sc">==</span> <span class="st">&quot;NY.GDP.PCAP.PP.KD&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;Country.Code&quot;</span>, <span class="st">&quot;X2015&quot;</span>)]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ges <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/GES.csv&quot;</span>, <span class="at">skip =</span> <span class="dv">4</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ges <span class="ot">&lt;-</span>  ges [, <span class="fu">c</span>(<span class="st">&quot;Country.Code&quot;</span>, <span class="st">&quot;X2015&quot;</span>)]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>ges <span class="ot">&lt;-</span> ges [<span class="sc">!</span><span class="fu">is.na</span>(ges<span class="sc">$</span>X2015),]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span>  <span class="fu">merge</span>(ges, pib, <span class="at">by =</span> <span class="st">&quot;Country.Code&quot;</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;code&quot;</span>, <span class="st">&quot;pib&quot;</span>, <span class="st">&quot;ges&quot;</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [<span class="sc">!</span><span class="fu">is.na</span>(data<span class="sc">$</span>ges),]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(data, <span class="st">&quot;data/pibges2015.csv&quot;</span>)</span></code></pre></div>
+<p>Commment traiter la relation entre le GES et le PIB ?</p>
+<p>Faire l’analyse jusqu’au point vu en cours.</p>
 </div>
-<div id="ressources-autre-que-la-bibliographie-officielle" class="section level1" number="6">
-<h1 number="6"><span class="header-section-number">6</span> Ressources autre que la bibliographie officielle</h1>
-<p>2 cours universitaires disponibles sur internet</p>
-<ul>
-<li><a href="http://www.ipt.univ-paris8.fr/vgodard/enseigne/statisti/framstat.htm" class="uri">http://www.ipt.univ-paris8.fr/vgodard/enseigne/statisti/framstat.htm</a></li>
-<li><a href="http://grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm" class="uri">http://grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm</a></li>
-</ul>
-<p>2 sites pour réfléchir</p>
-<ul>
-<li><a href="https://neocarto.hypotheses.org/" class="uri">https://neocarto.hypotheses.org/</a></li>
-<li><a href="https://bmericskay.github.io/portfolio/Disgressions.html" class="uri">https://bmericskay.github.io/portfolio/Disgressions.html</a></li>
-</ul>
-<p>et bien sur :</p>
-<p><a href="https://georezo.net/" class="uri">https://georezo.net/</a></p>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
