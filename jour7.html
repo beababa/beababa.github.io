@@ -11,10 +11,10 @@
 
 
 
-<title>Mutivariées base</title>
+<title>Mutivariées base (analyse factorielle)</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -58,7 +58,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -424,7 +423,10 @@ div.tocify {
   <a href="jour6.html">variance</a>
 </li>
 <li>
-  <a href="jour7.html">multivariées</a>
+  <a href="jour7.html">multivariées AFC</a>
+</li>
+<li>
+  <a href="jour7.html">classification</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -443,7 +445,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Mutivariées base</h1>
+<h1 class="title toc-ignore">Mutivariées base (analyse factorielle)</h1>
 
 </div>
 
@@ -501,7 +503,7 @@ div.tocify {
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code></pre></div>
 <pre><code>##   tx_natalite    nb_emplois_LT        diplôme          logement     
 ##  Min.   : 6.60   Min.   :  31660   Min.   : 15390   Min.   : 2.800  
-##  1st Qu.: 8.40   1st Qu.: 110207   1st Qu.: 50007   1st Qu.: 4.100  
+##  1st Qu.: 8.40   1st Qu.: 110207   1st Qu.: 50006   1st Qu.: 4.100  
 ##  Median : 9.50   Median : 203900   Median : 95874   Median : 5.800  
 ##  Mean   :10.14   Mean   : 265993   Mean   :149699   Mean   : 7.878  
 ##  3rd Qu.:10.50   3rd Qu.: 308367   3rd Qu.:175914   3rd Qu.: 8.100  
@@ -517,7 +519,8 @@ div.tocify {
 ##  [73] &quot;72&quot;  &quot;73&quot;  &quot;74&quot;  &quot;75&quot;  &quot;76&quot;  &quot;77&quot;  &quot;78&quot;  &quot;79&quot;  &quot;80&quot;  &quot;81&quot;  &quot;82&quot;  &quot;83&quot; 
 ##  [85] &quot;84&quot;  &quot;85&quot;  &quot;86&quot;  &quot;87&quot;  &quot;88&quot;  &quot;89&quot;  &quot;90&quot;  &quot;91&quot;  &quot;92&quot;  &quot;93&quot;  &quot;94&quot;  &quot;95&quot; 
 ##  [97] &quot;971&quot; &quot;972&quot; &quot;973&quot; &quot;974&quot; &quot;976&quot;</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [<span class="sc">-</span><span class="dv">76</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Suppression de Paris... voire d&#39;autres dpts ?</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [<span class="sc">-</span><span class="dv">76</span>,]</span></code></pre></div>
 <p>Les coefficients de variation permettent également une première approche</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># suppression des NA</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data[<span class="fu">is.na</span>(data<span class="sc">$</span>nb_emplois_LT ),]</span></code></pre></div>
@@ -549,8 +552,8 @@ div.tocify {
 <li><p>réduction : division par l’écart type, on exprime la différence en écart-type (comme un changement d’échelle)</p></li>
 </ul>
 <p>La variable standardisée a pour moyenne 0 et pour écart-type 1</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">scale</span> (data)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(data2)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data_cr <span class="ot">&lt;-</span> <span class="fu">scale</span> (data)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(data_cr)</span></code></pre></div>
 <p><img src="jour7_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 </div>
@@ -559,7 +562,7 @@ div.tocify {
 <h1 number="3"><span class="header-section-number">3</span> Les calculs sous R</h1>
 <div id="les-axes-factoriels" class="section level2" number="3.1">
 <h2 number="3.1"><span class="header-section-number">3.1</span> Les axes factoriels</h2>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data2)</span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data_cr)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># par défaut direction négative on inverse</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>acp<span class="sc">$</span>rotation <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">*</span> acp<span class="sc">$</span>rotation</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>acp<span class="sc">$</span>rotation</span></code></pre></div>
@@ -576,6 +579,7 @@ div.tocify {
 <p>73 % de la variance pris en compte par le premier axe, etc…</p>
 <p>Le premier axe résume la variation de la moitié des valeurs des 4 variables.</p>
 <p>L’axe 3 a une haute valeur pour le logement.</p>
+<p>Le nombre d’emploi et le diplôme sont liés et s’opposent au surlogement et aux taux de natalité.</p>
 <div id="pour-les-individus-ici-les-départements" class="section level3" number="3.2.1">
 <h3 number="3.2.1"><span class="header-section-number">3.2.1</span> Pour les individus (ici les départements)</h3>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(acp<span class="sc">$</span>x<span class="sc">*-</span><span class="dv">1</span>)</span></code></pre></div>
@@ -588,9 +592,14 @@ div.tocify {
 ## 06  2.1487576 -0.33761251  1.5044645  0.10018876</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(acp, <span class="at">scale =</span> <span class="dv">0</span>)</span></code></pre></div>
 <p><img src="jour7_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>Les départements proches suivent le même modèle de données.</p>
+<p>Les départements proches suivent le même modèle de données. Leur position dans le graphique montre leur rapport aux variables.</p>
+<p>Dans le cas présent, les variables ne suivent pas les axes (problème des valeurs aberrantes).</p>
 </div>
 </div>
+</div>
+<div id="second-traitement" class="section level1" number="4">
+<h1 number="4"><span class="header-section-number">4</span> Second traitement</h1>
+<p>Supprimer les valeurs posant problème et relancer les calculs. Essayer d’interpréter.</p>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>

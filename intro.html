@@ -13,8 +13,8 @@
 
 <title>Introduction</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -58,7 +58,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -424,7 +423,10 @@ div.tocify {
   <a href="jour6.html">variance</a>
 </li>
 <li>
-  <a href="jour7.html">multivariées</a>
+  <a href="jour7.html">multivariées AFC</a>
+</li>
+<li>
+  <a href="jour7.html">classification</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -493,6 +495,12 @@ div.tocify {
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deroule.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
 <table>
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="72%" />
+<col width="8%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="right">Num.cours</th>
@@ -547,19 +555,19 @@ div.tocify {
 <tr class="even">
 <td align="right">8</td>
 <td align="left">08/11/21</td>
-<td align="left">variance</td>
+<td align="left">initiation R</td>
 <td align="left">R</td>
 </tr>
 <tr class="odd">
 <td align="right">9</td>
 <td align="left">15/11/21</td>
-<td align="left"></td>
+<td align="left">initiation R</td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="right">10</td>
 <td align="left">22/11/21</td>
-<td align="left">multivariée : multifactorielle</td>
+<td align="left">multivariée : multifactorielle + sujet de devoir</td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
@@ -571,13 +579,13 @@ div.tocify {
 <tr class="even">
 <td align="right">12</td>
 <td align="left">06/12/21</td>
-<td align="left">régression linéaire multiple</td>
+<td align="left">questions autour du devoir maison. Devoir à rendre le 8 au plus tard.</td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="right">13</td>
 <td align="left">13/12/21</td>
-<td align="left">devoir à rendre</td>
+<td align="left">rendu du devoir maison et bilan formation</td>
 <td align="left"></td>
 </tr>
 </tbody>
@@ -624,7 +632,8 @@ div.tocify {
 <li><p>Khi2 <a href="https://forms.gle/46Lr7fNWydQPqcCr5" class="uri">https://forms.gle/46Lr7fNWydQPqcCr5</a></p></li>
 <li><p>Régression <a href="https://forms.gle/TNpQPtgYVjfrde5ZA" class="uri">https://forms.gle/TNpQPtgYVjfrde5ZA</a></p></li>
 <li><p>Variance <a href="https://forms.gle/vS4zZzsNfnTyDHMfA" class="uri">https://forms.gle/vS4zZzsNfnTyDHMfA</a></p></li>
-<li><p>base multivariée <a href="https://forms.gle/Zz5uif7jmvZWVA219" class="uri">https://forms.gle/Zz5uif7jmvZWVA219</a></p></li>
+<li><p>base multivariée : ACP <a href="https://forms.gle/Zz5uif7jmvZWVA219" class="uri">https://forms.gle/Zz5uif7jmvZWVA219</a></p></li>
+<li><p>Classification <a href="https://forms.gle/4K7r7hPGZB89vEAF6" class="uri">https://forms.gle/4K7r7hPGZB89vEAF6</a></p></li>
 </ul>
 </div>
 <div id="ressources-autre-que-la-bibliographie-officielle" class="section level1" number="6">
@@ -634,13 +643,17 @@ div.tocify {
 <li><a href="http://www.ipt.univ-paris8.fr/vgodard/enseigne/statisti/framstat.htm" class="uri">http://www.ipt.univ-paris8.fr/vgodard/enseigne/statisti/framstat.htm</a></li>
 <li><a href="http://grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm" class="uri">http://grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm</a></li>
 </ul>
-<p>2 sites pour réfléchir</p>
+</div>
+<div id="le-devoir-maison" class="section level1" number="7">
+<h1 number="7"><span class="header-section-number">7</span> Le devoir maison</h1>
+<p>Il s’agit de prendre minimum 4 variables socio économiques à partir de l’outil insee statistiques locales et de faire dessus une analyse factorielle et une classification en affinant au fur et à mesure (exclusion des valeurs particulières ou choix d’échantillons). Le devoir maison est à rendre sous forme de script R commenté (avec des #) avec le fichier de données en .csv</p>
+<p>dates :</p>
 <ul>
-<li><a href="https://neocarto.hypotheses.org/" class="uri">https://neocarto.hypotheses.org/</a></li>
-<li><a href="https://bmericskay.github.io/portfolio/Disgressions.html" class="uri">https://bmericskay.github.io/portfolio/Disgressions.html</a></li>
+<li><p>soumission du sujet : 22/11, chaque étudiant doit proposer ses variables</p></li>
+<li><p>travail sur le devoir en classe : 6/12</p></li>
+<li><p>rendu du devoir par les étudiants : 8/12</p></li>
+<li><p>le devoir sera rendu sur la dernière séance, le 13/12</p></li>
 </ul>
-<p>et bien sur :</p>
-<p><a href="https://georezo.net/" class="uri">https://georezo.net/</a></p>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
