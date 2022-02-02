@@ -1,14 +1,13 @@
-Num cours,date,thème,outil
-1,20/09/21,statistique univariée : base,tableur
-2,27/09/21,statistique univariée : indicateurs,
-3,04/10/21,bivariée : base,
-4,04/10/21,contingence,
-5,11/10/21,Khi 2,
-6,18/10/21,régression,
-7,25/10/21,devoir sur table,
-8,08/11/21,Fin régression / Initiation R,R
-9,15/11/21,initiation R,
-10,22/11/21,multivariée : multifactorielle + sujet de devoir,
-11,29/11/21,classification,
-12,06/12/21,questions autour du devoir maison. Devoir à rendre le 8 au plus tard.,
-13,13/12/21,rendu du devoir maison et bilan formation,
+num,date,thème,détail,évaluation
+Cours 1,27/01/22,environnement de travail,git,
+Cours 2,03/02/22,,Markdown + structure projet,
+Cours 3,10/02/22,bases,objets dans R : vecteurs et dataframe,
+Cours 4,17/02/22,,"Algo, boucles et fonctions",
+Cours 5,24/02/22,,intégrer des données spatiales : format gpkg,
+Cours 6,10/03/22,,Géotraitements ,Eval 1 : DST
+Cours 7,17/03/22,collecter des données,saisie sous OSM,
+Cours 8,24/03/22,valorisation,cartographie : symbologie,
+Cours 9,31/03/22,,cartographie : mise en page,
+Cours 10,07/04/22,,leaflet : le webmapping,
+Cours 11,14/04/22,,le dashboard,Eval 2 : projet markdown
+Cours 12,12/05/2022,,révision : remarques sur les projets,
