@@ -415,7 +415,7 @@ div.tocify {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://beababa.github.io/">
+  <a href="https://github.com/beababa/beababa.github.io">
     <span class="fa fa-github"></span>
      
   </a>
@@ -444,7 +444,7 @@ div.tocify {
 </div>
 <div id="déroulé" class="section level1" number="2">
 <h1 number="2"><span class="header-section-number">2</span> Déroulé</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../data/deroule.csv&quot;</span>, <span class="at">header =</span>F, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deroule.csv&quot;</span>, <span class="at">header =</span>F, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
 <table>
 <thead>
@@ -562,16 +562,46 @@ div.tocify {
 <ul>
 <li>Elle sera accompagnée d’une note de partiel (coeff 2)</li>
 </ul>
-<p>Examen qui se tiendra dans les deux dernières semaines de mai à une date qui nous sera communiquée ultérieurement. Il s’agit là d’une évaluation individuelle sur machine d’une durée de 2 h.</p>
+<p>Examen qui se tiendra dans les deux dernières semaines de mai à une date qui nous sera communiquée ultérieurement. Il s’agit là d’une évaluation individuelle sur machine d’une durée de 2h et qui comptera pour un coefficient 2.</p>
 </div>
 <div id="données" class="section level1" number="4">
 <h1 number="4"><span class="header-section-number">4</span> Données</h1>
 <p>Données sur la commune de Bondy, données OSM et internes + carroyage INSEE</p>
 <p>La collecte des données ne se fait pas sur le terrain mais à partir de sources internes et sur openstreet map.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
+<pre><code>## Linking to GEOS 3.9.0, GDAL 3.2.1, PROJ 7.2.1</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>zone <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/vote.gpkg&quot;</span>, <span class="st">&quot;zone&quot;</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>,<span class="at">stringsAsFactors =</span> F)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>resultat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/bondyElection.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 </div>
 <div id="bibliographie" class="section level1" number="5">
 <h1 number="5"><span class="header-section-number">5</span> Bibliographie</h1>
 <p><a href="https://framabook.org/r-et-espace/" class="uri">https://framabook.org/r-et-espace/</a></p>
+</div>
+<div id="profil-étudiants" class="section level1" number="6">
+<h1 number="6"><span class="header-section-number">6</span> Profil étudiants</h1>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cours1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cours1.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cours1)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    32 obs. of  14 variables:
+##  $ Prénom                            : chr  &quot;Louis&quot; &quot;Gaëlle&quot; &quot;Anne&quot; &quot;Mariam&quot; ...
+##  $ nom                               : chr  &quot;PERRAUD&quot; &quot;ROUSSEAU&quot; &quot;Simon&quot; &quot;Ouattara&quot; ...
+##  $ adresse.mail                      : chr  &quot;louisperraud@orange.fr&quot; &quot;gaelle.e.m.rousseau@gmail.com&quot; &quot;annesimon94@sfr.fr&quot; &quot;moreliaivy@gmail.com&quot; ...
+##  $ X44223                            : chr  &quot;oui&quot; &quot;oui&quot; &quot;oui&quot; &quot;oui&quot; ...
+##  $ passé                             : chr  &quot;archéologie-géographie&quot; &quot;L2 archéo-géographie&quot; &quot;Classe préparatoire Khâgne/Hypokhâgne Lakanal&quot; &quot;L2 Géographie et aménagement&quot; ...
+##  $ présent                           : chr  &quot;L3 archéologie géographie&quot; &quot;L3 archéologie géographie&quot; &quot;L3 géographie et aménagement&quot; &quot;L3 géographie et aménagement&quot; ...
+##  $ futur                             : chr  &quot;égyptologie&quot; &quot;SIG appliqué à l&#39;archéologie&quot; &quot;Urbaniste&quot; &quot;logisticienne&quot; ...
+##  $ appétence.codage..1.fort.4.mauvais: int  2 1 2 3 1 1 3 3 4 3 ...
+##  $ Niveau.de.codage.de.0.à.5         : int  0 0 0 1 NA NA 2 NA 1 0 ...
+##  $ X                                 : logi  NA NA NA NA NA NA ...
+##  $ X.1                               : logi  NA NA NA NA NA NA ...
+##  $ X.2                               : logi  NA NA NA NA NA NA ...
+##  $ X.3                               : logi  NA NA NA NA NA NA ...
+##  $ X.4                               : logi  NA NA NA NA NA NA ...</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tab  <span class="ot">&lt;-</span> <span class="fu">table</span> (cours1<span class="sc">$</span>appétence.codage..<span class="fl">1.</span>fort.<span class="fl">4.</span>mauvais)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tab, <span class="at">col =</span> <span class="fu">heat.colors</span>(<span class="dv">5</span>), <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">xlab =</span> <span class="st">&quot;appétence, (1 oui - 4 non)&quot;</span>)</span></code></pre></div>
+<p><img src="01_intro_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div id="exercice-mettre-en-graphique-les-autres-vecteurs" class="section level2" number="6.1">
+<h2 number="6.1"><span class="header-section-number">6.1</span> Exercice : mettre en graphique les autres vecteurs</h2>
+</div>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
