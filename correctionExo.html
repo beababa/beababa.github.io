@@ -12,10 +12,10 @@
 <meta name="author" content="B. Maranget" />
 
 
-<title>Environnement de travail</title>
+<title>Correction exercice</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -47,6 +47,100 @@
     </style>
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -338,110 +432,42 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Environnement de travail</h1>
+<h1 class="title toc-ignore">Correction exercice</h1>
 <h4 class="author">B. Maranget</h4>
-<h4 class="date">20/01/2021</h4>
+<h4 class="date">17/02/2022</h4>
 
 </div>
 
 
 <div id="objet" class="section level1" number="1">
 <h1 number="1"><span class="header-section-number">1</span> Objet</h1>
-<p>Projet R, markdown et git (galère probable pour les clés SSH)</p>
-</div>
-<div id="projet-r-et-markdown" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Projet R et Markdown</h1>
-<div id="interface-rstudio" class="section level2" number="2.1">
-<h2 number="2.1"><span class="header-section-number">2.1</span> Interface Rstudio</h2>
-<p>4 fenêtres</p>
-</div>
-<div id="créer-un-projet-r" class="section level2" number="2.2">
-<h2 number="2.2"><span class="header-section-number">2.2</span> Créer un projet R</h2>
-<p>File / Nouveau projet</p>
-<p>Le projet permet de conserver l’emplacement des fichiers.</p>
-<p>Créer l’arborescence suivante</p>
-<p><img src="img/arbo.png" /></p>
-</div>
-<div id="le-markdown" class="section level2" number="2.3">
-<h2 number="2.3"><span class="header-section-number">2.3</span> Le markdown</h2>
-<p>Créer un markdown dans le répertoire script dans Rstudio, le knitter.</p>
-<p><img src="img/knit.png" /></p>
-</div>
-<div id="paramétrage-de-la-toc-et-de-lexecution-des-chunks" class="section level2" number="2.4">
-<h2 number="2.4"><span class="header-section-number">2.4</span> paramétrage de la TOC et de l’execution des chunks</h2>
-<pre><code>output: 
-  html_document: 
-    number_sections: yes
-    toc: yes
-editor_options: 
-  chunk_output_type: console</code></pre>
-<p>source :</p>
-<p><a href="https://blog.wax-o.com/2014/04/tutoriel-un-guide-pour-bien-commencer-avec-markdown/" class="uri">https://blog.wax-o.com/2014/04/tutoriel-un-guide-pour-bien-commencer-avec-markdown/</a></p>
-</div>
-</div>
-<div id="git" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> Git</h1>
-<div id="compte-et-projet" class="section level2" number="3.1">
-<h2 number="3.1"><span class="header-section-number">3.1</span> Compte et projet</h2>
-<p>Créer un compte GIT et un projet</p>
-<p><img src="img/projetGIT.png" /></p>
-</div>
-<div id="cloner-le-projet-sur-sa-machine" class="section level2" number="3.2">
-<h2 number="3.2"><span class="header-section-number">3.2</span> Cloner le projet sur sa machine</h2>
-<p>cloner le projet sur son pc avec la commande <em>git clone</em> et le lien vers le répertoire</p>
-<div id="sur-linterface-github" class="section level3" number="3.2.1">
-<h3 number="3.2.1"><span class="header-section-number">3.2.1</span> Sur l’interface github</h3>
-<p>Récupérer le lien https du projet dans code</p>
-<p><img src="img/GITclone.png" /></p>
-</div>
-<div id="dans-une-fenêtre-cmd-de-windows" class="section level3" number="3.2.2">
-<h3 number="3.2.2"><span class="header-section-number">3.2.2</span> Dans une fenêtre cmd de windows</h3>
-<p>Pour ouvrir une fenêtre cmd, il suffit de faire le bouton windows et de taper <em>cmd</em>.</p>
-<p><img src="img/GITcloneShell.png" /></p>
-</div>
-<div id="installation-des-commandes-git" class="section level3" number="3.2.3">
-<h3 number="3.2.3"><span class="header-section-number">3.2.3</span> Installation des commandes git</h3>
-<p>Cela ne fonctionne pas … il faut installer les commandes git sous votre machine (sous Mac et Linux c’est pré-installé)</p>
-<p>source : <a href="https://astuces-informatique.com/comment-installer-utiliser-git-sous-windows/" class="uri">https://astuces-informatique.com/comment-installer-utiliser-git-sous-windows/</a></p>
-<p>Faire l’installation et essayer à nouveau de cloner…</p>
-</div>
-</div>
-<div id="clés-ssh" class="section level2" number="3.3">
-<h2 number="3.3"><span class="header-section-number">3.3</span> Clés SSH</h2>
-<p>L’utilisation des clés permet d’éviter la saisie du mot de passe.</p>
-<div id="génération-des-clés" class="section level3" number="3.3.1">
-<h3 number="3.3.1"><span class="header-section-number">3.3.1</span> Génération des clés</h3>
-<p>Pour pouvoir travailler ainsi, il faut avoir générer des clés</p>
-<p>Ouvrir une fenêtre avec la commande cmd et saisir <em>ssh-keygen</em></p>
-<p>Le répertoire où la clé est créée est, par défaut, le répertoire utilisateur. (afficher les fichiers cachés est nécessaire)</p>
-<p>Le répertoire utilisateur est à la racine de votre profil.</p>
-<p><img src="img/gitRepUtilisateur.png" /></p>
-<p>source :</p>
-<p><a href="https://www.lojiciels.com/comment-generer-des-cles-publiques-privees-ssh-sous-windows/" class="uri">https://www.lojiciels.com/comment-generer-des-cles-publiques-privees-ssh-sous-windows/</a></p>
-</div>
-<div id="copie-de-la-clé-publique-sur-le-serveur" class="section level3" number="3.3.2">
-<h3 number="3.3.2"><span class="header-section-number">3.3.2</span> Copie de la clé publique sur le serveur</h3>
-<p>Au niveau du github, coin haut droit <em>settings</em> puis <em>ssh keys</em></p>
-<p>Il s’agit de récupérer le contenu de la clé, la commande en ligne</p>
-<p><em>clip &lt; .ssh/id_rsa.pub</em></p>
-<p>(Sinon ouvrir le fichier et faire un copier - coller)</p>
-<p>source :</p>
-<p><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account" class="uri">https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account</a></p>
-</div>
-<div id="test" class="section level3" number="3.3.3">
-<h3 number="3.3.3"><span class="header-section-number">3.3.3</span> Test</h3>
+<p>L’exercice proposé permet de comprendre</p>
 <ul>
-<li>ssh -T <a href="mailto:git@github.com" class="email">git@github.com</a>*</li>
+<li><p>ce qu’est un fichier .Rmd (markdown)</p></li>
+<li><p>comment faire un dataframe</p></li>
+<li><p>comment utiliser une fonction simple sur un vecteur</p></li>
 </ul>
 </div>
+<div id="barème" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Barème</h1>
+<ul>
+<li><p>1 point pour la remise</p></li>
+<li><p>1 autre pour le dataframe</p></li>
+<li><p>1 dernier pour la formule</p></li>
+</ul>
 </div>
-<div id="mise-à-jour-du-projet-4-commandes-à-connaître" class="section level2" number="3.4">
-<h2 number="3.4"><span class="header-section-number">3.4</span> Mise à jour du projet : 4 commandes à connaître</h2>
-<pre><code>git pull
-git add .
-git commit -m &quot;version finale veille cours&quot;
-git push</code></pre>
-</div>
+<div id="script" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> Script</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ville <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Paris&quot;</span>, <span class="st">&quot;Lyon&quot;</span>, <span class="st">&quot;Marseille&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2161000</span>, <span class="dv">523275</span>, <span class="dv">861635</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(ville, pop))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>##       ville     pop
+## 1     Paris 2161000
+## 2      Lyon  523275
+## 3 Marseille  861635</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(pop)</span></code></pre></div>
+<pre><code>## [1] 1181970</code></pre>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
