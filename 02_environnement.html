@@ -14,7 +14,6 @@
 
 <title>Environnement de travail</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -51,6 +50,7 @@
 
 
 
+
 <link rel="stylesheet" href="css/styles.css" type="text/css" />
 
 
@@ -75,6 +75,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -300,7 +303,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -330,6 +333,12 @@ div.tocify {
 <li>
   <a href="07_valorisation.html">Valorisation</a>
 </li>
+<li>
+  <a href="08_webmapping.html">Web mapping</a>
+</li>
+<li>
+  <a href="09_correction.html">Correction2</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -354,30 +363,30 @@ div.tocify {
 </div>
 
 
-<div id="objet" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Objet</h1>
+<div id="objet" class="section level1">
+<h1><span class="header-section-number">1</span> Objet</h1>
 <p>Projet R, markdown et git (galère probable pour les clés SSH)</p>
 </div>
-<div id="projet-r-et-markdown" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Projet R et Markdown</h1>
-<div id="interface-rstudio" class="section level2" number="2.1">
-<h2 number="2.1"><span class="header-section-number">2.1</span> Interface Rstudio</h2>
+<div id="projet-r-et-markdown" class="section level1">
+<h1><span class="header-section-number">2</span> Projet R et Markdown</h1>
+<div id="interface-rstudio" class="section level2">
+<h2><span class="header-section-number">2.1</span> Interface Rstudio</h2>
 <p>4 fenêtres</p>
 </div>
-<div id="créer-un-projet-r" class="section level2" number="2.2">
-<h2 number="2.2"><span class="header-section-number">2.2</span> Créer un projet R</h2>
+<div id="créer-un-projet-r" class="section level2">
+<h2><span class="header-section-number">2.2</span> Créer un projet R</h2>
 <p>File / Nouveau projet</p>
 <p>Le projet permet de conserver l’emplacement des fichiers.</p>
 <p>Créer l’arborescence suivante</p>
 <p><img src="img/arbo.png" /></p>
 </div>
-<div id="le-markdown" class="section level2" number="2.3">
-<h2 number="2.3"><span class="header-section-number">2.3</span> Le markdown</h2>
+<div id="le-markdown" class="section level2">
+<h2><span class="header-section-number">2.3</span> Le markdown</h2>
 <p>Créer un markdown dans le répertoire script dans Rstudio, le knitter.</p>
 <p><img src="img/knit.png" /></p>
 </div>
-<div id="paramétrage-de-la-toc-et-de-lexecution-des-chunks" class="section level2" number="2.4">
-<h2 number="2.4"><span class="header-section-number">2.4</span> paramétrage de la TOC et de l’execution des chunks</h2>
+<div id="paramétrage-de-la-toc-et-de-lexecution-des-chunks" class="section level2">
+<h2><span class="header-section-number">2.4</span> paramétrage de la TOC et de l’execution des chunks</h2>
 <pre><code>output: 
   html_document: 
     number_sections: yes
@@ -388,38 +397,38 @@ editor_options:
 <p><a href="https://blog.wax-o.com/2014/04/tutoriel-un-guide-pour-bien-commencer-avec-markdown/" class="uri">https://blog.wax-o.com/2014/04/tutoriel-un-guide-pour-bien-commencer-avec-markdown/</a></p>
 </div>
 </div>
-<div id="git" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> Git</h1>
-<div id="compte-et-projet" class="section level2" number="3.1">
-<h2 number="3.1"><span class="header-section-number">3.1</span> Compte et projet</h2>
+<div id="git" class="section level1">
+<h1><span class="header-section-number">3</span> Git</h1>
+<div id="compte-et-projet" class="section level2">
+<h2><span class="header-section-number">3.1</span> Compte et projet</h2>
 <p>Créer un compte GIT et un projet</p>
 <p><img src="img/projetGIT.png" /></p>
 </div>
-<div id="cloner-le-projet-sur-sa-machine" class="section level2" number="3.2">
-<h2 number="3.2"><span class="header-section-number">3.2</span> Cloner le projet sur sa machine</h2>
+<div id="cloner-le-projet-sur-sa-machine" class="section level2">
+<h2><span class="header-section-number">3.2</span> Cloner le projet sur sa machine</h2>
 <p>cloner le projet sur son pc avec la commande <em>git clone</em> et le lien vers le répertoire</p>
-<div id="sur-linterface-github" class="section level3" number="3.2.1">
-<h3 number="3.2.1"><span class="header-section-number">3.2.1</span> Sur l’interface github</h3>
+<div id="sur-linterface-github" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Sur l’interface github</h3>
 <p>Récupérer le lien https du projet dans code</p>
 <p><img src="img/GITclone.png" /></p>
 </div>
-<div id="dans-une-fenêtre-cmd-de-windows" class="section level3" number="3.2.2">
-<h3 number="3.2.2"><span class="header-section-number">3.2.2</span> Dans une fenêtre cmd de windows</h3>
+<div id="dans-une-fenêtre-cmd-de-windows" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Dans une fenêtre cmd de windows</h3>
 <p>Pour ouvrir une fenêtre cmd, il suffit de faire le bouton windows et de taper <em>cmd</em>.</p>
 <p><img src="img/GITcloneShell.png" /></p>
 </div>
-<div id="installation-des-commandes-git" class="section level3" number="3.2.3">
-<h3 number="3.2.3"><span class="header-section-number">3.2.3</span> Installation des commandes git</h3>
+<div id="installation-des-commandes-git" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Installation des commandes git</h3>
 <p>Cela ne fonctionne pas … il faut installer les commandes git sous votre machine (sous Mac et Linux c’est pré-installé)</p>
 <p>source : <a href="https://astuces-informatique.com/comment-installer-utiliser-git-sous-windows/" class="uri">https://astuces-informatique.com/comment-installer-utiliser-git-sous-windows/</a></p>
 <p>Faire l’installation et essayer à nouveau de cloner…</p>
 </div>
 </div>
-<div id="clés-ssh" class="section level2" number="3.3">
-<h2 number="3.3"><span class="header-section-number">3.3</span> Clés SSH</h2>
+<div id="clés-ssh" class="section level2">
+<h2><span class="header-section-number">3.3</span> Clés SSH</h2>
 <p>L’utilisation des clés permet d’éviter la saisie du mot de passe.</p>
-<div id="génération-des-clés" class="section level3" number="3.3.1">
-<h3 number="3.3.1"><span class="header-section-number">3.3.1</span> Génération des clés</h3>
+<div id="génération-des-clés" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Génération des clés</h3>
 <p>Pour pouvoir travailler ainsi, il faut avoir générer des clés</p>
 <p>Ouvrir une fenêtre avec la commande cmd et saisir <em>ssh-keygen</em></p>
 <p>Le répertoire où la clé est créée est, par défaut, le répertoire utilisateur. (afficher les fichiers cachés est nécessaire)</p>
@@ -428,8 +437,8 @@ editor_options:
 <p>source :</p>
 <p><a href="https://www.lojiciels.com/comment-generer-des-cles-publiques-privees-ssh-sous-windows/" class="uri">https://www.lojiciels.com/comment-generer-des-cles-publiques-privees-ssh-sous-windows/</a></p>
 </div>
-<div id="copie-de-la-clé-publique-sur-le-serveur" class="section level3" number="3.3.2">
-<h3 number="3.3.2"><span class="header-section-number">3.3.2</span> Copie de la clé publique sur le serveur</h3>
+<div id="copie-de-la-clé-publique-sur-le-serveur" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Copie de la clé publique sur le serveur</h3>
 <p>Au niveau du github, coin haut droit <em>settings</em> puis <em>ssh keys</em></p>
 <p>Il s’agit de récupérer le contenu de la clé, la commande en ligne</p>
 <p><em>clip &lt; .ssh/id_rsa.pub</em></p>
@@ -437,14 +446,14 @@ editor_options:
 <p>source :</p>
 <p><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account" class="uri">https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account</a></p>
 </div>
-<div id="test" class="section level3" number="3.3.3">
-<h3 number="3.3.3"><span class="header-section-number">3.3.3</span> Test</h3>
+<div id="test" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Test</h3>
 <p><em>ssh -T <a href="mailto:git@github.com" class="email">git@github.com</a></em></p>
 <p><img src="img/GIThi.png" /></p>
 </div>
 </div>
-<div id="mise-à-jour-du-projet-4-commandes-à-connaître" class="section level2" number="3.4">
-<h2 number="3.4"><span class="header-section-number">3.4</span> Mise à jour du projet : 4 commandes à connaître</h2>
+<div id="mise-à-jour-du-projet-4-commandes-à-connaître" class="section level2">
+<h2><span class="header-section-number">3.4</span> Mise à jour du projet : 4 commandes à connaître</h2>
 <pre><code>git pull
 git add .
 git commit -m &quot;version finale veille cours&quot;

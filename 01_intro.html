@@ -14,7 +14,6 @@
 
 <title>Introduction</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -47,6 +46,7 @@
     </style>
 
 
+
 <style type="text/css">
   code {
     white-space: pre;
@@ -56,28 +56,26 @@
   }
 </style>
 <style type="text/css" data-origin="pandoc">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -86,9 +84,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  background-color: #f8f8f8; }
+  { background-color: #f8f8f8; }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -169,6 +167,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -394,7 +395,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -424,6 +425,12 @@ div.tocify {
 <li>
   <a href="07_valorisation.html">Valorisation</a>
 </li>
+<li>
+  <a href="08_webmapping.html">Web mapping</a>
+</li>
+<li>
+  <a href="09_correction.html">Correction2</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -448,16 +455,16 @@ div.tocify {
 </div>
 
 
-<div id="objet" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Objet</h1>
+<div id="objet" class="section level1">
+<h1><span class="header-section-number">1</span> Objet</h1>
 <p>L6ECSIG Construction et utilisation des SIG 2021/22 (Gr. 6 Jeudi 18h - 20h Salle 217 sur le campus de Clignancourt)</p>
 <p>L’idée du cours est de consolider les acquis de la L2 et de familiariser les étudiants à la création (géoréférencement, vectorisation, gdb, ArcGIS Collector) et à la valorisation des données (Webmap, Dashboards, StoryMaps).</p>
 <p>Dans ce cours, au lieu d’utiliser les outils ArcGIS, on part sur R / git et OSM mais l’objectif reste le même.</p>
 </div>
-<div id="déroulé" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Déroulé</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deroule.csv&quot;</span>, <span class="at">header =</span> T, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
+<div id="déroulé" class="section level1">
+<h1><span class="header-section-number">2</span> Déroulé</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/deroule.csv&quot;</span>, <span class="dt">header =</span> T, <span class="dt">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2">knitr<span class="op">::</span><span class="kw">kable</span>(data)</a></code></pre></div>
 <table style="width:100%;">
 <colgroup>
 <col width="7%" />
@@ -564,8 +571,8 @@ div.tocify {
 </table>
 <p>Notez au passage que la semaine avant les vacances de Pâques les L3 n’ont pas cours puisqu’ils sont en stage de terrain. Il faut donc compter 11 séances + 1 séance de révision.</p>
 </div>
-<div id="evaluation" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> Evaluation</h1>
+<div id="evaluation" class="section level1">
+<h1><span class="header-section-number">3</span> Evaluation</h1>
 <p>régime du contrôle mixte,</p>
 <ul>
 <li>c’est-à-dire une note de contrôle continu (coeff 1)</li>
@@ -576,26 +583,26 @@ div.tocify {
 </ul>
 <p>Examen qui se tiendra dans les deux dernières semaines de mai à une date qui nous sera communiquée ultérieurement. Il s’agit là d’une évaluation individuelle sur machine d’une durée de 2h et qui comptera pour un coefficient 2.</p>
 </div>
-<div id="données" class="section level1" number="4">
-<h1 number="4"><span class="header-section-number">4</span> Données</h1>
+<div id="données" class="section level1">
+<h1><span class="header-section-number">4</span> Données</h1>
 <p>Données sur la commune de Bondy, données OSM et internes + carroyage INSEE</p>
 <p>La collecte des données ne se fait pas sur le terrain mais à partir de sources internes et sur openstreet map.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
-<pre><code>## Linking to GEOS 3.9.0, GDAL 3.2.1, PROJ 7.2.1</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>zone <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/vote.gpkg&quot;</span>, <span class="st">&quot;zone&quot;</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>,<span class="at">stringsAsFactors =</span> F)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>resultat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/bondyElection.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(sf)</a></code></pre></div>
+<pre><code>## Linking to GEOS 3.9.1, GDAL 3.2.1, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">zone &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;data/vote.gpkg&quot;</span>, <span class="st">&quot;zone&quot;</span>, <span class="dt">quiet =</span> <span class="ot">TRUE</span>,<span class="dt">stringsAsFactors =</span> F)</a>
+<a class="sourceLine" id="cb4-2" title="2">resultat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/bondyElection.csv&quot;</span>, <span class="dt">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</a></code></pre></div>
 </div>
-<div id="bibliographie" class="section level1" number="5">
-<h1 number="5"><span class="header-section-number">5</span> Bibliographie</h1>
+<div id="bibliographie" class="section level1">
+<h1><span class="header-section-number">5</span> Bibliographie</h1>
 <p><a href="https://framabook.org/r-et-espace/" class="uri">https://framabook.org/r-et-espace/</a></p>
 </div>
-<div id="profil-étudiants" class="section level1" number="6">
-<h1 number="6"><span class="header-section-number">6</span> Profil étudiants</h1>
+<div id="profil-étudiants" class="section level1">
+<h1><span class="header-section-number">6</span> Profil étudiants</h1>
 <p>Quelques précisions sur les étudiants qui suivent le cours. Cela permet également une première approche de R base.</p>
-<div id="lappétence-graphique" class="section level2" number="6.1">
-<h2 number="6.1"><span class="header-section-number">6.1</span> L’appétence : graphique</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cours1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cours1.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cours1)</span></code></pre></div>
+<div id="lappétence-graphique" class="section level2">
+<h2><span class="header-section-number">6.1</span> L’appétence : graphique</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">cours1 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/cours1.csv&quot;</span>, <span class="dt">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">str</span>(cours1)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    32 obs. of  14 variables:
 ##  $ Prénom                            : chr  &quot;Louis&quot; &quot;Gaëlle&quot; &quot;Anne&quot; &quot;Mariam&quot; ...
 ##  $ nom                               : chr  &quot;x&quot; &quot;x&quot; &quot;x&quot; &quot;x&quot; ...
@@ -611,17 +618,17 @@ div.tocify {
 ##  $ X.1                               : logi  NA NA NA NA NA NA ...
 ##  $ X.2                               : logi  NA NA NA NA NA NA ...
 ##  $ X.3                               : logi  NA NA NA NA NA NA ...</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tab  <span class="ot">&lt;-</span> <span class="fu">table</span> (cours1<span class="sc">$</span>appétence.codage..<span class="fl">1.</span>fort.<span class="fl">4.</span>mauvais)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tab, <span class="at">col =</span> <span class="fu">heat.colors</span>(<span class="dv">5</span>), <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">xlab =</span> <span class="st">&quot;appétence, (1 oui - 4 non)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">tab  &lt;-<span class="st"> </span><span class="kw">table</span> (cours1<span class="op">$</span>appétence.codage..<span class="fl">1.</span>fort.<span class="fl">4.</span>mauvais)</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw">barplot</span>(tab, <span class="dt">col =</span> <span class="kw">heat.colors</span>(<span class="dv">5</span>), <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">xlab =</span> <span class="st">&quot;appétence, (1 oui - 4 non)&quot;</span>)</a></code></pre></div>
 <p><img src="01_intro_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<div id="commentaire" class="section level3" number="6.1.1">
-<h3 number="6.1.1"><span class="header-section-number">6.1.1</span> Commentaire</h3>
+<div id="commentaire" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Commentaire</h3>
 <p>Les étudiants présents se répartissent auraient plutôt envie de faire du codage, mais pas tous.</p>
 <p>Le choix du zéro ressort d’une mauvaise lecture de la consigne (1 oui - 4 non)… Combien d’étudiants l’ont bien lu ?</p>
 </div>
 </div>
-<div id="exercice-mettre-en-graphique-les-autres-vecteurs" class="section level2" number="6.2">
-<h2 number="6.2"><span class="header-section-number">6.2</span> Exercice : mettre en graphique les autres vecteurs</h2>
+<div id="exercice-mettre-en-graphique-les-autres-vecteurs" class="section level2">
+<h2><span class="header-section-number">6.2</span> Exercice : mettre en graphique les autres vecteurs</h2>
 <p>Pendant l’exercice, on regarde l’aide (F1) et on cherche les options de barplot pour :</p>
 <ul>
 <li>étiquettes (names.arg)</li>
@@ -629,20 +636,20 @@ div.tocify {
 <li>legende (legend.text)</li>
 </ul>
 <p>L’aide ne permet pas de trouver ces éléments, il faut souvent se reporter plutôt sur internet.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># choix de la variable : présent et dénombrement</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span> (cours1<span class="sc">$</span>présent)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tab, <span class="at">col =</span><span class="fu">heat.colors</span>(<span class="dv">4</span>), <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">names.arg =</span> <span class="fu">names</span>(tab), <span class="at">las =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;Présent des étudiants&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># choix de la variable : présent et dénombrement</span></a>
+<a class="sourceLine" id="cb8-2" title="2">tab &lt;-<span class="st"> </span><span class="kw">table</span> (cours1<span class="op">$</span>présent)</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="kw">barplot</span>(tab, <span class="dt">col =</span><span class="kw">heat.colors</span>(<span class="dv">4</span>), <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">names.arg =</span> <span class="kw">names</span>(tab), <span class="dt">las =</span> <span class="dv">2</span>, <span class="dt">main =</span> <span class="st">&quot;Présent des étudiants&quot;</span>)</a></code></pre></div>
 <p><img src="01_intro_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tab, <span class="at">col =</span><span class="fu">heat.colors</span>(<span class="dv">4</span>), <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend.text =</span> T, <span class="at">main =</span> <span class="st">&quot;Présent des étudiants&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">barplot</span>(tab, <span class="dt">col =</span><span class="kw">heat.colors</span>(<span class="dv">4</span>), <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">legend.text =</span> T, <span class="dt">main =</span> <span class="st">&quot;Présent des étudiants&quot;</span>)</a></code></pre></div>
 <p><img src="01_intro_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 </div>
-<div id="recodage" class="section level2" number="6.3">
-<h2 number="6.3"><span class="header-section-number">6.3</span> Recodage</h2>
+<div id="recodage" class="section level2">
+<h2><span class="header-section-number">6.3</span> Recodage</h2>
 <p>source :</p>
 <p><a href="https://juba.github.io/tidyverse/09-recodages.html" class="uri">https://juba.github.io/tidyverse/09-recodages.html</a></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(cours1<span class="sc">$</span>futur)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>etik <span class="ot">&lt;-</span> <span class="fu">names</span>(tab)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tab)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">tab &lt;-<span class="st"> </span><span class="kw">table</span>(cours1<span class="op">$</span>futur)</a>
+<a class="sourceLine" id="cb10-2" title="2">etik &lt;-<span class="st"> </span><span class="kw">names</span>(tab)</a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="kw">names</span>(tab)</a></code></pre></div>
 <pre><code>##  [1] &quot;&quot;                                                            
 ##  [2] &quot;?&quot;                                                           
 ##  [3] &quot;égyptologie&quot;                                                 
@@ -661,13 +668,13 @@ div.tocify {
 ## [16] &quot;Urbaniste&quot;                                                   
 ## [17] &quot;urbaniste ?&quot;                                                 
 ## [18] &quot;Urbaniste ville durable&quot;</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tab, <span class="at">names.arg =</span> <span class="fu">names</span>(tab), <span class="at">las =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">barplot</span>(tab, <span class="dt">names.arg =</span> <span class="kw">names</span>(tab), <span class="dt">las =</span> <span class="dv">2</span>)</a></code></pre></div>
 <p><img src="01_intro_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Il s’agit ici de diminuer le nombre de modalités de la variable.</p>
-<div id="un-exemple-les-urbanistes" class="section level3" number="6.3.1">
-<h3 number="6.3.1"><span class="header-section-number">6.3.1</span> Un exemple : les urbanistes</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>motif <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;rba&quot;</span>, cours1<span class="sc">$</span>futur)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cours1<span class="sc">$</span>futur [motif]</span></code></pre></div>
+<div id="un-exemple-les-urbanistes" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Un exemple : les urbanistes</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">motif &lt;-<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;rba&quot;</span>, cours1<span class="op">$</span>futur)</a>
+<a class="sourceLine" id="cb13-2" title="2">cours1<span class="op">$</span>futur [motif]</a></code></pre></div>
 <pre><code>##  [1] &quot;Urbaniste&quot;                                 
 ##  [2] &quot;Urbanisme&quot;                                 
 ##  [3] &quot;Urbaniste ville durable&quot;                   
@@ -678,37 +685,37 @@ div.tocify {
 ##  [8] &quot;Urbanisme&quot;                                 
 ##  [9] &quot;Urbanisme&quot;                                 
 ## [10] &quot;urbanisme dans collectivités territoriales&quot;</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>cours1<span class="sc">$</span>futur [motif] <span class="ot">&lt;-</span> <span class="st">&quot;urbanisme&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">cours1<span class="op">$</span>futur [motif] &lt;-<span class="st"> &quot;urbanisme&quot;</span></a></code></pre></div>
 </div>
-<div id="exercice-quel-autre-recodage-possible" class="section level3" number="6.3.2">
-<h3 number="6.3.2"><span class="header-section-number">6.3.2</span> Exercice : quel autre recodage possible ?</h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>motif <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;rch&quot;</span>, cours1<span class="sc">$</span>futur)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cours1<span class="sc">$</span>futur [motif] <span class="ot">&lt;-</span> <span class="st">&quot;archéologie&quot;</span></span></code></pre></div>
+<div id="exercice-quel-autre-recodage-possible" class="section level3">
+<h3><span class="header-section-number">6.3.2</span> Exercice : quel autre recodage possible ?</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">motif &lt;-<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;rch&quot;</span>, cours1<span class="op">$</span>futur)</a>
+<a class="sourceLine" id="cb16-2" title="2">cours1<span class="op">$</span>futur [motif] &lt;-<span class="st"> &quot;archéologie&quot;</span></a></code></pre></div>
 <p>Les deux réponses “jsp” vont être classées avec les “?”, ainsi que “aucune idée de métier”</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>motif <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;jsp|aucune&quot;</span>, cours1<span class="sc">$</span>futur)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>cours1<span class="sc">$</span>futur [motif] <span class="ot">&lt;-</span> <span class="st">&quot;?&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">motif &lt;-<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;jsp|aucune&quot;</span>, cours1<span class="op">$</span>futur)</a>
+<a class="sourceLine" id="cb17-2" title="2">cours1<span class="op">$</span>futur [motif] &lt;-<span class="st"> &quot;?&quot;</span></a></code></pre></div>
 </div>
 </div>
-<div id="valeurs-manquantes" class="section level2" number="6.4">
-<h2 number="6.4"><span class="header-section-number">6.4</span> Valeurs manquantes</h2>
+<div id="valeurs-manquantes" class="section level2">
+<h2><span class="header-section-number">6.4</span> Valeurs manquantes</h2>
 <p>NA (Not Avalaible)</p>
 <p>? et absence de réponse n’ont pas la même valeur. On décide de recoder les réponses nulles en NA</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>cours1<span class="sc">$</span>futur <span class="sc">==</span> <span class="st">&quot;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">cours1<span class="op">$</span>futur <span class="op">==</span><span class="st"> &quot;&quot;</span></a></code></pre></div>
 <pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE
 ## [13] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
 ## [25] FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>cours1<span class="sc">$</span>futur [cours1<span class="sc">$</span>futur <span class="sc">==</span> <span class="st">&quot;&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">cours1<span class="op">$</span>futur [cours1<span class="op">$</span>futur <span class="op">==</span><span class="st"> &quot;&quot;</span>]</a></code></pre></div>
 <pre><code>##  [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>cours1<span class="sc">$</span>futur [cours1<span class="sc">$</span>futur <span class="sc">==</span> <span class="st">&quot;&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(cours1<span class="sc">$</span>futur, <span class="at">useNA  =</span> <span class="st">&quot;always&quot;</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">15</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tab, <span class="at">col =</span> <span class="fu">terrain.colors</span>(<span class="dv">7</span>), <span class="at">las =</span> <span class="dv">2</span>, <span class="at">horiz =</span> T, <span class="at">main =</span> <span class="st">&quot;Quel futur imaginent les étudiants ?&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">cours1<span class="op">$</span>futur [cours1<span class="op">$</span>futur <span class="op">==</span><span class="st"> &quot;&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb22-2" title="2">tab &lt;-<span class="st"> </span><span class="kw">table</span>(cours1<span class="op">$</span>futur, <span class="dt">useNA  =</span> <span class="st">&quot;always&quot;</span>)</a>
+<a class="sourceLine" id="cb22-3" title="3"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">15</span>,<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb22-4" title="4"><span class="kw">barplot</span>(tab, <span class="dt">col =</span> <span class="kw">terrain.colors</span>(<span class="dv">7</span>), <span class="dt">las =</span> <span class="dv">2</span>, <span class="dt">horiz =</span> T, <span class="dt">main =</span> <span class="st">&quot;Quel futur imaginent les étudiants ?&quot;</span>)</a></code></pre></div>
 <p><img src="01_intro_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
-<div id="notes-du-dst" class="section level2" number="6.5">
-<h2 number="6.5"><span class="header-section-number">6.5</span> Notes du DST</h2>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/noteDST.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>note.DST, <span class="at">main =</span> <span class="st">&quot;Notes DST&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;valeur de la note&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb de notes&quot;</span>)</span></code></pre></div>
+<div id="notes-du-dst" class="section level2">
+<h2><span class="header-section-number">6.5</span> Notes du DST</h2>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/noteDST.csv&quot;</span>, <span class="dt">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="kw">hist</span>(data<span class="op">$</span>note.DST, <span class="dt">main =</span> <span class="st">&quot;Notes DST&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;valeur de la note&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;nb de notes&quot;</span>)</a></code></pre></div>
 <p><img src="01_intro_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 </div>
