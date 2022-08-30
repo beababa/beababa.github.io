@@ -15,8 +15,8 @@
 
 <title>1e saisie : apprendre</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -46,7 +46,6 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
-
 
 
 <style type="text/css">
@@ -171,9 +170,6 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
 }
 pre code {
   padding: 0;
@@ -399,7 +395,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -476,12 +472,14 @@ OSM</h1>
 <div id="overpass-pour-extraire" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Overpass pour
 extraire</h2>
+<p><a href="https://overpass-turbo.eu/"
+class="uri">https://overpass-turbo.eu/</a></p>
 <div id="première-approche-les-rues" class="section level3"
 number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> Première approche :
 les rues</h3>
 <pre><code>highway = * in Bondy</code></pre>
-<p>Ca tombe bien, les résidences sont souvent appelées par le nom de
+<p>Cela tombe bien, les résidences sont souvent appelées par le nom de
 leurs rues…</p>
 <div id="carte-1-les-rues-osm-sous-qgis" class="section level4"
 number="3.1.1.1">
@@ -495,6 +493,8 @@ Téléchargement</p></li>
 <li><p>étiquetage des rues sous Qgis</p></li>
 </ul>
 <p><img src="img/rue.png" /></p>
+<p>résultat</p>
+<p><img src="img/etikrue.PNG" /></p>
 <ul>
 <li>mise en page qgis (3 boutons)</li>
 </ul>
@@ -542,20 +542,20 @@ number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Traitements sur la
 donnée initiale</h3>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
-<pre><code>## Linking to GEOS 3.9.1, GDAL 3.3.2, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pmorale <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/logement.gpkg&quot;</span>, <span class="st">&quot;pmorale&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `pmorale&#39; from data source 
-##   `C:\Users\tachasa\coursP8 - Copie\data\logement.gpkg&#39; using driver `GPKG&#39;
+<pre><code>## Warning: le package &#39;sf&#39; a été compilé avec la version R 4.1.2</code></pre>
+<pre><code>## Linking to GEOS 3.9.1, GDAL 3.2.1, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pmorale <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/logement.gpkg&quot;</span>, <span class="st">&quot;pmorale&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `pmorale&#39; from data source `E:\coursP8\data\logement.gpkg&#39; using driver `GPKG&#39;
 ## Simple feature collection with 5477 features and 3 fields
 ## Geometry type: MULTIPOLYGON
 ## Dimension:     XY
 ## Bounding box:  xmin: 661077.2 ymin: 6865338 xmax: 663343.6 ymax: 6869045
 ## Projected CRS: RGF93 / Lambert-93</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># on filtre sur la catégorie</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>categ5 <span class="ot">&lt;-</span> pmorale [pmorale<span class="sc">$</span>categorie <span class="sc">==</span> <span class="dv">5</span>,]</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dénombrement</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(categ5<span class="sc">$</span>nom)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tab)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># on filtre sur la catégorie</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>categ5 <span class="ot">&lt;-</span> pmorale [pmorale<span class="sc">$</span>categorie <span class="sc">==</span> <span class="dv">5</span>,]</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dénombrement</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(categ5<span class="sc">$</span>nom)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tab)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -634,18 +634,18 @@ MODERE</td>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># enregistrement du fichier des formes et de la liste des bailleurs.</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(categ5, <span class="st">&quot;data/logement.gpkg&quot;</span>, <span class="st">&quot;categ5&quot;</span>,<span class="at">delete_layer =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># enregistrement du fichier des formes et de la liste des bailleurs.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(categ5, <span class="st">&quot;data/logement.gpkg&quot;</span>, <span class="st">&quot;categ5&quot;</span>,<span class="at">delete_layer =</span> T)</span></code></pre></div>
 <pre><code>## Deleting layer `categ5&#39; using driver `GPKG&#39;
 ## Writing layer `categ5&#39; to data source `data/logement.gpkg&#39; using driver `GPKG&#39;
 ## Writing 4620 features with 3 fields and geometry type Multi Polygon.</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(tab, <span class="st">&quot;data/bailleurCadastre.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(tab, <span class="st">&quot;data/bailleurCadastre.csv&quot;</span>)</span></code></pre></div>
 <p>Attention à Bondy Habitat, recoder le fichier de manière à utiliser
 les mêmes noms et plus courts.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/bailleurCadastreCorrige.csv&quot;</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># jointure entre le fichier forme et texte</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(categ5, txt, <span class="at">by.x =</span> <span class="st">&quot;nom&quot;</span>, <span class="at">by.y =</span> <span class="st">&quot;nomLong&quot;</span> )</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(jointure, <span class="st">&quot;data/logement.gpkg&quot;</span>, <span class="st">&quot;categ5&quot;</span>,<span class="at">delete_layer =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/bailleurCadastreCorrige.csv&quot;</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># jointure entre le fichier forme et texte</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(categ5, txt, <span class="at">by.x =</span> <span class="st">&quot;nom&quot;</span>, <span class="at">by.y =</span> <span class="st">&quot;nomLong&quot;</span> )</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(jointure, <span class="st">&quot;data/logement.gpkg&quot;</span>, <span class="st">&quot;categ5&quot;</span>,<span class="at">delete_layer =</span> T)</span></code></pre></div>
 <pre><code>## Deleting layer `categ5&#39; using driver `GPKG&#39;
 ## Writing layer `categ5&#39; to data source `data/logement.gpkg&#39; using driver `GPKG&#39;
 ## Writing 16 features with 5 fields and geometry type Multi Polygon.</code></pre>
