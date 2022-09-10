@@ -9,7 +9,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="BMaranget" />
 
 
 <title>Introduction</title>
@@ -411,18 +410,33 @@ div.tocify {
   <a href="intro.html">Introduction</a>
 </li>
 <li>
-  <a href="jour1.html">saisie 1</a>
+  <a href="jour1.html">univariées</a>
 </li>
 <li>
-  <a href="jour2.html">saisie 2</a>
+  <a href="jour2.html">bi-variées</a>
 </li>
 <li>
-  <a href="jour3.html">saisie 3</a>
+  <a href="jour3.html">khi 2</a>
+</li>
+<li>
+  <a href="jour4.html">régression</a>
+</li>
+<li>
+  <a href="jour5.html">examen</a>
+</li>
+<li>
+  <a href="jour6.html">variance</a>
+</li>
+<li>
+  <a href="jour7.html">multivariées AFC</a>
+</li>
+<li>
+  <a href="jour7.html">classification</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/beababa/coursP8">
+  <a href="https://beababa.github.io/">
     <span class="fa fa-github"></span>
      
   </a>
@@ -437,134 +451,266 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Introduction</h1>
-<h4 class="author">BMaranget</h4>
-<h4 class="date">2/08/2022</h4>
 
 </div>
 
 
-<div id="objectif" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Objectif</h1>
-<div id="une-carte-des-bailleurs-sociaux" class="section level2"
-number="1.1">
-<h2><span class="header-section-number">1.1</span> Une carte des
-bailleurs sociaux</h2>
-<p>Faire une carte des bailleurs sociaux de la ville de Bondy avec des
-sources opendata et en utilisant Qgis et OSM.</p>
-<p><img src="img/exemple.png" /></p>
-<p><em>extraction de la carte du patrimoine de Bondy Habitat 1er
-septembre 2019</em></p>
+<div id="intitulé-du-cours" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Intitulé du cours</h1>
+<p><em>“L5GEABIM Analyses bivariées et multivariées”</em></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/presentation.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">header =</span> F)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;groupe&quot;</span>, <span class="st">&quot;heures&quot;</span>, <span class="st">&quot;enseignant&quot;</span>) )</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">groupe</th>
+<th align="left">heures</th>
+<th align="left">enseignant</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Gr. 1</td>
+<td align="left">8h - 9h30</td>
+<td align="left">Thomas LAMY</td>
+</tr>
+<tr class="even">
+<td align="left">Gr. 2</td>
+<td align="left">9h30 - 11h</td>
+<td align="left">Béatrice MARANGET</td>
+</tr>
+<tr class="odd">
+<td align="left">Gr. 3</td>
+<td align="left">14h - 15h30</td>
+<td align="left">Béatrice MARANGET</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="remarques-diverses" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Remarques
-diverses</h2>
+<div id="déroulé" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Déroulé</h1>
+<p>Il va être modifié en fonction de</p>
 <ul>
-<li><p>Observations sur la donnée à avoir pour obtenir une telle
-carte</p></li>
-<li><p>Pourquoi utiliser OSM ?</p></li>
+<li>votre vitesse - s’il faut prendre plus de temps sur les
+basiques</li>
+<li>la collaboration avec l’autre enseignant</li>
 </ul>
+<p>13 cours en tout. 2 cours d’intro rappels stats 7 sur la stat
+bi-variée 3 sur la multivariée 1 cours pour un devoir sur table au
+mi-semestre 1 devoir maison à rendre vers la fin du semestre</p>
+<p>… et un partiel en plus !</p>
+<p>Au départ on utilise Libre Office (plutôt que Microsoft) puis R</p>
+<p>Question : quelle utilisation de R ? des cours cette année ?</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deroule.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
+<table>
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="72%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Num.cours</th>
+<th align="left">date</th>
+<th align="left">thème</th>
+<th align="left">outil</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">20/09/21</td>
+<td align="left">statistique univariée : base</td>
+<td align="left">tableur</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">27/09/21</td>
+<td align="left">statistique univariée : indicateurs</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">04/10/21</td>
+<td align="left">bivariée : base</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">04/10/21</td>
+<td align="left">contingence</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">11/10/21</td>
+<td align="left">Khi 2</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">18/10/21</td>
+<td align="left">régression</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="left">25/10/21</td>
+<td align="left">devoir sur table</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="left">08/11/21</td>
+<td align="left">Fin régression / Initiation R</td>
+<td align="left">R</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="left">15/11/21</td>
+<td align="left">initiation R</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="left">22/11/21</td>
+<td align="left">multivariée : multifactorielle + sujet de devoir</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="left">29/11/21</td>
+<td align="left">classification</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="left">06/12/21</td>
+<td align="left">questions autour du devoir maison. Devoir à rendre le 8
+au plus tard.</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="left">13/12/21</td>
+<td align="left">rendu du devoir maison et bilan formation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
 </div>
-</div>
-<div id="méthode-et-déroulé" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Méthode et déroulé</h1>
-<p>Il s’agit de mettre en place un <em>cercle vertueux</em> dans
-l’utilisation d’OSM : extraire, contribuer, vérifier sa saisie en
-extrayant de nouveau et contribuer pour l’améliorer.</p>
-<p>JOUR 1 : extraction - saisie - contrôle données existantes et ajout
-d’une résidence en test</p>
-<p>JOUR 2 : la même chose sur des données ajoutées (nombre d’étages etc,
-plusieurs résidences)</p>
-<p>JOUR 3 : saisie exhaustive sur les résidences</p>
-<p>Comme l’objectif est d’utiliser OSM, tous les traitements des données
-sont faits sous R afin de gagner du temps. Ils permettent de montrer ce
-qu’on fait à la donnée mais sans entrer dans l’écriture du code. … cours
-R à venir… Pour chaque séquence, plusieurs cartes et un quizz. pas
-d’évaluation officielle. Les cartes sont à mettre dans le répertoire
-réseau “cartes” dans le répertoire indiqué Le support sert uniquement de
-“fil rouge” et permet des calculs plus rapides qu’avec Qgis. Les
-procédures employées sont à rechercher sur internet.</p>
-<p>Essai : “Qgis compter les points dans un polygone” Quel est le menu
-qui permet de le faire ?</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stats temps / séquence</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>temps <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tps.csv&quot;</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(temps<span class="sc">$</span>tps, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## [1] 1075</code></pre>
-</div>
-<div id="présentation-en-binôme" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Présentation en
-binôme</h1>
-<p>passé / présent / futur fichier framapad, celui qui parle, celui qui
-écrit <a href="https://lite.framacalc.org/9ilj-coursp8"
-class="uri">https://lite.framacalc.org/9ilj-coursp8</a></p>
-<p>Ce fichier va permettre de s’attribuer les zones de saisie et toutes
-les opérations collaboratives du cours.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/etudiant.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>passé)</span></code></pre></div>
+<div id="présentation-rapide-vous-êtes-nombreux" class="section level1"
+number="3">
+<h1><span class="header-section-number">3</span> Présentation rapide
+(vous êtes nombreux !)</h1>
+<p>passé / présent / futur appétence pour les stats fichier framapad, <a
+href="https://lite.framacalc.org/9pse-coursstatsorbonne2022-9we9"
+class="uri">https://lite.framacalc.org/9pse-coursstatsorbonne2022-9we9</a></p>
+<pre><code>## [1] &quot;prenom&quot;                                         
+## [2] &quot;adresse.mail&quot;                                   
+## [3] &quot;X20.9&quot;                                          
+## [4] &quot;passé&quot;                                          
+## [5] &quot;présent&quot;                                        
+## [6] &quot;futur&quot;                                          
+## [7] &quot;appétence.pour.les.stats.0.j.adore.4.je.déteste&quot;
+## [8] &quot;session&quot;</code></pre>
 <pre><code>## 
-##   aménagement environnement    géographie    géomatique  informatique 
-##             3             1             7             5             1 
-## télédétection 
-##             1</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(data<span class="sc">$</span>passé), <span class="at">las =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(data<span class="sc">$</span>présent), <span class="at">las =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(data<span class="sc">$</span>futur), <span class="at">las =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-2-3.png" width="672" /></p>
+## cours1 cours2 
+##     28     29</code></pre>
+<p>Désormais le framapad sert à l’émargement</p>
 </div>
-<div id="pratique" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Pratique</h1>
-<p>prénom et répertoires de cartes copie du répertoire réseau quelle
-diffusion ?</p>
+<div id="la-donnée-du-cours" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> La donnée du cours</h1>
+<div id="la-source" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> La source</h2>
+<p><a
+href="https://www.data.gouv.fr/fr/datasets/repertoire-des-logements-locatifs-des-bailleurs-sociaux/"
+class="uri">https://www.data.gouv.fr/fr/datasets/repertoire-des-logements-locatifs-des-bailleurs-sociaux/</a></p>
+<p>Prendre le .zip de 2021, petit test d’ouverture sous moodle
+(Introduction/bases informatiques)</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/rpls2021_geolocalise_OD_REG11_DEP93.csv&quot;</span>, <span class="at">sep =</span><span class="st">&quot;;&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution par commune</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>LIBCOM)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/rpls93.png&quot;</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">sort</span>(tab), <span class="at">las =</span> <span class="dv">2</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(tab [ <span class="fu">names</span>(tab) <span class="sc">==</span> <span class="st">&quot;Bondy&quot;</span>],<span class="dv">0</span>, <span class="at">col =</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="fu">sort</span>(tab), <span class="st">&quot;data/dpt93RPLSCommune.csv&quot;</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># filtre sur Bondy</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>filtre <span class="ot">&lt;-</span> data [data<span class="sc">$</span>CODEPOSTAL <span class="sc">==</span> <span class="st">&quot;93140&quot;</span>,]</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(filtre, <span class="st">&quot;data/rplsBondy.csv&quot;</span>)</span></code></pre></div>
+<p><img src="img/rpls93.png" /></p>
+<p>C’est normalement ce fichier de données que nous allons utiliser pour
+le cours.</p>
 </div>
-<div id="quizz" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Quizz</h1>
-<p>Introduction <a href="https://forms.gle/ShMFrVz1s447ubcPA"
-class="uri">https://forms.gle/ShMFrVz1s447ubcPA</a></p>
-<p>séquence 1 <a href="https://forms.gle/sDSz2LXPVKd99c8v7"
-class="uri">https://forms.gle/sDSz2LXPVKd99c8v7</a></p>
-<p>séquence 2 <a href="https://forms.gle/m6no4Vt9hxDhGKgp6"
-class="uri">https://forms.gle/m6no4Vt9hxDhGKgp6</a></p>
-<p>séquence 3 <a href="https://forms.gle/GDZWbSydMtmMZAJi9"
-class="uri">https://forms.gle/GDZWbSydMtmMZAJi9</a></p>
-<p>Quizz final <a href="https://forms.gle/R5W9DooDPMmRn3kF6"
-class="uri">https://forms.gle/R5W9DooDPMmRn3kF6</a></p>
 </div>
-<div id="bonus-sur-lopendata" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> Bonus sur
-l’opendata</h1>
-<div id="repères-chronologiques" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Repères
-chronologiques</h2>
-<p>Question : De quand date le principe de libre communication de la
-matrice cadastrale ?</p>
+<div id="pratique" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Pratique</h1>
+<p>Lorsque l’exercice le requiert, le fichier est à rendre avec son
+<em>prénom</em> (toujours le même svp) sous moodle.</p>
+</div>
+<div id="quizz-de-cours" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Quizz de cours</h1>
+<p>Quelques minutes en fin de chaque cours, histoire pour moi de voir
+s’il faut que je reprenne des notions.</p>
 <ul>
-<li>loi du 7 messidor an II</li>
-<li>Décret n° 2012-59 du 18 janvier 2012 relatif à la délivrance au
-public de certaines informations cadastrales qui modifie le livre des
-procédures fiscales</li>
-<li>loi du 17 juillet 1978 (dont l’article 6 (protège les secrets de la
-vie privée)</li>
+<li><p>Univariés <a href="https://forms.gle/vR9f156Up9zrL86B9"
+class="uri">https://forms.gle/vR9f156Up9zrL86B9</a></p></li>
+<li><p>Bi variés base <a href="https://forms.gle/JSEWZJJ3V1S349EZA"
+class="uri">https://forms.gle/JSEWZJJ3V1S349EZA</a></p></li>
+<li><p>Tableau de contingence <a
+href="https://forms.gle/Le8wvTBabxmw3SAg8"
+class="uri">https://forms.gle/Le8wvTBabxmw3SAg8</a></p></li>
+<li><p>Khi2 <a href="https://forms.gle/46Lr7fNWydQPqcCr5"
+class="uri">https://forms.gle/46Lr7fNWydQPqcCr5</a></p></li>
+<li><p>Régression <a href="https://forms.gle/TNpQPtgYVjfrde5ZA"
+class="uri">https://forms.gle/TNpQPtgYVjfrde5ZA</a></p></li>
+<li><p>Variance <a href="https://forms.gle/vS4zZzsNfnTyDHMfA"
+class="uri">https://forms.gle/vS4zZzsNfnTyDHMfA</a></p></li>
+<li><p>base multivariée : ACP <a
+href="https://forms.gle/Zz5uif7jmvZWVA219"
+class="uri">https://forms.gle/Zz5uif7jmvZWVA219</a></p></li>
+<li><p>Classification <a href="https://forms.gle/4K7r7hPGZB89vEAF6"
+class="uri">https://forms.gle/4K7r7hPGZB89vEAF6</a></p></li>
 </ul>
 </div>
-<div id="faire-une-demande-de-nom-de-propriétaire-sur-france-cadastre"
-class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Faire une demande de
-nom de propriétaire sur france cadastre</h2>
+<div id="ressources-autre-que-la-bibliographie-officielle"
+class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Ressources autre que la
+bibliographie officielle</h1>
+<p>2 cours universitaires disponibles sur internet</p>
+<ul>
+<li><a
+href="http://www.ipt.univ-paris8.fr/vgodard/enseigne/statisti/framstat.htm"
+class="uri">http://www.ipt.univ-paris8.fr/vgodard/enseigne/statisti/framstat.htm</a></li>
+<li><a
+href="http://grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm"
+class="uri">http://grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm</a></li>
+</ul>
 </div>
-<div id="en-guise-de-conclusion" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> En guise de
-conclusion</h2>
-<p>Voir les commentaires</p>
-<p><a
-href="https://pasq.fr/fichier-des-proprietes-des-personnes-morales"
-class="uri">https://pasq.fr/fichier-des-proprietes-des-personnes-morales</a></p>
-</div>
+<div id="le-devoir-maison" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> Le devoir maison</h1>
+<p>Il s’agit de prendre minimum 4 variables socio économiques à partir
+de l’outil insee statistiques locales et de faire dessus une analyse
+factorielle et une classification en affinant au fur et à mesure
+(exclusion des valeurs particulières ou choix d’échantillons). Le devoir
+maison est à rendre sous forme de script R commenté (avec des #) avec le
+fichier de données en .csv</p>
+<p>dates :</p>
+<ul>
+<li><p>soumission du sujet : 22/11 et 29/11, chaque étudiant doit
+proposer ses variables</p></li>
+<li><p>travail sur le devoir en classe : 6/12</p></li>
+<li><p>rendu du devoir par les étudiants : 8/12</p></li>
+<li><p>le devoir sera rendu sur la dernière séance, le 13/12</p></li>
+</ul>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
-<small><p>Cours P8 G2M 2022 QGIS OSM - Bailleurs sociaux Bondy </p></small>
+<small><p>L5GEABIM Analyses bivariées et multivariées</p></small>
 
 
 </div>
