@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Statistiques bi variées - khi 2</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="intro.html">Introduction</a>
+</li>
+<li>
+  <a href="jour1.html">univariées</a>
+</li>
+<li>
+  <a href="jour2.html">bi-variées</a>
+</li>
+<li>
+  <a href="jour3.html">khi 2</a>
+</li>
+<li>
+  <a href="jour4.html">régression</a>
+</li>
+<li>
+  <a href="jour5.html">examen</a>
+</li>
+<li>
+  <a href="jour6.html">variance</a>
+</li>
+<li>
+  <a href="jour7.html">multivariées AFC</a>
+</li>
+<li>
+  <a href="jour7.html">classification</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://beababa.github.io/">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Statistiques bi variées - khi 2</h1>
+
+</div>
+
+
+<div id="déroulement" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Déroulement</h1>
+<div id="données-dexemple" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Données
+d’exemple</h2>
+<p>hypothèse : relation entre les secteurs géographiques / les
+résidences et les types d’appartements (du studio au plus de 5
+pièces)</p>
+<p>Deux distributions connues par classe quelque soit la nature des
+modalités.</p>
+</div>
+<div id="différentes-étapes" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Différentes
+étapes</h2>
+<ul>
+<li><p>Tableau de contingence</p></li>
+<li><p>calcul du khi2</p></li>
+<li><p>comparaison avec le khi2 théorique</p></li>
+</ul>
+</div>
+</div>
+<div id="exploration-des-données" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Exploration des
+données</h1>
+<div id="discrétisation-des-données" class="section level2"
+number="2.1">
+<h2><span class="header-section-number">2.1</span> Discrétisation des
+données</h2>
+<p>Afin de vraiment comprendre, on saisit des modalités différentes : à
+votre avis comment va-t-on les classer ?</p>
+<p>Attention, valeur plancher 5</p>
+<pre><code>## Linking to GEOS 3.9.1, GDAL 3.3.2, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
+<pre><code>## Reading layer `quartiersBailleurs&#39; from data source 
+##   `C:\Users\tachasa\01_stat\data\logement.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 8 features and 1 field
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 661091 ymin: 6865344 xmax: 663345.5 ymax: 6869044
+## Projected CRS: RGF93 / Lambert-93</code></pre>
+<pre><code>## Reading layer `RPLS&#39; from data source 
+##   `C:\Users\tachasa\01_stat\data\logement.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 9390 features and 72 fields
+## Geometry type: POINT
+## Dimension:     XY
+## Bounding box:  xmin: 661284.6 ymin: 6865691 xmax: 663295 ymax: 6868803
+## Projected CRS: RGF93 / Lambert-93</code></pre>
+<pre><code>## 
+##    1    2    3    4    5    6    7    9 &lt;NA&gt; 
+##  631 2164 3676 2231  609   45   33    1    0</code></pre>
+<p><img src="jour3_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre><code>## Warning: attribute variables are assumed to be spatially constant throughout all
+## geometries
+
+## Warning: attribute variables are assumed to be spatially constant throughout all
+## geometries</code></pre>
+</div>
+<div id="cartographies-de-base" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Cartographies de
+base</h2>
+<div id="les-points-logements" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Les points
+logements</h3>
+<p><img src="jour3_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Quel est le problème de cette cartographie ?</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>zone <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/logement.gpkg&quot;</span>, <span class="st">&quot;quartiersBailleurs&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `quartiersBailleurs&#39; from data source 
+##   `C:\Users\tachasa\01_stat\data\logement.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 8 features and 1 field
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 661091 ymin: 6865344 xmax: 663345.5 ymax: 6869044
+## Projected CRS: RGF93 / Lambert-93</code></pre>
+</div>
+</div>
+<div id="carte-des-zones" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Carte des zones</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(zone, <span class="at">type =</span> <span class="st">&quot;typo&quot;</span>, <span class="at">var =</span> <span class="st">&quot;NOM_IRIS&quot;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Zones inventaire bailleurs sociaux&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;sources internes, Bondy, 2013&quot;</span>)</span></code></pre></div>
+<p><img src="jour3_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+</div>
+<div id="tableau-de-contingence" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Tableau de
+contingence</h1>
+<p>Au sens anglais du terme, <em>ce qui peut exister</em></p>
+<div id="création" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Création</h2>
+<p>Utiliser l’outil de table dynamique (dans le menu données) pour le
+créer</p>
+<p>Résultat attendu :</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/rplsPieceZone.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>NOM_IRIS, data<span class="sc">$</span>taille)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">addmargins</span>(tab))</span></code></pre></div>
+<table>
+<colgroup>
+<col width="67%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">grand</th>
+<th align="right">moyen</th>
+<th align="right">petit</th>
+<th align="right">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Blanqui</td>
+<td align="right">168</td>
+<td align="right">889</td>
+<td align="right">324</td>
+<td align="right">1381</td>
+</tr>
+<tr class="even">
+<td align="left">centre ville Gare</td>
+<td align="right">84</td>
+<td align="right">778</td>
+<td align="right">404</td>
+<td align="right">1266</td>
+</tr>
+<tr class="odd">
+<td align="left">de Lattre de Tassigny/cité des Fleurs /mairie</td>
+<td align="right">65</td>
+<td align="right">869</td>
+<td align="right">482</td>
+<td align="right">1416</td>
+</tr>
+<tr class="even">
+<td align="left">fosse de la Régale</td>
+<td align="right">33</td>
+<td align="right">483</td>
+<td align="right">299</td>
+<td align="right">815</td>
+</tr>
+<tr class="odd">
+<td align="left">la mare à la Veuve</td>
+<td align="right">2</td>
+<td align="right">307</td>
+<td align="right">179</td>
+<td align="right">488</td>
+</tr>
+<tr class="even">
+<td align="left">la remise à Jorelle</td>
+<td align="right">59</td>
+<td align="right">521</td>
+<td align="right">86</td>
+<td align="right">666</td>
+</tr>
+<tr class="odd">
+<td align="left">Merisiers /14 juillet</td>
+<td align="right">17</td>
+<td align="right">611</td>
+<td align="right">223</td>
+<td align="right">851</td>
+</tr>
+<tr class="even">
+<td align="left">Noue Caillet /Terre Saint Blaise /les Galiotes</td>
+<td align="right">254</td>
+<td align="right">1439</td>
+<td align="right">798</td>
+<td align="right">2491</td>
+</tr>
+<tr class="odd">
+<td align="left">Sum</td>
+<td align="right">682</td>
+<td align="right">5897</td>
+<td align="right">2795</td>
+<td align="right">9374</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="analyse-dun-tableau-de-contingence" class="section level2"
+number="3.2">
+<h2><span class="header-section-number">3.2</span> Analyse d’un tableau
+de contingence</h2>
+<ul>
+<li><p>Il faut présenter les sources, la structure et le contenu du
+tableau.</p></li>
+<li><p>Lister les questions susceptibles d’être posées, notamment en
+étudiant les fréquences conditionnelles</p></li>
+</ul>
+<div id="format-conditionnel" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Format
+conditionnel</h3>
+<p><img src="img/formatConditionnel.png" /> Cet outil est-il utile ici
+?</p>
+</div>
+<div id="fréquences-conditionnelles-en-ligne-et-colonne"
+class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Fréquences
+conditionnelles en ligne et colonne</h3>
+<p>Pour pouvoir comparer les zones, chaque groupe est ramené à une même
+base égale à 100.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>freqLg <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>NOM_IRIS, data<span class="sc">$</span>taille), <span class="at">margin =</span> <span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span>,<span class="dv">0</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(freqLg, <span class="at">title =</span> <span class="st">&quot;Fréquence conditionnelle ligne&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">grand</th>
+<th align="right">moyen</th>
+<th align="right">petit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Blanqui</td>
+<td align="right">12</td>
+<td align="right">64</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="left">centre ville Gare</td>
+<td align="right">7</td>
+<td align="right">61</td>
+<td align="right">32</td>
+</tr>
+<tr class="odd">
+<td align="left">de Lattre de Tassigny/cité des Fleurs /mairie</td>
+<td align="right">5</td>
+<td align="right">61</td>
+<td align="right">34</td>
+</tr>
+<tr class="even">
+<td align="left">fosse de la Régale</td>
+<td align="right">4</td>
+<td align="right">59</td>
+<td align="right">37</td>
+</tr>
+<tr class="odd">
+<td align="left">la mare à la Veuve</td>
+<td align="right">0</td>
+<td align="right">63</td>
+<td align="right">37</td>
+</tr>
+<tr class="even">
+<td align="left">la remise à Jorelle</td>
+<td align="right">9</td>
+<td align="right">78</td>
+<td align="right">13</td>
+</tr>
+<tr class="odd">
+<td align="left">Merisiers /14 juillet</td>
+<td align="right">2</td>
+<td align="right">72</td>
+<td align="right">26</td>
+</tr>
+<tr class="even">
+<td align="left">Noue Caillet /Terre Saint Blaise /les Galiotes</td>
+<td align="right">10</td>
+<td align="right">58</td>
+<td align="right">32</td>
+</tr>
+</tbody>
+</table>
+<p>savoir-faire tableur</p>
+<ul>
+<li><p>Objectif : saisir une seule cellule et étendre la formule. quelle
+élément fixer, ligne ou colonne ?</p></li>
+<li><p>utilisation du %</p></li>
+</ul>
+<p><img src="img/frequenceLG.png" /></p>
+<p>analyse</p>
+<ul>
+<li><p>répartition des types d’appartement puis lorsque ramené à une
+base 100, on peut comparer entre les zones.</p></li>
+<li><p>les écarts à la moyenne par type d’appartements sont plus
+parlants</p></li>
+</ul>
+<p><img src="img/graphEcartFreqLg.png" /></p>
+<p>Qu’apporterait une étude des fréquences conditionnelles en colonnes
+?</p>
+</div>
+</div>
+<div
+id="correction-du-quizz-sur-les-tableaux-de-contingence-de-lannée-dernière"
+class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Correction du quizz
+sur les tableaux de contingence de l’année dernière</h2>
+<div id="données" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Données</h3>
+<div id="mauvaise-réponse" class="section level4" number="3.3.1.1">
+<h4><span class="header-section-number">3.3.1.1</span> Mauvaise
+réponse</h4>
+<ul>
+<li>Il y a 3 variables : les lits de réanimation, les lits intensifs et
+les lits de surveillance, tout cela par région*</li>
+</ul>
+</div>
+<div id="bonne-réponse" class="section level4" number="3.3.1.2">
+<h4><span class="header-section-number">3.3.1.2</span> Bonne
+réponse</h4>
+<ul>
+<li>Les lits par région *</li>
+</ul>
+</div>
+<div id="très-bonne-réponse" class="section level4" number="3.3.1.3">
+<h4><span class="header-section-number">3.3.1.3</span> Très bonne
+réponse</h4>
+<ul>
+<li>Il y a 2 variables : les régions et le type de lit (réanimation,
+surveillance et intensif) Ces deux données sont de type catégorie.*</li>
+</ul>
+</div>
+</div>
+<div id="hypothèse" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Hypothèse</h3>
+<div id="mauvaise-réponse-1" class="section level4" number="3.3.2.1">
+<h4><span class="header-section-number">3.3.2.1</span> Mauvaise
+réponse</h4>
+<ul>
+<li>Il serait logique que chaque région ait une capacité adaptée à sa
+population*</li>
+</ul>
+<p>Il n’y a pas de variable population dans les données donc pas
+d’hypothèse autour de la population.</p>
+</div>
+<div id="bonne-réponse-1" class="section level4" number="3.3.2.2">
+<h4><span class="header-section-number">3.3.2.2</span> Bonne
+réponse</h4>
+<ul>
+<li>Les répartitions de type de lit ne sont pas les mêmes entre les
+régions*</li>
+</ul>
+</div>
+</div>
+<div id="fréquences-conditionnelles-en-ligne" class="section level3"
+number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Fréquences
+conditionnelles en ligne</h3>
+<div id="mauvaise-réponse-2" class="section level4" number="3.3.3.1">
+<h4><span class="header-section-number">3.3.3.1</span> Mauvaise
+réponse</h4>
+<ul>
+<li>On peut voir sur la même base qui est 100 la différence pour les 3
+données pour une seule région*</li>
+</ul>
+<p>Il manque des exemples précis.</p>
+</div>
+<div id="bonne-réponse-2" class="section level4" number="3.3.3.2">
+<h4><span class="header-section-number">3.3.3.2</span> Bonne
+réponse</h4>
+<ul>
+<li>Les régions ont une plus forte proportion de lits de surveillance
+que des autres types de lit (42 % en moyenne). Les lits intensifs et de
+réanimation sont en part égales. Mais il y a des différences entre les
+régions. Par exemple, la Bretagne compte beaucoup de lits de
+réanimation. A l’inverse, l’Ile de France en a peu. La PAC et le centre
+val de Loire ont moins de lits de surveillance. Donc les répartitions
+sont différentes entre région.*</li>
+</ul>
+</div>
+</div>
+<div id="fréquences-conditionnelles-en-colonne" class="section level3"
+number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Fréquences
+conditionnelles en colonne</h3>
+<p>La bonne réponse était qu’il n’est pas nécessaire de l’étudier. En
+effet, la répartition des lits de réanimation entre les différentes
+régions ne fait que réfléter l’effectif de la population de chaque
+région. Or, nous n’avons pas cette variable dans le tableau.</p>
+</div>
+</div>
+</div>
+<div id="effectifs-théoriques-et-observées" class="section level1"
+number="4">
+<h1><span class="header-section-number">4</span> Effectifs théoriques et
+observées</h1>
+<div id="analogie-du-jeu-du-dé-ou-test-de-conformité"
+class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Analogie du jeu du dé
+ou test de conformité</h2>
+<p>Le dé est-il truqué ?</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>face <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">6</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>effectif <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">17</span>)</span></code></pre></div>
+<p>hypothèse H0 : le dé n’est pas truqué (il y a indépendance entre la
+face et le nombre de fois où elle sort)</p>
+<p>effectifs théoriques</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>effectifThéorique <span class="ot">&lt;-</span> <span class="fu">rep</span> (<span class="dv">10</span>,<span class="dv">6</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(face, effectif, effectifThéorique)</span></code></pre></div>
+<p>distance entre effectifs théoriques et observés</p>
+<p>Elle se mesure avec le khi2</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(ecart <span class="ot">&lt;-</span> df<span class="sc">$</span>effectif <span class="sc">-</span> df<span class="sc">$</span>effectifThéorique)</span></code></pre></div>
+<pre><code>## [1]  5 -3 -6  1 -4  7</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(distance <span class="ot">&lt;-</span>  ecart<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 25  9 36  1 16 49</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(relatif <span class="ot">&lt;-</span> distance<span class="sc">/</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 2.5 0.9 3.6 0.1 1.6 4.9</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(khi2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(relatif))</span></code></pre></div>
+<pre><code>## [1] 13.6</code></pre>
+<p>paramètres du test :</p>
+<ul>
+<li><p>degré de liberté 5</p></li>
+<li><p>Pour un risque à 0,05 (5 chances sur 100 de se tromper)</p></li>
+</ul>
+<p>le khi2 théorique est de 11,7, il est donc inférieur au khi2
+observé.</p>
+<p>Quand le khi2 théorique est inférieur, le test est rejeté.</p>
+<p>Le test est rejeté avec un risque de 5 %</p>
+<p>Donc, le dé est truqué.</p>
+</div>
+<div id="sur-notre-série" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Sur notre série</h2>
+<div id="tableaux" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> 2 Tableaux</h3>
+<p>La première case reçoit la formule :</p>
+<ul>
+<li><p>effectif / total lg * effectif / total colonne FREQUENCE
+CONJOINTE</p></li>
+<li><p>cette fréquence est multipliée par la totalité de l’effectif pour
+avoir l’ EFFECTIF THEORIQUE</p></li>
+</ul>
+<p><img src="img/effectifTheorique.png" /></p>
+</div>
+<div id="ecarts-entre-observés-et-théoriques" class="section level3"
+number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Ecarts entre
+observés et théoriques</h3>
+<p>Que signifie une valeur zéro ?</p>
+<p>Utiliser les notions</p>
+<ul>
+<li>d’attraction et de répulsion pour les signes.</li>
+<li>sur représentation / sous représentation</li>
+</ul>
+</div>
+</div>
+<div id="le-khi2" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Le Khi2</h2>
+<p>rappel : métrique euclidienne plutôt que les valeurs absolues on
+utilise les carrés</p>
+<div id="le-khi2-partiel" class="section level4" number="4.3.0.1">
+<h4><span class="header-section-number">4.3.0.1</span> Le Khi2
+partiel</h4>
+<p>On met les écarts rapportés à la valeur théorique d’indépendance au
+carré. Puis on divise par l’effectif théorique.</p>
+<p><img src="img/khi2partiel.png" /></p>
+</div>
+<div id="le-khi2-1" class="section level4" number="4.3.0.2">
+<h4><span class="header-section-number">4.3.0.2</span> Le Khi2</h4>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>theorique <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>NOM_IRIS, data<span class="sc">$</span>taille))<span class="sc">*</span><span class="dv">10000</span>,<span class="dv">0</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>theorique</span></code></pre></div>
+<pre><code>##                                                 
+##                                                  grand moyen petit
+##   Blanqui                                          179   948   346
+##   centre ville Gare                                 90   830   431
+##   de Lattre de Tassigny/cité des Fleurs /mairie     69   927   514
+##   fosse de la Régale                                35   515   319
+##   la mare à la Veuve                                 2   328   191
+##   la remise à Jorelle                               63   556    92
+##   Merisiers /14 juillet                             18   652   238
+##   Noue Caillet /Terre Saint Blaise /les Galiotes   271  1535   851</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div>
+<pre><code>##                                                 
+##                                                  grand moyen petit
+##   Blanqui                                          168   889   324
+##   centre ville Gare                                 84   778   404
+##   de Lattre de Tassigny/cité des Fleurs /mairie     65   869   482
+##   fosse de la Régale                                33   483   299
+##   la mare à la Veuve                                 2   307   179
+##   la remise à Jorelle                               59   521    86
+##   Merisiers /14 juillet                             17   611   223
+##   Noue Caillet /Terre Saint Blaise /les Galiotes   254  1439   798</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(ecart <span class="ot">&lt;-</span> tab<span class="sc">-</span>theorique)</span></code></pre></div>
+<pre><code>##                                                 
+##                                                  grand moyen petit
+##   Blanqui                                          -11   -59   -22
+##   centre ville Gare                                 -6   -52   -27
+##   de Lattre de Tassigny/cité des Fleurs /mairie     -4   -58   -32
+##   fosse de la Régale                                -2   -32   -20
+##   la mare à la Veuve                                 0   -21   -12
+##   la remise à Jorelle                               -4   -35    -6
+##   Merisiers /14 juillet                             -1   -41   -15
+##   Noue Caillet /Terre Saint Blaise /les Galiotes   -17   -96   -53</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(distance <span class="ot">&lt;-</span>  ecart<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##                                                 
+##                                                  grand moyen petit
+##   Blanqui                                          121  3481   484
+##   centre ville Gare                                 36  2704   729
+##   de Lattre de Tassigny/cité des Fleurs /mairie     16  3364  1024
+##   fosse de la Régale                                 4  1024   400
+##   la mare à la Veuve                                 0   441   144
+##   la remise à Jorelle                               16  1225    36
+##   Merisiers /14 juillet                              1  1681   225
+##   Noue Caillet /Terre Saint Blaise /les Galiotes   289  9216  2809</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(relatif <span class="ot">&lt;-</span> distance<span class="sc">/</span> theorique)</span></code></pre></div>
+<pre><code>##                                                 
+##                                                       grand      moyen
+##   Blanqui                                        0.67597765 3.67194093
+##   centre ville Gare                              0.40000000 3.25783133
+##   de Lattre de Tassigny/cité des Fleurs /mairie  0.23188406 3.62891046
+##   fosse de la Régale                             0.11428571 1.98834951
+##   la mare à la Veuve                             0.00000000 1.34451220
+##   la remise à Jorelle                            0.25396825 2.20323741
+##   Merisiers /14 juillet                          0.05555556 2.57822086
+##   Noue Caillet /Terre Saint Blaise /les Galiotes 1.06642066 6.00390879
+##                                                 
+##                                                       petit
+##   Blanqui                                        1.39884393
+##   centre ville Gare                              1.69141531
+##   de Lattre de Tassigny/cité des Fleurs /mairie  1.99221790
+##   fosse de la Régale                             1.25391850
+##   la mare à la Veuve                             0.75392670
+##   la remise à Jorelle                            0.39130435
+##   Merisiers /14 juillet                          0.94537815
+##   Noue Caillet /Terre Saint Blaise /les Galiotes 3.30082256</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(khi2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(relatif))</span></code></pre></div>
+<pre><code>## [1] 39.20283</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(data)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tab)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  tab
+## X-squared = 337.97, df = 14, p-value &lt; 2.2e-16</code></pre>
+<p>C’est le total des khi2 partiels (dans notre exemple 338)</p>
+<p>On définit :</p>
+<ul>
+<li>degré de liberté lg -1 * col -1</li>
+</ul>
+<p>8 zone et 3 types d’appartements = 24</p>
+<ul>
+<li>risque 1, 5 et 10 %</li>
+</ul>
+<p>Sur internet, dans n’importe quelle table, on cherche les valeurs
+correspondantes.</p>
+</div>
+<div id="rejet-de-h0-ou-pas" class="section level4" number="4.3.0.3">
+<h4><span class="header-section-number">4.3.0.3</span> Rejet de H0 ou
+pas</h4>
+<p><img src="img/test.png" /></p>
+<p>HO hypothèse d’indépendance. son rejet implique qu’il y a une
+relation.</p>
+<p>Les variables nombre de pièces et zones ont une relation avec une
+marge d’erreur de 5 %</p>
+</div>
+<div id="intensité-de-la-liaison" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Intensité de la
+liaison</h3>
+<p>indicateur entre 0 et 1. 1 pour très forte intensité.</p>
+<div id="coefficient-de-contingence" class="section level4"
+number="4.3.1.1">
+<h4><span class="header-section-number">4.3.1.1</span> Coefficient de
+contingence</h4>
+<p>Le plus simple est le coefficient de contingence peut mesurer cette
+relation.</p>
+<p>C’est le Khi2 rapporté à la somme Khi2 et de l’effectif total</p>
+</div>
+<div id="coefficient-de-tschuprow" class="section level4"
+number="4.3.1.2">
+<h4><span class="header-section-number">4.3.1.2</span> Coefficient de
+Tschuprow</h4>
+<p>D’autres coefficients permet de reprendre le nombre de degrés de
+liberté et ainsi de s’affranchir de la taille du tableau.</p>
+<p>Celui de Tschuprow est le khi2 calculé rapporté à l’effectif total
+multiplié par la racine carré du nombre de degré de liberté.</p>
+<p><img src="img/coeff.png" /></p>
+</div>
+</div>
+<div id="interprétation-des-coefficients" class="section level3"
+number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Interprétation des
+coefficients</h3>
+<p>Ils sont très faibles, donc même si les variables sont dépendantes
+l’une de l’autre, l’intensité de la relation est faible.</p>
+</div>
+</div>
+</div>
+<div id="correction-du-quizz" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Correction du
+quizz</h1>
+<div id="ecarts-entre-observés-et-théoriques-1" class="section level2"
+number="5.1">
+<h2><span class="header-section-number">5.1</span> Ecarts entre observés
+et théoriques</h2>
+<p>Penser à utiliser les terme attraction / répulsion ou sur et sous
+représentation.</p>
+<div id="bonne-réponse-3" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Bonne réponse</h3>
+<p>Sera bonne toute réponse commentant le graphique.</p>
+<div id="exemple" class="section level4" number="5.1.1.1">
+<h4><span class="header-section-number">5.1.1.1</span> exemple</h4>
+<ul>
+<li>Il y a par exemple, une sur représentation du nombre de lits
+intensifs dans les régions PACA et Centre Val de Loire ainsi qu’une
+anomalie sur le nombre de lits en Bretagne *</li>
+</ul>
+<p>Bien, mais je me demande de quelle anomalie il s’agit. Si je dois
+aller voir le graphique pour la comprendre, ce n’est pas bon.</p>
+</div>
+<div id="meilleur-exemple" class="section level4" number="5.1.1.2">
+<h4><span class="header-section-number">5.1.1.2</span> Meilleur
+exemple</h4>
+<ul>
+<li><p>En PACA, les lits de surveillance sont sous représentés tandis
+qu’en Ile de France, ils sont sur représentés *</p></li>
+<li><p>La région PACA est répulsive pour les lits de surveillance au
+contraire de l’Ile de France*</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="rejet-de-lhypothèse" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Rejet de
+l’hypothèse</h2>
+<ul>
+<li>On constate que le khi2 calculé est supérieur au khi2 théorique donc
+nous ne sommes pas dans une situation de hasard *</li>
+</ul>
+</div>
+<div id="intensité-de-la-relation" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Intensité de la
+relation</h2>
+<ul>
+<li>Elle existe mais elle est très faible (Proche de 0 ; 0.018)*</li>
+</ul>
+</div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<small><p>L5GEABIM Analyses bivariées et multivariées</p></small>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
