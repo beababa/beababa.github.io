@@ -13,7 +13,7 @@
 
 <title>Introduction</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -127,13 +127,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -229,11 +236,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -495,10 +506,20 @@ div.tocify {
 basiques</li>
 <li>mon enseignement - trois fois le même cours</li>
 </ul>
+<p>A chaque cours un exercice à faire pour le prochain cours, quelque
+soit l’avancement du cours. Utiliser les ressources internet, poser des
+questions,…</p>
 <p>13 cours en tout. 2 cours d’intro rappels stats 7 sur la stat
 bi-variée 3 sur la multivariée 1 cours pour un devoir sur table au
-mi-semestre 1 devoir maison à rendre vers la fin du semestre</p>
-<p>… et un partiel en plus !</p>
+mi-semestre</p>
+</div>
+<div id="evaluation" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Evaluation</h1>
+<ul>
+<li>1 devoir maison à rendre vers la fin du semestre</li>
+<li>1 devoir sur table à la mi-semestre</li>
+</ul>
+<p>… et c’est tout ! (pas de partiel)</p>
 <p>Au départ on utilise Libre Office (plutôt que Microsoft) puis R</p>
 <p>Question : quelle utilisation de R ? des cours cette année ?</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deroule.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
@@ -602,9 +623,11 @@ au plus tard.</td>
 </table>
 </div>
 <div id="présentation-rapide-vous-êtes-nombreux" class="section level1"
-number="3">
-<h1><span class="header-section-number">3</span> Présentation rapide
+number="4">
+<h1><span class="header-section-number">4</span> Présentation rapide
 (vous êtes nombreux !)</h1>
+<div id="premier-cours" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Premier cours</h2>
 <p>passé / présent / futur appétence pour les stats fichier framapad, <a
 href="https://lite.framacalc.org/9pse-coursstatsorbonne2022-9we9"
 class="uri">https://lite.framacalc.org/9pse-coursstatsorbonne2022-9we9</a></p>
@@ -615,7 +638,7 @@ j’ai rajouté l’initiale du nom de famille.</p>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span> (etudiant<span class="sc">$</span>prénom)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tab)[tab <span class="sc">&gt;</span><span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## character(0)</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(etudiant [, <span class="fu">c</span>(<span class="st">&quot;prénom&quot;</span>, <span class="st">&quot;groupe.TD&quot;</span>)], <span class="st">&quot;cours2.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(etudiant [, <span class="fu">c</span>(<span class="st">&quot;prénom&quot;</span>, <span class="st">&quot;groupe.TD&quot;</span>)], <span class="st">&quot;cours1.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">16</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>))</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>){</span>
@@ -625,42 +648,105 @@ j’ai rajouté l’initiale du nom de famille.</p>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">names</span> (etudiant) [i])</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="présence-et-rendu-des-devoirs-chiffres-clés"
+class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Présence et rendu des
+devoirs : chiffres clés</h2>
+<div id="effectif-et-cours" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Effectif et
+cours</h3>
 <pre><code>## 
 ##  1  2  3 
 ## 24 21 29</code></pre>
-<p>Désormais le framapad sert à l’émargement</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">cours1</td>
+<td align="right">24</td>
+<td align="right">21</td>
+<td align="right">29</td>
+</tr>
+<tr class="even">
+<td align="left">cours2</td>
+<td align="right">13</td>
+<td align="right">24</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="left">cours3</td>
+<td align="right">10</td>
+<td align="right">18</td>
+<td align="right">3</td>
+</tr>
+</tbody>
+</table>
+<p><img src="intro_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Désormais le framapad sert à l’émargement <a
+href="https://lite.framacalc.org/9pse-coursstatsorbonne2022-9we9"
+class="uri">https://lite.framacalc.org/9pse-coursstatsorbonne2022-9we9</a></p>
 </div>
-<div id="la-donnée-du-cours" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> La donnée du cours</h1>
-<div id="la-source" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> La source</h2>
+<div id="les-rendus-de-devoir" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Les rendus de
+devoir</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>rendu <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">36</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>titre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;devoir1 (distribution)&quot;</span>, <span class="st">&quot;devoir2 (univarié)&quot;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(rendu, <span class="at">names =</span> titre)</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="la-donnée-du-cours" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> La donnée du cours</h1>
+<div id="la-source" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> La source</h2>
 <p><a
 href="https://www.data.gouv.fr/fr/datasets/repertoire-des-logements-locatifs-des-bailleurs-sociaux/"
 class="uri">https://www.data.gouv.fr/fr/datasets/repertoire-des-logements-locatifs-des-bailleurs-sociaux/</a></p>
+<div id="section" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> 2021</h3>
 <p>Prendre le .zip de 2021, petit test d’ouverture sous moodle
 (Introduction/bases informatiques)</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/rpls2021_geolocalise_OD_REG11_DEP93.csv&quot;</span>, <span class="at">sep =</span><span class="st">&quot;;&quot;</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution par commune</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>LIBCOM)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/rpls93.png&quot;</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">sort</span>(tab), <span class="at">las =</span> <span class="dv">2</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">cex.names =</span> <span class="fl">0.7</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(tab [ <span class="fu">names</span>(tab) <span class="sc">==</span> <span class="st">&quot;Bondy&quot;</span>],<span class="dv">0</span>, <span class="at">col =</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="fu">sort</span>(tab), <span class="st">&quot;data/dpt93RPLSCommune.csv&quot;</span>)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># filtre sur Bondy</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>filtre <span class="ot">&lt;-</span> data [data<span class="sc">$</span>CODEPOSTAL <span class="sc">==</span> <span class="st">&quot;93140&quot;</span>,]</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(filtre, <span class="st">&quot;data/rplsBondy.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/rpls2021_geolocalise_OD_REG11_DEP93.csv&quot;</span>, <span class="at">sep =</span><span class="st">&quot;;&quot;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution par commune</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>LIBCOM)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/rpls93.png&quot;</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">sort</span>(tab), <span class="at">las =</span> <span class="dv">2</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">cex.names =</span> <span class="fl">0.7</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(tab [ <span class="fu">names</span>(tab) <span class="sc">==</span> <span class="st">&quot;Bondy&quot;</span>],<span class="dv">0</span>, <span class="at">col =</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="fu">sort</span>(tab), <span class="st">&quot;data/dpt93RPLSCommune.csv&quot;</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># filtre sur Bondy</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>filtre <span class="ot">&lt;-</span> data [data<span class="sc">$</span>LIBCOM <span class="sc">==</span> <span class="st">&quot;Bondy&quot;</span>,]</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(filtre, <span class="st">&quot;data/rplsBondy.csv&quot;</span>)</span></code></pre></div>
 <p><img src="img/rpls93.png" /></p>
 <p>C’est normalement ce fichier de données que nous allons utiliser pour
 le cours.</p>
 </div>
 </div>
-<div id="pratique" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Pratique</h1>
+<div id="section-1" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> 2019</h2>
+<p>Il y a un problème sur la donnée, prendre plutôt le millésime
+2019</p>
+</div>
+</div>
+<div id="pratique" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Pratique</h1>
 <p>Lorsque l’exercice le requiert, le fichier est à rendre avec son
 <em>prénom</em> (toujours le même svp) sous moodle.</p>
-<p>Ressources autre que la bibliographie officielle</p>
+</div>
+<div id="ressources-autre-que-la-bibliographie-officielle"
+class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Ressources autre que la
+bibliographie officielle</h1>
 <p>2 cours universitaires disponibles sur internet</p>
 <ul>
 <li><a
@@ -671,8 +757,8 @@ href="http://grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm"
 class="uri">http://grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm</a></li>
 </ul>
 </div>
-<div id="le-devoir-maison" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> Le devoir maison</h1>
+<div id="le-devoir-maison" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> Le devoir maison</h1>
 <p>Il s’agit de prendre minimum 4 variables socio économiques à partir
 de l’outil insee statistiques locales et de faire dessus une analyse
 factorielle et une classification en affinant au fur et à mesure

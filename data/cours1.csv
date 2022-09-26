@@ -1,30 +1,75 @@
-prenom,"adresse mail",20/9,passé,présent,futur,"appétence pour les stats 0 j'adore 4 je déteste"
-beatrice,b.maranget@ville-bondy.fr,ok,"master 2 géomatique paris 8","cadre territoriale","développement web",0
-Taos,ttaalba@yahoo.fr,ok,"Licence Economie Paris 1, L1 Geo et L2 maj Geo Min ENvi","L3 majeure Geographie Mineure Environnement","Master Biologie Ecologie et Evolution parcours ECIRE ou SEB",1
-Mariam,Diakete.mariam@gmail.com,present,"licence 2 Géographie","L3 Géographie et aménagement","je ne sais pas",3
-Danyal,a.danyal@hotmail.com,présent,"L2 Géographie et Aménagement du territoire ","L3 Géographie et Aménagement du territoire ",/,2
-Guillaume,guillaumemlf@gmail.com,ok,"L2 géographie et aménagement","L3 géographie","master aménagement du territoire / géomatique",1
-,,,,,,
-Sabrina,telati.sabrina@gmail.com,ok,"Licence Géographie majeure et Histoire mineure (L1 et L2)","L3 Géographie majeure et Histoire mineure","Master dans l'enseignement",2
-Maud,maud.megnent@gmail.com,ok,"CPGE Littéraire","L3 Géographie",Master...?,2
-Maylis,mayl.perrin@gmail.com,ok,"CPGE Littéraire","L3 géographie","master d'aménagement",
-Lucas,lucasfortin.lf@gmail.com,ok,"Licence 2 géo ","L3 geo","Master ? ",3
-jeremie,jeremieviaud1@gmail.com,ok,"BAC BBA EDHEC 1 AN ","L3 GEO","A SUIVRE...",1.5
-baudouin,baudouin.schaefer@laposte.net,présent,"hypô. L2 géo","L3 géo","master aménagement rural",2
-jules,coquet.jules@gmail.com,Présent,"L2 géographie/aménagement","L3 géo","Master aménagement des espaces culturels",2
-Théo,theo91lebrun@gmail.com,présent,"CPGE littéraire ","L3 géo ","master géo et aménagement",2
-Léa,lea.dartiguelongue@gmail.com,oui,"prépa litt","L3 géo","master géo et aménagement",3
-Roman,romantraverse99@gmail.com,oui,"CPGE littéraire","L3 Géo",Incertain,3
-Noémie,noemielecq1218@gmail.com,ok,"CPGE prépa littéraire","licence géographie et aménagement","master urbanisme",3
-clara.v,claravaugier@gmail.com,ok,CPGE,"L3 géographie",?,3
-Estéban,esteban.auffray.pro@gmail.com,Présent,"L2 Géographie et Aménagement","L3 Géographie et Aménagement","Master Géopolitique",1
-clara.L,clara.felixlopes@gmail.com,oui,"L2 géo et aménagement UPEC","L3 géo et aménagement",?,2
-Dan,danwesley0@gmail.com,ok,"L2 géo et aménagement","l3 géo et aménagement","Master urbanisme",2
-Lucas,lucas.docarmogil@gmail.com,oui,"L2 géographie et aménagement","L3 géographie et aménagement ","Master geographie et amenagement",2
-hugo,hugo.rbrdll@yahoo.fr,présent,"L3 geo","L3 geo ","master MEEF",3
-Antonin,antoninleclerc77@gmail.com,présent,"L2 - géo ","L3 - géo ","master SIGMA",0
-Ilario,ilario-2711@hotmail.fr,,"l2 geo","l3 geo",.,2
-Elise,ema.lepage7@gmail.com,présent,"prépa AL ","l3 géo",?,1
-Ilias,fertate.ilias@outlook.com,présent,"Licence d'architecture","Licence de géographie","Master de ...",1
-Simon,simon.wolton.sw@gmzil.com,présent,"L3 géo","L3 géo",Master?,3
-Johan,johan.ollivier@etu.sorbonne-universite.fr,Oui,"L2 geo_am","L3 geo_am",Master,1
+prénom,groupe.TD,présence (oui/non)
+Albane,1,oui
+Alya,1,oui
+AmbreT,1,oui
+Capucine,1,oui
+Clara,1,oui
+corentin,1,oui
+Emma,1,oui
+Emy,1,oui
+Enzo,1,oui
+Fanny,1,oui
+Hermine,1,oui
+InèsD,1,oui
+InèsM,1,oui
+Jonathan,1,oui
+Jules,1,oui
+Justine,1,oui
+Keliann,1,oui
+Leena,1,oui
+MarieB,1,oui
+Mathieu,1,oui
+Mattéo,1,oui
+Nathan,1,oui
+Yuliia,1,oui
+Zoé,1,oui
+AmbreG,2,oui
+CamilleG,2,oui
+Colin,2,oui
+Gabrielle,2,oui
+Huiyi,2,oui
+Ibrahima,2,oui
+Josué,2,oui
+Léo,2,oui
+Louise,2,oui
+Manel,2,oui
+Mathilde,2,oui
+Ottavio,2,oui
+Pierre,2,oui
+sarahZ,2,oui
+Terry,2,oui
+Thérèse,2,oui
+Thomas,2,oui
+valentine,2,oui
+William,2,oui
+Yiqing,2,oui
+Zihang,2,oui
+Alban Marais,3,oui
+Amaryllis,3,oui
+Antoine,3,oui
+Antonin,3,oui
+Antonin Zerlini,3,oui
+Blandine,3,oui
+CamilleD,3,oui
+Caril,3,oui
+Cyrille,3,oui
+Erwann,3,oui
+Esteban,3,oui
+Florence,3,oui
+Gabriel,3,oui
+Gwendoline,3,oui
+Ivan,3,oui
+Johan,3,oui
+Joseph,3,oui
+MarieP,3,oui
+Marissa,3,oui
+Maty,3,oui
+Maya,3,oui
+Roxane Gazeau,3,oui
+Sacha,3,oui
+Sami,3,oui
+samuel,3,oui
+sarahH,3,oui
+Théophile,3,oui
+Thibault,3,oui
+Xavier,3,oui
