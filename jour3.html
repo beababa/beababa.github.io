@@ -825,151 +825,199 @@ région. Or, nous n’avons pas cette variable dans le tableau.</p>
 </div>
 </div>
 </div>
-<div id="effectifs-théoriques-et-observées" class="section level1"
+<div id="khi2-un-exemple-sur-un-dé-truqué" class="section level1"
 number="4">
-<h1><span class="header-section-number">4</span> Effectifs théoriques et
-observées</h1>
-<div id="analogie-du-jeu-du-dé-ou-test-de-conformité"
-class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Analogie du jeu du dé
-ou test de conformité</h2>
+<h1><span class="header-section-number">4</span> Khi2 : un exemple sur
+un dé truqué</h1>
 <p>Le dé est-il truqué ?</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>face <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">6</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>effectif <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">17</span>)</span></code></pre></div>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>effectif <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">17</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span>  <span class="fu">sum</span>(effectif)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">data.frame</span>(face,effectif))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">face</th>
+<th align="right">effectif</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">7</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">17</td>
+</tr>
+</tbody>
+</table>
+<p>Le nombre total de lancers est de 60.</p>
+<div id="hypothèse-dindépendance" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Hypothèse
+d’indépendance</h2>
 <p>hypothèse H0 : le dé n’est pas truqué (il y a indépendance entre la
 face et le nombre de fois où elle sort)</p>
-<p>effectifs théoriques</p>
+</div>
+<div id="effectifs-théoriques" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Effectifs
+théoriques</h2>
+<p>Sur le total des lancers (60), chaque face aurait pû sortir 10
+fois.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>effectifThéorique <span class="ot">&lt;-</span> <span class="fu">rep</span> (<span class="dv">10</span>,<span class="dv">6</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(face, effectif, effectifThéorique)</span></code></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(face, effectif, effectifThéorique)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">face</th>
+<th align="right">effectif</th>
+<th align="right">effectifThéorique</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">15</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">11</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">6</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">17</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="calcul-du-khi2" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Calcul du khi2</h2>
 <p>distance entre effectifs théoriques et observés</p>
 <p>Elle se mesure avec le khi2</p>
+<p>On calcule l’écart, puis le carré de cet écart et on pondère par
+l’effectif théorique.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(ecart <span class="ot">&lt;-</span> df<span class="sc">$</span>effectif <span class="sc">-</span> df<span class="sc">$</span>effectifThéorique)</span></code></pre></div>
 <pre><code>## [1]  5 -3 -6  1 -4  7</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(distance <span class="ot">&lt;-</span>  ecart<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 25  9 36  1 16 49</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(relatif <span class="ot">&lt;-</span> distance<span class="sc">/</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(relatif <span class="ot">&lt;-</span> distance <span class="sc">/</span> df<span class="sc">$</span>effectifThéorique)</span></code></pre></div>
 <pre><code>## [1] 2.5 0.9 3.6 0.1 1.6 4.9</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(khi2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(relatif))</span></code></pre></div>
 <pre><code>## [1] 13.6</code></pre>
-<p>paramètres du test :</p>
+</div>
+<div id="test-du-khi2" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Test du khi2</h2>
+<div id="paramètres-du-test" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Paramètres du
+test</h3>
 <ul>
-<li><p>degré de liberté 5</p></li>
-<li><p>Pour un risque à 0,05 (5 chances sur 100 de se tromper)</p></li>
+<li>degré de liberté : 5</li>
 </ul>
-<p>le khi2 théorique est de 11,7, il est donc inférieur au khi2
-observé.</p>
+<p>C’est le nombre de valeurs possibles -1 (car on peut déterminer la 6e
+valeur à partir des 5 autres)</p>
+<ul>
+<li>Pour un risque à 0,05 (5 chances sur 100 de se tromper)</li>
+</ul>
+</div>
+<div id="résultat" class="section level3" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Résultat</h3>
+<p>Lecture dans la table du khi2</p>
+<p><img src="img/khi2table.png" /> le khi2 théorique est de 11,7, il est
+donc inférieur au khi2 observé.</p>
 <p>Quand le khi2 théorique est inférieur, le test est rejeté.</p>
 <p>Le test est rejeté avec un risque de 5 %</p>
 <p>Donc, le dé est truqué.</p>
 </div>
-<div id="sur-notre-série" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Sur notre série</h2>
-<div id="tableaux" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> 2 Tableaux</h3>
+</div>
+</div>
+<div id="retour-à-la-comparaison-secteur-type-dappartement"
+class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Retour à la comparaison
+secteur / type d’appartement</h1>
+<div id="ennoncer-lhypothèse-h0" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Ennoncer l’hypothèse
+H0</h2>
+<p>Le type d’appartement est indépendant quartier.</p>
+</div>
+<div id="effectif-théorique" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Effectif
+théorique</h2>
 <p>La première case reçoit la formule :</p>
 <ul>
-<li><p>effectif / total lg * effectif / total colonne FREQUENCE
-CONJOINTE</p></li>
-<li><p>cette fréquence est multipliée par la totalité de l’effectif pour
-avoir l’ EFFECTIF THEORIQUE</p></li>
+<li>(total lg / total) * total colonne</li>
 </ul>
+<p>C’est ce qu’on appelle également le produit des marges</p>
 <p><img src="img/effectifTheorique.png" /></p>
 </div>
-<div id="ecarts-entre-observés-et-théoriques" class="section level3"
-number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> Ecarts entre
-observés et théoriques</h3>
+<div id="ecarts-entre-observés-et-théoriques" class="section level2"
+number="5.3">
+<h2><span class="header-section-number">5.3</span> Ecarts entre observés
+et théoriques</h2>
 <p>Que signifie une valeur zéro ?</p>
-<p>Utiliser les notions</p>
+<p>Utiliser la notion</p>
 <ul>
-<li>d’attraction et de répulsion pour les signes.</li>
 <li>sur représentation / sous représentation</li>
 </ul>
+<p><img src="img/ecartsTableauComplet.png" /></p>
+<p>Les petits appartements sont sous-représentés à Blanqui et à la
+remise à Jorelle par rapport à une distribution identique entre les
+quartiers.</p>
 </div>
-</div>
-<div id="le-khi2" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Le Khi2</h2>
+<div id="le-khi2" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Le Khi2</h2>
+<p>Le khi2 va permettre de valider le rejet de l’hypothèse
+d’indépendance.</p>
 <p>rappel : métrique euclidienne plutôt que les valeurs absolues on
 utilise les carrés</p>
-<div id="le-khi2-partiel" class="section level4" number="4.3.0.1">
-<h4><span class="header-section-number">4.3.0.1</span> Le Khi2
-partiel</h4>
+<div id="le-khi2-partiel" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Le Khi2
+partiel</h3>
 <p>On met les écarts rapportés à la valeur théorique d’indépendance au
 carré. Puis on divise par l’effectif théorique.</p>
 <p><img src="img/khi2partiel.png" /></p>
 </div>
-<div id="le-khi2-1" class="section level4" number="4.3.0.2">
-<h4><span class="header-section-number">4.3.0.2</span> Le Khi2</h4>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>theorique <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>NOM_IRIS, data<span class="sc">$</span>taille))<span class="sc">*</span><span class="dv">10000</span>,<span class="dv">0</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>theorique</span></code></pre></div>
-<pre><code>##                                                 
-##                                                  grand moyen petit
-##   Blanqui                                          179   948   346
-##   centre ville Gare                                 90   830   431
-##   de Lattre de Tassigny/cité des Fleurs /mairie     69   927   514
-##   fosse de la Régale                                35   515   319
-##   la mare à la Veuve                                 2   328   191
-##   la remise à Jorelle                               63   556    92
-##   Merisiers /14 juillet                             18   652   238
-##   Noue Caillet /Terre Saint Blaise /les Galiotes   271  1535   851</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div>
-<pre><code>##                                                 
-##                                                  grand moyen petit
-##   Blanqui                                          168   889   324
-##   centre ville Gare                                 84   778   404
-##   de Lattre de Tassigny/cité des Fleurs /mairie     65   869   482
-##   fosse de la Régale                                33   483   299
-##   la mare à la Veuve                                 2   307   179
-##   la remise à Jorelle                               59   521    86
-##   Merisiers /14 juillet                             17   611   223
-##   Noue Caillet /Terre Saint Blaise /les Galiotes   254  1439   798</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(ecart <span class="ot">&lt;-</span> tab<span class="sc">-</span>theorique)</span></code></pre></div>
-<pre><code>##                                                 
-##                                                  grand moyen petit
-##   Blanqui                                          -11   -59   -22
-##   centre ville Gare                                 -6   -52   -27
-##   de Lattre de Tassigny/cité des Fleurs /mairie     -4   -58   -32
-##   fosse de la Régale                                -2   -32   -20
-##   la mare à la Veuve                                 0   -21   -12
-##   la remise à Jorelle                               -4   -35    -6
-##   Merisiers /14 juillet                             -1   -41   -15
-##   Noue Caillet /Terre Saint Blaise /les Galiotes   -17   -96   -53</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(distance <span class="ot">&lt;-</span>  ecart<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>##                                                 
-##                                                  grand moyen petit
-##   Blanqui                                          121  3481   484
-##   centre ville Gare                                 36  2704   729
-##   de Lattre de Tassigny/cité des Fleurs /mairie     16  3364  1024
-##   fosse de la Régale                                 4  1024   400
-##   la mare à la Veuve                                 0   441   144
-##   la remise à Jorelle                               16  1225    36
-##   Merisiers /14 juillet                              1  1681   225
-##   Noue Caillet /Terre Saint Blaise /les Galiotes   289  9216  2809</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(relatif <span class="ot">&lt;-</span> distance<span class="sc">/</span> theorique)</span></code></pre></div>
-<pre><code>##                                                 
-##                                                       grand      moyen
-##   Blanqui                                        0.67597765 3.67194093
-##   centre ville Gare                              0.40000000 3.25783133
-##   de Lattre de Tassigny/cité des Fleurs /mairie  0.23188406 3.62891046
-##   fosse de la Régale                             0.11428571 1.98834951
-##   la mare à la Veuve                             0.00000000 1.34451220
-##   la remise à Jorelle                            0.25396825 2.20323741
-##   Merisiers /14 juillet                          0.05555556 2.57822086
-##   Noue Caillet /Terre Saint Blaise /les Galiotes 1.06642066 6.00390879
-##                                                 
-##                                                       petit
-##   Blanqui                                        1.39884393
-##   centre ville Gare                              1.69141531
-##   de Lattre de Tassigny/cité des Fleurs /mairie  1.99221790
-##   fosse de la Régale                             1.25391850
-##   la mare à la Veuve                             0.75392670
-##   la remise à Jorelle                            0.39130435
-##   Merisiers /14 juillet                          0.94537815
-##   Noue Caillet /Terre Saint Blaise /les Galiotes 3.30082256</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(khi2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(relatif))</span></code></pre></div>
-<pre><code>## [1] 39.20283</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(data)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tab)</span></code></pre></div>
+<div id="le-khi2-1" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Le Khi2</h3>
+<p>Le total de tous les khi2 partiels</p>
+<p><img src="img/khi2partiel2.png" /></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/rplsPieceZone.csv&quot;</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>NOM_IRIS, data<span class="sc">$</span>taille)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tab)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
@@ -980,102 +1028,23 @@ carré. Puis on divise par l’effectif théorique.</p>
 <ul>
 <li>degré de liberté lg -1 * col -1</li>
 </ul>
-<p>8 zone et 3 types d’appartements = 24</p>
+<p>8 zone et 3 types d’appartements = 7 * 2 = 14</p>
 <ul>
 <li>risque 1, 5 et 10 %</li>
 </ul>
 <p>Sur internet, dans n’importe quelle table, on cherche les valeurs
 correspondantes.</p>
 </div>
-<div id="rejet-de-h0-ou-pas" class="section level4" number="4.3.0.3">
-<h4><span class="header-section-number">4.3.0.3</span> Rejet de H0 ou
-pas</h4>
+<div id="rejet-de-h0-ou-pas" class="section level3" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Rejet de H0 ou
+pas</h3>
 <p><img src="img/test.png" /></p>
 <p>HO hypothèse d’indépendance. son rejet implique qu’il y a une
 relation.</p>
 <p>Les variables nombre de pièces et zones ont une relation avec une
-marge d’erreur de 5 %</p>
+marge d’erreur très faible puisque le khi2 augmente avec le risque
+d’erreur.</p>
 </div>
-<div id="intensité-de-la-liaison" class="section level3" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Intensité de la
-liaison</h3>
-<p>indicateur entre 0 et 1. 1 pour très forte intensité.</p>
-<div id="coefficient-de-contingence" class="section level4"
-number="4.3.1.1">
-<h4><span class="header-section-number">4.3.1.1</span> Coefficient de
-contingence</h4>
-<p>Le plus simple est le coefficient de contingence peut mesurer cette
-relation.</p>
-<p>C’est le Khi2 rapporté à la somme Khi2 et de l’effectif total</p>
-</div>
-<div id="coefficient-de-tschuprow" class="section level4"
-number="4.3.1.2">
-<h4><span class="header-section-number">4.3.1.2</span> Coefficient de
-Tschuprow</h4>
-<p>D’autres coefficients permet de reprendre le nombre de degrés de
-liberté et ainsi de s’affranchir de la taille du tableau.</p>
-<p>Celui de Tschuprow est le khi2 calculé rapporté à l’effectif total
-multiplié par la racine carré du nombre de degré de liberté.</p>
-<p><img src="img/coeff.png" /></p>
-</div>
-</div>
-<div id="interprétation-des-coefficients" class="section level3"
-number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Interprétation des
-coefficients</h3>
-<p>Ils sont très faibles, donc même si les variables sont dépendantes
-l’une de l’autre, l’intensité de la relation est faible.</p>
-</div>
-</div>
-</div>
-<div id="correction-du-quizz" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Correction du
-quizz</h1>
-<div id="ecarts-entre-observés-et-théoriques-1" class="section level2"
-number="5.1">
-<h2><span class="header-section-number">5.1</span> Ecarts entre observés
-et théoriques</h2>
-<p>Penser à utiliser les terme attraction / répulsion ou sur et sous
-représentation.</p>
-<div id="bonne-réponse-3" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Bonne réponse</h3>
-<p>Sera bonne toute réponse commentant le graphique.</p>
-<div id="exemple" class="section level4" number="5.1.1.1">
-<h4><span class="header-section-number">5.1.1.1</span> exemple</h4>
-<ul>
-<li>Il y a par exemple, une sur représentation du nombre de lits
-intensifs dans les régions PACA et Centre Val de Loire ainsi qu’une
-anomalie sur le nombre de lits en Bretagne *</li>
-</ul>
-<p>Bien, mais je me demande de quelle anomalie il s’agit. Si je dois
-aller voir le graphique pour la comprendre, ce n’est pas bon.</p>
-</div>
-<div id="meilleur-exemple" class="section level4" number="5.1.1.2">
-<h4><span class="header-section-number">5.1.1.2</span> Meilleur
-exemple</h4>
-<ul>
-<li><p>En PACA, les lits de surveillance sont sous représentés tandis
-qu’en Ile de France, ils sont sur représentés *</p></li>
-<li><p>La région PACA est répulsive pour les lits de surveillance au
-contraire de l’Ile de France*</p></li>
-</ul>
-</div>
-</div>
-</div>
-<div id="rejet-de-lhypothèse" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Rejet de
-l’hypothèse</h2>
-<ul>
-<li>On constate que le khi2 calculé est supérieur au khi2 théorique donc
-nous ne sommes pas dans une situation de hasard *</li>
-</ul>
-</div>
-<div id="intensité-de-la-relation" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Intensité de la
-relation</h2>
-<ul>
-<li>Elle existe mais elle est très faible (Proche de 0 ; 0.018)*</li>
-</ul>
 </div>
 </div>
 
