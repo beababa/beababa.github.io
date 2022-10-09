@@ -735,95 +735,6 @@ parlants</p></li>
 ?</p>
 </div>
 </div>
-<div
-id="correction-du-quizz-sur-les-tableaux-de-contingence-de-lannée-dernière"
-class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Correction du quizz
-sur les tableaux de contingence de l’année dernière</h2>
-<div id="données" class="section level3" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> Données</h3>
-<div id="mauvaise-réponse" class="section level4" number="3.3.1.1">
-<h4><span class="header-section-number">3.3.1.1</span> Mauvaise
-réponse</h4>
-<ul>
-<li>Il y a 3 variables : les lits de réanimation, les lits intensifs et
-les lits de surveillance, tout cela par région*</li>
-</ul>
-</div>
-<div id="bonne-réponse" class="section level4" number="3.3.1.2">
-<h4><span class="header-section-number">3.3.1.2</span> Bonne
-réponse</h4>
-<ul>
-<li>Les lits par région *</li>
-</ul>
-</div>
-<div id="très-bonne-réponse" class="section level4" number="3.3.1.3">
-<h4><span class="header-section-number">3.3.1.3</span> Très bonne
-réponse</h4>
-<ul>
-<li>Il y a 2 variables : les régions et le type de lit (réanimation,
-surveillance et intensif) Ces deux données sont de type catégorie.*</li>
-</ul>
-</div>
-</div>
-<div id="hypothèse" class="section level3" number="3.3.2">
-<h3><span class="header-section-number">3.3.2</span> Hypothèse</h3>
-<div id="mauvaise-réponse-1" class="section level4" number="3.3.2.1">
-<h4><span class="header-section-number">3.3.2.1</span> Mauvaise
-réponse</h4>
-<ul>
-<li>Il serait logique que chaque région ait une capacité adaptée à sa
-population*</li>
-</ul>
-<p>Il n’y a pas de variable population dans les données donc pas
-d’hypothèse autour de la population.</p>
-</div>
-<div id="bonne-réponse-1" class="section level4" number="3.3.2.2">
-<h4><span class="header-section-number">3.3.2.2</span> Bonne
-réponse</h4>
-<ul>
-<li>Les répartitions de type de lit ne sont pas les mêmes entre les
-régions*</li>
-</ul>
-</div>
-</div>
-<div id="fréquences-conditionnelles-en-ligne" class="section level3"
-number="3.3.3">
-<h3><span class="header-section-number">3.3.3</span> Fréquences
-conditionnelles en ligne</h3>
-<div id="mauvaise-réponse-2" class="section level4" number="3.3.3.1">
-<h4><span class="header-section-number">3.3.3.1</span> Mauvaise
-réponse</h4>
-<ul>
-<li>On peut voir sur la même base qui est 100 la différence pour les 3
-données pour une seule région*</li>
-</ul>
-<p>Il manque des exemples précis.</p>
-</div>
-<div id="bonne-réponse-2" class="section level4" number="3.3.3.2">
-<h4><span class="header-section-number">3.3.3.2</span> Bonne
-réponse</h4>
-<ul>
-<li>Les régions ont une plus forte proportion de lits de surveillance
-que des autres types de lit (42 % en moyenne). Les lits intensifs et de
-réanimation sont en part égales. Mais il y a des différences entre les
-régions. Par exemple, la Bretagne compte beaucoup de lits de
-réanimation. A l’inverse, l’Ile de France en a peu. La PAC et le centre
-val de Loire ont moins de lits de surveillance. Donc les répartitions
-sont différentes entre région.*</li>
-</ul>
-</div>
-</div>
-<div id="fréquences-conditionnelles-en-colonne" class="section level3"
-number="3.3.4">
-<h3><span class="header-section-number">3.3.4</span> Fréquences
-conditionnelles en colonne</h3>
-<p>La bonne réponse était qu’il n’est pas nécessaire de l’étudier. En
-effet, la répartition des lits de réanimation entre les différentes
-régions ne fait que réfléter l’effectif de la population de chaque
-région. Or, nous n’avons pas cette variable dans le tableau.</p>
-</div>
-</div>
 </div>
 <div id="khi2-un-exemple-sur-un-dé-truqué" class="section level1"
 number="4">
@@ -983,11 +894,7 @@ théorique</h2>
 </ul>
 <p>C’est ce qu’on appelle également le produit des marges</p>
 <p><img src="img/effectifTheorique.png" /></p>
-</div>
-<div id="ecarts-entre-observés-et-théoriques" class="section level2"
-number="5.3">
-<h2><span class="header-section-number">5.3</span> Ecarts entre observés
-et théoriques</h2>
+<p>## Ecarts entre observés et théoriques</p>
 <p>Que signifie une valeur zéro ?</p>
 <p>Utiliser la notion</p>
 <ul>
@@ -998,31 +905,37 @@ et théoriques</h2>
 remise à Jorelle par rapport à une distribution identique entre les
 quartiers.</p>
 </div>
-<div id="le-khi2" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Le Khi2</h2>
+<div id="le-khi2" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Le Khi2</h2>
 <p>Le khi2 va permettre de valider le rejet de l’hypothèse
 d’indépendance.</p>
 <p>rappel : métrique euclidienne plutôt que les valeurs absolues on
 utilise les carrés</p>
-<div id="le-khi2-partiel" class="section level3" number="5.4.1">
-<h3><span class="header-section-number">5.4.1</span> Le Khi2
+<div id="le-khi2-partiel" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Le Khi2
 partiel</h3>
 <p>On met les écarts rapportés à la valeur théorique d’indépendance au
 carré. Puis on divise par l’effectif théorique.</p>
 <p><img src="img/khi2partiel.png" /></p>
 </div>
-<div id="le-khi2-1" class="section level3" number="5.4.2">
-<h3><span class="header-section-number">5.4.2</span> Le Khi2</h3>
+<div id="le-khi2-1" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Le Khi2</h3>
 <p>Le total de tous les khi2 partiels</p>
 <p><img src="img/khi2partiel2.png" /></p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/rplsPieceZone.csv&quot;</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>NOM_IRIS, data<span class="sc">$</span>taille)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tab)</span></code></pre></div>
-<pre><code>## 
-##  Pearson&#39;s Chi-squared test
-## 
-## data:  tab
-## X-squared = 337.97, df = 14, p-value &lt; 2.2e-16</code></pre>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tab)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>test<span class="sc">$</span>expected</span></code></pre></div>
+<pre><code>##                                                 
+##                                                      grand     moyen    petit
+##   Blanqui                                        100.47386  868.7601 411.7661
+##   centre ville Gare                               92.10710  796.4158 377.4771
+##   de Lattre de Tassigny/cité des Fleurs /mairie  103.02027  890.7779 422.2018
+##   fosse de la Régale                              59.29486  512.7006 243.0046
+##   la mare à la Veuve                              35.50416  306.9913 145.5046
+##   la remise à Jorelle                             48.45445  418.9676 198.5780
+##   Merisiers /14 juillet                           61.91402  535.3475 253.7385
+##   Noue Caillet /Terre Saint Blaise /les Galiotes 181.23128 1567.0394 742.7294</code></pre>
 <p>C’est le total des khi2 partiels (dans notre exemple 338)</p>
 <p>On définit :</p>
 <ul>
@@ -1035,16 +948,262 @@ carré. Puis on divise par l’effectif théorique.</p>
 <p>Sur internet, dans n’importe quelle table, on cherche les valeurs
 correspondantes.</p>
 </div>
-<div id="rejet-de-h0-ou-pas" class="section level3" number="5.4.3">
-<h3><span class="header-section-number">5.4.3</span> Rejet de H0 ou
+<div id="rejet-de-h0-ou-pas" class="section level3" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Rejet de H0 ou
 pas</h3>
 <p><img src="img/test.png" /></p>
 <p>HO hypothèse d’indépendance. son rejet implique qu’il y a une
 relation.</p>
 <p>Les variables nombre de pièces et zones ont une relation avec une
-marge d’erreur très faible puisque le khi2 augmente avec le risque
-d’erreur.</p>
+marge d’erreur très faible puisque le khi2 augmente quand le risque
+d’erreur baisse.</p>
+<p>Les logiciels de stats proposent le risque limite, la valeur de
+bascule entre le rejet et l’acceptation de l’hypothèse nulle.</p>
 </div>
+</div>
+</div>
+<div id="pourquoi-le-khi2" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Pourquoi le khi2 ?</h1>
+<div id="les-fréquences-conditionnelles-suffisent-t-elles"
+class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Les fréquences
+conditionnelles suffisent-t-elles ?</h2>
+<p>Comparaison des 2 tableaux</p>
+<p>Estimation des écarts fondés sur la pondération des masses</p>
+</div>
+<div
+id="le-khi2-met-en-évidence-les-variations-faibles-autour-de-la-moyenne"
+class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Le khi2 met en
+évidence les variations faibles autour de la moyenne</h2>
+<p>A partir de quand le khi2 devient inférieur ?</p>
+<p>Et si on retire la Remise à Jorelle ?</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tab2 <span class="ot">&lt;-</span> tab [<span class="sc">-</span><span class="fu">c</span>(<span class="dv">6</span>),]</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>tab2</span></code></pre></div>
+<pre><code>##                                                 
+##                                                  grand moyen petit
+##   Blanqui                                          168   889   324
+##   centre ville Gare                                 84   778   404
+##   de Lattre de Tassigny/cité des Fleurs /mairie     65   869   482
+##   fosse de la Régale                                33   483   299
+##   la mare à la Veuve                                 2   307   179
+##   Merisiers /14 juillet                             17   611   223
+##   Noue Caillet /Terre Saint Blaise /les Galiotes   254  1439   798</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tab2)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  tab2
+## X-squared = 241.07, df = 12, p-value &lt; 2.2e-16</code></pre>
+<p>En faisant d’autres essais, le khi2 diminue autour de 100, mais reste
+largement au dessus du khi2 théorique (entre 33 et 42)</p>
+</div>
+<div id="et-en-carto" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Et en carto…</h2>
+<p>Graphique</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(tab)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;Blanqui&quot;                                       
+## [2] &quot;centre ville Gare&quot;                             
+## [3] &quot;de Lattre de Tassigny/cité des Fleurs /mairie&quot; 
+## [4] &quot;fosse de la Régale&quot;                            
+## [5] &quot;la mare à la Veuve&quot;                            
+## [6] &quot;la remise à Jorelle&quot;                           
+## [7] &quot;Merisiers /14 juillet&quot;                         
+## [8] &quot;Noue Caillet /Terre Saint Blaise /les Galiotes&quot;
+## 
+## [[2]]
+## [1] &quot;grand&quot; &quot;moyen&quot; &quot;petit&quot;</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tab, <span class="at">main =</span> <span class="st">&quot;type d&#39;appartement par quartier&quot;</span>,<span class="at">col=</span> <span class="fu">terrain.colors</span>(<span class="dv">3</span>), <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">las =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="jour3_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>Carte des contributions au khi2</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(test)</span></code></pre></div>
+<pre><code>## [1] &quot;statistic&quot; &quot;parameter&quot; &quot;p.value&quot;   &quot;method&quot;    &quot;data.name&quot; &quot;observed&quot; 
+## [7] &quot;expected&quot;  &quot;residuals&quot; &quot;stdres&quot;</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>chi2partiel <span class="ot">&lt;-</span> <span class="fu">round</span>(((test<span class="sc">$</span>observed <span class="sc">-</span> test<span class="sc">$</span>expected)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> test<span class="sc">$</span>expected),<span class="dv">0</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>chi2partielSomme <span class="ot">&lt;-</span> <span class="fu">apply</span>(chi2partiel, <span class="dv">1</span>,sum)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>chi2partielFreq <span class="ot">&lt;-</span> chi2partielSomme<span class="sc">/</span> <span class="fu">sum</span>(chi2partielSomme)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(chi2partielFreq)</span></code></pre></div>
+<p><img src="jour3_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NOM_IRIS =</span> <span class="fu">names</span>(chi2partielFreq),</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">contrib =</span> chi2partielFreq, <span class="at">row.names =</span> <span class="cn">NULL</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                 )</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(zone, df, <span class="at">by =</span><span class="st">&quot;NOM_IRIS&quot;</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>jointure<span class="sc">$</span>num <span class="ot">&lt;-</span> <span class="fu">rownames</span>(jointure)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_init</span>(zone)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(jointure, <span class="at">type =</span> <span class="st">&quot;choro&quot;</span>, <span class="at">border =</span> <span class="st">&quot;antiquewhite2&quot;</span>, <span class="at">var =</span> <span class="st">&quot;contrib&quot;</span>, <span class="at">add =</span> T)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(jointure2, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">&quot;antiquewhite3&quot;</span>,<span class="at">border =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_label</span>(jointure, <span class="at">var =</span> <span class="st">&quot;num&quot;</span>, <span class="at">overlap =</span> <span class="cn">FALSE</span>, <span class="at">col=</span> <span class="st">&quot;white&quot;</span>,<span class="at">bg =</span><span class="st">&quot;black&quot;</span>, <span class="at">halo =</span> T, <span class="at">cex =</span> <span class="fl">1.5</span>)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Taille appartement bailleur social : contribution au chi2&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;RPLS2019&quot;</span>)</span></code></pre></div>
+<p><img src="jour3_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>Cette carte permet de commencer à classifier les quartiers par
+rapport à un modèle d’indépendance, une répartition des logements
+sociaux type. Il serait sans doute intéressant de répéter l’opération
+mais sur chaque résidence pour avoir une cartographie plus fine du
+territoire.</p>
+</div>
+</div>
+<div id="un-autre-exemple-type-de-logement-social-et-quartier"
+class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Un autre exemple : type
+de logement social et quartier</h1>
+<div id="barème" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Barème</h2>
+<p><img src="img/bar%C3%A8me.png" /></p>
+<p>Importance des commentaires, même non demandés, ils donnaient un sens
+à tous ces chiffres !</p>
+<p>J’avais mis tableau juste pour le khi2, j’ai fini par noter si le
+tableau était présent ou pas.</p>
+<div id="données" class="section level3" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Données</h3>
+<div id="mauvaises-réponses-mais-intéressantes" class="section level4"
+number="7.1.1.1">
+<h4><span class="header-section-number">7.1.1.1</span> Mauvaises
+réponses (mais intéressantes)</h4>
+<p><em>Dans chacun des 8 quartiers (IRIS) de Bondy, le nombre de foyers
+pauvres et leur degré de pauvreté</em></p>
+<ul>
+<li>il manque le terme <em>variable</em> et le type <em>categorie</em>,
+ceci dit la réponse est juste et surtout élégante.</li>
+</ul>
+<p><em>Notre base de données est composée de 3 variables, la 1e,
+l’identifiant.. la 2e est une variable de catégorie et la dernière
+nomIRIS est une variable de catégorie. La base de données permet de
+comprendre si les IRIS qui apparaissent dans le tableaur sont des IRIS
+qui s’en sortent plutôt bien moins bien et pas du tout.</em></p>
+<ul>
+<li><p>attention aux termes ! <em>base de données</em></p></li>
+<li><p>La première variable est la population et non pas une variable
+comme les autres</p></li>
+<li><p>la formulation de l’hypothèse est maladroite (mais elle est là,
+du coup je l’ai noté comme commentaire du tableau de
+contingence)</p></li>
+</ul>
+</div>
+<div id="bonne-réponse" class="section level4" number="7.1.1.2">
+<h4><span class="header-section-number">7.1.1.2</span> Bonne
+réponse</h4>
+<p><em>Les zones et le type de logement social</em></p>
+</div>
+<div id="très-bonne-réponse" class="section level4" number="7.1.1.3">
+<h4><span class="header-section-number">7.1.1.3</span> Très bonne
+réponse</h4>
+<p><em>Il y a 2 variables : les zones de logements sociaux et le type de
+logement social (moins pauvre, pauvre et très pauvres). Ces deux
+variables sont de type catégorie.</em></p>
+</div>
+<div id="très-très-bonne-réponse" class="section level4"
+number="7.1.1.4">
+<h4><span class="header-section-number">7.1.1.4</span> Très très bonne
+réponse</h4>
+<p><em>Nous avons deux variables, la première, le financement et la
+seconde, le zonage par regroupement d’IRIS, la donnée FINAN du tableau
+est de type catégorielle (Très pauvre, pauvre, moins pauvre). Elle
+décrit le type de financement par appartement (càd le loyer
+versé).</em></p>
+<ul>
+<li>recodage FINAN en equiv</li>
+<li>inventaire de logement social, de l’iris à la zone.</li>
+</ul>
+<p>Deux étudiants ont mis en titre <em>Type de financement et zone
+géographique</em>, impeccable !</p>
+</div>
+</div>
+</div>
+<div id="tableau-de-contingence-1" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Tableau de
+contingence</h2>
+<p>Une première observation du tableau nous permet de noter des chiffres
+très disparates d’un quartier à l’autre. La très grosse majorité des
+logements sociaux quelque soit le quartier sont de type
+<em>pauvres</em>. Les <em>très pauvres</em> et <em>pauvres</em>
+représentent la même quantité. Seul le quartier des Merisiers a
+quasiment autant de logements <em>très pauvres</em>, <em>moins
+pauvres</em>.</p>
+</div>
+<div id="effectifs-théoriques-1" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Effectifs
+théoriques</h2>
+<p>Il s’agit de mesurer relativement à la répartition des logements,
+l’effectif au hasard. Ainsi, on voit bien que les logements <em>très
+pauvres</em> et <em>moins pauvres</em> sont en quantité égale dans
+toutes les zones.</p>
+</div>
+<div id="calcul-du-khi2-1" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Calcul du khi2</h2>
+<p>Le khi2 calculé est largement supérieur au khi2 du tableau.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/rplsTypeZone.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>NOM_IRIS, data<span class="sc">$</span>equiv)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>khi2 <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tab)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>khi2<span class="sc">$</span>expected</span></code></pre></div>
+<pre><code>##                                                 
+##                                                  moins pauvres   pauvres
+##   Blanqui                                            159.25549 1053.0604
+##   centre ville Gare                                  145.99381  965.3689
+##   de Lattre de Tassigny/cité des Fleurs /mairie      163.29166 1079.7491
+##   fosse de la Régale                                  93.98496  621.4658
+##   la mare à la Veuve                                  56.27566  372.1169
+##   la remise à Jorelle                                 76.80243  507.8481
+##   Merisiers /14 juillet                               98.13644  648.9170
+##   Noue Caillet /Terre Saint Blaise /les Galiotes     287.25955 1899.4739
+##                                                 
+##                                                  très pauvres
+##   Blanqui                                           168.68413
+##   centre ville Gare                                 154.63729
+##   de Lattre de Tassigny/cité des Fleurs /mairie     172.95925
+##   fosse de la Régale                                 99.54929
+##   la mare à la Veuve                                 59.60742
+##   la remise à Jorelle                                81.34948
+##   Merisiers /14 juillet                             103.94655
+##   Noue Caillet /Terre Saint Blaise /les Galiotes    304.26659</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>khi2</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  tab
+## X-squared = 3882.4, df = 14, p-value &lt; 2.2e-16</code></pre>
+<p>Donc il y n’y a pas d’indépendance entre les variables.</p>
+<div id="unique-exemple-de-réponse" class="section level3"
+number="7.4.1">
+<h3><span class="header-section-number">7.4.1</span> Unique exemple de
+réponse</h3>
+<p><em>On peut donc voir que le test n’est pas valide, le khi2 calculé
+étant supérieur au khi2 théorique, l’hypothèse du lien entre le
+financement des logements (maison) et des IRIS est donc nulle</em></p>
+<p>Analyse de cette réponse.</p>
+<p>(j’ai quand même mis deux points, le truc n’est pas facile et
+j’attendais un essai)</p>
+</div>
+<div id="ce-que-jattend-désormais" class="section level3"
+number="7.4.2">
+<h3><span class="header-section-number">7.4.2</span> Ce que j’attend
+désormais</h3>
+<p>Si on regarde la contribution de chaque zone au modèle, on voit qu’un
+quartier se singularise complètement par rapport aux autres, De Lattre
+de Tassigny possède autant de logement <em>moins pauvre</em> que
+<em>pauvre</em>. Du coup il contribue pour quasiment la moitié au khi2.
+Centre-ville et Noue Caillet ont une sur représentation de logements
+très pauvres. Tous les autres quartiers s’écartent moins du modèle.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>khi2partiel <span class="ot">&lt;-</span> (khi2<span class="sc">$</span>observed <span class="sc">-</span> khi2<span class="sc">$</span>expected) <span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> khi2<span class="sc">$</span>expected</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">apply</span>(khi2partiel,<span class="dv">1</span>,sum)<span class="sc">/</span><span class="fu">sum</span>(khi2partiel),<span class="dv">2</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(contrib)</span></code></pre></div>
+<p><img src="jour3_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+</div>
+<div id="cartographie" class="section level2" number="7.5">
+<h2><span class="header-section-number">7.5</span> Cartographie</h2>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NOM_IRIS =</span> <span class="fu">names</span>(contrib),</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">contrib =</span> contrib, <span class="at">row.names =</span> <span class="cn">NULL</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                 )</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(zone, df, <span class="at">by =</span><span class="st">&quot;NOM_IRIS&quot;</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>jointure<span class="sc">$</span>num <span class="ot">&lt;-</span> <span class="fu">rownames</span>(jointure)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_init</span>(zone)</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(jointure, <span class="at">type =</span> <span class="st">&quot;choro&quot;</span>, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>,<span class="fl">0.50</span>), <span class="at">border =</span> <span class="st">&quot;antiquewhite2&quot;</span>, <span class="at">var =</span> <span class="st">&quot;contrib&quot;</span>, <span class="at">add =</span> T)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(jointure2, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">&quot;antiquewhite3&quot;</span>,<span class="at">border =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_label</span>(jointure, <span class="at">var =</span> <span class="st">&quot;num&quot;</span>, <span class="at">overlap =</span> <span class="cn">FALSE</span>, <span class="at">col=</span> <span class="st">&quot;white&quot;</span>,<span class="at">bg =</span><span class="st">&quot;black&quot;</span>, <span class="at">halo =</span> T, <span class="at">cex =</span> <span class="fl">1.5</span>)</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Type appartement bailleur social : contribution au chi2&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;RPLS2019&quot;</span>)</span></code></pre></div>
+<p><img src="jour3_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 </div>
 </div>
 
