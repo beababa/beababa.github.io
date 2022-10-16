@@ -47,100 +47,6 @@
 
 
 
-<style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
-</style>
-<style type="text/css" data-origin="pandoc">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  background-color: #f8f8f8; }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ef2929; } /* Alert */
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
-code span.bn { color: #0000cf; } /* BaseN */
-code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
-code span.co { color: #8f5902; font-style: italic; } /* Comment */
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code span.dt { color: #204a87; } /* DataType */
-code span.dv { color: #0000cf; } /* DecVal */
-code span.er { color: #a40000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code span.ot { color: #8f5902; } /* Other */
-code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
-code span.ss { color: #4e9a06; } /* SpecialString */
-code span.st { color: #4e9a06; } /* String */
-code span.va { color: #000000; } /* Variable */
-code span.vs { color: #4e9a06; } /* VerbatimString */
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-
-</style>
-<script>
-// apply pandoc div.sourceCode style to pre.sourceCode instead
-(function() {
-  var sheets = document.styleSheets;
-  for (var i = 0; i < sheets.length; i++) {
-    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
-    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
-      var rule = rules[j];
-      // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
-      var style = rule.style.cssText;
-      // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
-      // replace div.sourceCode by a pre.sourceCode rule
-      sheets[i].deleteRule(j);
-      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
-    }
-  }
-})();
-</script>
 
 
 
@@ -485,31 +391,12 @@ number="2.1">
 données</h2>
 <p>Afin de vraiment comprendre, on saisit des modalités différentes : à
 votre avis comment va-t-on les classer ?</p>
-<p>Attention, valeur plancher 5</p>
+<p>Attention, valeur plancher 5 pour le calcul du khi2</p>
 <pre><code>## Linking to GEOS 3.9.1, GDAL 3.3.2, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
-<pre><code>## Reading layer `quartiersBailleurs&#39; from data source 
-##   `C:\Users\tachasa\01_stat\data\logement.gpkg&#39; using driver `GPKG&#39;
-## Simple feature collection with 8 features and 1 field
-## Geometry type: MULTIPOLYGON
-## Dimension:     XY
-## Bounding box:  xmin: 661091 ymin: 6865344 xmax: 663345.5 ymax: 6869044
-## Projected CRS: RGF93 / Lambert-93</code></pre>
-<pre><code>## Reading layer `RPLS&#39; from data source 
-##   `C:\Users\tachasa\01_stat\data\logement.gpkg&#39; using driver `GPKG&#39;
-## Simple feature collection with 9390 features and 72 fields
-## Geometry type: POINT
-## Dimension:     XY
-## Bounding box:  xmin: 661284.6 ymin: 6865691 xmax: 663295 ymax: 6868803
-## Projected CRS: RGF93 / Lambert-93</code></pre>
 <pre><code>## 
 ##    1    2    3    4    5    6    7    9 &lt;NA&gt; 
 ##  631 2164 3676 2231  609   45   33    1    0</code></pre>
 <p><img src="jour3_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<pre><code>## Warning: attribute variables are assumed to be spatially constant throughout all
-## geometries
-
-## Warning: attribute variables are assumed to be spatially constant throughout all
-## geometries</code></pre>
 </div>
 <div id="cartographies-de-base" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Cartographies de
@@ -517,9 +404,8 @@ base</h2>
 <div id="les-points-logements" class="section level3" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Les points
 logements</h3>
-<p><img src="jour3_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="jour3_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Quel est le problème de cette cartographie ?</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>zone <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/logement.gpkg&quot;</span>, <span class="st">&quot;quartiersBailleurs&quot;</span>)</span></code></pre></div>
 <pre><code>## Reading layer `quartiersBailleurs&#39; from data source 
 ##   `C:\Users\tachasa\01_stat\data\logement.gpkg&#39; using driver `GPKG&#39;
 ## Simple feature collection with 8 features and 1 field
@@ -531,9 +417,7 @@ logements</h3>
 </div>
 <div id="carte-des-zones" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Carte des zones</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(zone, <span class="at">type =</span> <span class="st">&quot;typo&quot;</span>, <span class="at">var =</span> <span class="st">&quot;NOM_IRIS&quot;</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Zones inventaire bailleurs sociaux&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;sources internes, Bondy, 2013&quot;</span>)</span></code></pre></div>
-<p><img src="jour3_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="jour3_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 </div>
 <div id="tableau-de-contingence" class="section level1" number="3">
@@ -545,9 +429,6 @@ contingence</h1>
 <p>Utiliser l’outil de table dynamique (dans le menu données) pour le
 créer</p>
 <p>Résultat attendu :</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/rplsPieceZone.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>NOM_IRIS, data<span class="sc">$</span>taille)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">addmargins</span>(tab))</span></code></pre></div>
 <table>
 <colgroup>
 <col width="67%" />
@@ -654,8 +535,6 @@ class="section level3" number="3.2.2">
 conditionnelles en ligne et colonne</h3>
 <p>Pour pouvoir comparer les zones, chaque groupe est ramené à une même
 base égale à 100.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>freqLg <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>NOM_IRIS, data<span class="sc">$</span>taille), <span class="at">margin =</span> <span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span>,<span class="dv">0</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(freqLg, <span class="at">title =</span> <span class="st">&quot;Fréquence conditionnelle ligne&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -723,7 +602,7 @@ base égale à 100.</p>
 <li><p>utilisation du %</p></li>
 </ul>
 <p><img src="img/frequenceLG.png" /></p>
-<p>analyse</p>
+<p>Analyse</p>
 <ul>
 <li><p>répartition des types d’appartement puis lorsque ramené à une
 base 100, on peut comparer entre les zones.</p></li>
@@ -741,10 +620,6 @@ number="4">
 <h1><span class="header-section-number">4</span> Khi2 : un exemple sur
 un dé truqué</h1>
 <p>Le dé est-il truqué ?</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>face <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">6</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>effectif <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">17</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span>  <span class="fu">sum</span>(effectif)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">data.frame</span>(face,effectif))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -791,9 +666,6 @@ face et le nombre de fois où elle sort)</p>
 théoriques</h2>
 <p>Sur le total des lancers (60), chaque face aurait pû sortir 10
 fois.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>effectifThéorique <span class="ot">&lt;-</span> <span class="fu">rep</span> (<span class="dv">10</span>,<span class="dv">6</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(face, effectif, effectifThéorique)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -842,13 +714,9 @@ fois.</p>
 <p>Elle se mesure avec le khi2</p>
 <p>On calcule l’écart, puis le carré de cet écart et on pondère par
 l’effectif théorique.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(ecart <span class="ot">&lt;-</span> df<span class="sc">$</span>effectif <span class="sc">-</span> df<span class="sc">$</span>effectifThéorique)</span></code></pre></div>
 <pre><code>## [1]  5 -3 -6  1 -4  7</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(distance <span class="ot">&lt;-</span>  ecart<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 25  9 36  1 16 49</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(relatif <span class="ot">&lt;-</span> distance <span class="sc">/</span> df<span class="sc">$</span>effectifThéorique)</span></code></pre></div>
 <pre><code>## [1] 2.5 0.9 3.6 0.1 1.6 4.9</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(khi2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(relatif))</span></code></pre></div>
 <pre><code>## [1] 13.6</code></pre>
 </div>
 <div id="test-du-khi2" class="section level2" number="4.4">
@@ -876,10 +744,10 @@ donc inférieur au khi2 observé.</p>
 </div>
 </div>
 </div>
-<div id="retour-à-la-comparaison-secteur-type-dappartement"
+<div id="khi2-retour-à-la-comparaison-secteur-type-dappartement"
 class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Retour à la comparaison
-secteur / type d’appartement</h1>
+<h1><span class="header-section-number">5</span> Khi2 : Retour à la
+comparaison secteur / type d’appartement</h1>
 <div id="ennoncer-lhypothèse-h0" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Ennoncer l’hypothèse
 H0</h2>
@@ -922,10 +790,6 @@ carré. Puis on divise par l’effectif théorique.</p>
 <h3><span class="header-section-number">5.3.2</span> Le Khi2</h3>
 <p>Le total de tous les khi2 partiels</p>
 <p><img src="img/khi2partiel2.png" /></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/rplsPieceZone.csv&quot;</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>NOM_IRIS, data<span class="sc">$</span>taille)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tab)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>test<span class="sc">$</span>expected</span></code></pre></div>
 <pre><code>##                                                 
 ##                                                      grand     moyen    petit
 ##   Blanqui                                        100.47386  868.7601 411.7661
@@ -978,8 +842,6 @@ class="section level2" number="6.2">
 évidence les variations faibles autour de la moyenne</h2>
 <p>A partir de quand le khi2 devient inférieur ?</p>
 <p>Et si on retire la Remise à Jorelle ?</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tab2 <span class="ot">&lt;-</span> tab [<span class="sc">-</span><span class="fu">c</span>(<span class="dv">6</span>),]</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>tab2</span></code></pre></div>
 <pre><code>##                                                 
 ##                                                  grand moyen petit
 ##   Blanqui                                          168   889   324
@@ -989,7 +851,6 @@ class="section level2" number="6.2">
 ##   la mare à la Veuve                                 2   307   179
 ##   Merisiers /14 juillet                             17   611   223
 ##   Noue Caillet /Terre Saint Blaise /les Galiotes   254  1439   798</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tab2)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
@@ -1001,7 +862,6 @@ largement au dessus du khi2 théorique (entre 33 et 42)</p>
 <div id="et-en-carto" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Et en carto…</h2>
 <p>Graphique</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(tab)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;Blanqui&quot;                                       
 ## [2] &quot;centre ville Gare&quot;                             
@@ -1014,28 +874,12 @@ largement au dessus du khi2 théorique (entre 33 et 42)</p>
 ## 
 ## [[2]]
 ## [1] &quot;grand&quot; &quot;moyen&quot; &quot;petit&quot;</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tab, <span class="at">main =</span> <span class="st">&quot;type d&#39;appartement par quartier&quot;</span>,<span class="at">col=</span> <span class="fu">terrain.colors</span>(<span class="dv">3</span>), <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">las =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="jour3_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="jour3_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Carte des contributions au khi2</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(test)</span></code></pre></div>
 <pre><code>## [1] &quot;statistic&quot; &quot;parameter&quot; &quot;p.value&quot;   &quot;method&quot;    &quot;data.name&quot; &quot;observed&quot; 
 ## [7] &quot;expected&quot;  &quot;residuals&quot; &quot;stdres&quot;</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>chi2partiel <span class="ot">&lt;-</span> <span class="fu">round</span>(((test<span class="sc">$</span>observed <span class="sc">-</span> test<span class="sc">$</span>expected)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> test<span class="sc">$</span>expected),<span class="dv">0</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>chi2partielSomme <span class="ot">&lt;-</span> <span class="fu">apply</span>(chi2partiel, <span class="dv">1</span>,sum)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>chi2partielFreq <span class="ot">&lt;-</span> chi2partielSomme<span class="sc">/</span> <span class="fu">sum</span>(chi2partielSomme)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(chi2partielFreq)</span></code></pre></div>
-<p><img src="jour3_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NOM_IRIS =</span> <span class="fu">names</span>(chi2partielFreq),</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">contrib =</span> chi2partielFreq, <span class="at">row.names =</span> <span class="cn">NULL</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                 )</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(zone, df, <span class="at">by =</span><span class="st">&quot;NOM_IRIS&quot;</span>)</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>jointure<span class="sc">$</span>num <span class="ot">&lt;-</span> <span class="fu">rownames</span>(jointure)</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_init</span>(zone)</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(jointure, <span class="at">type =</span> <span class="st">&quot;choro&quot;</span>, <span class="at">border =</span> <span class="st">&quot;antiquewhite2&quot;</span>, <span class="at">var =</span> <span class="st">&quot;contrib&quot;</span>, <span class="at">add =</span> T)</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(jointure2, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">&quot;antiquewhite3&quot;</span>,<span class="at">border =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_label</span>(jointure, <span class="at">var =</span> <span class="st">&quot;num&quot;</span>, <span class="at">overlap =</span> <span class="cn">FALSE</span>, <span class="at">col=</span> <span class="st">&quot;white&quot;</span>,<span class="at">bg =</span><span class="st">&quot;black&quot;</span>, <span class="at">halo =</span> T, <span class="at">cex =</span> <span class="fl">1.5</span>)</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Taille appartement bailleur social : contribution au chi2&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;RPLS2019&quot;</span>)</span></code></pre></div>
 <p><img src="jour3_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="jour3_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Cette carte permet de commencer à classifier les quartiers par
 rapport à un modèle d’indépendance, une répartition des logements
 sociaux type. Il serait sans doute intéressant de répéter l’opération
@@ -1132,10 +976,6 @@ toutes les zones.</p>
 <div id="calcul-du-khi2-1" class="section level2" number="7.4">
 <h2><span class="header-section-number">7.4</span> Calcul du khi2</h2>
 <p>Le khi2 calculé est largement supérieur au khi2 du tableau.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/rplsTypeZone.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>NOM_IRIS, data<span class="sc">$</span>equiv)</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>khi2 <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tab)</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>khi2<span class="sc">$</span>expected</span></code></pre></div>
 <pre><code>##                                                 
 ##                                                  moins pauvres   pauvres
 ##   Blanqui                                            159.25549 1053.0604
@@ -1156,7 +996,6 @@ toutes les zones.</p>
 ##   la remise à Jorelle                                81.34948
 ##   Merisiers /14 juillet                             103.94655
 ##   Noue Caillet /Terre Saint Blaise /les Galiotes    304.26659</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>khi2</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
@@ -1184,26 +1023,12 @@ de Tassigny possède autant de logement <em>moins pauvre</em> que
 <em>pauvre</em>. Du coup il contribue pour quasiment la moitié au khi2.
 Centre-ville et Noue Caillet ont une sur représentation de logements
 très pauvres. Tous les autres quartiers s’écartent moins du modèle.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>khi2partiel <span class="ot">&lt;-</span> (khi2<span class="sc">$</span>observed <span class="sc">-</span> khi2<span class="sc">$</span>expected) <span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> khi2<span class="sc">$</span>expected</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">apply</span>(khi2partiel,<span class="dv">1</span>,sum)<span class="sc">/</span><span class="fu">sum</span>(khi2partiel),<span class="dv">2</span>)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(contrib)</span></code></pre></div>
-<p><img src="jour3_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="jour3_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 </div>
 </div>
 <div id="cartographie" class="section level2" number="7.5">
 <h2><span class="header-section-number">7.5</span> Cartographie</h2>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NOM_IRIS =</span> <span class="fu">names</span>(contrib),</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">contrib =</span> contrib, <span class="at">row.names =</span> <span class="cn">NULL</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                 )</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(zone, df, <span class="at">by =</span><span class="st">&quot;NOM_IRIS&quot;</span>)</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>jointure<span class="sc">$</span>num <span class="ot">&lt;-</span> <span class="fu">rownames</span>(jointure)</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_init</span>(zone)</span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(jointure, <span class="at">type =</span> <span class="st">&quot;choro&quot;</span>, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>,<span class="fl">0.50</span>), <span class="at">border =</span> <span class="st">&quot;antiquewhite2&quot;</span>, <span class="at">var =</span> <span class="st">&quot;contrib&quot;</span>, <span class="at">add =</span> T)</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(jointure2, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">&quot;antiquewhite3&quot;</span>,<span class="at">border =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_label</span>(jointure, <span class="at">var =</span> <span class="st">&quot;num&quot;</span>, <span class="at">overlap =</span> <span class="cn">FALSE</span>, <span class="at">col=</span> <span class="st">&quot;white&quot;</span>,<span class="at">bg =</span><span class="st">&quot;black&quot;</span>, <span class="at">halo =</span> T, <span class="at">cex =</span> <span class="fl">1.5</span>)</span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Type appartement bailleur social : contribution au chi2&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;RPLS2019&quot;</span>)</span></code></pre></div>
-<p><img src="jour3_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="jour3_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 </div>
 </div>
 
