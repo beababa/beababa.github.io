@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Variance</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="intro.html">Introduction</a>
+</li>
+<li>
+  <a href="jour1.html">univariées</a>
+</li>
+<li>
+  <a href="jour2.html">bi-variées</a>
+</li>
+<li>
+  <a href="jour3.html">khi 2</a>
+</li>
+<li>
+  <a href="jour4.html">régression</a>
+</li>
+<li>
+  <a href="jour5.html">examen</a>
+</li>
+<li>
+  <a href="jour6.html">variance</a>
+</li>
+<li>
+  <a href="jour7.html">multivariées AFC</a>
+</li>
+<li>
+  <a href="jour7.html">classification</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://beababa.github.io/">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Variance</h1>
+
+</div>
+
+
+<div id="intro-rappels-divers" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Intro : rappels
+divers</h1>
+<div id="théorie" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Théorie</h2>
+<ul>
+<li>le khi2, la régression, et la variance</li>
+<li>démarche générale (attention à part le khi2, on est passé vite sur
+les tests)</li>
+</ul>
+</div>
+<div id="outils" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Outils</h2>
+<ul>
+<li>xls ou csv</li>
+<li>libre office ou R</li>
+</ul>
+</div>
+</div>
+<div id="donnée-et-objet-de-lexercice" class="section level1"
+number="2">
+<h1><span class="header-section-number">2</span> Donnée et objet de
+l’exercice</h1>
+<p>Suite à l’examen, on a 3 séries de communes, dans Est Ensemble, en
+Ile de France et sur la France. On va tester s’il y a une répartition
+spatiale spécifique du logement social dans chacun de ces ensembles
+spatiaux.</p>
+<p>La variance est en effet très souvent utilisée en géographie pour
+tester des groupements spatiaux.</p>
+<div id="hypothèse" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Hypothèse</h2>
+<p>D’après vos résultats, c’est le rapport entre les différents types de
+logement social qui serait spécifique. Il y a moins de logements sociaux
+intermédiaires (les “moins pauvres”) ailleurs qu’à Bondy. Y-a-t-il une
+spécificité en Ile de France ?</p>
+<p>R va nous permettre de mettre en place la donnée d’exemple.</p>
+</div>
+<div id="préparer-la-donnée" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Préparer la
+donnée</h2>
+<div id="que-faut-il-faire" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Que faut-il faire
+?</h3>
+<p>Lire les fichiers Calculer le nombre de logements intermédiaires
+rapportés au total des logements sociaux. Enregistrer ce rapport dans un
+fichier</p>
+</div>
+<div id="remarques-sur-r" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Remarques sur
+R</h3>
+<ul>
+<li><p>opérateur d’assignation</p></li>
+<li><p>les accolades</p></li>
+<li><p>la complétion avec tabulation</p></li>
+</ul>
+<p>Parcours du script et exercice moodle pour voir si c’est compris.</p>
+</div>
+<div id="le-script" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Le script</h3>
+<p>On regroupe toutes les données en un seul fichier</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fic <span class="ot">&lt;-</span> <span class="fu">list.files</span> (<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;^ee|^fr|^idf&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(fic)){</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, fic [i]), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  zone <span class="ot">&lt;-</span> <span class="fu">substring</span>(fic [i],<span class="dv">0</span>,<span class="dv">2</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">cbind</span>(zone, tmp)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(data, tmp)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="fu">c</span>(<span class="st">&quot;LIBCOM&quot;</span>, <span class="st">&quot;zone&quot;</span>, <span class="st">&quot;FINANcode&quot;</span>)]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(data,<span class="st">&quot;data/total.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<p>Le fichier total fait plus de 113 M lignes.</p>
+<p>On calcule le rapport entre le logement intermédiaire pour chaque
+ville.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lecture du fichier. Quelle remarque faire ?</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&quot;data/total.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># concaténation zone et nom ville</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>loc <span class="ot">&lt;-</span> <span class="fu">paste0</span>(data<span class="sc">$</span>zone,<span class="st">&quot;_&quot;</span>, data<span class="sc">$</span>LIBCOM)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    113225 obs. of  5 variables:
+##  $ X        : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ LIBCOM   : chr  &quot;Bagnolet&quot; &quot;Bagnolet&quot; &quot;Bagnolet&quot; &quot;Bagnolet&quot; ...
+##  $ zone     : chr  &quot;ee&quot; &quot;ee&quot; &quot;ee&quot; &quot;ee&quot; ...
+##  $ FINANcode: chr  &quot;pauvres&quot; &quot;pauvres&quot; &quot;pauvres&quot; &quot;pauvres&quot; ...
+##  $ loc      : chr  &quot;ee_Bagnolet&quot; &quot;ee_Bagnolet&quot; &quot;ee_Bagnolet&quot; &quot;ee_Bagnolet&quot; ...</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dénombrement</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>loc,data<span class="sc">$</span>FINANcode)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># on met les marges</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(tab,<span class="dv">2</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># on affiche</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tab)</span></code></pre></div>
+<table>
+<colgroup>
+<col width="39%" />
+<col width="20%" />
+<col width="11%" />
+<col width="19%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">moins pauvres</th>
+<th align="right">pauvres</th>
+<th align="right">très pauvres</th>
+<th align="right">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ee_Bagnolet</td>
+<td align="right">57</td>
+<td align="right">3933</td>
+<td align="right">1094</td>
+<td align="right">5084</td>
+</tr>
+<tr class="even">
+<td align="left">ee_Bobigny</td>
+<td align="right">165</td>
+<td align="right">6974</td>
+<td align="right">1099</td>
+<td align="right">8238</td>
+</tr>
+<tr class="odd">
+<td align="left">ee_Bondy</td>
+<td align="right">606</td>
+<td align="right">5319</td>
+<td align="right">609</td>
+<td align="right">6534</td>
+</tr>
+<tr class="even">
+<td align="left">ee_Le PrC)-Saint-Gervais</td>
+<td align="right">19</td>
+<td align="right">1930</td>
+<td align="right">763</td>
+<td align="right">2712</td>
+</tr>
+<tr class="odd">
+<td align="left">ee_Les Lilas</td>
+<td align="right">91</td>
+<td align="right">1717</td>
+<td align="right">279</td>
+<td align="right">2087</td>
+</tr>
+<tr class="even">
+<td align="left">ee_Montreuil</td>
+<td align="right">251</td>
+<td align="right">1789</td>
+<td align="right">214</td>
+<td align="right">2254</td>
+</tr>
+<tr class="odd">
+<td align="left">ee_Noisy-le-Sec</td>
+<td align="right">2</td>
+<td align="right">3728</td>
+<td align="right">277</td>
+<td align="right">4007</td>
+</tr>
+<tr class="even">
+<td align="left">ee_Pantin</td>
+<td align="right">358</td>
+<td align="right">4299</td>
+<td align="right">2374</td>
+<td align="right">7031</td>
+</tr>
+<tr class="odd">
+<td align="left">ee_Romainville</td>
+<td align="right">0</td>
+<td align="right">3314</td>
+<td align="right">527</td>
+<td align="right">3841</td>
+</tr>
+<tr class="even">
+<td align="left">fr_Bayonne</td>
+<td align="right">119</td>
+<td align="right">3822</td>
+<td align="right">896</td>
+<td align="right">4837</td>
+</tr>
+<tr class="odd">
+<td align="left">fr_Cholet</td>
+<td align="right">25</td>
+<td align="right">4527</td>
+<td align="right">92</td>
+<td align="right">4644</td>
+</tr>
+<tr class="even">
+<td align="left">fr_Les Abymes</td>
+<td align="right">252</td>
+<td align="right">7893</td>
+<td align="right">1002</td>
+<td align="right">9147</td>
+</tr>
+<tr class="odd">
+<td align="left">fr_Lorient</td>
+<td align="right">18</td>
+<td align="right">5532</td>
+<td align="right">1635</td>
+<td align="right">7185</td>
+</tr>
+<tr class="even">
+<td align="left">fr_Saint-AndrC)</td>
+<td align="right">129</td>
+<td align="right">3189</td>
+<td align="right">1820</td>
+<td align="right">5138</td>
+</tr>
+<tr class="odd">
+<td align="left">fr_Vaulx-en-Velin</td>
+<td align="right">336</td>
+<td align="right">4579</td>
+<td align="right">567</td>
+<td align="right">5482</td>
+</tr>
+<tr class="even">
+<td align="left">id_Chelles</td>
+<td align="right">140</td>
+<td align="right">773</td>
+<td align="right">439</td>
+<td align="right">1352</td>
+</tr>
+<tr class="odd">
+<td align="left">id_Clamart</td>
+<td align="right">776</td>
+<td align="right">5333</td>
+<td align="right">844</td>
+<td align="right">6953</td>
+</tr>
+<tr class="even">
+<td align="left">id_Corbeil-Essonnes</td>
+<td align="right">42</td>
+<td align="right">3853</td>
+<td align="right">365</td>
+<td align="right">4260</td>
+</tr>
+<tr class="odd">
+<td align="left">id_Fontenay-sous-Bois</td>
+<td align="right">191</td>
+<td align="right">1723</td>
+<td align="right">120</td>
+<td align="right">2034</td>
+</tr>
+<tr class="even">
+<td align="left">id_Le Blanc-Mesnil</td>
+<td align="right">173</td>
+<td align="right">2490</td>
+<td align="right">894</td>
+<td align="right">3557</td>
+</tr>
+<tr class="odd">
+<td align="left">id_Paris 5e Arrondissement</td>
+<td align="right">258</td>
+<td align="right">1993</td>
+<td align="right">428</td>
+<td align="right">2679</td>
+</tr>
+<tr class="even">
+<td align="left">id_Sarcelles</td>
+<td align="right">449</td>
+<td align="right">5699</td>
+<td align="right">4449</td>
+<td align="right">10597</td>
+</tr>
+<tr class="odd">
+<td align="left">id_Sartrouville</td>
+<td align="right">0</td>
+<td align="right">2155</td>
+<td align="right">1417</td>
+<td align="right">3572</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="représentation-graphique" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Représentation
+graphique</h1>
+<p>La boite à moustaches permet de comparer rapidement des
+distributions.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rapport <span class="ot">&lt;-</span> tab [,<span class="dv">1</span>]<span class="sc">/</span> tab[,<span class="dv">4</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>zone <span class="ot">&lt;-</span> <span class="fu">substring</span>(<span class="fu">names</span>(rapport), <span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ville <span class="ot">&lt;-</span> <span class="fu">substring</span>(<span class="fu">names</span>(rapport),<span class="dv">4</span>,<span class="dv">25</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(ville, zone, rapport)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<pre><code>##                                             ville zone      rapport
+## ee_Bagnolet                              Bagnolet   ee 0.0112116444
+## ee_Bobigny                                Bobigny   ee 0.0200291333
+## ee_Bondy                                    Bondy   ee 0.0927456382
+## ee_Le PrC)-Saint-Gervais    Le PrC)-Saint-Gervais   ee 0.0070058997
+## ee_Les Lilas                            Les Lilas   ee 0.0436032583
+## ee_Montreuil                            Montreuil   ee 0.1113575865
+## ee_Noisy-le-Sec                      Noisy-le-Sec   ee 0.0004991265
+## ee_Pantin                                  Pantin   ee 0.0509173660
+## ee_Romainville                        Romainville   ee 0.0000000000
+## fr_Bayonne                                Bayonne   fr 0.0246020260
+## fr_Cholet                                  Cholet   fr 0.0053832903
+## fr_Les Abymes                          Les Abymes   fr 0.0275500164
+## fr_Lorient                                Lorient   fr 0.0025052192
+## fr_Saint-AndrC)                      Saint-AndrC)   fr 0.0251070455
+## fr_Vaulx-en-Velin                  Vaulx-en-Velin   fr 0.0612914995
+## id_Chelles                                Chelles   id 0.1035502959
+## id_Clamart                                Clamart   id 0.1116065008
+## id_Corbeil-Essonnes              Corbeil-Essonnes   id 0.0098591549
+## id_Fontenay-sous-Bois          Fontenay-sous-Bois   id 0.0939036382
+## id_Le Blanc-Mesnil                Le Blanc-Mesnil   id 0.0486364914
+## id_Paris 5e Arrondissement Paris 5e Arrondissemen   id 0.0963045913
+## id_Sarcelles                            Sarcelles   id 0.0423704822
+## id_Sartrouville                      Sartrouville   id 0.0000000000</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(data<span class="sc">$</span>rapport<span class="sc">~</span>data<span class="sc">$</span>zone)</span></code></pre></div>
+<p><img src="jour6_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># avec un peu de présentation</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># On multiplie  par 100 le rapport pour avoir un %</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>rapport <span class="ot">&lt;-</span> data<span class="sc">$</span>rapport <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(data<span class="sc">$</span>rapport<span class="sc">~</span>data<span class="sc">$</span>zone, <span class="at">xlab =</span><span class="st">&quot;Zone&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;% logement intermédiaire&quot;</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">8</span>))</span></code></pre></div>
+<p><img src="jour6_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p>Faire le commentaire avec les étudiants (exercice moodle)</p>
+</div>
+<div id="la-variance" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> La variance</h1>
+<div id="rappel" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Rappel</h2>
+<p>Pour mémoire, la variance est le carré de la somme des écarts à la
+moyenne.</p>
+<p>Dans le tableur, nous aurions fait une série de tableaux de calcul
+autour des écarts à la moyennes (en mettant des carrés).</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(data<span class="sc">$</span>rapport, data<span class="sc">$</span>zone,var)</span></code></pre></div>
+<pre><code>##        ee        fr        id 
+## 16.782264  4.424925 19.279091</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># verif pour le cas du 77 par exemple</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dataSel <span class="ot">&lt;-</span> data [data<span class="sc">$</span>zone <span class="sc">==</span> <span class="st">&#39;ee&#39;</span>,]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((dataSel<span class="sc">$</span>rapport <span class="sc">-</span> <span class="fu">mean</span>(dataSel<span class="sc">$</span>rapport))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 14.91757</code></pre>
+</div>
+<div id="analyse-de-la-variance" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Analyse de la
+variance</h2>
+<p>La variation est une quantité qui se décompose en :</p>
+<ul>
+<li><p>les variations à l’intérieur de chaque groupe (variation intra
+groupe)</p></li>
+<li><p>les variations entre les groupes (variation inter
+groupe)</p></li>
+</ul>
+<div id="la-formule-anova-dans-r" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> La formule ANOVA
+dans R</h3>
+<p>Sous R, il suffit de lancer une formule.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transformation en variable de catégorie</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>zone <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>zone)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (rapport <span class="sc">~</span> zone, <span class="at">data =</span> data)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modele)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: rapport
+##           Df  Sum Sq Mean Sq F value Pr(&gt;F)
+## zone       2  56.378  28.189  1.9352 0.1705
+## Residuals 20 291.336  14.567</code></pre>
+<p>Sum Sq = la somme des carrés des écarts (SCE)</p>
+<p>Mean Sq = la moyenne des carrés des écarts, c’est la variance.</p>
+<p>La première ligne c’est pour la variation inter-groupe , la deuxième
+c’est pour l’intérieur des groupes (l’intra)</p>
+<p>Comme pour le khi2, on peut faire un test et calculer
+l’intensité.</p>
+</div>
+<div id="significativité" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span>
+Significativité</h3>
+<p>F value = Test de Fisher, c’est le test de significativité pour la
+variance.</p>
+<p>Le test est mesuré par le rapport entre la variance intergroupe et la
+variance intragroupe (avec les degrés de liberté).</p>
+<p>Concernant les degré de liberté pour les données intra, on prend tous
+les effectifs et on enlève le nombre de zone (cf les 2 chiffres df)</p>
+<p>Comme pour le khi2, on compare à un test obtenu par le hasard (donc
+une table). La relation est significative avec un risque d’erreur de 10
+%. Il n’y a pas d’indépendance entre les zones et la part de logement
+intermédiaire, mais le risque d’erreur est important.</p>
+</div>
+<div id="intensité" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Intensité</h3>
+<p>On mesure l’intensité, la proportion de la variation expliquée par
+les modalités dans la variation totale (entre 0 et 1)</p>
+<p>variation intergroupe / variation totale</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">28</span><span class="sc">/</span>(<span class="dv">28</span> <span class="sc">+</span><span class="dv">14</span>)</span></code></pre></div>
+<pre><code>## [1] 0.6666667</code></pre>
+<p>L’intensité est forte, plus de 66 % de la variation est expliquée par
+la structure des zones.</p>
+</div>
+</div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<small><p>L5GEABIM Analyses bivariées et multivariées</p></small>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
