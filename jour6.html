@@ -461,16 +461,20 @@ divers</h1>
 <div id="théorie" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Théorie</h2>
 <ul>
-<li>le khi2, la régression, et la variance</li>
-<li>démarche générale (attention à part le khi2, on est passé vite sur
-les tests)</li>
+<li><p>le khi2, la régression, et la variance</p></li>
+<li><p>démarche générale</p></li>
 </ul>
+<p>Avec le khi2, on a vu surtout le test et sa significativité.</p>
+<p>Avec la régression, on a abordé l’intensité et le coefficient de
+détermination.</p>
+<p>Avec la variance, nous allons aborder test, significativité et
+intensité.</p>
 </div>
 <div id="outils" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> Outils</h2>
 <ul>
-<li>xls ou csv</li>
-<li>libre office ou R</li>
+<li><p>xls ou csv</p></li>
+<li><p>libre office ou R</p></li>
 </ul>
 </div>
 </div>
@@ -726,6 +730,23 @@ ville.</p>
 </tr>
 </tbody>
 </table>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calcul du rapport</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>rapport <span class="ot">&lt;-</span> tab [,<span class="dv">1</span>]<span class="sc">/</span> tab[,<span class="dv">4</span>]</span></code></pre></div>
+<p>On reconstitue la donnée sur laquelle on va travailler, c’est à dire
+un tableau avec zone, ville et le rapport logement intermédiaire et
+logement total.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>zone <span class="ot">&lt;-</span> <span class="fu">substring</span>(<span class="fu">names</span>(rapport), <span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ville <span class="ot">&lt;-</span> <span class="fu">substring</span>(<span class="fu">names</span>(rapport),<span class="dv">4</span>,<span class="dv">25</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(ville, zone, rapport)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># On regarde la tête du fichier</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##                                          ville zone    rapport
+## ee_Bagnolet                           Bagnolet   ee 0.01121164
+## ee_Bobigny                             Bobigny   ee 0.02002913
+## ee_Bondy                                 Bondy   ee 0.09274564
+## ee_Le PrC)-Saint-Gervais Le PrC)-Saint-Gervais   ee 0.00700590
+## ee_Les Lilas                         Les Lilas   ee 0.04360326
+## ee_Montreuil                         Montreuil   ee 0.11135759</code></pre>
 </div>
 </div>
 </div>
@@ -734,43 +755,14 @@ ville.</p>
 graphique</h1>
 <p>La boite à moustaches permet de comparer rapidement des
 distributions.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rapport <span class="ot">&lt;-</span> tab [,<span class="dv">1</span>]<span class="sc">/</span> tab[,<span class="dv">4</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>zone <span class="ot">&lt;-</span> <span class="fu">substring</span>(<span class="fu">names</span>(rapport), <span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ville <span class="ot">&lt;-</span> <span class="fu">substring</span>(<span class="fu">names</span>(rapport),<span class="dv">4</span>,<span class="dv">25</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(ville, zone, rapport)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
-<pre><code>##                                             ville zone      rapport
-## ee_Bagnolet                              Bagnolet   ee 0.0112116444
-## ee_Bobigny                                Bobigny   ee 0.0200291333
-## ee_Bondy                                    Bondy   ee 0.0927456382
-## ee_Le PrC)-Saint-Gervais    Le PrC)-Saint-Gervais   ee 0.0070058997
-## ee_Les Lilas                            Les Lilas   ee 0.0436032583
-## ee_Montreuil                            Montreuil   ee 0.1113575865
-## ee_Noisy-le-Sec                      Noisy-le-Sec   ee 0.0004991265
-## ee_Pantin                                  Pantin   ee 0.0509173660
-## ee_Romainville                        Romainville   ee 0.0000000000
-## fr_Bayonne                                Bayonne   fr 0.0246020260
-## fr_Cholet                                  Cholet   fr 0.0053832903
-## fr_Les Abymes                          Les Abymes   fr 0.0275500164
-## fr_Lorient                                Lorient   fr 0.0025052192
-## fr_Saint-AndrC)                      Saint-AndrC)   fr 0.0251070455
-## fr_Vaulx-en-Velin                  Vaulx-en-Velin   fr 0.0612914995
-## id_Chelles                                Chelles   id 0.1035502959
-## id_Clamart                                Clamart   id 0.1116065008
-## id_Corbeil-Essonnes              Corbeil-Essonnes   id 0.0098591549
-## id_Fontenay-sous-Bois          Fontenay-sous-Bois   id 0.0939036382
-## id_Le Blanc-Mesnil                Le Blanc-Mesnil   id 0.0486364914
-## id_Paris 5e Arrondissement Paris 5e Arrondissemen   id 0.0963045913
-## id_Sarcelles                            Sarcelles   id 0.0423704822
-## id_Sartrouville                      Sartrouville   id 0.0000000000</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(data<span class="sc">$</span>rapport<span class="sc">~</span>data<span class="sc">$</span>zone)</span></code></pre></div>
-<p><img src="jour6_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># avec un peu de présentation</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># On multiplie  par 100 le rapport pour avoir un %</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>rapport <span class="ot">&lt;-</span> data<span class="sc">$</span>rapport <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(data<span class="sc">$</span>rapport<span class="sc">~</span>data<span class="sc">$</span>zone, <span class="at">xlab =</span><span class="st">&quot;Zone&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;% logement intermédiaire&quot;</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">8</span>))</span></code></pre></div>
-<p><img src="jour6_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(data<span class="sc">$</span>rapport<span class="sc">~</span>data<span class="sc">$</span>zone)</span></code></pre></div>
+<p><img src="jour6_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># avec un peu de présentation</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># On multiplie  par 100 le rapport pour avoir un %</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>rapport <span class="ot">&lt;-</span> data<span class="sc">$</span>rapport <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(data<span class="sc">$</span>rapport<span class="sc">~</span>data<span class="sc">$</span>zone, <span class="at">xlab =</span><span class="st">&quot;Zone&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;% logement intermédiaire&quot;</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">8</span>))</span></code></pre></div>
+<p><img src="jour6_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 <p>Faire le commentaire avec les étudiants (exercice moodle)</p>
 </div>
 <div id="la-variance" class="section level1" number="4">
@@ -780,18 +772,29 @@ distributions.</p>
 <p>Pour mémoire, la variance est le carré de la somme des écarts à la
 moyenne.</p>
 <p>Dans le tableur, nous aurions fait une série de tableaux de calcul
-autour des écarts à la moyennes (en mettant des carrés).</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(data<span class="sc">$</span>rapport, data<span class="sc">$</span>zone,var)</span></code></pre></div>
+autour des écarts à la moyennes (en mettant des carrés). Dans r, c’est
+une formule var.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(data<span class="sc">$</span>rapport)</span></code></pre></div>
+<pre><code>## [1] 15.8052</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variance pour chaque zone, on utilise un tapply</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(data<span class="sc">$</span>rapport, data<span class="sc">$</span>zone,var)</span></code></pre></div>
 <pre><code>##        ee        fr        id 
 ## 16.782264  4.424925 19.279091</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># verif pour le cas du 77 par exemple</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dataSel <span class="ot">&lt;-</span> data [data<span class="sc">$</span>zone <span class="sc">==</span> <span class="st">&#39;ee&#39;</span>,]</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((dataSel<span class="sc">$</span>rapport <span class="sc">-</span> <span class="fu">mean</span>(dataSel<span class="sc">$</span>rapport))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># verif pour le cas d&#39;Est Ensemble par exemple</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>dataSel <span class="ot">&lt;-</span> data [data<span class="sc">$</span>zone <span class="sc">==</span> <span class="st">&#39;ee&#39;</span>,]</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((dataSel<span class="sc">$</span>rapport <span class="sc">-</span> <span class="fu">mean</span>(dataSel<span class="sc">$</span>rapport))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 14.91757</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(dataSel<span class="sc">$</span>rapport)</span></code></pre></div>
+<pre><code>## [1] 16.78226</code></pre>
+<p>Le résultat est légèrement différent, car le logiciel pondère la
+variance en soustrayant 1 à l’effectif. Plus la série est grande, moins
+cela a d’importance. A notre niveau, nous appelons variation la grandeur
+donnée par R.</p>
 </div>
-<div id="analyse-de-la-variance" class="section level2" number="4.2">
+<div id="analyse-de-la-variation-variance" class="section level2"
+number="4.2">
 <h2><span class="header-section-number">4.2</span> Analyse de la
-variance</h2>
+variation / variance</h2>
 <p>La variation est une quantité qui se décompose en :</p>
 <ul>
 <li><p>les variations à l’intérieur de chaque groupe (variation intra
@@ -799,14 +802,17 @@ groupe)</p></li>
 <li><p>les variations entre les groupes (variation inter
 groupe)</p></li>
 </ul>
+<p>La variation totale est la somme des deux. La significativité et
+l’intensité sont calculées avec ces trois grandeurs.</p>
 <div id="la-formule-anova-dans-r" class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> La formule ANOVA
 dans R</h3>
+<p>ANalyse Ordinaire de la VAriance (= variation)</p>
 <p>Sous R, il suffit de lancer une formule.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transformation en variable de catégorie</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>zone <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>zone)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (rapport <span class="sc">~</span> zone, <span class="at">data =</span> data)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modele)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transformation en variable de catégorie</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>zone <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>zone)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (rapport <span class="sc">~</span> zone, <span class="at">data =</span> data)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modele)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: rapport
@@ -814,9 +820,10 @@ dans R</h3>
 ## zone       2  56.378  28.189  1.9352 0.1705
 ## Residuals 20 291.336  14.567</code></pre>
 <p>Sum Sq = la somme des carrés des écarts (SCE)</p>
-<p>Mean Sq = la moyenne des carrés des écarts, c’est la variance.</p>
+<p>Mean Sq = la moyenne des carrés des écarts, c’est la variation.</p>
 <p>La première ligne c’est pour la variation inter-groupe , la deuxième
 c’est pour l’intérieur des groupes (l’intra)</p>
+<p>Que dire ce ces chiffres ?</p>
 <p>Comme pour le khi2, on peut faire un test et calculer
 l’intensité.</p>
 </div>
@@ -824,25 +831,59 @@ l’intensité.</p>
 <h3><span class="header-section-number">4.2.2</span>
 Significativité</h3>
 <p>F value = Test de Fisher, c’est le test de significativité pour la
-variance.</p>
-<p>Le test est mesuré par le rapport entre la variance intergroupe et la
-variance intragroupe (avec les degrés de liberté).</p>
+variation.</p>
+<p>Le test est mesuré par le rapport entre la variation intergroupe et
+la variation intragroupe (avec les degrés de liberté).</p>
+<p>Si ce rapport est élevé, cela signifie que la variation intergroupe
+est importante relativement à la variation intra, donc qu’il y a une
+vraie différence entre les moyennes des groupes.</p>
 <p>Concernant les degré de liberté pour les données intra, on prend tous
 les effectifs et on enlève le nombre de zone (cf les 2 chiffres df)</p>
+<div id="comme-pour-le-khi2-observé-et-théorique" class="section level4"
+number="4.2.2.1">
+<h4><span class="header-section-number">4.2.2.1</span> Comme pour le
+khi2, observé et théorique</h4>
 <p>Comme pour le khi2, on compare à un test obtenu par le hasard (donc
-une table). La relation est significative avec un risque d’erreur de 10
-%. Il n’y a pas d’indépendance entre les zones et la part de logement
-intermédiaire, mais le risque d’erreur est important.</p>
+une table).</p>
+<p><img src="img/fisher.jpg" /> F calculé</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Ftable <span class="ot">&lt;-</span> <span class="fu">qf</span>(<span class="at">p=</span>.<span class="dv">05</span>, <span class="at">df1=</span><span class="dv">2</span>, <span class="at">df2=</span><span class="dv">20</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>Fcalcule <span class="ot">&lt;-</span> <span class="dv">28</span> <span class="sc">/</span> <span class="dv">14</span></span></code></pre></div>
+<p>Le F théorique est supérieur au F calculé pour un risque de 5 %</p>
+<p>Il y a indépendance entre les zones et la part de logement
+intermédiaire.</p>
 </div>
-<div id="intensité" class="section level3" number="4.2.3">
-<h3><span class="header-section-number">4.2.3</span> Intensité</h3>
-<p>On mesure l’intensité, la proportion de la variation expliquée par
-les modalités dans la variation totale (entre 0 et 1)</p>
+</div>
+<div id="avec-r-importance-de-la-p-value" class="section level3"
+number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Avec R, importance
+de la p-value</h3>
+<p>Le chiffre le plus rapide à analyser, c’est la p-value, il indique la
+taille de la différence entre les moyennes des 3 groupes.</p>
+<p>Plus il est petit, plus il y a de différence, plus il est gros, plus
+les moyennes se ressemblent et donc l’hypothèse d’indépendance peut être
+rejetée.</p>
+<p>C’est la même logique que pour le khi2 (cf exemple khi2 dans
+l’introduction aux bivariées).</p>
+<p>Dans notre cas, la pvalue indique un risque de 17 %. Concrètement, il
+faudrait aller chercher la table du risque à 17 % de Fisher.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qf</span>(<span class="at">p=</span>.<span class="dv">17</span>, <span class="at">df1=</span><span class="dv">2</span>, <span class="at">df2=</span><span class="dv">20</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 1.938647</code></pre>
+<p>On a 17 chances sur 100 de se tromper si on rejette l’indépendance,
+c’est beaucoup.</p>
+<p>Les 3 zonages ne correspondant pas à une répartition spécifique du
+logement intermédiaire.</p>
+</div>
+<div id="intensité" class="section level3" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Intensité</h3>
+<p>On mesure quand même l’intensité, la proportion de la variation
+expliquée par les modalités dans la variation totale (entre 0 et 1)</p>
 <p>variation intergroupe / variation totale</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">28</span><span class="sc">/</span>(<span class="dv">28</span> <span class="sc">+</span><span class="dv">14</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dv">28</span><span class="sc">/</span>(<span class="dv">28</span> <span class="sc">+</span><span class="dv">14</span>)</span></code></pre></div>
 <pre><code>## [1] 0.6666667</code></pre>
 <p>L’intensité est forte, plus de 66 % de la variation est expliquée par
-la structure des zones.</p>
+la structure des zones. Attention, comme le test a été rejeté avec un
+risque d’erreur très fort, il faut tout de suite relativiser
+l’intensité.</p>
 </div>
 </div>
 </div>
