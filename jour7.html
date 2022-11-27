@@ -11,7 +11,7 @@
 
 
 
-<title>Mutivariées base (analyse factorielle)</title>
+<title>Mutivariées base</title>
 
 <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -428,10 +428,10 @@ div.tocify {
   <a href="jour6.html">variance</a>
 </li>
 <li>
-  <a href="jour7.html">multivariées AFC</a>
+  <a href="jour7.html">multivariées base</a>
 </li>
 <li>
-  <a href="jour7.html">classification</a>
+  <a href="jour8.html">factorielle et classification</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -450,21 +450,63 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Mutivariées base (analyse factorielle)</h1>
+<h1 class="title toc-ignore">Mutivariées base</h1>
 
 </div>
 
 
-<div id="attention-définition" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Attention définition
-!</h1>
+<div id="lhypothèse" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> L’hypothèse</h1>
+<div id="une-démarche-dexploration" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Une démarche
+d’exploration</h2>
 <p>On parle ici d’analyse factorielle. Il ne s’agit pas de facteur
-explicatif mais de synthèse, de description.</p>
+explicatif mais de synthèse, de résumé, de description.</p>
+<p>Comme toujours, c’est la préparation des données qui va nous prendre
+le plus de temps mais il est également très important d’essayer de
+formuler une hypothèse dés le départ.</p>
+</div>
+<div id="formuler-une-hypothèse-dés-le-départ" class="section level2"
+number="1.2">
+<h2><span class="header-section-number">1.2</span> Formuler une
+hypothèse dés le départ</h2>
+<div id="la-première" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> La première</h3>
+<p>Formuler une hypothèse avec les 4 variables sélectionnées.</p>
+<p>Par exemple, nous allons voir si le nombre d’entreprises a un lien
+avec</p>
+<ul>
+<li><p>le nombre de résidences principales (recrutement local)</p></li>
+<li><p>la part des non diplômés (les non diplômés vont sur un emploi
+proche)</p></li>
+<li><p>et l’implantation des maisons france service (les maisons france
+service permettent le développement de l’emploi local)</p></li>
+</ul>
+<p>(exercice moodle)</p>
+</div>
+<div id="autour-du-logement-social" class="section level3"
+number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Autour du logement
+social</h3>
+<p>Partir d’une hypothèse fictive autour du logement social. On a vu par
+exemple que</p>
+<ul>
+<li>l’année de construction ne permettait pas d’expliquer la surface
+habitable,</li>
+</ul>
+<p>ou que</p>
+<ul>
+<li>souvent les ménages les plus modestes n’obtenaient pas les grands
+appartements.</li>
+</ul>
+<p>Quelles peuvent être les autres facteurs pour ces deux états de fait
+?</p>
+</div>
+</div>
 </div>
 <div id="la-donnée" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> La donnée</h1>
-<p>Il s’agit d’émettre une hypothèse, mais aussi de rendre les variables
-comparables entre elles.</p>
+<p>Il s’agit de rendre les variables comparables entre elles.</p>
 <div id="recherche" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Recherche</h2>
 <p>Comparaison donnée RPLS et insee à la base communes avec un outil
@@ -479,176 +521,244 @@ de l’outil</h3>
 avec</p>
 <p><img src="img/statLocaleHasard.jpg" /></p>
 <p>Quels sont les outils de l’interface à utiliser ?</p>
-</div>
-</div>
-<div id="hypothèse-multivariée" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Hypothèse
-multivariée</h2>
-<div id="la-première" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> La première</h3>
-<p>Formuler une hypothèse avec les 4 variables sélectionnées.</p>
-<p>Par exemple, nous allons voir si le nombre d’entreprises a un lien
-avec - le nombre de résidences principales (recrutement local) - la part
-des non diplomes (les non diplomés vont sur un emploi proche) - et
-l’implantation des maisons france service (les maisons france service
-permettent le développement de l’emploi local)</p>
-<p>(exercice moodle)</p>
-</div>
-<div id="autour-du-logement-social" class="section level3"
-number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Autour du logement
-social</h3>
-<p>Partir d’une hypothèse fictive autour du logement social. On a vu par
-exemple que</p>
 <ul>
-<li>l’année de construction ne permettait pas d’expliquer la surface
-habitable, ou que</li>
-<li>souvent les ménages les plus modestes n’obtenaient pas les grands
-appartements.</li>
+<li><p>zone de recherche (attention, il faut cliquer sur les
+items)</p></li>
+<li><p>tableau</p></li>
+<li><p>exporter (.en csv)</p></li>
+<li><p>attention également au maillage, nous allons utiliser celui de la
+commune (certaines statistiques ne sont pas disponibles au niveau
+communal)</p></li>
 </ul>
-<p>Quelles peuvent être les autres facteurs pour ces deux états de fait
-?</p>
-<p>Constituer le tableau à partir de l’outil.</p>
-<p>L’ouvrir sous Libre office afin de simplifier les noms de colonne et
-de vérifier un peu.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/dataMultivarie.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">na.strings =</span> <span class="st">&quot;N/A&quot;</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># voir la structure du fichier</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
+<p><img src="img/statLocale.jpg" /></p>
+</div>
+</div>
+</div>
+<div id="normaliser-sa-donnée" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Normaliser sa
+donnée</h1>
+<div id="alléger-sa-donnée" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Alléger sa
+donnée</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pb sur lecodes postaux</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/dataMultivariee2.csv&quot;</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">na.strings =</span> <span class="st">&quot;N/A&quot;</span>, </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">colClasses =</span> <span class="fu">c</span>(<span class="st">&quot;character&quot;</span>, <span class="st">&quot;character&quot;</span>, <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;numeric&quot;</span>), <span class="at">skip =</span> <span class="dv">2</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># voir la structure du fichier</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    34955 obs. of  6 variables:
-##  $ Code         : chr  &quot;1001&quot; &quot;1002&quot; &quot;1004&quot; &quot;1005&quot; ...
-##  $ LIBCOM       : chr  &quot;L&#39;Abergement-Clémenciat&quot; &quot;L&#39;Abergement-de-Varey&quot; &quot;Ambérieu-en-Bugey&quot; &quot;Ambérieux-en-Dombes&quot; ...
-##  $ nbEntreprises: int  41 18 1097 133 7 157 58 29 54 19 ...
-##  $ RP           : int  316 106 6606 723 54 1169 326 147 468 149 ...
-##  $ nonDiplomes  : num  16.4 0 16 17.3 28.6 7.1 6.2 11.1 10.2 0 ...
-##  $ MFS          : int  0 0 1 0 0 0 0 0 0 0 ...</code></pre>
+##  $ Code                                                            : chr  &quot;01001&quot; &quot;01002&quot; &quot;01004&quot; &quot;01005&quot; ...
+##  $ Libellé                                                         : chr  &quot;L&#39;Abergement-Clémenciat&quot; &quot;L&#39;Abergement-de-Varey&quot; &quot;Ambérieu-en-Bugey&quot; &quot;Ambérieux-en-Dombes&quot; ...
+##  $ Unités.légales..en.nombre..2021                                 : num  41 18 1097 133 7 ...
+##  $ Résidences.principales.2019                                     : num  316 106 6606 723 54 ...
+##  $ Part.des.non.diplômés.chez.les.20.24.ans.sortis.des.études..2018: num  16.4 0 16 17.3 28.6 7.1 6.2 11.1 10.2 0 ...
+##  $ Implantations.France.Services..IFS...en.nombre..2021            : num  0 0 1 0 0 0 0 0 0 0 ...</code></pre>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rownames</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(data) <span class="ot">&lt;-</span> data [,<span class="dv">1</span>]</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [,<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>]</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(data)</span></code></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data) <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">&quot;nbEnt&quot;</span>, <span class="st">&quot;RP&quot;</span>, <span class="st">&quot;nbDipl&quot;</span>, <span class="st">&quot;IFS&quot;</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(data)</span></code></pre></div>
 <p><img src="jour7_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<p>La donnée est trop lourde pour nos machines. On va juste le faire sur
-la région parisienne, c’est à dire les dpts 75, 77, 78, 91, 92, 93, 94,
-et 95</p>
+<p>La donnée est trop lourde pour nos machines.</p>
+<div id="solution-1-choisir-une-zone-spécifique" class="section level3"
+number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Solution 1 :
+choisir une zone spécifique</h3>
+<p>On va d’abord juste le faire sur la région parisienne, c’est à dire
+les dpts 75, 77, 78, 91, 92, 93, 94, et 95</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/dataMultivarie.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">na.strings =</span> <span class="st">&quot;N/A&quot;</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>dpt <span class="ot">&lt;-</span> <span class="fu">substring</span>(data<span class="sc">$</span>Code,<span class="dv">1</span>,<span class="dv">2</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>dpt <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">77</span>, <span class="dv">78</span>, <span class="dv">91</span>, <span class="dv">92</span>, <span class="dv">93</span>, <span class="dv">94</span>,<span class="dv">95</span>),]</span></code></pre></div>
 <p>Refaire les étiquettes et le pairs</p>
 <p>Qu’en pensez-vous ? Est-il possible de comparer ces variables ?</p>
 </div>
+<div
+id="solution-2-utilisation-du-fichier-des-logements-sociaux-2000-sur-la-france-entière"
+class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Solution 2 :
+utilisation du fichier des logements sociaux &gt; 2000 sur la France
+entière</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rpls <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/fr2000verif.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(rpls)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    339 obs. of  4 variables:
+##  $ LIBCOM: chr  &quot;Toulouse&quot; &quot;Nantes&quot; &quot;Paris 20e Arrondissement&quot; &quot;Paris 19e Arrondissement&quot; ...
+##  $ nb    : int  46684 36097 34451 34379 33988 30303 28824 26725 22492 22341 ...
+##  $ zone  : chr  &quot;reg76&quot; &quot;reg52&quot; &quot;IDF_DEP_75&quot; &quot;IDF_DEP_75&quot; ...
+##  $ Code  : chr  &quot;31555&quot; &quot;44109&quot; &quot;75120&quot; &quot;75119&quot; ...</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/dataMultivariee2.csv&quot;</span>, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">na.strings =</span> <span class="st">&quot;N/A&quot;</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">colClasses =</span> <span class="fu">c</span>(<span class="st">&quot;character&quot;</span>, <span class="st">&quot;character&quot;</span>, <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;numeric&quot;</span>), <span class="at">skip =</span> <span class="dv">2</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># jointure entre les 2 fichiers avec le code insee</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(rpls, data, <span class="at">by =</span> <span class="st">&quot;Code&quot;</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># on a 302 communes, il en manque 37...</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># On sauvegarde la donnée</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(jointure, <span class="st">&quot;data/base.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 </div>
-<div id="normaliser-sa-donnée" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Normaliser sa
-donnée</h2>
-<div id="examen-des-valeurs-de-dispersion-centrales"
-class="section level3" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Examen des valeurs
-de dispersion / centrales</h3>
+</div>
+<div id="examen-des-données" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Examen des
+données</h2>
+<p>On examine désormais la donnée résultante de la jointure.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/base.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    302 obs. of  10 variables:
+##  $ X                                                               : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ Code                                                            : chr  &quot;10081&quot; &quot;10323&quot; &quot;10387&quot; &quot;11069&quot; ...
+##  $ LIBCOM                                                          : chr  &quot;La Chapelle-Saint-Luc&quot; &quot;Romilly-sur-Seine&quot; &quot;Troyes&quot; &quot;Carcassonne&quot; ...
+##  $ nb                                                              : int  2750 2196 11762 4743 6140 12459 5734 5269 4037 2349 ...
+##  $ zone                                                            : chr  &quot;reg44&quot; &quot;reg44&quot; &quot;reg44&quot; &quot;reg76&quot; ...
+##  $ Libellé                                                         : chr  &quot;La Chapelle-Saint-Luc&quot; &quot;Romilly-sur-Seine&quot; &quot;Troyes&quot; &quot;Carcassonne&quot; ...
+##  $ Unités.légales..en.nombre..2021                                 : int  754 783 4381 4526 5950 21796 5093 5755 4544 1089 ...
+##  $ Résidences.principales.2019                                     : int  5026 6692 33064 23143 28363 72838 23804 20291 17855 6706 ...
+##  $ Part.des.non.diplômés.chez.les.20.24.ans.sortis.des.études..2018: num  29.1 25.7 18.5 18.9 19.8 16.1 21.6 16.9 12.4 15.6 ...
+##  $ Implantations.France.Services..IFS...en.nombre..2021            : int  0 0 0 0 1 0 0 0 1 0 ...</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<pre><code>##  [1] &quot;X&quot;                                                               
+##  [2] &quot;Code&quot;                                                            
+##  [3] &quot;LIBCOM&quot;                                                          
+##  [4] &quot;nb&quot;                                                              
+##  [5] &quot;zone&quot;                                                            
+##  [6] &quot;Libellé&quot;                                                         
+##  [7] &quot;Unités.légales..en.nombre..2021&quot;                                 
+##  [8] &quot;Résidences.principales.2019&quot;                                     
+##  [9] &quot;Part.des.non.diplômés.chez.les.20.24.ans.sortis.des.études..2018&quot;
+## [10] &quot;Implantations.France.Services..IFS...en.nombre..2021&quot;</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(data) <span class="ot">&lt;-</span> data [,<span class="dv">2</span>]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [,<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">7</span><span class="sc">:</span><span class="dv">10</span>)]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data) <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">&quot;rpls&quot;</span>, <span class="st">&quot;nbEnt&quot;</span>, <span class="st">&quot;RP&quot;</span>, <span class="st">&quot;nonDipl&quot;</span>, <span class="st">&quot;IFS&quot;</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(data)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div id="valeurs-manquantes" class="section level4" number="3.2.0.1">
+<h4><span class="header-section-number">3.2.0.1</span> Valeurs
+manquantes</h4>
+<p>Une analyse factorielle n’admet pas les NA, les valeurs
+manquantes.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code></pre></div>
+<pre><code>##       rpls           nbEnt             RP            nonDipl     
+##  Min.   : 2017   Min.   :   11   Min.   :    96   Min.   : 7.30  
+##  1st Qu.: 2814   1st Qu.: 1586   1st Qu.:  9415   1st Qu.:14.93  
+##  Median : 4235   Median : 2578   Median : 13602   Median :18.30  
+##  Mean   : 6029   Mean   : 4012   Mean   : 21180   Mean   :18.89  
+##  3rd Qu.: 6976   3rd Qu.: 4592   3rd Qu.: 23102   3rd Qu.:22.77  
+##  Max.   :46684   Max.   :51603   Max.   :265634   Max.   :39.90  
+##       IFS        
+##  Min.   :0.0000  
+##  1st Qu.:0.0000  
+##  Median :0.0000  
+##  Mean   :0.3543  
+##  3rd Qu.:1.0000  
+##  Max.   :4.0000</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [<span class="sc">!</span><span class="fu">is.na</span>(data<span class="sc">$</span>nonDipl),]</span></code></pre></div>
+</div>
+<div id="valeurs-aberrantes" class="section level4" number="3.2.0.2">
+<h4><span class="header-section-number">3.2.0.2</span> Valeurs
+aberrantes</h4>
 <p>Pour chaque variable, il faut chercher s’il n’y a pas de valeur
 aberrante.</p>
 <p>“Les individus trop spécifiques brouillent le résumé.” (Chaudule,
 p. 138)</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code></pre></div>
-<pre><code>##      Code              LIBCOM          nbEntreprises            RP           
-##  Length:1499        Length:1499        Min.   :     0.0   Min.   :      6.0  
-##  Class :character   Class :character   1st Qu.:    26.0   1st Qu.:    154.5  
-##  Mode  :character   Mode  :character   Median :    77.0   Median :    383.0  
-##                                        Mean   :   980.5   Mean   :   3548.1  
-##                                        3rd Qu.:   383.5   3rd Qu.:   2025.0  
-##                                        Max.   :551111.0   Max.   :1137759.0  
-##                                                                              
-##   nonDiplomes          MFS              dpt           
-##  Min.   :  0.00   Min.   :0.00000   Length:1499       
-##  1st Qu.:  6.75   1st Qu.:0.00000   Class :character  
-##  Median : 13.00   Median :0.00000   Mode  :character  
-##  Mean   : 13.91   Mean   :0.06004                     
-##  3rd Qu.: 18.20   3rd Qu.:0.00000                     
-##  Max.   :100.00   Max.   :6.00000                     
-##  NA&#39;s   :37</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Suppression de valeur extrême nbEntreprises, autres suppressions ?</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>data [data<span class="sc">$</span>nbEntreprises <span class="sc">&gt;</span> <span class="dv">500000</span>,]</span></code></pre></div>
-<pre><code>##        Code LIBCOM nbEntreprises      RP nonDiplomes MFS dpt
-## 29261 75056  Paris        551111 1137759         9.9   6  75</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>nbEntreprises <span class="sc">&lt;</span> <span class="dv">500000</span>,]</span></code></pre></div>
-<p>Refaire la commande <em>pairs</em></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code></pre></div>
+<pre><code>##       rpls           nbEnt             RP            nonDipl     
+##  Min.   : 2017   Min.   :   11   Min.   :    96   Min.   : 7.30  
+##  1st Qu.: 2814   1st Qu.: 1586   1st Qu.:  9415   1st Qu.:14.93  
+##  Median : 4235   Median : 2578   Median : 13602   Median :18.30  
+##  Mean   : 6029   Mean   : 4012   Mean   : 21180   Mean   :18.89  
+##  3rd Qu.: 6976   3rd Qu.: 4592   3rd Qu.: 23102   3rd Qu.:22.77  
+##  Max.   :46684   Max.   :51603   Max.   :265634   Max.   :39.90  
+##       IFS        
+##  Min.   :0.0000  
+##  1st Qu.:0.0000  
+##  Median :0.0000  
+##  Mean   :0.3543  
+##  3rd Qu.:1.0000  
+##  Max.   :4.0000</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(data)</span></code></pre></div>
+<pre><code>##   [1] &quot;10081&quot; &quot;10323&quot; &quot;10387&quot; &quot;11069&quot; &quot;11262&quot; &quot;13001&quot; &quot;13004&quot; &quot;13005&quot; &quot;13028&quot;
+##  [10] &quot;14047&quot; &quot;14118&quot; &quot;14327&quot; &quot;14366&quot; &quot;15014&quot; &quot;16216&quot; &quot;17160&quot; &quot;17229&quot; &quot;17299&quot;
+##  [19] &quot;17300&quot; &quot;17415&quot; &quot;18033&quot; &quot;18279&quot; &quot;19031&quot; &quot;21054&quot; &quot;22278&quot; &quot;24322&quot; &quot;26281&quot;
+##  [28] &quot;27229&quot; &quot;27284&quot; &quot;27375&quot; &quot;27467&quot; &quot;27681&quot; &quot;27701&quot; &quot;28085&quot; &quot;28134&quot; &quot;28218&quot;
+##  [37] &quot;29019&quot; &quot;29232&quot; &quot;2A004&quot; &quot;2B033&quot; &quot;31395&quot; &quot;31555&quot; &quot;32013&quot; &quot;33039&quot; &quot;33063&quot;
+##  [46] &quot;33069&quot; &quot;33119&quot; &quot;33162&quot; &quot;33167&quot; &quot;33192&quot; &quot;33243&quot; &quot;33249&quot; &quot;33281&quot; &quot;33318&quot;
+##  [55] &quot;33449&quot; &quot;33522&quot; &quot;33550&quot; &quot;35115&quot; &quot;35238&quot; &quot;37122&quot; &quot;37233&quot; &quot;37261&quot; &quot;38563&quot;
+##  [64] &quot;39198&quot; &quot;39300&quot; &quot;40088&quot; &quot;41018&quot; &quot;41269&quot; &quot;42044&quot; &quot;42095&quot; &quot;42186&quot; &quot;42187&quot;
+##  [73] &quot;42207&quot; &quot;42218&quot; &quot;44109&quot; &quot;44114&quot; &quot;44143&quot; &quot;44162&quot; &quot;44184&quot; &quot;45068&quot; &quot;45147&quot;
+##  [82] &quot;45208&quot; &quot;45234&quot; &quot;45284&quot; &quot;45285&quot; &quot;47001&quot; &quot;49002&quot; &quot;49007&quot; &quot;49099&quot; &quot;49328&quot;
+##  [91] &quot;49353&quot; &quot;51108&quot; &quot;51230&quot; &quot;51454&quot; &quot;53130&quot; &quot;56098&quot; &quot;56121&quot; &quot;56260&quot; &quot;59009&quot;
+## [100] &quot;59017&quot; &quot;59122&quot; &quot;59155&quot; &quot;59172&quot; &quot;59178&quot; &quot;59183&quot; &quot;59491&quot; &quot;59512&quot; &quot;59569&quot;
+## [109] &quot;59599&quot; &quot;59606&quot; &quot;59650&quot; &quot;60057&quot; &quot;60159&quot; &quot;60175&quot; &quot;60414&quot; &quot;60463&quot; &quot;60471&quot;
+## [118] &quot;61001&quot; &quot;61006&quot; &quot;61169&quot; &quot;62160&quot; &quot;63113&quot; &quot;64024&quot; &quot;64102&quot; &quot;64445&quot; &quot;66136&quot;
+## [127] &quot;69029&quot; &quot;69034&quot; &quot;69081&quot; &quot;69091&quot; &quot;69149&quot; &quot;69199&quot; &quot;69256&quot; &quot;69259&quot; &quot;69264&quot;
+## [136] &quot;69266&quot; &quot;69275&quot; &quot;69282&quot; &quot;69286&quot; &quot;69290&quot; &quot;71270&quot; &quot;71306&quot; &quot;72003&quot; &quot;72181&quot;
+## [145] &quot;73008&quot; &quot;73011&quot; &quot;73065&quot; &quot;74010&quot; &quot;74012&quot; &quot;74281&quot; &quot;76057&quot; &quot;76157&quot; &quot;76217&quot;
+## [154] &quot;76231&quot; &quot;76259&quot; &quot;76305&quot; &quot;76322&quot; &quot;76351&quot; &quot;76410&quot; &quot;76451&quot; &quot;76484&quot; &quot;76498&quot;
+## [163] &quot;76540&quot; &quot;76575&quot; &quot;76681&quot; &quot;77083&quot; &quot;77108&quot; &quot;77131&quot; &quot;77152&quot; &quot;77284&quot; &quot;77285&quot;
+## [172] &quot;77288&quot; &quot;77305&quot; &quot;77333&quot; &quot;77337&quot; &quot;77373&quot; &quot;77445&quot; &quot;77468&quot; &quot;78005&quot; &quot;78123&quot;
+## [181] &quot;78172&quot; &quot;78208&quot; &quot;78297&quot; &quot;78335&quot; &quot;78361&quot; &quot;78362&quot; &quot;78423&quot; &quot;78440&quot; &quot;78490&quot;
+## [190] &quot;78498&quot; &quot;78517&quot; &quot;78545&quot; &quot;78551&quot; &quot;78586&quot; &quot;78621&quot; &quot;78646&quot; &quot;79191&quot; &quot;80021&quot;
+## [199] &quot;81004&quot; &quot;81065&quot; &quot;84007&quot; &quot;84031&quot; &quot;84035&quot; &quot;84087&quot; &quot;85191&quot; &quot;89387&quot; &quot;90010&quot;
+## [208] &quot;91027&quot; &quot;91103&quot; &quot;91174&quot; &quot;91201&quot; &quot;91223&quot; &quot;91272&quot; &quot;91286&quot; &quot;91345&quot; &quot;92002&quot;
+## [217] &quot;92004&quot; &quot;92007&quot; &quot;92009&quot; &quot;92012&quot; &quot;92019&quot; &quot;92020&quot; &quot;92022&quot; &quot;92023&quot; &quot;92024&quot;
+## [226] &quot;92025&quot; &quot;92026&quot; &quot;92032&quot; &quot;92036&quot; &quot;92040&quot; &quot;92044&quot; &quot;92046&quot; &quot;92048&quot; &quot;92049&quot;
+## [235] &quot;92050&quot; &quot;92060&quot; &quot;92062&quot; &quot;92063&quot; &quot;92064&quot; &quot;92072&quot; &quot;92073&quot; &quot;92075&quot; &quot;92078&quot;
+## [244] &quot;93001&quot; &quot;93005&quot; &quot;93006&quot; &quot;93007&quot; &quot;93008&quot; &quot;93010&quot; &quot;93014&quot; &quot;93027&quot; &quot;93029&quot;
+## [253] &quot;93030&quot; &quot;93031&quot; &quot;93032&quot; &quot;93045&quot; &quot;94002&quot; &quot;94003&quot; &quot;94004&quot; &quot;94011&quot; &quot;94016&quot;
+## [262] &quot;94017&quot; &quot;94018&quot; &quot;94021&quot; &quot;94022&quot; &quot;94028&quot; &quot;94033&quot; &quot;94034&quot; &quot;94037&quot; &quot;94038&quot;
+## [271] &quot;94041&quot; &quot;94042&quot; &quot;94043&quot; &quot;94044&quot; &quot;94046&quot; &quot;94054&quot; &quot;94068&quot; &quot;94073&quot; &quot;94074&quot;
+## [280] &quot;94076&quot; &quot;94078&quot; &quot;94079&quot; &quot;94080&quot; &quot;94081&quot; &quot;95018&quot; &quot;95063&quot; &quot;95127&quot; &quot;95203&quot;
+## [289] &quot;95218&quot; &quot;95219&quot; &quot;95252&quot; &quot;95268&quot; &quot;95277&quot; &quot;95280&quot; &quot;95424&quot; &quot;95487&quot; &quot;95500&quot;
+## [298] &quot;95555&quot; &quot;95572&quot; &quot;95582&quot; &quot;95585&quot; &quot;95680&quot;</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Suppression de valeur extrême nbEntreprises, autres suppressions ?</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1ere étape on l&#39;identifie</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>data [data<span class="sc">$</span>nbEnt <span class="sc">&gt;</span> <span class="dv">50000</span>,]</span></code></pre></div>
+<pre><code>##        rpls nbEnt     RP nonDipl IFS
+## 31555 46684 51603 265634    11.9   1</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Il s&#39;agit de la 1e commune en nb de RPLS, Toulouse</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>nbEnt <span class="sc">&lt;</span> <span class="dv">50000</span>,]</span></code></pre></div>
+<p>Refaire la commande pairs et chercher d’autres valeurs aberrantes</p>
+<p>Par exemple, au niveau du nombre de diplômés.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>nonDipl )</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>obs <span class="ot">&lt;-</span> data [data<span class="sc">$</span>nbDipl <span class="sc">&gt;</span> <span class="dv">20</span>,]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Il existe une commune dont le nb de diplômés est 100 % !</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># C&#39;est Blandy.</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>data [data<span class="sc">$</span>nbDipl <span class="sc">==</span> <span class="dv">100</span>,]</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>obs</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(obs<span class="sc">$</span>nbDipl)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(obs<span class="sc">$</span>nbDipl)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(obs<span class="sc">$</span>nbDipl, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">23</span>,<span class="dv">24</span>, <span class="dv">25</span>,<span class="dv">26</span>, <span class="dv">100</span>))</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>nbDipl <span class="sc">&lt;</span> <span class="dv">50</span>,]</span></code></pre></div>
+<p>On décide également d’enlever, les communes où il y a trop peu de non
+diplômés.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>nbDipl <span class="sc">&gt;</span> <span class="dv">21</span>, ]</span></code></pre></div>
+<p>Faut-il garder la variable sur les Maisons France Services ?</p>
+</div>
+<div id="coefficients-de-variation" class="section level3"
+number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Coefficients de
+variation</h3>
 <p>Les coefficients de variation permettent également une première
 approche</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># suppression des NA</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data[<span class="fu">is.na</span>(data<span class="sc">$</span>nonDiplomes ),]</span></code></pre></div>
-<pre><code>##        Code                     LIBCOM nbEntreprises RP nonDiplomes MFS dpt
-## 2923   9110                Encourtiech            10 46          NA   0  91
-## 2938   9126                 Freychenet             6 47          NA   0  91
-## 2945   9133                      Génat             1 14          NA   0  91
-## 2946   9134                    Gestiès             0 18          NA   0  91
-## 2947   9136                    Gourbit             0 48          NA   0  91
-## 2948   9137                      Gudas             7 74          NA   0  91
-## 2954   9143         Illier-et-Laramade             0 21          NA   0  91
-## 2961   9151                     Lanoux             7 22          NA   0  91
-## 2962   9152                     Lapège             0 17          NA   0  91
-## 2972   9162                    Lercoul             0 12          NA   0  91
-## 2976   9166                   Leychert            14 49          NA   0  91
-## 2982   9172                    Loubaut             0 14          NA   0  91
-## 2988   9178                  Malegoude             5 19          NA   0  91
-## 2994   9184   Mauvezin-de-Sainte-Croix             2 22          NA   0  91
-## 3006   9197                 Montaillou             5 12          NA   0  91
-## 3031   9222                       Orus             0 12          NA   0  92
-## 3039   9230                     Le Pla             4 39          NA   0  92
-## 3041   9232                     Prades             8 22          NA   0  92
-## 3043   9234                  Pradières             5 52          NA   0  92
-## 3046   9237                    Le Puch             0 21          NA   0  92
-## 3052   9243                      Régat             8 38          NA   0  92
-## 3063   9255                Saint-Amans             0 19          NA   0  92
-## 3074   9266 Saint-Julien-de-Gras-Capou             3 28          NA   0  92
-## 3088   9281                     Sautel             9 58          NA   0  92
-## 3093   9287                   Senconac             0  8          NA   0  92
-## 3097   9292          Sentenac-de-Sérou             4 26          NA   0  92
-## 3100   9295                     Siguer             6 57          NA   0  92
-## 3108   9304                      Suzan             3  6          NA   0  93
-## 3115   9311                     Tignac             0 10          NA   0  93
-## 3121   9318                       Unac             5 58          NA   0  93
-## 3123   9320                        Urs             1 17          NA   0  93
-## 3133   9330                    Vernaux             1 14          NA   0  93
-## 3137   9335                 Villeneuve             5 26          NA   0  93
-## 30260 77304                  Montenils             7 12          NA   0  77
-## 30588 78302              La Hauteville            10 76          NA   0  78
-## 34467 91526               Roinvilliers             5 38          NA   0  91
-## 34749 95387                 Menouville             9 27          NA   0  95</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [<span class="sc">!</span><span class="fu">is.na</span>(data<span class="sc">$</span>nonDiplomes),]</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>coeffVariation <span class="ot">&lt;-</span> <span class="cf">function</span> (x) {<span class="fu">mean</span>(x)<span class="sc">/</span><span class="fu">sd</span>(x)}</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>coeff <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data, coeffVariation)</span></code></pre></div>
-<pre><code>## Warning in mean.default(x): l&#39;argument n&#39;est ni numérique, ni logique : renvoi
-## de NA
-
-## Warning in mean.default(x): l&#39;argument n&#39;est ni numérique, ni logique : renvoi
-## de NA</code></pre>
-<pre><code>## Warning in var(if (is.vector(x) || is.factor(x)) x else as.double(x), na.rm =
-## na.rm): NAs introduits lors de la conversion automatique</code></pre>
-<pre><code>## Warning in mean.default(x): l&#39;argument n&#39;est ni numérique, ni logique : renvoi
-## de NA</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sd <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data, sd)</span></code></pre></div>
-<pre><code>## Warning in var(if (is.vector(x) || is.factor(x)) x else as.double(x), na.rm =
-## na.rm): NAs introduits lors de la conversion automatique</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data, mean)</span></code></pre></div>
-<pre><code>## Warning in mean.default(X[[i]], ...): l&#39;argument n&#39;est ni numérique, ni
-## logique : renvoi de NA</code></pre>
-<pre><code>## Warning in mean.default(X[[i]], ...): l&#39;argument n&#39;est ni numérique, ni
-## logique : renvoi de NA
-
-## Warning in mean.default(X[[i]], ...): l&#39;argument n&#39;est ni numérique, ni
-## logique : renvoi de NA</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">cbind</span>(moy,sd, coeff)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(tab,<span class="dv">2</span>)</span></code></pre></div>
-<pre><code>##                   moy       sd coeff
-## Code               NA 26529.41    NA
-## LIBCOM             NA       NA    NA
-## nbEntreprises  628.66  1580.49  0.40
-## RP            2860.88  6156.68  0.46
-## nonDiplomes     13.91    11.77  1.18
-## MFS              0.06     0.24  0.24
-## dpt                NA     7.74    NA</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>coeffVariation <span class="ot">&lt;-</span> <span class="cf">function</span> (x) {<span class="fu">mean</span>(x)<span class="sc">/</span><span class="fu">sd</span>(x)}</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>coeff <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data, coeffVariation)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>sd <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data, sd)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data, mean)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">cbind</span>(moy,sd, coeff)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(tab,<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##              moy       sd coeff
+## rpls     5894.01  4871.95  1.21
+## nbEnt    3853.94  4175.05  0.92
+## RP      20368.23 20172.95  1.01
+## nonDipl    18.92     5.66  3.34
+## IFS         0.35     0.66  0.53</code></pre>
+<p>On observe que la variabilité des non diplômés est la plus
+importante, les autres variables évoluent à la même hauteur. L’IFS est
+particulière.</p>
 </div>
-<div id="centrage-et-réduction" class="section level3" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> Centrage et
-réduction</h3>
+</div>
+<div id="centrage-et-réduction" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Centrage et
+réduction</h2>
 <p>Il faut pouvoir comparer les valeurs des variables <em>indépendamment
 de l’unité originelle</em></p>
 <p>écart à la moyenne de la valeur / écart-type</p>
@@ -660,67 +770,11 @@ graphique)</p></li>
 en écart-type (comme un changement d’échelle)</p></li>
 </ul>
 <p>La variable standardisée a pour moyenne 0 et pour écart-type 1</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>data_cr <span class="ot">&lt;-</span> <span class="fu">scale</span> (data)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/echelle.png&quot;</span>)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(data_cr)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<p><img src="img/echelle.png" /></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data_cr <span class="ot">&lt;-</span> <span class="fu">scale</span> (data)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(data_cr)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(data_cr, <span class="st">&quot;data/base_cr&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 </div>
-</div>
-</div>
-<div id="les-axes-en-géométrie" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Les axes en
-géométrie</h1>
-<p>Les axes factoriels rendent comptent le mieux possible de la
-dispersion du nuage de points.</p>
-<p>Un facteur regroupe des informations communes à plusieurs
-variables.</p>
-<p>Le premier axe prend en compte le maximum d’information.</p>
-<p>Le deuxième prend en compte le maximum d’information à partir des
-résidus du premier.</p>
-<p>Et ainsi de suite …</p>
-<p>… d’où l’importance de l’informatique pour traiter du multicritère
-!</p>
-<p><img src="img/axes.png" /></p>
-</div>
-<div id="les-calculs-sous-r" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Les calculs sous R</h1>
-<div id="les-axes-factoriels" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Les axes
-factoriels</h2>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data_cr)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># par défaut direction négative on inverse</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>acp<span class="sc">$</span>rotation <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">*</span> acp<span class="sc">$</span>rotation</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>acp<span class="sc">$</span>rotation</span></code></pre></div>
-</div>
-<div id="importance-des-axes" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Importance des
-axes</h2>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>acp<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="fu">sum</span>(acp<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
-<p>52 % de la variance pris en compte par le premier axe, etc…</p>
-<p>Le premier axe résume la variation de plus de la moitié des valeurs
-de 2 variables.</p>
-<p>L’axe 3 a une haute valeur pour la variable MFS.</p>
-<p>Le nombre d’entreprises et la résidence principale sont liés et
-s’opposent aux non diplômés et à l’implantation des maisons France
-Service.</p>
-<div id="pour-les-individus-ici-les-communes-de-lile-de-france"
-class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Pour les individus
-(ici les communes de l’Ile de France)</h3>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(acp<span class="sc">$</span>x<span class="sc">*-</span><span class="dv">1</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(acp, <span class="at">scale =</span> <span class="dv">0</span>)</span></code></pre></div>
-<p>Les départements proches suivent le même modèle de données. Leur
-position dans le graphique montre leur rapport aux variables.</p>
-<p>Dans le cas présent, les variables ne suivent pas les axes (problème
-des valeurs aberrantes).</p>
-</div>
-</div>
-</div>
-<div id="second-traitement" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Second traitement</h1>
-<p>Supprimer les valeurs posant problème et relancer les calculs.
-Essayer d’interpréter.</p>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>

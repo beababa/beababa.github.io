@@ -428,10 +428,10 @@ div.tocify {
   <a href="jour6.html">variance</a>
 </li>
 <li>
-  <a href="jour7.html">multivariées AFC</a>
+  <a href="jour7.html">multivariées base</a>
 </li>
 <li>
-  <a href="jour7.html">classification</a>
+  <a href="jour8.html">factorielle et classification</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -505,8 +505,8 @@ mi-semestre</p>
 <div id="evaluation" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Evaluation</h1>
 <ul>
-<li>1 devoir maison à rendre vers la fin du semestre</li>
-<li>1 devoir sur table à la mi-semestre</li>
+<li>1 devoir maison à rendre vers la fin du semestre (coeff1)</li>
+<li>1 devoir sur table à la mi-semestre (coeff2)</li>
 </ul>
 <p>… et c’est tout ! (pas de partiel)</p>
 <p>Au départ on utilise Libre Office (plutôt que Microsoft) puis R</p>
@@ -592,13 +592,14 @@ mi-semestre</p>
 <tr class="odd">
 <td align="right">9</td>
 <td align="left">21/11/2022</td>
-<td align="left">multivariée : multifactorielle + sujet de devoir</td>
+<td align="left">multivariée : choix des variables</td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="right">10</td>
 <td align="left">28/11/2022</td>
-<td align="left">classification</td>
+<td align="left">multivariée : analyse factorielle et
+classification</td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
@@ -617,18 +618,22 @@ au plus tard.</td>
 </tbody>
 </table>
 </div>
-<div id="présentation-rapide" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Présentation
-rapide</h1>
+<div id="présentation-rapide-vous-êtes-nombreux" class="section level1"
+number="4">
+<h1><span class="header-section-number">4</span> Présentation rapide
+(vous êtes nombreux !)</h1>
 <p>Le framapad sert à l’émargement <a
 href="https://lite.framacalc.org/9pse-coursstatsorbonne2022-9we9"
 class="uri">https://lite.framacalc.org/9pse-coursstatsorbonne2022-9we9</a></p>
 <p>Quelques repères pour les 3 groupes</p>
-<div id="premier-cours" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Premier cours</h2>
-<p>74 étudiants sur 3 cours</p>
-<p>Attention, 5 doublons de prénoms (Ambre, Camille, Marie, Antonin et
-Sarah), j’ai rajouté l’initiale du nom de famille.</p>
+<div id="qui-sont-les-étudiants" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Qui sont les
+étudiants ?</h2>
+<ul>
+<li><p>74 étudiants sur 3 cours</p></li>
+<li><p>Attention, 5 doublons de prénoms (Ambre, Camille, Marie, Antonin
+et Sarah), j’ai rajouté l’initiale du nom de famille.</p></li>
+</ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&quot;data/etudiant.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mailetudiant <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">paste0</span>(etudiant<span class="sc">$</span>mail, <span class="st">&quot;;&quot;</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> mailetudiant [<span class="dv">1</span>]</span>
@@ -728,21 +733,28 @@ cours</h3>
 <td align="right">23</td>
 <td align="right">20</td>
 </tr>
+<tr class="odd">
+<td align="left">cours9</td>
+<td align="right">11</td>
+<td align="right">23</td>
+<td align="right">22</td>
+</tr>
 </tbody>
 </table>
+<p>Graphique</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tab, <span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;nombre d&#39;étudiants par groupe et par cours&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;groupe&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span>, <span class="at">col =</span> <span class="fu">terrain.colors</span>(nb) </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  T)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="les-rendus-dexercices" class="section level3" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Les rendus
 d’exercices</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rendu <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">36</span>, <span class="dv">29</span>, <span class="dv">14</span>,<span class="dv">14</span>,<span class="dv">11</span>,<span class="dv">4</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>titre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;distribution&quot;</span>, <span class="st">&quot;univarié&quot;</span>, <span class="st">&quot;khi2&quot;</span>, <span class="st">&quot;khi2bis&quot;</span>, <span class="st">&quot;regression&quot;</span>, <span class="st">&quot;boxplot&quot;</span>, <span class="st">&quot;variance&quot;</span>)</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rendu <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">36</span>, <span class="dv">29</span>, <span class="dv">14</span>,<span class="dv">14</span>,<span class="dv">11</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>titre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;distribution&quot;</span>, <span class="st">&quot;univarié&quot;</span>, <span class="st">&quot;khi2&quot;</span>, <span class="st">&quot;khi2bis&quot;</span>, <span class="st">&quot;regression&quot;</span>, <span class="st">&quot;boxplot&quot;</span>, <span class="st">&quot;variance&quot;</span>, <span class="st">&quot;4 variables&quot;</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">6</span>))</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">barplot</span>(rendu, <span class="at">names =</span> titre, <span class="at">cex.names =</span> <span class="fl">0.8</span>, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;rendu devoirs (effectif 75 étudiants environ)&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(p, <span class="at">y =</span> rendu <span class="sc">-</span> <span class="dv">1</span>, <span class="at">labels =</span> rendu )</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <div id="les-notes-des-exercices" class="section level4"
 number="4.2.2.1">
 <h4><span class="header-section-number">4.2.2.1</span> Les notes des
@@ -767,12 +779,12 @@ bonne extension.</p>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;notes&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span>, <span class="at">freq =</span> T,<span class="at">border =</span> <span class="cn">NA</span>)</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(res),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(res),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(resSansZero, <span class="at">main =</span> <span class="st">&quot;Sans zéro (59 obs)&quot;</span>, <span class="at">freq =</span> T,<span class="at">border =</span> <span class="cn">NA</span>,</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;notes&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(resSansZero),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(resSansZero),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
 <p>Beaucoup de notes très faibles, mais pas seulement.</p>
 </div>
 </div>
@@ -800,7 +812,7 @@ class="uri">https://www.data.gouv.fr/fr/datasets/repertoire-des-logements-locati
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="fu">sort</span>(tab), <span class="st">&quot;data/dpt93RPLSCommune.csv&quot;</span>)</span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># filtre sur Bondy</span></span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>filtre <span class="ot">&lt;-</span> data [data<span class="sc">$</span>LIBCOM <span class="sc">==</span> <span class="st">&quot;Bondy&quot;</span>,]</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(filtre, <span class="st">&quot;data/rplsBondy.csv&quot;</span>)</span></code></pre></div>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(filtre, <span class="st">&quot;data/rplsBondy.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 <p><img src="img/rpls93.png" /></p>
 <p>C’est normalement ce fichier de données que nous allons utiliser pour
 le cours.</p>
@@ -809,31 +821,29 @@ le cours.</p>
 <h3><span class="header-section-number">5.1.2</span> 2019</h3>
 <p>Il y a un problème sur la donnée, prendre plutôt le millésime
 2019</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>rpls2019 <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/gros/RPLS2019_detail_IDF_DEP_93.csv&quot;</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>rpls2021<span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/gros/rpls2021_geolocalise_OD_REG11_DEP93.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
-<pre><code>## Linking to GEOS 3.9.1, GDAL 3.3.2, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>rpls2019 <span class="ot">&lt;-</span> rpls2019 [rpls2019<span class="sc">$</span>CODEPOSTAL <span class="sc">==</span> <span class="st">&#39;93140&#39;</span>,]</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>rpls2021 <span class="ot">&lt;-</span> rpls2021 [rpls2021<span class="sc">$</span>CODEPOSTAL <span class="sc">==</span> <span class="st">&#39;93140&#39;</span>,]</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># spatialisation des données</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>rpls2019 <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(rpls2019, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>), <span class="at">crs =</span> <span class="dv">2154</span>)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>rpls2021 <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(rpls2021, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>), <span class="at">crs =</span> <span class="dv">2154</span>)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(rpls2019, <span class="st">&quot;data/rpls2019.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(rpls2019, <span class="st">&quot;data/data.gpkg&quot;</span>, <span class="st">&quot;rpls2019&quot;</span>, <span class="at">delete_layer =</span> T)</span></code></pre></div>
-<pre><code>## Deleting layer `rpls2019&#39; using driver `GPKG&#39;
-## Writing layer `rpls2019&#39; to data source `data/data.gpkg&#39; using driver `GPKG&#39;
-## Writing 9390 features with 72 fields and geometry type Point.</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(rpls2021, <span class="st">&quot;data/data.gpkg&quot;</span>, <span class="st">&quot;rpls2021&quot;</span>, <span class="at">delete_layer =</span> T)</span></code></pre></div>
-<pre><code>## Deleting layer `rpls2021&#39; using driver `GPKG&#39;
-## Writing layer `rpls2021&#39; to data source `data/data.gpkg&#39; using driver `GPKG&#39;
-## Writing 6534 features with 73 fields and geometry type Point.</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(rpls2019, <span class="at">pch=</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(rpls2021, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">add =</span> T)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_legend</span>(<span class="at">type =</span> <span class="st">&quot;typo&quot;</span>, <span class="at">pos =</span> <span class="st">&quot;topright&quot;</span>, <span class="at">val =</span> <span class="fu">c</span>(<span class="st">&quot;2019&quot;</span>, <span class="st">&quot;2021&quot;</span>), <span class="at">pal =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>), <span class="at">border =</span> <span class="cn">NA</span>,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Comparaison rpls 2019 et 2021&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;RPLS&quot;</span>)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>rpls2019 <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/gros/RPLS2019_detail_IDF_DEP_93.csv&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rpls2019)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>rpls2021<span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/gros/rpls2021_geolocalise_OD_REG11_DEP93.csv&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>rpls2019 <span class="ot">&lt;-</span> rpls2019 [rpls2019<span class="sc">$</span>CODEPOSTAL <span class="sc">==</span> <span class="st">&#39;93140&#39;</span>,]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>rpls2021 <span class="ot">&lt;-</span> rpls2021 [rpls2021<span class="sc">$</span>CODEPOSTAL <span class="sc">==</span> <span class="st">&#39;93140&#39;</span>,]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># verif x y complet</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rpls2019<span class="sc">$</span>Y)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># spatialisation des données</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>rpls2019sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(rpls2019, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>), <span class="at">crs =</span> <span class="fu">st_crs</span>(<span class="dv">2154</span>))</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>rpls2021sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(rpls2021, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>), <span class="at">crs =</span> <span class="fu">st_crs</span>(<span class="dv">2154</span>))</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(rpls2019, <span class="st">&quot;data/rplsBondy.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(rpls2019sf, <span class="st">&quot;data/data.gpkg&quot;</span>, <span class="st">&quot;rpls2019&quot;</span>, <span class="at">delete_layer =</span> T)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(rpls2021sf, <span class="st">&quot;data/data.gpkg&quot;</span>, <span class="st">&quot;rpls2021&quot;</span>, <span class="at">delete_layer =</span> T, <span class="at">quiet =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>rpls2019 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/data.gpkg&quot;</span>, <span class="st">&quot;rpls2019&quot;</span>,  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>rpls2021 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/data.gpkg&quot;</span>, <span class="st">&quot;rpls2021&quot;</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(rpls2019, <span class="at">pch=</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(rpls2021, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">add =</span> T)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_legend</span>(<span class="at">type =</span> <span class="st">&quot;typo&quot;</span>, <span class="at">pos =</span> <span class="st">&quot;topright&quot;</span>, <span class="at">val =</span> <span class="fu">c</span>(<span class="st">&quot;2019&quot;</span>, <span class="st">&quot;2021&quot;</span>), <span class="at">pal =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>), <span class="at">border =</span> <span class="cn">NA</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Comparaison rpls 2019 et 2021&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;RPLS&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -855,6 +865,10 @@ class="uri">http://www.ipt.univ-paris8.fr/vgodard/enseigne/statisti/framstat.htm
 href="http://grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm"
 class="uri">http://grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm</a></li>
 </ul>
+<p>Pour R, la base de tout est</p>
+<p>R et espace (<a
+href="https://archives.framabook.org/r-et-espace/index.html"
+class="uri">https://archives.framabook.org/r-et-espace/index.html</a>)</p>
 </div>
 <div id="le-devoir-maison" class="section level1" number="8">
 <h1><span class="header-section-number">8</span> Le devoir maison</h1>
@@ -864,12 +878,11 @@ logement social.</p>
 <p>Faire une analyse factorielle et une classification autour des
 données choisies.</p>
 <p>Livrables :</p>
-<ul>
-<li><p>un script R commenté</p></li>
-<li><p>un fichier de données .csv</p></li>
-<li><p>un .pdf expliquant la démarche avec les principaux
-résultats</p></li>
-</ul>
+<pre><code>- un script R commenté
+
+- un fichier de données .csv
+
+- un .pdf expliquant la démarche avec les principaux résultats</code></pre>
 <p>Ces 3 fichiers avec le prénom de l’étudiant.</p>
 <p>barème : 4 points pour le soin / 8 pour le script R / 8 pour le
 .pdf</p>

@@ -1,0 +1,340 @@
+LIBCOM,nb,zone,Code
+Toulouse,46684,reg76,31555
+Nantes,36097,reg52,44109
+Paris 20e Arrondissement,34451,IDF_DEP_75,75120
+Paris 19e Arrondissement,34379,IDF_DEP_75,75119
+Paris 13e Arrondissement,33988,IDF_DEP_75,75113
+Le Havre,30303,reg28,76351
+Rennes,28824,reg53,35238
+Angers,26725,reg52,49007
+Paris 15e Arrondissement,22492,IDF_DEP_75,75115
+Nice,22341,reg93,6088
+Paris 18e Arrondissement,21421,IDF_DEP_75,75118
+Bordeaux,21300,reg75,33063
+Clermont-Ferrand,21250,reg84,63113
+Nanterre,20880,IDF_DEP_92,92050
+Le Mans,20260,reg52,72181
+Tours,19928,reg24,37261
+Saint-Étienne,19631,reg84,42218
+Villeurbanne,19507,reg84,69266
+Paris 14e Arrondissement,19047,IDF_DEP_75,75114
+Paris 12e Arrondissement,16800,IDF_DEP_75,75112
+Rouen,15660,reg28,76540
+Caen,15558,reg28,14118
+Brest,15526,reg53,29019
+Orléans,15410,reg24,45234
+Roubaix,15268,reg32,59512
+Paris 17e Arrondissement,14659,IDF_DEP_75,75117
+Créteil,14625,IDF_DEP_94,94028
+Dunkerque,14230,reg32,59183
+Argenteuil,14168,IDF_DEP_95,95018
+Lyon 8e Arrondissement,14001,reg84,69388
+Avignon,13990,reg93,84007
+Vitry-sur-Seine,13573,IDF_DEP_94,94081
+La Rochelle,12954,reg75,17300
+Aix-en-Provence,12459,reg93,13001
+Vénissieux,12394,reg84,69259
+Aubervilliers,12389,IDF_DEP_93,93001
+Tourcoing,12302,reg32,59599
+Champigny-sur-Marne,12283,IDF_DEP_94,94017
+Villeneuve-d'Ascq,12157,reg32,59009
+Gennevilliers,11928,IDF_DEP_92,92036
+Annecy,11901,reg84,74010
+Troyes,11762,reg44,10387
+Colombes,11700,IDF_DEP_92,92025
+Ivry-sur-Seine,11471,IDF_DEP_94,94041
+Cergy,11208,IDF_DEP_95,95127
+Reims,10820,reg44,51454
+Bagneux,10732,IDF_DEP_92,92007
+Sarcelles,10641,IDF_DEP_95,95585
+Amiens,10373,reg32,80021
+Évreux,10167,reg28,27229
+Bobigny,10165,IDF_DEP_93,93008
+Paris 11e Arrondissement,10155,IDF_DEP_75,75111
+Beauvais,10058,reg32,60057
+Charleville-Mézières,10045,reg44,8105
+Clichy,9970,IDF_DEP_92,92024
+Bourges,9911,reg24,18033
+Vaulx-en-Velin,9719,reg84,69256
+Aulnay-sous-Bois,9705,IDF_DEP_93,93005
+Châlons-en-Champagne,9668,reg44,51108
+Saint-Nazaire,9578,reg52,44184
+Courbevoie,9535,IDF_DEP_92,92026
+Villejuif,9435,IDF_DEP_94,94076
+Bondy,9390,IDF_DEP_93,93010
+Meaux,9213,IDF_DEP_77,77284
+Belfort,9141,reg27,90010
+Lorient,8911,reg53,56121
+Asnières-sur-Seine,8905,IDF_DEP_92,92004
+Le Grand-Quevilly,8833,reg28,76322
+Lyon 9e Arrondissement,8736,reg84,69389
+Boulogne-Billancourt,8656,IDF_DEP_92,92012
+Lyon 3e Arrondissement,8596,reg84,69383
+Blois,8502,reg24,41018
+Pau,8463,reg75,64445
+Drancy,8410,IDF_DEP_93,93029
+Alfortville,8363,IDF_DEP_94,94002
+Rueil-Malmaison,8040,IDF_DEP_92,92063
+Le Blanc-Mesnil,7890,IDF_DEP_93,93007
+Chambéry,7877,reg84,73065
+Issy-les-Moulineaux,7833,IDF_DEP_92,92040
+La Courneuve,7763,IDF_DEP_93,93027
+Suresnes,7686,IDF_DEP_92,92073
+Lyon 7e Arrondissement,7603,reg84,69387
+Creil,7443,reg32,60175
+Fontenay-sous-Bois,7361,IDF_DEP_94,94033
+Versailles,7292,IDF_DEP_78,78646
+Boulogne-sur-Mer,7234,reg32,62160
+Douai,7206,reg32,59178
+Laval,7106,reg52,53130
+Mantes-la-Jolie,7086,IDF_DEP_78,78361
+Compiègne,7028,reg32,60159
+Pessac,7012,reg75,33318
+Melun,6869,IDF_DEP_77,77288
+Paris 10e Arrondissement,6846,IDF_DEP_75,75110
+Trappes,6845,IDF_DEP_78,78621
+Bagnolet,6843,IDF_DEP_93,93006
+Mérignac,6736,reg75,33281
+Mérignac,6736,reg75,17229
+Mérignac,6736,reg75,16216
+Clamart,6682,IDF_DEP_92,92023
+Mâcon,6643,reg27,71270
+Choisy-le-Roi,6638,IDF_DEP_94,94022
+Maisons-Alfort,6601,IDF_DEP_94,94046
+Épinay-sur-Seine,6560,IDF_DEP_93,93031
+Puteaux,6535,IDF_DEP_92,92062
+La Roche-sur-Yon,6531,reg52,85191
+Cannes,6324,reg93,6029
+Garges-lès-Gonesse,6323,IDF_DEP_95,95268
+Châtenay-Malabry,6282,IDF_DEP_92,92019
+Bayonne,6274,reg75,64102
+Vannes,6274,reg53,56260
+Rillieux-la-Pape,6261,reg84,69286
+Corbeil-Essonnes,6257,IDF_DEP_91,91174
+Chartres,6213,reg24,28085
+Guyancourt,6141,IDF_DEP_78,78297
+Narbonne,6140,reg76,11262
+Saint-Priest,6110,reg84,69290
+Saint-Priest,6110,reg84,7288
+Niort,6109,reg75,79191
+Saint-Chamond,5941,reg84,42207
+Levallois-Perret,5918,IDF_DEP_92,92044
+Valenciennes,5805,reg32,59606
+Poissy,5798,IDF_DEP_78,78498
+Soissons,5756,reg32,2722
+Arles,5734,reg93,13004
+Malakoff,5716,IDF_DEP_92,92046
+Antony,5676,IDF_DEP_92,92002
+Dieppe,5674,reg28,76217
+Quimper,5603,reg53,29232
+Saint-Étienne-du-Rouvray,5603,reg28,76575
+Villefranche-sur-Saône,5598,reg84,69264
+Wattrelos,5474,reg32,59650
+Sartrouville,5418,IDF_DEP_78,78586
+Paris 16e Arrondissement,5366,IDF_DEP_75,75116
+Alençon,5332,reg28,61001
+Aubagne,5269,reg93,13005
+Saint-Herblain,5261,reg52,44162
+Montrouge,5201,IDF_DEP_92,92049
+Bastia,5141,reg94,2B033
+Villiers-le-Bel,5140,IDF_DEP_95,95680
+Orly,5105,IDF_DEP_94,94054
+Meudon,5084,IDF_DEP_92,92048
+Cholet,5063,reg52,49099
+Lormont,5023,reg75,33249
+Villeneuve-la-Garenne,5006,IDF_DEP_92,92078
+Pontoise,4908,IDF_DEP_95,95500
+Chelles,4888,IDF_DEP_77,77108
+Cachan,4887,IDF_DEP_94,94016
+Talence,4844,reg75,33522
+Montluçon,4785,reg84,3185
+Villeneuve-Saint-Georges,4783,IDF_DEP_94,94078
+Les Mureaux,4781,IDF_DEP_78,78440
+Bezons,4779,IDF_DEP_95,95063
+Saint-Brieuc,4772,reg53,22278
+Carcassonne,4743,reg76,11069
+Dreux,4652,reg24,28134
+Hérouville-Saint-Clair,4638,reg28,14327
+Bron,4630,reg84,69029
+Gentilly,4559,IDF_DEP_94,94037
+Joué-lès-Tours,4540,reg24,37122
+Roanne,4528,reg84,42187
+Sens,4524,reg27,89387
+Sotteville-lès-Rouen,4514,reg28,76681
+Le Kremlin-Bicêtre,4499,IDF_DEP_94,94043
+Agen,4475,reg75,47001
+Ajaccio,4389,reg94,2A004
+Arcueil,4367,IDF_DEP_94,94003
+Lucé,4293,reg24,28218
+Gonesse,4287,IDF_DEP_95,95277
+Le Petit-Quevilly,4268,reg28,76498
+Lisieux,4266,reg28,14366
+Fontenay-aux-Roses,4237,IDF_DEP_92,92032
+Cenon,4236,reg75,33119
+Bonneuil-sur-Marne,4234,IDF_DEP_94,94011
+Athis-Mons,4189,IDF_DEP_91,91027
+Le Plessis-Robinson,4178,IDF_DEP_92,92060
+Ermont,4151,IDF_DEP_95,95219
+Annemasse,4138,reg84,74012
+Albi,4083,reg76,81004
+Achères,4074,IDF_DEP_78,78005
+La Ciotat,4037,reg93,13028
+Canteleu,4027,reg28,76157
+Mont-Saint-Aignan,4021,reg28,76451
+Grigny,3992,IDF_DEP_91,91286
+Montceau-les-Mines,3963,reg27,71306
+Châtillon,3949,IDF_DEP_92,92020
+Charenton-le-Pont,3907,IDF_DEP_94,94018
+Rezé,3885,reg52,44143
+Champs-sur-Marne,3815,IDF_DEP_77,77083
+Épernay,3756,reg44,51230
+Bègles,3753,reg75,33039
+Brive-la-Gaillarde,3744,reg75,19031
+Saint-Fons,3737,reg84,69199
+Sedan,3700,reg44,8409
+Montereau-Fault-Yonne,3693,IDF_DEP_77,77305
+Le Mée-sur-Seine,3654,IDF_DEP_77,77285
+Caluire-et-Cuire,3625,reg84,69034
+Montigny-le-Bretonneux,3624,IDF_DEP_78,78423
+Villenave-d'Ornon,3602,reg75,33550
+Elbeuf,3500,reg28,76231
+Vernon,3499,reg28,27681
+Romans-sur-Isère,3493,reg84,26281
+Gagny,3490,IDF_DEP_93,93032
+Saint-Germain-en-Laye,3455,IDF_DEP_78,78551
+Givors,3450,reg84,69091
+Villiers-sur-Marne,3439,IDF_DEP_94,94079
+Thonon-les-Bains,3434,reg84,74281
+Dammarie-les-Lys,3403,IDF_DEP_77,77152
+Saumur,3382,reg52,49328
+Valenton,3361,IDF_DEP_94,94074
+Moulins,3357,reg84,3190
+Louviers,3351,reg28,27375
+Périgueux,3348,reg75,24322
+Torcy,3346,IDF_DEP_77,77468
+Fresnes,3342,IDF_DEP_94,94034
+Clichy-sous-Bois,3323,IDF_DEP_93,93014
+Dole,3305,reg27,39198
+Montargis,3295,reg24,45208
+L'Haÿ-les-Roses,3274,IDF_DEP_94,94038
+Saint-Pierre-des-Corps,3256,reg24,37233
+Val-de-Reuil,3253,reg28,27701
+Brétigny-sur-Orge,3250,IDF_DEP_91,91103
+Castres,3223,reg76,81065
+Draveil,3210,IDF_DEP_91,91201
+Mantes-la-Ville,3210,IDF_DEP_78,78362
+Les Lilas,3188,IDF_DEP_93,93045
+Aurillac,3185,reg84,15014
+Plaisir,3145,IDF_DEP_78,78490
+Argentan,3133,reg28,61006
+Limeil-Brévannes,3127,IDF_DEP_94,94044
+Firminy,3115,reg84,42095
+Savigny-le-Temple,3093,IDF_DEP_77,77445
+Vanves,3087,IDF_DEP_92,92075
+Franconville,3070,IDF_DEP_95,95252
+Saint-Ouen-l'Aumône,3062,IDF_DEP_95,95572
+Floirac,3056,reg75,17160
+Floirac,3056,reg75,33167
+Chevilly-Larue,3035,IDF_DEP_94,94021
+Armentières,2996,reg32,59017
+Conflans-Sainte-Honorine,2979,IDF_DEP_78,78172
+Lyon 5e Arrondissement,2973,reg84,69385
+Cambrai,2972,reg32,59122
+Lons-le-Saunier,2954,reg27,39300
+Fougères,2944,reg53,35115
+Maromme,2942,reg28,76410
+Grasse,2903,reg93,6069
+Nogent-sur-Oise,2900,reg32,60463
+Coudekerque-Branche,2890,reg32,59155
+Goussainville,2882,IDF_DEP_95,95280
+Dugny,2865,IDF_DEP_93,93030
+Pontault-Combault,2848,IDF_DEP_77,77373
+Saint-Maur-des-Fossés,2821,IDF_DEP_94,94068
+Noisiel,2811,IDF_DEP_77,77337
+Lanester,2798,reg53,56098
+Paris 5e Arrondissement,2786,IDF_DEP_75,75105
+Décines-Charpieu,2764,reg84,69275
+Sannois,2761,IDF_DEP_95,95582
+Albertville,2756,reg84,73011
+La Chapelle-Saint-Luc,2750,reg44,10081
+Rochefort,2724,reg75,17299
+Anglet,2712,reg75,64024
+Fécamp,2700,reg28,76259
+Eysines,2689,reg75,33162
+Orange,2678,reg93,84087
+Lyon 4e Arrondissement,2674,reg84,69384
+Vendôme,2639,reg24,41269
+Denain,2635,reg32,59172
+Vincennes,2632,IDF_DEP_94,94080
+Aix-les-Bains,2623,reg84,73008
+Saint-Quentin,2619,reg32,2691
+Saint-Cyr-l'École,2604,IDF_DEP_78,78545
+Château-Thierry,2596,reg32,2168
+Longjumeau,2589,IDF_DEP_91,91345
+Lyon 1er Arrondissement,2569,reg84,69381
+Fleury-les-Aubrais,2547,reg24,45147
+Beaune,2520,reg27,21054
+Lyon 6e Arrondissement,2506,reg84,69386
+Gradignan,2500,reg75,33192
+Meyzieu,2498,reg84,69282
+Saintes,2487,reg75,17415
+Voiron,2485,reg84,38563
+Élancourt,2479,IDF_DEP_78,78208
+Saint-Gratien,2478,IDF_DEP_95,95555
+Cavaillon,2466,reg93,84035
+Montigny-lès-Cormeilles,2457,IDF_DEP_95,95424
+Annonay,2435,reg84,7010
+Allonnes,2426,reg52,72003
+Allonnes,2426,reg52,49002
+Saint-Médard-en-Jalles,2425,reg75,33449
+Thiais,2407,IDF_DEP_94,94073
+Étampes,2396,IDF_DEP_91,91223
+Sèvres,2378,IDF_DEP_92,92072
+Limay,2351,IDF_DEP_78,78335
+Bayeux,2349,reg28,14047
+Muret,2349,reg76,31395
+Trélazé,2320,reg52,49353
+Flers,2315,reg28,61169
+Chaville,2301,IDF_DEP_92,92022
+Sin-le-Noble,2294,reg32,59569
+Carrières-sous-Poissy,2292,IDF_DEP_78,78123
+Bois-Colombes,2290,IDF_DEP_92,92009
+Paris 4e Arrondissement,2286,IDF_DEP_75,75104
+Coulommiers,2273,IDF_DEP_77,77131
+Rambouillet,2266,IDF_DEP_78,78517
+Tergnier,2261,reg32,2738
+Montataire,2258,reg32,60414
+Le Chambon-Feugerolles,2256,reg84,42044
+Boissy-Saint-Léger,2249,IDF_DEP_94,94004
+Écully,2244,reg84,69081
+Saint-Jean-de-Braye,2239,reg24,45284
+Saint-Jean-de-la-Ruelle,2235,reg24,45285
+Perpignan,2232,reg76,66136
+Barentin,2221,reg28,76057
+Carpentras,2205,reg93,84031
+Oullins,2204,reg84,69149
+Lyon 2e Arrondissement,2199,reg84,69382
+Romilly-sur-Seine,2196,reg44,10323
+Joinville-le-Pont,2187,IDF_DEP_94,94042
+Orvault,2182,reg52,44114
+Noyon,2172,reg32,60471
+Libourne,2167,reg75,33243
+Auch,2134,reg76,32013
+Saint-Cloud,2121,IDF_DEP_92,92064
+Gonfreville-l'Orcher,2119,reg28,76305
+Châlette-sur-Loing,2118,reg24,45068
+Le Bouscat,2096,reg75,33069
+Nemours,2095,IDF_DEP_77,77333
+Dax,2094,reg75,40088
+Vierzon,2090,reg24,18279
+Eaubonne,2069,IDF_DEP_95,95203
+Gif-sur-Yvette,2051,IDF_DEP_91,91272
+Vichy,2050,reg84,3310
+Rive-de-Gier,2046,reg84,42186
+Persan,2036,IDF_DEP_95,95487
+Pont-Audemer,2034,reg28,27467
+Éragny,2028,IDF_DEP_95,95218
+Gisors,2026,reg28,27284
+Raismes,2018,reg32,59491
+Oissel,2017,reg28,76484
+Paris 9e Arrondissement,2002,IDF_DEP_75,75109
