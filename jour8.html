@@ -11,9 +11,9 @@
 
 
 
-<title>Mutivariées : analyse factorielle et classification</title>
+<title>Multivariées : analyse factorielle et classification</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -127,13 +127,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -229,11 +236,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -262,8 +273,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -271,16 +282,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -450,7 +454,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Mutivariées : analyse factorielle et
+<h1 class="title toc-ignore">Multivariées : analyse factorielle et
 classification</h1>
 
 </div>
@@ -505,16 +509,14 @@ number="2.2.1">
 ##  $ RP     : num  -0.6569 -0.5891 0.4832 0.0798 0.2921 ...
 ##  $ nonDipl: num  1.803 1.20243 -0.06937 0.00129 0.16026 ...
 ##  $ IFS    : num  -0.537 -0.537 -0.537 -0.537 0.978 ...</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data_cr)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># par défaut direction négative on inverse</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>acp<span class="sc">$</span>rotation <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">*</span> acp<span class="sc">$</span>rotation</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>acp<span class="sc">$</span>rotation</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data_cr, <span class="at">scale =</span>  F)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>acp<span class="sc">$</span>rotation</span></code></pre></div>
 <pre><code>##                PC1         PC2        PC3        PC4         PC5
-## rpls    -0.5398933 -0.11091801 -0.1798550 -0.7780208  0.24196743
-## nbEnt   -0.5513202  0.11609167 -0.1842366  0.5818114  0.55688515
-## RP      -0.5742349  0.02307407 -0.1102068  0.1743699 -0.79194161
-## nonDipl  0.1559523 -0.77276678 -0.6001166  0.1336300 -0.02266090
-## IFS     -0.2247097 -0.61361145  0.7492821  0.0889790  0.06037934</code></pre>
+## rpls     0.5398933  0.11091801  0.1798550  0.7780208 -0.24196743
+## nbEnt    0.5513202 -0.11609167  0.1842366 -0.5818114 -0.55688515
+## RP       0.5742349 -0.02307407  0.1102068 -0.1743699  0.79194161
+## nonDipl -0.1559523  0.77276678  0.6001166 -0.1336300  0.02266090
+## IFS      0.2247097  0.61361145 -0.7492821 -0.0889790 -0.06037934</code></pre>
 <p>La taille des axes illustre leur importance (voir commentaire
 graphique)</p>
 </div>
@@ -553,7 +555,7 @@ individus</h4>
 <li>oppositions des axes</li>
 </ul>
 <p>2 variables s’opposent, par exemple le nombre d’entreprises est
-presque en opposition* avec le le nombre de non diplômés.</p>
+presque en opposition avec le le nombre de non diplômés.</p>
 <ul>
 <li>axes voisins</li>
 </ul>
@@ -568,7 +570,7 @@ individus</h4>
 dans le graphique montre leur rapport aux variables.</p>
 <p>Dans le cas présent, il faudrait pouvoir examiner mieux les
 variables, on peut effectuer des zoomes.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(acp, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">scale =</span> <span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(acp, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">scale =</span> <span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span>))</span></code></pre></div>
 <p><img src="jour8_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Par exemple, les communes autour de l’axe IFS se distinguent par
 rapport à cette variable.</p>
@@ -584,10 +586,10 @@ Essayer d’interpréter.</p>
 </div>
 <div id="classification" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Classification</h1>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Centrage et réduction</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data.cr <span class="ot">&lt;-</span> <span class="fu">scale</span>(data, <span class="at">center =</span> T, <span class="at">scale =</span> T)</span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Centrage et réduction : on repart du fichier</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data_cr <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/base_cr&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># matrice des distances entre les individus</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>data.d <span class="ot">&lt;-</span> <span class="fu">dist</span>(data.cr)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>data.d <span class="ot">&lt;-</span> <span class="fu">dist</span>(data_cr)</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># classification</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>cah <span class="ot">&lt;-</span> <span class="fu">hclust</span>(data.d)</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dendogramme</span></span>
@@ -599,27 +601,29 @@ Essayer d’interpréter.</p>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># découpage</span></span>
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>groupes.cah <span class="ot">&lt;-</span> <span class="fu">cutree</span>(cah, <span class="at">k =</span> <span class="dv">3</span>)</span>
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>liste <span class="ot">&lt;-</span> <span class="fu">sort</span>(groupes.cah)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(liste)</span></code></pre></div>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(liste)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(liste,<span class="dv">28</span>)</span></code></pre></div>
 <p><img src="img/dendo.png" /></p>
 </div>
-<div id="représentation-graphique" class="section level1" number="4">
+<div id="représentation-graphique-analyse-factorielle-et-classification"
+class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Représentation
-graphique</h1>
+graphique analyse factorielle et classification</h1>
 <p>Il s’agit de représenter les groupes par des couleurs sur l’ACP
 précédente (dans le premier axe)</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data_cr <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/base_cr&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">princomp</span>(data_cr, <span class="at">cor =</span> T, <span class="at">scores =</span> T)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">princomp</span>(data_cr, <span class="at">cor =</span> F, <span class="at">scores =</span> T)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg =</span> <span class="st">&quot;lightgrey&quot;</span>, <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(acp<span class="sc">$</span>scores[,<span class="dv">1</span>],acp<span class="sc">$</span>scores[,<span class="dv">2</span>], <span class="at">type =</span> <span class="st">&quot;p&quot;</span>)</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(acp<span class="sc">$</span>scores[,<span class="dv">1</span>],acp<span class="sc">$</span>scores[,<span class="dv">2</span>],<span class="at">col=</span><span class="fu">c</span>(<span class="fu">topo.colors</span>(<span class="dv">3</span>))[groupes.cah],cex</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ot">=</span><span class="dv">1</span>,<span class="at">labels=</span><span class="fu">rownames</span>(data))</span></code></pre></div>
 <p><img src="img/cah2.png" /></p>
+<div id="deuxième-traitement" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Deuxième
+traitement</h2>
+<p>Retirer les valeurs aberrantes, ici les groupes 2 et 3, jouer sur la
+taille des groupes et rejouer la classification, puis analyser.</p>
 </div>
-<div id="deuxième-traitement" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Deuxième
-traitement</h1>
-<p>Retirer les valeurs aberrantes, jouer sur la taille des groupes et
-rejouer la classification, puis analyser.</p>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
