@@ -1030,6 +1030,162 @@ l’on vérifie par rapport à la zone.</p>
 ## 4438 4438 4438 Allonnes 2426 reg52 Allonnesreg52</code></pre>
 </div>
 </div>
+<div id="rpls-france-entière" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> RPLS France
+entière</h2>
+<p>Au niveau de la France, entière, on calcule le nombre de logements
+sociaux à l’échelle de la commune pour 2019.</p>
+<p>Voir également, la référence au niveau du département (pour 10 M
+hbts)</p>
+<p><a href="https://www.insee.fr/fr/statistiques/2134423#titre-bloc-1"
+class="uri">https://www.insee.fr/fr/statistiques/2134423#titre-bloc-1</a></p>
+<div id="agrégation" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Agrégation</h3>
+<p>L’agrégation du nombre d’appartements permet d’avoir les données au
+niveau communal.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fic <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;data/gros&quot;</span>, <span class="st">&quot;RPLS2019&quot;</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>nb <span class="ot">&lt;-</span> <span class="fu">length</span>(fic)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># on a 25 fichiers pour la France entière</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># on crée une fonction pour lire et dénombrer le nb d&#39;appartements par commune</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>denombrer <span class="ot">&lt;-</span> <span class="cf">function</span>(fic){</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  zone <span class="ot">&lt;-</span> <span class="fu">substring</span>(fic, <span class="dv">17</span>,<span class="dv">99</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="fu">paste0</span>(<span class="st">&quot;data/gros/&quot;</span>,fic))</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>LIBCOM)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(tab)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;code&quot;</span>, <span class="st">&quot;nb&quot;</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>zone <span class="ot">&lt;-</span> zone</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>liste <span class="ot">&lt;-</span> <span class="fu">lapply</span>(fic, denombrer)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co"># éclatement de la liste, transformation en dataframe</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nb) {</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  LIBCOM <span class="ot">&lt;-</span> liste [[i]][,<span class="dv">1</span>]</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  nb <span class="ot">&lt;-</span> liste [[i]][,<span class="dv">2</span>]</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>  zone <span class="ot">&lt;-</span> liste [[i]][,<span class="dv">3</span>]</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  zone <span class="ot">&lt;-</span> <span class="fu">gsub</span>( <span class="st">&quot;.csv&quot;</span>,<span class="st">&quot;&quot;</span>, zone)</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  tmp  <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(LIBCOM, nb, zone)</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df, tmp)</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co"># on enregistrer le fichier </span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(df, <span class="st">&quot;data/rplsFrSansCOG.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+</div>
+<div id="observation-du-nombre-dappartements-par-zone-par-commune"
+class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Observation du
+nombre d’appartements par zone, par commune</h3>
+<div id="communes-par-zone" class="section level4" number="5.2.2.1">
+<h4><span class="header-section-number">5.2.2.1</span> Communes par
+zone</h4>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/rplsFrSansCOG.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>zone)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tab, <span class="at">main =</span> <span class="st">&quot;Nb de communes avec logement social par zone&quot;</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;zone&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb de communes&quot;</span>, <span class="at">las =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>En province, il y a également des logements sociaux répartis sur un
+ensemble plus grand de communes. Les régions avec le nombre le plus
+importants de communes avec des logements sociaux sont Auvergne-Rhône
+Alpes et Nouvelle Aquitaine.</p>
+</div>
+<div id="nombre-de-logements-sociaux-par-commune" class="section level4"
+number="5.2.2.2">
+<h4><span class="header-section-number">5.2.2.2</span> Nombre de
+logements sociaux par commune</h4>
+<p>L’amplitude de la variable est très importante.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>nb)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     1.0     7.0    22.0   322.3    85.5 46684.0</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>nb, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>, <span class="dv">22</span>, <span class="dv">322</span>,<span class="dv">85</span>, <span class="dv">47000</span>))</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c&#39;est illisible, étendue trop grande, trop de données</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>data2000 <span class="ot">&lt;-</span> data [data<span class="sc">$</span>nb <span class="sc">&gt;</span> <span class="dv">2000</span>,]</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data2000<span class="sc">$</span>nb)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    2002    2821    4287    6454    7292   46684</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Médiane et moyenne se rapprochent</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data2000<span class="sc">$</span>nb)</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># identification des communes</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>data [(data<span class="sc">$</span>nb <span class="sc">&gt;</span> <span class="dv">20000</span>),]</span></code></pre></div>
+<pre><code>##           X                   LIBCOM    nb       zone
+## 4         4 Paris 13e Arrondissement 33988 IDF_DEP_75
+## 6         6 Paris 15e Arrondissement 22492 IDF_DEP_75
+## 9         9 Paris 18e Arrondissement 21421 IDF_DEP_75
+## 10       10 Paris 19e Arrondissement 34379 IDF_DEP_75
+## 12       12 Paris 20e Arrondissement 34451 IDF_DEP_75
+## 459     459                 Nanterre 20880 IDF_DEP_92
+## 723     723              Saint-Denis 22473      reg04
+## 2545   2545                 Le Havre 30303      reg28
+## 4443   4443                   Angers 26725      reg52
+## 4888   4888                  Le Mans 20260      reg52
+## 5052   5052                   Nantes 36097      reg52
+## 6289   6289                   Rennes 28824      reg53
+## 6681   6681                 Bordeaux 21300      reg75
+## 8556   8556                 Toulouse 46684      reg76
+## 8963   8963         Clermont-Ferrand 21250      reg84
+## 10404 10404                     Nice 22341      reg93</code></pre>
+<p>Le maximum c’est Toulouse…</p>
+</div>
+</div>
+<div id="jointure" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Jointure</h3>
+<p>On fait d’abord une jointure au niveau du libellé de la commune, que
+l’on vérifie par rapport à la zone.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>cog <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/communes-01012019.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(data, cog, <span class="at">by.x =</span> <span class="st">&quot;LIBCOM&quot;</span>, <span class="at">by.y =</span>  <span class="st">&quot;libelle&quot;</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(jointure)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    12695 obs. of  14 variables:
+##  $ LIBCOM   : chr  &quot;Abancourt&quot; &quot;Abancourt&quot; &quot;Abbaretz&quot; &quot;Abbecourt&quot; ...
+##  $ X        : int  3058 3058 4433 3059 3060 6494 536 220 2013 489 ...
+##  $ nb       : int  34 34 40 8 2 1 10 92 3 328 ...
+##  $ zone     : chr  &quot;reg32&quot; &quot;reg32&quot; &quot;reg52&quot; &quot;reg32&quot; ...
+##  $ typecom  : chr  &quot;COM&quot; &quot;COM&quot; &quot;COM&quot; &quot;COM&quot; ...
+##  $ com      : chr  &quot;60001&quot; &quot;59001&quot; &quot;44001&quot; &quot;60002&quot; ...
+##  $ reg      : int  32 32 52 32 32 75 11 11 28 11 ...
+##  $ dep      : chr  &quot;60&quot; &quot;59&quot; &quot;44&quot; &quot;60&quot; ...
+##  $ arr      : chr  &quot;601&quot; &quot;592&quot; &quot;445&quot; &quot;601&quot; ...
+##  $ tncc     : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ ncc      : chr  &quot;ABANCOURT&quot; &quot;ABANCOURT&quot; &quot;ABBARETZ&quot; &quot;ABBECOURT&quot; ...
+##  $ nccenr   : chr  &quot;Abancourt&quot; &quot;Abancourt&quot; &quot;Abbaretz&quot; &quot;Abbecourt&quot; ...
+##  $ can      : chr  &quot;6011&quot; &quot;5909&quot; &quot;4408&quot; &quot;6004&quot; ...
+##  $ comparent: int  NA NA NA NA NA NA NA NA NA NA ...</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># on ne retiendra que les lignes où correspondance deux derniers chiffres correspondent</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>jointure<span class="sc">$</span>reg2 <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">&quot;reg&quot;</span>, <span class="st">&quot;&quot;</span>, jointure<span class="sc">$</span>zone)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>jointure<span class="sc">$</span>reg2 <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">&quot;IDF_DEP_..&quot;</span>, <span class="st">&quot;11&quot;</span>, jointure<span class="sc">$</span>reg2)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>jointure<span class="sc">$</span>corresp <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>jointure<span class="sc">$</span>corresp <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(jointure<span class="sc">$</span>reg <span class="sc">==</span> jointure<span class="sc">$</span>reg2, <span class="st">&quot;ok&quot;</span>, <span class="st">&quot;non&quot;</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(jointure<span class="sc">$</span>corresp)</span></code></pre></div>
+<pre><code>## 
+##   non    ok 
+##  1722 10551</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 communes perdues</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> jointure [jointure<span class="sc">$</span>corresp <span class="sc">==</span> <span class="st">&quot;ok&quot;</span>,]</span></code></pre></div>
+<p>Suppression des doublons sur LIBCOM et zone</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>fr <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/frVerif.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<pre><code>## [1] &quot;X&quot;      &quot;LIBCOM&quot; &quot;nb&quot;     &quot;zone&quot;</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 20 communes perdues</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>cle <span class="ot">&lt;-</span> <span class="fu">paste0</span>(data [,<span class="st">&quot;LIBCOM&quot;</span>], data[, <span class="st">&quot;zone&quot;</span>])</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>doublons <span class="ot">&lt;-</span> data  [<span class="sc">!</span><span class="fu">duplicated</span>(data<span class="sc">$</span>cle),]</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(doublons, <span class="st">&quot;data/pbDoublon.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co"># verif sur Allonnes</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>fr [fr<span class="sc">$</span>LIBCOM <span class="sc">==</span> <span class="st">&quot;Allonnes&quot;</span>,]</span></code></pre></div>
+<pre><code>##       LIBCOM   nb  zone  Code
+## 116 Allonnes    5 reg24 28004
+## 117 Allonnes 2426 reg52 49002
+## 118 Allonnes 2426 reg52 72003</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>doublons [doublons<span class="sc">$</span>LIBCOM <span class="sc">==</span> <span class="st">&quot;Allonnes&quot;</span>,]</span></code></pre></div>
+<pre><code>##         X   LIBCOM   nb  zone           cle
+## 743   743 Allonnes    5 reg24 Allonnesreg24
+## 4438 4438 Allonnes 2426 reg52 Allonnesreg52</code></pre>
+<p>10222 communes au lieu de 10567. Observation data finale</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/pbDoublon.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>data [data<span class="sc">$</span>LIBCOM <span class="sc">==</span> <span class="st">&quot;Allonnes&quot;</span>,]</span></code></pre></div>
+<pre><code>##       X.1    X   LIBCOM   nb  zone           cle
+## 743   743  743 Allonnes    5 reg24 Allonnesreg24
+## 4438 4438 4438 Allonnes 2426 reg52 Allonnesreg52</code></pre>
+</div>
+</div>
 </div>
 <div id="pratique" class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Pratique</h1>
