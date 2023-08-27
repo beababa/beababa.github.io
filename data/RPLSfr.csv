@@ -38,7 +38,6 @@ Ahun,76,reg75,23001
 Ahuy,85,reg27,21003
 Aiffres,374,reg75,79003
 Aiglun,72,reg93,06001
-Aiglun,72,reg93,04001
 Aignan,45,reg76,32001
 Aignay-le-Duc,5,reg27,21004
 Aigné,10,reg52,72001
@@ -49,7 +48,6 @@ Aigremont,8,IDF_DEP_78,78007
 Aiguebelette-le-Lac,5,reg84,73001
 Aiguefonde,6,reg76,81002
 Aigueperse,154,reg84,69002
-Aigueperse,154,reg84,63001
 Aiguillon,81,reg75,47004
 Aillant-sur-Milleron,10,reg24,45002
 Aillas,17,reg75,33002
@@ -116,7 +114,6 @@ Allondaz,4,reg84,73014
 Allonne,51,reg32,60009
 Allonnes,5,reg24,28004
 Allonnes,2426,reg52,49002
-Allonnes,2426,reg52,72003
 Allonzier-la-Caille,98,reg84,74006
 Allos,48,reg93,04006
 Alloue,6,reg75,16007
@@ -134,7 +131,6 @@ Alzonne,88,reg76,11009
 Amagne,4,reg44,08008
 Amailloux,16,reg75,79008
 Amance,4,reg44,10005
-Amance,4,reg44,54012
 Amancy,40,reg84,74007
 Amayé-sur-Orne,9,reg28,14006
 Ambarès-et-Lagrave,1236,reg75,33003
@@ -160,12 +156,10 @@ Amfreville-la-Mi-Voie,477,reg28,76005
 Amfreville-Saint-Amand,21,reg28,27011
 Amiens,10373,reg32,80021
 Amilly,1101,reg24,28006
-Amilly,1101,reg24,45004
 Amou,9,reg75,40002
 Amplepuis,377,reg84,69006
 Ampuis,42,reg84,69007
 Anais,2,reg75,17007
-Anais,2,reg75,16011
 Ance Féas,12,reg75,64225
 Anceaumeville,12,reg28,76007
 Ancinnes,35,reg52,72005
@@ -201,7 +195,6 @@ Angles,33,reg52,85004
 Anglès,11,reg76,81014
 Anglet,2712,reg75,64024
 Angliers,10,reg75,86005
-Angliers,10,reg75,17009
 Angoisse,12,reg75,24008
 Angoulême,1875,reg75,16015
 Angoulins,106,reg75,17010
@@ -238,7 +231,6 @@ Aouste-sur-Sye,32,reg84,26011
 Apinac,4,reg84,42006
 Apremont,18,reg52,85006
 Apremont,15,reg84,73017
-Apremont,15,reg84,01011
 Apt,821,reg93,84003
 Aramits,5,reg75,64029
 Aranc,10,reg84,01012
@@ -318,7 +310,6 @@ Arpajon,1234,IDF_DEP_91,91021
 Arpajon-sur-Cère,283,reg84,15012
 Arquenay,2,reg52,53009
 Arques,3,reg76,11015
-Arques,3,reg76,12010
 Arques-la-Bataille,339,reg28,76026
 Arradon,173,reg53,56003
 Arras-sur-Rhône,33,reg84,07015
@@ -374,7 +365,6 @@ Aste-Béon,3,reg75,64069
 Astillé,7,reg52,53011
 Athée,5,reg52,53012
 Athies,5,reg32,80034
-Athies,5,reg32,62042
 Athies-sous-Laon,114,reg32,02028
 Athis-Mons,4189,IDF_DEP_91,91027
 Athis-Val de Rouvre,77,reg28,61007
@@ -383,7 +373,6 @@ Attiches,139,reg32,59022
 Attichy,83,reg32,60025
 Attignat,121,reg84,01024
 Attigny,32,reg44,88016
-Attigny,32,reg44,08025
 Aubagne,5269,reg93,13005
 Aubas,11,reg75,24014
 Aubazines,9,reg75,19013
@@ -414,7 +403,6 @@ Aubusson,514,reg75,23008
 Auby,1264,reg32,59028
 Aucaleuc,30,reg53,22003
 Aucamville,70,reg76,82005
-Aucamville,70,reg76,31022
 Aucelon,1,reg84,26017
 Auch,2134,reg76,32013
 Auchay-sur-Vendée,29,reg52,85009
@@ -431,7 +419,6 @@ Augignac,5,reg75,24016
 Aulhat-Flat,9,reg84,63160
 Aulnat,685,reg84,63019
 Aulnay,20,reg75,17024
-Aulnay,20,reg75,86013
 Aulnay-sous-Bois,9705,IDF_DEP_93,93005
 Aulnay-sur-Iton,9,reg28,27023
 Aulnois-sous-Laon,82,reg32,02037
@@ -447,7 +434,6 @@ Auray,1595,reg53,56007
 Aure sur Mer,20,reg28,14591
 Aureille,14,reg93,13006
 Auriac,3,reg75,64078
-Auriac,3,reg75,19014
 Auriac-du-Périgord,6,reg75,24018
 Aurillac,3185,reg84,15014
 Auriol,425,reg93,13007
@@ -512,7 +498,6 @@ Avremesnil,18,reg28,76050
 Avressieux,4,reg84,73025
 Avricourt,18,reg32,60035
 Avrillé,1387,reg52,49015
-Avrillé,1387,reg52,85010
 Avy,5,reg75,17027
 Awoingt,21,reg32,59039
 Ax-les-Thermes,117,reg76,09032
@@ -544,12 +529,10 @@ Bâgé-Dommartin,83,reg84,01025
 Bâgé-le-Châtel,46,reg84,01026
 Bagneaux-sur-Loing,319,IDF_DEP_77,77016
 Bagneux,10,reg44,51032
-Bagneux,10,reg44,54041
 Bagneux,10732,IDF_DEP_92,92007
 Bagnoles de l'Orne Normandie,75,reg28,61483
 Bagnolet,6843,IDF_DEP_93,93006
 Bagnols,3,reg84,63028
-Bagnols,3,reg84,69017
 Baguer-Morvan,45,reg53,35009
 Baguer-Pican,29,reg53,35010
 Baigneux-les-Juifs,5,reg27,21043
@@ -557,7 +540,6 @@ Baigts-de-Béarn,32,reg75,64087
 Bailleau-l'Évêque,1,reg24,28022
 Bailleau-le-Pin,50,reg24,28021
 Bailleul,1273,reg32,59043
-Bailleul,1273,reg32,80051
 Bailleul-le-Soc,2,reg32,60040
 Bailleul-sur-Thérain,215,reg32,60041
 Bailleval,14,reg32,60042
@@ -590,7 +572,6 @@ Bambecque,48,reg32,59046
 Bangor,30,reg53,56009
 Bannalec,127,reg53,29004
 Bannes,6,reg44,52037
-Bannes,6,reg44,51035
 Bannes,4,reg52,53019
 Banon,34,reg93,04018
 Bantouzelle,1,reg32,59049
@@ -620,8 +601,6 @@ Barentin,2221,reg28,76057
 Barenton,64,reg28,50029
 Barfleur,66,reg28,50030
 Barjac,3,reg76,30029
-Barjac,3,reg76,48018
-Barjac,3,reg76,09037
 Barjouville,147,reg24,28024
 Barles,4,reg93,04020
 Barlieu,8,reg24,18022
@@ -688,7 +667,6 @@ Bazuel,5,reg32,59055
 Beaubec-la-Rosière,11,reg28,76060
 Beaubray,1,reg28,27047
 Beaucaire,1,reg76,30032
-Beaucaire,1,reg76,32035
 Beaucamps-le-Vieux,69,reg32,80062
 Beaucamps-Ligny,5,reg32,59056
 Beaucé,52,reg53,35021
@@ -703,17 +681,12 @@ Beaucouzé,359,reg52,49020
 Beaufai,4,reg28,61032
 Beaufay,11,reg52,72026
 Beaufort,131,reg84,73034
-Beaufort,131,reg84,38032
 Beaufort,3,reg32,59058
 Beaufort-en-Anjou,446,reg52,49021
 Beaufou,36,reg52,85015
 Beaugency,660,reg24,45028
 Beaujeu,49,reg84,69018
 Beaulieu,21,reg84,07028
-Beaulieu,21,reg84,38033
-Beaulieu,21,reg84,43021
-Beaulieu,21,reg84,63031
-Beaulieu,21,reg84,15020
 Beaulieu-les-Fontaines,28,reg32,60053
 Beaulieu-sous-la-Roche,58,reg52,85016
 Beaulieu-sous-Parthenay,11,reg75,79029
@@ -726,9 +699,6 @@ Beaumarchés,20,reg76,32036
 Beaumes-de-Venise,76,reg93,84012
 Beaumesnil,5,reg28,14054
 Beaumont,864,reg84,07029
-Beaumont,864,reg84,74031
-Beaumont,864,reg84,63032
-Beaumont,864,reg84,43022
 Beaumont-de-Lomagne,55,reg76,82013
 Beaumont-de-Pertuis,16,reg93,84014
 Beaumont-du-Gâtinais,21,IDF_DEP_77,77027
@@ -759,7 +729,6 @@ Beaurepaire,56,reg52,85017
 Beaurepaire-sur-Sambre,4,reg32,59061
 Beaurevoir,65,reg32,02057
 Beaurieux,34,reg32,02058
-Beaurieux,34,reg32,59062
 Beausemblant,47,reg84,26041
 Beaussais-sur-Mer,198,reg53,22209
 Beaussais-Vitré,2,reg75,79030
@@ -770,7 +739,6 @@ Beauvais,10058,reg32,60057
 Beauvais-sur-Matha,47,reg75,17037
 Beauval,64,reg32,80071
 Beauvallon,96,reg84,26042
-Beauvallon,96,reg84,69179
 Beauvène,6,reg84,07030
 Beauville,25,reg75,47025
 Beauvoir,5,reg28,50042
@@ -782,7 +750,6 @@ Béceleuf,4,reg75,79032
 Bécherel,48,reg53,35022
 Bécon-les-Granits,81,reg52,49026
 Becquigny,1,reg32,80074
-Becquigny,1,reg32,02061
 Bédarrides,253,reg93,84016
 Bédée,120,reg53,35023
 Bédoin,51,reg93,84017
@@ -801,7 +768,6 @@ Beine-Nauroy,14,reg44,51046
 Belbeuf,45,reg28,76069
 Belcaire,7,reg76,11028
 Bélesta,27,reg76,09047
-Bélesta,27,reg76,66019
 Belforêt-en-Perche,54,reg28,61196
 Belfort,9141,reg27,90010
 Belgeard,2,reg52,53028
@@ -821,7 +787,6 @@ Bellenaves,43,reg84,03022
 Bellencombre,45,reg28,76070
 Belleneuve,36,reg27,21060
 Bellengreville,108,reg28,76071
-Bellengreville,108,reg28,14057
 Bellerive-sur-Allier,685,reg84,03023
 Belleu,709,reg32,02064
 Bellevigne-en-Layon,256,reg52,49345
@@ -853,7 +818,6 @@ Bennecourt,3,IDF_DEP_78,78057
 Bénodet,68,reg53,29006
 Benon,3,reg75,17041
 Bénouville,72,reg28,76079
-Bénouville,72,reg28,14060
 Benquet,23,reg75,40037
 Bercenay-en-Othe,15,reg44,10037
 Bercenay-le-Hayer,5,reg44,10038
@@ -871,7 +835,6 @@ Bérigny,1,reg28,50046
 Berjou,1,reg28,61044
 Berlaimont,181,reg32,59068
 Berlancourt,18,reg32,60062
-Berlancourt,18,reg32,02068
 Bermerain,3,reg32,59069
 Bermesnil,8,reg32,80084
 Bermont,13,reg27,90011
@@ -916,7 +879,6 @@ Bessancourt,699,IDF_DEP_95,95060
 Bessay,9,reg52,85023
 Bessay-sur-Allier,67,reg84,03025
 Besse,4,reg84,15269
-Besse,4,reg84,38040
 Besse-et-Saint-Anastaise,66,reg84,63038
 Bessé-sur-Braye,153,reg52,72035
 Bessenay,57,reg84,69021
@@ -972,7 +934,6 @@ Biache-Saint-Vaast,151,reg32,62128
 Biarritz,1451,reg75,64122
 Biarrotte,17,reg75,40042
 Bias,15,reg75,47027
-Bias,15,reg75,40043
 Biaudos,21,reg75,40044
 Bibost,8,reg84,69022
 Bidache,18,reg75,64123
@@ -1007,8 +968,6 @@ Biozat,4,reg84,03030
 Biras,4,reg75,24042
 Biriatou,38,reg75,64130
 Biron,15,reg75,64131
-Biron,15,reg75,24043
-Biron,15,reg75,17047
 Biscarrosse,489,reg75,40046
 Bitry,3,reg32,60072
 Biville-la-Baignarde,11,reg28,76096
@@ -1051,7 +1010,6 @@ Blessac,3,reg75,23024
 Blet,6,reg24,18031
 Blicourt,1,reg32,60077
 Bligny,1,reg44,10048
-Bligny,1,reg44,51069
 Bligny-sur-Ouche,23,reg27,21087
 Blois,8502,reg24,41018
 Blombay,3,reg44,08071
@@ -1092,7 +1050,6 @@ Boismé,14,reg75,79038
 Boissay,1,reg28,76113
 Boisse-Penchot,18,reg76,12028
 Boisset,6,reg84,43034
-Boisset,6,reg84,15021
 Boisset-lès-Montrond,11,reg84,42020
 Boisset-Saint-Priest,23,reg84,42021
 Boissey-le-Châtel,71,reg28,27077
@@ -1195,11 +1152,9 @@ Bougue,5,reg75,40051
 Bouguenais,1601,reg52,44020
 Bougy,3,reg28,14089
 Bouillac,5,reg76,12030
-Bouillac,5,reg76,82020
 Bouillé-Courdault,5,reg52,85028
 Bouillé-Ménard,28,reg52,49036
 Bouilly,56,reg44,51072
-Bouilly,56,reg44,10051
 Bouin,14,reg52,85029
 Boulay-les-Barres,8,reg24,45046
 Boulazac Isle Manoire,749,reg75,24053
@@ -1253,7 +1208,6 @@ Bourideys,5,reg75,33068
 Bourlens,4,reg75,47036
 Bourlon,3,reg32,62164
 Bournazel,3,reg76,12031
-Bournazel,3,reg76,81035
 Bourneau,14,reg52,85033
 Bourneville-Sainte-Croix,37,reg28,27107
 Bournezeau,79,reg52,85034
@@ -1269,7 +1223,6 @@ Bousbecque,304,reg32,59098
 Bousies,78,reg32,59099
 Bousignies-sur-Roc,2,reg32,59101
 Boussac,8,reg76,12032
-Boussac,8,reg76,46035
 Boussac,173,reg75,23031
 Boussay,21,reg52,44022
 Bousse,3,reg52,72044
@@ -1315,8 +1268,6 @@ Brasc,2,reg76,12035
 Brasles,129,reg32,02114
 Brasparts,20,reg53,29016
 Brassac,42,reg76,09066
-Brassac,42,reg76,82024
-Brassac,42,reg76,81037
 Brassac-les-Mines,136,reg84,63050
 Braud-et-Saint-Louis,36,reg75,33073
 Brax,35,reg75,47040
@@ -1350,7 +1301,6 @@ Bresles,225,reg32,60103
 Bresnay,2,reg84,03039
 Bressey-sur-Tille,39,reg27,21105
 Bressolles,15,reg84,03040
-Bressolles,15,reg84,01062
 Bressols,36,reg76,82025
 Bressuire,951,reg75,79049
 Brest,15526,reg53,29019
@@ -1380,7 +1330,6 @@ Breux-Jouy,13,IDF_DEP_91,91106
 Bréviandes,279,reg44,10060
 Bréville-les-Monts,4,reg28,14106
 Brévillers,6,reg32,62175
-Brévillers,6,reg32,80140
 Brévilly,27,reg44,08083
 Brévonnes,52,reg44,10061
 Brezolles,145,reg24,28059
@@ -1485,7 +1434,6 @@ Buléon,9,reg53,56027
 Bulles,2,reg32,60115
 Bullion,37,IDF_DEP_78,78120
 Bully,36,reg84,42027
-Bully,36,reg84,69032
 Burdignes,5,reg84,42028
 Bures-en-Bray,8,reg28,76148
 Bures-sur-Yvette,646,IDF_DEP_91,91122
@@ -1505,7 +1453,6 @@ Bussière-Badil,5,reg75,24071
 Bussière-Dunoise,14,reg75,23036
 Bussière-Saint-Georges,6,reg75,23038
 Bussières,30,reg84,63060
-Bussières,30,reg84,42029
 Bussy,5,reg32,60117
 Bussy-Albieux,4,reg84,42030
 Bussy-Saint-Georges,1881,IDF_DEP_77,77058
@@ -1519,7 +1466,6 @@ Buzet-sur-Baïse,24,reg75,47043
 Buzy,3,reg75,64157
 Cabanac-et-Villagrains,10,reg75,33077
 Cabanès,3,reg76,12041
-Cabanès,3,reg76,81044
 Cabannes,79,reg93,13018
 Cabidos,4,reg75,64158
 Cabourg,436,reg28,14117
@@ -1541,7 +1487,6 @@ Cagnotte,8,reg75,40059
 Cagny,255,reg28,14119
 Cahagnes,18,reg28,14120
 Cahuzac,2,reg76,11057
-Cahuzac,2,reg76,81049
 Cahuzac-sur-Adour,11,reg76,32070
 Cahuzac-sur-Vère,19,reg76,81051
 Caille,24,reg93,06028
@@ -1558,7 +1503,6 @@ Callac,93,reg53,22025
 Callen,2,reg75,40060
 Callengeville,21,reg28,76122
 Calmont,20,reg76,31100
-Calmont,20,reg76,12043
 Calorguen,11,reg53,22026
 Caluire-et-Cuire,3625,reg84,69034
 Calvi,343,reg94,2B050
@@ -1568,7 +1512,6 @@ Camaret-sur-Aigues,73,reg93,84029
 Camaret-sur-Mer,56,reg53,29022
 Camarsac,12,reg75,33083
 Cambes,32,reg75,47047
-Cambes,32,reg75,33084
 Cambes-en-Plaine,122,reg28,14125
 Cambieure,2,reg76,11061
 Camblanes-et-Meynac,87,reg75,33085
@@ -1585,16 +1528,13 @@ Camlez,16,reg53,22028
 Camon,388,reg32,80164
 Camors,34,reg53,56031
 Campagnac,7,reg76,81056
-Campagnac,7,reg76,12047
 Campagne,5,reg75,24076
-Campagne,5,reg75,40061
 Campbon,62,reg52,44025
 Campeaux,3,reg32,60122
 Campénéac,20,reg53,56032
 Campet-et-Lamolère,3,reg75,40062
 Camphin-en-Pévèle,78,reg32,59124
 Campigny,21,reg28,14130
-Campigny,21,reg28,27126
 Camplong-d'Aude,8,reg76,11064
 Campneuseville,1,reg28,76154
 Campremy,19,reg32,60123
@@ -1605,7 +1545,6 @@ Campugnan,7,reg75,33089
 Canals,2,reg76,82028
 Canaples,6,reg32,80166
 Canapville,4,reg28,61072
-Canapville,4,reg28,14131
 Canari,18,reg94,2B058
 Cancale,262,reg53,35049
 Cancon,13,reg75,47048
@@ -1614,7 +1553,6 @@ Candé,162,reg52,49054
 Candé-sur-Beuvron,11,reg24,41029
 Canéjan,502,reg75,33090
 Canet,12,reg76,11067
-Canet,12,reg76,34051
 Canet-de-Salars,2,reg76,12050
 Canisy,51,reg28,50095
 Canly,7,reg32,60125
@@ -1725,10 +1663,7 @@ Cauffry,14,reg32,60134
 Caullery,1,reg32,59140
 Caulnes,43,reg53,22032
 Caumont,1,reg32,62219
-Caumont,1,reg32,02145
 Caumont,3,reg76,32093
-Caumont,3,reg76,82035
-Caumont,3,reg76,09086
 Caumont-sur-Aure,131,reg28,14143
 Caumont-sur-Durance,68,reg93,84034
 Caumont-sur-Garonne,4,reg75,47061
@@ -1812,8 +1747,6 @@ Chaingy,92,reg24,45067
 Chalabre,25,reg76,11091
 Chalain-le-Comtal,15,reg84,42038
 Chalais,3,reg75,16073
-Chalais,3,reg75,86049
-Chalais,3,reg75,24095
 Chalamont,194,reg84,01074
 Chalandry-Elaire,23,reg44,08096
 Chalautre-la-Grande,19,IDF_DEP_77,77072
@@ -1875,8 +1808,6 @@ Champagne-sur-Oise,345,IDF_DEP_95,95134
 Champagne-sur-Seine,1229,IDF_DEP_77,77079
 Champagneux,11,reg84,73070
 Champagney,5,reg27,70120
-Champagney,5,reg27,25115
-Champagney,5,reg27,39096
 Champagny-en-Vanoise,45,reg84,73071
 Champcenest,4,IDF_DEP_77,77080
 Champcevinel,95,reg75,24098
@@ -1890,7 +1821,6 @@ Champeix,15,reg84,63080
 Champéon,4,reg52,53051
 Champfleur,20,reg52,72056
 Champfleury,26,reg44,51115
-Champfleury,26,reg44,10075
 Champfrémont,1,reg52,53052
 Champfromier,64,reg84,01081
 Champgenéteux,3,reg52,53053
@@ -1918,7 +1848,6 @@ Chandon,30,reg84,42048
 Chanéac,4,reg84,07054
 Chaneins,23,reg84,01083
 Changé,503,reg52,72058
-Changé,503,reg52,53054
 Changis-sur-Marne,12,IDF_DEP_77,77084
 Chaniers,23,reg75,17086
 Chanoz-Châtenay,3,reg84,01084
@@ -1948,7 +1877,6 @@ Chapelle-Vallon,7,reg44,10082
 Chaponnay,88,reg84,69270
 Chaponost,416,reg84,69043
 Chappes,39,reg84,03058
-Chappes,39,reg84,63089
 Charbonnier-les-Mines,42,reg84,63091
 Charbonnières-les-Bains,256,reg84,69044
 Charbonnières-les-Varennes,6,reg84,63092
@@ -1977,7 +1905,6 @@ Charnoz-sur-Ain,16,reg84,01088
 Charny Orée de Puisaye,98,reg27,89086
 Chârost,41,reg24,18055
 Charron,27,reg75,17091
-Charron,27,reg75,23054
 Chars,77,IDF_DEP_95,95142
 Charsonville,14,reg24,45081
 Chartres,6213,reg24,28085
@@ -1986,7 +1913,6 @@ Chartrettes,14,IDF_DEP_77,77096
 Chasné-sur-Illet,25,reg53,35067
 Chassant,17,reg24,28086
 Chasselay,81,reg84,69049
-Chasselay,81,reg84,38086
 Chassenard,14,reg84,03063
 Chassiers,12,reg84,07058
 Chassieu,613,reg84,69271
@@ -2010,7 +1936,6 @@ Châteaugiron,254,reg53,35069
 Châteaulin,543,reg53,29026
 Châteaumeillant,62,reg24,18057
 Châteauneuf,20,reg84,73079
-Châteauneuf,20,reg84,42053
 Châteauneuf,8,reg52,85062
 Châteauneuf-d'Ille-et-Vilaine,68,reg53,35070
 Châteauneuf-de-Gadagne,21,reg93,84036
@@ -2040,12 +1965,10 @@ Châteldon,19,reg84,63102
 Châtelus-Malvaleix,21,reg75,23057
 Châtenay,2,reg24,28092
 Châtenay,6,reg84,01090
-Châtenay,6,reg84,38093
 Châtenay-Malabry,6282,IDF_DEP_92,92019
 Châtenois-les-Forges,50,reg27,90022
 Châtillon,3949,IDF_DEP_92,92020
 Châtillon,25,reg84,69050
-Châtillon,25,reg84,03069
 Châtillon-Coligny,148,reg24,45085
 Châtillon-en-Diois,14,reg84,26086
 Châtillon-en-Vendelais,53,reg53,35072
@@ -2087,7 +2010,6 @@ Chaussy,6,IDF_DEP_95,95150
 Chauvé,29,reg52,44038
 Chauvigné,21,reg53,35075
 Chaux,34,reg27,21162
-Chaux,34,reg27,90023
 Chavagne,280,reg53,35076
 Chavagnes-en-Paillers,122,reg52,85065
 Chavagnes-les-Redoux,18,reg52,85066
@@ -2120,7 +2042,6 @@ Chénas,11,reg84,69053
 Chenay,6,reg75,79084
 Chénérailles,38,reg75,23061
 Chenereilles,3,reg84,42060
-Chenereilles,3,reg84,43069
 Chéniers,16,reg75,23062
 Chenillé-Champteussé,3,reg52,49067
 Chennegy,1,reg44,10096
@@ -2129,7 +2050,6 @@ Cheny,298,reg27,89099
 Cheptainville,52,IDF_DEP_91,91156
 Chépy,139,reg32,80190
 Chérancé,6,reg52,53068
-Chérancé,6,reg52,72078
 Chéraute,22,reg75,64188
 Chérence,3,IDF_DEP_95,95157
 Chéreng,83,reg32,59146
@@ -2151,7 +2071,6 @@ Cheval-Blanc,32,reg93,84038
 Chevanceaux,29,reg75,17104
 Chevannes,157,IDF_DEP_91,91159
 Chevannes,42,reg27,89102
-Chevannes,42,reg27,21169
 Cheverny,2,reg24,41050
 Chevillon-sur-Huillard,1,reg24,45092
 Chevilly,186,reg24,45093
@@ -2163,7 +2082,6 @@ Chevreuse,294,IDF_DEP_78,78160
 Chèvreville,1,reg32,60148
 Chevrières,86,reg32,60149
 Chevrières,7,reg84,38099
-Chevrières,7,reg84,42062
 Chevry-Cossigny,121,IDF_DEP_77,77114
 Chey,3,reg75,79087
 Cheylade,1,reg84,15049
@@ -2247,7 +2165,6 @@ Clesles,10,reg44,51155
 Clessé,12,reg75,79094
 Cleuville,1,reg28,76180
 Cléville,1,reg28,76181
-Cléville,1,reg28,14163
 Clévilliers,21,reg24,28102
 Clichy,9970,IDF_DEP_92,92024
 Clichy-sous-Bois,3323,IDF_DEP_93,93014
@@ -2296,7 +2213,6 @@ Colomars,33,reg93,06046
 Colombelles,1634,reg28,14167
 Colombes,11700,IDF_DEP_92,92025
 Colombier,4,reg84,42067
-Colombier,4,reg84,03081
 Colombier-Saugnieu,34,reg84,69299
 Colombiers-du-Plessis,3,reg52,53071
 Colombiès,14,reg76,12068
@@ -2372,7 +2288,6 @@ Conségudes,8,reg93,06047
 Contes,163,reg93,06048
 Contest,3,reg52,53074
 Conteville,82,reg28,27169
-Conteville,82,reg28,76186
 Contres,163,reg24,18071
 Conty,92,reg32,80211
 Coole,2,reg44,51167
@@ -2468,8 +2383,6 @@ Coulommiers-la-Tour,14,reg24,41065
 Coulon,89,reg75,79100
 Coulongé,9,reg52,72098
 Coulonges,4,reg75,17122
-Coulonges,4,reg75,86084
-Coulonges,4,reg75,16108
 Coulonges-sur-l'Autize,37,reg75,79101
 Coulonges-sur-Sarthe,45,reg28,61126
 Coulonges-Thouarsais,1,reg75,79102
@@ -2506,7 +2419,6 @@ Courpière,240,reg84,63125
 Courpignac,3,reg75,17129
 Cours,256,reg84,69066
 Cours,3,reg75,79104
-Cours,3,reg75,47073
 Cours-les-Barres,26,reg24,18075
 Coursac,29,reg75,24139
 Coursan,157,reg76,11106
@@ -2514,7 +2426,6 @@ Coursegoules,14,reg93,06050
 Courseulles-sur-Mer,188,reg28,14191
 Courson-les-Carrières,50,reg27,89125
 Courtefontaine,10,reg27,39172
-Courtefontaine,10,reg27,25174
 Courtemont-Varennes,10,reg32,02228
 Courtenay,251,reg24,45115
 Courtenot,1,reg44,10109
@@ -2539,7 +2450,6 @@ Coutiches,54,reg32,59158
 Coutouvre,17,reg84,42074
 Coutras,372,reg75,33138
 Coutures,2,reg75,24141
-Coutures,2,reg75,33139
 Couvron-et-Aumencourt,113,reg32,02231
 Couvrot,2,reg44,51195
 Coux,14,reg84,07072
@@ -2583,7 +2493,6 @@ Créon-d'Armagnac,5,reg75,40087
 Crépol,37,reg84,26107
 Crépon,2,reg28,14196
 Crépy,53,reg32,62256
-Crépy,53,reg32,02238
 Crépy-en-Valois,1389,reg32,60176
 Crespin,400,reg32,59160
 Cresserons,33,reg28,14197
@@ -2670,8 +2579,6 @@ Cusset,1420,reg84,03095
 Cuts,9,reg32,60189
 Cuttoli-Corticchiato,19,reg94,2A103
 Cuverville,216,reg28,14215
-Cuverville,216,reg28,27194
-Cuverville,216,reg28,76206
 Cuverville-sur-Yères,2,reg28,76207
 Cuvier,2,reg27,39187
 Cuvilly,14,reg32,60191
@@ -2679,7 +2586,6 @@ Cuxac-Cabardès,35,reg76,11115
 Cuxac-d'Aude,76,reg76,11116
 Cuy,28,reg27,89136
 Cuzieu,10,reg84,42081
-Cuzieu,10,reg84,01141
 Cuzorn,4,reg75,47077
 Cysoing,200,reg32,59168
 Dadonville,46,reg24,45119
@@ -2890,12 +2796,9 @@ Durban-Corbières,17,reg76,11124
 Durdat-Larequille,30,reg84,03106
 Durenque,3,reg76,12092
 Durfort,9,reg76,09109
-Durfort,9,reg76,81083
 Durtal,277,reg52,49127
 Durtol,112,reg84,63141
 Dury,3,reg32,62280
-Dury,3,reg32,02273
-Dury,3,reg32,80261
 Eaubonne,2069,IDF_DEP_95,95203
 Eaux-Bonnes,12,reg75,64204
 Eauze,181,reg76,32119
@@ -2948,7 +2851,6 @@ Elbeuf,3500,reg28,76231
 Elliant,103,reg53,29049
 Elven,333,reg53,56053
 Émanville,11,reg28,27217
-Émanville,11,reg28,76234
 Embreville,12,reg32,80265
 Émerainville,575,IDF_DEP_77,77169
 Émerchicourt,24,reg32,59192
@@ -2965,7 +2867,6 @@ Ennezat,111,reg84,63148
 Ennordres,4,reg24,18088
 Ensuès-la-Redonne,70,reg93,13033
 Entraigues,4,reg84,63149
-Entraigues,4,reg84,38154
 Entraigues-sur-la-Sorgue,596,reg93,84043
 Entrammes,52,reg52,53094
 Entraunes,8,reg93,06056
@@ -3062,7 +2963,6 @@ Espeluche,22,reg84,26121
 Espéraza,106,reg76,11129
 Espezel,2,reg76,11130
 Espinasse,6,reg84,63152
-Espinasse,6,reg84,15065
 Espinasse-Vozelle,10,reg84,03110
 Espinchal,3,reg84,63153
 Esquay-Notre-Dame,30,reg28,14249
@@ -3083,14 +2983,12 @@ Essouvert,4,reg75,17277
 Essoyes,57,reg44,10141
 Essuiles,2,reg32,60222
 Estaing,8,reg76,65169
-Estaing,8,reg76,12098
 Estandeuil,5,reg84,63155
 Estang,7,reg76,32127
 Esternay,122,reg44,51237
 Estillac,110,reg75,47091
 Estissac,132,reg44,10142
 Estivareilles,29,reg84,42091
-Estivareilles,29,reg84,03111
 Estouy,10,reg24,45139
 Estrées-la-Campagne,1,reg28,14252
 Estrées-Saint-Denis,348,reg32,60223
@@ -3165,7 +3063,6 @@ Faremoutiers,55,IDF_DEP_77,77176
 Farges-Allichamps,5,reg24,18091
 Farges-en-Septaine,8,reg24,18092
 Fargues,4,reg75,40099
-Fargues,4,reg75,33164
 Fargues-Saint-Hilaire,132,reg75,33165
 Fargues-sur-Ourbise,1,reg75,47093
 Faucon,15,reg93,84045
@@ -3190,7 +3087,6 @@ Fêche-l'Église,62,reg27,90045
 Fégréac,19,reg52,44057
 Feins,15,reg53,35110
 Félines,64,reg84,43093
-Félines,64,reg84,07089
 Felletin,128,reg75,23079
 Feneu,69,reg52,49135
 Fercé,14,reg52,44058
@@ -3201,7 +3097,6 @@ Férel,31,reg53,56058
 Ferrals-les-Corbières,13,reg76,11140
 Ferreux-Quincey,2,reg44,10148
 Ferrières,17,reg32,80305
-Ferrières,17,reg32,60232
 Ferrières-en-Bray,79,reg28,76260
 Ferrières-en-Brie,118,IDF_DEP_77,77181
 Ferrières-en-Gâtinais,113,reg24,45145
@@ -3230,7 +3125,6 @@ Fitou,4,reg76,11144
 Fitz-James,219,reg32,60234
 Flagnac,4,reg76,12101
 Flamanville,4,reg28,50184
-Flamanville,4,reg28,76264
 Flamarens,2,reg76,32131
 Flancourt-Crescy-en-Roumois,6,reg28,27085
 Flaviac,62,reg84,07090
@@ -3246,9 +3140,6 @@ Fleurieux-sur-l'Arbresle,38,reg84,69086
 Fleurigné,25,reg53,35112
 Fleurines,85,reg32,60238
 Fleury,16,reg32,80317
-Fleury,16,reg32,60239
-Fleury,16,reg32,02316
-Fleury,16,reg32,62339
 Fleury,55,reg76,11145
 Fleury-la-Rivière,16,reg44,51252
 Fleury-la-Vallée,26,reg27,89167
@@ -3263,7 +3154,6 @@ Flize,63,reg44,08173
 Flogny-la-Chapelle,76,reg27,89169
 Floing,61,reg44,08174
 Floirac,3056,reg75,17160
-Floirac,3056,reg75,33167
 Florentin-la-Capelle,9,reg76,12103
 Florimont,3,reg27,90046
 Floure,9,reg76,11146
@@ -3295,7 +3185,6 @@ Fontaine-sur-Ay,4,reg44,51256
 Fontaine-sur-Somme,2,reg32,80328
 Fontainebleau,1655,IDF_DEP_77,77186
 Fontaines,4,reg27,71202
-Fontaines,4,reg27,89173
 Fontaines-en-Sologne,4,reg24,41086
 Fontaines-Saint-Martin,55,reg84,69087
 Fontaines-sur-Saône,749,reg84,69088
@@ -3350,13 +3239,11 @@ Fougeré,26,reg52,85093
 Fougères,2944,reg53,35115
 Fougerolles-du-Plessis,52,reg52,53100
 Fouilloy,76,reg32,60248
-Fouilloy,76,reg32,80338
 Foulayronnes,388,reg75,47100
 Fouquerolles,1,reg32,60251
 Fouras,106,reg75,17168
 Fourcès,3,reg76,32133
 Fourneaux,109,reg84,42098
-Fourneaux,109,reg84,73117
 Fournival,3,reg32,60252
 Fournols,17,reg84,63162
 Fourques-sur-Garonne,9,reg75,47101
@@ -3369,7 +3256,6 @@ Francescas,7,reg75,47102
 Franchesse,4,reg84,03117
 Francheville,1002,reg84,69089
 Francières,3,reg32,60254
-Francières,3,reg32,80344
 Franconville,3070,IDF_DEP_95,95252
 Franqueville-Saint-Pierre,424,reg28,76475
 Frazé,20,reg24,28161
@@ -3478,7 +3364,6 @@ Gavrus,29,reg28,14297
 Gazax-et-Baccarisse,2,reg76,32144
 Geaune,39,reg75,40110
 Geay,4,reg75,79131
-Geay,4,reg75,17171
 Géfosse-Fontenay,2,reg28,14298
 Gélannes,38,reg44,10164
 Gellainville,19,reg24,28177
@@ -3500,7 +3385,6 @@ Genneville,1,reg28,14299
 Gennevilliers,11928,IDF_DEP_92,92036
 Genouillac,48,reg75,23089
 Genouillé,3,reg75,17174
-Genouillé,3,reg75,86104
 Gensac,17,reg75,33186
 Gentilly,4559,IDF_DEP_94,94037
 Gentioux-Pigerolles,18,reg75,23090
@@ -3618,7 +3502,6 @@ Gramond,3,reg76,12113
 Grand'Landes,10,reg52,85102
 Grand-Auverné,15,reg52,44065
 Grand-Camp,17,reg28,76318
-Grand-Camp,17,reg28,27295
 Grand-Champ,137,reg53,56067
 Grand-Couronne,1952,reg28,76319
 Grand-Fougeray,55,reg53,35124
@@ -3661,7 +3544,6 @@ Grézieux-le-Fromental,10,reg84,42105
 Grézolles,4,reg84,42106
 Grignan,23,reg84,26146
 Grignols,36,reg75,33195
-Grignols,36,reg75,24205
 Grignon,67,reg84,73130
 Grigny,3992,IDF_DEP_91,91286
 Grigny,1204,reg84,69096
@@ -3727,7 +3609,6 @@ Guilliers,28,reg53,56080
 Guilligomarc'h,10,reg53,29071
 Guillonville,6,reg24,28190
 Guilly,16,reg24,45164
-Guilly,16,reg24,36085
 Guilvinec,104,reg53,29072
 Guimaëc,21,reg53,29073
 Guimiliau,22,reg53,29074
@@ -3763,7 +3644,6 @@ Hanvec,36,reg53,29078
 Hanvoile,35,reg32,60298
 Happonvilliers,3,reg24,28192
 Haraucourt,52,reg44,54250
-Haraucourt,52,reg44,08211
 Harbonnières,150,reg32,80417
 Harcourt,11,reg28,27311
 Hardivillers,23,reg32,60299
@@ -3785,7 +3665,6 @@ Hauteluce,25,reg84,73132
 Hauterive,38,reg84,03126
 Hauterives,61,reg84,26148
 Hauteroche,13,reg27,21314
-Hauteroche,13,reg27,39177
 Hautot-l'Auvray,7,reg28,76346
 Hautot-Saint-Sulpice,33,reg28,76348
 Hautot-sur-Mer,50,reg28,76349
@@ -3793,7 +3672,6 @@ Hauts de Bienne,649,reg27,39368
 Hautvillers,27,reg44,51287
 Hauville,9,reg28,27316
 Haux,15,reg75,64258
-Haux,15,reg75,33201
 Haybes,34,reg44,08222
 Hédé-Bazouges,38,reg53,35130
 Heiltz-l'Évêque,6,reg44,51290
@@ -3825,7 +3703,6 @@ Hérouvillette,55,reg28,14328
 Herqueville,16,reg28,27330
 Herry,15,reg24,18110
 Héry,28,reg27,89201
-Héry,28,reg27,58133
 Heudebouville,14,reg28,27332
 Heudicourt,2,reg32,80438
 Heugas,14,reg75,40125
@@ -3834,7 +3711,6 @@ Hirel,26,reg53,35132
 Hombleux,9,reg32,80442
 Hommes,27,reg24,37117
 Homps,24,reg76,32154
-Homps,24,reg76,11172
 Hondouville,12,reg28,27339
 Honfleur,1206,reg28,14333
 Hôpital-Camfrout,28,reg53,29080
@@ -3996,7 +3872,6 @@ Juif,3,reg27,71246
 Juigné-des-Moutiers,6,reg52,44078
 Juigné-sur-Sarthe,30,reg52,72151
 Juillac,34,reg75,33210
-Juillac,34,reg75,19094
 Juilly,17,IDF_DEP_77,77241
 Juliénas,13,reg84,69103
 Jullouville,22,reg28,50066
@@ -4143,7 +4018,6 @@ La Chaize-le-Vicomte,96,reg52,85046
 La Chambre,93,reg84,73067
 La Chapelaude,7,reg84,03055
 La Chapelle,6,reg84,73074
-La Chapelle,6,reg84,03056
 La Chapelle-Anthenaise,15,reg52,53056
 La Chapelle-au-Moine,7,reg28,61094
 La Chapelle-au-Riboul,10,reg52,53057
@@ -4184,7 +4058,6 @@ La Chapelle-Longueville,209,reg28,27554
 La Chapelle-Montligeon,61,reg28,61097
 La Chapelle-Montmartin,13,reg24,41038
 La Chapelle-Neuve,12,reg53,22037
-La Chapelle-Neuve,12,reg53,56039
 La Chapelle-Palluau,16,reg52,85055
 La Chapelle-près-Sées,4,reg28,61098
 La Chapelle-Rainsouin,2,reg52,53059
@@ -4263,7 +4136,6 @@ La Ferté-Vidame,73,reg24,28149
 La Ferté Macé,660,reg28,61168
 La Feuillée,5,reg53,29054
 La Feuillie,19,reg28,76263
-La Feuillie,19,reg28,50182
 La Flèche,1647,reg52,72154
 La Flotte,223,reg75,17161
 La Fontaine-Saint-Martin,3,reg52,72135
@@ -4353,7 +4225,6 @@ La Pacaudière,43,reg84,42163
 La Palme,48,reg76,11188
 La Palud-sur-Verdon,6,reg93,04144
 La Pellerine,7,reg52,49237
-La Pellerine,7,reg52,53177
 La Perche,6,reg24,18178
 La Pesse,7,reg27,39413
 La Petite-Boissière,10,reg75,79207
@@ -4466,7 +4337,6 @@ Labastide-Rouairoux,50,reg76,81115
 Labastide-Saint-Georges,60,reg76,81116
 Labastide-Villefranche,5,reg75,64291
 Labatut,58,reg75,40132
-Labatut,58,reg75,64293
 Labbeville,1,IDF_DEP_95,95328
 Labégude,33,reg84,07116
 Labéjan,4,reg76,32172
@@ -4655,7 +4525,6 @@ Laons,17,reg24,28206
 Lapalisse,119,reg84,03138
 Lapalud,154,reg93,84064
 Lapeyrouse,11,reg84,01207
-Lapeyrouse,11,reg84,63187
 Lapeyrouse-Mornay,24,reg84,26155
 Lapleau,31,reg75,19106
 Laplume,23,reg75,47137
@@ -4707,8 +4576,6 @@ Lauzun,4,reg75,47142
 Laval,7106,reg52,53130
 Laval-sur-Tourbe,2,reg44,51317
 Lavalette,39,reg76,31285
-Lavalette,39,reg76,34133
-Lavalette,39,reg76,11199
 Lavancia-Epercy,38,reg27,39283
 Lavans-lès-Saint-Claude,172,reg27,39286
 Lavardac,6,reg75,47143
@@ -4760,7 +4627,6 @@ Le Breil-sur-Mérize,39,reg52,72046
 Le Brethon,2,reg84,03041
 Le Breuil,1,reg44,51085
 Le Breuil,2,reg84,03042
-Le Breuil,2,reg84,69026
 Le Breuil-en-Bessin,1,reg28,14103
 Le Breuil-sur-Couze,18,reg84,63052
 Le Brusquet,17,reg93,04036
@@ -4811,7 +4677,6 @@ Le Doulieu,12,reg32,59180
 Le Drennec,37,reg53,29047
 Le Faou,28,reg53,29053
 Le Faouët,78,reg53,56057
-Le Faouët,78,reg53,22057
 Le Fenouiller,22,reg52,85088
 Le Ferré,14,reg53,35111
 Le Fidelaire,14,reg28,27242
@@ -4861,7 +4726,6 @@ Le Luart,32,reg52,72172
 Le Lude,256,reg52,72176
 Le Malesherbois,575,reg24,45191
 Le Manoir,177,reg28,27386
-Le Manoir,177,reg28,14400
 Le Mans,20260,reg52,72181
 Le Marais-la-Chapelle,1,reg28,14402
 Le Mas-d'Agenais,22,reg75,47159
@@ -4915,7 +4779,6 @@ Le Petit-Fougeray,5,reg53,35218
 Le Petit-Quevilly,4268,reg28,76498
 Le Pian-Médoc,192,reg75,33322
 Le Pin,40,reg75,17276
-Le Pin,40,reg75,79210
 Le Pin,1,reg28,14504
 Le Pin,37,IDF_DEP_77,77363
 Le Pin,11,reg84,03208
@@ -4984,7 +4847,6 @@ Le Val d'Ocre,18,reg27,89334
 Le Vaudreuil,296,reg28,27528
 Le Verdon-sur-Mer,45,reg75,33544
 Le Vernet,23,reg84,03306
-Le Vernet,23,reg84,43260
 Le Vésinet,726,IDF_DEP_78,78650
 Le Veurdre,36,reg84,03309
 Le Vieux-Bourg,8,reg53,22386
@@ -5003,7 +4865,6 @@ Lembeye,3,reg75,64331
 Lémeré,12,reg24,37125
 Lempdes,850,reg84,63193
 Lemps,1,reg84,07140
-Lemps,1,reg84,26161
 Lempty,3,reg84,63194
 Lencouacq,6,reg75,40149
 Lennon,12,reg53,29123
@@ -5037,10 +4898,8 @@ Les Belleville,259,reg84,73257
 Les Billaux,9,reg75,33052
 Les Bois d'Anjou,71,reg52,49138
 Les Bordes,34,reg24,45042
-Les Bordes,34,reg24,36021
 Les Brouzils,41,reg52,85038
 Les Cabannes,20,reg76,81045
-Les Cabannes,20,reg76,09070
 Les Cerqueux,38,reg52,49058
 Les Champs-Géraux,23,reg53,22035
 Les Chères,30,reg84,69055
@@ -5074,7 +4933,6 @@ Les Hermites,14,reg24,37116
 Les Landes-Genusson,66,reg52,85119
 Les Lilas,3188,IDF_DEP_93,93045
 Les Loges,24,reg28,76390
-Les Loges,24,reg28,14374
 Les Loges-en-Josas,44,IDF_DEP_78,78343
 Les Loges-Margueron,5,reg44,10202
 Les Lucs-sur-Boulogne,120,reg52,85129
@@ -5171,7 +5029,6 @@ Lignerolles,1,reg28,27368
 Lignerolles,10,reg84,03145
 Lignières,2,reg44,10196
 Lignières,31,reg24,41115
-Lignières,31,reg24,18127
 Lignières-de-Touraine,22,reg24,37128
 Lignières-Orgères,8,reg52,53133
 Lignol,14,reg53,56110
@@ -5378,7 +5235,6 @@ Ludes,8,reg44,51333
 Ludon-Médoc,46,reg75,33256
 Lüe,3,reg75,40163
 Lugan,5,reg76,81150
-Lugan,5,reg76,12134
 Lugasson,1,reg75,33258
 Lugny,46,reg27,71267
 Lugny-lès-Charolles,5,reg27,71268
@@ -5405,13 +5261,10 @@ Lusanger,27,reg52,44086
 Lusigny,22,reg84,03156
 Lusigny-sur-Barse,81,reg44,10209
 Lussac,22,reg75,16195
-Lussac,22,reg75,33261
-Lussac,22,reg75,17215
 Lussat,4,reg75,23114
 Lussat,18,reg84,63200
 Lussault-sur-Loire,5,reg24,37138
 Lux,190,reg27,71269
-Lux,190,reg27,21361
 Luxémont-et-Villotte,21,reg44,51334
 Luxey,9,reg75,40167
 Luynes,348,reg24,37139
@@ -5449,10 +5302,8 @@ Maffliers,1,IDF_DEP_95,95353
 Magescq,44,reg75,40168
 Magnanville,501,IDF_DEP_78,78354
 Magné,70,reg75,79162
-Magné,70,reg75,86141
 Magnet,9,reg84,03157
 Magneux,6,reg44,51337
-Magneux,6,reg44,52300
 Magneux-Haute-Rive,23,reg84,42130
 Magny-en-Vexin,678,IDF_DEP_95,95355
 Magny-Fouchard,6,reg44,10215
@@ -5510,7 +5361,6 @@ Malherbe-sur-Ajon,4,reg28,14037
 Malicorne,70,reg84,03159
 Malicorne-sur-Sarthe,75,reg52,72179
 Maligny,24,reg27,89242
-Maligny,24,reg27,21374
 Malijai,133,reg93,04108
 Malintrat,24,reg84,63204
 Malissard,25,reg84,26170
@@ -5552,7 +5402,6 @@ Marcé-sur-Esves,7,reg24,37145
 Marcelcave,6,reg32,80507
 Marcellus,5,reg75,47156
 Marcenat,10,reg84,03160
-Marcenat,10,reg84,15114
 Marcenod,7,reg84,42133
 Marchampt,15,reg84,69124
 Marchastel,1,reg84,15116
@@ -5625,18 +5474,15 @@ Marly-la-Ville,172,IDF_DEP_95,95371
 Marly-le-Roi,819,IDF_DEP_78,78372
 Marly-sur-Arroux,3,reg27,71281
 Marmagne,36,reg27,21389
-Marmagne,36,reg27,71282
 Marmagne,29,reg24,18138
 Marmande,983,reg75,47157
 Marmanhac,9,reg84,15118
 Marnay,6,reg27,70334
-Marnay,6,reg27,71283
 Marnes-la-Coquette,121,IDF_DEP_92,92047
 Marolles,119,reg44,51352
 Marolles,14,reg24,41128
 Marolles,9,reg28,14403
 Marolles-en-Brie,236,IDF_DEP_94,94048
-Marolles-en-Brie,236,IDF_DEP_94,77278
 Marolles-en-Hurepoix,244,IDF_DEP_91,91376
 Marolles-les-Braults,155,reg52,72189
 Marolles-sur-Seine,25,IDF_DEP_77,77279
@@ -5645,9 +5491,7 @@ Maromme,2942,reg28,76410
 Marpiré,35,reg53,35166
 Marray,7,reg24,37149
 Mars,8,reg84,42141
-Mars,8,reg84,07151
 Marsac,19,reg75,16210
-Marsac,19,reg75,23124
 Marsac-en-Livradois,2,reg84,63211
 Marsac-sur-Don,41,reg52,44091
 Marsac-sur-l'Isle,149,reg75,24256
@@ -5692,7 +5536,6 @@ Matour,67,reg27,71289
 Maubec,15,reg93,84071
 Maubert-Fontaine,43,reg44,08282
 Maucourt,3,reg32,80520
-Maucourt,3,reg32,60389
 Mauges-sur-Loire,793,reg52,49244
 Maule,244,IDF_DEP_78,78380
 Mauléon,288,reg75,79079
@@ -5707,8 +5550,6 @@ Maurs,62,reg84,15122
 Mauves-sur-Huisne,41,reg28,61255
 Mauves-sur-Loire,44,reg52,44094
 Mauvezin,158,reg76,32249
-Mauvezin,158,reg76,65306
-Mauvezin,158,reg76,31333
 Mauzac-et-Grand-Castang,38,reg75,24260
 Mauzé-sur-le-Mignon,55,reg75,79170
 Maxent,14,reg53,35169
@@ -5727,10 +5568,6 @@ Mazères,16,reg75,33279
 Mazères-Lezons,110,reg75,64373
 Mazerier,3,reg84,03166
 Mazerolles,4,reg75,16213
-Mazerolles,4,reg75,17227
-Mazerolles,4,reg75,64374
-Mazerolles,4,reg75,86153
-Mazerolles,4,reg75,40178
 Mazeyrolles,8,reg75,24263
 Mazières-de-Touraine,54,reg24,37150
 Mazières-en-Gâtine,38,reg75,79172
@@ -5798,8 +5635,6 @@ Méreau,1,reg24,18148
 Mergey,9,reg44,10230
 Mériel,205,IDF_DEP_95,95392
 Mérignac,6736,reg75,16216
-Mérignac,6736,reg75,33281
-Mérignac,6736,reg75,17229
 Mérinchal,30,reg75,23131
 Mérindol,28,reg93,84074
 Merlaut,3,reg44,51363
@@ -5890,7 +5725,6 @@ Minihy-Tréguier,23,reg53,22152
 Mions,850,reg84,69283
 Mios,231,reg75,33284
 Mirabeau,8,reg93,84076
-Mirabeau,8,reg93,04122
 Miradoux,13,reg76,32253
 Mirambeau,26,reg75,17236
 Miramont-d'Astarac,2,reg76,32254
@@ -5902,7 +5736,6 @@ Miré,77,reg52,49205
 Mirefleurs,23,reg84,63227
 Miremont,10,reg84,63228
 Mirepoix,41,reg76,32258
-Mirepoix,41,reg76,09194
 Mison,24,reg93,04123
 Missillac,56,reg52,44098
 Misy-sur-Yonne,16,IDF_DEP_77,77293
@@ -5946,7 +5779,6 @@ Mondragon,142,reg93,84078
 Monein,70,reg75,64393
 Monestier,10,reg75,24276
 Monestier,3,reg84,03175
-Monestier,3,reg84,07160
 Monestier-Merlines,2,reg75,19141
 Monestiés,5,reg76,81170
 Monétay-sur-Loire,7,reg84,03177
@@ -5961,9 +5793,6 @@ Monpazier,5,reg75,24280
 Mons,3,reg84,63232
 Mons-Boubert,8,reg32,80556
 Monségur,26,reg75,47178
-Monségur,26,reg75,33289
-Monségur,26,reg75,40190
-Monségur,26,reg75,64395
 Monsempron-Libos,68,reg75,47179
 Monsireigne,19,reg52,85145
 Mont,6,reg27,71301
@@ -5977,8 +5806,6 @@ Mont-Saint-Vincent,2,reg27,71320
 Mont-sous-Vaudrey,21,reg27,39365
 Montacher-Villegardin,7,reg27,89264
 Montagny,85,reg84,42145
-Montagny,85,reg84,73161
-Montagny,85,reg84,69136
 Montagny-en-Vexin,5,reg32,60412
 Montagny-près-Louhans,10,reg27,71303
 Montagrier,6,reg75,24286
@@ -5996,9 +5823,6 @@ Montauban-de-Bretagne,193,reg53,35184
 Montaudin,20,reg52,53154
 Montaulin,5,reg44,10245
 Montaut,4,reg75,47184
-Montaut,4,reg75,24287
-Montaut,4,reg75,40191
-Montaut,4,reg75,64400
 Montaut-les-Créneaux,16,reg76,32279
 Montautour,3,reg53,35185
 Montayral,8,reg75,47185
@@ -6018,7 +5842,6 @@ Montcenis,150,reg27,71309
 Montchal,18,reg84,42148
 Montchanin,934,reg27,71310
 Montclar,4,reg76,11242
-Montclar,4,reg76,12149
 Montcombroux-les-Mines,2,reg84,03181
 Montcony,5,reg27,71311
 Montcourt-Fromonville,16,IDF_DEP_77,77302
@@ -6027,13 +5850,10 @@ Montcusel,2,reg27,39351
 Montcy-Notre-Dame,11,reg44,08298
 Montdidier,684,reg32,80561
 Montégut,1,reg76,65319
-Montégut,1,reg76,32282
 Montégut-Arros,2,reg76,32283
 Montégut-Plantaurel,15,reg76,09202
 Monteignet-sur-l'Andelot,1,reg84,03182
 Monteils,2,reg76,12150
-Monteils,2,reg76,82126
-Monteils,2,reg76,30177
 Montel-de-Gelat,3,reg84,63237
 Montélimar,6,reg84,26198
 Montenay,3,reg52,53155
@@ -6069,11 +5889,9 @@ Montholier,6,reg27,39354
 Monthou-sur-Cher,13,reg24,41146
 Monthyon,12,IDF_DEP_77,77309
 Montignac,107,reg75,24291
-Montignac,107,reg75,33292
 Montigné-le-Brillant,42,reg52,53157
 Montigné-lès-Rairies,12,reg52,49209
 Montigny,16,reg28,14446
-Montigny,16,reg28,76446
 Montigny-le-Bretonneux,3624,IDF_DEP_78,78423
 Montigny-Lencoup,5,IDF_DEP_77,77311
 Montigny-lès-Cormeilles,2457,IDF_DEP_95,95424
@@ -6087,7 +5905,6 @@ Montivilliers,1782,reg28,76447
 Montjaux,4,reg76,12153
 Montjean,14,reg52,53158
 Montlaur,8,reg76,12154
-Montlaur,8,reg76,31384
 Montliard,6,reg24,45215
 Montlieu-la-Garde,14,reg75,17243
 Montlignon,52,IDF_DEP_95,95426
@@ -6110,7 +5927,6 @@ Montoir-de-Bretagne,701,reg52,44103
 Montoire-sur-le-Loir,212,reg24,41149
 Montolieu,14,reg76,11253
 Montoulieu,19,reg76,09210
-Montoulieu,19,reg76,34171
 Montournais,17,reg52,85147
 Montpellier,4,reg76,34172
 Montpeyroux,8,reg84,63241
@@ -6119,7 +5935,6 @@ Montpont-en-Bresse,55,reg27,71318
 Montrabé,158,reg76,31389
 Montravers,8,reg75,79183
 Montréal,52,reg76,32290
-Montréal,52,reg76,11254
 Montredon-des-Corbières,26,reg76,11255
 Montredon-Labessonnié,28,reg76,81182
 Montréjeau,227,reg76,31390
@@ -6245,8 +6060,6 @@ Moussan,4,reg76,11258
 Moussé,6,reg53,35199
 Mousseaux-lès-Bray,15,IDF_DEP_77,77321
 Moussey,21,reg44,88317
-Moussey,21,reg44,57488
-Moussey,21,reg44,10260
 Moussoulens,35,reg76,11259
 Moussy-le-Neuf,90,IDF_DEP_77,77322
 Moussy-le-Vieux,69,IDF_DEP_77,77323
@@ -6268,8 +6081,6 @@ Mouzillon,19,reg52,44108
 Mouzon,261,reg44,08311
 Moyaux,97,reg28,14460
 Moyenneville,14,reg32,60440
-Moyenneville,14,reg32,62597
-Moyenneville,14,reg32,80578
 Moyrazès,16,reg76,12162
 Moyvillers,4,reg32,60441
 Mozac,144,reg84,63245
@@ -6284,7 +6095,6 @@ Mulsans,6,reg24,41156
 Mur-de-Barrez,18,reg76,12164
 Mur-de-Sologne,49,reg24,41157
 Murat,125,reg84,03191
-Murat,125,reg84,15138
 Murat-sur-Vèbre,13,reg76,81192
 Mureils,2,reg84,26219
 Muret,2349,reg76,31395
@@ -6370,7 +6180,6 @@ Neung-sur-Beuvron,74,reg24,41159
 Neussargues en Pinatelle,67,reg84,15141
 Neuvéglise-sur-Truyère,9,reg84,15142
 Neuvic,214,reg75,19148
-Neuvic,214,reg75,24309
 Neuville-aux-Bois,387,reg24,45224
 Neuville-Coppegueule,5,reg32,80592
 Neuville-Ferrières,21,reg28,76465
@@ -6433,7 +6242,6 @@ Nonards,8,reg75,19152
 Nonette-Orsonnette,1,reg84,63255
 Nontron,185,reg75,24311
 Normanville,32,reg28,76470
-Normanville,32,reg28,27439
 Norrois,9,reg44,51406
 Nort-sur-Erdre,257,reg52,44110
 Norville,15,reg28,76471
@@ -6495,7 +6303,6 @@ Odenas,40,reg84,69145
 Oeyreluy,22,reg75,40207
 Offemont,551,reg27,90075
 Offoy,4,reg32,60472
-Offoy,4,reg32,80605
 Offranville,294,reg28,76482
 Oherville,2,reg28,76483
 Oiry,23,reg44,51413
@@ -6561,7 +6368,6 @@ Ormes,4,reg27,71332
 Ormes,213,reg24,45235
 Ormesson-sur-Marne,77,IDF_DEP_94,94055
 Ormoy,1,reg27,70399
-Ormoy,1,reg27,89282
 Ornaisons,13,reg76,11267
 Orry-la-Ville,48,reg32,60482
 Orsans,1,reg76,11268
@@ -6672,7 +6478,6 @@ Paris 7e Arrondissement,386,IDF_DEP_75,75107
 Paris 8e Arrondissement,581,IDF_DEP_75,75108
 Paris 9e Arrondissement,2002,IDF_DEP_75,75109
 Parisot,10,reg76,81202
-Parisot,10,reg76,82137
 Parlan,12,reg84,15147
 Parmain,113,IDF_DEP_95,95480
 Parnay,2,reg52,49235
@@ -6691,7 +6496,6 @@ Paucourt,4,reg24,45249
 Pauillac,280,reg75,33314
 Paule,17,reg53,22163
 Paulhac,8,reg84,43147
-Paulhac,8,reg84,15148
 Paulhac,7,reg76,31407
 Pavilly,1084,reg28,76495
 Payrin-Augmontel,9,reg76,81204
@@ -6749,7 +6553,6 @@ Perrier,8,reg84,63275
 Perrières,5,reg28,14497
 Perriers-sur-Andelle,94,reg28,27453
 Perrigny,71,reg27,89295
-Perrigny,71,reg27,39411
 Perrigny-sur-Loire,4,reg27,71348
 Perros-Guirec,314,reg53,22168
 Perrou,25,reg28,61326
@@ -6774,7 +6577,6 @@ Petit-Noir,7,reg27,39415
 Petit-Palais-et-Cornemps,1,reg75,33320
 Petite-Forêt,65,reg32,59459
 Petiville,13,reg28,14499
-Petiville,13,reg28,76499
 Petosse,11,reg52,85174
 Peujard,83,reg75,33321
 Peumerit,18,reg53,29159
@@ -6808,8 +6610,6 @@ Pierreclos,2,reg27,71350
 Pierrefeu,2,reg93,06097
 Pierrefiques,1,reg28,76501
 Pierrefitte,1,reg75,19166
-Pierrefitte,1,reg75,23152
-Pierrefitte,1,reg75,79209
 Pierrefitte-ès-Bois,7,reg24,45251
 Pierrefitte-sur-Loire,16,reg84,03207
 Pierrefitte-sur-Sauldre,37,reg24,41176
@@ -6860,7 +6660,6 @@ Plancy-l'Abbaye,107,reg44,10289
 Planfoy,8,reg84,42172
 Plasnes,1,reg28,27463
 Plassac,2,reg75,17279
-Plassac,2,reg75,33325
 Plaudren,16,reg53,56157
 Plauzat,9,reg84,63282
 Plazac,11,reg75,24330
@@ -6965,7 +6764,6 @@ Plouguin,41,reg53,29196
 Plouha,64,reg53,22222
 Plouharnel,14,reg53,56168
 Plouhinec,298,reg53,29197
-Plouhinec,298,reg53,56169
 Plouider,18,reg53,29198
 Plouigneau,170,reg53,29199
 Plouisy,56,reg53,22223
@@ -7047,7 +6845,6 @@ Pommerieux,10,reg52,53180
 Pommerit-le-Vicomte,15,reg53,22248
 Pommeuse,57,IDF_DEP_77,77371
 Pommiers,62,reg84,69156
-Pommiers,62,reg84,42173
 Pompaire,49,reg75,79213
 Pompertuzat,28,reg76,31429
 Pompignac,28,reg75,33330
@@ -7168,8 +6965,6 @@ Pouzay,58,reg24,37188
 Pouzol,2,reg84,63286
 Poyanne,13,reg75,40235
 Prades,271,reg76,81212
-Prades,271,reg76,09232
-Prades,271,reg76,66149
 Pradines,6,reg84,42178
 Pralognan-la-Vanoise,3,reg84,73206
 Pralong,18,reg84,42179
@@ -7238,7 +7033,6 @@ Prunay-Cassereau,6,reg24,41184
 Prunay-le-Temple,1,IDF_DEP_78,78505
 Prunelli-di-Fiumorbo,143,reg94,2B251
 Prunet,8,reg84,15156
-Prunet,8,reg84,07187
 Pruniers-en-Sologne,35,reg24,41185
 Publier,7,reg84,74218
 Puceul,18,reg52,44138
@@ -7260,7 +7054,6 @@ Puisieulx,5,reg44,51450
 Puits-la-Vallée,8,reg32,60518
 Pujo-le-Plan,1,reg75,40238
 Pujols,37,reg75,47215
-Pujols,37,reg75,33344
 Pulvérières,7,reg84,63290
 Pusignan,66,reg84,69285
 Putanges-le-Lac,79,reg28,61339
@@ -7324,7 +7117,6 @@ Quincy,3,reg24,18190
 Quincy-Voisins,157,IDF_DEP_77,77382
 Quinquempoix,2,reg32,60522
 Quinsac,50,reg75,33349
-Quinsac,50,reg75,24346
 Quinson,18,reg93,04158
 Quinssaines,9,reg84,03212
 Quint-Fonsegrives,259,reg76,31445
@@ -7396,7 +7188,6 @@ Regniowez,8,reg44,08355
 Régny,52,reg84,42181
 Réguiny,37,reg53,56190
 Reignac,7,reg75,33351
-Reignac,7,reg75,16276
 Reignac-sur-Indre,37,reg24,37192
 Reignier-Ésery,441,reg84,74220
 Reilhac,26,reg84,15160
@@ -7476,7 +7267,6 @@ Riorges,691,reg84,42184
 Rioux,5,reg75,17298
 Ris,3,reg84,63301
 Rivarennes,23,reg24,37200
-Rivarennes,23,reg24,36172
 Rivas,5,reg84,42185
 Rive-de-Gier,2046,reg84,42186
 Rivedoux-Plage,15,reg75,17297
@@ -7489,7 +7279,6 @@ Rivesaltes,559,reg76,66164
 Rivière,58,reg24,37201
 Rivière-Saas-et-Gourby,11,reg75,40244
 Rivières,2,reg76,30215
-Rivières,2,reg76,81225
 Rivières,6,reg75,16280
 Riville,2,reg28,76529
 Rivolet,15,reg84,69167
@@ -7513,7 +7302,6 @@ Rochetaillée-sur-Saône,122,reg84,69168
 Rochetrejoux,17,reg52,85192
 Rochy-Condé,43,reg32,60542
 Rocles,27,reg84,07196
-Rocles,27,reg84,03214
 Rocquefort,2,reg28,76531
 Rocquigny,10,reg44,08366
 Rocroi,180,reg44,08367
@@ -7533,7 +7321,6 @@ Rolleboise,26,IDF_DEP_78,78528
 Rolleville,30,reg28,76534
 Romagnat,617,reg84,63307
 Romagne,2,reg75,33358
-Romagne,2,reg75,86211
 Romagné,66,reg53,35243
 Romanèche-Thorins,29,reg27,71372
 Romange,5,reg27,39465
@@ -7559,16 +7346,13 @@ Roquebrune-Cap-Martin,439,reg93,06104
 Roquecourbe,70,reg76,81227
 Roquefère,3,reg76,11319
 Roquefort,107,reg75,40245
-Roquefort,107,reg75,47225
 Roquefort-les-Pins,242,reg93,06105
 Roques,206,reg76,32351
-Roques,206,reg76,31458
 Roquestéron,11,reg93,06106
 Roquettes,249,reg76,31460
 Roscanvel,15,reg53,29238
 Roscoff,47,reg53,29239
 Rosières,12,reg84,43165
-Rosières,12,reg84,07199
 Rosières-en-Santerre,211,reg32,80680
 Rosières-près-Troyes,343,reg44,10325
 Rosiers-d'Égletons,15,reg75,19176
@@ -7694,8 +7478,6 @@ Sains-Morainvillers,1,reg32,60564
 Saint-Affrique-les-Montagnes,8,reg76,81235
 Saint-Agathon,49,reg53,22272
 Saint-Agnan,18,reg27,58226
-Saint-Agnan,18,reg27,89332
-Saint-Agnan,18,reg27,71382
 Saint-Agnant,22,reg75,17308
 Saint-Agnant-de-Versillat,16,reg75,23177
 Saint-Agnant-près-Crocq,3,reg75,23178
@@ -7734,9 +7516,6 @@ Saint-Amour-Bellevue,4,reg27,71385
 Saint-Andéol-de-Vals,12,reg84,07210
 Saint-André,11,reg84,73223
 Saint-André,79,reg76,31468
-Saint-André,79,reg76,81240
-Saint-André,79,reg76,32356
-Saint-André,79,reg76,66168
 Saint-André-d'Apchon,21,reg84,42199
 Saint-André-de-Bâgé,3,reg84,01332
 Saint-André-de-Boëge,6,reg84,74226
@@ -7759,27 +7538,20 @@ Saint-André-lez-Lille,1293,reg32,59527
 Saint-André-sur-Orne,184,reg28,14556
 Saint-Androny,6,reg75,33370
 Saint-Angel,15,reg84,63318
-Saint-Angel,15,reg84,03217
 Saint-Angel,32,reg75,19180
 Saint-Antoine-de-Breuilh,29,reg75,24370
 Saint-Antoine-du-Rocher,9,reg24,37206
 Saint-Antoine-sur-l'Isle,7,reg75,33373
 Saint-Appolinard,3,reg84,42201
-Saint-Appolinard,3,reg84,38360
 Saint-Aquilin,8,reg75,24371
 Saint-Armel,135,reg53,56205
-Saint-Armel,135,reg53,35250
 Saint-Arnoult,119,reg28,76557
-Saint-Arnoult,119,reg28,14557
 Saint-Arnoult-en-Yvelines,123,IDF_DEP_78,78537
 Saint-Astier,311,reg75,24372
-Saint-Astier,311,reg75,47229
 Saint-Auban,6,reg93,06116
 Saint-Aubert,3,reg32,59528
 Saint-Aubin,38,reg27,21541
-Saint-Aubin,38,reg27,39476
 Saint-Aubin,10,reg75,47230
-Saint-Aubin,10,reg75,40249
 Saint-Aubin,46,reg44,10334
 Saint-Aubin-Celloville,27,reg28,76558
 Saint-Aubin-d'Appenai,12,reg28,61365
@@ -7801,19 +7573,16 @@ Saint-Aubin-lès-Elbeuf,1342,reg28,76561
 Saint-Aubin-sur-Gaillon,13,reg28,27517
 Saint-Aubin-sur-Loire,3,reg27,71389
 Saint-Aubin-sur-Mer,159,reg28,76564
-Saint-Aubin-sur-Mer,159,reg28,14562
 Saint-Aubin-sur-Quillebeuf,9,reg28,27518
 Saint-Aubin-sur-Scie,79,reg28,76565
 Saint-Aubin-sur-Yonne,1,reg27,89335
 Saint-Augustin,7,reg75,19181
-Saint-Augustin,7,reg75,17311
 Saint-Augustin-des-Bois,45,reg52,49266
 Saint-Aulaire,15,reg75,19182
 Saint-Avaugourd-des-Landes,10,reg52,85200
 Saint-Avé,778,reg53,56206
 Saint-Avertin,910,reg24,37208
 Saint-Avit,9,reg84,26293
-Saint-Avit,9,reg84,63320
 Saint-Avit-Saint-Nazaire,58,reg75,33378
 Saint-Avre,22,reg84,73224
 Saint-Ay,55,reg24,45269
@@ -7830,7 +7599,6 @@ Saint-Barthélemy-Lestra,9,reg84,42202
 Saint-Baudelle,4,reg52,53200
 Saint-Bauzile,10,reg84,07219
 Saint-Beauzire,59,reg84,43170
-Saint-Beauzire,59,reg84,63322
 Saint-Benoist-sur-Mer,1,reg52,85201
 Saint-Benoist-sur-Vanne,9,reg44,10335
 Saint-Benoît-de-Carmaux,471,reg76,81244
@@ -7901,9 +7669,6 @@ Saint-Christo-en-Jarez,12,reg84,42208
 Saint-Christol,36,reg93,84107
 Saint-Christoly-de-Blaye,26,reg75,33382
 Saint-Christophe,9,reg75,23186
-Saint-Christophe,9,reg75,86217
-Saint-Christophe,9,reg75,17315
-Saint-Christophe,9,reg75,16306
 Saint-Christophe-des-Bardes,11,reg75,33384
 Saint-Christophe-du-Bois,63,reg52,49269
 Saint-Christophe-du-Ligneron,54,reg52,85204
@@ -7948,7 +7713,6 @@ Saint-Crépin-d'Auberoche,5,reg75,24390
 Saint-Crépin-Ibouvillers,30,reg32,60570
 Saint-Cybranet,6,reg75,24395
 Saint-Cyprien,90,reg75,19195
-Saint-Cyprien,90,reg75,24396
 Saint-Cyprien,56,reg84,42211
 Saint-Cyprien,357,reg76,66171
 Saint-Cyr,25,reg84,07227
@@ -7970,7 +7734,6 @@ Saint-Cyr-sur-le-Rhône,2,reg84,69193
 Saint-Cyr-sur-Loire,1313,reg24,37214
 Saint-Cyr-sur-Morin,6,IDF_DEP_77,77405
 Saint-Denis,4,reg76,30247
-Saint-Denis,4,reg76,11339
 Saint-Denis-d'Aclon,32,reg28,76572
 Saint-Denis-d'Anjou,49,reg52,53210
 Saint-Denis-d'Oléron,39,reg75,17323
@@ -8025,7 +7788,6 @@ Saint-Ennemond,22,reg84,03229
 Saint-Épain,60,reg24,37216
 Saint-Erblon,1,reg52,53214
 Saint-Estèphe,34,reg75,24398
-Saint-Estèphe,34,reg75,33395
 Saint-Estève,705,reg76,66172
 Saint-Étienne,19631,reg84,42218
 Saint-Étienne-aux-Clos,2,reg75,19199
@@ -8063,12 +7825,9 @@ Saint-Faust,10,reg75,64478
 Saint-Féliu-d'Amont,19,reg76,66173
 Saint-Féliu-d'Avall,113,reg76,66174
 Saint-Félix,4,reg75,16315
-Saint-Félix,4,reg75,17327
 Saint-Félix,170,reg84,03232
-Saint-Félix,170,reg84,74233
 Saint-Fiel,12,reg75,23195
 Saint-Firmin,12,reg27,71413
-Saint-Firmin,12,reg27,58239
 Saint-Firmin-des-Bois,18,reg24,45275
 Saint-Firmin-des-Prés,28,reg24,41209
 Saint-Flavy,6,reg44,10339
@@ -8077,7 +7836,6 @@ Saint-Florent,88,reg94,2B298
 Saint-Florent-sur-Cher,618,reg24,18207
 Saint-Florentin,597,reg27,89345
 Saint-Flour,524,reg84,63343
-Saint-Flour,524,reg84,15187
 Saint-Flovier,32,reg24,37218
 Saint-Fons,3737,reg84,69199
 Saint-Forgeux,32,reg84,69200
@@ -8145,7 +7903,6 @@ Saint-Gérand,25,reg53,56213
 Saint-Gérand-de-Vaux,3,reg84,03234
 Saint-Gérand-le-Puy,20,reg84,03235
 Saint-Germain,126,reg44,54475
-Saint-Germain,126,reg44,10340
 Saint-Germain-au-Mont-d'Or,394,reg84,69207
 Saint-Germain-Beaupré,22,reg75,23199
 Saint-Germain-d'Aunay,1,reg28,61392
@@ -8220,11 +7977,7 @@ Saint-Herblain,5261,reg52,44162
 Saint-Hernin,19,reg53,29250
 Saint-Hervé,3,reg53,22300
 Saint-Hilaire,14,reg76,46269
-Saint-Hilaire,14,reg76,11344
-Saint-Hilaire,14,reg76,31486
 Saint-Hilaire,15,reg84,03238
-Saint-Hilaire,15,reg84,43193
-Saint-Hilaire,15,reg84,63360
 Saint-Hilaire-de-Chaléons,25,reg52,44164
 Saint-Hilaire-de-Clisson,46,reg52,44165
 Saint-Hilaire-de-Court,30,reg24,18214
@@ -8246,9 +7999,7 @@ Saint-Hilaire-sur-Erre,10,reg28,61405
 Saint-Hilaire-sur-Helpe,13,reg32,59534
 Saint-Hilaire-sur-Puiseaux,2,reg24,45283
 Saint-Hippolyte,3,reg75,17346
-Saint-Hippolyte,3,reg75,33420
 Saint-Hippolyte,68,reg76,66176
-Saint-Hippolyte,68,reg76,12226
 Saint-Hippolyte-le-Graveyron,4,reg93,84109
 Saint-Ignat,4,reg84,63362
 Saint-Igny-de-Roche,13,reg27,71428
@@ -8304,7 +8055,6 @@ Saint-Jean-Lasseille,71,reg76,66177
 Saint-Jean-le-Blanc,302,reg24,45286
 Saint-Jean-le-Centenier,68,reg84,07247
 Saint-Jean-le-Vieux,67,reg84,01363
-Saint-Jean-le-Vieux,67,reg84,38404
 Saint-Jean-les-Deux-Jumeaux,11,IDF_DEP_77,77415
 Saint-Jean-Pied-de-Port,39,reg75,64485
 Saint-Jean-Pla-de-Corts,48,reg76,66178
@@ -8317,7 +8067,6 @@ Saint-Jean-sur-Reyssouze,27,reg84,01364
 Saint-Jean-sur-Veyle,33,reg84,01365
 Saint-Jean-Trolimon,26,reg53,29252
 Saint-Jeannet,39,reg93,04181
-Saint-Jeannet,39,reg93,06122
 Saint-Jeoire,191,reg84,74241
 Saint-Jeoire-Prieuré,84,reg84,73249
 Saint-Jeure-d'Ay,14,reg84,07250
@@ -8330,8 +8079,6 @@ Saint-Joseph,15,reg84,42242
 Saint-Jouan-de-l'Isle,3,reg53,22305
 Saint-Jouin-Bruneval,19,reg28,76595
 Saint-Juéry,649,reg76,81257
-Saint-Juéry,649,reg76,48161
-Saint-Juéry,649,reg76,12233
 Saint-Juire-Champgillon,5,reg52,85235
 Saint-Julien,55,reg53,22307
 Saint-Julien,3,reg84,69215
@@ -8361,7 +8108,6 @@ Saint-Julien-sur-Sarthe,39,reg28,61412
 Saint-Julien-sur-Veyle,20,reg84,01368
 Saint-Just,13,reg24,18218
 Saint-Just,25,reg84,01369
-Saint-Just,25,reg84,63371
 Saint-Just-d'Ardèche,30,reg84,07259
 Saint-Just-d'Avray,12,reg84,69217
 Saint-Just-en-Chaussée,878,reg32,60581
@@ -8376,7 +8122,6 @@ Saint-Laurent,2,reg53,22310
 Saint-Laurent,2,reg24,18219
 Saint-Laurent,24,reg44,08385
 Saint-Laurent,21,reg75,23206
-Saint-Laurent,21,reg75,47249
 Saint-Laurent-d'Agny,24,reg84,69219
 Saint-Laurent-d'Andenay,70,reg27,71436
 Saint-Laurent-d'Arce,1,reg75,33425
@@ -8461,7 +8206,6 @@ Saint-Maclou-de-Folleville,13,reg28,76602
 Saint-Magne,16,reg75,33436
 Saint-Maime,16,reg93,04188
 Saint-Maixant,16,reg75,23210
-Saint-Maixant,16,reg75,33438
 Saint-Maixent,8,reg52,72296
 Saint-Maixent-sur-Vie,10,reg52,85239
 Saint-Malo,20,reg53,35288
@@ -8477,9 +8221,7 @@ Saint-Marc-à-Frongier,4,reg75,23211
 Saint-Marc-à-Loubaud,5,reg75,23212
 Saint-Marceau,5,reg52,72297
 Saint-Marcel,487,reg27,71445
-Saint-Marcel,487,reg27,70468
 Saint-Marcel,136,reg84,73253
-Saint-Marcel,136,reg84,01371
 Saint-Marcel,54,reg53,56228
 Saint-Marcel,269,reg28,27562
 Saint-Marcel-d'Ardèche,6,reg84,07264
@@ -8495,7 +8237,6 @@ Saint-Mars-d'Égrenne,8,reg28,61421
 Saint-Mars-d'Outillé,26,reg52,72299
 Saint-Mars-de-Coutais,28,reg52,44178
 Saint-Mars-du-Désert,88,reg52,53236
-Saint-Mars-du-Désert,88,reg52,44179
 Saint-Mars-la-Brière,104,reg52,72300
 Saint-Mars-la-Réorthe,24,reg52,85242
 Saint-Mars-sur-la-Futaie,17,reg52,53238
@@ -8596,7 +8337,6 @@ Saint-Mesmin,12,reg52,85254
 Saint-Mesmin,12,reg44,10353
 Saint-Mexant,4,reg75,19227
 Saint-Michel,259,reg75,16341
-Saint-Michel,259,reg75,64492
 Saint-Michel-Chef-Chef,138,reg52,44182
 Saint-Michel-de-Boulogne,4,reg84,07277
 Saint-Michel-de-Castelnau,2,reg75,33450
@@ -8612,7 +8352,6 @@ Saint-Molf,40,reg52,44183
 Saint-Momelin,11,reg32,59538
 Saint-Montan,7,reg84,07279
 Saint-Nazaire,103,reg76,30288
-Saint-Nazaire,103,reg76,66186
 Saint-Nazaire,9578,reg52,44184
 Saint-Nazaire-d'Aude,10,reg76,11360
 Saint-Nexans,8,reg75,24472
@@ -8649,12 +8388,10 @@ Saint-Ouen-les-Vignes,40,reg24,37230
 Saint-Ouen-sur-Iton,13,reg28,61440
 Saint-Ouen-sur-Morin,1,IDF_DEP_77,77429
 Saint-Ours,26,reg84,73265
-Saint-Ours,26,reg84,63381
 Saint-Outrille,5,reg24,18228
 Saint-Pabu,31,reg53,29257
 Saint-Paër,26,reg28,76631
 Saint-Palais,62,reg75,33456
-Saint-Palais,62,reg75,64493
 Saint-Palais,3,reg24,18229
 Saint-Palais-sur-Mer,14,reg75,17380
 Saint-Pantaléon,4,reg93,84114
@@ -8672,8 +8409,6 @@ Saint-Paterne-Racan,99,reg24,37231
 Saint-Paterne - Le Chevain,80,reg52,72308
 Saint-Pathus,15,IDF_DEP_77,77430
 Saint-Paul,3,reg75,87174
-Saint-Paul,3,reg75,19235
-Saint-Paul,3,reg75,33458
 Saint-Paul,6,reg84,73269
 Saint-Paul-Cap-de-Joux,19,reg76,81266
 Saint-Paul-de-Fenouillet,136,reg76,66187
@@ -8699,7 +8434,6 @@ Saint-Pée-sur-Nivelle,206,reg75,64495
 Saint-Péravy-la-Colombe,4,reg24,45296
 Saint-Péray,321,reg84,07281
 Saint-Père,9,reg27,89364
-Saint-Père,9,reg27,58261
 Saint-Père-en-Retz,78,reg52,44187
 Saint-Père-sur-Loire,41,reg24,45297
 Saint-Perreux,6,reg53,56232
@@ -8740,7 +8474,6 @@ Saint-Pierre-de-Vassols,4,reg93,84115
 Saint-Pierre-des-Corps,3256,reg24,37233
 Saint-Pierre-des-Fleurs,53,reg28,27593
 Saint-Pierre-des-Ifs,1,reg28,27594
-Saint-Pierre-des-Ifs,1,reg28,14648
 Saint-Pierre-des-Landes,4,reg52,53245
 Saint-Pierre-des-Nids,68,reg52,53246
 Saint-Pierre-du-Bosguérard,17,reg28,27595
@@ -8776,7 +8509,6 @@ Saint-Pourçain-sur-Besbre,7,reg84,03253
 Saint-Pourçain-sur-Sioule,192,reg84,03254
 Saint-Preuil,2,reg75,16343
 Saint-Priest,6110,reg84,07288
-Saint-Priest,6110,reg84,69290
 Saint-Priest-Bramefant,7,reg84,63387
 Saint-Priest-de-Gimel,19,reg75,19236
 Saint-Priest-des-Champs,13,reg84,63388
@@ -8786,9 +8518,7 @@ Saint-Priest-les-Fougères,1,reg75,24489
 Saint-Privat,28,reg75,19237
 Saint-Privat,49,reg84,07289
 Saint-Privé,8,reg27,71471
-Saint-Privé,8,reg27,89365
 Saint-Prix,4,reg84,07290
-Saint-Prix,4,reg84,03257
 Saint-Prix,397,IDF_DEP_95,95574
 Saint-Prouant,29,reg52,85266
 Saint-Pryvé-Saint-Mesmin,504,reg24,45298
@@ -8825,11 +8555,9 @@ Saint-Riquier,36,reg32,80716
 Saint-Riquier-ès-Plains,37,reg28,76646
 Saint-Rivoal,6,reg53,29261
 Saint-Robert,5,reg75,19239
-Saint-Robert,5,reg75,47273
 Saint-Roch,15,reg24,37237
 Saint-Rogatien,85,reg75,17391
 Saint-Romain,12,reg75,86242
-Saint-Romain,12,reg75,16347
 Saint-Romain-au-Mont-d'Or,29,reg84,69233
 Saint-Romain-d'Ay,4,reg84,07292
 Saint-Romain-de-Colbosc,261,reg28,76647
@@ -8847,7 +8575,6 @@ Saint-Santin-Cantalès,2,reg84,15211
 Saint-Santin-de-Maurs,7,reg84,15212
 Saint-Satur,58,reg24,18233
 Saint-Saturnin,5,reg84,15213
-Saint-Saturnin,5,reg84,63396
 Saint-Saturnin,56,reg52,72320
 Saint-Saturnin-du-Limet,17,reg52,53253
 Saint-Saturnin-lès-Avignon,186,reg93,84119
@@ -8855,13 +8582,10 @@ Saint-Saud-Lacoussière,5,reg75,24498
 Saint-Sauflieu,13,reg32,80717
 Saint-Saulve,1426,reg32,59544
 Saint-Sauvant,13,reg75,17395
-Saint-Sauvant,13,reg75,86244
 Saint-Sauveur,16,reg53,29262
 Saint-Sauveur,16,reg75,24499
-Saint-Sauveur,16,reg75,33471
 Saint-Sauveur,43,reg76,31516
 Saint-Sauveur,36,reg32,60597
-Saint-Sauveur,36,reg32,80718
 Saint-Sauveur-d'Aunis,4,reg75,17396
 Saint-Sauveur-de-Cruzières,4,reg84,07294
 Saint-Sauveur-de-Montagut,54,reg84,07295
@@ -8869,7 +8593,6 @@ Saint-Sauveur-en-Puisaye,76,reg27,89368
 Saint-Sauveur-le-Vicomte,125,reg28,50551
 Saint-Sauveur-sur-Tinée,17,reg93,06129
 Saint-Savin,56,reg75,33473
-Saint-Savin,56,reg75,86246
 Saint-Savinien,10,reg75,17397
 Saint-Sébastien,13,reg75,23239
 Saint-Sébastien-de-Morsent,566,reg28,27602
@@ -8880,7 +8603,6 @@ Saint-Senier-sous-Avranches,20,reg28,50554
 Saint-Senoch,19,reg24,37238
 Saint-Sernin,24,reg84,07296
 Saint-Servais,12,reg53,29264
-Saint-Servais,12,reg53,22328
 Saint-Servant,5,reg53,56236
 Saint-Setiers,6,reg75,19241
 Saint-Seurin-de-Cursac,24,reg75,33477
@@ -8889,7 +8611,6 @@ Saint-Sever,124,reg75,40282
 Saint-Sever-de-Saintonge,16,reg75,17400
 Saint-Séverin,26,reg75,16350
 Saint-Sigismond,10,reg52,85269
-Saint-Sigismond,10,reg52,49321
 Saint-Sigismond,7,reg84,74252
 Saint-Siméon,5,reg28,27603
 Saint-Simon,11,reg32,02694
@@ -8916,15 +8637,12 @@ Saint-Sulpice-les-Champs,5,reg75,23246
 Saint-Sulpice-sur-Lèze,100,reg76,31517
 Saint-Sulpice-sur-Risle,22,reg28,61456
 Saint-Sylvain,37,reg28,14659
-Saint-Sylvain,37,reg28,76651
 Saint-Sylvestre,2,reg84,74254
-Saint-Sylvestre,2,reg84,07297
 Saint-Sylvestre-Cappel,60,reg32,59546
 Saint-Sylvestre-Pragoulin,7,reg84,63400
 Saint-Sylvestre-sur-Lot,65,reg75,47280
 Saint-Symphorien,6,reg52,72321
 Saint-Symphorien,88,reg75,33484
-Saint-Symphorien,88,reg75,79298
 Saint-Symphorien-d'Ozon,207,reg84,69291
 Saint-Symphorien-sous-Chomérac,42,reg84,07298
 Saint-Symphorien-sur-Coise,296,reg84,69238
@@ -8956,14 +8674,11 @@ Saint-Valery-sur-Somme,97,reg32,80721
 Saint-Vallier-de-Thiey,77,reg93,06130
 Saint-Vaury,126,reg75,23247
 Saint-Vérand,13,reg84,69239
-Saint-Vérand,13,reg84,38463
 Saint-Viance,13,reg75,19246
 Saint-Viâtre,42,reg24,41231
 Saint-Viaud,27,reg52,44192
 Saint-Victeur,3,reg52,72323
 Saint-Victor,59,reg84,07301
-Saint-Victor,59,reg84,15217
-Saint-Victor,59,reg84,03262
 Saint-Victor-en-Marche,11,reg75,23248
 Saint-Victor-l'Abbaye,61,reg28,76656
 Saint-Victor-sur-Avre,1,reg28,27610
@@ -8972,7 +8687,6 @@ Saint-Vigor-le-Grand,136,reg28,14663
 Saint-Vincent-de-Barrès,5,reg84,07302
 Saint-Vincent-de-Connezac,9,reg75,24509
 Saint-Vincent-de-Paul,113,reg75,33487
-Saint-Vincent-de-Paul,113,reg75,40283
 Saint-Vincent-de-Reins,11,reg84,69240
 Saint-Vincent-de-Tyrosse,358,reg75,40284
 Saint-Vincent-des-Landes,16,reg52,44193
@@ -8984,7 +8698,6 @@ Saint-Vincent-sur-Jard,17,reg52,85278
 Saint-Vincent-sur-Oust,30,reg53,56239
 Saint-Vite,33,reg75,47283
 Saint-Vivien,26,reg75,17413
-Saint-Vivien,26,reg75,24514
 Saint-Vivien-de-Médoc,14,reg75,33490
 Saint-Vougay,38,reg53,29271
 Saint-Vran,10,reg53,22333
@@ -9015,13 +8728,11 @@ Sainte-Anne-sur-Vilaine,15,reg53,35249
 Sainte-Austreberthe,61,reg28,76566
 Sainte-Bazeille,88,reg75,47233
 Sainte-Catherine,32,reg84,69184
-Sainte-Catherine,32,reg84,63328
 Sainte-Catherine-de-Fierbois,37,reg24,37212
 Sainte-Cécile,27,reg52,85202
 Sainte-Cécile-les-Vignes,56,reg93,84106
 Sainte-Colombe,114,reg84,69189
 Sainte-Colombe,6,reg28,76569
-Sainte-Colombe,6,reg28,50457
 Sainte-Colombe-sur-l'Hers,6,reg76,11336
 Sainte-Consorce,28,reg84,69190
 Sainte-Croix,23,reg27,71401
@@ -9051,7 +8762,6 @@ Sainte-Gemme-Martaillac,4,reg75,47244
 Sainte-Gemmes-le-Robert,5,reg52,53218
 Sainte-Gemmes-sur-Loire,204,reg52,49278
 Sainte-Geneviève,204,reg32,60575
-Sainte-Geneviève,204,reg32,02678
 Sainte-Geneviève-des-Bois,67,reg24,45278
 Sainte-Hélène,28,reg53,56220
 Sainte-Hélène,4,reg27,71426
@@ -9088,8 +8798,6 @@ Sainte-Opportune-la-Mare,8,reg28,27577
 Sainte-Pazanne,170,reg52,44186
 Sainte-Pexine,5,reg52,85261
 Sainte-Radegonde,9,reg75,33468
-Sainte-Radegonde,9,reg75,17389
-Sainte-Radegonde,9,reg75,24492
 Sainte-Radégonde-des-Noyers,9,reg52,85267
 Sainte-Reine-de-Bretagne,13,reg52,44189
 Sainte-Savine,1310,reg44,10362
@@ -9131,10 +8839,7 @@ Sallenelles,4,reg28,14665
 Sallenôves,12,reg84,74257
 Sallertaine,10,reg52,85280
 Salles,2,reg76,65400
-Salles,2,reg76,81275
 Salles,189,reg75,47284
-Salles,189,reg75,33498
-Salles,189,reg75,79303
 Salles-Arbuissonnas-en-Beaujolais,11,reg84,69172
 Salles-d'Angles,1,reg75,16359
 Salles-d'Aude,38,reg76,11370
@@ -9207,7 +8912,6 @@ Sarrigné,6,reg52,49326
 Sarrola-Carcopino,357,reg94,2A271
 Sarroux - Saint Julien,2,reg75,19252
 Sarry,2,reg27,89376
-Sarry,2,reg27,71500
 Sars-Poteries,65,reg32,59555
 Sartène,155,reg94,2A272
 Sartilly-Baie-Bocage,99,reg28,50565
@@ -9266,9 +8970,7 @@ Savigné-l'Évêque,99,reg52,72329
 Savigné-sous-le-Lude,1,reg52,72330
 Savigné-sur-Lathan,81,reg24,37241
 Savigneux,48,reg84,42299
-Savigneux,48,reg84,01398
 Savigny,84,reg84,74260
-Savigny,84,reg84,69175
 Savigny-en-Sancerre,28,reg24,18246
 Savigny-en-Septaine,13,reg24,18247
 Savigny-en-Véron,49,reg24,37242
@@ -9297,8 +8999,6 @@ Sedan,3700,reg44,08409
 Sées,497,reg28,61464
 Ségny,65,reg84,01399
 Segonzac,32,reg75,19253
-Segonzac,32,reg75,24529
-Segonzac,32,reg75,16366
 Segré-en-Anjou Bleu,1328,reg52,49331
 Seiches-sur-le-Loir,222,reg52,49333
 Seignelay,36,reg27,89382
@@ -9384,7 +9084,6 @@ Seyches,11,reg75,47301
 Seyne,35,reg93,04205
 Seyresse,32,reg75,40300
 Seyssel,203,reg84,01407
-Seyssel,203,reg84,74269
 Seysses,409,reg76,31547
 Seytroux,4,reg84,74271
 Sibiril,26,reg53,29276
@@ -9533,7 +9232,6 @@ Taden,59,reg53,22339
 Tadousse-Ussau,1,reg75,64532
 Tagnon,10,reg44,08435
 Taillebourg,14,reg75,17436
-Taillebourg,14,reg75,47304
 Taisnières-sur-Hon,4,reg32,59584
 Talairan,8,reg76,11386
 Talcy,12,reg24,41253
@@ -9578,7 +9276,6 @@ Taverny,1971,IDF_DEP_95,95607
 Teilhède,5,reg84,63427
 Teilhet,3,reg84,63428
 Teillé,52,reg52,44202
-Teillé,52,reg52,72349
 Teillet-Argenty,23,reg84,03279
 Telgruc-sur-Mer,52,reg53,29280
 Teloché,27,reg52,72350
@@ -9605,7 +9302,6 @@ Théhillac,9,reg53,56250
 Theillay,26,reg24,41256
 Theix-Noyalo,372,reg53,56251
 Thénac,4,reg75,24549
-Thénac,4,reg75,17444
 Thenay,18,reg24,36220
 Theneuil,13,reg24,37256
 Theneuille,5,reg84,03282
@@ -9631,8 +9327,6 @@ Thieux,2,IDF_DEP_77,77462
 Thiézac,11,reg84,15236
 Thil,13,reg84,01418
 Thil,1,reg44,51568
-Thil,1,reg44,10377
-Thil,1,reg44,54521
 Thilouze,34,reg24,37257
 Thimory,21,reg24,45321
 Thiouville,12,reg28,76692
@@ -9641,14 +9335,12 @@ Thivencelle,147,reg32,59591
 Thiverval-Grignon,332,IDF_DEP_78,78615
 Thiviers,117,reg75,24551
 Thizay,12,reg24,37258
-Thizay,12,reg24,36222
 Thizy,2,reg27,89412
 Thizy-les-Bourgs,383,reg84,69248
 Thoard,13,reg93,04217
 Thoirette-Coisia,55,reg27,39530
 Thoiry,67,IDF_DEP_78,78616
 Thoiry,359,reg84,01419
-Thoiry,359,reg84,73293
 Thoissey,282,reg84,01420
 Thollon-les-Mémises,8,reg84,74279
 Thônes,259,reg84,74280
@@ -9661,7 +9353,6 @@ Thorigny,23,reg52,85291
 Thorigny-sur-Marne,1036,IDF_DEP_77,77464
 Thorigny-sur-Oreuse,2,reg27,89414
 Thou,10,reg24,45323
-Thou,10,reg24,18264
 Thouaré-sur-Loire,644,reg52,44204
 Thouarsais-Bouildroux,9,reg52,85292
 Thoury,4,reg24,41260
@@ -9673,7 +9364,6 @@ Thun-Saint-Amand,5,reg32,59594
 Thuret,18,reg84,63432
 Thurins,65,reg84,69249
 Thury,6,reg27,89416
-Thury,6,reg27,21636
 Thusy,11,reg84,74283
 Thyez,434,reg84,74278
 Tiercé,125,reg52,49347
@@ -9813,7 +9503,6 @@ Tréméoc,29,reg53,29296
 Tréméreuc,6,reg53,22368
 Trémeur,7,reg53,22369
 Tréméven,40,reg53,29297
-Tréméven,40,reg53,22370
 Trémolat,13,reg75,24558
 Trémorel,10,reg53,22371
 Trémouille-Saint-Loup,2,reg84,63437
@@ -9886,7 +9575,6 @@ Urdès,4,reg75,64541
 Urrugne,482,reg75,64545
 Urt,9,reg75,64546
 Urville,1,reg28,14719
-Urville,1,reg28,50610
 Usinens,14,reg84,74285
 Ussac,56,reg75,19274
 Ussel,877,reg75,19275
@@ -10037,7 +9725,6 @@ Vaux-sur-Seine,239,IDF_DEP_78,78638
 Vauxrenard,4,reg84,69258
 Vay,23,reg52,44214
 Vayres,99,reg75,87199
-Vayres,99,reg75,33539
 Veaugues,20,reg24,18272
 Vebret,9,reg84,15250
 Vedène,745,reg93,84141
@@ -10084,7 +9771,6 @@ Verel-de-Montbel,5,reg84,73309
 Verel-Pragondran,2,reg84,73310
 Véretz,161,reg24,37267
 Verfeil,36,reg76,31573
-Verfeil,36,reg76,82191
 Vergigny,5,reg27,89439
 Vergné,4,reg75,17464
 Vergt,46,reg75,24571
@@ -10122,8 +9808,6 @@ Verrens-Arvey,17,reg84,73312
 Verrie,10,reg52,49370
 Verrières,14,reg28,61501
 Verrières,24,reg44,10406
-Verrières,24,reg44,51610
-Verrières,24,reg44,08471
 Verrières-en-Anjou,809,reg52,49323
 Vers,12,reg84,74296
 Vers-sur-Selle,7,reg32,80791
@@ -10131,10 +9815,8 @@ Versailles,7292,IDF_DEP_78,78646
 Versailleux,22,reg84,01434
 Versainville,1,reg28,14737
 Versigny,6,reg32,02788
-Versigny,6,reg32,60671
 Verson,273,reg28,14738
 Versonnex,182,reg84,74297
-Versonnex,182,reg84,01435
 Vert-Saint-Denis,618,IDF_DEP_77,77495
 Vertaizon,49,reg84,63453
 Verteillac,11,reg75,24573
@@ -10148,7 +9830,6 @@ Vescovato,180,reg94,2B346
 Vesdun,27,reg24,18278
 Veslud,4,reg32,02791
 Vesly,10,reg28,50629
-Vesly,10,reg28,27682
 Vesseaux,59,reg84,07339
 Vétheuil,8,IDF_DEP_95,95651
 Vétraz-Monthoux,517,reg84,74298
@@ -10289,7 +9970,6 @@ Villemurlin,20,reg24,45340
 Villenauxe-la-Petite,18,IDF_DEP_77,77507
 Villenave-d'Ornon,3602,reg75,33550
 Villeneuve,11,reg84,01446
-Villeneuve,11,reg84,63458
 Villeneuve,7,reg75,33551
 Villeneuve-d'Ascq,12157,reg32,59009
 Villeneuve-d'Olmes,32,reg76,09336
@@ -10393,7 +10073,6 @@ Vincennes,2632,IDF_DEP_94,94080
 Vincy-Reuil-et-Magny,1,reg32,02819
 Vindrac-Alayrac,1,reg76,81320
 Vineuil,439,reg24,41295
-Vineuil,439,reg24,36247
 Vinezac,26,reg84,07343
 Vingrau,14,reg76,66231
 Vinnemerville,6,reg28,76746
@@ -10416,7 +10095,6 @@ Viscomtat,7,reg84,63463
 Viterbe,4,reg76,81323
 Vitot,7,reg28,27698
 Vitrac,14,reg84,15264
-Vitrac,14,reg84,63464
 Vitrac-sur-Montane,6,reg75,19287
 Vitry-aux-Loges,40,reg24,45346
 Vitry-sur-Seine,13573,IDF_DEP_94,94081
@@ -10445,7 +10123,6 @@ Voreppe,685,reg84,38565
 Vorly,4,reg24,18288
 Vornay,9,reg24,18289
 Vougy,70,reg84,74312
-Vougy,70,reg84,42338
 Vouillé-les-Marais,45,reg52,85304
 Voulx,36,IDF_DEP_77,77531
 Vourey,45,reg84,38566
@@ -10476,12 +10153,10 @@ Wallers-en-Fagne,9,reg32,59633
 Wambrechies,886,reg32,59636
 Wannehain,74,reg32,59638
 Warcq,1,reg44,08497
-Warcq,1,reg44,55578
 Wargnies-le-Grand,24,reg32,59639
 Wargnies-le-Petit,25,reg32,59640
 Warhem,16,reg32,59641
 Warlus,2,reg32,62878
-Warlus,2,reg32,80821
 Warneton,4,reg32,59643
 Wasnes-au-Bac,24,reg32,59645
 Wasquehal,1919,reg32,59646
