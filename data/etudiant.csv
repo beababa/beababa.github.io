@@ -1,16 +1,79 @@
-prénom,adresse mail,passé,présent,futur,OSM,QGIS
-Marianne,marianne.jouffroy@hotmail.fr,p8,en recherche,carto,apprendre,2
-Violette,violettedesbordes@icloud.com,paris,en recherche,dvp,apprendre,3
-Anais,anaisabdelhamid.15@gmail.com,sud,alternance,dvp,apprendre,3
-Louis Camille,loumercier@pm.me,paris,en recherche,dvp,utiliser plus OSM ,4
-NIKOLOZI,baido.niccolo@gmail.com,paris,alternance,dvp,utiliser plus OSM ,3
-Siméon,simeon.seck3@gmail.com,sud,alternance,dvp,utiliser plus OSM ,2
-Thomas,tom.95060101@gmail.com,p8,alternance,dvp,apprendre,1
-Morgane,naguini.ms@gmail.com,?,alternance,anything,utiliser plus OSM ,3
-Daria,podlovchenkodaria@gmail.com,est,en recherche,carto,utiliser plus OSM ,2
-Mawa,mawadiaw@gmail.com,sud,alternance,dvp,apprendre,3
-Jules,julednkongosame@gmail.com,sud,alternance,dvp,apprendre,3
-maou,diarramaou@gmail.com,sud,alternance,dvp,utiliser plus OSM ,3
-Camille,camilleesteve1904@gmail.com,?,alternance,dvp,apprendre,4
-Amaury,amaury.bourgeois78@gmail.com,?,alternance,dvp,apprendre,3
-SYDOL,sydoladomade@gmail.com,ouest,alternance,dvp,apprendre,4
+prénom,mail,passé,présent,futur,"appetence stats (peu, bcp, passion, pas)",dernier apprentissage stats (en nb d’année),groupe TD
+Jonathan,corsairk255@gmail.com,L2 Géographie,environnement,géomatique,assez,1,1
+MarieB,marie.besse@aol.fr,L2 Géographie et aménagement,aménagement,Lutter contre l'insécurité alimentaire et amélioration des conditions de vies en Afrique subsaharienne,assez,,1
+Nathan,nsimon.240502@gmail.com,L2 Géographie et aménagement,aménagement,?,assez,1,1
+Amaryllis,amaryllisnf2002@gmail.com,L2 Géographie/environnement,environnement,"Urbanisme, environnement (?)",assez,,3
+Joseph,j.cauchi@orange.fr,L2 Géographie/environnement,environnement,?,assez,,3
+Manel,manelb01@gmail.com,Amsterdam / finances et géo,aménagement,?,bcp,,2
+Emma,emma.garet2@gmail.com,CPGE,aménagement,Civil de la défense ,bcp,1,1
+Florence,florence.foucher@etu.sorbonne-universite.fr,CPGE,aménagement,urbanisme,bcp,,3
+corentin,cgrollier02@gmail.com,L2 Géographie,géo,urbanisme,bcp,,1
+Johan,johan.drouhin77@gmail.com,L2 Géographie,aménagement,aménageur pour ADP,bcp,,3
+Antonin,antonin.ollierseedo.fr@gmail.com,L2 Géographie et aménagement,aménagement,?,bcp,,3
+Marissa,marissa.gentilhomme@gmail.com,L2 Géographie et aménagement,aménagement,?,bcp,,3
+InèsD,ines.delapierre@hotmail.fr,L2 Géographie et aménagement,aménagement,?,bcp,1,1
+Cyrille,cyrille.lange@outlook.fr,L2 Géographie et aménagement,aménagement,?,moyen,,3
+Gwendoline,gwenbadigo2017@gmail.com,L2 Géographie et aménagement,aménagement,enseignant-chercheur,moyen,,3
+samuel,samuel.julian1001@gmail.com,L2 Géographie/environnement,environnement,?,moyen,,3
+Alban Marais,albanmarais@gmail.com,L2 Géographie/environnement,environnement,Conseiller en environnement/gestion des sols/ hydrologie,moyen ,,3
+AmbreG,ambregodard17@gmail.com,CPGE,aménagement,urbanisme ?,pas,,2
+Gabrielle,gabrielledefalchi@gmail.com,CPGE,géo,enseignement,pas,,2
+Roxane Gazeau,roxane.gazeau@outlook.fr,L2 Géographie/environnement,environnement,?,pas,,3
+Erwann,bernyerwann@gmail.com,L2 Géographie/environnement,environnement,enseignement,pas,,3
+Albane,albanepetitristan@gmail.com,CPGE,géo histoire,?,peu,3,1
+CamilleG,camilleguillon56@gmail.com,CPGE,aménagement,?,peu,,2
+Capucine,capucine.gillier@gmail.com,CPGE,géo histoire,dans la protection des terroirs,peu,3,1
+Leena,leena.revel@gmail.com,CPGE,aménagement,?,peu,5,1
+Mathilde,math.r1357@gmail.com,CPGE,géo histoire,?,peu,,2
+Maya,maya.chaigneau@gmail.com,CPGE,géo histoire,enseignement,peu,,3
+sarahZ,sarahziani41@gmail.com,CPGE,aménagement,?,peu,,2
+valentine,vjouan@frecyvara.com,CPGE,aménagement,urbanisme,peu,,2
+William,william.rahard@gmail.com,CPGE,aménagement,urbanisme,peu,,2
+Antoine,antoine.calori@gmail.com,L2 Archéologie Géographie,archéologie,urbanisme,peu,,3
+Huiyi,huiyi1716@gmail.com,L2 Géographie,aménagement,urbanisme,peu,,2
+Ibrahima,ibroh6000@gmail.com,L2 Géographie,géo,urbanisme,peu,,2
+Josué,pivert725@gmail.com,L2 Géographie,géo,enseignement,peu,,2
+Jules,julesjv08@gmail.com,L2 Géographie,environnement,environnement,peu,1,1
+Louise,louise.demougin@hotmail.com,L2 Géographie,environnement,?,peu,,2
+Ottavio,ottavio.lega@yahoo.com,L2 Géographie,géo,urbanisme,peu,,2
+Pierre,pierre1duchesne@hotmail.com,L2 Géographie,aménagement,Civil de la défense ,peu,,2
+Thérèse,Thereseorcun@gmail.com,L2 Géographie,aménagement,?,peu,,2
+Yiqing,theoaaronli@163.com,L2 Géographie,aménagement,enseignement,peu,,2
+Zihang,wangzihang1210@gmail.com,L2 Géographie,géo,urbanisme,peu,,2
+Alya,alyaarab23@gmail.com,L2 Géographie et aménagement,aménagement,enseignement,peu,1,1
+AmbreT,tribumullerambre@gmail.com,L2 Géographie et aménagement,environnement,enseignement recherche,peu,1,1
+Caril,benonicaril@gmail.com,L2 Géographie et aménagement,aménagement,Administrateur Territorial,peu,,3
+Clara,clara.sevier@orange.fr,L2 Géographie et aménagement,aménagement,?,peu,1,1
+Emy,emyvadurel@gmail.com,L2 Géographie et aménagement,aménagement,enseignement recherche,peu,1,1
+Enzo,prudhenz2@gmail.com,L2 Géographie et aménagement,environnement,environnement recherche ,peu,1,1
+Esteban,cancalon.esteban@gmail.com,L2 Géographie et aménagement,aménagement,urbanisme,peu,,3
+Fanny,fanny.bouvard14@gmail.com,L2 Géographie et aménagement,environnement,?,peu,1,1
+Hermine,hermine.be@hotmail.fr,L2 Géographie et aménagement,aménagement,Aménagement et protection du littoral,peu,1,1
+InèsM,inesmani94@gmail.com,L2 Géographie et aménagement,aménagement,?,peu,1,1
+Justine,justine.detaroni@gmail.com,L2 Géographie et aménagement,aménagement,aménagement des territoires,peu,1,1
+Mathieu,greckmathieu@gmail.com,L2 Géographie et aménagement,aménagement,Métier à travers le monde ,peu,1,1
+Mattéo,dczmatteo@gmail.com,L2 Géographie et aménagement,environnement,?,peu,1,1
+Sacha,sachalacanau@gmail.com,L2 Géographie et aménagement,aménagement,?,peu,,3
+Sami,sami_chevilly@yahoo.fr,L2 Géographie et aménagement,aménagement,?,peu,,3
+Terry,Terryataka-fate@hotmail.com,L2 Géographie et aménagement,aménagement,?,peu,,2
+Thibault,Tibo.ledeme@gmail.com,L2 Géographie et aménagement,aménagement,?,peu,,3
+Thomas,thomas.kaissaris@gmail.com,L2 Géographie et aménagement,aménagement,urbanisme,peu,,2
+Xavier,xavier.tatin02@gmail.com,L2 Géographie et aménagement,aménagement,?,peu,,3
+Yuliia,movchan.julia94@gmail.com,L2 Géographie et aménagement,environnement,"Environnement; Aménagement, SIG",peu,1,1
+Antonin Zerlini,antoninzerlini4@gmail.com,L2 Géographie/environnement,environnement,Enseignant/chercheur,peu,,3
+Blandine,blandinelacomere@gmail.com,L2 Géographie/environnement,environnement,?,peu,,3
+CamilleD,camilledub27@gmail.com,L2 Géographie/environnement,environnement,?,peu,,3
+Gabriel,fantin.hellot@hotmail.com,L2 Géographie/environnement,environnement,développement économique ,peu,,3
+MarieP,marie.pereira59@yahoo.fr,L2 Géographie/environnement,environnement,Eco-conseiller,peu,,3
+Maty,maty.pwk@gmail.com,L2 Géographie/environnement,environnement,?,peu,,3
+Keliann,lemboumbalepandoukeliann@gmail.com,L2 Histoire-Géographie,aménagement,enseignement recherche,peu,3,1
+Zoé,zoetaminiau@gmail.com,L2 Histoire-Géographie,géo histoire,?,peu,1,1
+sarahH,sarahachr27@gmail.com,L2 Histoire-Géographie,aménagement,?,peu,,3
+Théophile,binet.theo@gmail.com,L2 Histoire-Géographie,géo histoire,?,peu,,3
+Colin,colin.tricot@gmail.com,CPGE  puis L3 Histoire ,géo,?,peu,,2
+Léo,leonzd01@gmail.com,L2 Géographie,aménagement,?,peu,,2
+Pacome,pacome.yandia@gmail.com,,,,,,
+Come,Come.dubois41@gmail.com,,,,,,
+Johanne,johannerie.kouadio@gmail.com,,,,,,
+Arlette,arlette.tagro@etu.sorbonne-universite.fr,,,,,,
+Luca,luca.bove@live.fr,L2 Archéologie Géographie,archéologie,fouille sous marine,bcp,4,
