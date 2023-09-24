@@ -16,7 +16,7 @@
 <script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -29,12 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -45,114 +42,22 @@
   ul.task-list{list-style: none;}
     </style>
 
-
-
-<style type="text/css">
-  code {
-    white-space: pre;
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
   }
-  .sourceCode {
-    overflow: visible;
-  }
-</style>
-<style type="text/css" data-origin="pandoc">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  background-color: #f8f8f8; }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ef2929; } /* Alert */
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #204a87; } /* Attribute */
-code span.bn { color: #0000cf; } /* BaseN */
-code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #8f5902; } /* Constant */
-code span.co { color: #8f5902; font-style: italic; } /* Comment */
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code span.dt { color: #204a87; } /* DataType */
-code span.dv { color: #0000cf; } /* DecVal */
-code span.er { color: #a40000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #204a87; font-weight: bold; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code span.ot { color: #8f5902; } /* Other */
-code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
-code span.ss { color: #4e9a06; } /* SpecialString */
-code span.st { color: #4e9a06; } /* String */
-code span.va { color: #000000; } /* Variable */
-code span.vs { color: #4e9a06; } /* VerbatimString */
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-
-</style>
-<script>
-// apply pandoc div.sourceCode style to pre.sourceCode instead
-(function() {
-  var sheets = document.styleSheets;
-  for (var i = 0; i < sheets.length; i++) {
-    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
-    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    var j = 0;
-    while (j < rules.length) {
-      var rule = rules[j];
-      // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
-        j++;
-        continue;
-      }
-      var style = rule.style.cssText;
-      // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') {
-        j++;
-        continue;
-      }
-      // replace div.sourceCode by a pre.sourceCode rule
-      sheets[i].deleteRule(j);
-      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
-    }
-  }
-})();
 </script>
 
 
 
 
-<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+
 
 
 
@@ -186,80 +91,6 @@ pre code {
 </style>
 
 
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
 
 <!-- tabsets -->
 
@@ -314,69 +145,6 @@ $(document).ready(function () {
 
 
 
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-
 
 </head>
 
@@ -386,69 +154,7 @@ div.tocify {
 <div class="container-fluid main-container">
 
 
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
 
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
-
-
-
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html"></a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="intro.html">Introduction</a>
-</li>
-<li>
-  <a href="jour1.html">univariées</a>
-</li>
-<li>
-  <a href="jour2.html">bi-variées</a>
-</li>
-<li>
-  <a href="jour3.html">khi 2</a>
-</li>
-<li>
-  <a href="jour4.html">régression</a>
-</li>
-<li>
-  <a href="jour5.html">examen</a>
-</li>
-<li>
-  <a href="jour6.html">variance</a>
-</li>
-<li>
-  <a href="jour7.html">multivariées base</a>
-</li>
-<li>
-  <a href="jour8.html">factorielle et classification</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://beababa.github.io/">
-    <span class="fa fa-github"></span>
-     
-  </a>
-</li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
 
 <div id="header">
 
@@ -458,6 +164,86 @@ div.tocify {
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#termes" id="toc-termes"><span
+class="toc-section-number">1</span> Termes</a>
+<ul>
+<li><a href="#trouver-des-termes-pour-les-objets-en-statistiques"
+id="toc-trouver-des-termes-pour-les-objets-en-statistiques"><span
+class="toc-section-number">1.1</span> Trouver des termes pour les objets
+en statistiques</a></li>
+<li><a href="#distinguer-tableau-complet-tig-tableau-condensé"
+id="toc-distinguer-tableau-complet-tig-tableau-condensé"><span
+class="toc-section-number">1.2</span> distinguer tableau complet, tig,
+tableau condensé</a></li>
+</ul></li>
+<li><a href="#lessentiel-la-forme-dune-distribution"
+id="toc-lessentiel-la-forme-dune-distribution"><span
+class="toc-section-number">2</span> L’essentiel : la forme d’une
+distribution</a>
+<ul>
+<li><a href="#abscisses-et-ordonnées"
+id="toc-abscisses-et-ordonnées"><span
+class="toc-section-number">2.1</span> Abscisses et ordonnées</a></li>
+<li><a href="#tiges-et-feuilles" id="toc-tiges-et-feuilles"><span
+class="toc-section-number">2.2</span> Tiges et feuilles</a></li>
+<li><a href="#et-sous-un-tableur" id="toc-et-sous-un-tableur"><span
+class="toc-section-number">2.3</span> Et sous un tableur</a>
+<ul>
+<li><a href="#préparation-de-lexercice"
+id="toc-préparation-de-lexercice"><span
+class="toc-section-number">2.3.1</span> Préparation de
+l’exercice</a></li>
+<li><a href="#quel-commentaire" id="toc-quel-commentaire"><span
+class="toc-section-number">2.3.2</span> Quel commentaire ?</a></li>
+</ul></li>
+<li><a href="#a-explorer" id="toc-a-explorer"><span
+class="toc-section-number">2.4</span> A explorer</a></li>
+<li><a href="#correction-exercice-dénombrement-des-inscrits"
+id="toc-correction-exercice-dénombrement-des-inscrits"><span
+class="toc-section-number">2.5</span> Correction exercice dénombrement
+des inscrits</a>
+<ul>
+<li><a
+href="#commentaires-généraux-qui-valent-pour-tous-les-exercices-et-surtout-le-dst"
+id="toc-commentaires-généraux-qui-valent-pour-tous-les-exercices-et-surtout-le-dst"><span
+class="toc-section-number">2.5.1</span> Commentaires généraux qui valent
+pour tous les exercices et surtout le DST</a></li>
+<li><a href="#plus-précisemment" id="toc-plus-précisemment"><span
+class="toc-section-number">2.5.2</span> Plus précisemment</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#pour-raffiner-les-indicateurs"
+id="toc-pour-raffiner-les-indicateurs"><span
+class="toc-section-number">3</span> Pour raffiner : les indicateurs</a>
+<ul>
+<li><a href="#calcul-valeurs-centrales-et-dispersion"
+id="toc-calcul-valeurs-centrales-et-dispersion"><span
+class="toc-section-number">3.1</span> Calcul : valeurs centrales et
+dispersion</a>
+<ul>
+<li><a href="#valeurs-centrales-moyenne-et-médiane"
+id="toc-valeurs-centrales-moyenne-et-médiane"><span
+class="toc-section-number">3.1.1</span> Valeurs centrales : moyenne et
+médiane</a></li>
+<li><a href="#dispersion-ecart-type-et-variance"
+id="toc-dispersion-ecart-type-et-variance"><span
+class="toc-section-number">3.1.2</span> Dispersion : Ecart-type et
+variance</a></li>
+<li><a href="#utilisation-du-tableur"
+id="toc-utilisation-du-tableur"><span
+class="toc-section-number">3.1.3</span> Utilisation du tableur</a></li>
+<li><a href="#corrections-quelques-remarques-2022"
+id="toc-corrections-quelques-remarques-2022"><span
+class="toc-section-number">3.1.4</span> Corrections quelques remarques
+(2022)</a></li>
+<li><a href="#les-commentaires" id="toc-les-commentaires"><span
+class="toc-section-number">3.1.5</span> Les commentaires</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
 
 <p>Télécharger et ouvrir le fichier de données du cours.</p>
 <div id="termes" class="section level1" number="1">
@@ -526,15 +312,8 @@ dénomination des bureaux (1 à 32) et les abstentions à Bondy</p>
 <p>Cet exercice permet d’utiliser dans le tableur :</p>
 <ul>
 <li><p>utilisation de la barre d’adresse</p></li>
-<li><p>utilisation des noms pour la formule</p></li>
-</ul>
-<p><a
-href="https://help.libreoffice.org/6.2/fr/text/scalc/guide/value_with_name.html"
-class="uri">https://help.libreoffice.org/6.2/fr/text/scalc/guide/value_with_name.html</a></p>
-<ul>
 <li><p>formule frequence, formule matricielle (CTRL + MAJ +
 ENTREE)</p></li>
-<li><p>sélection pour exporter comme image</p></li>
 </ul>
 <p>formules du tableau</p>
 <p><img src="img/frequence.png" /></p>
@@ -555,11 +334,80 @@ ENTREE)</p></li>
 <p>Observer la disposition des bornes : elles sont utilisées comme des
 étiquettes et non pas comme une série de valeurs.</p>
 </div>
-<div id="correction-graphiques-étudiants" class="section level2"
-number="2.5">
-<h2><span class="header-section-number">2.5</span> Correction graphiques
-étudiants</h2>
-<p>En fonction du rendu</p>
+<div id="correction-exercice-dénombrement-des-inscrits"
+class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Correction exercice
+dénombrement des inscrits</h2>
+<p>Des retours très nombreux.</p>
+<pre class="r"><code>communes &lt;- c(&quot;Annemasse&quot;, &quot;Tasson la demi lune&quot;, &quot;Clamart&quot;, &quot;Epinay-sur-Seine&quot;,
+              &quot;Santes&quot;, &quot;Thionville&quot;, &quot;Vitry-Sur-Seine&quot;, &quot;Massy&quot;, &quot;Montpon-Ménestérol&quot;, &quot;Choisy-le-Roi&quot;, &quot;Malakoff&quot;, &quot;Caluire-et-Cuire&quot;, &quot;Dieppe&quot;,
+              &quot;Levallois-Perret&quot;, &quot;Achères&quot;, &quot;Neuily-Sur-Seine&quot;, &quot;Nice&quot;, &quot;Rueil-Malmaison&quot;, &quot;Romainville&quot;, &quot;Lagnieu&quot;, &quot;Sannois&quot;, &quot;Arpajon-sur-Cère&quot;,
+              &quot;Limeil-Brévannes&quot;, &quot;Saint-Maur&quot;, &quot;Miribel&quot;, &quot;Caen&quot;, &quot;Ivry-sur-Seine&quot;, &quot;Noirmoutier en l&#39;île&quot;, &quot;Orsay&quot;, &quot;Amiens&quot;, &quot;Troyes&quot;, &quot;Meung-sur-Loire&quot;, &quot;Guipavas&quot;, &quot;Auxerre&quot;, &quot;Issy-les-Moulineaux&quot;, &quot;Saint-Ouen&quot;)</code></pre>
+<p>36 communes pour 55 étudiants.</p>
+<div
+id="commentaires-généraux-qui-valent-pour-tous-les-exercices-et-surtout-le-dst"
+class="section level3" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Commentaires
+généraux qui valent pour tous les exercices et surtout le DST</h3>
+<div id="pour-la-forme" class="section level4" number="2.5.1.1">
+<h4><span class="header-section-number">2.5.1.1</span> Pour la
+forme</h4>
+<p>Le mieux traitement de texte dans lequel on insère un graphique
+image.</p>
+<p>Attention aux nombreuses pages inutiles si on passe directement du
+tableur au traitement de texte.</p>
+</div>
+<div id="concision-du-commentaire" class="section level4"
+number="2.5.1.2">
+<h4><span class="header-section-number">2.5.1.2</span> Concision du
+commentaire</h4>
+<p><img src="img/trop.png" /></p>
+<p>même si, un strict respect de la consigne donnait :</p>
+<p><img src="img/tropTechnique.png" /></p>
+<p>Prochain exercice, commentaire plus court. 2 phrases maximum, aller à
+l’essentiel.</p>
+<p><em>Il y a plus de petits bureaux de vote que de gros</em> (ou
+l’inverse)</p>
+<p>Ou plus osé :</p>
+<p><em>La ville ne maîtrise pas le nombre d’électeurs par bureaux de
+vote</em></p>
+<p>Ou plus profond, répondre à la question : quelle est la répartition
+idéale pour les bureaux de vote ? Est-ce que mon exemple le respecte
+?</p>
+<p><img src="img/oui.png" /></p>
+</div>
+<div id="vocabulaire" class="section level4" number="2.5.1.3">
+<h4><span class="header-section-number">2.5.1.3</span> Vocabulaire</h4>
+<p>Revenir sur le terme : formule <em>fréquence et son
+graphique</em></p>
+<p>Diagramme de fréquence, histogramme…</p>
+<p>Le mieux : <em>Discrétisation des bureaux de vote en fonction des
+inscrits</em> (cf le manuel Béguin Pumain)</p>
+<p><img src="img/raleigh.png" /></p>
+</div>
+</div>
+<div id="plus-précisemment" class="section level3" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Plus
+précisemment</h3>
+<div id="problème-sur-les-classes-dans-le-graphique"
+class="section level4" number="2.5.2.1">
+<h4><span class="header-section-number">2.5.2.1</span> Problème sur les
+classes dans le graphique</h4>
+<p>Il faut afficher les bornes.</p>
+<p>[]](img/faux)</p>
+<p>Affichage de l’histogramme dans R</p>
+<pre class="r"><code>data &lt;- read.csv(&quot;data/bondy2022.csv&quot;)
+hist(data$V8)</code></pre>
+<p><img src="jour1_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="img/inscrits2002.png" /></p>
+</div>
+<div id="quelle-opération-fallait-il-faire-sur-le-fichier-2002"
+class="section level4" number="2.5.2.2">
+<h4><span class="header-section-number">2.5.2.2</span> Quelle opération
+fallait-il faire sur le fichier 2002 ?</h4>
+<p><img src="img/miseEnFormeDonnee.png" /></p>
+</div>
+</div>
 </div>
 </div>
 <div id="pour-raffiner-les-indicateurs" class="section level1"
@@ -568,139 +416,57 @@ number="3">
 indicateurs</h1>
 <p>Nous avons déjà vu l’amplitude à travers minimum et maximum. Il y en
 a d’autres. Ils servent à résumer la série statistique</p>
-<p>Pour l’exemple, on prend la commune choisie</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/bondy_2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    32 obs. of  105 variables:
-##  $ Code.du.département          : int  93 93 93 93 93 93 93 93 93 93 ...
-##  $ Libellé.du.département       : chr  &quot;Seine-Saint-Denis&quot; &quot;Seine-Saint-Denis&quot; &quot;Seine-Saint-Denis&quot; &quot;Seine-Saint-Denis&quot; ...
-##  $ Code.de.la.circonscription   : int  9 9 9 9 9 9 9 9 9 9 ...
-##  $ Libellé.de.la.circonscription: chr  &quot;9ème circonscription&quot; &quot;9ème circonscription&quot; &quot;9ème circonscription&quot; &quot;9ème circonscription&quot; ...
-##  $ Code.de.la.commune           : int  10 10 10 10 10 10 10 10 10 10 ...
-##  $ Libellé.de.la.commune        : chr  &quot;Bondy&quot; &quot;Bondy&quot; &quot;Bondy&quot; &quot;Bondy&quot; ...
-##  $ Code.du.b.vote               : int  1 2 3 4 5 6 7 12 18 19 ...
-##  $ Inscrits                     : int  736 818 970 857 815 866 843 629 748 658 ...
-##  $ Abstentions                  : int  190 198 285 291 285 262 295 178 200 161 ...
-##  $ X..Abs.Ins                   : chr  &quot;25,82&quot; &quot;24,21&quot; &quot;29,38&quot; &quot;33,96&quot; ...
-##  $ Votants                      : int  546 620 685 566 530 604 548 451 548 497 ...
-##  $ X..Vot.Ins                   : chr  &quot;74,18&quot; &quot;75,79&quot; &quot;70,62&quot; &quot;66,04&quot; ...
-##  $ Blancs                       : int  8 11 12 16 3 6 9 6 10 7 ...
-##  $ X..Blancs.Ins                : chr  &quot;1,09&quot; &quot;1,34&quot; &quot;1,24&quot; &quot;1,87&quot; ...
-##  $ X..Blancs.Vot                : chr  &quot;1,47&quot; &quot;1,77&quot; &quot;1,75&quot; &quot;2,83&quot; ...
-##  $ Nuls                         : int  5 5 1 2 1 5 5 7 3 2 ...
-##  $ X..Nuls.Ins                  : chr  &quot;0,68&quot; &quot;0,61&quot; &quot;0,1&quot; &quot;0,23&quot; ...
-##  $ X..Nuls.Vot                  : chr  &quot;0,92&quot; &quot;0,81&quot; &quot;0,15&quot; &quot;0,35&quot; ...
-##  $ Exprimés                     : int  533 604 672 548 526 593 534 438 535 488 ...
-##  $ X..Exp.Ins                   : chr  &quot;72,42&quot; &quot;73,84&quot; &quot;69,28&quot; &quot;63,94&quot; ...
-##  $ X..Exp.Vot                   : chr  &quot;97,62&quot; &quot;97,42&quot; &quot;98,1&quot; &quot;96,82&quot; ...
-##  $ N.Panneau                    : int  1 1 1 1 1 1 1 1 1 1 ...
-##  $ Sexe                         : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-##  $ Nom                          : chr  &quot;ARTHAUD&quot; &quot;ARTHAUD&quot; &quot;ARTHAUD&quot; &quot;ARTHAUD&quot; ...
-##  $ Prénom                       : chr  &quot;Nathalie&quot; &quot;Nathalie&quot; &quot;Nathalie&quot; &quot;Nathalie&quot; ...
-##  $ Voix                         : int  4 2 0 1 1 2 1 1 2 2 ...
-##  $ X..Voix.Ins                  : chr  &quot;0,54&quot; &quot;0,24&quot; &quot;0&quot; &quot;0,12&quot; ...
-##  $ X..Voix.Exp                  : chr  &quot;0,75&quot; &quot;0,33&quot; &quot;0&quot; &quot;0,18&quot; ...
-##  $ X                            : int  2 2 2 2 2 2 2 2 2 2 ...
-##  $ X.1                          : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
-##  $ X.2                          : chr  &quot;ROUSSEL&quot; &quot;ROUSSEL&quot; &quot;ROUSSEL&quot; &quot;ROUSSEL&quot; ...
-##  $ X.3                          : chr  &quot;Fabien&quot; &quot;Fabien&quot; &quot;Fabien&quot; &quot;Fabien&quot; ...
-##  $ X.4                          : int  8 20 10 3 1 9 8 14 12 11 ...
-##  $ X.5                          : chr  &quot;1,09&quot; &quot;2,44&quot; &quot;1,03&quot; &quot;0,35&quot; ...
-##  $ X.6                          : chr  &quot;1,5&quot; &quot;3,31&quot; &quot;1,49&quot; &quot;0,55&quot; ...
-##  $ X.7                          : int  3 3 3 3 3 3 3 3 3 3 ...
-##  $ X.8                          : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
-##  $ X.9                          : chr  &quot;MACRON&quot; &quot;MACRON&quot; &quot;MACRON&quot; &quot;MACRON&quot; ...
-##  $ X.10                         : chr  &quot;Emmanuel&quot; &quot;Emmanuel&quot; &quot;Emmanuel&quot; &quot;Emmanuel&quot; ...
-##  $ X.11                         : int  96 158 106 84 73 110 94 85 97 110 ...
-##  $ X.12                         : chr  &quot;13,04&quot; &quot;19,32&quot; &quot;10,93&quot; &quot;9,8&quot; ...
-##  $ X.13                         : chr  &quot;18,01&quot; &quot;26,16&quot; &quot;15,77&quot; &quot;15,33&quot; ...
-##  $ X.14                         : int  4 4 4 4 4 4 4 4 4 4 ...
-##  $ X.15                         : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
-##  $ X.16                         : chr  &quot;LASSALLE&quot; &quot;LASSALLE&quot; &quot;LASSALLE&quot; &quot;LASSALLE&quot; ...
-##  $ X.17                         : chr  &quot;Jean&quot; &quot;Jean&quot; &quot;Jean&quot; &quot;Jean&quot; ...
-##  $ X.18                         : int  7 17 9 6 2 4 9 6 11 10 ...
-##  $ X.19                         : chr  &quot;0,95&quot; &quot;2,08&quot; &quot;0,93&quot; &quot;0,7&quot; ...
-##  $ X.20                         : chr  &quot;1,31&quot; &quot;2,81&quot; &quot;1,34&quot; &quot;1,09&quot; ...
-##  $ X.21                         : int  5 5 5 5 5 5 5 5 5 5 ...
-##  $ X.22                         : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-##  $ X.23                         : chr  &quot;LE PEN&quot; &quot;LE PEN&quot; &quot;LE PEN&quot; &quot;LE PEN&quot; ...
-##  $ X.24                         : chr  &quot;Marine&quot; &quot;Marine&quot; &quot;Marine&quot; &quot;Marine&quot; ...
-##  $ X.25                         : int  75 82 60 70 19 36 51 44 70 51 ...
-##  $ X.26                         : chr  &quot;10,19&quot; &quot;10,02&quot; &quot;6,19&quot; &quot;8,17&quot; ...
-##  $ X.27                         : chr  &quot;14,07&quot; &quot;13,58&quot; &quot;8,93&quot; &quot;12,77&quot; ...
-##  $ X.28                         : int  6 6 6 6 6 6 6 6 6 6 ...
-##  $ X.29                         : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
-##  $ X.30                         : chr  &quot;ZEMMOUR&quot; &quot;ZEMMOUR&quot; &quot;ZEMMOUR&quot; &quot;ZEMMOUR&quot; ...
-##  $ X.31                         : chr  &quot;Éric&quot; &quot;Éric&quot; &quot;Éric&quot; &quot;Éric&quot; ...
-##  $ X.32                         : int  34 31 25 18 5 30 21 20 30 34 ...
-##  $ X.33                         : chr  &quot;4,62&quot; &quot;3,79&quot; &quot;2,58&quot; &quot;2,1&quot; ...
-##  $ X.34                         : chr  &quot;6,38&quot; &quot;5,13&quot; &quot;3,72&quot; &quot;3,28&quot; ...
-##  $ X.35                         : int  7 7 7 7 7 7 7 7 7 7 ...
-##  $ X.36                         : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
-##  $ X.37                         : chr  &quot;MÉLENCHON&quot; &quot;MÉLENCHON&quot; &quot;MÉLENCHON&quot; &quot;MÉLENCHON&quot; ...
-##  $ X.38                         : chr  &quot;Jean-Luc&quot; &quot;Jean-Luc&quot; &quot;Jean-Luc&quot; &quot;Jean-Luc&quot; ...
-##  $ X.39                         : int  233 218 398 335 410 366 317 218 250 205 ...
-##  $ X.40                         : chr  &quot;31,66&quot; &quot;26,65&quot; &quot;41,03&quot; &quot;39,09&quot; ...
-##  $ X.41                         : chr  &quot;43,71&quot; &quot;36,09&quot; &quot;59,23&quot; &quot;61,13&quot; ...
-##  $ X.42                         : int  8 8 8 8 8 8 8 8 8 8 ...
-##  $ X.43                         : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-##  $ X.44                         : chr  &quot;HIDALGO&quot; &quot;HIDALGO&quot; &quot;HIDALGO&quot; &quot;HIDALGO&quot; ...
-##  $ X.45                         : chr  &quot;Anne&quot; &quot;Anne&quot; &quot;Anne&quot; &quot;Anne&quot; ...
-##  $ X.46                         : int  7 3 11 3 4 5 10 6 8 10 ...
-##  $ X.47                         : chr  &quot;0,95&quot; &quot;0,37&quot; &quot;1,13&quot; &quot;0,35&quot; ...
-##  $ X.48                         : chr  &quot;1,31&quot; &quot;0,5&quot; &quot;1,64&quot; &quot;0,55&quot; ...
-##  $ X.49                         : int  9 9 9 9 9 9 9 9 9 9 ...
-##  $ X.50                         : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
-##  $ X.51                         : chr  &quot;JADOT&quot; &quot;JADOT&quot; &quot;JADOT&quot; &quot;JADOT&quot; ...
-##  $ X.52                         : chr  &quot;Yannick&quot; &quot;Yannick&quot; &quot;Yannick&quot; &quot;Yannick&quot; ...
-##  $ X.53                         : int  20 31 14 9 0 4 2 13 18 14 ...
-##  $ X.54                         : chr  &quot;2,72&quot; &quot;3,79&quot; &quot;1,44&quot; &quot;1,05&quot; ...
-##  $ X.55                         : chr  &quot;3,75&quot; &quot;5,13&quot; &quot;2,08&quot; &quot;1,64&quot; ...
-##  $ X.56                         : int  10 10 10 10 10 10 10 10 10 10 ...
-##  $ X.57                         : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-##  $ X.58                         : chr  &quot;PÉCRESSE&quot; &quot;PÉCRESSE&quot; &quot;PÉCRESSE&quot; &quot;PÉCRESSE&quot; ...
-##  $ X.59                         : chr  &quot;Valérie&quot; &quot;Valérie&quot; &quot;Valérie&quot; &quot;Valérie&quot; ...
-##  $ X.60                         : int  37 29 24 12 5 13 12 20 24 29 ...
-##  $ X.61                         : chr  &quot;5,03&quot; &quot;3,55&quot; &quot;2,47&quot; &quot;1,4&quot; ...
-##  $ X.62                         : chr  &quot;6,94&quot; &quot;4,8&quot; &quot;3,57&quot; &quot;2,19&quot; ...
-##  $ X.63                         : int  11 11 11 11 11 11 11 11 11 11 ...
-##  $ X.64                         : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
-##  $ X.65                         : chr  &quot;POUTOU&quot; &quot;POUTOU&quot; &quot;POUTOU&quot; &quot;POUTOU&quot; ...
-##  $ X.66                         : chr  &quot;Philippe&quot; &quot;Philippe&quot; &quot;Philippe&quot; &quot;Philippe&quot; ...
-##  $ X.67                         : int  2 7 4 1 3 3 5 4 3 3 ...
-##  $ X.68                         : chr  &quot;0,27&quot; &quot;0,86&quot; &quot;0,41&quot; &quot;0,12&quot; ...
-##  $ X.69                         : chr  &quot;0,38&quot; &quot;1,16&quot; &quot;0,6&quot; &quot;0,18&quot; ...
-##  $ X.70                         : int  12 12 12 12 12 12 12 12 12 12 ...
-##   [list output truncated]</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>abstention <span class="ot">&lt;-</span> data [ , <span class="fu">c</span>(<span class="st">&quot;Code.du.b.vote&quot;</span>,<span class="st">&quot;Abstentions&quot;</span>)]</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">write.csv</span>(abstention, <span class="st">&quot;data/abstention2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
-<p>A votre avis pourquoi ? (cf forum sur le moodle)</p>
+<p>Nous allons montrer comment calculer médiane, moyenne et écart type
+dans le tableur.</p>
+<p>Pour l’exemple, on prend la commune choisie l’abstention (votants /
+inscrits) puis tous les résultats des candidats dans chaque bureau de
+vote.</p>
+<pre class="r"><code>bondy2002 &lt;- read.csv(&quot;data/bondy2002.csv&quot;, fileEncoding = &quot;UTF-8&quot;)
+str(bondy2002)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    306 obs. of  8 variables:
+##  $ X       : int  974096 974097 974098 974099 974100 974101 974102 974103 974104 974105 ...
+##  $ ville   : chr  &quot;Bondy&quot; &quot;Bondy&quot; &quot;Bondy&quot; &quot;Bondy&quot; ...
+##  $ bv      : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ inscrits: int  1299 1299 1299 1299 1299 1299 1299 1299 1299 1299 ...
+##  $ votants : int  868 868 868 868 868 868 868 868 868 868 ...
+##  $ exprimes: int  850 850 850 850 850 850 850 850 850 850 ...
+##  $ nom     : chr  &quot;MEGRET&quot; &quot;LEPAGE&quot; &quot;GLUCKSTEIN&quot; &quot;BAYROU&quot; ...
+##  $ nb      : int  18 18 1 60 143 148 39 8 56 147 ...</code></pre>
+<pre class="r"><code>table(bondy2002$bv)</code></pre>
+<pre><code>## 
+##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 
+## 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18</code></pre>
+<pre class="r"><code># extraction abstention
+data &lt;- bondy2002 [bondy2002$nom == &quot;MEGRET&quot;,]
+png(&quot;img/inscrits2002.png&quot;)
+inscrits &lt;- data$inscrits
+hist(inscrits)
+dev.off()</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<pre class="r"><code>abs &lt;- round( (data$votants / data$inscrits) *100, 0)
+write.csv(abs,&quot;data/abstention2002.csv&quot;, 
+          fileEncoding = &quot;UTF-8&quot;)</code></pre>
+<p>Le tableau de 2002 se présente différemment de celui de 2022.</p>
 <div id="calcul-valeurs-centrales-et-dispersion" class="section level2"
 number="3.1">
 <h2><span class="header-section-number">3.1</span> Calcul : valeurs
 centrales et dispersion</h2>
-<div id="valeurs-centrales" class="section level3" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Valeurs
-centrales</h3>
+<div id="valeurs-centrales-moyenne-et-médiane" class="section level3"
+number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Valeurs centrales :
+moyenne et médiane</h3>
 <p>Il s’agit de caractériser une distribution par son centre.</p>
-<div id="moyenne-et-médiane" class="section level4" number="3.1.1.1">
-<h4><span class="header-section-number">3.1.1.1</span> Moyenne et
-médiane</h4>
-<div id="calcul" class="section level5" number="3.1.1.1.1">
-<h5><span class="header-section-number">3.1.1.1.1</span> Calcul</h5>
+<div id="calcul" class="section level4" number="3.1.1.1">
+<h4><span class="header-section-number">3.1.1.1</span> Calcul</h4>
 <p>Le calcul de la moyenne est connu. Celui de la médiane beaucoup
 moins.</p>
-<div id="sur-le-tableau-complet" class="section level6"
-number="3.1.1.1.1.1">
-<h6><span class="header-section-number">3.1.1.1.1.1</span> Sur le
-tableau complet</h6>
-<p>Créer une colonne rang. Et relever le rang médian</p>
+<p>Sur le tableau complet, créer une colonne rang. Et relever le rang
+médian</p>
 <p><img src="img/mediane.jpg" /></p>
 </div>
-</div>
-</div>
 <div id="savoir-faire-tableur" class="section level4" number="3.1.1.2">
-<h4><span class="header-section-number">3.1.1.2</span> savoir faire
+<h4><span class="header-section-number">3.1.1.2</span> Savoir faire
 tableur</h4>
 <ul>
 <li><p>valeur fixe et relative (utilisation du $ et F4)</p></li>
@@ -708,10 +474,22 @@ tableur</h4>
 double clic sur le graphique (onglet positionnement, menu déroulant
 valeur)</p></li>
 </ul>
-<div id="que-retenir" class="section level5" number="3.1.1.2.1">
-<h5><span class="header-section-number">3.1.1.2.1</span> Que retenir
-?</h5>
-<p>Expliquer ces phrases issues du Chadule</p>
+<pre class="r"><code>moy &lt;- mean(abs)
+med &lt;- median(abs)
+hist(abs, main = &quot;Distribution des abstentions&quot;)
+abline(v = moy, col = &#39;blue&#39;)
+abline(v = med, col = &#39;red&#39;)</code></pre>
+<p><img src="jour1_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Pour la variable abstention, quelle est l’indicateur le plus utile
+?</p>
+</div>
+<div id="que-retenir" class="section level4" number="3.1.1.3">
+<h4><span class="header-section-number">3.1.1.3</span> Que retenir
+?</h4>
+<div id="expliquer-ces-phrases-issues-du-chadule" class="section level5"
+number="3.1.1.3.1">
+<h5><span class="header-section-number">3.1.1.3.1</span> Expliquer ces
+phrases issues du Chadule</h5>
 <ul>
 <li>La médiane est dans une distribution la valeur la plus
 <em>proche</em> de toutes les autres</li>
@@ -721,6 +499,34 @@ valeur)</p></li>
 <li>les valeurs extrêmes <em>décentrent</em> la moyenne</li>
 </ul>
 </div>
+<div id="rapport-entre-médiane-et-moyenne" class="section level5"
+number="3.1.1.3.2">
+<h5><span class="header-section-number">3.1.1.3.2</span> Rapport entre
+médiane et moyenne</h5>
+<p>Que peut-on dire de la forme de la distribution</p>
+<ul>
+<li><p>si la moyenne est égale à la médiane ?</p></li>
+<li><p>si moyenne &gt; médiane</p></li>
+<li><p>si médiane &gt; moyenne</p></li>
+</ul>
+<pre class="r"><code>candidat &lt;- unique(bondy2002$nom)
+png(&quot;img/medmoy.png&quot;)
+par(mfrow=c(4,4))
+for (i in 1:length(candidat)){
+  tmp &lt;- bondy2002 [bondy2002$nom == candidat [i],]
+  moy &lt;- mean(tmp$nb)
+  med &lt;- median(tmp$nb)
+  hist(tmp$nb, main = candidat  [i])
+  abline(v = moy, col = &#39;blue&#39;)
+  abline(v = med, col = &#39;red&#39;)
+}
+dev.off()</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<p><img src="img/medmoy.png" /></p>
+<p>Chercher à caractériser les voix pour les différents candidats en
+fonction de la médiane / moyenne</p>
+</div>
 </div>
 </div>
 <div id="dispersion-ecart-type-et-variance" class="section level3"
@@ -728,6 +534,19 @@ number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Dispersion :
 Ecart-type et variance</h3>
 <p>La distribution est-elle hétérogène ?</p>
+<pre class="r"><code>png(&quot;img/ecartType.png&quot;)
+par(mfrow=c(4,4))
+for (i in 1:length(candidat)){
+  tmp &lt;- bondy2002 [bondy2002$nom == candidat [i],]
+  sigma &lt;- sd(tmp$nb)
+  med &lt;- median(tmp$nb)
+  hist(tmp$nb, main = paste0(candidat  [i], &quot; &quot;, round(sigma,0)))
+}
+dev.off()</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<p><img src="img/ecartType.png" /> Commenter l’écart type le plus
+élevé</p>
 <div id="définitions" class="section level4" number="3.1.2.1">
 <h4><span class="header-section-number">3.1.2.1</span> 2 définitions
 :</h4>
@@ -752,9 +571,9 @@ est la déviation absolue ) ressemble plus à un calcul de distance
 manhattan .</em></p>
 </div>
 </div>
-<div id="exercice-en-cours" class="section level3" number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> Exercice en
-cours</h3>
+<div id="utilisation-du-tableur" class="section level3" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Utilisation du
+tableur</h3>
 <p>Toujours sans passer par les formules, mais avec un tableau <em>pas à
 pas</em>, créer les indicateurs.</p>
 <p>liste des colonnes :</p>
@@ -765,51 +584,37 @@ pas</em>, créer les indicateurs.</p>
 (variance), l’écart type est la racine carrée.</p></li>
 </ul>
 </div>
-</div>
-<div id="appliquer-appréhender-quelques-indicateurs"
-class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Appliquer :
-appréhender quelques indicateurs</h2>
-<p>intitulé exercice <em>valeurs centrales et dispersion</em></p>
-<p>Sur une des résidences (sauf la cité du Stade) utilisée en cours,
-faire le graphique du TIG et indiquer la valeur centrale.</p>
-<p>Rajouter une ligne de commentaire expliquant moyenne / médiane et
-écart type.</p>
-<div id="corrections-quelques-remarques" class="section level3"
-number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Corrections
-quelques remarques</h3>
+<div id="corrections-quelques-remarques-2022" class="section level3"
+number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> Corrections
+quelques remarques (2022)</h3>
 <p>L’objectif de l’exercice était d’obtenir un commentaire clair avec
 quelques repères statistiques.</p>
-<div id="les-bons-graphiques" class="section level4" number="3.2.1.1">
-<h4><span class="header-section-number">3.2.1.1</span> Les bons
+<div id="les-bons-graphiques" class="section level4" number="3.1.4.1">
+<h4><span class="header-section-number">3.1.4.1</span> Les bons
 graphiques</h4>
-<div id="un-graphique-du-tig" class="section level5" number="3.2.1.1.1">
-<h5><span class="header-section-number">3.2.1.1.1</span> Un graphique du
+<div id="un-graphique-du-tig" class="section level5" number="3.1.4.1.1">
+<h5><span class="header-section-number">3.1.4.1.1</span> Un graphique du
 TIG</h5>
 <p><img src="img/4erreurBon.png" /></p>
 </div>
 <div id="une-diagramme-de-répartition" class="section level5"
-number="3.2.1.1.2">
-<h5><span class="header-section-number">3.2.1.1.2</span> Une diagramme
+number="3.1.4.1.2">
+<h5><span class="header-section-number">3.1.4.1.2</span> Une diagramme
 de répartition</h5>
 <p><img src="img/bonDevoir3.png" /></p>
-</div>
-<div id="quelles-erreurs-dans-les-graphiques-suivants"
-class="section level5" number="3.2.1.1.3">
-<h5><span class="header-section-number">3.2.1.1.3</span> Quelles erreurs
-dans les graphiques suivants ?</h5>
+<p>, ##### Quelles erreurs dans les graphiques suivants ?</p>
 <p><img src="img/1erreur.png" /> <img src="img/2erreur.JPG" /> <img
 src="img/3erreur.png" /></p>
 </div>
 </div>
 </div>
-<div id="les-commentaires" class="section level3" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Les
+<div id="les-commentaires" class="section level3" number="3.1.5">
+<h3><span class="header-section-number">3.1.5</span> Les
 commentaires</h3>
 <p>Beaucoup d’étudiants ne voient pas la nécessité d’un commentaire…</p>
-<div id="commentaire-clair" class="section level4" number="3.2.2.1">
-<h4><span class="header-section-number">3.2.2.1</span> Commentaire
+<div id="commentaire-clair" class="section level4" number="3.1.5.1">
+<h4><span class="header-section-number">3.1.5.1</span> Commentaire
 clair</h4>
 <p><em>La moyenne et la médiane sont très proches. En effet, en moyenne,
 les logements de la résidence possèdent 3 pièces et 50 % des logements
@@ -818,23 +623,23 @@ homogène.De plus, l’écart type est faible, ce qui signifie que les
 valeurs sont peu dispersées autour de la moyenne et donc il vient
 confirmer que la série est homogène.</em></p>
 </div>
-<div id="trop-technique" class="section level4" number="3.2.2.2">
-<h4><span class="header-section-number">3.2.2.2</span> trop
+<div id="trop-technique" class="section level4" number="3.1.5.2">
+<h4><span class="header-section-number">3.1.5.2</span> trop
 technique</h4>
 <p><img src="img/tropTechnique.png" /></p>
 </div>
 <div id="des-commentaires-intéressants" class="section level4"
-number="3.2.2.3">
-<h4><span class="header-section-number">3.2.2.3</span> Des commentaires
+number="3.1.5.3">
+<h4><span class="header-section-number">3.1.5.3</span> Des commentaires
 intéressants</h4>
-<div id="un-peu-confus." class="section level5" number="3.2.2.3.1">
-<h5><span class="header-section-number">3.2.2.3.1</span> Un peu
+<div id="un-peu-confus." class="section level5" number="3.1.5.3.1">
+<h5><span class="header-section-number">3.1.5.3.1</span> Un peu
 confus.</h5>
 <p><img src="img/bonDevoir1.png" /></p>
 </div>
 <div id="une-réflexion-sur-le-terme-hétérogène" class="section level5"
-number="3.2.2.3.2">
-<h5><span class="header-section-number">3.2.2.3.2</span> Une réflexion
+number="3.1.5.3.2">
+<h5><span class="header-section-number">3.1.5.3.2</span> Une réflexion
 sur le terme <em>hétérogène</em></h5>
 <p><img src="img/bonCommentaire.png" /></p>
 </div>
@@ -843,12 +648,8 @@ sur le terme <em>hétérogène</em></h5>
 </div>
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br>
-<small><p>L5GEABIM Analyses bivariées et multivariées</p></small>
 
 
-</div>
-</div>
 
 </div>
 
@@ -881,35 +682,6 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
-<script>
-$(document).ready(function ()  {
-
-    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
-    $('.unlisted.unnumbered').addClass('toc-ignore')
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
