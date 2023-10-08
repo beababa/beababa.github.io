@@ -526,118 +526,104 @@ peut comparer entre les zones.</p></li>
 </div>
 </div>
 </div>
-<div id="khi2-un-exemple-sur-un-dé-truqué" class="section level1"
+<div id="tableau-de-contingence-correction" class="section level1"
 number="3">
-<h1><span class="header-section-number">3</span> Khi2 : un exemple sur
+<h1><span class="header-section-number">3</span> Tableau de contingence
+: correction</h1>
+<div id="manipulation-du-tableau" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Manipulation du
+tableau</h2>
+<p>Il fallait travailler sur les élections 2022. Le tableau est présenté
+en longueur.</p>
+<p>Pour pouvoir obtenir un tableau de contingence :</p>
+<ul>
+<li>Récupérer le nom de chaque candidat avec une formule</li>
+</ul>
+<p><img src="img/continRecup.png" /> - faire une recopie incrémentée sur
+la droite</p>
+<ul>
+<li><p>transposer le tableau et faire une copie spéciale valeurs
+uniquement (CTRL + MAJ + V)</p></li>
+<li><p>poser un filtre et récupérer uniquement les noms des
+candidats</p></li>
+</ul>
+<p><img src="img/continFiltre.png" /></p>
+<ul>
+<li>ne pas oublier de faire un copier - coller du tableau final en
+transposant</li>
+</ul>
+</div>
+<div id="correction-rapide" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Correction
+rapide</h2>
+<div id="description-de-la-donnée" class="section level3"
+number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Description de la
+donnée</h3>
+<p>Il s’agit des résultats de la présidentielle sur 2022 à Bondy
+(chiffres du ministère de l’intérieur via data.gouv.fr)</p>
+<p>La donnée comporte 2 variables :</p>
+<ul>
+<li>les 32 bureaux de vote</li>
+<li>les 12 candidats</li>
+</ul>
+</div>
+<div id="graphique" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Graphique</h3>
+<p><img src="img/continGraphique.png" /> Remarquer le titre</p>
+<p>au niveau de la présentation des séries, la boite de dialogue
+<em>plages de données</em> permet de classer les séries</p>
+<p><img src="img/continEtik.png" /></p>
+</div>
+<div id="analyse" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Analyse</h3>
+<p>Sur les 12 candidats, 3 arrivent en tête dans tous les bureaux avec
+cependant un vote majoritaire pour Mélenchon dans l’échantillon des 4
+bureaux. Les voies se répartissent de manière quasiment homogène sur les
+9 autres candidats. Même si les bureaux restent différents, les
+répartitions des votes se ressemblent. Les différences entre bureaux
+étaient plus marquées en 2002.</p>
+</div>
+<div id="observations-sur-les-villes-choisies" class="section level3"
+number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Observations sur
+les villes choisies</h3>
+</div>
+</div>
+</div>
+<div id="khi2-un-exemple-sur-un-dé-truqué" class="section level1"
+number="4">
+<h1><span class="header-section-number">4</span> Khi2 : un exemple sur
 un dé truqué</h1>
 <p>Le dé est-il truqué ?</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">face</th>
-<th align="right">effectif</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">15</td>
-</tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="right">7</td>
-</tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td align="right">4</td>
-<td align="right">11</td>
-</tr>
-<tr class="odd">
-<td align="right">5</td>
-<td align="right">6</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">17</td>
-</tr>
-</tbody>
-</table>
 <p>Le nombre total de lancers est de 60.</p>
-<div id="hypothèse-dindépendance" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Hypothèse
+<div id="hypothèse-dindépendance" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Hypothèse
 d’indépendance</h2>
 <p>hypothèse H0 : le dé n’est pas truqué (il y a indépendance entre la
 face et le nombre de fois où elle sort)</p>
 </div>
-<div id="effectifs-théoriques" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Effectifs
+<div id="effectifs-théoriques" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Effectifs
 théoriques</h2>
 <p>Sur le total des lancers (60), chaque face aurait pû sortir 10
 fois.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">face</th>
-<th align="right">effectif</th>
-<th align="right">effectifThéorique</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">15</td>
-<td align="right">10</td>
-</tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="right">7</td>
-<td align="right">10</td>
-</tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="right">4</td>
-<td align="right">10</td>
-</tr>
-<tr class="even">
-<td align="right">4</td>
-<td align="right">11</td>
-<td align="right">10</td>
-</tr>
-<tr class="odd">
-<td align="right">5</td>
-<td align="right">6</td>
-<td align="right">10</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">17</td>
-<td align="right">10</td>
-</tr>
-</tbody>
-</table>
 </div>
-<div id="calcul-du-khi2" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Calcul du khi2</h2>
+<div id="calcul-du-khi2" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Calcul du khi2</h2>
 <p>distance entre effectifs théoriques et observés</p>
 <p>Elle se mesure avec le khi2</p>
 <p>On calcule l’écart, puis le carré de cet écart et on pondère par
 l’effectif théorique.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>(ecart <span class="ot">&lt;-</span> df<span class="sc">$</span>effectif <span class="sc">-</span> df<span class="sc">$</span>effectifThéorique)</span></code></pre></div>
-<pre><code>## [1]  5 -3 -6  1 -4  7</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>(distance <span class="ot">&lt;-</span>  ecart<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 25  9 36  1 16 49</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>(relatif <span class="ot">&lt;-</span> distance <span class="sc">/</span> df<span class="sc">$</span>effectifThéorique)</span></code></pre></div>
-<pre><code>## [1] 2.5 0.9 3.6 0.1 1.6 4.9</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>(khi2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(relatif))</span></code></pre></div>
-<pre><code>## [1] 13.6</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>(ecart <span class="ot">&lt;-</span> df<span class="sc">$</span>effectif <span class="sc">-</span> df<span class="sc">$</span>effectifThéorique)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>(distance <span class="ot">&lt;-</span>  ecart<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>(relatif <span class="ot">&lt;-</span> distance <span class="sc">/</span> df<span class="sc">$</span>effectifThéorique)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>(khi2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(relatif))</span></code></pre></div>
 </div>
-<div id="test-du-khi2" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Test du khi2</h2>
-<div id="paramètres-du-test" class="section level3" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> Paramètres du
+<div id="test-du-khi2" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Test du khi2</h2>
+<div id="paramètres-du-test" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Paramètres du
 test</h3>
 <ul>
 <li>degré de liberté : 5</li>
@@ -648,8 +634,8 @@ valeur à partir des 5 autres)</p>
 <li>Pour un risque à 0,05 (5 chances sur 100 de se tromper)</li>
 </ul>
 </div>
-<div id="résultat" class="section level3" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> Résultat</h3>
+<div id="résultat" class="section level3" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Résultat</h3>
 <p>Lecture dans la table du khi2</p>
 <p><img src="img/khi2table.png" /> le khi2 théorique est de 11,7, il est
 donc inférieur au khi2 observé.</p>
@@ -657,6 +643,124 @@ donc inférieur au khi2 observé.</p>
 <p>Le test est rejeté avec un risque de 5 %</p>
 <p>Donc, le dé est truqué.</p>
 </div>
+</div>
+</div>
+<div id="mise-en-pratique-sur-les-résultats-des-votes-2002"
+class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Mise en pratique sur
+les résultats des votes 2002</h1>
+<div id="ennoncer-lhypothèse-h0" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Ennoncer l’hypothèse
+H0</h2>
+<p>La répartition des votes entre les différents candidats est
+indépendant du bureau de vote.</p>
+</div>
+<div id="effectif-théorique" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Effectif
+théorique</h2>
+<p>La première case reçoit la formule :</p>
+<ul>
+<li>(total lg / total) * total colonne</li>
+</ul>
+<p>C’est ce qu’on appelle également le produit des marges</p>
+<p><img src="img/effectifTheorique.png" /></p>
+</div>
+<div id="ecarts-entre-observés-et-théoriques" class="section level2"
+number="5.3">
+<h2><span class="header-section-number">5.3</span> Ecarts entre observés
+et théoriques</h2>
+<p>Que signifie une valeur zéro ?</p>
+<p>Utiliser la notion</p>
+<ul>
+<li>sur représentation / sous représentation</li>
+</ul>
+<p><img src="img/ecartsTableauComplet.png" /></p>
+<p>Sur les bureaux 1 et 2, on observe une sur-représentation de Bayrou
+et une sous-représentation de Taubira. (en principe, les bureaux 1 et 2
+sont plutôt au centre ville)</p>
+</div>
+<div id="le-khi2" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Le Khi2</h2>
+<p>Le khi2 va permettre de valider le rejet de l’hypothèse
+d’indépendance.</p>
+<p>rappel : métrique euclidienne plutôt que les valeurs absolues on
+utilise les carrés</p>
+<div id="le-khi2-partiel" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Le Khi2
+partiel</h3>
+<p>On met les écarts rapportés à la valeur théorique d’indépendance au
+carré. Puis on divise par l’effectif théorique.</p>
+<p><img src="img/khi2partiel.png" /></p>
+</div>
+<div id="le-khi2-1" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Le Khi2</h3>
+<p>Le total de tous les khi2 partiels</p>
+<p><img src="img/khi2partiel.png" /></p>
+<p>C’est le total des khi2 partiels (dans notre exemple 768)</p>
+<p><img src="img/khi2Total.png" /></p>
+<p>On définit :</p>
+<ul>
+<li>degré de liberté lg -1 * col -1</li>
+</ul>
+<p>16 candidats et 17 bureaux</p>
+<ul>
+<li>risque 1, 5 et 10 %</li>
+</ul>
+<p>Sur internet, dans n’importe quelle table, on cherche les valeurs
+correspondantes.</p>
+<p><a
+href="https://jeanpaullaurent.fr/media/docetud/table_khi2_complete.pdf"
+class="uri">https://jeanpaullaurent.fr/media/docetud/table_khi2_complete.pdf</a></p>
+<p>Comme le nombre de degrés de liberté est important, on peut aussi
+utiliser la formule du tableur</p>
+<p><img src="img/khi2Test.png" /></p>
+</div>
+<div id="rejet-de-h0-ou-pas" class="section level3" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Rejet de H0 ou
+pas</h3>
+<p>HO hypothèse d’indépendance. son rejet implique qu’il y a une
+relation.</p>
+<p>Les variables bureau de vote et candidats ont une relation avec une
+marge d’erreur très faible puisque le khi2 augmente quand le risque
+d’erreur baisse.</p>
+<p>Les logiciels de stats proposent le risque limite, la valeur de
+bascule entre le rejet et l’acceptation de l’hypothèse nulle.</p>
+</div>
+</div>
+</div>
+<div id="pourquoi-le-khi2" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Pourquoi le khi2 ?</h1>
+<div id="les-fréquences-conditionnelles-suffisent-t-elles"
+class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Les fréquences
+conditionnelles suffisent-t-elles ?</h2>
+<p>Comparaison des 2 tableaux</p>
+<p>Fréquence conditionnelle en ligne</p>
+<p><img src="img/tabFreqLg.png" /></p>
+<p><img src="img/tabObsTheo.png" /></p>
+<p>Estimation des écarts fondés sur la pondération des masses</p>
+</div>
+<div
+id="le-khi2-met-en-évidence-les-variations-faibles-autour-de-la-moyenne"
+class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Le khi2 met en
+évidence les variations faibles autour de la moyenne</h2>
+<p>A partir de quand le khi2 devient inférieur ?</p>
+<p>Si on prend les résultats de l’élection 2022 où il apparaît que le
+vote pivot est celui de Mélenchon, le calcul du khi2</p>
+<p>Le khi2 diminue légèrement, mais reste largement au dessus du khi2
+théorique (environ 560)</p>
+</div>
+<div id="et-en-carto" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Et en carto…</h2>
+<p>Carte des contributions au khi2</p>
+<p>Beaucoup de petits khi2 (correspond aux petits candidats)</p>
+<p>Cette carte permet de commencer à classifier les bureaux de vote par
+rapport à un modèle d’indépendance, une répartition des votes type.</p>
+<p>Elle permet de situer précisemment là où l’élection s’est jouée dans
+les bureaux 5, 24, 2, 15, 29,30</p>
+<p>Ce qui est intéressant ici est que ces bureaux sont situés sur
+l’ensemble du territoire de la commune.</p>
 </div>
 </div>
 

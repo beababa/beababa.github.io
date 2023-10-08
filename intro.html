@@ -13,7 +13,7 @@
 
 <title>Introduction</title>
 
-<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -29,12 +29,12 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -92,11 +92,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -105,14 +105,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -127,13 +127,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -229,11 +236,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -262,8 +273,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -271,16 +282,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -457,8 +461,8 @@ number="1">
 <h1><span class="header-section-number">1</span> Intitulé et déroulé du
 cours</h1>
 <p><em>“L5GEABIM Analyses bivariées et multivariées”</em></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/presentation.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">header =</span> F)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;groupe&quot;</span>, <span class="st">&quot;heures&quot;</span>, <span class="st">&quot;enseignant&quot;</span>) )</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/presentation.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">header =</span> F)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;groupe&quot;</span>, <span class="st">&quot;heures&quot;</span>, <span class="st">&quot;enseignant&quot;</span>) )</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -485,8 +489,8 @@ cours</h1>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deroule2023.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deroule2023.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
 <table>
 <colgroup>
 <col width="8%" />
@@ -629,141 +633,234 @@ présidentielles 2022</p>
 <p>L’objectif est que chaque étudiant choisisse une ville (avec au moins
 5 bureaux de vote)</p>
 <p>Pour 2022, on rajoute les étiquettes des colonnes manquantes</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data2022 <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/gros/resultats-par-niveau-burvot-t1-france-entiere.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;Latin1&quot;</span>, <span class="at">header =</span> T)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data2022)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    69682 obs. of  105 variables:
-##  $ Code.du.département          : chr  &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; ...
-##  $ Libellé.du.département       : chr  &quot;Ain&quot; &quot;Ain&quot; &quot;Ain&quot; &quot;Ain&quot; ...
-##  $ Code.de.la.circonscription   : int  4 5 5 5 5 5 5 5 5 5 ...
-##  $ Libellé.de.la.circonscription: chr  &quot;4ème circonscription&quot; &quot;5ème circonscription&quot; &quot;5ème circonscription&quot; &quot;5ème circonscription&quot; ...
-##  $ Code.de.la.commune           : int  1 2 4 4 4 4 4 4 4 4 ...
-##  $ Libellé.de.la.commune        : chr  &quot;L&#39;Abergement-Clémenciat&quot; &quot;L&#39;Abergement-de-Varey&quot; &quot;Ambérieu-en-Bugey&quot; &quot;Ambérieu-en-Bugey&quot; ...
-##  $ Code.du.b.vote               : chr  &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;2&quot; ...
-##  $ Inscrits                     : int  645 213 1129 1128 1213 933 1047 1152 1034 1129 ...
-##  $ Abstentions                  : int  108 38 266 265 246 224 324 278 247 228 ...
-##  $ X..Abs.Ins                   : num  16.7 17.8 23.6 23.5 20.3 ...
-##  $ Votants                      : int  537 175 863 863 967 709 723 874 787 901 ...
-##  $ X..Vot.Ins                   : num  83.3 82.2 76.4 76.5 79.7 ...
-##  $ Blancs                       : int  16 3 18 15 10 8 11 8 9 9 ...
-##  $ X..Blancs.Ins                : num  2.48 1.41 1.59 1.33 0.82 0.86 1.05 0.69 0.87 0.8 ...
-##  $ X..Blancs.Vot                : num  2.98 1.71 2.09 1.74 1.03 1.13 1.52 0.92 1.14 1 ...
-##  $ Nuls                         : int  1 1 5 6 8 4 5 10 2 6 ...
-##  $ X..Nuls.Ins                  : num  0.16 0.47 0.44 0.53 0.66 0.43 0.48 0.87 0.19 0.53 ...
-##  $ X..Nuls.Vot                  : num  0.19 0.57 0.58 0.7 0.83 0.56 0.69 1.14 0.25 0.67 ...
-##  $ Exprimés                     : int  520 171 840 842 949 697 707 856 776 886 ...
-##  $ X..Exp.Ins                   : num  80.6 80.3 74.4 74.7 78.2 ...
-##  $ X..Exp.Vot                   : num  96.8 97.7 97.3 97.6 98.1 ...
-##  $ N.Panneau                    : int  1 1 1 1 1 1 1 1 1 1 ...
-##  $ Sexe                         : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-##  $ Nom                          : chr  &quot;ARTHAUD&quot; &quot;ARTHAUD&quot; &quot;ARTHAUD&quot; &quot;ARTHAUD&quot; ...
-##  $ Prénom                       : chr  &quot;Nathalie&quot; &quot;Nathalie&quot; &quot;Nathalie&quot; &quot;Nathalie&quot; ...
-##  $ Voix                         : int  3 2 4 6 8 4 7 4 3 2 ...
-##  $ X..Voix.Ins                  : num  0.47 0.94 0.35 0.53 0.66 0.43 0.67 0.35 0.29 0.18 ...
-##  $ X..Voix.Exp                  : num  0.58 1.17 0.48 0.71 0.84 0.57 0.99 0.47 0.39 0.23 ...
-##  $ N.Panneau.1                  : int  2 2 2 2 2 2 2 2 2 2 ...
-##  $ Sexe.1                       : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
-##  $ Nom.1                        : chr  &quot;ROUSSEL&quot; &quot;ROUSSEL&quot; &quot;ROUSSEL&quot; &quot;ROUSSEL&quot; ...
-##  $ Prénom.1                     : chr  &quot;Fabien&quot; &quot;Fabien&quot; &quot;Fabien&quot; &quot;Fabien&quot; ...
-##  $ Voix.1                       : int  6 7 30 13 18 21 22 24 22 23 ...
-##  $ X..Voix.Ins.1                : num  0.93 3.29 2.66 1.15 1.48 2.25 2.1 2.08 2.13 2.04 ...
-##  $ X..Voix.Exp.1                : num  1.15 4.09 3.57 1.54 1.9 3.01 3.11 2.8 2.84 2.6 ...
-##  $ N.Panneau.2                  : int  3 3 3 3 3 3 3 3 3 3 ...
-##  $ Sexe.2                       : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
-##  $ Nom.2                        : chr  &quot;MACRON&quot; &quot;MACRON&quot; &quot;MACRON&quot; &quot;MACRON&quot; ...
-##  $ Prénom.2                     : chr  &quot;Emmanuel&quot; &quot;Emmanuel&quot; &quot;Emmanuel&quot; &quot;Emmanuel&quot; ...
-##  $ Voix.2                       : int  150 50 159 201 229 156 132 175 189 212 ...
-##  $ X..Voix.Ins.2                : num  23.3 23.5 14.1 17.8 18.9 ...
-##  $ X..Voix.Exp.2                : num  28.9 29.2 18.9 23.9 24.1 ...
-##  $ N.Panneau.3                  : int  4 4 4 4 4 4 4 4 4 4 ...
-##  $ Sexe.3                       : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
-##  $ Nom.3                        : chr  &quot;LASSALLE&quot; &quot;LASSALLE&quot; &quot;LASSALLE&quot; &quot;LASSALLE&quot; ...
-##  $ Prénom.3                     : chr  &quot;Jean&quot; &quot;Jean&quot; &quot;Jean&quot; &quot;Jean&quot; ...
-##  $ Voix.3                       : int  18 10 24 19 28 16 19 20 19 32 ...
-##  $ X..Voix.Ins.3                : num  2.79 4.69 2.13 1.68 2.31 1.71 1.81 1.74 1.84 2.83 ...
-##  $ X..Voix.Exp.3                : num  3.46 5.85 2.86 2.26 2.95 2.3 2.69 2.34 2.45 3.61 ...
-##  $ N.Panneau.4                  : int  5 5 5 5 5 5 5 5 5 5 ...
-##  $ Sexe.4                       : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-##  $ Nom.4                        : chr  &quot;LE PEN&quot; &quot;LE PEN&quot; &quot;LE PEN&quot; &quot;LE PEN&quot; ...
-##  $ Prénom.4                     : chr  &quot;Marine&quot; &quot;Marine&quot; &quot;Marine&quot; &quot;Marine&quot; ...
-##  $ Voix.4                       : int  149 23 237 210 227 172 178 207 188 227 ...
-##  $ X..Voix.Ins.4                : num  23.1 10.8 21 18.6 18.7 ...
-##  $ X..Voix.Exp.4                : num  28.6 13.4 28.2 24.9 23.9 ...
-##  $ N.Panneau.5                  : int  6 6 6 6 6 6 6 6 6 6 ...
-##  $ Sexe.5                       : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
-##  $ Nom.5                        : chr  &quot;ZEMMOUR&quot; &quot;ZEMMOUR&quot; &quot;ZEMMOUR&quot; &quot;ZEMMOUR&quot; ...
-##  $ Prénom.5                     : chr  &quot;Éric&quot; &quot;Éric&quot; &quot;Éric&quot; &quot;Éric&quot; ...
-##  $ Voix.5                       : int  43 14 69 68 74 40 46 67 74 92 ...
-##  $ X..Voix.Ins.5                : num  6.67 6.57 6.11 6.03 6.1 4.29 4.39 5.82 7.16 8.15 ...
-##  $ X..Voix.Exp.5                : num  8.27 8.19 8.21 8.08 7.8 ...
-##  $ N.Panneau.6                  : int  7 7 7 7 7 7 7 7 7 7 ...
-##  $ Sexe.6                       : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
-##  $ Nom.6                        : chr  &quot;MÉLENCHON&quot; &quot;MÉLENCHON&quot; &quot;MÉLENCHON&quot; &quot;MÉLENCHON&quot; ...
-##  $ Prénom.6                     : chr  &quot;Jean-Luc&quot; &quot;Jean-Luc&quot; &quot;Jean-Luc&quot; &quot;Jean-Luc&quot; ...
-##  $ Voix.6                       : int  66 41 216 194 227 202 226 210 159 170 ...
-##  $ X..Voix.Ins.6                : num  10.2 19.2 19.1 17.2 18.7 ...
-##  $ X..Voix.Exp.6                : num  12.7 24 25.7 23 23.9 ...
-##  $ N.Panneau.7                  : int  8 8 8 8 8 8 8 8 8 8 ...
-##  $ Sexe.7                       : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-##  $ Nom.7                        : chr  &quot;HIDALGO&quot; &quot;HIDALGO&quot; &quot;HIDALGO&quot; &quot;HIDALGO&quot; ...
-##  $ Prénom.7                     : chr  &quot;Anne&quot; &quot;Anne&quot; &quot;Anne&quot; &quot;Anne&quot; ...
-##  $ Voix.7                       : int  5 3 15 19 16 8 6 18 10 20 ...
-##  $ X..Voix.Ins.7                : num  0.78 1.41 1.33 1.68 1.32 0.86 0.57 1.56 0.97 1.77 ...
-##  $ X..Voix.Exp.7                : num  0.96 1.75 1.79 2.26 1.69 1.15 0.85 2.1 1.29 2.26 ...
-##  $ N.Panneau.8                  : int  9 9 9 9 9 9 9 9 9 9 ...
-##  $ Sexe.8                       : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
-##  $ Nom.8                        : chr  &quot;JADOT&quot; &quot;JADOT&quot; &quot;JADOT&quot; &quot;JADOT&quot; ...
-##  $ Prénom.8                     : chr  &quot;Yannick&quot; &quot;Yannick&quot; &quot;Yannick&quot; &quot;Yannick&quot; ...
-##  $ Voix.8                       : int  30 10 25 46 65 15 24 51 33 28 ...
-##  $ X..Voix.Ins.8                : num  4.65 4.69 2.21 4.08 5.36 1.61 2.29 4.43 3.19 2.48 ...
-##  $ X..Voix.Exp.8                : num  5.77 5.85 2.98 5.46 6.85 2.15 3.39 5.96 4.25 3.16 ...
-##  $ N.Panneau.9                  : int  10 10 10 10 10 10 10 10 10 10 ...
-##  $ Sexe.9                       : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-##  $ Nom.9                        : chr  &quot;PÉCRESSE&quot; &quot;PÉCRESSE&quot; &quot;PÉCRESSE&quot; &quot;PÉCRESSE&quot; ...
-##  $ Prénom.9                     : chr  &quot;Valérie&quot; &quot;Valérie&quot; &quot;Valérie&quot; &quot;Valérie&quot; ...
-##  $ Voix.9                       : int  26 8 40 42 35 33 23 43 45 48 ...
-##  $ X..Voix.Ins.9                : num  4.03 3.76 3.54 3.72 2.89 3.54 2.2 3.73 4.35 4.25 ...
-##  $ X..Voix.Exp.9                : num  5 4.68 4.76 4.99 3.69 4.73 3.25 5.02 5.8 5.42 ...
-##  $ N.Panneau.10                 : int  11 11 11 11 11 11 11 11 11 11 ...
-##  $ Sexe.10                      : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
-##  $ Nom.10                       : chr  &quot;POUTOU&quot; &quot;POUTOU&quot; &quot;POUTOU&quot; &quot;POUTOU&quot; ...
-##  $ Prénom.10                    : chr  &quot;Philippe&quot; &quot;Philippe&quot; &quot;Philippe&quot; &quot;Philippe&quot; ...
-##  $ Voix.10                      : int  3 3 8 4 3 4 8 8 5 3 ...
-##  $ X..Voix.Ins.10               : num  0.47 1.41 0.71 0.35 0.25 0.43 0.76 0.69 0.48 0.27 ...
-##  $ X..Voix.Exp.10               : num  0.58 1.75 0.95 0.48 0.32 0.57 1.13 0.93 0.64 0.34 ...
-##  $ N.Panneau.11                 : int  12 12 12 12 12 12 12 12 12 12 ...
-##   [list output truncated]</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>bondy2022 <span class="ot">&lt;-</span> data2022 [ data2022<span class="sc">$</span>Libellé.de.la.commune <span class="sc">==</span> <span class="st">&quot;Bondy&quot;</span>,]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(bondy2022, <span class="st">&quot;data/bondy2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>data2002 <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/gros/PR02_BVot_T1T2.csv&quot;</span>, <span class="at">fileEncoding=</span> <span class="st">&quot;Latin1&quot;</span>,<span class="at">header=</span>F,<span class="at">skip=</span><span class="dv">18</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data2002)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    1154537 obs. of  13 variables:
-##  $ V1 : int  1 1 1 1 1 1 1 1 1 1 ...
-##  $ V2 : chr  &quot;01&quot; &quot;01&quot; &quot;01&quot; &quot;01&quot; ...
-##  $ V3 : int  1 1 1 1 1 1 1 1 1 1 ...
-##  $ V4 : chr  &quot;L&#39;Abergement-Clémenciat&quot; &quot;L&#39;Abergement-Clémenciat&quot; &quot;L&#39;Abergement-Clémenciat&quot; &quot;L&#39;Abergement-Clémenciat&quot; ...
-##  $ V5 : chr  &quot;0001&quot; &quot;0001&quot; &quot;0001&quot; &quot;0001&quot; ...
-##  $ V6 : int  563 563 563 563 563 563 563 563 563 563 ...
-##  $ V7 : int  442 442 442 442 442 442 442 442 442 442 ...
-##  $ V8 : int  427 427 427 427 427 427 427 427 427 427 ...
-##  $ V9 : int  2 3 4 5 6 7 8 9 10 11 ...
-##  $ V10: chr  &quot;LEPAGE&quot; &quot;GLUCKSTEIN&quot; &quot;BAYROU&quot; &quot;CHIRAC&quot; ...
-##  $ V11: chr  &quot;CORINNE&quot; &quot;DANIEL&quot; &quot;FRANCOIS&quot; &quot;JACQUES&quot; ...
-##  $ V12: chr  &quot;LEPA&quot; &quot;GLUC&quot; &quot;BAYR&quot; &quot;CHIR&quot; ...
-##  $ V13: int  9 1 30 66 82 12 28 23 60 6 ...</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data2002 <span class="ot">&lt;-</span> data2002 [, <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">13</span>)]</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ville&quot;</span>,<span class="st">&quot;bv&quot;</span>   ,<span class="st">&quot;inscrits&quot;</span> ,<span class="st">&quot;votants&quot;</span>, <span class="st">&quot;exprimes&quot;</span>, <span class="st">&quot;nom&quot;</span>,  <span class="st">&quot;nb&quot;</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data2002) <span class="ot">&lt;-</span> var</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data2002)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    1154537 obs. of  7 variables:
-##  $ ville   : chr  &quot;L&#39;Abergement-Clémenciat&quot; &quot;L&#39;Abergement-Clémenciat&quot; &quot;L&#39;Abergement-Clémenciat&quot; &quot;L&#39;Abergement-Clémenciat&quot; ...
-##  $ bv      : chr  &quot;0001&quot; &quot;0001&quot; &quot;0001&quot; &quot;0001&quot; ...
-##  $ inscrits: int  563 563 563 563 563 563 563 563 563 563 ...
-##  $ votants : int  442 442 442 442 442 442 442 442 442 442 ...
-##  $ exprimes: int  427 427 427 427 427 427 427 427 427 427 ...
-##  $ nom     : chr  &quot;LEPAGE&quot; &quot;GLUCKSTEIN&quot; &quot;BAYROU&quot; &quot;CHIRAC&quot; ...
-##  $ nb      : int  9 1 30 66 82 12 28 23 60 6 ...</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bondy2002 <span class="ot">&lt;-</span> data2002 [ data2002<span class="sc">$</span>ville <span class="sc">==</span> <span class="st">&quot;Bondy&quot;</span>,]</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(bondy2002, <span class="st">&quot;data/bondy2002.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># 2022</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>data2022 <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/gros/resultats-par-niveau-burvot-t1-france-entiere.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;Latin1&quot;</span>, <span class="at">header =</span> T)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>bondy2022 <span class="ot">&lt;-</span> data2022 [ data2022<span class="sc">$</span>Libellé.de.la.commune <span class="sc">==</span> <span class="st">&quot;Bondy&quot;</span>,]</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="fu">write.csv</span>(bondy2022, <span class="st">&quot;data/bondy2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co"># 2002</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>data2002 <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/gros/PR02_BVot_T1T2.csv&quot;</span>, <span class="at">fileEncoding=</span> <span class="st">&quot;Latin1&quot;</span>,<span class="at">header=</span>F,<span class="at">skip=</span><span class="dv">18</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="fu">str</span>(data2002)</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>data2002 <span class="ot">&lt;-</span> data2002 [, <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">13</span>)]</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ville&quot;</span>,<span class="st">&quot;bv&quot;</span>   ,<span class="st">&quot;inscrits&quot;</span> ,<span class="st">&quot;votants&quot;</span>, <span class="st">&quot;exprimes&quot;</span>, <span class="st">&quot;nom&quot;</span>,  <span class="st">&quot;nb&quot;</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="fu">names</span>(data2002) <span class="ot">&lt;-</span> var</span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="fu">str</span>(data2002)</span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a>bondy2002 <span class="ot">&lt;-</span> data2002 [ data2002<span class="sc">$</span>ville <span class="sc">==</span> <span class="st">&quot;Bondy&quot;</span>,]</span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="fu">write.csv</span>(bondy2002, <span class="st">&quot;data/bondy2002.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+</div>
+<div id="les-données-des-étudiants" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Les données des
+étudiants</h2>
+<p>Chaque étudiant a choisi une ville pour ses données.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>ville <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cours2.csv&quot;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>ville <span class="ot">&lt;-</span> ville [,<span class="dv">3</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>villeModif <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cours3.csv&quot;</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>ville <span class="ot">&lt;-</span> <span class="fu">c</span>(ville, villeModif [,<span class="dv">4</span>])</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co"># tts les villes ont</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>ville <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(ville)</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co"># recodage pour le zéro</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>nb <span class="ot">&lt;-</span> <span class="fu">nchar</span>(ville)</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(ville, nb))</span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>df<span class="sc">$</span>ville [df<span class="sc">$</span>nb <span class="sc">==</span> <span class="dv">4</span> ]<span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;0&quot;</span>, df<span class="sc">$</span>ville [df<span class="sc">$</span>nb <span class="sc">==</span> <span class="dv">4</span> ] )</span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>df<span class="sc">$</span>nb <span class="ot">&lt;-</span> <span class="fu">nchar</span>(df<span class="sc">$</span>ville)</span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>nb)</span></code></pre></div>
+<pre><code>## 
+##  0  1  5 12 
+## 14  1 68  3</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> df [<span class="sc">!</span>(df<span class="sc">$</span>nb <span class="sc">!=</span> <span class="dv">5</span>),]</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co"># liste des villes utilisées</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
+<pre><code>## Linking to GEOS 3.9.3, GDAL 3.5.2, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>fr <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/COMMUNE.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `COMMUNE&#39; from data source 
+##   `C:\Users\tachasa\01_stat\data\gros\COMMUNE.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 34968 features and 12 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -61.80984 ymin: -21.38963 xmax: 55.83663 ymax: 51.08899
+## Geodetic CRS:  WGS 84</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre><code>## [1] &quot;ville&quot; &quot;nb&quot;</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">names</span>(fr)</span></code></pre></div>
+<pre><code>##  [1] &quot;ID&quot;         &quot;NOM_COM&quot;    &quot;NOM_COM_M&quot;  &quot;INSEE_COM&quot;  &quot;STATUT&quot;    
+##  [6] &quot;INSEE_CAN&quot;  &quot;INSEE_ARR&quot;  &quot;INSEE_DEP&quot;  &quot;INSEE_REG&quot;  &quot;CODE_EPCI&quot; 
+## [11] &quot;POPULATION&quot; &quot;TYPE&quot;       &quot;geometry&quot;</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>joint <span class="ot">&lt;-</span> <span class="fu">merge</span>(fr, df, <span class="at">by.x =</span> <span class="st">&quot;INSEE_COM&quot;</span>, <span class="at">by.y=</span> <span class="st">&quot;ville&quot;</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co"># pb sur 4 code insee</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>cp <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(df<span class="sc">$</span>ville, joint<span class="sc">$</span>INSEE_COM)</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co"> retrouver les code insee</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co"># jointure ville code insee pour les résultats</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>data2022 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/gros/resultats-par-niveau-burvot-t1-france-entiere.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">header =</span> T, <span class="at">colClasses =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="fu">names</span>(data2022)</span></code></pre></div>
+<pre><code>##   [1] &quot;Code.du.département&quot;           &quot;Libellé.du.département&quot;       
+##   [3] &quot;Code.de.la.circonscription&quot;    &quot;Libellé.de.la.circonscription&quot;
+##   [5] &quot;Code.de.la.commune&quot;            &quot;Libellé.de.la.commune&quot;        
+##   [7] &quot;Code.du.b.vote&quot;                &quot;Inscrits&quot;                     
+##   [9] &quot;Abstentions&quot;                   &quot;X..Abs.Ins&quot;                   
+##  [11] &quot;Votants&quot;                       &quot;X..Vot.Ins&quot;                   
+##  [13] &quot;Blancs&quot;                        &quot;X..Blancs.Ins&quot;                
+##  [15] &quot;X..Blancs.Vot&quot;                 &quot;Nuls&quot;                         
+##  [17] &quot;X..Nuls.Ins&quot;                   &quot;X..Nuls.Vot&quot;                  
+##  [19] &quot;Exprimés&quot;                      &quot;X..Exp.Ins&quot;                   
+##  [21] &quot;X..Exp.Vot&quot;                    &quot;N.Panneau&quot;                    
+##  [23] &quot;Sexe&quot;                          &quot;Nom&quot;                          
+##  [25] &quot;Prénom&quot;                        &quot;Voix&quot;                         
+##  [27] &quot;X..Voix.Ins&quot;                   &quot;X..Voix.Exp&quot;                  
+##  [29] &quot;N.Panneau.1&quot;                   &quot;Sexe.1&quot;                       
+##  [31] &quot;Nom.1&quot;                         &quot;Prénom.1&quot;                     
+##  [33] &quot;Voix.1&quot;                        &quot;X..Voix.Ins.1&quot;                
+##  [35] &quot;X..Voix.Exp.1&quot;                 &quot;N.Panneau.2&quot;                  
+##  [37] &quot;Sexe.2&quot;                        &quot;Nom.2&quot;                        
+##  [39] &quot;Prénom.2&quot;                      &quot;Voix.2&quot;                       
+##  [41] &quot;X..Voix.Ins.2&quot;                 &quot;X..Voix.Exp.2&quot;                
+##  [43] &quot;N.Panneau.3&quot;                   &quot;Sexe.3&quot;                       
+##  [45] &quot;Nom.3&quot;                         &quot;Prénom.3&quot;                     
+##  [47] &quot;Voix.3&quot;                        &quot;X..Voix.Ins.3&quot;                
+##  [49] &quot;X..Voix.Exp.3&quot;                 &quot;N.Panneau.4&quot;                  
+##  [51] &quot;Sexe.4&quot;                        &quot;Nom.4&quot;                        
+##  [53] &quot;Prénom.4&quot;                      &quot;Voix.4&quot;                       
+##  [55] &quot;X..Voix.Ins.4&quot;                 &quot;X..Voix.Exp.4&quot;                
+##  [57] &quot;N.Panneau.5&quot;                   &quot;Sexe.5&quot;                       
+##  [59] &quot;Nom.5&quot;                         &quot;Prénom.5&quot;                     
+##  [61] &quot;Voix.5&quot;                        &quot;X..Voix.Ins.5&quot;                
+##  [63] &quot;X..Voix.Exp.5&quot;                 &quot;N.Panneau.6&quot;                  
+##  [65] &quot;Sexe.6&quot;                        &quot;Nom.6&quot;                        
+##  [67] &quot;Prénom.6&quot;                      &quot;Voix.6&quot;                       
+##  [69] &quot;X..Voix.Ins.6&quot;                 &quot;X..Voix.Exp.6&quot;                
+##  [71] &quot;N.Panneau.7&quot;                   &quot;Sexe.7&quot;                       
+##  [73] &quot;Nom.7&quot;                         &quot;Prénom.7&quot;                     
+##  [75] &quot;Voix.7&quot;                        &quot;X..Voix.Ins.7&quot;                
+##  [77] &quot;X..Voix.Exp.7&quot;                 &quot;N.Panneau.8&quot;                  
+##  [79] &quot;Sexe.8&quot;                        &quot;Nom.8&quot;                        
+##  [81] &quot;Prénom.8&quot;                      &quot;Voix.8&quot;                       
+##  [83] &quot;X..Voix.Ins.8&quot;                 &quot;X..Voix.Exp.8&quot;                
+##  [85] &quot;N.Panneau.9&quot;                   &quot;Sexe.9&quot;                       
+##  [87] &quot;Nom.9&quot;                         &quot;Prénom.9&quot;                     
+##  [89] &quot;Voix.9&quot;                        &quot;X..Voix.Ins.9&quot;                
+##  [91] &quot;X..Voix.Exp.9&quot;                 &quot;N.Panneau.10&quot;                 
+##  [93] &quot;Sexe.10&quot;                       &quot;Nom.10&quot;                       
+##  [95] &quot;Prénom.10&quot;                     &quot;Voix.10&quot;                      
+##  [97] &quot;X..Voix.Ins.10&quot;                &quot;X..Voix.Exp.10&quot;               
+##  [99] &quot;N.Panneau.11&quot;                  &quot;Sexe.11&quot;                      
+## [101] &quot;Nom.11&quot;                        &quot;Prénom.11&quot;                    
+## [103] &quot;Voix.11&quot;                       &quot;X..Voix.Ins.11&quot;               
+## [105] &quot;X..Voix.Exp.11&quot;</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">str</span>(data2022<span class="sc">$</span>Code.de.la.commune)</span></code></pre></div>
+<pre><code>##  chr [1:69682] &quot;001&quot; &quot;002&quot; &quot;004&quot; &quot;004&quot; &quot;004&quot; &quot;004&quot; &quot;004&quot; &quot;004&quot; &quot;004&quot; &quot;004&quot; ...</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># transformation en données texte</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>data2022<span class="sc">$</span>INSEE_COM <span class="ot">&lt;-</span><span class="fu">paste0</span>(data2022<span class="sc">$</span>Code.du.département,data2022<span class="sc">$</span>Code.de.la.commune)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co"># 2e jointure</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>joint2 <span class="ot">&lt;-</span> <span class="fu">merge</span>(joint, data2022, <span class="at">by =</span> <span class="st">&quot;INSEE_COM&quot;</span>, )</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co"># pourquoi 267 ?</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(joint2<span class="sc">$</span>INSEE_COM))</span></code></pre></div>
+<pre><code>## [1] 61</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># encore 3 en moins...</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>fond <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/DEPARTEMENT.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `DEPARTEMENT&#39; from data source 
+##   `C:\Users\tachasa\01_stat\data\gros\DEPARTEMENT.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 101 features and 6 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -61.80984 ymin: -21.38963 xmax: 55.83663 ymax: 51.08899
+## Geodetic CRS:  WGS 84</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/communes.png&quot;</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="fu">mf_init</span>(joint)</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="fu">mf_map</span>(fond, <span class="at">add =</span> T, <span class="at">col =</span> <span class="st">&quot;antiquewhite1&quot;</span>, <span class="at">border =</span> <span class="st">&quot;wheat&quot;</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="fu">mf_map</span>(joint, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>,<span class="at">add =</span> T)</span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Communes choisies par les étudiants&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;IGN&quot;</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<pre><code>## png 
+##   2</code></pre>
+<p><img src="img/communes.png" /></p>
+<p>Des choix sur toute l’étendue du territoire de la métropole</p>
+<p>Enregistrement des fichiers</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">names</span>(joint2)</span></code></pre></div>
+<pre><code>##   [1] &quot;INSEE_COM&quot;                     &quot;ID&quot;                           
+##   [3] &quot;NOM_COM&quot;                       &quot;NOM_COM_M&quot;                    
+##   [5] &quot;STATUT&quot;                        &quot;INSEE_CAN&quot;                    
+##   [7] &quot;INSEE_ARR&quot;                     &quot;INSEE_DEP&quot;                    
+##   [9] &quot;INSEE_REG&quot;                     &quot;CODE_EPCI&quot;                    
+##  [11] &quot;POPULATION&quot;                    &quot;TYPE&quot;                         
+##  [13] &quot;nb&quot;                            &quot;Code.du.département&quot;          
+##  [15] &quot;Libellé.du.département&quot;        &quot;Code.de.la.circonscription&quot;   
+##  [17] &quot;Libellé.de.la.circonscription&quot; &quot;Code.de.la.commune&quot;           
+##  [19] &quot;Libellé.de.la.commune&quot;         &quot;Code.du.b.vote&quot;               
+##  [21] &quot;Inscrits&quot;                      &quot;Abstentions&quot;                  
+##  [23] &quot;X..Abs.Ins&quot;                    &quot;Votants&quot;                      
+##  [25] &quot;X..Vot.Ins&quot;                    &quot;Blancs&quot;                       
+##  [27] &quot;X..Blancs.Ins&quot;                 &quot;X..Blancs.Vot&quot;                
+##  [29] &quot;Nuls&quot;                          &quot;X..Nuls.Ins&quot;                  
+##  [31] &quot;X..Nuls.Vot&quot;                   &quot;Exprimés&quot;                     
+##  [33] &quot;X..Exp.Ins&quot;                    &quot;X..Exp.Vot&quot;                   
+##  [35] &quot;N.Panneau&quot;                     &quot;Sexe&quot;                         
+##  [37] &quot;Nom&quot;                           &quot;Prénom&quot;                       
+##  [39] &quot;Voix&quot;                          &quot;X..Voix.Ins&quot;                  
+##  [41] &quot;X..Voix.Exp&quot;                   &quot;N.Panneau.1&quot;                  
+##  [43] &quot;Sexe.1&quot;                        &quot;Nom.1&quot;                        
+##  [45] &quot;Prénom.1&quot;                      &quot;Voix.1&quot;                       
+##  [47] &quot;X..Voix.Ins.1&quot;                 &quot;X..Voix.Exp.1&quot;                
+##  [49] &quot;N.Panneau.2&quot;                   &quot;Sexe.2&quot;                       
+##  [51] &quot;Nom.2&quot;                         &quot;Prénom.2&quot;                     
+##  [53] &quot;Voix.2&quot;                        &quot;X..Voix.Ins.2&quot;                
+##  [55] &quot;X..Voix.Exp.2&quot;                 &quot;N.Panneau.3&quot;                  
+##  [57] &quot;Sexe.3&quot;                        &quot;Nom.3&quot;                        
+##  [59] &quot;Prénom.3&quot;                      &quot;Voix.3&quot;                       
+##  [61] &quot;X..Voix.Ins.3&quot;                 &quot;X..Voix.Exp.3&quot;                
+##  [63] &quot;N.Panneau.4&quot;                   &quot;Sexe.4&quot;                       
+##  [65] &quot;Nom.4&quot;                         &quot;Prénom.4&quot;                     
+##  [67] &quot;Voix.4&quot;                        &quot;X..Voix.Ins.4&quot;                
+##  [69] &quot;X..Voix.Exp.4&quot;                 &quot;N.Panneau.5&quot;                  
+##  [71] &quot;Sexe.5&quot;                        &quot;Nom.5&quot;                        
+##  [73] &quot;Prénom.5&quot;                      &quot;Voix.5&quot;                       
+##  [75] &quot;X..Voix.Ins.5&quot;                 &quot;X..Voix.Exp.5&quot;                
+##  [77] &quot;N.Panneau.6&quot;                   &quot;Sexe.6&quot;                       
+##  [79] &quot;Nom.6&quot;                         &quot;Prénom.6&quot;                     
+##  [81] &quot;Voix.6&quot;                        &quot;X..Voix.Ins.6&quot;                
+##  [83] &quot;X..Voix.Exp.6&quot;                 &quot;N.Panneau.7&quot;                  
+##  [85] &quot;Sexe.7&quot;                        &quot;Nom.7&quot;                        
+##  [87] &quot;Prénom.7&quot;                      &quot;Voix.7&quot;                       
+##  [89] &quot;X..Voix.Ins.7&quot;                 &quot;X..Voix.Exp.7&quot;                
+##  [91] &quot;N.Panneau.8&quot;                   &quot;Sexe.8&quot;                       
+##  [93] &quot;Nom.8&quot;                         &quot;Prénom.8&quot;                     
+##  [95] &quot;Voix.8&quot;                        &quot;X..Voix.Ins.8&quot;                
+##  [97] &quot;X..Voix.Exp.8&quot;                 &quot;N.Panneau.9&quot;                  
+##  [99] &quot;Sexe.9&quot;                        &quot;Nom.9&quot;                        
+## [101] &quot;Prénom.9&quot;                      &quot;Voix.9&quot;                       
+## [103] &quot;X..Voix.Ins.9&quot;                 &quot;X..Voix.Exp.9&quot;                
+## [105] &quot;N.Panneau.10&quot;                  &quot;Sexe.10&quot;                      
+## [107] &quot;Nom.10&quot;                        &quot;Prénom.10&quot;                    
+## [109] &quot;Voix.10&quot;                       &quot;X..Voix.Ins.10&quot;               
+## [111] &quot;X..Voix.Exp.10&quot;                &quot;N.Panneau.11&quot;                 
+## [113] &quot;Sexe.11&quot;                       &quot;Nom.11&quot;                       
+## [115] &quot;Prénom.11&quot;                     &quot;Voix.11&quot;                      
+## [117] &quot;X..Voix.Ins.11&quot;                &quot;X..Voix.Exp.11&quot;               
+## [119] &quot;geometry&quot;</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">st_write</span>(joint2 [, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">19</span><span class="sc">:</span><span class="dv">118</span>)], <span class="st">&quot;data/geo.gpkg&quot;</span>, <span class="st">&quot;data2022&quot;</span>, <span class="at">delete_layer =</span> T)</span></code></pre></div>
+<pre><code>## Deleting layer `data2022&#39; using driver `GPKG&#39;
+## Writing layer `data2022&#39; to data source `data/geo.gpkg&#39; using driver `GPKG&#39;
+## Writing 2677 features with 102 fields and geometry type Multi Polygon.</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">write.csv</span>(joint2 [, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">8</span>, <span class="dv">19</span><span class="sc">:</span><span class="dv">118</span>), <span class="at">drop =</span> T], <span class="st">&quot;data/data2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<p>Bureaux de vote pour chacune des communes</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/data2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>) </span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>cog <span class="ot">&lt;-</span> <span class="fu">unique</span>(data [,<span class="fu">c</span>(<span class="st">&quot;INSEE_COM&quot;</span>,<span class="st">&quot;Libellé.de.la.commune&quot;</span>)])</span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a><span class="co"># 61 communes</span></span></code></pre></div>
+</div>
+<div id="recodage-des-variables" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Recodage des
+variables</h2>
+<div id="créer-des-tables-de-référence" class="section level3"
+number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Créer des tables de
+référence</h3>
+<p><img src="img/recodageRef.png" /> ### Formule rechercheV</p>
+<p><img src="img/recodageFormule.png" /></p>
+</div>
+<div id="résultat-sur-les-écarts-à-la-moyenne-2002"
+class="section level3" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Résultat sur les
+écarts à la moyenne 2002</h3>
+<p><img src="img/recodageResultat.png" /></p>
+</div>
 </div>
 </div>
 <div id="présentation-rapide-vous-êtes-nombreux" class="section level1"
@@ -779,8 +876,8 @@ number="3">
 <p>Les questions posées sont sur le passé / présent / futur des
 étudiants, leur appétence en stats et le nombre d’années depuis le
 dernier apprentissage.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&quot;data/cours1.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(etudiant)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&quot;data/cours1.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a><span class="fu">names</span>(etudiant)</span></code></pre></div>
 <pre><code>##  [1] &quot;X&quot;                                                
 ##  [2] &quot;presence&quot;                                         
 ##  [3] &quot;prénom&quot;                                           
@@ -791,17 +888,17 @@ dernier apprentissage.</p>
 ##  [8] &quot;appétence.stats..passionnément.4...pas.du.tout.1.&quot;
 ##  [9] &quot;dernière.année.apprentissage.stats..en.nb.années.&quot;
 ## [10] &quot;groupe&quot;</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(etudiant)[<span class="dv">8</span><span class="sc">:</span><span class="dv">9</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;appétence&quot;</span>, <span class="st">&quot;nb d&#39;années&quot;</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/quisontils.png&quot;</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">16</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>))</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">9</span>){</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">16</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">sort</span>(<span class="fu">table</span>(etudiant [,i])), <span class="at">border =</span> <span class="cn">NA</span>,</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">horiz =</span> T, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">cex.names =</span> <span class="fl">0.8</span>, </span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">names</span> (etudiant) [i])</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">names</span>(etudiant)[<span class="dv">8</span><span class="sc">:</span><span class="dv">9</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;appétence&quot;</span>, <span class="st">&quot;nb d&#39;années&quot;</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/quisontils.png&quot;</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">16</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">9</span>){</span>
+<span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">16</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
+<span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">sort</span>(<span class="fu">table</span>(etudiant [,i])), <span class="at">border =</span> <span class="cn">NA</span>,</span>
+<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a>          <span class="at">horiz =</span> T, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">cex.names =</span> <span class="fl">0.8</span>, </span>
+<span id="cb32-9"><a href="#cb32-9" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">names</span> (etudiant) [i])</span>
+<span id="cb32-10"><a href="#cb32-10" tabindex="-1"></a>}</span>
+<span id="cb32-11"><a href="#cb32-11" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## png 
 ##   2</code></pre>
 <p><img src="img/quisontils.png" /></p>
@@ -813,35 +910,36 @@ devoirs : chiffres clés</h2>
 <div id="effectif-et-cours" class="section level3" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Effectif et
 cours</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fic <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;data/&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;cours&quot;</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># on recherche le fichier le plus haut</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>nb <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fu">as.integer</span>(<span class="fu">substring</span>(fic, <span class="dv">6</span>,<span class="dv">7</span>)))</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nb) {</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  nomFic <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;data/cours&quot;</span>, i, <span class="st">&quot;.csv&quot;</span>)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(nomFic, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data [data [,<span class="dv">2</span>] <span class="sc">==</span> <span class="st">&quot;oui&quot;</span>,]</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>groupe)</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tab , tmp)</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>tab</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(tab) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;cours &quot;</span>,<span class="fu">seq</span>(<span class="dv">1</span>,nb, <span class="at">by =</span> <span class="dv">1</span>))</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;cours &quot;</span>,<span class="fu">seq</span>(<span class="dv">1</span>,nb, <span class="at">by =</span> <span class="dv">1</span>))</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tab)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>fic <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;data/&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;^cours&quot;</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>fic</span>
+<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="co"># on recherche le fichier le plus haut</span></span>
+<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>nb <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fu">as.integer</span>(<span class="fu">substring</span>(fic, <span class="dv">6</span>,<span class="dv">7</span>)))</span>
+<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nb) {</span>
+<span id="cb34-8"><a href="#cb34-8" tabindex="-1"></a>  nomFic <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;data/cours&quot;</span>, i, <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb34-9"><a href="#cb34-9" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(nomFic, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb34-10"><a href="#cb34-10" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data [data [,<span class="dv">2</span>] <span class="sc">==</span> <span class="st">&quot;oui&quot;</span>,]</span>
+<span id="cb34-11"><a href="#cb34-11" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>groupe)</span>
+<span id="cb34-12"><a href="#cb34-12" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tab , tmp)</span>
+<span id="cb34-13"><a href="#cb34-13" tabindex="-1"></a>}</span>
+<span id="cb34-14"><a href="#cb34-14" tabindex="-1"></a>tab</span>
+<span id="cb34-15"><a href="#cb34-15" tabindex="-1"></a><span class="fu">row.names</span>(tab) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;cours &quot;</span>,<span class="fu">seq</span>(<span class="dv">1</span>,nb, <span class="at">by =</span> <span class="dv">1</span>))</span>
+<span id="cb34-16"><a href="#cb34-16" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;cours &quot;</span>,<span class="fu">seq</span>(<span class="dv">1</span>,nb, <span class="at">by =</span> <span class="dv">1</span>))</span>
+<span id="cb34-17"><a href="#cb34-17" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tab)</span></code></pre></div>
 <p>Graphique</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tab, <span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;nombre d&#39;étudiants par groupe et par cours&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;groupe&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span>, <span class="at">col =</span> <span class="fu">terrain.colors</span>(nb) </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="fu">barplot</span>(tab, <span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;nombre d&#39;étudiants par groupe et par cours&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;groupe&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span>, <span class="at">col =</span> <span class="fu">terrain.colors</span>(nb) </span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span></code></pre></div>
 </div>
 <div id="les-rendus-dexercices" class="section level3" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Les rendus
 d’exercices</h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>rendu <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>,<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>titre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;distribution&quot;</span>, <span class="st">&quot;univarié&quot;</span>, <span class="st">&quot;khi2&quot;</span>, <span class="st">&quot;khi2bis&quot;</span>, <span class="st">&quot;regression&quot;</span>, <span class="st">&quot;boxplot&quot;</span>, <span class="st">&quot;variance&quot;</span>, <span class="st">&quot;4 variables&quot;</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">6</span>))</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">barplot</span>(rendu, <span class="at">names =</span> titre, <span class="at">cex.names =</span> <span class="fl">0.8</span>, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;rendu devoirs (effectif 75 étudiants environ)&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(p, <span class="at">y =</span> rendu <span class="sc">-</span> <span class="dv">1</span>, <span class="at">labels =</span> rendu )</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>rendu <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>,<span class="dv">59</span>, <span class="dv">56</span>, <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>titre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;distribution&quot;</span>, <span class="st">&quot;univarié&quot;</span>, <span class="st">&quot;contingence&quot;</span>, <span class="st">&quot;khi2&quot;</span>, <span class="st">&quot;regression&quot;</span>, <span class="st">&quot;boxplot&quot;</span>, <span class="st">&quot;variance&quot;</span>, <span class="st">&quot;4 variables&quot;</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">6</span>))</span>
+<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">barplot</span>(rendu, <span class="at">names =</span> titre, <span class="at">cex.names =</span> <span class="fl">0.8</span>, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;rendu devoirs (effectif 75 étudiants environ)&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a><span class="fu">text</span>(p, <span class="at">y =</span> rendu <span class="sc">-</span> <span class="dv">1</span>, <span class="at">labels =</span> rendu )</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <div id="les-notes-des-exercices" class="section level4"
 number="3.2.2.1">
 <h4><span class="header-section-number">3.2.2.1</span> Les notes des
@@ -849,40 +947,33 @@ exercices</h4>
 <ul>
 <li>Le critère externe : des points faciles ?</li>
 </ul>
-<p>Au 3e devoir, sur 29 rendus, la moitié (15) ne mettent pas le bon
-nom, ni la bonne extension. Au 4e, sur 14, 10 ont utilisé bon nom et
-bonne extension.</p>
+<p>le nom du fichier le temps du rendu (avant la limite)</p>
 <ul>
 <li>Distribution des totaux</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>devoir <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/notes.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">dec=</span><span class="st">&quot;,&quot;</span>, <span class="at">na.strings =</span> <span class="st">&#39;-&#39;</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> (<span class="fu">apply</span>(devoir [,<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>], <span class="dv">1</span>, sum, <span class="at">na.rm =</span> T))</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>resSansZero <span class="ot">&lt;-</span> res [res  <span class="sc">!=</span><span class="dv">0</span>]</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(resSansZero)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>densite <span class="ot">&lt;-</span> <span class="fu">density</span>(res)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>densite2 <span class="ot">&lt;-</span> <span class="fu">density</span>(resSansZero)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(res, <span class="at">main =</span> <span class="st">&quot;Répartion du cumul des notes des 4 devoirs (max 17, 87 obs)&quot;</span>, </span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;notes&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span>, <span class="at">freq =</span> T,<span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(res),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(res),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(resSansZero, <span class="at">main =</span> <span class="st">&quot;Sans zéro (59 obs)&quot;</span>, <span class="at">freq =</span> T,<span class="at">border =</span> <span class="cn">NA</span>,</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;notes&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span>)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(resSansZero),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(resSansZero),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p>Beaucoup de notes très faibles, mais pas seulement.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/exo.csv&quot;</span>,  <span class="at">na.strings =</span> <span class="st">&#39;-&#39;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="co"># recodage : si note 2, alors note1 = 0 si NA</span></span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a>res<span class="sc">$</span>denombrement [<span class="fu">is.na</span>(res<span class="sc">$</span>denombrement )<span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(res<span class="sc">$</span>univarié)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a>res<span class="sc">$</span>denombrement [ <span class="fu">is.na</span>(res<span class="sc">$</span>univarié)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a><span class="co"># graphique</span></span>
+<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb37-7"><a href="#cb37-7" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(res))){</span>
+<span id="cb37-8"><a href="#cb37-8" tabindex="-1"></a>  p <span class="ot">&lt;-</span><span class="fu">barplot</span>(<span class="fu">table</span>(res[,i]), <span class="at">main =</span> <span class="fu">names</span>(res)[i])</span>
+<span id="cb37-9"><a href="#cb37-9" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 </div>
 </div>
 <div id="notes-finales" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Notes finales</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>note <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/noteFin.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">na.strings =</span> <span class="st">&quot;en attente&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(note<span class="sc">$</span>note.sur<span class="fl">.20</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(note<span class="sc">$</span>note.sur<span class="fl">.20</span>, <span class="at">main =</span> <span class="st">&quot;Etalement note finale - 95 obs&quot;</span>, <span class="at">freq =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>resSansZero <span class="ot">&lt;-</span> note [note<span class="sc">$</span>note.sur<span class="fl">.20</span>  <span class="sc">!=</span><span class="dv">0</span>,]</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(note<span class="sc">$</span>note.sur<span class="fl">.20</span>, <span class="at">na.rm =</span> T),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">mean</span>(note<span class="sc">$</span>note.sur<span class="fl">.20</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(resSansZero<span class="sc">$</span>note.sur<span class="fl">.20</span>, <span class="at">main =</span> <span class="st">&quot;Etalement note finale - 73 obs&quot;</span>, <span class="at">freq =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(resSansZero<span class="sc">$</span>note.sur<span class="fl">.20</span>, <span class="at">na.rm =</span> T),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>note <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/noteFin.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">na.strings =</span> <span class="st">&quot;en attente&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a><span class="fu">summary</span>(note<span class="sc">$</span>note.sur<span class="fl">.20</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a><span class="fu">hist</span>(note<span class="sc">$</span>note.sur<span class="fl">.20</span>, <span class="at">main =</span> <span class="st">&quot;Etalement note finale - 95 obs&quot;</span>, <span class="at">freq =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a>resSansZero <span class="ot">&lt;-</span> note [note<span class="sc">$</span>note.sur<span class="fl">.20</span>  <span class="sc">!=</span><span class="dv">0</span>,]</span>
+<span id="cb38-5"><a href="#cb38-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(note<span class="sc">$</span>note.sur<span class="fl">.20</span>, <span class="at">na.rm =</span> T),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb38-6"><a href="#cb38-6" tabindex="-1"></a> <span class="fu">mean</span>(note<span class="sc">$</span>note.sur<span class="fl">.20</span>)</span>
+<span id="cb38-7"><a href="#cb38-7" tabindex="-1"></a><span class="fu">hist</span>(resSansZero<span class="sc">$</span>note.sur<span class="fl">.20</span>, <span class="at">main =</span> <span class="st">&quot;Etalement note finale - 73 obs&quot;</span>, <span class="at">freq =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb38-8"><a href="#cb38-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(resSansZero<span class="sc">$</span>note.sur<span class="fl">.20</span>, <span class="at">na.rm =</span> T),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="ressources-autre-que-la-bibliographie-officielle"
