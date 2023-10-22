@@ -322,21 +322,21 @@ div.tocify {
   <a href="jour3.html">khi 2</a>
 </li>
 <li>
-  <a href="jour3.html">régression</a>
+  <a href="jour4.html">régression</a>
 </li>
 <li>
-  <a href="jour3.html">examen</a>
+  <a href="jour5.html">examen</a>
 </li>
 <li>
-  <a href="jour3.html">variance</a>
+  <a href="jour6.html">variance</a>
 </li>
 <li>
-  <a href="jour3.html">multivariées</a>
+  <a href="jour7.html">multivariées</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/beababa/coursP8">
+  <a href="https://github.com/beababa/01_stat">
     <span class="fa fa-github"></span>
      
   </a>
@@ -361,8 +361,61 @@ div.tocify {
 l’abstention.</p>
 <p>Comprendre les variables</p>
 <p>Enoncer les hypothèses possibles de la comparaison, attention
-variable explicative (Y) et à expliquer (X)</p>
+variable explicative (X) et à expliquer (Y)</p>
 <p>(cf moodle exercice <em>Introduction =régression</em>)</p>
+<pre><code>##   [1] &quot;X&quot;                             &quot;Code.du.département&quot;          
+##   [3] &quot;Libellé.du.département&quot;        &quot;Code.de.la.circonscription&quot;   
+##   [5] &quot;Libellé.de.la.circonscription&quot; &quot;Code.de.la.commune&quot;           
+##   [7] &quot;Libellé.de.la.commune&quot;         &quot;Code.du.b.vote&quot;               
+##   [9] &quot;Inscrits&quot;                      &quot;Abstentions&quot;                  
+##  [11] &quot;X..Abs.Ins&quot;                    &quot;Votants&quot;                      
+##  [13] &quot;X..Vot.Ins&quot;                    &quot;Blancs&quot;                       
+##  [15] &quot;X..Blancs.Ins&quot;                 &quot;X..Blancs.Vot&quot;                
+##  [17] &quot;Nuls&quot;                          &quot;X..Nuls.Ins&quot;                  
+##  [19] &quot;X..Nuls.Vot&quot;                   &quot;Exprimés&quot;                     
+##  [21] &quot;X..Exp.Ins&quot;                    &quot;X..Exp.Vot&quot;                   
+##  [23] &quot;N.Panneau&quot;                     &quot;Sexe&quot;                         
+##  [25] &quot;Nom&quot;                           &quot;Prénom&quot;                       
+##  [27] &quot;Voix&quot;                          &quot;X..Voix.Ins&quot;                  
+##  [29] &quot;X..Voix.Exp&quot;                   &quot;N.Panneau.1&quot;                  
+##  [31] &quot;Sexe.1&quot;                        &quot;Nom.1&quot;                        
+##  [33] &quot;Prénom.1&quot;                      &quot;Voix.1&quot;                       
+##  [35] &quot;X..Voix.Ins.1&quot;                 &quot;X..Voix.Exp.1&quot;                
+##  [37] &quot;N.Panneau.2&quot;                   &quot;Sexe.2&quot;                       
+##  [39] &quot;Nom.2&quot;                         &quot;Prénom.2&quot;                     
+##  [41] &quot;Voix.2&quot;                        &quot;X..Voix.Ins.2&quot;                
+##  [43] &quot;X..Voix.Exp.2&quot;                 &quot;N.Panneau.3&quot;                  
+##  [45] &quot;Sexe.3&quot;                        &quot;Nom.3&quot;                        
+##  [47] &quot;Prénom.3&quot;                      &quot;Voix.3&quot;                       
+##  [49] &quot;X..Voix.Ins.3&quot;                 &quot;X..Voix.Exp.3&quot;                
+##  [51] &quot;N.Panneau.4&quot;                   &quot;Sexe.4&quot;                       
+##  [53] &quot;Nom.4&quot;                         &quot;Prénom.4&quot;                     
+##  [55] &quot;Voix.4&quot;                        &quot;X..Voix.Ins.4&quot;                
+##  [57] &quot;X..Voix.Exp.4&quot;                 &quot;N.Panneau.5&quot;                  
+##  [59] &quot;Sexe.5&quot;                        &quot;Nom.5&quot;                        
+##  [61] &quot;Prénom.5&quot;                      &quot;Voix.5&quot;                       
+##  [63] &quot;X..Voix.Ins.5&quot;                 &quot;X..Voix.Exp.5&quot;                
+##  [65] &quot;N.Panneau.6&quot;                   &quot;Sexe.6&quot;                       
+##  [67] &quot;Nom.6&quot;                         &quot;Prénom.6&quot;                     
+##  [69] &quot;Voix.6&quot;                        &quot;X..Voix.Ins.6&quot;                
+##  [71] &quot;X..Voix.Exp.6&quot;                 &quot;N.Panneau.7&quot;                  
+##  [73] &quot;Sexe.7&quot;                        &quot;Nom.7&quot;                        
+##  [75] &quot;Prénom.7&quot;                      &quot;Voix.7&quot;                       
+##  [77] &quot;X..Voix.Ins.7&quot;                 &quot;X..Voix.Exp.7&quot;                
+##  [79] &quot;N.Panneau.8&quot;                   &quot;Sexe.8&quot;                       
+##  [81] &quot;Nom.8&quot;                         &quot;Prénom.8&quot;                     
+##  [83] &quot;Voix.8&quot;                        &quot;X..Voix.Ins.8&quot;                
+##  [85] &quot;X..Voix.Exp.8&quot;                 &quot;N.Panneau.9&quot;                  
+##  [87] &quot;Sexe.9&quot;                        &quot;Nom.9&quot;                        
+##  [89] &quot;Prénom.9&quot;                      &quot;Voix.9&quot;                       
+##  [91] &quot;X..Voix.Ins.9&quot;                 &quot;X..Voix.Exp.9&quot;                
+##  [93] &quot;N.Panneau.10&quot;                  &quot;Sexe.10&quot;                      
+##  [95] &quot;Nom.10&quot;                        &quot;Prénom.10&quot;                    
+##  [97] &quot;Voix.10&quot;                       &quot;X..Voix.Ins.10&quot;               
+##  [99] &quot;X..Voix.Exp.10&quot;                &quot;N.Panneau.11&quot;                 
+## [101] &quot;Sexe.11&quot;                       &quot;Nom.11&quot;                       
+## [103] &quot;Prénom.11&quot;                     &quot;Voix.11&quot;                      
+## [105] &quot;X..Voix.Ins.11&quot;                &quot;X..Voix.Exp.11&quot;</code></pre>
 </div>
 <div id="nuage-de-points" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Nuage de points</h1>
@@ -394,7 +447,11 @@ bornes</h3>
 <p>On recherche des bornes permettant d’avoir un nuage de points
 “cohérent”. Avec le tableur, on fait le graphique puis on ajuste avec le
 filtre.</p>
+<p>Le graphique se met automatiquement à jour</p>
+<p><img src="img/filtre.png" /></p>
 <p><img src="jour4_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Désormais, on travaille sur la sélection et la totalité de la série
+pour vérifier que la restriction des bornes est utile.</p>
 </div>
 </div>
 </div>
@@ -415,7 +472,7 @@ d’où le terme <em>droite des moindres carrées</em></p>
 <p>Dans calc, cliquer sur les points et insérer courbe de tendance (on
 peut également afficher l’équation de la droite.)</p>
 <p>Visuellement, on voit bien qu’il existe un lien entre les deux
-variables, mais la pente de la droite n’est pas très forte.</p>
+variables, mais il y a beaucoup de points éparses (les résidus)</p>
 <p>Il s’agit maintenant de mesurer précisemment l’intensité du lien à
 l’aide de calculs.</p>
 </div>
@@ -450,7 +507,7 @@ techniquement on utilise une division ou une multiplication)</li>
 <p>puis covariance (produit des écarts / nb de valeurs)</p>
 <p>et coeff (cov / produit des écarts types)</p>
 <p><img src="img/formules.png" /></p>
-<p><img src="img/resultat.png" /></p>
+<p><img src="img/resultats.png" /></p>
 </div>
 <div id="interprétation" class="section level3" number="4.0.3">
 <h3><span class="header-section-number">4.0.3</span> Interprétation</h3>
@@ -463,9 +520,14 @@ positivement.</p></li>
 entre les deux variables est forte.</p></li>
 </ul>
 <p>Dans notre exemple, lien faible</p>
-<pre><code>##             abstentions   ZEMMOUR
-## abstentions    1.000000 -0.564898
-## ZEMMOUR       -0.564898  1.000000</code></pre>
+<pre><code>##             Abstentions    ZEMMOUR
+## Abstentions   1.0000000 -0.3017822
+## ZEMMOUR      -0.3017822  1.0000000</code></pre>
+<pre><code>##             Abstentions    ZEMMOUR
+## Abstentions   1.0000000 -0.4384041
+## ZEMMOUR      -0.4384041  1.0000000</code></pre>
+<p>Le coefficient augmente mais il reste faible même en ayant supprimé
+13 observations.</p>
 </div>
 </div>
 <div id="coefficient-de-détermination" class="section level1"
@@ -473,18 +535,30 @@ number="5">
 <h1><span class="header-section-number">5</span> Coefficient de
 détermination</h1>
 <p>C’est le carré du coefficient de corrélation linéaire</p>
-<pre><code>##             abstentions   ZEMMOUR
-## abstentions   1.0000000 0.3191098
-## ZEMMOUR       0.3191098 1.0000000</code></pre>
-<p>L’abstention explique 31 % du vote pour le candidat 6.</p>
-<p>Les 69 % restant sont liés à d’autres facteurs.</p>
+<pre><code>##             Abstentions   ZEMMOUR
+## Abstentions   1.0000000 0.1921981
+## ZEMMOUR       0.1921981 1.0000000</code></pre>
+<p>L’abstention explique 19 % du vote pour Zemmour dans le meilleur des
+cas. Cela reste très peu.</p>
+<p>Les 81 % restant sont liés à d’autres facteurs.</p>
 </div>
 <div id="etude-des-résidus" class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Etude des résidus</h1>
 <p><img src="img/moindreCarre.jpg" /></p>
-<p>Identifiez graphiquement 2 points éloignés de la droite de régression
-et tenter un commentaire.</p>
-<p><img src="img/residu.jpg" /> # cartographie des résidus</p>
+<p>Identifiez graphiquement 2 points éloignés de la droite de
+régression.</p>
+<p>Il peut s’agit par exemple des valeurs minimum et maximum des vote
+pour Zemmour.</p>
+<p>Le bureau 5 apparaît une nouvelle fois confirmant son originalité. Le
+petit nombre de voix pour Zemmour n’implique pas une grande
+abstention.</p>
+<p>Pour le bureau 2, l’abstention déja importante est à mettre en
+parallèle avec le nombre maximum de voix pour Zemmour dans le cadre de
+ce bureau.</p>
+</div>
+<div id="cartographie-des-résidus" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> cartographie des
+résidus</h1>
 <pre><code>## Warning: le package &#39;sf&#39; a été compilé avec la version R 4.2.3</code></pre>
 <pre><code>## Linking to GEOS 3.9.3, GDAL 3.5.2, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
 <pre><code>## Reading layer `bureauPolyZone&#39; from data source 
@@ -494,9 +568,11 @@ et tenter un commentaire.</p>
 ## Dimension:     XY
 ## Bounding box:  xmin: 661088.1 ymin: 6865338 xmax: 663354.7 ymax: 6869043
 ## Projected CRS: RGF93 v1 / Lambert-93</code></pre>
-<pre><code>## Warning: le package &#39;mapsf&#39; a été compilé avec la version R 4.2.3</code></pre>
 <p><img src="jour4_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<p><img src="jour4_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre><code>## Warning: le package &#39;mapsf&#39; a été compilé avec la version R 4.2.3</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<p><img src="img/residusCarte.png" /></p>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
