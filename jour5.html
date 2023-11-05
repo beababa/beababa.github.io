@@ -336,7 +336,7 @@ div.tocify {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/beababa/coursP8">
+  <a href="https://github.com/beababa/01_stat">
     <span class="fa fa-github"></span>
      
   </a>
@@ -355,8 +355,16 @@ div.tocify {
 </div>
 
 
-<div id="données-dexemple" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Données d’exemple</h1>
+<div id="préparation-des-données" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Préparation des
+données</h1>
+<div id="lecture-du-cog" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Lecture du cog</h2>
+<p>Le cog permet d’avoir l’équivalent libellé ville / code INSEE</p>
+</div>
+<div id="valeurs-foncières" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Valeurs
+foncières</h2>
 <p>code INSEE</p>
 <p>pb des zéros, un import en txt n’a pas réglé la question.</p>
 <p>extraction des 61 communes</p>
@@ -364,13 +372,110 @@ div.tocify {
 <p>test bondy</p>
 <p>On enregistre le fichier.</p>
 <p>on enregistre par dpt</p>
-<p>Autres sources : base logement</p>
+</div>
+<div id="base-logement" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Base logement</h2>
 <p>test Bondy</p>
 <p>enregistrement</p>
-<p>carreaux</p>
+</div>
+<div id="carreaux-filosofi" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Carreaux
+Filosofi</h2>
 <p>toujours 61</p>
 <p>Bondy</p>
-<p>Enregistrement des carraux par commune</p>
+<p>Enregistrement des carreaux par commune</p>
+</div>
+</div>
+<div id="choix-des-variables" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Choix des
+variables</h1>
+<table>
+<colgroup>
+<col width="11%" />
+<col width="45%" />
+<col width="43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">X</th>
+<th align="left">gr1</th>
+<th align="left">gr2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">univarié</td>
+<td align="left">nb de logements</td>
+<td align="left">nb d’individus</td>
+</tr>
+<tr class="even">
+<td align="left">khi2</td>
+<td align="left">ancienneté des logements par iris</td>
+<td align="left">tranches d’age des individus par carreaux</td>
+</tr>
+<tr class="odd">
+<td align="left">régression</td>
+<td align="left">résidences secondaires et logements vacants</td>
+<td align="left">foyer monoparental et logement social</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="graphiques-à-commenter" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Graphiques à
+commenter</h1>
+<div id="groupe-1-logement" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Groupe 1
+logement</h2>
+<div id="distribution-du-logement-par-nombre-diris"
+class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Distribution du
+logement par nombre d’Iris</h3>
+<p><img src="img/distribLogement.png" /></p>
+</div>
+<div id="ecart-observés-théoriques-ancienneté-logement-par-iris"
+class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Ecart observés /
+théoriques ancienneté logement par iris</h3>
+<p><img src="img/ecartLogement.png" /></p>
+</div>
+<div id="distribution-des-khi2-partiels" class="section level3"
+number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Distribution des
+khi2 partiels</h3>
+<p><img src="img/khi2Logement.png" /></p>
+</div>
+<div id="régression" class="section level3" number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> Régression</h3>
+<p><img src="img/regressionLgt.png" /></p>
+</div>
+</div>
+<div id="groupe-2-filosofi" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Groupe 2
+Filosofi</h2>
+<div id="distribution-du-nb-dindividus-par-carreaux"
+class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Distribution du nb
+d’individus par carreaux</h3>
+<p><img src="img/distribCar.png" /></p>
+</div>
+<div id="ecart-observés-théoriques-tranches-dage-population-par-carreau"
+class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Ecart observés /
+théoriques tranches d’age population par carreau</h3>
+<p><img src="img/ecartCar.png" /></p>
+</div>
+<div id="distribution-des-khi2-partiels-1" class="section level3"
+number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Distribution des
+khi2 partiels</h3>
+<p><img src="img/khi2Car.png" /></p>
+</div>
+<div id="régression-1" class="section level3" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Régression</h3>
+<p><img src="img/regressionCar.png" /></p>
+</div>
+</div>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
