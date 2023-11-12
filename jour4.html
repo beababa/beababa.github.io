@@ -13,7 +13,7 @@
 
 <title>Statistiques bi variées - Regression</title>
 
-<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -29,12 +29,12 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -135,15 +135,11 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -172,8 +168,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -181,9 +177,16 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
+  content: "&#xe258;";
   border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -433,7 +436,7 @@ tableur</h2>
 <li><p>types de diagramme ; xy - dispersion</p></li>
 <li><p>intervertir x et y (onglet série de données)</p></li>
 </ul>
-<p><img src="img/inversionxy.jpg" /></p>
+<p><img src="img/inversionXY.jpg" /></p>
 </div>
 <div id="simplification-des-chiffres" class="section level2"
 number="2.3">
@@ -507,7 +510,7 @@ techniquement on utilise une division ou une multiplication)</li>
 <p>puis covariance (produit des écarts / nb de valeurs)</p>
 <p>et coeff (cov / produit des écarts types)</p>
 <p><img src="img/formules.png" /></p>
-<p><img src="img/resultats.png" /></p>
+<p><img src="img/resultat.png" /></p>
 </div>
 <div id="interprétation" class="section level3" number="4.0.3">
 <h3><span class="header-section-number">4.0.3</span> Interprétation</h3>
@@ -559,19 +562,6 @@ ce bureau.</p>
 <div id="cartographie-des-résidus" class="section level1" number="7">
 <h1><span class="header-section-number">7</span> cartographie des
 résidus</h1>
-<pre><code>## Warning: le package &#39;sf&#39; a été compilé avec la version R 4.2.3</code></pre>
-<pre><code>## Linking to GEOS 3.9.3, GDAL 3.5.2, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
-<pre><code>## Reading layer `bureauPolyZone&#39; from data source 
-##   `C:\Users\tachasa\01_stat\data\vote.gpkg&#39; using driver `GPKG&#39;
-## Simple feature collection with 32 features and 3 fields
-## Geometry type: MULTIPOLYGON
-## Dimension:     XY
-## Bounding box:  xmin: 661088.1 ymin: 6865338 xmax: 663354.7 ymax: 6869043
-## Projected CRS: RGF93 v1 / Lambert-93</code></pre>
-<p><img src="jour4_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<pre><code>## Warning: le package &#39;mapsf&#39; a été compilé avec la version R 4.2.3</code></pre>
-<pre><code>## png 
-##   2</code></pre>
 <p><img src="img/residusCarte.png" /></p>
 </div>
 
