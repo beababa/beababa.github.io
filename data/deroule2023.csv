@@ -1,14 +1,15 @@
-Num cours,date,thème,outil,exercice (nb pts)
-1,18/09/23,statistique univariée : base,tableur,1
-2,25/09/23,statistique univariée : indicateurs,,2
-3,02/10/23,bivariée : base + contingence,,2
-4,09/10/23,Khi 2,,2
-5,16/10/23,régression,,2
-6,23/10/23,devoir sur table,,
-7,30/10/23,CONGES,,
-8,06/11/23,initiation R ,R,1
-9,13/11/23,initiation R / variance,,
-10,20/11/23,multivariée : choix des variables  + sujet DM,,
-11,27/11/23,multivariée : analyse factorielle et classification,,
-12,04/12/23,questions autour du devoir maison. Devoir à rendre le 8 au plus tard.,,
-13,11/12/23,rendu du devoir maison et bilan formation,,
+"Num cours","date","thème","outil","exercice (nb pts)"
+1,"18/09/23","statistique univariée : base","tableur",1
+2,"25/09/23","statistique univariée : indicateurs",,2
+3,"02/10/23","bivariée : base + contingence",,2
+4,"09/10/23","Khi 2",,2
+5,"16/10/23","régression",,2
+6,"23/10/23","devoir sur table",,
+,"30/10/23","CONGES",,
+7,"06/11/23","initiation R ","R",1
+8,"13/11/23","initiation R / boite à moustaches",,
+9,"20/11/23","initiation R / variance",,
+10,"27/11/23","multivariée : choix des variables +  + sujet DM",,
+11,"04/12/23","multivariée : analyse factorielle et classification",,
+12,"11/12/23","questions autour du devoir maison. Devoir à rendre le 13 au plus tard.",,
+13,"18/12/23","rendu du devoir maison et bilan formation",,

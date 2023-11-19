@@ -607,10 +607,11 @@ donnée en fonction des graphiques obtenus.</p>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># D&#39;après le dénombrement</span></span>
 <span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">table</span>(vf_Bondy<span class="sc">$</span>Section))</span></code></pre></div>
 <p><img src="jour6_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">which</span>((<span class="fu">table</span>(vf_Bondy<span class="sc">$</span>Section) <span class="sc">&gt;</span> <span class="dv">50</span>))</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>sectionSup50 <span class="ot">&lt;-</span> <span class="fu">names</span>(ind)</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>vf_BondySup50 <span class="ot">&lt;-</span> vf_Bondy [vf_Bondy<span class="sc">$</span>Section <span class="sc">%in%</span> sectionSup50,]</span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="fu">boxplot</span>(vf_BondySup50<span class="sc">$</span>Valeur.fonciere<span class="sc">~</span>vf_BondySup50<span class="sc">$</span>Section)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># On décide de filtrer au dessus de la 1e borne 50</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">which</span>((<span class="fu">table</span>(vf_Bondy<span class="sc">$</span>Section) <span class="sc">&gt;</span> <span class="dv">50</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>sectionSup50 <span class="ot">&lt;-</span> <span class="fu">names</span>(ind)</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>vf_BondySup50 <span class="ot">&lt;-</span> vf_Bondy [vf_Bondy<span class="sc">$</span>Section <span class="sc">%in%</span> sectionSup50,]</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">boxplot</span>(vf_BondySup50<span class="sc">$</span>Valeur.fonciere<span class="sc">~</span>vf_BondySup50<span class="sc">$</span>Section)</span></code></pre></div>
 <p><img src="jour6_files/figure-html/unnamed-chunk-2-3.png" width="672" /></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># la section P et H  paraîssent des cas à part</span></span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>vf_BondySup50_sansPH <span class="ot">&lt;-</span> vf_BondySup50 [<span class="sc">!</span>(vf_BondySup50<span class="sc">$</span>Section <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">&#39;P&#39;</span>,<span class="st">&#39;H&#39;</span>)),]</span>
@@ -638,6 +639,9 @@ faible.</p>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Distribution montant valeur foncière section AT&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;montant (centaines de milliers)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;effectif&quot;</span>)</span></code></pre></div>
 <p><img src="jour6_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>La section AT a une très grosse vente.</p>
+<p>On enregistre la donnée filtrée pour pouvoir repartir de cette donnée
+déjà plus cohérente que la donnée d’origine.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">write.csv</span>(vf_BondySup50_sansPH, <span class="st">&quot;data/vf_BondySup50_sansPH.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 </div>
 <div id="la-variance" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> La variance</h1>
@@ -648,26 +652,50 @@ moyenne.</p>
 <p>Dans le tableur, nous aurions fait une série de tableaux de calcul
 autour des écarts à la moyennes (en mettant des carrés). Dans r, c’est
 une formule var.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">var</span>(vf_BondySup50_sansPH<span class="sc">$</span>Valeur.fonciere)</span></code></pre></div>
-<pre><code>## [1] 20.9333</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Variance pour chaque zone, on utilise un tapply</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">tapply</span>(vf_BondySup50_sansPH<span class="sc">$</span>Valeur.fonciere, vf_BondySup50_sansPH<span class="sc">$</span>Section,var)</span></code></pre></div>
-<pre><code>##          A         AJ         AT          B          G          J          M 
-##  0.3905172  1.3616794 69.7387307  0.3664222  2.5103330 28.8179806  4.8369071</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># verif pour la section AT</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>sel <span class="ot">&lt;-</span>  vf_Bondy[vf_Bondy <span class="sc">==</span> <span class="st">&#39;AT&#39;</span>,<span class="fu">c</span>(<span class="st">&quot;Section&quot;</span>, <span class="st">&quot;Valeur.fonciere&quot;</span>)]</span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>sel<span class="sc">$</span>Valeur.fonciere <span class="ot">&lt;-</span> sel<span class="sc">$</span>Valeur.fonciere <span class="sc">/</span><span class="dv">100000</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="fu">mean</span>((sel<span class="sc">$</span>Valeur.fonciere <span class="sc">-</span> <span class="fu">mean</span>(sel<span class="sc">$</span>Valeur.fonciere))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 68.84464</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">var</span>(sel<span class="sc">$</span>Valeur.fonciere)</span></code></pre></div>
-<pre><code>## [1] 69.73873</code></pre>
+</div>
+<div id="préparer-la-donnée-1" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Préparer la
+donnée</h2>
+<p>On repart de la donnée filtrée dans laquelle on a supprimée toutes
+les sections ayant moins de 50 ventes et P et H qui représentaient des
+profils trop particuliers.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/vf_BondySup50_sansPH.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co"># pour être plus lisible, on a divisé les montants par 100 000</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>Valeur.fonciere, <span class="at">xlab =</span> <span class="st">&quot;valeur foncière (en centaine de milliers&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb de ventes&quot;</span>)</span></code></pre></div>
+<p><img src="jour6_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">boxplot</span>(data<span class="sc">$</span>Valeur.fonciere)</span></code></pre></div>
+<p><img src="jour6_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># on supprime également les valeurs aberrantes</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>Valeur.fonciere <span class="sc">&lt;</span> <span class="dv">10</span>,]</span></code></pre></div>
+<p>On applique un nouveau filtre</p>
+</div>
+<div id="calcul-de-la-variance-avec-et-sans-la-formule"
+class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Calcul de la variance
+avec et sans la formule</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">var</span>(data<span class="sc">$</span>Valeur.fonciere)</span></code></pre></div>
+<pre><code>## [1] 1.046968</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># Variance pour chaque zone, on utilise un tapply</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="fu">tapply</span>(data<span class="sc">$</span>Valeur.fonciere, data<span class="sc">$</span>Section,var)</span></code></pre></div>
+<pre><code>##         A        AJ        AT         B         G         J         M 
+## 0.3905172 1.3616794 0.3287043 0.3664222 2.5103330 0.4317957 0.3810806</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># verif pour la section AT</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>sel <span class="ot">&lt;-</span>  data[data<span class="sc">$</span>Section <span class="sc">==</span> <span class="st">&#39;AT&#39;</span>,<span class="fu">c</span>(<span class="st">&quot;Section&quot;</span>, <span class="st">&quot;Valeur.fonciere&quot;</span>)]</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="fu">mean</span>((sel<span class="sc">$</span>Valeur.fonciere <span class="sc">-</span> <span class="fu">mean</span>(sel<span class="sc">$</span>Valeur.fonciere))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.32106</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">var</span>(sel<span class="sc">$</span>Valeur.fonciere)</span></code></pre></div>
+<pre><code>## [1] 0.3287043</code></pre>
 <p>Le résultat est légèrement différent, car le logiciel pondère la
 variance en soustrayant 1 à l’effectif. Plus la série est grande, moins
 cela a d’importance.</p>
 </div>
-<div id="analyse-de-la-variance" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Analyse de la
+<div id="analyse-de-la-variance" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Analyse de la
 variance</h2>
+<p>Un nouveau graphique nous permet de comprendre en quoi la variance
+permet de comparer des séries entre elles</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">boxplot</span>(data<span class="sc">$</span>Valeur.fonciere<span class="sc">~</span> data<span class="sc">$</span>Section)</span></code></pre></div>
+<p><img src="jour6_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>La variance est une quantité qui se décompose en :</p>
 <ul>
 <li><p>les variations à l’intérieur de chaque groupe (variation intra
@@ -679,23 +707,21 @@ groupe)</p></li>
 l’intensité sont calculées avec ces trois grandeurs.</p>
 <p>significativité = rapport inter / intra</p>
 <p>intensité = rapport inter / total</p>
-<div id="la-formule-anova-dans-r" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> La formule ANOVA
+<div id="la-formule-anova-dans-r" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> La formule ANOVA
 dans R</h3>
 <p>ANalyse Ordinaire de la VAriance</p>
 <p>Sous R, il suffit de lancer une formule.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># on renomme la donnée avec un nom plus simple et on divise par 100000</span></span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> vf_BondySup50_sansPH</span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="co"># transformation en variable de catégorie</span></span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>data<span class="sc">$</span>Section <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>Section)</span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (Valeur.fonciere <span class="sc">~</span> Section, <span class="at">data =</span> data)</span>
-<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="fu">anova</span>(modele)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># transformation en variable de catégorie (une précaution)</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>data<span class="sc">$</span>Section <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>Section)</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (Valeur.fonciere <span class="sc">~</span> Section, <span class="at">data =</span> data)</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a><span class="fu">anova</span>(modele)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: Valeur.fonciere
 ##            Df Sum Sq Mean Sq F value    Pr(&gt;F)    
-## Section     6   2300  383.33  22.905 &lt; 2.2e-16 ***
-## Residuals 518   8669   16.74                      
+## Section     6 130.51 21.7512  28.399 &lt; 2.2e-16 ***
+## Residuals 442 338.53  0.7659                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Sum Sq = la somme des carrés des écarts (SCE)</p>
@@ -706,8 +732,8 @@ c’est pour l’intérieur des groupes (l’intra)</p>
 <p>Comme pour le khi2, on peut faire un test et calculer
 l’intensité.</p>
 </div>
-<div id="significativité" class="section level3" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span>
+<div id="significativité" class="section level3" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span>
 Significativité</h3>
 <p>F value = Test de Fisher, c’est le test de significativité pour la
 variance.</p>
@@ -716,36 +742,34 @@ la variation intragroupe (avec les degrés de liberté).</p>
 <p>Si ce rapport est élevé, cela signifie que la variation intergroupe
 est importante relativement à la variation intra, donc qu’il y a une
 vraie différence entre les écarts à la moyenne des groupes.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># variation inter / variation intra.</span></span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="dv">383</span> <span class="sc">/</span> <span class="dv">17</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="co"># variation inter / variation intra.</span></span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a><span class="dv">383</span> <span class="sc">/</span> <span class="dv">17</span></span></code></pre></div>
 <pre><code>## [1] 22.52941</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># plus la variation intra augmente, plus le rapport diminue, moins il y a de différence entre les groupes.</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="co"># plus la variation intra augmente, plus le rapport diminue, moins il y a de différence entre les groupes.</span></span></code></pre></div>
 <p>Concernant les degré de liberté pour les données intra, on prend tous
 les effectifs et on enlève le nombre de sections (cf les 2 chiffres
 df)</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># toutes les valeurs foncières</span></span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>eff <span class="ot">&lt;-</span><span class="fu">length</span>(data<span class="sc">$</span>Valeur.fonciere)</span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="co"># toutes les sections</span></span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(data<span class="sc">$</span>Section)) <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> eff <span class="sc">-</span> <span class="fu">length</span>(<span class="fu">unique</span>(data<span class="sc">$</span>Section)) </span></code></pre></div>
-<div id="comme-pour-le-khi2-observé-et-théorique" class="section level4"
-number="4.2.2.1">
-<h4><span class="header-section-number">4.2.2.1</span> Comme pour le
-khi2, observé et théorique</h4>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="co"># toutes les valeurs foncières</span></span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>eff <span class="ot">&lt;-</span><span class="fu">length</span>(data<span class="sc">$</span>Valeur.fonciere)</span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a><span class="co"># toutes les sections</span></span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(data<span class="sc">$</span>Section)) <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> eff <span class="sc">-</span> <span class="fu">length</span>(<span class="fu">unique</span>(data<span class="sc">$</span>Section)) </span></code></pre></div>
+<div id="la-table-de-fisher" class="section level4" number="4.4.2.1">
+<h4><span class="header-section-number">4.4.2.1</span> La table de
+fisher</h4>
 <p>Comme pour le khi2, on compare à un test obtenu par le hasard (donc
 une table).</p>
 <p><img src="img/fisher.jpg" /> F calculé</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>Ftable <span class="ot">&lt;-</span> <span class="fu">qf</span>(<span class="at">p=</span>.<span class="dv">05</span>, <span class="at">df1=</span><span class="dv">6</span>, <span class="at">df2=</span><span class="dv">518</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>Fcalcule <span class="ot">&lt;-</span> <span class="dv">383</span> <span class="sc">/</span> <span class="dv">17</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>Ftable <span class="ot">&lt;-</span> <span class="fu">qf</span>(<span class="at">p=</span>.<span class="dv">05</span>, <span class="at">df1=</span><span class="dv">6</span>, <span class="at">df2=</span><span class="dv">518</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>Fcalcule <span class="ot">&lt;-</span> <span class="dv">383</span> <span class="sc">/</span> <span class="dv">17</span></span></code></pre></div>
 <p>Le F théorique est inférieur au F calculé pour un risque de 5 %</p>
 <p>Il n’y a donc pas indépendance entre les sections et la distribution
 du montant de la valeur foncière.</p>
 </div>
-</div>
-<div id="avec-r-importance-de-la-p-value" class="section level3"
-number="4.2.3">
-<h3><span class="header-section-number">4.2.3</span> Avec R, importance
-de la p-value</h3>
+<div id="avec-r-importance-de-la-p-value" class="section level4"
+number="4.4.2.2">
+<h4><span class="header-section-number">4.4.2.2</span> Avec R,
+importance de la p-value</h4>
 <p>Le chiffre le plus rapide à analyser, c’est la p-value, il indique la
 taille de la différence entre les moyennes des 5 sections.</p>
 <p>Plus il est petit, plus il y a de différence, plus il est gros, plus
@@ -755,19 +779,20 @@ d’indépendance peut être rejetée.</p>
 l’introduction aux bivariées).</p>
 <p>Dans notre cas, la pvalue indique un risque très faible Concrètement,
 il faudrait aller chercher la table du risque à % de Fisher.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">qf</span>(<span class="at">p=</span><span class="fl">2.2e-23</span>, <span class="at">df1=</span><span class="dv">6</span>, <span class="at">df2=</span><span class="dv">518</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">qf</span>(<span class="at">p=</span><span class="fl">2.2e-23</span>, <span class="at">df1=</span><span class="dv">6</span>, <span class="at">df2=</span><span class="dv">518</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 22.28166</code></pre>
 <p>On a très peu chances de se tromper si on rejette l’indépendance, il
 faut donc la rejeter.</p>
 <p>Les 7 sections correspondent à une répartition spécifique du montant
 de la valeur foncière.</p>
 </div>
-<div id="intensité" class="section level3" number="4.2.4">
-<h3><span class="header-section-number">4.2.4</span> Intensité</h3>
+</div>
+<div id="intensité" class="section level3" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> Intensité</h3>
 <p>On mesure quand même l’intensité, la proportion de la variation
 expliquée par les modalités dans la variation totale (entre 0 et 1)</p>
 <p>variation intergroupe / variation totale</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="dv">383</span><span class="sc">/</span>(<span class="dv">383</span> <span class="sc">+</span> <span class="dv">17</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="dv">383</span><span class="sc">/</span>(<span class="dv">383</span> <span class="sc">+</span> <span class="dv">17</span>)</span></code></pre></div>
 <pre><code>## [1] 0.9575</code></pre>
 <p>L’intensité est forte, plus de 95 % de la variation est expliquée par
 la structure spatiale.</p>
@@ -775,57 +800,64 @@ la structure spatiale.</p>
 </div>
 </div>
 <div id="exercices-dapplication" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> ExerciceS
+<h1><span class="header-section-number">5</span> Exercices
 d’application</h1>
+<div id="deux-sections" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Deux sections</h2>
 <p>On peut prendre les sections AT et J, au vu des boites à moustaches,
 la différence entre les 2 variances est plus faible</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>vf_Bondy_AT_J <span class="ot">&lt;-</span> vf_BondySup50 [ vf_BondySup50<span class="sc">$</span>Section <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;AT&quot;</span>, <span class="st">&quot;J&quot;</span>),]</span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>vf_Bondy_AT_J<span class="sc">$</span>Valeur.fonciere <span class="ot">&lt;-</span> vf_Bondy_AT_J<span class="sc">$</span>Valeur.fonciere <span class="sc">/</span><span class="dv">100000</span></span>
-<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a><span class="fu">boxplot</span>(vf_Bondy_AT_J<span class="sc">$</span>Valeur.fonciere<span class="sc">~</span>vf_Bondy_AT_J<span class="sc">$</span>Section, <span class="at">xlab =</span><span class="st">&quot;Section&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;montant valeur foncière (centaines de milliers)&quot;</span>,</span>
-<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">2</span>))</span></code></pre></div>
-<p><img src="jour6_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="co"># on renomme la donnée avec un nom plus simple et on divise par 100000</span></span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> vf_Bondy_AT_J</span>
-<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="co"># transformation en variable de catégorie</span></span>
-<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>data<span class="sc">$</span>Section <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>Section)</span>
-<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (Valeur.fonciere <span class="sc">~</span> Section, <span class="at">data =</span> data)</span>
-<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a><span class="fu">anova</span>(modele)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>vf_Bondy_AT_J <span class="ot">&lt;-</span> vf_BondySup50 [ vf_BondySup50<span class="sc">$</span>Section <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;AT&quot;</span>, <span class="st">&quot;J&quot;</span>),]</span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>vf_Bondy_AT_J<span class="sc">$</span>Valeur.fonciere <span class="ot">&lt;-</span> vf_Bondy_AT_J<span class="sc">$</span>Valeur.fonciere <span class="sc">/</span><span class="dv">100000</span></span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a><span class="fu">boxplot</span>(vf_Bondy_AT_J<span class="sc">$</span>Valeur.fonciere<span class="sc">~</span>vf_Bondy_AT_J<span class="sc">$</span>Section, <span class="at">xlab =</span><span class="st">&quot;Section&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;montant valeur foncière (centaines de milliers)&quot;</span>,</span>
+<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">2</span>))</span></code></pre></div>
+<p><img src="jour6_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="co"># on renomme la donnée avec un nom plus simple et on divise par 100000</span></span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> vf_Bondy_AT_J</span>
+<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a><span class="co"># transformation en variable de catégorie</span></span>
+<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a>data<span class="sc">$</span>Section <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>Section)</span>
+<span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (Valeur.fonciere <span class="sc">~</span> Section, <span class="at">data =</span> data)</span>
+<span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a><span class="fu">anova</span>(modele)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: Valeur.fonciere
 ##            Df Sum Sq Mean Sq F value Pr(&gt;F)
 ## Section     1   54.7  54.675  1.1625 0.2824
 ## Residuals 173 8136.4  47.031</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="co">#Ftable</span></span>
-<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a><span class="fu">qf</span>(<span class="at">p=</span>.<span class="dv">05</span>, <span class="at">df1=</span><span class="dv">1</span>, <span class="at">df2=</span><span class="dv">173</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="co">#Ftable</span></span>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a><span class="fu">qf</span>(<span class="at">p=</span>.<span class="dv">05</span>, <span class="at">df1=</span><span class="dv">1</span>, <span class="at">df2=</span><span class="dv">173</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 3.895773</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="fu">qf</span>(<span class="at">p=</span>.<span class="dv">28</span>, <span class="at">df1=</span><span class="dv">1</span>, <span class="at">df2=</span><span class="dv">173</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="fu">qf</span>(<span class="at">p=</span>.<span class="dv">28</span>, <span class="at">df1=</span><span class="dv">1</span>, <span class="at">df2=</span><span class="dv">173</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 1.174434</code></pre>
 <p>Pour un risque de 5 %, le test est rejeté, il y a indépendance entre
 les sections.</p>
 <p>Pour un risque de quasiment de 28 % il serait accepté…</p>
-<div id="hypothèse-1" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Hypothèse</h2>
+</div>
+<div id="les-différents-groupes-et-les-notes" class="section level2"
+number="5.2">
+<h2><span class="header-section-number">5.2</span> Les différents
+groupes et les notes</h2>
+<div id="hypothèse-1" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Hypothèse</h3>
 <p>Il s’agit d’observer s’il y a une variation entre les groupes en
 terme de notation. L’hypothèse est que le groupe 2 aura des meilleurs
 notes car le cours du groupe 1 sert de brouillon, et le groupe 3
 digère.</p>
+<div id="script" class="section level4" number="5.2.1.1">
+<h4><span class="header-section-number">5.2.1.1</span> Script</h4>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a>note <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/noteDSTsimplifie.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a><span class="fu">summary</span>(note<span class="sc">$</span>note)</span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a><span class="fu">boxplot</span>(note<span class="sc">$</span>note<span class="sc">~</span>note<span class="sc">$</span>groupe)</span>
+<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (note <span class="sc">~</span> groupe, <span class="at">data =</span> note)</span>
+<span id="cb45-5"><a href="#cb45-5" tabindex="-1"></a><span class="fu">anova</span>(modele)</span>
+<span id="cb45-6"><a href="#cb45-6" tabindex="-1"></a><span class="dv">45</span><span class="sc">/</span> (<span class="dv">45</span> <span class="sc">+</span><span class="dv">15</span>)</span></code></pre></div>
 </div>
-<div id="script" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Script</h2>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a>note <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/noteDSTsimplifie.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a><span class="fu">summary</span>(note<span class="sc">$</span>note)</span>
-<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a><span class="fu">boxplot</span>(note<span class="sc">$</span>note<span class="sc">~</span>note<span class="sc">$</span>groupe)</span>
-<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (note <span class="sc">~</span> groupe, <span class="at">data =</span> note)</span>
-<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a><span class="fu">anova</span>(modele)</span>
-<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a><span class="dv">45</span><span class="sc">/</span> (<span class="dv">45</span> <span class="sc">+</span><span class="dv">15</span>)</span></code></pre></div>
 </div>
-<div id="commentaires-année-2022" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Commentaires (année
-2022)</h2>
-<div id="boite-à-moustaches" class="section level3" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Boite à
-moustaches</h3>
+<div id="correction-année-2022" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Correction (année
+2022)</h3>
+<div id="boite-à-moustaches" class="section level4" number="5.2.2.1">
+<h4><span class="header-section-number">5.2.2.1</span> Boite à
+moustaches</h4>
 <p>Il existe des différences entre les groupes, la variation des notes
 au sein de chaque groupe est différente. Seul le 3e groupe a une
 distribution symétrique.</p>
@@ -834,15 +866,16 @@ très fortes. Et le 2e groupe a beaucoup de notes basses.</p>
 <p>La variance entre les groupes risque donc d’être plus importante que
 la variance intragroupe.</p>
 </div>
-<div id="pvalue" class="section level3" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> Pvalue</h3>
+<div id="pvalue" class="section level4" number="5.2.2.2">
+<h4><span class="header-section-number">5.2.2.2</span> Pvalue</h4>
 <p>Le chiffre de la p-value (0.039) est bas. Donc la relation est
 significative. H0 est rejetée avec un risque de 4 %.</p>
 </div>
-<div id="intensité-1" class="section level3" number="5.3.3">
-<h3><span class="header-section-number">5.3.3</span> Intensité</h3>
+<div id="intensité-1" class="section level4" number="5.2.2.3">
+<h4><span class="header-section-number">5.2.2.3</span> Intensité</h4>
 <p>L’intensité est forte, plus de 75 % de la variation est expliquée par
 la structure en groupe.</p>
+</div>
 </div>
 </div>
 </div>
