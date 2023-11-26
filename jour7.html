@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Multivariées</title>
+
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="intro.html">Introduction</a>
+</li>
+<li>
+  <a href="jour1.html">univariées</a>
+</li>
+<li>
+  <a href="jour2.html">bivariées</a>
+</li>
+<li>
+  <a href="jour3.html">khi 2</a>
+</li>
+<li>
+  <a href="jour4.html">régression</a>
+</li>
+<li>
+  <a href="jour5.html">examen</a>
+</li>
+<li>
+  <a href="jour6.html">variance</a>
+</li>
+<li>
+  <a href="jour7.html">multivariées</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/beababa/01_stat">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Multivariées</h1>
+
+</div>
+
+
+<div id="préparation-de-la-donnée" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Préparation de la
+donnée</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/data2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<pre><code>##   [1] &quot;X&quot;                     &quot;INSEE_COM&quot;             &quot;NOM_COM_M&quot;            
+##   [4] &quot;Libellé.de.la.commune&quot; &quot;Code.du.b.vote&quot;        &quot;Inscrits&quot;             
+##   [7] &quot;Abstentions&quot;           &quot;X..Abs.Ins&quot;            &quot;Votants&quot;              
+##  [10] &quot;X..Vot.Ins&quot;            &quot;Blancs&quot;                &quot;X..Blancs.Ins&quot;        
+##  [13] &quot;X..Blancs.Vot&quot;         &quot;Nuls&quot;                  &quot;X..Nuls.Ins&quot;          
+##  [16] &quot;X..Nuls.Vot&quot;           &quot;Exprimés&quot;              &quot;X..Exp.Ins&quot;           
+##  [19] &quot;X..Exp.Vot&quot;            &quot;N.Panneau&quot;             &quot;Sexe&quot;                 
+##  [22] &quot;Nom&quot;                   &quot;Prénom&quot;                &quot;Voix&quot;                 
+##  [25] &quot;X..Voix.Ins&quot;           &quot;X..Voix.Exp&quot;           &quot;N.Panneau.1&quot;          
+##  [28] &quot;Sexe.1&quot;                &quot;Nom.1&quot;                 &quot;Prénom.1&quot;             
+##  [31] &quot;Voix.1&quot;                &quot;X..Voix.Ins.1&quot;         &quot;X..Voix.Exp.1&quot;        
+##  [34] &quot;N.Panneau.2&quot;           &quot;Sexe.2&quot;                &quot;Nom.2&quot;                
+##  [37] &quot;Prénom.2&quot;              &quot;Voix.2&quot;                &quot;X..Voix.Ins.2&quot;        
+##  [40] &quot;X..Voix.Exp.2&quot;         &quot;N.Panneau.3&quot;           &quot;Sexe.3&quot;               
+##  [43] &quot;Nom.3&quot;                 &quot;Prénom.3&quot;              &quot;Voix.3&quot;               
+##  [46] &quot;X..Voix.Ins.3&quot;         &quot;X..Voix.Exp.3&quot;         &quot;N.Panneau.4&quot;          
+##  [49] &quot;Sexe.4&quot;                &quot;Nom.4&quot;                 &quot;Prénom.4&quot;             
+##  [52] &quot;Voix.4&quot;                &quot;X..Voix.Ins.4&quot;         &quot;X..Voix.Exp.4&quot;        
+##  [55] &quot;N.Panneau.5&quot;           &quot;Sexe.5&quot;                &quot;Nom.5&quot;                
+##  [58] &quot;Prénom.5&quot;              &quot;Voix.5&quot;                &quot;X..Voix.Ins.5&quot;        
+##  [61] &quot;X..Voix.Exp.5&quot;         &quot;N.Panneau.6&quot;           &quot;Sexe.6&quot;               
+##  [64] &quot;Nom.6&quot;                 &quot;Prénom.6&quot;              &quot;Voix.6&quot;               
+##  [67] &quot;X..Voix.Ins.6&quot;         &quot;X..Voix.Exp.6&quot;         &quot;N.Panneau.7&quot;          
+##  [70] &quot;Sexe.7&quot;                &quot;Nom.7&quot;                 &quot;Prénom.7&quot;             
+##  [73] &quot;Voix.7&quot;                &quot;X..Voix.Ins.7&quot;         &quot;X..Voix.Exp.7&quot;        
+##  [76] &quot;N.Panneau.8&quot;           &quot;Sexe.8&quot;                &quot;Nom.8&quot;                
+##  [79] &quot;Prénom.8&quot;              &quot;Voix.8&quot;                &quot;X..Voix.Ins.8&quot;        
+##  [82] &quot;X..Voix.Exp.8&quot;         &quot;N.Panneau.9&quot;           &quot;Sexe.9&quot;               
+##  [85] &quot;Nom.9&quot;                 &quot;Prénom.9&quot;              &quot;Voix.9&quot;               
+##  [88] &quot;X..Voix.Ins.9&quot;         &quot;X..Voix.Exp.9&quot;         &quot;N.Panneau.10&quot;         
+##  [91] &quot;Sexe.10&quot;               &quot;Nom.10&quot;                &quot;Prénom.10&quot;            
+##  [94] &quot;Voix.10&quot;               &quot;X..Voix.Ins.10&quot;        &quot;X..Voix.Exp.10&quot;       
+##  [97] &quot;N.Panneau.11&quot;          &quot;Sexe.11&quot;               &quot;Nom.11&quot;               
+## [100] &quot;Prénom.11&quot;             &quot;Voix.11&quot;               &quot;X..Voix.Ins.11&quot;       
+## [103] &quot;X..Voix.Exp.11&quot;</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;Ins&quot;</span>, <span class="fu">names</span>(data))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>pct <span class="ot">&lt;-</span> data [, ind]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;Nom&quot;</span>, <span class="fu">names</span>(data))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>noms <span class="ot">&lt;-</span> data [<span class="dv">1</span>,ind]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)] </span></code></pre></div>
+<pre><code>##  [1] &quot;X..Voix.Ins&quot;    &quot;X..Voix.Ins.1&quot;  &quot;X..Voix.Ins.2&quot;  &quot;X..Voix.Ins.3&quot; 
+##  [5] &quot;X..Voix.Ins.4&quot;  &quot;X..Voix.Ins.5&quot;  &quot;X..Voix.Ins.6&quot;  &quot;X..Voix.Ins.7&quot; 
+##  [9] &quot;X..Voix.Ins.8&quot;  &quot;X..Voix.Ins.9&quot;  &quot;X..Voix.Ins.10&quot; &quot;X..Voix.Ins.11&quot;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)] <span class="ot">&lt;-</span> noms</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [,<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;abst&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(pct) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>)</span></code></pre></div>
+</div>
+<div id="exploration-de-la-donnée" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Exploration de la
+donnée</h1>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pct)</span></code></pre></div>
+<pre><code>##       abst          ARTHAUD          ROUSSEL          MACRON     
+##  Min.   :20.80   Min.   :0.0000   Min.   :0.120   Min.   : 7.92  
+##  1st Qu.:26.56   1st Qu.:0.2075   1st Qu.:0.530   1st Qu.:10.97  
+##  Median :29.11   Median :0.2850   Median :1.015   Median :12.84  
+##  Mean   :29.67   Mean   :0.3269   Mean   :1.106   Mean   :13.26  
+##  3rd Qu.:33.23   3rd Qu.:0.3925   3rd Qu.:1.495   3rd Qu.:15.08  
+##  Max.   :37.61   Max.   :1.0100   Max.   :2.770   Max.   :22.60  
+##     LASSALLE         LE PEN          ZEMMOUR        MÉLENCHON    
+##  Min.   :0.110   Min.   : 2.330   Min.   :0.610   Min.   :24.40  
+##  1st Qu.:0.700   1st Qu.: 6.173   1st Qu.:1.827   1st Qu.:33.36  
+##  Median :0.950   Median : 7.815   Median :2.790   Median :35.27  
+##  Mean   :1.019   Mean   : 8.142   Mean   :2.834   Mean   :36.37  
+##  3rd Qu.:1.353   3rd Qu.:10.062   3rd Qu.:3.705   3rd Qu.:40.24  
+##  Max.   :2.200   Max.   :14.200   Max.   :5.170   Max.   :50.31  
+##     HIDALGO           JADOT           PÉCRESSE         POUTOU      
+##  Min.   :0.0000   Min.   :0.0000   Min.   :0.380   Min.   :0.0000  
+##  1st Qu.:0.4300   1st Qu.:0.6875   1st Qu.:1.395   1st Qu.:0.2675  
+##  Median :0.6900   Median :1.6050   Median :2.085   Median :0.4050  
+##  Mean   :0.7003   Mean   :1.5250   Mean   :2.239   Mean   :0.4381  
+##  3rd Qu.:0.9500   3rd Qu.:2.1300   3rd Qu.:3.188   3rd Qu.:0.6025  
+##  Max.   :1.5200   Max.   :3.7900   Max.   :5.030   Max.   :1.2500  
+##  DUPONT-AIGNAN   
+##  Min.   :0.1300  
+##  1st Qu.:0.5475  
+##  Median :0.7500  
+##  Mean   :0.8472  
+##  3rd Qu.:1.1450  
+##  Max.   :1.7600</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pct)</span></code></pre></div>
+<pre><code>##                      abst     ARTHAUD     ROUSSEL      MACRON   LASSALLE
+## abst           1.00000000 -0.09124502 -0.60695243 -0.86646274 -0.5864629
+## ARTHAUD       -0.09124502  1.00000000 -0.13340523  0.31314843  0.1097814
+## ROUSSEL       -0.60695243 -0.13340523  1.00000000  0.51762898  0.6629999
+## MACRON        -0.86646274  0.31314843  0.51762898  1.00000000  0.6125672
+## LASSALLE      -0.58646290  0.10978138  0.66299986  0.61256724  1.0000000
+## LE PEN        -0.56721372  0.34203816  0.47300047  0.56621380  0.6844895
+## ZEMMOUR       -0.70687066  0.04239692  0.60379129  0.55030176  0.4912361
+## MÉLENCHON      0.67650699 -0.34330375 -0.64689794 -0.75526662 -0.7577216
+## HIDALGO       -0.46001130 -0.11091136  0.25785445  0.37456278  0.3065050
+## JADOT         -0.80287393  0.16878089  0.65570636  0.68109138  0.5851233
+## PÉCRESSE      -0.76182636  0.01653658  0.56635567  0.64741839  0.4988701
+## POUTOU        -0.11064989 -0.07631365  0.07872894  0.02931963  0.1041182
+## DUPONT-AIGNAN -0.51656434  0.02757267  0.29312002  0.29734963  0.1636518
+##                    LE PEN     ZEMMOUR  MÉLENCHON     HIDALGO      JADOT
+## abst          -0.56721372 -0.70687066  0.6765070 -0.46001130 -0.8028739
+## ARTHAUD        0.34203816  0.04239692 -0.3433037 -0.11091136  0.1687809
+## ROUSSEL        0.47300047  0.60379129 -0.6468979  0.25785445  0.6557064
+## MACRON         0.56621380  0.55030176 -0.7552666  0.37456278  0.6810914
+## LASSALLE       0.68448946  0.49123612 -0.7577216  0.30650501  0.5851233
+## LE PEN         1.00000000  0.61891028 -0.8835188  0.09895654  0.6190371
+## ZEMMOUR        0.61891028  1.00000000 -0.7540586  0.33215324  0.6825063
+## MÉLENCHON     -0.88351878 -0.75405857  1.0000000 -0.20343821 -0.7393493
+## HIDALGO        0.09895654  0.33215324 -0.2034382  1.00000000  0.1669768
+## JADOT          0.61903713  0.68250632 -0.7393493  0.16697683  1.0000000
+## PÉCRESSE       0.50420577  0.76590872 -0.7199984  0.38445787  0.7119466
+## POUTOU         0.20246700  0.11210265 -0.1286294 -0.06104358  0.1493222
+## DUPONT-AIGNAN  0.26882589  0.51160119 -0.3636486  0.10326308  0.4543633
+##                  PÉCRESSE      POUTOU DUPONT-AIGNAN
+## abst          -0.76182636 -0.11064989   -0.51656434
+## ARTHAUD        0.01653658 -0.07631365    0.02757267
+## ROUSSEL        0.56635567  0.07872894    0.29312002
+## MACRON         0.64741839  0.02931963    0.29734963
+## LASSALLE       0.49887014  0.10411821    0.16365181
+## LE PEN         0.50420577  0.20246700    0.26882589
+## ZEMMOUR        0.76590872  0.11210265    0.51160119
+## MÉLENCHON     -0.71999840 -0.12862944   -0.36364860
+## HIDALGO        0.38445787 -0.06104358    0.10326308
+## JADOT          0.71194664  0.14932217    0.45436328
+## PÉCRESSE       1.00000000  0.04772693    0.54522523
+## POUTOU         0.04772693  1.00000000    0.08205208
+## DUPONT-AIGNAN  0.54522523  0.08205208    1.00000000</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(pct)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="acp-analyse-en-composante-principale" class="section level1"
+number="3">
+<h1><span class="header-section-number">3</span> ACP analyse en
+composante principale</h1>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(pct)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(res)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+</div>
+<div id="classification-hiérarchique" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Classification
+hiérarchique</h1>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># matrice des distances</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>d.pct <span class="ot">&lt;-</span> <span class="fu">dist</span>(pct)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>cah <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d.pct)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cah)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Dendrogramme avec matérialisation des groupes</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cah)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rect.hclust</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>groupes.cah <span class="ot">&lt;-</span> <span class="fu">cutree</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#liste des groupes</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sort</span>(groupes.cah))</span></code></pre></div>
+<pre><code>##  1  6  7  9 11 12 13 14 16 22 24 26 27 30  2  4  5  8 15 17 19 20 21 25 28 31 
+##  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  2  2  2  2  2  2  2  2  2  2  2 
+## 32  3 23 10 18 29 
+##  2  3  3  4  4  4</code></pre>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<small><p>L5GEABIM Analyses bivariées et multivariées</p></small>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

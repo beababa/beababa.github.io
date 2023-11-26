@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Préparation des données</title>
+
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="intro.html">Introduction</a>
+</li>
+<li>
+  <a href="jour1.html">univariées</a>
+</li>
+<li>
+  <a href="jour2.html">bivariées</a>
+</li>
+<li>
+  <a href="jour3.html">khi 2</a>
+</li>
+<li>
+  <a href="jour4.html">régression</a>
+</li>
+<li>
+  <a href="jour5.html">examen</a>
+</li>
+<li>
+  <a href="jour6.html">variance</a>
+</li>
+<li>
+  <a href="jour7.html">multivariées</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/beababa/01_stat">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Préparation des données</h1>
+
+</div>
+
+
+<div id="objectif" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Objectif</h1>
+<p>Pour l’examen (y compris celui de rattrapage), on extrait pour chaque
+ville choisie par les étudiants :</p>
+<ul>
+<li><p>les données foncières à la parcelle</p></li>
+<li><p>l’enquête filosofi au carreau</p></li>
+<li><p>le recensement à l’iris</p></li>
+<li><p>le rpls à l’appartement</p></li>
+</ul>
+<p>Ces 4 sources seront utilisées pour le devoir maison, afin de
+permettre à l’étudiant de choisir.</p>
+<p>Ces 4 sources seront agrégées au bureau de vote via les centroides
+pour l’élection de 2022 (on dispose des bureaux uniquement pour cette
+élection)</p>
+<div id="démarche" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Démarche</h2>
+<p>5 étapes</p>
+<ul>
+<li><p>on définit le nombre de communes concernées</p></li>
+<li><p>extractions pour les fichiers spatiaux et les fichiers texte
+(diminuer la taille des fichiers)</p></li>
+<li><p>intersection bv et centroides fichiers spatiaux</p></li>
+<li><p>jointure attributaire centroide, fichers de données</p></li>
+<li><p>agrégation des données au bv</p></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span></code></pre></div>
+</div>
+</div>
+<div id="cog" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> cog</h1>
+<p>Définition de la liste des villes de base.</p>
+<p>Des pb seront à traiter : Pointe à Pitre, Lyon, Marseille</p>
+<p>Chaque étudiant a choisi une ville pour ses données. Ces villes sont
+choisies au cours2, jusqu’au cours 9 pour les modifications</p>
+<p>Rochefort est rajouté à la main</p>
+<div id="constitution-de-la-liste" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Constitution de la
+liste</h2>
+<p>à partir de la feuille d’émargement</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># recup fichier ville</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>ville <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cours2.csv&quot;</span>, <span class="at">colClasses =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>ville <span class="ot">&lt;-</span> ville [,<span class="dv">3</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>villeModif <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cours3.csv&quot;</span>, <span class="at">colClasses =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>ville <span class="ot">&lt;-</span> <span class="fu">c</span>(ville, villeModif [,<span class="dv">4</span>])</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co"># recup dernier cours</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>villeModif <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cours9.csv&quot;</span>, <span class="at">colClasses =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co"># rajout Rochefort</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>ville <span class="ot">&lt;-</span> <span class="fu">c</span>(ville, <span class="dv">17299</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>ville <span class="ot">&lt;-</span> <span class="fu">c</span>(ville, villeModif [,<span class="dv">4</span>])</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co"># 78 villes différentes</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>ville <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">na.omit</span>(ville))</span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co"># recodage pour le zéro</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>nb <span class="ot">&lt;-</span> <span class="fu">nchar</span>(ville)</span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(ville, nb))</span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a>df<span class="sc">$</span>ville [df<span class="sc">$</span>nb <span class="sc">==</span> <span class="dv">4</span> ]<span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;0&quot;</span>, df<span class="sc">$</span>ville [df<span class="sc">$</span>nb <span class="sc">==</span> <span class="dv">4</span> ] )</span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a>df<span class="sc">$</span>nb <span class="ot">&lt;-</span> <span class="fu">nchar</span>(df<span class="sc">$</span>ville)</span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>nb)</span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a>df [(df<span class="sc">$</span>nb <span class="sc">!=</span> <span class="dv">5</span>),]</span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a>df <span class="ot">&lt;-</span> df [<span class="sc">!</span>(df<span class="sc">$</span>nb <span class="sc">!=</span> <span class="dv">5</span>),]</span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a><span class="co"># liste des villes utilisées avec code à 5 chiffres = 73</span></span></code></pre></div>
+<p>Les étudiants ont choisi 73 code insee.</p>
+</div>
+<div id="jointure" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Jointure</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>fr <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/COMMUNE_CARTO.shp&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co"># le code INSEE a 5 chiffres y compris le zéro</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">names</span>(df)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="fu">names</span>(fr)</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>joint <span class="ot">&lt;-</span> <span class="fu">merge</span>(fr, df, <span class="at">by.x =</span> <span class="st">&quot;INSEE_COM&quot;</span>, <span class="at">by.y=</span> <span class="st">&quot;ville&quot;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co"># la jointure est de 68</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co"># pb sur 5 code insee qui doivent etre des cp</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>cp <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(df<span class="sc">$</span>ville, joint<span class="sc">$</span>INSEE_COM)</span></code></pre></div>
+<p>retrouver les code insee à partir des cp pour ces 5 communes
+utilisation de l’api</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>equiv <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> cp){</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>  rqt <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://geo.api.gouv.fr/communes?codePostal=&quot;</span>,i)</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>  res <span class="ot">&lt;-</span> httr<span class="sc">::</span><span class="fu">GET</span>(rqt)</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co"># dans res, on remarque le status à 200, c&#39;est ok. et le format json</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(res<span class="sc">$</span>content))</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>  equiv <span class="ot">&lt;-</span> <span class="fu">rbind</span>(equiv, tmp)</span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>}</span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="fu">str</span>(equiv)</span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co"># bizarrement le cp est en liste donc on remet en vecteur et on fait un tab </span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co"># histoire de repérer les doublons cp</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>equiv<span class="sc">$</span>codesPostaux <span class="ot">&lt;-</span> <span class="fu">unlist</span>(equiv<span class="sc">$</span>codesPostaux)</span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="fu">table</span>(equiv<span class="sc">$</span>codesPostaux)</span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>equiv <span class="ot">&lt;-</span> equiv [, <span class="fu">c</span>(<span class="st">&quot;code&quot;</span>, <span class="st">&quot;nom&quot;</span>)]</span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df, <span class="fu">data.frame</span>(<span class="at">ville=</span>equiv<span class="sc">$</span>code, <span class="at">nb =</span> <span class="dv">5</span>))</span></code></pre></div>
+<p>79 villes = 73 + 5 code insee liés à des cp</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>joint <span class="ot">&lt;-</span> <span class="fu">merge</span>(fr, df, <span class="at">by.x =</span> <span class="st">&quot;INSEE_COM&quot;</span>, <span class="at">by.y=</span> <span class="st">&quot;ville&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>joint <span class="ot">&lt;-</span> <span class="fu">unique</span>(joint)</span></code></pre></div>
+<p>72 villes récupérées, il y avait des doublons.</p>
+<p>quelques tests</p>
+<p>sur quelques villes</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>joint<span class="sc">$</span>NOM_COM_M[<span class="fu">grep</span>(<span class="st">&quot;ROCHE|ISSY|VITRY|ACH|POIN&quot;</span>, joint<span class="sc">$</span>NOM_COM_M)]</span></code></pre></div>
+<p>Pb Lyon et Marseille / uniquement les arrondissements 1</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>joint<span class="sc">$</span>INSEE_COM [joint<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&quot;13055&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;13201&quot;</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>joint<span class="sc">$</span>INSEE_COM [joint<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&quot;69123&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;69381&quot;</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>joint [joint<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&quot;69381&quot;</span>,]</span></code></pre></div>
+<p>premier enregistrement</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">st_write</span>(joint,<span class="st">&quot;data/geo.gpkg&quot;</span>, <span class="st">&quot;cog&quot;</span>, <span class="at">delete_layer =</span>  T)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">write.csv</span>(joint [, <span class="fu">c</span>(<span class="st">&quot;INSEE_COM&quot;</span>, <span class="st">&quot;NOM_COM_M&quot;</span>), <span class="at">drop =</span> T], <span class="st">&quot;data/cog.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">quote =</span> T, <span class="at">row.names =</span> F)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co"># quote permet d&#39;avoir du texte</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co"># attention on a du DROM Guadeloupe (971) (97120)</span></span></code></pre></div>
+</div>
+<div id="cartographie-sans-pointe-à-pitre" class="section level2"
+number="2.3">
+<h2><span class="header-section-number">2.3</span> Cartographie (sans
+Pointe à Pitre)</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>cogGEOM <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/geo.gpkg&quot;</span>, <span class="st">&quot;cog&quot;</span>) </span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>cogGEOM <span class="ot">&lt;-</span> cogGEOM [<span class="sc">-</span><span class="dv">72</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>fond <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/DEPARTEMENT.shp&quot;</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/communes.png&quot;</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="fu">mf_init</span>(cogGEOM)</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="fu">mf_map</span>(fond, <span class="at">add =</span> T, <span class="at">col =</span> <span class="st">&quot;antiquewhite1&quot;</span>, <span class="at">border =</span> <span class="st">&quot;wheat&quot;</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">mf_map</span>(cogGEOM, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>,<span class="at">add =</span> T)</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Communes choisies par les étudiants (sf Pointe à Pitre (Guadeloupe))&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;IGN&quot;</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<p><img src="img/communes.png" /></p>
+<p>Des choix sur toute l’étendue du territoire de la métropole</p>
+</div>
+</div>
+<div id="extraction-des-données" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Extraction des
+données</h1>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>cog <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cog.csv&quot;</span>, <span class="at">colClasses =</span> <span class="st">&quot;character&quot;</span>)</span></code></pre></div>
+<div id="données-spatiales" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Données
+spatiales</h2>
+<div id="bv" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> bv</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>bv <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/bureau-de-vote-insee-reu-openstreetmap.gpkg&quot;</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>bv <span class="ot">&lt;-</span> bv [, <span class="fu">c</span>(<span class="st">&quot;insee&quot;</span>, <span class="st">&quot;nom&quot;</span>, <span class="st">&quot;bureau&quot;</span>)]</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>bv <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bv, <span class="dv">2154</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>bvSel <span class="ot">&lt;-</span> bv [bv<span class="sc">$</span>insee <span class="sc">%in%</span> cog<span class="sc">$</span>INSEE_COM,]</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(bvSel<span class="sc">$</span>insee))</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>manquants <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(cog<span class="sc">$</span>INSEE_COM, bv<span class="sc">$</span>insee)</span></code></pre></div>
+<p>pb Marseille 1er</p>
+<p>les codes insee sont les codes des villes (le code arr est sur le
+champs bureau)</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>pb <span class="ot">&lt;-</span> bv [bv<span class="sc">$</span>insee <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;13055&#39;</span>, <span class="st">&#39;69123&#39;</span>),]</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>pb<span class="sc">$</span>insee <span class="ot">&lt;-</span> <span class="fu">substring</span>(pb<span class="sc">$</span>bureau, <span class="dv">1</span>,<span class="dv">5</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>pb <span class="ot">&lt;-</span> pb [pb<span class="sc">$</span>insee <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;13201&#39;</span>,<span class="st">&#39;69381&#39;</span>),]</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>pb<span class="sc">$</span>bureau2 <span class="ot">&lt;-</span> <span class="fu">substring</span>(pb<span class="sc">$</span>bureau, <span class="dv">7</span>,<span class="dv">9</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>pbMarseille <span class="ot">&lt;-</span> pb [pb<span class="sc">$</span>nom <span class="sc">==</span> <span class="st">&#39;Marseille&#39;</span>,]</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(pbMarseille<span class="sc">$</span>bureau2)</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">names</span>(tab))</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>bureauxMarseille <span class="ot">&lt;-</span> <span class="fu">names</span>(tab)</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="co"># 18 bureaux ms pas nom se suivant</span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>pbLyon <span class="ot">&lt;-</span> pb [pb<span class="sc">$</span>nom <span class="sc">==</span> <span class="st">&#39;Lyon&#39;</span>,]</span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="co"># 16 bureaux Lyon 101 117</span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="fu">table</span>(pbLyon<span class="sc">$</span>bureau2)</span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>pb <span class="ot">&lt;-</span> pb [, <span class="sc">-</span><span class="dv">5</span>]</span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a>bvSel <span class="ot">&lt;-</span> <span class="fu">rbind</span>(bvSel, pb)</span></code></pre></div>
+<p>Ville à un seul bv : uniquement Drom</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">table</span> (bv<span class="sc">$</span>insee))</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">hist</span>(tab, <span class="at">main =</span> <span class="st">&quot;Distribution du nombre de bureaux&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;nb de bureaux&quot;</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;nb de villes&quot;</span>)</span></code></pre></div>
+<p>enregistrement</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">st_write</span>(bvSel, <span class="st">&quot;data/geo.gpkg&quot;</span>, <span class="st">&quot;bv&quot;</span>, <span class="at">delete_layer =</span> T)</span></code></pre></div>
+</div>
+<div id="iris" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Iris</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>iris <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/IRIS-GE_3-0_SHP_LAMB93_FXX-ED2023-01-01/IRIS.shp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">names</span>(iris)</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>irisSel <span class="ot">&lt;-</span> iris [iris<span class="sc">$</span>INSEE_COM <span class="sc">%in%</span> cog<span class="sc">$</span>INSEE_COM,]</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(irisSel<span class="sc">$</span>INSEE_COM))</span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>manquants <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(cog<span class="sc">$</span>INSEE_COM, irisSel<span class="sc">$</span>INSEE_COM)</span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>cog<span class="sc">$</span>NOM_COM_M [cog<span class="sc">$</span>INSEE_COM <span class="sc">%in%</span> manquants]</span></code></pre></div>
+<p>rajout Pointe à pitre</p>
+<p>pb projection….on garde à part</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>iris <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/IRIS-GE_3-0_SHP_RGAF09UTM20_GLP-ED2023-01-01/&quot;</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>irisSelPAP <span class="ot">&lt;-</span> iris [iris<span class="sc">$</span>NOM_COM <span class="sc">==</span> <span class="st">&#39;Pointe-à-Pitre&#39;</span>,]</span></code></pre></div>
+<p>enregistrement</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">st_write</span>(irisSel, <span class="st">&quot;data/geo.gpkg&quot;</span>, <span class="st">&quot;iris&quot;</span>, <span class="at">delete_layer =</span> T)</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">st_write</span>(irisSelPAP, <span class="st">&quot;data/geo.gpkg&quot;</span>, <span class="st">&quot;irisPAP&quot;</span>, <span class="at">delete_layer =</span> T)</span></code></pre></div>
+</div>
+<div id="carreaux-filosofi" class="section level3" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Carreaux
+Filosofi</h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/carreaux_200m_met.gpkg&quot;</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="co"># extraction du premier code insee du carreau + la quote pour pb zero</span></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>car<span class="sc">$</span>cog <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">substring</span>(car<span class="sc">$</span>lcog_geo,<span class="dv">1</span>,<span class="dv">5</span>))</span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>carSel <span class="ot">&lt;-</span> car [car<span class="sc">$</span>cog <span class="sc">%in%</span> cog<span class="sc">$</span>INSEE_COM,]</span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(carSel<span class="sc">$</span>cog))</span></code></pre></div>
+<p>toujours 71, manque pointe à pitre</p>
+<p>Pas de filosofi à la Guadeloupe - moindre qualité des sources.</p>
+<p>Bondy</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> carSel [carSel<span class="sc">$</span>lcog_geo <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">plot</span>(bondy<span class="sc">$</span>men_pauv, bondy<span class="sc">$</span>men_mais)</span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="fu">hist</span>(bondy<span class="sc">$</span>men_pauv)</span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="fu">str</span>(bondy)</span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a><span class="fu">mf_map</span>(bondy, <span class="at">type =</span> <span class="st">&quot;choro&quot;</span>, <span class="at">var =</span> <span class="st">&quot;men_pauv&quot;</span> )</span></code></pre></div>
+<p>Enregistrement des carreaux par dpt</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">st_write</span>(carSel, <span class="st">&quot;data/geo.gpkg&quot;</span>, <span class="st">&quot;car&quot;</span>, <span class="at">delete_layer =</span> T)</span></code></pre></div>
+<p>16 M carreaux</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>valDpt <span class="ot">&lt;-</span> <span class="fu">unique</span>(vfSel<span class="sc">$</span>Code.departement)</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>carSel<span class="sc">$</span>dpt <span class="ot">&lt;-</span> <span class="fu">substring</span>(carSel<span class="sc">$</span>lcog_geo,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>carSel <span class="ot">&lt;-</span> carSel [,<span class="fu">c</span>(<span class="dv">37</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">33</span>), drop <span class="ot">=</span> T]</span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> valDpt){</span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a>  sel <span class="ot">&lt;-</span> carSel [carSel<span class="sc">$</span>dpt <span class="sc">==</span> i,]</span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a>  <span class="fu">write.csv2</span>(sel, <span class="fu">paste0</span>(<span class="st">&quot;data/examen/car/&quot;</span>, i, <span class="st">&quot;_carEXAMEN.csv&quot;</span>), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</div>
+<div id="données-texte" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Données texte</h2>
+<div id="résultats-des-élections-2022" class="section level3"
+number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> résultats des
+élections 2022</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>cog <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cog.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">colClasses =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="co"># jointure ville code insee pour les résultats</span></span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>election2022 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/gros/resultats-par-niveau-burvot-t1-france-entiere.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">header =</span> T, <span class="at">colClasses =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a><span class="fu">names</span>(election2022)</span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a><span class="fu">str</span>(election2022<span class="sc">$</span>Code.de.la.commune)</span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a><span class="co"># INSEE_COM code insee</span></span>
+<span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a>election2022<span class="sc">$</span>INSEE_COM<span class="ot">&lt;-</span><span class="fu">paste0</span>(election2022<span class="sc">$</span>Code.du.département,election2022<span class="sc">$</span>Code.de.la.commune)</span>
+<span id="cb24-8"><a href="#cb24-8" tabindex="-1"></a><span class="co"># Pb pointe à pitre</span></span>
+<span id="cb24-9"><a href="#cb24-9" tabindex="-1"></a>election2022[<span class="fu">grep</span>(<span class="st">&quot;Pointe-à-Pitre&quot;</span>, election2022<span class="sc">$</span>Libellé.de.la.commune),]</span>
+<span id="cb24-10"><a href="#cb24-10" tabindex="-1"></a><span class="co"># le code dpt est ZA120 on le remplace par le cog officiel</span></span>
+<span id="cb24-11"><a href="#cb24-11" tabindex="-1"></a>election2022<span class="sc">$</span>INSEE_COM[election2022<span class="sc">$</span>INSEE_COM <span class="sc">==</span><span class="st">&quot;ZA120&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">97120</span></span>
+<span id="cb24-12"><a href="#cb24-12" tabindex="-1"></a><span class="co"># jointure</span></span>
+<span id="cb24-13"><a href="#cb24-13" tabindex="-1"></a>joint <span class="ot">&lt;-</span> <span class="fu">merge</span>(cog, election2022, <span class="at">by =</span> <span class="st">&quot;INSEE_COM&quot;</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(joint<span class="sc">$</span>INSEE_COM))</span>
+<span id="cb24-15"><a href="#cb24-15" tabindex="-1"></a><span class="co"># 72 youpi au cas où ce n&#39;est pas le cas :</span></span>
+<span id="cb24-16"><a href="#cb24-16" tabindex="-1"></a>pb <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(cog<span class="sc">$</span>INSEE_COM, joint<span class="sc">$</span>INSEE_COM)</span>
+<span id="cb24-17"><a href="#cb24-17" tabindex="-1"></a>cog[cog<span class="sc">$</span>INSEE_COM <span class="sc">%in%</span> pb ,]</span></code></pre></div>
+<p>Même pb qu’avec les bv</p>
+<p>syntaxe : num bureau</p>
+<p>combien de bv dans le fichier bv ? 17 et 18</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>pb <span class="ot">&lt;-</span> election2022 [election2022<span class="sc">$</span>INSEE_COM <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;13055&#39;</span>, <span class="st">&#39;69123&#39;</span>),]</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="fu">write.csv</span>(pb, <span class="st">&quot;data/pb.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">row.names =</span> F, <span class="at">quote=</span><span class="cn">TRUE</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>lyon <span class="ot">&lt;-</span> pb [pb<span class="sc">$</span>Libellé.de.la.commune <span class="sc">==</span> <span class="st">&#39;Lyon&#39;</span>,]</span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>lyon <span class="ot">&lt;-</span> lyon [lyon<span class="sc">$</span>Code.du.b.vote <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">101</span><span class="sc">:</span><span class="dv">117</span>),]</span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a>lyon<span class="sc">$</span>Code.de.la.commune <span class="ot">&lt;-</span> <span class="st">&#39;69381&#39;</span></span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a>mars <span class="ot">&lt;-</span> pb [pb<span class="sc">$</span>Libellé.de.la.commune <span class="sc">==</span> <span class="st">&#39;Marseille&#39;</span>,]</span>
+<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a>mars<span class="sc">$</span>Code.du.b.vote</span>
+<span id="cb25-8"><a href="#cb25-8" tabindex="-1"></a>mars <span class="ot">&lt;-</span> mars [mars<span class="sc">$</span>Code.du.b.vote <span class="sc">%in%</span> bureauxMarseille,]</span>
+<span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a>mars<span class="sc">$</span>Code.de.la.commune <span class="ot">&lt;-</span> <span class="st">&#39;13201&#39;</span></span>
+<span id="cb25-10"><a href="#cb25-10" tabindex="-1"></a>election2022 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(election2022, lyon, mars)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">write.csv</span>(election2022,<span class="st">&quot;data/election2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>remplacer les en têtes par les noms, on extrait les candidats</p>
+<p>le remplacement se fera en fonction des colonnes choisies % ou
+inscrits ou sexe etc…</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>election2022 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/election2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;Nom&quot;</span>, <span class="fu">names</span>(election2022))</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>candidats  <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">unique</span>(election2022[, <span class="fu">c</span>(ind)]))</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>candidats <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(candidats)</span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="fu">write.csv</span>(candidats,<span class="st">&quot;data/candidats.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="valeurs-foncières" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Valeurs
+foncières</h3>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>cog <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cog.csv&quot;</span>, <span class="at">colClasses =</span> <span class="st">&quot;character&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>vf <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/gros/valeursfoncieres-2022.txt&quot;</span>, <span class="at">sep =</span><span class="st">&quot;|&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<p>attention gros fichier</p>
+<p>code INSEE</p>
+<p>pb des zéros, un import en txt n’a pas réglé la question.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">names</span>(vf)</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>vf<span class="sc">$</span>lg <span class="ot">&lt;-</span> <span class="fu">sapply</span>(vf<span class="sc">$</span>Code.commune, nchar)</span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>vf<span class="sc">$</span>dpt <span class="ot">&lt;-</span> <span class="fu">sapply</span>(vf<span class="sc">$</span>Code.departement, nchar)</span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a><span class="fu">table</span>(vf<span class="sc">$</span>dpt)</span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a><span class="fu">table</span>(vf<span class="sc">$</span>Code.departement [vf<span class="sc">$</span>dpt <span class="sc">==</span> <span class="st">&quot;3&quot;</span>])</span>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a><span class="co"># on supprime les  sf pointe à pitre</span></span>
+<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a>vf[<span class="fu">grep</span>(<span class="st">&quot;POINTE A PITRE&quot;</span>, vf<span class="sc">$</span>Commune),]</span>
+<span id="cb29-8"><a href="#cb29-8" tabindex="-1"></a>vf<span class="sc">$</span>dpt[<span class="fu">grep</span>(<span class="st">&quot;POINTE A PITRE&quot;</span>, vf<span class="sc">$</span>Commune)] <span class="ot">&lt;-</span>  <span class="dv">2</span></span>
+<span id="cb29-9"><a href="#cb29-9" tabindex="-1"></a>vf<span class="ot">&lt;-</span> vf [vf<span class="sc">$</span>dpt <span class="sc">&lt;</span> <span class="dv">3</span>, ] </span>
+<span id="cb29-10"><a href="#cb29-10" tabindex="-1"></a><span class="fu">table</span>(vf<span class="sc">$</span>lg, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>)</span>
+<span id="cb29-11"><a href="#cb29-11" tabindex="-1"></a><span class="co"># pour le code commune on rajoute deux zéros et on coupe</span></span>
+<span id="cb29-12"><a href="#cb29-12" tabindex="-1"></a>vf<span class="sc">$</span>com <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;00&#39;</span>, vf<span class="sc">$</span>Code.commune)</span>
+<span id="cb29-13"><a href="#cb29-13" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">sapply</span>(vf<span class="sc">$</span>com, nchar))</span>
+<span id="cb29-14"><a href="#cb29-14" tabindex="-1"></a>right <span class="ot">=</span> <span class="cf">function</span> (string, char) {</span>
+<span id="cb29-15"><a href="#cb29-15" tabindex="-1"></a>    <span class="fu">substr</span>(string,<span class="fu">nchar</span>(string)<span class="sc">-</span>(char<span class="dv">-1</span>),<span class="fu">nchar</span>(string))</span>
+<span id="cb29-16"><a href="#cb29-16" tabindex="-1"></a>}</span>
+<span id="cb29-17"><a href="#cb29-17" tabindex="-1"></a>vf<span class="sc">$</span>comF <span class="ot">&lt;-</span> <span class="fu">right</span>(vf<span class="sc">$</span>com, <span class="dv">3</span>)</span>
+<span id="cb29-18"><a href="#cb29-18" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">sapply</span>(vf<span class="sc">$</span>comF, nchar))</span>
+<span id="cb29-19"><a href="#cb29-19" tabindex="-1"></a><span class="co"># cas pointe à pitre</span></span>
+<span id="cb29-20"><a href="#cb29-20" tabindex="-1"></a>vf<span class="sc">$</span>cog <span class="ot">&lt;-</span> <span class="fu">paste0</span>(vf<span class="sc">$</span>Code.departement, vf<span class="sc">$</span>comF)</span>
+<span id="cb29-21"><a href="#cb29-21" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">sapply</span>(vf<span class="sc">$</span>cog, nchar))</span>
+<span id="cb29-22"><a href="#cb29-22" tabindex="-1"></a>vf<span class="sc">$</span>cog [<span class="fu">nchar</span>(vf<span class="sc">$</span>cog)<span class="sc">==</span><span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="st">&quot;97120&quot;</span></span></code></pre></div>
+<p>extraction des 72 communes</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>vfSel <span class="ot">&lt;-</span> vf [vf<span class="sc">$</span>cog <span class="sc">%in%</span> cog<span class="sc">$</span>INSEE_COM,]</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(vfSel<span class="sc">$</span>cog))</span></code></pre></div>
+<p>71 communes</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>manquants <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(cog<span class="sc">$</span>INSEE_COM, vfSel<span class="sc">$</span>cog)</span></code></pre></div>
+<p>Thionville pas de valeur foncière</p>
+<p>test bondy</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> vfSel [vfSel<span class="sc">$</span>cog <span class="sc">==</span> <span class="st">&quot;&#39;93010&quot;</span>,]</span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(bondy<span class="sc">$</span>Valeur.fonciere)</span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a><span class="fu">hist</span>(bondy<span class="sc">$</span>Valeur.fonciere)</span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a><span class="fu">table</span>(bondy<span class="sc">$</span>Voie [bondy<span class="sc">$</span>Valeur.fonciere <span class="sc">&gt;</span> <span class="dv">30000000</span>])</span>
+<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(bondy<span class="sc">$</span>Voie [bondy<span class="sc">$</span>Valeur.fonciere <span class="sc">&lt;</span> <span class="dv">3000</span>]), <span class="at">las =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">names</span>(vfSel)</span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a><span class="fu">write.csv</span>(vfSel [, <span class="fu">c</span>(<span class="dv">48</span>,<span class="dv">9</span><span class="sc">:</span><span class="dv">43</span>)], <span class="st">&quot;data/vf.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<p>on enregistre par dpt</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>valDpt <span class="ot">&lt;-</span> <span class="fu">unique</span>(vfSel<span class="sc">$</span>Code.departement)</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> valDpt){</span>
+<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a>  sel <span class="ot">&lt;-</span> vfSel [vfSel<span class="sc">$</span>Code.departement <span class="sc">==</span> i,]</span>
+<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>  <span class="fu">write.csv2</span>(sel [, <span class="fu">c</span>(<span class="dv">48</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">43</span>)], <span class="fu">paste0</span>(<span class="st">&quot;data/examen/vf/&quot;</span>, i, <span class="st">&quot;_vfEXAMEN.csv&quot;</span>), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="base-logement-iris" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Base logement
+(IRIS)</h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>lgt <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/gros/base-ic-logement-2019.CSV&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>lgt <span class="ot">&lt;-</span> lgt [lgt<span class="sc">$</span>COM <span class="sc">%in%</span> cog<span class="sc">$</span>INSEE_COM,]</span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="fu">unique</span>(lgt<span class="sc">$</span>COM)</span></code></pre></div>
+<p>72 communes</p>
+<p>test Bondy</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> lgt [lgt<span class="sc">$</span>COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a><span class="fu">plot</span>(bondy<span class="sc">$</span>P19_LOGVAC, bondy<span class="sc">$</span>P19_MAISON)</span></code></pre></div>
+<p>enregistrement</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">write.csv</span>(lgt, <span class="st">&quot;data/gros/lgt.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">quote =</span> T)</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>valDpt <span class="ot">&lt;-</span> <span class="fu">unique</span>(vfSel<span class="sc">$</span>Code.departement)</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a>lgtSel<span class="sc">$</span>dpt <span class="ot">&lt;-</span> <span class="fu">substring</span>(lgtSel<span class="sc">$</span>COM,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> valDpt){</span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a>  sel <span class="ot">&lt;-</span> lgtSel [lgtSel<span class="sc">$</span>dpt <span class="sc">==</span> i,]</span>
+<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a>  <span class="fu">write.csv2</span>(sel [, <span class="fu">c</span>(<span class="dv">48</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">43</span>)], <span class="fu">paste0</span>(<span class="st">&quot;data/examen/lgt/&quot;</span>, i, <span class="st">&quot;_lgtEXAMEN.csv&quot;</span>), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb37-7"><a href="#cb37-7" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</div>
+<div id="rpls" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> RPLS</h2>
+<p>Le RPLS est en point appartement, on l’agrège en pt immeuble</p>
+<p>Le RPLS est par région et par dpt en idf</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>fic <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;data/gros/RPLS&quot;</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>regFic <span class="ot">&lt;-</span> <span class="fu">substring</span>(fic, <span class="dv">28</span>,<span class="dv">29</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a>refRPLS <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">reg =</span> regFic, <span class="at">fic =</span> fic)</span>
+<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a>refRPLS</span>
+<span id="cb38-5"><a href="#cb38-5" tabindex="-1"></a><span class="co"># equiv code insee et region</span></span>
+<span id="cb38-6"><a href="#cb38-6" tabindex="-1"></a>ref <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/gros/table-appartenance-geo-communes-23.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb38-7"><a href="#cb38-7" tabindex="-1"></a>cog <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cog.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb38-8"><a href="#cb38-8" tabindex="-1"></a>cog<span class="sc">$</span>INSEE_COM <span class="ot">&lt;-</span> <span class="fu">substring</span>(cog<span class="sc">$</span>INSEE_COM_TXT, <span class="dv">2</span>, <span class="dv">6</span>)</span>
+<span id="cb38-9"><a href="#cb38-9" tabindex="-1"></a>joint <span class="ot">&lt;-</span> <span class="fu">merge</span>(cog, ref [, <span class="fu">c</span>(<span class="st">&quot;CODGEO&quot;</span>, <span class="st">&quot;REG&quot;</span>, <span class="st">&quot;DEP&quot;</span>)], <span class="at">by.x =</span> <span class="st">&quot;INSEE_COM&quot;</span>, <span class="at">by.y =</span> <span class="st">&quot;CODGEO&quot;</span>)</span>
+<span id="cb38-10"><a href="#cb38-10" tabindex="-1"></a>reg <span class="ot">&lt;-</span><span class="fu">names</span>(<span class="fu">table</span>(joint<span class="sc">$</span>REG))</span>
+<span id="cb38-11"><a href="#cb38-11" tabindex="-1"></a><span class="co"># 12 régions sur 19</span></span>
+<span id="cb38-12"><a href="#cb38-12" tabindex="-1"></a>r <span class="ot">&lt;-</span> reg [<span class="dv">1</span>]</span>
+<span id="cb38-13"><a href="#cb38-13" tabindex="-1"></a>reg <span class="ot">&lt;-</span> reg [<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)]</span>
+<span id="cb38-14"><a href="#cb38-14" tabindex="-1"></a>rpls <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb38-15"><a href="#cb38-15" tabindex="-1"></a><span class="cf">for</span> (r <span class="cf">in</span> reg){</span>
+<span id="cb38-16"><a href="#cb38-16" tabindex="-1"></a>  refFIC <span class="ot">&lt;-</span> refRPLS<span class="sc">$</span>fic [refRPLS<span class="sc">$</span>reg <span class="sc">==</span> r]</span>
+<span id="cb38-17"><a href="#cb38-17" tabindex="-1"></a>  <span class="fu">print</span>(r)</span>
+<span id="cb38-18"><a href="#cb38-18" tabindex="-1"></a>  fic <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="fu">paste0</span>(<span class="st">&quot;data/gros/RPLS/&quot;</span>, refFIC), <span class="at">header =</span> T, <span class="at">quote =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb38-19"><a href="#cb38-19" tabindex="-1"></a>  commune <span class="ot">&lt;-</span> joint<span class="sc">$</span>INSEE_COM [joint<span class="sc">$</span>REG <span class="sc">==</span> r] </span>
+<span id="cb38-20"><a href="#cb38-20" tabindex="-1"></a>  <span class="cf">for</span> (c <span class="cf">in</span> commune){</span>
+<span id="cb38-21"><a href="#cb38-21" tabindex="-1"></a>     tmp <span class="ot">&lt;-</span>  fic [fic<span class="sc">$</span>DEPCOM <span class="sc">==</span> c,]</span>
+<span id="cb38-22"><a href="#cb38-22" tabindex="-1"></a>     rpls <span class="ot">&lt;-</span> <span class="fu">rbind</span> (rpls, tmp)</span>
+<span id="cb38-23"><a href="#cb38-23" tabindex="-1"></a>  }</span>
+<span id="cb38-24"><a href="#cb38-24" tabindex="-1"></a>  }</span>
+<span id="cb38-25"><a href="#cb38-25" tabindex="-1"></a><span class="fu">write.csv</span>(rpls, <span class="st">&quot;data/gros/rpls.csv&quot;</span>)</span>
+<span id="cb38-26"><a href="#cb38-26" tabindex="-1"></a><span class="fu">head</span>(rpls)</span></code></pre></div>
+<div id="données" class="section level4" number="3.3.0.1">
+<h4><span class="header-section-number">3.3.0.1</span> données</h4>
+<p>pb lecture reg27</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a>fic <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="fu">paste0</span>(<span class="st">&quot;data/gros/RPLS/&quot;</span>, refFIC), <span class="at">quote=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a><span class="fu">write.csv</span>(fic, <span class="fu">paste0</span>(<span class="st">&quot;data/gros/RPLS&quot;</span>, refFIC), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">quote =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p>Agrégation par point adresse</p>
+</div>
+</div>
+</div>
+<div id="intersection-par-bureaux-de-vote" class="section level1"
+number="4">
+<h1><span class="header-section-number">4</span> Intersection par
+bureaux de vote</h1>
+<p>On a déjà les bv et les carreaux</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">&quot;data/geo.gpkg&quot;</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a>bv <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/geo.gpkg&quot;</span>, <span class="st">&quot;bv&quot;</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/geo.gpkg&quot;</span>, <span class="st">&quot;car&quot;</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a>iris <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/geo.gpkg&quot;</span>, <span class="st">&quot;iris&quot;</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a>irisPAP <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/geo.gpkg&quot;</span>, <span class="st">&quot;irisPAP&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>cogG <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/geo.gpkg&quot;</span>, <span class="st">&quot;cog&quot;</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a>cogG <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(cogG, <span class="dv">2154</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" tabindex="-1"></a>cogG<span class="sc">$</span>aire <span class="ot">&lt;-</span> <span class="fu">st_area</span>(cogG)</span></code></pre></div>
+<div id="nettoyage-du-bv" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Nettoyage du bv</h2>
+<p>Le bv pas valide pour les intersection</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a>bv <span class="ot">&lt;-</span> bv [<span class="fu">st_is_valid</span>(bv),]</span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a>bv <span class="ot">&lt;-</span> <span class="fu">st_cast</span>(bv, <span class="st">&quot;POLYGON&quot;</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a><span class="co"># Du coup, pl polygone pour un bureau on supprime les petits poly</span></span>
+<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a>bv<span class="sc">$</span>aire <span class="ot">&lt;-</span> <span class="fu">st_area</span>(bv)<span class="sc">/</span><span class="dv">10000</span></span>
+<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a><span class="fu">library</span>(units)</span>
+<span id="cb42-6"><a href="#cb42-6" tabindex="-1"></a>bv<span class="sc">$</span>aire <span class="ot">&lt;-</span> <span class="fu">drop_units</span>(bv<span class="sc">$</span>aire)</span>
+<span id="cb42-7"><a href="#cb42-7" tabindex="-1"></a>bv <span class="ot">&lt;-</span> bv [bv<span class="sc">$</span>aire <span class="sc">&gt;</span> <span class="dv">5</span>,]</span></code></pre></div>
+<p>2113 au départ 2098, puis 2096 à la fin</p>
+</div>
+<div id="vf-parcelle-intégration-du-cadastre" class="section level2"
+number="4.2">
+<h2><span class="header-section-number">4.2</span> vf / parcelle :
+intégration du cadastre</h2>
+<p>C’est en fait l’intersection bv et cadastre</p>
+<p>On récupère le cadastre, on intersecte parcelle et bv et on
+enregistre le fichier dans bv.gpkg avec le code insee.</p>
+<div id="données-1" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> données</h3>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>cog <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cog.csv&quot;</span>, <span class="at">colClasses =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a><span class="fu">library</span>(R.utils)<span class="co">#gunzip</span></span></code></pre></div>
+</div>
+<div id="traitement" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> traitement</h3>
+<p>Le cadastre est téléchargé par commune (etalab), dézippé et
+intersecté. L’extraction va dans le bv.gpkg, une couche par commune</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">substring</span>(cog<span class="sc">$</span>INSEE_COM,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="fu">substring</span>(cog<span class="sc">$</span>INSEE_COM,<span class="dv">1</span>,<span class="dv">6</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" tabindex="-1"></a><span class="co"># en cas de sous boucle. pour diminuer les communes concernés</span></span>
+<span id="cb44-5"><a href="#cb44-5" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> dpt [<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span>
+<span id="cb44-6"><a href="#cb44-6" tabindex="-1"></a>code <span class="ot">&lt;-</span> code [<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span>
+<span id="cb44-7"><a href="#cb44-7" tabindex="-1"></a>i <span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb44-8"><a href="#cb44-8" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="st">&quot;01&quot;</span></span>
+<span id="cb44-9"><a href="#cb44-9" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="st">&quot;01150&quot;</span></span>
+<span id="cb44-10"><a href="#cb44-10" tabindex="-1"></a>nomZIP <span class="ot">&lt;-</span> <span class="st">&quot;cadastre-97120-parcelles.json.gz&quot;</span></span>
+<span id="cb44-11"><a href="#cb44-11" tabindex="-1"></a><span class="do">##### NE PAS JOUER</span></span>
+<span id="cb44-12"><a href="#cb44-12" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="#cb44-13" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(dpt)){</span>
+<span id="cb44-14"><a href="#cb44-14" tabindex="-1"></a>  nomZIP <span class="ot">&lt;-</span> <span class="fu">paste0</span>(dpt [i], <span class="st">&quot;_&quot;</span>, code [i],<span class="st">&quot;.gz&quot;</span>)</span>
+<span id="cb44-15"><a href="#cb44-15" tabindex="-1"></a>  nomGEO <span class="ot">&lt;-</span> <span class="fu">paste0</span>(dpt [i], <span class="st">&quot;_&quot;</span>, code [i],<span class="st">&quot;.geojson&quot;</span>)</span>
+<span id="cb44-16"><a href="#cb44-16" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(i, <span class="st">&quot;_&quot;</span>,nomZIP))</span>
+<span id="cb44-17"><a href="#cb44-17" tabindex="-1"></a>  <span class="co"># pour éviter de télécharger pl fois test</span></span>
+<span id="cb44-18"><a href="#cb44-18" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">file.exists</span>(nomZIP)<span class="sc">==</span><span class="cn">FALSE</span> ){</span>
+<span id="cb44-19"><a href="#cb44-19" tabindex="-1"></a>    fic <span class="ot">&lt;-</span> <span class="fu">download.file</span>(<span class="fu">paste0</span>(<span class="st">&quot;https://cadastre.data.gouv.fr/data/etalab-cadastre/2023-07-01/geojson/communes/&quot;</span>, dpt [i],<span class="st">&quot;/&quot;</span>,code [i],<span class="st">&quot;/cadastre-&quot;</span>, code [i],<span class="st">&quot;-parcelles.json.gz&quot;</span>), nomZIP)</span>
+<span id="cb44-20"><a href="#cb44-20" tabindex="-1"></a>  }</span>
+<span id="cb44-21"><a href="#cb44-21" tabindex="-1"></a>  </span>
+<span id="cb44-22"><a href="#cb44-22" tabindex="-1"></a>  exdir <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;data/gros/cadastre/&quot;</span>,nomGEO)</span>
+<span id="cb44-23"><a href="#cb44-23" tabindex="-1"></a>  <span class="co"># gunzip pour des gz</span></span>
+<span id="cb44-24"><a href="#cb44-24" tabindex="-1"></a>  <span class="fu">gunzip</span>(nomZIP, exdir, <span class="at">overwrite =</span> T )</span>
+<span id="cb44-25"><a href="#cb44-25" tabindex="-1"></a>  cadastre <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">paste0</span>(<span class="st">&quot;data/gros/cadastre/&quot;</span>,nomGEO))</span>
+<span id="cb44-26"><a href="#cb44-26" tabindex="-1"></a>  <span class="co"># 2154 obligatoire pour intersecter</span></span>
+<span id="cb44-27"><a href="#cb44-27" tabindex="-1"></a>  cadastre <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(cadastre,<span class="dv">2154</span>)</span>
+<span id="cb44-28"><a href="#cb44-28" tabindex="-1"></a>  <span class="co"># extraction bv</span></span>
+<span id="cb44-29"><a href="#cb44-29" tabindex="-1"></a>  bvSel <span class="ot">&lt;-</span> bv [bv<span class="sc">$</span>insee <span class="sc">==</span> code [i],]</span>
+<span id="cb44-30"><a href="#cb44-30" tabindex="-1"></a>  <span class="co"># intersection avec bv</span></span>
+<span id="cb44-31"><a href="#cb44-31" tabindex="-1"></a>  inter <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(bvSel [, <span class="fu">c</span>(<span class="st">&quot;bureau&quot;</span>)], <span class="fu">st_centroid</span>( cadastre [, <span class="fu">c</span>(<span class="st">&quot;section&quot;</span>, <span class="st">&quot;numero&quot;</span>)]))</span>
+<span id="cb44-32"><a href="#cb44-32" tabindex="-1"></a>  <span class="fu">st_write</span>(inter, <span class="st">&quot;data/gros/bv.gpkg&quot;</span>, <span class="fu">paste0</span>(<span class="st">&quot;bv_&quot;</span>,code [i]), <span class="at">delete_layer =</span> T)</span>
+<span id="cb44-33"><a href="#cb44-33" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="bilan" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Bilan</h3>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">&quot;data/gros/bv.gpkg&quot;</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a><span class="co"># 72 couches</span></span></code></pre></div>
+</div>
+<div id="union" class="section level3" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Union</h3>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>lireGPKG <span class="ot">&lt;-</span> <span class="cf">function</span>(numCouche){</span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a>  fic <span class="ot">&lt;-</span> <span class="fu">st_layers</span>(<span class="st">&quot;data/gros/bv.gpkg&quot;</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a>  couche <span class="ot">&lt;-</span> fic<span class="sc">$</span>name</span>
+<span id="cb46-4"><a href="#cb46-4" tabindex="-1"></a>  cadastre <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/bv.gpkg&quot;</span>, couche [numCouche])</span>
+<span id="cb46-5"><a href="#cb46-5" tabindex="-1"></a>  cadastre<span class="sc">$</span>INSEE_COM <span class="ot">&lt;-</span> <span class="fu">substring</span>(couche [numCouche], <span class="dv">4</span>, <span class="dv">8</span>)</span>
+<span id="cb46-6"><a href="#cb46-6" tabindex="-1"></a>  <span class="fu">st_write</span>(cadastre, <span class="st">&quot;data/geoInter.gpkg&quot;</span>, <span class="st">&quot;cadastre&quot;</span>, <span class="at">append =</span> T )</span>
+<span id="cb46-7"><a href="#cb46-7" tabindex="-1"></a>}</span>
+<span id="cb46-8"><a href="#cb46-8" tabindex="-1"></a>couche <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">72</span>)</span>
+<span id="cb46-9"><a href="#cb46-9" tabindex="-1"></a><span class="fu">lapply</span>(couche, lireGPKG)</span></code></pre></div>
+</div>
+<div id="vérif" class="section level3" number="4.2.5">
+<h3><span class="header-section-number">4.2.5</span> vérif</h3>
+<p>Drom 1 seul bv, on intersecte à la parcelle</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/geoInter.gpkg&quot;</span>, <span class="st">&quot;cadastre&quot;</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a>data [data<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;01150&#39;</span>,]</span>
+<span id="cb47-3"><a href="#cb47-3" tabindex="-1"></a>numCouche <span class="ot">&lt;-</span> <span class="dv">72</span></span>
+<span id="cb47-4"><a href="#cb47-4" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">&quot;01150&quot;</span>, couche)</span></code></pre></div>
+</div>
+</div>
+<div id="lgt-iris-prorata" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> lgt / iris :
+prorata</h2>
+<p>Croisement iris / bv</p>
+<div id="carto-repère-sur-lile-de-france" class="section level3"
+number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Carto repère sur
+l’Ile de France</h3>
+<p>Histoire de repérer quelques communes test</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/idF.png&quot;</span>, <span class="at">height =</span> <span class="dv">1200</span>, <span class="at">width =</span> <span class="dv">1200</span>, <span class="at">res =</span> <span class="dv">200</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a>fond <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(fond, <span class="dv">2154</span>)</span>
+<span id="cb48-3"><a href="#cb48-3" tabindex="-1"></a>fond <span class="ot">&lt;-</span> fond [fond<span class="sc">$</span>INSEE_REG <span class="sc">==</span> <span class="dv">11</span>,]</span>
+<span id="cb48-4"><a href="#cb48-4" tabindex="-1"></a><span class="fu">mf_map</span>(fond, <span class="at">col =</span> <span class="st">&quot;antiquewhite1&quot;</span>, <span class="at">border =</span> <span class="st">&quot;pink&quot;</span>)</span>
+<span id="cb48-5"><a href="#cb48-5" tabindex="-1"></a><span class="fu">mf_map</span>(iris, <span class="at">col=</span> <span class="st">&quot;white&quot;</span>, <span class="at">border =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">add =</span> T)</span>
+<span id="cb48-6"><a href="#cb48-6" tabindex="-1"></a><span class="fu">mf_map</span>(bv, <span class="at">border =</span> <span class="st">&quot;red&quot;</span>, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
+<span id="cb48-7"><a href="#cb48-7" tabindex="-1"></a>etik <span class="ot">&lt;-</span> bv [<span class="sc">!</span><span class="fu">duplicated</span>(bv<span class="sc">$</span>insee),]</span>
+<span id="cb48-8"><a href="#cb48-8" tabindex="-1"></a><span class="fu">mf_label</span>(etik, <span class="at">var =</span> <span class="st">&quot;nom&quot;</span>,<span class="at">overlap =</span> F )</span>
+<span id="cb48-9"><a href="#cb48-9" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;iris, bv et ile de france&quot;</span>, <span class="st">&quot;ign&quot;</span>)</span>
+<span id="cb48-10"><a href="#cb48-10" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<p><img src="img/idF.png" /></p>
+</div>
+<div id="traitement-1" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Traitement</h3>
+<p>Les iris sont plus gros que les bureaux de vote, donc on prend les
+centroides des bureaux de vote.</p>
+<p>Puis on divise par l’iris par le prorata du bv / aire de l’iris</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(iris, <span class="fu">st_centroid</span>(bv) )</span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a>bvC <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(bv)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a>code <span class="ot">&lt;-</span> cog<span class="sc">$</span>INSEE_COM</span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a><span class="cf">for</span> (c <span class="cf">in</span> code){</span>
+<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a>  <span class="fu">print</span>(c)</span>
+<span id="cb50-4"><a href="#cb50-4" tabindex="-1"></a>  interSel <span class="ot">&lt;-</span> inter [inter<span class="sc">$</span>INSEE_COM <span class="sc">==</span> c,]</span>
+<span id="cb50-5"><a href="#cb50-5" tabindex="-1"></a>  irisSel <span class="ot">&lt;-</span> <span class="fu">unique</span> (interSel<span class="sc">$</span>CODE_IRIS)</span>
+<span id="cb50-6"><a href="#cb50-6" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> irisSel){</span>
+<span id="cb50-7"><a href="#cb50-7" tabindex="-1"></a>    aireIris  <span class="ot">&lt;-</span> <span class="fu">st_area</span>(iris<span class="sc">$</span>geom [iris<span class="sc">$</span>CODE_IRIS <span class="sc">==</span> i])<span class="sc">/</span><span class="dv">10000</span></span>
+<span id="cb50-8"><a href="#cb50-8" tabindex="-1"></a>    inter<span class="sc">$</span>prorata [inter<span class="sc">$</span>INSEE_COM <span class="sc">==</span> c <span class="sc">&amp;</span> inter<span class="sc">$</span>CODE_IRIS <span class="sc">==</span> i] <span class="ot">&lt;-</span> inter<span class="sc">$</span>aire [inter<span class="sc">$</span>INSEE_COM <span class="sc">==</span> c <span class="sc">&amp;</span> inter<span class="sc">$</span>CODE_IRIS <span class="sc">==</span> i]  <span class="sc">/</span> <span class="fu">sum</span>(inter<span class="sc">$</span>aire  [inter<span class="sc">$</span>INSEE_COM <span class="sc">==</span> c <span class="sc">&amp;</span> inter<span class="sc">$</span>CODE_IRIS <span class="sc">==</span> i])</span>
+<span id="cb50-9"><a href="#cb50-9" tabindex="-1"></a>    inter<span class="sc">$</span>prorataIris [inter<span class="sc">$</span>INSEE_COM <span class="sc">==</span> c <span class="sc">&amp;</span> inter<span class="sc">$</span>CODE_IRIS <span class="sc">==</span> i] <span class="ot">&lt;-</span> aireIris <span class="sc">*</span> inter<span class="sc">$</span>prorata [inter<span class="sc">$</span>INSEE_COM <span class="sc">==</span> c <span class="sc">&amp;</span> inter<span class="sc">$</span>CODE_IRIS <span class="sc">==</span> i] </span>
+<span id="cb50-10"><a href="#cb50-10" tabindex="-1"></a>}</span>
+<span id="cb50-11"><a href="#cb50-11" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="quelques-verif" class="section level3" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Quelques verif</h3>
+<p>Bondy</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a><span class="co"># verif sur Bondy</span></span>
+<span id="cb51-2"><a href="#cb51-2" tabindex="-1"></a>c <span class="ot">&lt;-</span><span class="dv">93010</span></span>
+<span id="cb51-3"><a href="#cb51-3" tabindex="-1"></a>interSel</span>
+<span id="cb51-4"><a href="#cb51-4" tabindex="-1"></a>i <span class="ot">&lt;-</span>irisSel [<span class="dv">1</span>]</span>
+<span id="cb51-5"><a href="#cb51-5" tabindex="-1"></a><span class="fu">table</span>(inter<span class="sc">$</span>CODE_IRIS [inter<span class="sc">$</span>NOM_COM <span class="sc">==</span> <span class="st">&#39;Bondy&#39;</span>])</span>
+<span id="cb51-6"><a href="#cb51-6" tabindex="-1"></a>inter [inter<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span><span class="sc">&amp;</span>  inter<span class="sc">$</span>CODE_IRIS <span class="sc">==</span> <span class="st">&#39;930100202&#39;</span> ,]</span>
+<span id="cb51-7"><a href="#cb51-7" tabindex="-1"></a><span class="fu">st_area</span>(iris<span class="sc">$</span>geom [iris<span class="sc">$</span>CODE_IRIS <span class="sc">==</span> <span class="st">&#39;930100202&#39;</span>])<span class="sc">/</span><span class="dv">10000</span></span>
+<span id="cb51-8"><a href="#cb51-8" tabindex="-1"></a><span class="dv">17</span><span class="sc">*</span><span class="fl">0.42</span></span>
+<span id="cb51-9"><a href="#cb51-9" tabindex="-1"></a><span class="co"># le prorata est le rapport entre surface par rapport à la surface totale</span></span>
+<span id="cb51-10"><a href="#cb51-10" tabindex="-1"></a><span class="co"># le prorata iris est la verif sur la surface.</span></span>
+<span id="cb51-11"><a href="#cb51-11" tabindex="-1"></a><span class="co"># verif sur pointe à pitre... il n&#39;y a pas d&#39;iris pap normalement</span></span>
+<span id="cb51-12"><a href="#cb51-12" tabindex="-1"></a>inter [inter<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;97120&#39;</span>,]</span>
+<span id="cb51-13"><a href="#cb51-13" tabindex="-1"></a><span class="fu">tail</span>(inter)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a><span class="fu">st_write</span>(inter, <span class="st">&quot;data/geoInter.gpkg&quot;</span>, <span class="st">&quot;iris&quot;</span>, <span class="at">delete_layer =</span> T)</span></code></pre></div>
+<p>Autre cas d’école Arpajon et Miribel</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a>bvSel <span class="ot">&lt;-</span> bv [bv<span class="sc">$</span>nom <span class="sc">==</span> <span class="st">&quot;Arpajon&quot;</span>,]</span>
+<span id="cb53-2"><a href="#cb53-2" tabindex="-1"></a>interSel <span class="ot">&lt;-</span> inter [inter<span class="sc">$</span>NOM_COM <span class="sc">==</span> <span class="st">&#39;Arpajon&#39;</span>,] </span>
+<span id="cb53-3"><a href="#cb53-3" tabindex="-1"></a><span class="fu">mf_map</span>(bvSel, <span class="st">&quot;typo&quot;</span>, <span class="at">var =</span> <span class="st">&quot;bureau&quot;</span>)</span>
+<span id="cb53-4"><a href="#cb53-4" tabindex="-1"></a><span class="fu">mf_map</span>(iris, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">border =</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> T)</span>
+<span id="cb53-5"><a href="#cb53-5" tabindex="-1"></a><span class="fu">mf_label</span>(interSel, <span class="at">var =</span> <span class="st">&quot;prorata&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb53-6"><a href="#cb53-6" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Arpajon : Prorata bv sur aire Iris...&quot;</span>, <span class="st">&quot;ign et calculs fous&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a>bvSel <span class="ot">&lt;-</span> bv [bv<span class="sc">$</span>nom <span class="sc">==</span> <span class="st">&quot;Miribel&quot;</span>,]</span>
+<span id="cb54-2"><a href="#cb54-2" tabindex="-1"></a>interSel <span class="ot">&lt;-</span> inter [inter<span class="sc">$</span>NOM_COM <span class="sc">==</span> <span class="st">&#39;Miribel&#39;</span>,] </span>
+<span id="cb54-3"><a href="#cb54-3" tabindex="-1"></a><span class="fu">mf_map</span>(bvSel, <span class="st">&quot;typo&quot;</span>, <span class="at">var =</span> <span class="st">&quot;bureau&quot;</span>)</span>
+<span id="cb54-4"><a href="#cb54-4" tabindex="-1"></a><span class="fu">mf_map</span>(iris, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">border =</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> T)</span>
+<span id="cb54-5"><a href="#cb54-5" tabindex="-1"></a><span class="fu">mf_label</span>(interSel, <span class="at">var =</span> <span class="st">&quot;prorata&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb54-6"><a href="#cb54-6" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Miribel : Prorata bv sur aire Iris...&quot;</span>, <span class="st">&quot;ign et calculs fous&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="bv-car-sans-pb" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> bv / car : sans
+pb</h2>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a>carC <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(car)</span>
+<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(bv, carC)</span>
+<span id="cb55-3"><a href="#cb55-3" tabindex="-1"></a><span class="co"># il peut y avoir pl carreaux dans un bv mais pas pl bv dans un carreau</span></span>
+<span id="cb55-4"><a href="#cb55-4" tabindex="-1"></a><span class="fu">names</span>(inter)</span>
+<span id="cb55-5"><a href="#cb55-5" tabindex="-1"></a><span class="fu">st_write</span>(inter, <span class="st">&quot;data/geoInter.gpkg&quot;</span>, <span class="st">&quot;car&quot;</span>, <span class="at">delete_layer =</span> T)</span></code></pre></div>
+</div>
+</div>
+<div id="jointure-et-agrégation-au-bv-des-données-texte"
+class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Jointure et agrégation
+au bv des données texte</h1>
+<div id="données-2" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> données</h2>
+<div id="csv" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> csv</h3>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a>election2022 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/election2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" tabindex="-1"></a>vf <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/vf.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">colClasses =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" tabindex="-1"></a>lgt <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/gros/lgt.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">colClasses =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb56-4"><a href="#cb56-4" tabindex="-1"></a><span class="co">#rpls &lt;- list.files(&quot;data/gros/RPLS&quot;)</span></span>
+<span id="cb56-5"><a href="#cb56-5" tabindex="-1"></a>cog <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cog.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">colClasses =</span> <span class="st">&quot;character&quot;</span>)</span></code></pre></div>
+<p>Pas de donnée csv dans les carreaux, elles sont déjà dedans</p>
+<p>Pour chaque fichier attention au cog</p>
+</div>
+<div id="spatial" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Spatial</h3>
+<p>Tout est dans geoInter.gpkg</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">&quot;data/geoInter.gpkg&quot;</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/geoInter.gpkg&quot;</span>, <span class="st">&quot;car&quot;</span>)</span>
+<span id="cb57-3"><a href="#cb57-3" tabindex="-1"></a>iris <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/geoInter.gpkg&quot;</span>, <span class="st">&quot;iris&quot;</span>)</span>
+<span id="cb57-4"><a href="#cb57-4" tabindex="-1"></a>cadastre <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/geoInter.gpkg&quot;</span>, <span class="st">&quot;cadastre&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="traitement-2" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Traitement</h2>
+<div id="car" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> car</h3>
+<p>Il y a plusieurs carreaux pour un meme bureau de vote. On somme les
+valeurs (il s’agit des ménages fiscaux par bv)</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a><span class="fu">names</span>(car)</span>
+<span id="cb58-2"><a href="#cb58-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">names</span>(car)[<span class="dv">10</span><span class="sc">:</span><span class="dv">37</span>]</span>
+<span id="cb58-3"><a href="#cb58-3" tabindex="-1"></a>agg <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(car [, v], <span class="at">by =</span> <span class="fu">list</span>(car<span class="sc">$</span>bureau), sum)</span>
+<span id="cb58-4"><a href="#cb58-4" tabindex="-1"></a><span class="fu">names</span>(agg)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;bureau&quot;</span></span>
+<span id="cb58-5"><a href="#cb58-5" tabindex="-1"></a>agg <span class="ot">&lt;-</span> <span class="fu">st_drop_geometry</span>(agg)</span>
+<span id="cb58-6"><a href="#cb58-6" tabindex="-1"></a><span class="fu">write.csv</span>(agg,<span class="st">&quot;data/devoirMaison/filosofi.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">row.names =</span> F)</span></code></pre></div>
+</div>
+<div id="vf" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> vf</h3>
+<div id="jointure-1" class="section level4" number="5.2.2.1">
+<h4><span class="header-section-number">5.2.2.1</span> Jointure</h4>
+<p>Constitution des clés pour la jointure</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a><span class="fu">str</span>(cadastre)</span>
+<span id="cb59-2"><a href="#cb59-2" tabindex="-1"></a>cadastre<span class="sc">$</span>cle <span class="ot">&lt;-</span> <span class="fu">paste0</span>(cadastre<span class="sc">$</span>INSEE_COM, <span class="st">&quot;_&quot;</span>, cadastre<span class="sc">$</span>section, cadastre<span class="sc">$</span>numero)</span>
+<span id="cb59-3"><a href="#cb59-3" tabindex="-1"></a><span class="fu">str</span>(vf)</span>
+<span id="cb59-4"><a href="#cb59-4" tabindex="-1"></a>vf<span class="sc">$</span>cle <span class="ot">&lt;-</span> <span class="fu">paste0</span>(vf<span class="sc">$</span>cog, <span class="st">&quot;_&quot;</span>, vf<span class="sc">$</span>Section, vf<span class="sc">$</span>No.plan)</span></code></pre></div>
+<p>670 M et 190 M enregistrements</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" tabindex="-1"></a>joint <span class="ot">&lt;-</span> <span class="fu">merge</span>(cadastre, vf, <span class="at">by =</span> <span class="st">&quot;cle&quot;</span>)</span></code></pre></div>
+<p>189 549…</p>
+</div>
+<div id="agrégation" class="section level4" number="5.2.2.2">
+<h4><span class="header-section-number">5.2.2.2</span> Agrégation</h4>
+<p>On va faire la moyenne des ventes, surfaces (bati et terrain)</p>
+<p>Essai de type local</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" tabindex="-1"></a><span class="fu">names</span>(joint)</span>
+<span id="cb61-2"><a href="#cb61-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">names</span>(joint)[<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">38</span>,<span class="dv">39</span>,<span class="dv">42</span>)]</span>
+<span id="cb61-3"><a href="#cb61-3" tabindex="-1"></a>joint<span class="sc">$</span>Valeur.fonciere <span class="ot">&lt;-</span><span class="fu">as.numeric</span>(joint<span class="sc">$</span>Valeur.fonciere)</span>
+<span id="cb61-4"><a href="#cb61-4" tabindex="-1"></a>joint<span class="sc">$</span>Surface.reelle.bati <span class="ot">&lt;-</span><span class="fu">as.numeric</span>(joint<span class="sc">$</span>Surface.reelle.bati)</span>
+<span id="cb61-5"><a href="#cb61-5" tabindex="-1"></a>joint<span class="sc">$</span>Surface.terrain <span class="ot">&lt;-</span><span class="fu">as.numeric</span>(joint<span class="sc">$</span>Surface.terrain)</span>
+<span id="cb61-6"><a href="#cb61-6" tabindex="-1"></a>joint<span class="sc">$</span>Nombre.pieces.principales <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(joint<span class="sc">$</span>Nombre.pieces.principales)</span>
+<span id="cb61-7"><a href="#cb61-7" tabindex="-1"></a>agg <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(joint [,v], <span class="at">by =</span> <span class="fu">list</span>(joint<span class="sc">$</span>bureau), mean, <span class="at">na.rm=</span>T, <span class="at">na.action=</span><span class="cn">NULL</span>)</span>
+<span id="cb61-8"><a href="#cb61-8" tabindex="-1"></a><span class="fu">names</span>(agg)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;bureau&quot;</span></span>
+<span id="cb61-9"><a href="#cb61-9" tabindex="-1"></a>agg <span class="ot">&lt;-</span> <span class="fu">st_drop_geometry</span>(agg)</span>
+<span id="cb61-10"><a href="#cb61-10" tabindex="-1"></a><span class="fu">write.csv</span>(agg, <span class="st">&quot;data/devoirMaison/vfMoyenne.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="iris-1" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> IRIS</h3>
+<p>On fait la jointure puis on proratise la valeur avec le prorata</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" tabindex="-1"></a>iris</span>
+<span id="cb62-2"><a href="#cb62-2" tabindex="-1"></a><span class="fu">str</span>(lgt<span class="sc">$</span>IRIS)</span>
+<span id="cb62-3"><a href="#cb62-3" tabindex="-1"></a><span class="fu">str</span>(iris<span class="sc">$</span>CODE_IRIS)</span></code></pre></div>
+<p>1365 et 2079</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a>joint <span class="ot">&lt;-</span> <span class="fu">merge</span>(iris, lgt, <span class="at">by.x =</span> <span class="st">&quot;CODE_IRIS&quot;</span>, <span class="at">by.y =</span> <span class="st">&quot;IRIS&quot;</span>)</span></code></pre></div>
+<p>2077</p>
+<p>attention bureau unique à DROM 01150_1</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" tabindex="-1"></a><span class="fu">names</span>(joint)</span>
+<span id="cb64-2"><a href="#cb64-2" tabindex="-1"></a><span class="co"># choix de variables</span></span>
+<span id="cb64-3"><a href="#cb64-3" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">&quot;P19_MAISON&quot;</span>,<span class="st">&quot;P19_RP_120M2P&quot;</span>,<span class="st">&quot;P19_RP_ACHTOT&quot;</span>,<span class="st">&quot;P19_RP_ACH19&quot;</span>,         <span class="st">&quot;P19_RP_ACH45&quot;</span>, <span class="st">&quot;P19_RP_ACH70&quot;</span>,<span class="st">&quot;P19_RP_ACH90&quot;</span>,<span class="st">&quot;P19_RP_ACH05&quot;</span>, <span class="st">&quot;P19_RP_ACH15&quot;</span>,</span>
+<span id="cb64-4"><a href="#cb64-4" tabindex="-1"></a><span class="st">&quot;P19_RP_CCCOLL&quot;</span>)</span>
+<span id="cb64-5"><a href="#cb64-5" tabindex="-1"></a>convertir <span class="ot">&lt;-</span> <span class="cf">function</span>(var) {</span>
+<span id="cb64-6"><a href="#cb64-6" tabindex="-1"></a>  var <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(var)</span>
+<span id="cb64-7"><a href="#cb64-7" tabindex="-1"></a>}</span>
+<span id="cb64-8"><a href="#cb64-8" tabindex="-1"></a>joint <span class="ot">&lt;-</span> <span class="fu">st_drop_geometry</span>(joint)</span>
+<span id="cb64-9"><a href="#cb64-9" tabindex="-1"></a>col <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb64-10"><a href="#cb64-10" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="st">&quot;prorata&quot;</span></span>
+<span id="cb64-11"><a href="#cb64-11" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb64-12"><a href="#cb64-12" tabindex="-1"></a>nom <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb64-13"><a href="#cb64-13" tabindex="-1"></a><span class="cf">for</span> (v <span class="cf">in</span> var){</span>
+<span id="cb64-14"><a href="#cb64-14" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> ( joint[,v])</span>
+<span id="cb64-15"><a href="#cb64-15" tabindex="-1"></a> tmp <span class="ot">&lt;-</span><span class="fu">convertir</span>(tmp)</span>
+<span id="cb64-16"><a href="#cb64-16" tabindex="-1"></a> col <span class="ot">&lt;-</span> <span class="fu">cbind</span>(col, tmp)</span>
+<span id="cb64-17"><a href="#cb64-17" tabindex="-1"></a> nom <span class="ot">&lt;-</span> <span class="fu">c</span>(nom, v)</span>
+<span id="cb64-18"><a href="#cb64-18" tabindex="-1"></a>}</span>
+<span id="cb64-19"><a href="#cb64-19" tabindex="-1"></a><span class="co"># on a une matrice, on utilise la colonne prorata pour tt traiter</span></span>
+<span id="cb64-20"><a href="#cb64-20" tabindex="-1"></a>prorata <span class="ot">&lt;-</span> <span class="fu">convertir</span>(joint [,<span class="st">&quot;prorata&quot;</span>])</span>
+<span id="cb64-21"><a href="#cb64-21" tabindex="-1"></a>data <span class="ot">&lt;-</span> prorata<span class="sc">*</span>col</span>
+<span id="cb64-22"><a href="#cb64-22" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(data)</span>
+<span id="cb64-23"><a href="#cb64-23" tabindex="-1"></a><span class="fu">names</span>(data) <span class="ot">&lt;-</span> nom</span>
+<span id="cb64-24"><a href="#cb64-24" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">cbind</span>(joint<span class="sc">$</span>bureau, data)</span>
+<span id="cb64-25"><a href="#cb64-25" tabindex="-1"></a>data [<span class="dv">1</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;01150_1&quot;</span></span>
+<span id="cb64-26"><a href="#cb64-26" tabindex="-1"></a><span class="fu">names</span>(data)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;bureau&quot;</span></span>
+<span id="cb64-27"><a href="#cb64-27" tabindex="-1"></a><span class="fu">write.csv</span>(data, <span class="st">&quot;data/devoirMaison/lgt.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<p>2077</p>
+</div>
+</div>
+<div id="traitement-final-concaténation-de-tous-les-fichiers."
+class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Traitement final :
+concaténation de tous les fichiers.</h2>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a>election2022</span>
+<span id="cb65-2"><a href="#cb65-2" tabindex="-1"></a>election2022<span class="sc">$</span>INSEE_COM</span>
+<span id="cb65-3"><a href="#cb65-3" tabindex="-1"></a>election2022<span class="sc">$</span>Code.du.b.vote</span>
+<span id="cb65-4"><a href="#cb65-4" tabindex="-1"></a>election2022<span class="sc">$</span>bureau <span class="ot">&lt;-</span> <span class="fu">paste0</span>(election2022<span class="sc">$</span>INSEE_COM, <span class="st">&quot;_&quot;</span>,election2022<span class="sc">$</span>Code.du.b.vote)</span>
+<span id="cb65-5"><a href="#cb65-5" tabindex="-1"></a><span class="fu">write.csv</span>(election2022,<span class="st">&quot;data/devoirMaison/election.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" tabindex="-1"></a>fic <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;data/devoirMaison/&quot;</span>)</span>
+<span id="cb66-2"><a href="#cb66-2" tabindex="-1"></a>fic <span class="ot">&lt;-</span> fic [<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb66-3"><a href="#cb66-3" tabindex="-1"></a>fin <span class="ot">&lt;-</span> election2022</span>
+<span id="cb66-4"><a href="#cb66-4" tabindex="-1"></a><span class="cf">for</span> (f <span class="cf">in</span> fic){</span>
+<span id="cb66-5"><a href="#cb66-5" tabindex="-1"></a>  <span class="fu">print</span>(f)</span>
+<span id="cb66-6"><a href="#cb66-6" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">paste0</span>(<span class="st">&quot;data/devoirMaison/&quot;</span>, f), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb66-7"><a href="#cb66-7" tabindex="-1"></a>  fin <span class="ot">&lt;-</span> <span class="fu">merge</span>(tmp,fin, <span class="at">by =</span> <span class="st">&quot;bureau&quot;</span>)</span>
+<span id="cb66-8"><a href="#cb66-8" tabindex="-1"></a>}</span>
+<span id="cb66-9"><a href="#cb66-9" tabindex="-1"></a><span class="fu">write.csv</span>(fin,<span class="st">&quot;data/devoirMaison/base.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb66-10"><a href="#cb66-10" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(fin<span class="sc">$</span>Libellé.de.la.commune))</span>
+<span id="cb66-11"><a href="#cb66-11" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="fu">unique</span>(fin<span class="sc">$</span>Libellé.de.la.commune), <span class="st">&quot;data/devoirMaison/base.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>1925 obs</p>
+<p>65 communes</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> fin [fin<span class="sc">$</span>Libellé.de.la.commune <span class="sc">==</span> <span class="st">&quot;Bondy&quot;</span>,]</span>
+<span id="cb67-2"><a href="#cb67-2" tabindex="-1"></a>bondy</span></code></pre></div>
+<p>On a perdu un bv…</p>
+</div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<small><p>L5GEABIM Analyses bivariées et multivariées</p></small>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

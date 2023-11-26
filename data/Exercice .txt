@@ -1,0 +1,6 @@
+Exercice 
+Télécharger le fichier filtré pour cours variance
+le mettre dans le répertoire data de votre répertoire R initiation
+lire le fichier dans R
+faire un histogramme (hist) et une boite à moustaches (boxplot) sur les valeurs foncières
+supprimer les petites ventes 
