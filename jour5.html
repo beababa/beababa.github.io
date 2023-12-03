@@ -47,6 +47,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -355,124 +456,210 @@ div.tocify {
 </div>
 
 
-<div id="préparation-des-données" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Préparation des
+<div id="présentation-des-données" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Présentation des
 données</h1>
 <div id="lecture-du-cog" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Lecture du cog</h2>
-<p>Le cog permet d’avoir l’équivalent libellé ville / code INSEE</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>cog <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cog.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span> , <span class="at">colClasses =</span> <span class="st">&quot;character&quot;</span>)</span></code></pre></div>
+<p>Le cog permet d’avoir l’équivalent libellé ville / code INSEE Il
+s’agit des 72 villes choisies par les étudiants, sur toute l’étendue du
+territoire.</p>
+<p><img src="img/communes.png" /></p>
 </div>
-<div id="valeurs-foncières" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Valeurs
-foncières</h2>
-<p>code INSEE</p>
-<p>pb des zéros, un import en txt n’a pas réglé la question.</p>
-<p>extraction des 61 communes</p>
-<p>58 communes</p>
-<p>test bondy</p>
-<p>On enregistre le fichier.</p>
-<p>on enregistre par dpt</p>
-</div>
-<div id="base-logement" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Base logement</h2>
-<p>test Bondy</p>
-<p>enregistrement</p>
-</div>
-<div id="carreaux-filosofi" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Carreaux
-Filosofi</h2>
-<p>toujours 61</p>
-<p>Bondy</p>
-<p>Enregistrement des carreaux par commune</p>
-</div>
-</div>
-<div id="choix-des-variables" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Choix des
-variables</h1>
+<div id="les-4-sources-proposées" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Les 4 sources
+proposées</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/examenVar.csv&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
 <table>
 <colgroup>
-<col width="11%" />
-<col width="45%" />
-<col width="43%" />
+<col width="6%" />
+<col width="25%" />
+<col width="24%" />
+<col width="17%" />
+<col width="26%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="left">X</th>
 <th align="left">gr1</th>
 <th align="left">gr2</th>
+<th align="left">gr3</th>
+<th align="left">rattrapage</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td align="left">donnée</td>
+<td align="left">Insee – iris</td>
+<td align="left">Filosofi – carreau</td>
+<td align="left">valeur foncière – parcelle</td>
+<td align="left">logement social – appartement</td>
+</tr>
+<tr class="even">
 <td align="left">univarié</td>
 <td align="left">nb de logements</td>
 <td align="left">nb d’individus</td>
+<td align="left">nb de ventes</td>
+<td align="left">nb de logement social</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">khi2</td>
 <td align="left">ancienneté des logements par iris</td>
 <td align="left">tranches d’age des individus par carreaux</td>
+<td align="left">type de local par type de rue</td>
+<td align="left">type d’appartement par année de construction</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">régression</td>
 <td align="left">résidences secondaires et logements vacants</td>
 <td align="left">foyer monoparental et logement social</td>
+<td align="left">montant par surface</td>
+<td align="left">année de construction par surface</td>
 </tr>
 </tbody>
 </table>
+<p>L’important c’est</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">t</span>(data [<span class="dv">1</span>,])</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>t <span class="ot">&lt;-</span> t [<span class="sc">-</span><span class="dv">1</span>,]</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(t, <span class="at">col.names =</span> <span class="st">&quot;lien donnée géométrie&quot;</span>, <span class="at">row.names =</span> F)</span></code></pre></div>
 </div>
-<div id="graphiques-à-commenter" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Graphiques à
+<div id="base-logement-iris" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Base logement
+(IRIS)</h2>
+<div id="extraction" class="section level3" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Extraction</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>lgt <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/gros/lgt.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+</div>
+<div id="bondy" class="section level3" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Bondy</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> lgt [lgt<span class="sc">$</span>X.COM. <span class="sc">==</span> <span class="st">&quot;93010&quot;</span>,]</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">plot</span>(bondy<span class="sc">$</span>P19_LOGVAC, bondy<span class="sc">$</span>P19_MAISON)</span></code></pre></div>
+<p><img src="img/lgtBondy.png" /></p>
+</div>
+<div id="enregistrement-par-dpt" class="section level3" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Enregistrement par
+dpt</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>lgt<span class="sc">$</span>dpt <span class="ot">&lt;-</span> <span class="fu">substring</span>(lgt<span class="sc">$</span>COM,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">unique</span>(lgt<span class="sc">$</span>dpt)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="cf">for</span> (d <span class="cf">in</span> dpt){</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  sel <span class="ot">&lt;-</span> lgt [lgt<span class="sc">$</span>dpt <span class="sc">==</span> d,]</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  <span class="fu">write.csv2</span>(sel [,<span class="sc">-</span><span class="dv">98</span>], <span class="fu">paste0</span>(<span class="st">&quot;data/examen/lgt/&quot;</span>, d, <span class="st">&quot;_lgtEXAMEN.csv&quot;</span>), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">quote =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">5</span>), <span class="at">row.names =</span> F)</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>}</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co"># on attend 31 fichiers</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;data/examen/lgt&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="carreaux-filosofi" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Carreaux
+Filosofi</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/carreaux_200m_met.gpkg&quot;</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co"># extraction du premier code insee du carreau</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>car<span class="sc">$</span>cog <span class="ot">&lt;-</span> <span class="fu">substring</span>(car<span class="sc">$</span>lcog_geo,<span class="dv">1</span>,<span class="dv">5</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>carSel <span class="ot">&lt;-</span> car [car<span class="sc">$</span>cog <span class="sc">%in%</span> cog<span class="sc">$</span>INSEE_COM,]</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(carSel<span class="sc">$</span>cog))</span></code></pre></div>
+<p>toujours 61</p>
+<p>Bondy</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> carSel [carSel<span class="sc">$</span>lcog_geo <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">plot</span>(bondy<span class="sc">$</span>men_pauv, bondy<span class="sc">$</span>men_mais)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">hist</span>(bondy<span class="sc">$</span>men_pauv)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">str</span>(bondy)</span></code></pre></div>
+<p>Enregistrement des carreaux par commune</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>valDpt <span class="ot">&lt;-</span> <span class="fu">unique</span>(vfSel<span class="sc">$</span>Code.departement)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>carSel<span class="sc">$</span>dpt <span class="ot">&lt;-</span> <span class="fu">substring</span>(carSel<span class="sc">$</span>lcog_geo,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>carSel <span class="ot">&lt;-</span> carSel [,<span class="fu">c</span>(<span class="dv">37</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">33</span>), drop <span class="ot">=</span> T]</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> valDpt){</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  sel <span class="ot">&lt;-</span> carSel [carSel<span class="sc">$</span>dpt <span class="sc">==</span> i,]</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  <span class="fu">write.csv2</span>(sel, <span class="fu">paste0</span>(<span class="st">&quot;data/examen/car/&quot;</span>, i, <span class="st">&quot;_carEXAMEN.csv&quot;</span>), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="valeurs-foncières" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Valeurs
+foncières</h2>
+<p>test bondy</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> vfSel [vfSel<span class="sc">$</span>cog <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(bondy<span class="sc">$</span>Valeur.fonciere)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="fu">hist</span>(bondy<span class="sc">$</span>Valeur.fonciere)</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="fu">table</span>(bondy<span class="sc">$</span>Voie [bondy<span class="sc">$</span>Valeur.fonciere <span class="sc">&gt;</span> <span class="dv">30000000</span>])</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(bondy<span class="sc">$</span>Voie [bondy<span class="sc">$</span>Valeur.fonciere <span class="sc">&lt;</span> <span class="dv">3000</span>]), <span class="at">las =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p>On enregistre le fichier.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">names</span>(vfSel)</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">write.csv</span>(vfSel [, <span class="fu">c</span>(<span class="dv">48</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">43</span>)], <span class="st">&quot;data/gros/vfEXAMEN.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<p>on enregistre par dpt</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>valDpt <span class="ot">&lt;-</span> <span class="fu">unique</span>(vfSel<span class="sc">$</span>Code.departement)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> valDpt){</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  sel <span class="ot">&lt;-</span> vfSel [vfSel<span class="sc">$</span>Code.departement <span class="sc">==</span> i,]</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="fu">write.csv2</span>(sel [, <span class="fu">c</span>(<span class="dv">48</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">43</span>)], <span class="fu">paste0</span>(<span class="st">&quot;data/examen/vf/&quot;</span>, i, <span class="st">&quot;_vfEXAMEN.csv&quot;</span>), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</div>
+<div id="corrections" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Corrections</h1>
+<div id="généralités-aux-3-groupes" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Généralités aux 3
+groupes</h2>
+<p>Description des données et notamment de la base géographique</p>
+</div>
+</div>
+<div id="choix-des-variables" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Choix des
+variables</h1>
+</div>
+<div id="graphiques-à-commenter" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Graphiques à
 commenter</h1>
-<div id="groupe-1-logement" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Groupe 1
+<div id="groupe-1-logement" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Groupe 1
 logement</h2>
 <div id="distribution-du-logement-par-nombre-diris"
-class="section level3" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Distribution du
+class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Distribution du
 logement par nombre d’Iris</h3>
 <p><img src="img/distribLogement.png" /></p>
 </div>
 <div id="ecart-observés-théoriques-ancienneté-logement-par-iris"
-class="section level3" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> Ecart observés /
+class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Ecart observés /
 théoriques ancienneté logement par iris</h3>
 <p><img src="img/ecartLogement.png" /></p>
 </div>
 <div id="distribution-des-khi2-partiels" class="section level3"
-number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> Distribution des
+number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Distribution des
 khi2 partiels</h3>
 <p><img src="img/khi2Logement.png" /></p>
 </div>
-<div id="régression" class="section level3" number="3.1.4">
-<h3><span class="header-section-number">3.1.4</span> Régression</h3>
+<div id="régression" class="section level3" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Régression</h3>
 <p><img src="img/regressionLgt.png" /></p>
 </div>
 </div>
-<div id="groupe-2-filosofi" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Groupe 2
+<div id="groupe-2-filosofi" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Groupe 2
 Filosofi</h2>
 <div id="distribution-du-nb-dindividus-par-carreaux"
-class="section level3" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Distribution du nb
+class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Distribution du nb
 d’individus par carreaux</h3>
 <p><img src="img/distribCar.png" /></p>
 </div>
 <div id="ecart-observés-théoriques-tranches-dage-population-par-carreau"
-class="section level3" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Ecart observés /
+class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Ecart observés /
 théoriques tranches d’age population par carreau</h3>
 <p><img src="img/ecartCar.png" /></p>
 </div>
 <div id="distribution-des-khi2-partiels-1" class="section level3"
-number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Distribution des
+number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Distribution des
 khi2 partiels</h3>
 <p><img src="img/khi2Car.png" /></p>
 </div>
-<div id="régression-1" class="section level3" number="3.2.4">
-<h3><span class="header-section-number">3.2.4</span> Régression</h3>
+<div id="régression-1" class="section level3" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Régression</h3>
 <p><img src="img/regressionCar.png" /></p>
 </div>
 </div>

@@ -13,7 +13,7 @@
 
 <title>Multivariées</title>
 
-<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -29,12 +29,12 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -92,11 +92,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -105,14 +105,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -127,13 +127,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -229,11 +236,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -262,8 +273,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -271,16 +282,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -455,61 +459,100 @@ div.tocify {
 <div id="préparation-de-la-donnée" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Préparation de la
 donnée</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/data2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
-<pre><code>##   [1] &quot;X&quot;                     &quot;INSEE_COM&quot;             &quot;NOM_COM_M&quot;            
-##   [4] &quot;Libellé.de.la.commune&quot; &quot;Code.du.b.vote&quot;        &quot;Inscrits&quot;             
-##   [7] &quot;Abstentions&quot;           &quot;X..Abs.Ins&quot;            &quot;Votants&quot;              
-##  [10] &quot;X..Vot.Ins&quot;            &quot;Blancs&quot;                &quot;X..Blancs.Ins&quot;        
-##  [13] &quot;X..Blancs.Vot&quot;         &quot;Nuls&quot;                  &quot;X..Nuls.Ins&quot;          
-##  [16] &quot;X..Nuls.Vot&quot;           &quot;Exprimés&quot;              &quot;X..Exp.Ins&quot;           
-##  [19] &quot;X..Exp.Vot&quot;            &quot;N.Panneau&quot;             &quot;Sexe&quot;                 
-##  [22] &quot;Nom&quot;                   &quot;Prénom&quot;                &quot;Voix&quot;                 
-##  [25] &quot;X..Voix.Ins&quot;           &quot;X..Voix.Exp&quot;           &quot;N.Panneau.1&quot;          
-##  [28] &quot;Sexe.1&quot;                &quot;Nom.1&quot;                 &quot;Prénom.1&quot;             
-##  [31] &quot;Voix.1&quot;                &quot;X..Voix.Ins.1&quot;         &quot;X..Voix.Exp.1&quot;        
-##  [34] &quot;N.Panneau.2&quot;           &quot;Sexe.2&quot;                &quot;Nom.2&quot;                
-##  [37] &quot;Prénom.2&quot;              &quot;Voix.2&quot;                &quot;X..Voix.Ins.2&quot;        
-##  [40] &quot;X..Voix.Exp.2&quot;         &quot;N.Panneau.3&quot;           &quot;Sexe.3&quot;               
-##  [43] &quot;Nom.3&quot;                 &quot;Prénom.3&quot;              &quot;Voix.3&quot;               
-##  [46] &quot;X..Voix.Ins.3&quot;         &quot;X..Voix.Exp.3&quot;         &quot;N.Panneau.4&quot;          
-##  [49] &quot;Sexe.4&quot;                &quot;Nom.4&quot;                 &quot;Prénom.4&quot;             
-##  [52] &quot;Voix.4&quot;                &quot;X..Voix.Ins.4&quot;         &quot;X..Voix.Exp.4&quot;        
-##  [55] &quot;N.Panneau.5&quot;           &quot;Sexe.5&quot;                &quot;Nom.5&quot;                
-##  [58] &quot;Prénom.5&quot;              &quot;Voix.5&quot;                &quot;X..Voix.Ins.5&quot;        
-##  [61] &quot;X..Voix.Exp.5&quot;         &quot;N.Panneau.6&quot;           &quot;Sexe.6&quot;               
-##  [64] &quot;Nom.6&quot;                 &quot;Prénom.6&quot;              &quot;Voix.6&quot;               
-##  [67] &quot;X..Voix.Ins.6&quot;         &quot;X..Voix.Exp.6&quot;         &quot;N.Panneau.7&quot;          
-##  [70] &quot;Sexe.7&quot;                &quot;Nom.7&quot;                 &quot;Prénom.7&quot;             
-##  [73] &quot;Voix.7&quot;                &quot;X..Voix.Ins.7&quot;         &quot;X..Voix.Exp.7&quot;        
-##  [76] &quot;N.Panneau.8&quot;           &quot;Sexe.8&quot;                &quot;Nom.8&quot;                
-##  [79] &quot;Prénom.8&quot;              &quot;Voix.8&quot;                &quot;X..Voix.Ins.8&quot;        
-##  [82] &quot;X..Voix.Exp.8&quot;         &quot;N.Panneau.9&quot;           &quot;Sexe.9&quot;               
-##  [85] &quot;Nom.9&quot;                 &quot;Prénom.9&quot;              &quot;Voix.9&quot;               
-##  [88] &quot;X..Voix.Ins.9&quot;         &quot;X..Voix.Exp.9&quot;         &quot;N.Panneau.10&quot;         
-##  [91] &quot;Sexe.10&quot;               &quot;Nom.10&quot;                &quot;Prénom.10&quot;            
-##  [94] &quot;Voix.10&quot;               &quot;X..Voix.Ins.10&quot;        &quot;X..Voix.Exp.10&quot;       
-##  [97] &quot;N.Panneau.11&quot;          &quot;Sexe.11&quot;               &quot;Nom.11&quot;               
-## [100] &quot;Prénom.11&quot;             &quot;Voix.11&quot;               &quot;X..Voix.Ins.11&quot;       
-## [103] &quot;X..Voix.Exp.11&quot;</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;Ins&quot;</span>, <span class="fu">names</span>(data))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>pct <span class="ot">&lt;-</span> data [, ind]</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;Nom&quot;</span>, <span class="fu">names</span>(data))</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>noms <span class="ot">&lt;-</span> data [<span class="dv">1</span>,ind]</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)] </span></code></pre></div>
+<p>On lit la donnée, on filtre sur Bondy</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/election2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<pre><code>##   [1] &quot;Code.du.département&quot;           &quot;Libellé.du.département&quot;       
+##   [3] &quot;Code.de.la.circonscription&quot;    &quot;Libellé.de.la.circonscription&quot;
+##   [5] &quot;Code.de.la.commune&quot;            &quot;Libellé.de.la.commune&quot;        
+##   [7] &quot;Code.du.b.vote&quot;                &quot;Inscrits&quot;                     
+##   [9] &quot;Abstentions&quot;                   &quot;X..Abs.Ins&quot;                   
+##  [11] &quot;Votants&quot;                       &quot;X..Vot.Ins&quot;                   
+##  [13] &quot;Blancs&quot;                        &quot;X..Blancs.Ins&quot;                
+##  [15] &quot;X..Blancs.Vot&quot;                 &quot;Nuls&quot;                         
+##  [17] &quot;X..Nuls.Ins&quot;                   &quot;X..Nuls.Vot&quot;                  
+##  [19] &quot;Exprimés&quot;                      &quot;X..Exp.Ins&quot;                   
+##  [21] &quot;X..Exp.Vot&quot;                    &quot;N.Panneau&quot;                    
+##  [23] &quot;Sexe&quot;                          &quot;Nom&quot;                          
+##  [25] &quot;Prénom&quot;                        &quot;Voix&quot;                         
+##  [27] &quot;X..Voix.Ins&quot;                   &quot;X..Voix.Exp&quot;                  
+##  [29] &quot;N.Panneau.1&quot;                   &quot;Sexe.1&quot;                       
+##  [31] &quot;Nom.1&quot;                         &quot;Prénom.1&quot;                     
+##  [33] &quot;Voix.1&quot;                        &quot;X..Voix.Ins.1&quot;                
+##  [35] &quot;X..Voix.Exp.1&quot;                 &quot;N.Panneau.2&quot;                  
+##  [37] &quot;Sexe.2&quot;                        &quot;Nom.2&quot;                        
+##  [39] &quot;Prénom.2&quot;                      &quot;Voix.2&quot;                       
+##  [41] &quot;X..Voix.Ins.2&quot;                 &quot;X..Voix.Exp.2&quot;                
+##  [43] &quot;N.Panneau.3&quot;                   &quot;Sexe.3&quot;                       
+##  [45] &quot;Nom.3&quot;                         &quot;Prénom.3&quot;                     
+##  [47] &quot;Voix.3&quot;                        &quot;X..Voix.Ins.3&quot;                
+##  [49] &quot;X..Voix.Exp.3&quot;                 &quot;N.Panneau.4&quot;                  
+##  [51] &quot;Sexe.4&quot;                        &quot;Nom.4&quot;                        
+##  [53] &quot;Prénom.4&quot;                      &quot;Voix.4&quot;                       
+##  [55] &quot;X..Voix.Ins.4&quot;                 &quot;X..Voix.Exp.4&quot;                
+##  [57] &quot;N.Panneau.5&quot;                   &quot;Sexe.5&quot;                       
+##  [59] &quot;Nom.5&quot;                         &quot;Prénom.5&quot;                     
+##  [61] &quot;Voix.5&quot;                        &quot;X..Voix.Ins.5&quot;                
+##  [63] &quot;X..Voix.Exp.5&quot;                 &quot;N.Panneau.6&quot;                  
+##  [65] &quot;Sexe.6&quot;                        &quot;Nom.6&quot;                        
+##  [67] &quot;Prénom.6&quot;                      &quot;Voix.6&quot;                       
+##  [69] &quot;X..Voix.Ins.6&quot;                 &quot;X..Voix.Exp.6&quot;                
+##  [71] &quot;N.Panneau.7&quot;                   &quot;Sexe.7&quot;                       
+##  [73] &quot;Nom.7&quot;                         &quot;Prénom.7&quot;                     
+##  [75] &quot;Voix.7&quot;                        &quot;X..Voix.Ins.7&quot;                
+##  [77] &quot;X..Voix.Exp.7&quot;                 &quot;N.Panneau.8&quot;                  
+##  [79] &quot;Sexe.8&quot;                        &quot;Nom.8&quot;                        
+##  [81] &quot;Prénom.8&quot;                      &quot;Voix.8&quot;                       
+##  [83] &quot;X..Voix.Ins.8&quot;                 &quot;X..Voix.Exp.8&quot;                
+##  [85] &quot;N.Panneau.9&quot;                   &quot;Sexe.9&quot;                       
+##  [87] &quot;Nom.9&quot;                         &quot;Prénom.9&quot;                     
+##  [89] &quot;Voix.9&quot;                        &quot;X..Voix.Ins.9&quot;                
+##  [91] &quot;X..Voix.Exp.9&quot;                 &quot;N.Panneau.10&quot;                 
+##  [93] &quot;Sexe.10&quot;                       &quot;Nom.10&quot;                       
+##  [95] &quot;Prénom.10&quot;                     &quot;Voix.10&quot;                      
+##  [97] &quot;X..Voix.Ins.10&quot;                &quot;X..Voix.Exp.10&quot;               
+##  [99] &quot;N.Panneau.11&quot;                  &quot;Sexe.11&quot;                      
+## [101] &quot;Nom.11&quot;                        &quot;Prénom.11&quot;                    
+## [103] &quot;Voix.11&quot;                       &quot;X..Voix.Ins.11&quot;               
+## [105] &quot;X..Voix.Exp.11&quot;                &quot;INSEE_COM&quot;</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">#data &lt;- data [data$INSEE_COM == &#39;72154&#39;,]</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co"># la flèche</span></span></code></pre></div>
+<p>On la met en forme au niveau des colonnes :</p>
+<ul>
+<li><p>colonne des % des inscrits</p></li>
+<li><p>récupération des noms des candidats</p></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;Ins&quot;</span>, <span class="fu">names</span>(data))</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>pct <span class="ot">&lt;-</span> data [, ind]</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;Nom&quot;</span>, <span class="fu">names</span>(data))</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># la 1e ligne suffit</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>noms <span class="ot">&lt;-</span> data [<span class="dv">1</span>,ind]</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co"># on attribue les noms des candidats</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)] </span></code></pre></div>
 <pre><code>##  [1] &quot;X..Voix.Ins&quot;    &quot;X..Voix.Ins.1&quot;  &quot;X..Voix.Ins.2&quot;  &quot;X..Voix.Ins.3&quot; 
 ##  [5] &quot;X..Voix.Ins.4&quot;  &quot;X..Voix.Ins.5&quot;  &quot;X..Voix.Ins.6&quot;  &quot;X..Voix.Ins.7&quot; 
 ##  [9] &quot;X..Voix.Ins.8&quot;  &quot;X..Voix.Ins.9&quot;  &quot;X..Voix.Ins.10&quot; &quot;X..Voix.Ins.11&quot;</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)] <span class="ot">&lt;-</span> noms</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [,<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;abst&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(pct) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)] <span class="ot">&lt;-</span> noms</span></code></pre></div>
+<p>On retient uniquement l’abstention</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [,<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)]</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;abst&quot;</span></span></code></pre></div>
+<p>On attribue les numéros des bureaux</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">rownames</span>(pct) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(data<span class="sc">$</span>Code.du.b.vote))</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">rownames</span>(pct)</span></code></pre></div>
+<pre><code>##  [1] &quot;1&quot;  &quot;2&quot;  &quot;3&quot;  &quot;4&quot;  &quot;5&quot;  &quot;6&quot;  &quot;7&quot;  &quot;8&quot;  &quot;9&quot;  &quot;10&quot; &quot;11&quot; &quot;12&quot; &quot;13&quot; &quot;14&quot; &quot;15&quot;
+## [16] &quot;16&quot; &quot;17&quot; &quot;18&quot; &quot;19&quot; &quot;20&quot; &quot;21&quot; &quot;22&quot; &quot;23&quot; &quot;24&quot; &quot;25&quot; &quot;26&quot; &quot;27&quot; &quot;28&quot; &quot;29&quot; &quot;30&quot;
+## [31] &quot;31&quot; &quot;32&quot;</code></pre>
+<p>On sauvegarde pour pouvoir l’utiliser à nouveau</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">write.csv</span>(pct, <span class="st">&quot;data/pctBondy.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 </div>
 <div id="exploration-de-la-donnée" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Exploration de la
 donnée</h1>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pct)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>pct <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/pctBondy.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># élimination de la 1e colonne si nécessaire</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="fu">summary</span>(pct)</span></code></pre></div>
 <pre><code>##       abst          ARTHAUD          ROUSSEL          MACRON     
 ##  Min.   :20.80   Min.   :0.0000   Min.   :0.120   Min.   : 7.92  
 ##  1st Qu.:26.56   1st Qu.:0.2075   1st Qu.:0.530   1st Qu.:10.97  
@@ -517,7 +560,7 @@ donnée</h1>
 ##  Mean   :29.67   Mean   :0.3269   Mean   :1.106   Mean   :13.26  
 ##  3rd Qu.:33.23   3rd Qu.:0.3925   3rd Qu.:1.495   3rd Qu.:15.08  
 ##  Max.   :37.61   Max.   :1.0100   Max.   :2.770   Max.   :22.60  
-##     LASSALLE         LE PEN          ZEMMOUR        MÉLENCHON    
+##     LASSALLE         LE.PEN          ZEMMOUR        MÉLENCHON    
 ##  Min.   :0.110   Min.   : 2.330   Min.   :0.610   Min.   :24.40  
 ##  1st Qu.:0.700   1st Qu.: 6.173   1st Qu.:1.827   1st Qu.:33.36  
 ##  Median :0.950   Median : 7.815   Median :2.790   Median :35.27  
@@ -531,88 +574,235 @@ donnée</h1>
 ##  Mean   :0.7003   Mean   :1.5250   Mean   :2.239   Mean   :0.4381  
 ##  3rd Qu.:0.9500   3rd Qu.:2.1300   3rd Qu.:3.188   3rd Qu.:0.6025  
 ##  Max.   :1.5200   Max.   :3.7900   Max.   :5.030   Max.   :1.2500  
-##  DUPONT-AIGNAN   
+##  DUPONT.AIGNAN   
 ##  Min.   :0.1300  
 ##  1st Qu.:0.5475  
 ##  Median :0.7500  
 ##  Mean   :0.8472  
 ##  3rd Qu.:1.1450  
 ##  Max.   :1.7600</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pct)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">cor</span>(pct)</span></code></pre></div>
 <pre><code>##                      abst     ARTHAUD     ROUSSEL      MACRON   LASSALLE
 ## abst           1.00000000 -0.09124502 -0.60695243 -0.86646274 -0.5864629
 ## ARTHAUD       -0.09124502  1.00000000 -0.13340523  0.31314843  0.1097814
 ## ROUSSEL       -0.60695243 -0.13340523  1.00000000  0.51762898  0.6629999
 ## MACRON        -0.86646274  0.31314843  0.51762898  1.00000000  0.6125672
 ## LASSALLE      -0.58646290  0.10978138  0.66299986  0.61256724  1.0000000
-## LE PEN        -0.56721372  0.34203816  0.47300047  0.56621380  0.6844895
+## LE.PEN        -0.56721372  0.34203816  0.47300047  0.56621380  0.6844895
 ## ZEMMOUR       -0.70687066  0.04239692  0.60379129  0.55030176  0.4912361
 ## MÉLENCHON      0.67650699 -0.34330375 -0.64689794 -0.75526662 -0.7577216
 ## HIDALGO       -0.46001130 -0.11091136  0.25785445  0.37456278  0.3065050
 ## JADOT         -0.80287393  0.16878089  0.65570636  0.68109138  0.5851233
 ## PÉCRESSE      -0.76182636  0.01653658  0.56635567  0.64741839  0.4988701
 ## POUTOU        -0.11064989 -0.07631365  0.07872894  0.02931963  0.1041182
-## DUPONT-AIGNAN -0.51656434  0.02757267  0.29312002  0.29734963  0.1636518
-##                    LE PEN     ZEMMOUR  MÉLENCHON     HIDALGO      JADOT
+## DUPONT.AIGNAN -0.51656434  0.02757267  0.29312002  0.29734963  0.1636518
+##                    LE.PEN     ZEMMOUR  MÉLENCHON     HIDALGO      JADOT
 ## abst          -0.56721372 -0.70687066  0.6765070 -0.46001130 -0.8028739
 ## ARTHAUD        0.34203816  0.04239692 -0.3433037 -0.11091136  0.1687809
 ## ROUSSEL        0.47300047  0.60379129 -0.6468979  0.25785445  0.6557064
 ## MACRON         0.56621380  0.55030176 -0.7552666  0.37456278  0.6810914
 ## LASSALLE       0.68448946  0.49123612 -0.7577216  0.30650501  0.5851233
-## LE PEN         1.00000000  0.61891028 -0.8835188  0.09895654  0.6190371
+## LE.PEN         1.00000000  0.61891028 -0.8835188  0.09895654  0.6190371
 ## ZEMMOUR        0.61891028  1.00000000 -0.7540586  0.33215324  0.6825063
 ## MÉLENCHON     -0.88351878 -0.75405857  1.0000000 -0.20343821 -0.7393493
 ## HIDALGO        0.09895654  0.33215324 -0.2034382  1.00000000  0.1669768
 ## JADOT          0.61903713  0.68250632 -0.7393493  0.16697683  1.0000000
 ## PÉCRESSE       0.50420577  0.76590872 -0.7199984  0.38445787  0.7119466
 ## POUTOU         0.20246700  0.11210265 -0.1286294 -0.06104358  0.1493222
-## DUPONT-AIGNAN  0.26882589  0.51160119 -0.3636486  0.10326308  0.4543633
-##                  PÉCRESSE      POUTOU DUPONT-AIGNAN
+## DUPONT.AIGNAN  0.26882589  0.51160119 -0.3636486  0.10326308  0.4543633
+##                  PÉCRESSE      POUTOU DUPONT.AIGNAN
 ## abst          -0.76182636 -0.11064989   -0.51656434
 ## ARTHAUD        0.01653658 -0.07631365    0.02757267
 ## ROUSSEL        0.56635567  0.07872894    0.29312002
 ## MACRON         0.64741839  0.02931963    0.29734963
 ## LASSALLE       0.49887014  0.10411821    0.16365181
-## LE PEN         0.50420577  0.20246700    0.26882589
+## LE.PEN         0.50420577  0.20246700    0.26882589
 ## ZEMMOUR        0.76590872  0.11210265    0.51160119
 ## MÉLENCHON     -0.71999840 -0.12862944   -0.36364860
 ## HIDALGO        0.38445787 -0.06104358    0.10326308
 ## JADOT          0.71194664  0.14932217    0.45436328
 ## PÉCRESSE       1.00000000  0.04772693    0.54522523
 ## POUTOU         0.04772693  1.00000000    0.08205208
-## DUPONT-AIGNAN  0.54522523  0.08205208    1.00000000</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(pct)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+## DUPONT.AIGNAN  0.54522523  0.08205208    1.00000000</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">pairs</span>(pct)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="acp-analyse-en-composante-principale" class="section level1"
 number="3">
 <h1><span class="header-section-number">3</span> ACP analyse en
 composante principale</h1>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(pct)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(res)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(pct, <span class="at">scale. =</span> F)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">plot</span>(res)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/acpCentreNONReduite.png&quot;</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">biplot</span>(res)</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<pre><code>## png 
+##   2</code></pre>
+<p>Deux graphiques superposés :</p>
+<ul>
+<li><p>cercle des corrélations (les candidats)</p></li>
+<li><p>nuage de points (les bureaux de vote)</p></li>
+</ul>
+<p>On résume la donnée sur 2 axes seulement (PC1 et PC2)</p>
+<p>Dans le cercle de correlations :</p>
+<ul>
+<li><p>longueur flèche (mauvaise / bonne représentation)</p></li>
+<li><p>position - proche / opposée - orthogonale (= aucune
+relation)</p></li>
+</ul>
 </div>
 <div id="classification-hiérarchique" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Classification
 hiérarchique</h1>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># matrice des distances</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>d.pct <span class="ot">&lt;-</span> <span class="fu">dist</span>(pct)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>cah <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d.pct)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cah)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># matrice des distances</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>d.pct <span class="ot">&lt;-</span> <span class="fu">dist</span>(pct)</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>cah <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d.pct)</span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="fu">plot</span>(cah)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Dendrogramme avec matérialisation des groupes</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cah)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rect.hclust</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>groupes.cah <span class="ot">&lt;-</span> <span class="fu">cutree</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#liste des groupes</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sort</span>(groupes.cah))</span></code></pre></div>
-<pre><code>##  1  6  7  9 11 12 13 14 16 22 24 26 27 30  2  4  5  8 15 17 19 20 21 25 28 31 
-##  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  2  2  2  2  2  2  2  2  2  2  2 
-## 32  3 23 10 18 29 
-##  2  3  3  4  4  4</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co">#png(&quot;img/lafleche3.png&quot;)</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="fu">plot</span>(cah)</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="fu">rect.hclust</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>groupes.cah <span class="ot">&lt;-</span> <span class="fu">cutree</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="co">#dev.off()</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="co">#liste des groupes</span></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sort</span>(groupes.cah))</span></code></pre></div>
+<pre><code>##  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 4 4</code></pre>
+</div>
+<div id="quelques-remarques-autour-de-ces-premiers-résultats"
+class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Quelques remarques
+autour de ces premiers résultats</h1>
+<p>Il s’agit de faire correspondre le cercle de correlation et le
+dendogramme</p>
+<p><img src="img/lafleche.png" /> <img src="img/lafleche3.png" /></p>
+<p>Cas de la Flèche : isolement du bureau 17</p>
+<p>L’abstention est beaucoup plus basse qu’ailleurs (17), Mélenchon très
+sous représenté et Macron sur représenté.</p>
+<p>On prend le bureau 13 qui est à l’opposé sur le cercle de
+corrélation</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co"># on filtre sur les deux bureaux</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>pct_13_17 <span class="ot">&lt;-</span> pct [<span class="fu">c</span>(<span class="dv">13</span>,<span class="dv">17</span>),]</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="co"># on transforme en matrice pour pouvoir faire un graphique de comparaison des répartitions</span></span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(pct_13_17)</span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/lafleche2.png&quot;</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a><span class="fu">barplot</span>(mat, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">beside =</span> T, <span class="at">col =</span> <span class="fu">terrain.colors</span>(<span class="dv">2</span>))</span>
+<span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<p><img src="img/lafleche2.png" /></p>
+</div>
+<div id="deuxième-approche" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Deuxième approche</h1>
+<p>Deux directions possibles :</p>
+<ul>
+<li><p>on cherche les autres candidats</p></li>
+<li><p>on zoome sur certains bureaux de vote</p></li>
+</ul>
+<div id="les-candidats" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Les candidats</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">names</span>(pct)</span></code></pre></div>
+<pre><code>##  [1] &quot;abst&quot;          &quot;ARTHAUD&quot;       &quot;ROUSSEL&quot;       &quot;MACRON&quot;       
+##  [5] &quot;LASSALLE&quot;      &quot;LE.PEN&quot;        &quot;ZEMMOUR&quot;       &quot;MÉLENCHON&quot;    
+##  [9] &quot;HIDALGO&quot;       &quot;JADOT&quot;         &quot;PÉCRESSE&quot;      &quot;POUTOU&quot;       
+## [13] &quot;DUPONT.AIGNAN&quot;</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">10</span><span class="sc">:</span><span class="dv">13</span>)]</span></code></pre></div>
+<p>Et on reproduit le code.</p>
+<p><img src="img/ptit.png" /></p>
+</div>
+<div id="les-bureaux-de-vote" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Les bureaux de
+vote</h2>
+<p>On choisit un bureau dans chacun des 4 groupes : 3 15 29 13</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">15</span>,<span class="dv">29</span>,<span class="dv">13</span>),]</span></code></pre></div>
+<p>Pour chaque graphique, faire une analyse</p>
+<p>Pourcentage d’information expliqué</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">plot</span>(res)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="co"># composantes principales</span></span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>res<span class="sc">$</span>rotation</span></code></pre></div>
+<pre><code>##                        PC1          PC2          PC3         PC4         PC5
+## abst           0.452902352 -0.674538224  0.466286786 -0.04963555  0.05579734
+## ARTHAUD       -0.007883352 -0.014676490  0.045796823  0.04465344  0.04477698
+## ROUSSEL       -0.058174144  0.007081662 -0.063102563 -0.17263166 -0.58478321
+## MACRON        -0.386382758  0.394781252  0.711626240  0.23313286  0.10891050
+## LASSALLE      -0.050814437 -0.021214450  0.001476964  0.01899455 -0.28076282
+## LE.PEN        -0.298213486 -0.344905877 -0.374314799  0.71623679  0.13738970
+## ZEMMOUR       -0.110520127 -0.002427640 -0.245780024 -0.32782076  0.35286548
+## MÉLENCHON      0.717781307  0.511004933 -0.152103304  0.30757293  0.06821436
+## HIDALGO       -0.013621421  0.041850091 -0.012670281 -0.03269989  0.09997934
+## JADOT         -0.098559230  0.048397418 -0.138427678 -0.11046248 -0.48722987
+## PÉCRESSE      -0.113384602  0.060426270 -0.133061948 -0.41757513  0.39797629
+## POUTOU        -0.004072133 -0.005835717 -0.033064181  0.02251781 -0.03228774
+## DUPONT.AIGNAN -0.020766252  0.023647759 -0.091142635 -0.08842498  0.08579856
+##                        PC6          PC7         PC8         PC9          PC10
+## abst          -0.023249790  0.064167337 -0.13099110  0.08754559 -0.0083216626
+## ARTHAUD       -0.051128086  0.148995427  0.07385155 -0.11389861 -0.1855053180
+## ROUSSEL        0.271307600 -0.359285038  0.01945180  0.56295144 -0.0973649363
+## MACRON         0.042548554  0.066956056 -0.10784544  0.14027060  0.0157577843
+## LASSALLE       0.069339480 -0.383903619 -0.10348613 -0.57283197  0.2063455485
+## LE.PEN        -0.054748346 -0.053687666 -0.12986293  0.18134944 -0.0399884370
+## ZEMMOUR        0.639049045  0.334489833 -0.24150717  0.05196644  0.0567778369
+## MÉLENCHON     -0.003374441 -0.003766486 -0.13680515  0.11746120  0.0009794474
+## HIDALGO        0.144465042 -0.316777227 -0.24033787 -0.43260665 -0.3347625685
+## JADOT         -0.375523841  0.593866607 -0.33676030 -0.11889074 -0.0930897001
+## PÉCRESSE      -0.578053395 -0.334017488 -0.23950440  0.23571098  0.0553009845
+## POUTOU        -0.005691624  0.038280215  0.06921259 -0.03048967  0.8742414962
+## DUPONT.AIGNAN -0.095709634  0.109058055  0.79211149 -0.08647644 -0.1424780110
+##                       PC11        PC12       PC13
+## abst          -0.016462830 -0.19407525 -0.2222406
+## ARTHAUD        0.061108888  0.76138112 -0.5766609
+## ROUSSEL        0.103501189 -0.02739156 -0.2826334
+## MACRON        -0.045887955 -0.19197310 -0.2131294
+## LASSALLE      -0.546289736 -0.09669691 -0.2763694
+## LE.PEN        -0.028106289 -0.14934181 -0.1995050
+## ZEMMOUR       -0.174647959 -0.13869564 -0.2472562
+## MÉLENCHON     -0.073280936 -0.12404429 -0.2190384
+## HIDALGO        0.667354345 -0.21104978 -0.1368896
+## JADOT          0.068488143 -0.23798856 -0.1671932
+## PÉCRESSE      -0.097868336 -0.06601509 -0.2395896
+## POUTOU         0.434081194  0.01549765 -0.1926758
+## DUPONT.AIGNAN  0.004989125 -0.41590161 -0.3553173</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="co"># écarts types</span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>res<span class="sc">$</span>sdev</span></code></pre></div>
+<pre><code>##  [1] 7.9531935 3.1156838 1.5592099 1.2291338 0.6162500 0.5365126 0.4836316
+##  [8] 0.3352212 0.3063857 0.2489920 0.2371094 0.1552216 0.1247693</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="co"># variance</span></span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> res<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="fu">sum</span>(res<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span>)   </span></code></pre></div>
+<pre><code>##  [1] 80.91934688 12.41869651  3.11012916  1.93271392  0.48582862  0.36823840
+##  [7]  0.29922551  0.14375804  0.12008981  0.07931222  0.07192283  0.03082289
+## [13]  0.01991521</code></pre>
+</div>
+</div>
+<div id="compléments-pour-le-devoir-maison" class="section level1"
+number="7">
+<h1><span class="header-section-number">7</span> Compléments pour le
+devoir maison</h1>
+<p>voir item scriptEtudiant.html</p>
+<div id="filtre-sur-bondy" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Filtre sur Bondy</h2>
+<p>Cela fonctionne mais on a perdu 2 bureaux</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/devoirMaison/base.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> base [base<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span></code></pre></div>
+</div>
+<div id="une-vision-cartographique" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Une vision
+cartographique</h2>
+<p><a
+href="https://demo-terravisu.solutions-territoriales.fr/visualiser/elections#map=14.27/48.9005/2.46921&amp;layers=a0c5903b79811fda82ef73b9dca9aacc"
+class="uri">https://demo-terravisu.solutions-territoriales.fr/visualiser/elections#map=14.27/48.9005/2.46921&amp;layers=a0c5903b79811fda82ef73b9dca9aacc</a></p>
+<p>Cette carte permet de savoir situer les bureaux de vote sur la
+commune, et éventuellement d’opposer nord, centre et sud par
+exemple.</p>
+</div>
+<div id="centrer-et-réduire" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Centrer et
+réduire</h2>
+<p><img src="img/acpCentreNONReduite.png" /> <img
+src="img/acpCentreReduite.png" /></p>
+<p>Idem avec la classification</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>pct.cr <span class="ot">&lt;-</span> <span class="fu">scale</span>(pct, <span class="at">center =</span> T, <span class="at">scale =</span> T)</span></code></pre></div>
+</div>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>

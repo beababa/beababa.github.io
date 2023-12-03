@@ -1,0 +1,54 @@
+1. Emargement
+
+------
+
+DM : consigne => voir résultat et analyse
+
+-----------------------------------
+
+EXO 1
+
+Télécharger base cours, l'ouvrir dans R et commencer l'exploration
+
+
+
+names
+
+str
+
+summary
+
+
+puis  questionnaire moodle
+
+
+---------------------------------------
+EXO 2 préparation des données et ACP + CAH
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
