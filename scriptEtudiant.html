@@ -461,69 +461,146 @@ div.tocify {
 <p>11 étudiants ont déposé un script multivarié pour remplacer l’heure
 de cours non effectuée lundi 27 novembre.</p>
 <p>Le retour est personnalisé.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
+<pre><code>## Linking to GEOS 3.9.3, GDAL 3.5.2, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span></code></pre></div>
 </div>
 <div id="ouverture-des-scripts" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Ouverture des
 scripts</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>fic <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;data/scriptEtudiant/&quot;</span>, <span class="at">recursive =</span> T)</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>fic</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>fic <span class="ot">&lt;-</span> fic[<span class="sc">-</span>(<span class="fu">grep</span>(<span class="st">&quot;CORRIGE|orrige&quot;</span>, fic))]</span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>extension <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="cf">for</span> (f <span class="cf">in</span> fic){</span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  nb <span class="ot">&lt;-</span> <span class="fu">nchar</span>(f)</span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  extension <span class="ot">&lt;-</span> <span class="fu">c</span>(extension, <span class="fu">substring</span>(f, nb<span class="dv">-1</span>, nb))</span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>}</span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="fu">table</span>(extension)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>fic <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;data/scriptEtudiant/&quot;</span>, <span class="at">recursive =</span> T)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>fic</span></code></pre></div>
+<pre><code>##  [1] &quot;carlotta.pdf&quot;                          
+##  [2] &quot;carlottaCorrige.R&quot;                     
+##  [3] &quot;Céline.pdf&quot;                            
+##  [4] &quot;Clément.pdf&quot;                           
+##  [5] &quot;HugoH.R&quot;                               
+##  [6] &quot;HugoHCORRIGE.R&quot;                        
+##  [7] &quot;KaleenAkaash.pdf&quot;                      
+##  [8] &quot;KaleenAkaashCorrige.R&quot;                 
+##  [9] &quot;Lina .pdf&quot;                             
+## [10] &quot;Orlane Script ACP et classification .R&quot;
+## [11] &quot;OrlaneCORRIGE .R&quot;                      
+## [12] &quot;pierreCORRIGE.R&quot;                       
+## [13] &quot;priyanka.R&quot;                            
+## [14] &quot;priyankaCORRIGE.R&quot;                     
+## [15] &quot;priyankaR.pdf&quot;                         
+## [16] &quot;Rafael.R&quot;                              
+## [17] &quot;RafaelCORRIGE.R&quot;                       
+## [18] &quot;script R 27nov.pdf&quot;</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>fic <span class="ot">&lt;-</span> fic[<span class="sc">-</span>(<span class="fu">grep</span>(<span class="st">&quot;CORRIGE|orrige&quot;</span>, fic))]</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>extension <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="cf">for</span> (f <span class="cf">in</span> fic){</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  nb <span class="ot">&lt;-</span> <span class="fu">nchar</span>(f)</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  extension <span class="ot">&lt;-</span> <span class="fu">c</span>(extension, <span class="fu">substring</span>(f, nb<span class="dv">-1</span>, nb))</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>}</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="fu">table</span>(extension)</span></code></pre></div>
+<pre><code>## extension
+## .R df 
+##  4  7</code></pre>
 <p>4 scripts R et 7 pdf</p>
 </div>
 <div id="points-importants" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Points importants</h1>
 <div id="le-code-postal" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Le code postal</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/election2022.csv&quot;</span>, <span class="at">dec =</span><span class="st">&quot;,&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>INSEE_COM)</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>data<span class="sc">$</span>INSEE_COM <span class="ot">&lt;-</span> <span class="fu">substring</span>(data<span class="sc">$</span>Code.du.b.vote, <span class="dv">1</span>,<span class="dv">5</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>INSEE_COM)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/election2022.csv&quot;</span>, <span class="at">dec =</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>INSEE_COM)</span></code></pre></div>
+<pre><code>## 
+##  1150  1249  6083  6088 10387 12202 13005 13055 14118 14228 14514 15012 17299 
+##     1     6    27   252    30    18    37   481    57     5     5     5    20 
+## 24294 24322 29075 45203 51454 57672 59553 69034 69244 69264 69381 71342 72154 
+##     7    21    16     5   105    29     6    37    15    21    17     7    17 
+## 72181 73008 74012 76217 77083 78005 78190 78358 78361 78396 78551 78646 80021 
+##    98    22    17    26    12    12     7    16    21     5    32    42    72 
+## 85163 89024 91021 91272 91377 91471 91657 92004 92023 92026 92040 92044 92046 
+##     5    31     5    16    26    12    21    44    37    55    47    44    22 
+## 92048 92051 92063 92073 93010 93031 93063 93070 94019 94022 94028 94033 94038 
+##    32    40    55    32    32    26    13    28    12    22    46    33    19 
+## 94041 94044 94068 94081 95127 95582 97120 
+##    33    13    42    50    35    17    22</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>data<span class="sc">$</span>INSEE_COM <span class="ot">&lt;-</span> <span class="fu">substring</span>(data<span class="sc">$</span>Code.du.b.vote, <span class="dv">1</span>,<span class="dv">5</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>INSEE_COM)</span></code></pre></div>
+<pre><code>## 
+## 01150 01249 06083 06088 10387 12202 13005 13055 14118 14228 14514 15012 17299 
+##     1     6    27   252    30    18    37   481    57     5     5     5    20 
+## 24294 24322 29075 45203 51454 57672 59553 69034 69244 69264 69381 71342 72154 
+##     7    21    16     5   105    29     6    37    15    21    17     7    17 
+## 72181 73008 74012 76217 77083 78005 78190 78358 78361 78396 78551 78646 80021 
+##    98    22    17    26    12    12     7    16    21     5    32    42    72 
+## 85163 89024 91021 91272 91377 91471 91657 92004 92023 92026 92040 92044 92046 
+##     5    31     5    16    26    12    21    44    37    55    47    44    22 
+## 92048 92051 92063 92073 93010 93031 93063 93070 94019 94022 94028 94033 94038 
+##    32    40    55    32    32    26    13    28    12    22    46    33    19 
+## 94041 94044 94068 94081 95127 95582 97120 
+##    33    13    42    50    35    17    22</code></pre>
 </div>
 <div id="les-numéros-de-bureau" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Les numéros de
 bureau</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>commune <span class="ot">&lt;-</span> data [data<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;01249&#39;</span>,]</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>commune<span class="sc">$</span>Code.du.b.vote</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">rownames</span>(commune) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># toujours regarder le résultat, ici sur les 4 premières colonnes</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="fu">head</span>(commune)[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>commune <span class="ot">&lt;-</span> data [data<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;01249&#39;</span>,]</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>commune<span class="sc">$</span>Code.du.b.vote</span></code></pre></div>
+<pre><code>## [1] &quot;01249_1&quot; &quot;01249_2&quot; &quot;01249_3&quot; &quot;01249_4&quot; &quot;01249_5&quot; &quot;01249_6&quot;</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">rownames</span>(commune) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co"># toujours regarder le résultat, ici sur les 4 premières colonnes</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="fu">head</span>(commune)[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<pre><code>##   Code.du.département Libellé.du.département Code.de.la.circonscription
+## 1                  01                    Ain                          2
+## 2                  01                    Ain                          2
+## 3                  01                    Ain                          2
+## 4                  01                    Ain                          2
+## 5                  01                    Ain                          2
+## 6                  01                    Ain                          2
+##   Libellé.de.la.circonscription
+## 1          2ème circonscription
+## 2          2ème circonscription
+## 3          2ème circonscription
+## 4          2ème circonscription
+## 5          2ème circonscription
+## 6          2ème circonscription</code></pre>
 </div>
 <div id="enregistrement-graphique" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Enregistrement
 graphique</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/graphique.png&quot;</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">hist</span>(commune<span class="sc">$</span>Abstentions)</span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/graphique.png&quot;</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">hist</span>(commune<span class="sc">$</span>Abstentions)</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<pre><code>## png 
+##   2</code></pre>
 </div>
 <div id="utiliser-les-graphiques-de-façon-libre" class="section level2"
 number="3.4">
 <h2><span class="header-section-number">3.4</span> Utiliser les
 graphiques de façon libre</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">hist</span>(commune<span class="sc">$</span>Abstentions, <span class="st">&quot;distribution&quot;</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">barplot</span>(commune<span class="sc">$</span>Inscrits, <span class="st">&quot;répartition&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">hist</span>(commune<span class="sc">$</span>Abstentions, <span class="at">main =</span>  <span class="st">&quot;distribution&quot;</span>)</span></code></pre></div>
+<p><img src="scriptEtudiant_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">barplot</span>(commune<span class="sc">$</span>Inscrits, <span class="at">main =</span> <span class="st">&quot;répartition&quot;</span>)</span></code></pre></div>
+<p><img src="scriptEtudiant_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
 <p>Mais aussi pour comparer les bureaux</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">barplot</span>(commune<span class="sc">$</span>Inscrits<span class="sc">~</span>commune<span class="sc">$</span>Code.du.b.vote)</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">barplot</span>(commune<span class="sc">$</span>Abstentions<span class="sc">~</span>commune<span class="sc">$</span>Code.du.b.vote)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">barplot</span>(commune<span class="sc">$</span>Inscrits<span class="sc">~</span>commune<span class="sc">$</span>Code.du.b.vote)</span></code></pre></div>
+<p><img src="scriptEtudiant_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">barplot</span>(commune<span class="sc">$</span>Abstentions<span class="sc">~</span>commune<span class="sc">$</span>Code.du.b.vote)</span></code></pre></div>
+<p><img src="scriptEtudiant_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
 <p>Plus délicat</p>
 <p>Il faut transformer en matrice</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/pctBondy.csv&quot;</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [,<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>matrice <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(data)</span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">boxplot</span>(matrice, <span class="at">las=</span> <span class="dv">2</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">t</span>(matrice))</span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>candidats <span class="ot">&lt;-</span> <span class="fu">colnames</span>(matrice)</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>matrice <span class="ot">&lt;-</span> matrice [<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">colnames</span>(matrice)</span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">t</span>(matrice), <span class="at">beside =</span> T, </span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;bureaux de vote&quot;</span>, <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="at">legend.text =</span> candidats)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/pctBondy.csv&quot;</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="co"># suppression 1e colonne si nécessaire</span></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>matrice <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(data)</span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a><span class="fu">boxplot</span>(matrice, <span class="at">las=</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="scriptEtudiant_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">t</span>(matrice))</span></code></pre></div>
+<p><img src="scriptEtudiant_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>candidats <span class="ot">&lt;-</span> <span class="fu">colnames</span>(matrice)</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>matrice <span class="ot">&lt;-</span> matrice [<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="fu">colnames</span>(matrice)</span></code></pre></div>
+<pre><code>##  [1] &quot;abst&quot;          &quot;ARTHAUD&quot;       &quot;ROUSSEL&quot;       &quot;MACRON&quot;       
+##  [5] &quot;LASSALLE&quot;      &quot;LE.PEN&quot;        &quot;ZEMMOUR&quot;       &quot;MÉLENCHON&quot;    
+##  [9] &quot;HIDALGO&quot;       &quot;JADOT&quot;         &quot;PÉCRESSE&quot;      &quot;POUTOU&quot;       
+## [13] &quot;DUPONT.AIGNAN&quot;</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">t</span>(matrice), <span class="at">beside =</span> T, </span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;bureaux de vote&quot;</span>, <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="at">legend.text =</span> candidats)</span></code></pre></div>
+<p><img src="scriptEtudiant_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 </div>
 

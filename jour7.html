@@ -675,8 +675,10 @@ hiérarchique</h1>
 class="section level1" number="5">
 <h1><span class="header-section-number">5</span> Quelques remarques
 autour de ces premiers résultats</h1>
-<p>Il s’agit de faire correspondre le cercle de correlation et le
-dendogramme</p>
+<div id="correspondance-cercle-de-correlation-et-dendrogramme"
+class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Correspondance cercle
+de correlation et dendrogramme</h2>
 <p><img src="img/lafleche.png" /> <img src="img/lafleche3.png" /></p>
 <p>Cas de la Flèche : isolement du bureau 17</p>
 <p>L’abstention est beaucoup plus basse qu’ailleurs (17), Mélenchon très
@@ -692,8 +694,52 @@ corrélation</p>
 <span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <p><img src="img/lafleche2.png" /></p>
 </div>
-<div id="deuxième-approche" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> Deuxième approche</h1>
+<div id="quelques-graphiques-pour-mieux-observer" class="section level2"
+number="5.2">
+<h2><span class="header-section-number">5.2</span> Quelques graphiques
+pour mieux observer</h2>
+<div id="comparer-les-bureaux-variable-par-variable"
+class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Comparer les
+bureaux variable par variable</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/election2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">dec =</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>commune <span class="ot">&lt;-</span> commune [commune<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="fu">barplot</span>(commune<span class="sc">$</span>Inscrits<span class="sc">~</span>commune<span class="sc">$</span>Code.du.b.vote, <span class="at">las =</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">barplot</span>(commune<span class="sc">$</span>Abstentions<span class="sc">~</span>commune<span class="sc">$</span>Code.du.b.vote, <span class="at">las =</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
+</div>
+<div id="plus-complexe-bureau-par-bureau" class="section level3"
+number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Plus complexe,
+bureau par bureau</h3>
+<p>Il faut transformer en matrice</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/pctBondy.csv&quot;</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="co"># suppression 1e colonne si nécessaire</span></span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a>matrice <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(data)</span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a><span class="fu">boxplot</span>(matrice, <span class="at">las=</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># transposition de la matrice</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">t</span>(matrice))</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>candidats <span class="ot">&lt;-</span> <span class="fu">colnames</span>(matrice)</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>matrice <span class="ot">&lt;-</span> matrice [<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]</span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="fu">colnames</span>(matrice)</span></code></pre></div>
+<pre><code>##  [1] &quot;abst&quot;          &quot;ARTHAUD&quot;       &quot;ROUSSEL&quot;       &quot;MACRON&quot;       
+##  [5] &quot;LASSALLE&quot;      &quot;LE.PEN&quot;        &quot;ZEMMOUR&quot;       &quot;MÉLENCHON&quot;    
+##  [9] &quot;HIDALGO&quot;       &quot;JADOT&quot;         &quot;PÉCRESSE&quot;      &quot;POUTOU&quot;       
+## [13] &quot;DUPONT.AIGNAN&quot;</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">t</span>(matrice), <span class="at">beside =</span> T, </span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;bureaux de vote&quot;</span>, <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="at">legend.text =</span> candidats)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="deuxième-approche-de-lacp-on-fltre" class="section level1"
+number="6">
+<h1><span class="header-section-number">6</span> Deuxième approche de
+l’ACP, on fltre</h1>
 <p>Deux directions possibles :</p>
 <ul>
 <li><p>on cherche les autres candidats</p></li>
@@ -701,12 +747,12 @@ corrélation</p>
 </ul>
 <div id="les-candidats" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Les candidats</h2>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">names</span>(pct)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">names</span>(pct)</span></code></pre></div>
 <pre><code>##  [1] &quot;abst&quot;          &quot;ARTHAUD&quot;       &quot;ROUSSEL&quot;       &quot;MACRON&quot;       
 ##  [5] &quot;LASSALLE&quot;      &quot;LE.PEN&quot;        &quot;ZEMMOUR&quot;       &quot;MÉLENCHON&quot;    
 ##  [9] &quot;HIDALGO&quot;       &quot;JADOT&quot;         &quot;PÉCRESSE&quot;      &quot;POUTOU&quot;       
 ## [13] &quot;DUPONT.AIGNAN&quot;</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">10</span><span class="sc">:</span><span class="dv">13</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">10</span><span class="sc">:</span><span class="dv">13</span>)]</span></code></pre></div>
 <p>Et on reproduit le code.</p>
 <p><img src="img/ptit.png" /></p>
 </div>
@@ -714,13 +760,13 @@ corrélation</p>
 <h2><span class="header-section-number">6.2</span> Les bureaux de
 vote</h2>
 <p>On choisit un bureau dans chacun des 4 groupes : 3 15 29 13</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">15</span>,<span class="dv">29</span>,<span class="dv">13</span>),]</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">15</span>,<span class="dv">29</span>,<span class="dv">13</span>),]</span></code></pre></div>
 <p>Pour chaque graphique, faire une analyse</p>
 <p>Pourcentage d’information expliqué</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">plot</span>(res)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="co"># composantes principales</span></span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>res<span class="sc">$</span>rotation</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="fu">plot</span>(res)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="co"># composantes principales</span></span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>res<span class="sc">$</span>rotation</span></code></pre></div>
 <pre><code>##                        PC1          PC2          PC3         PC4         PC5
 ## abst           0.452902352 -0.674538224  0.466286786 -0.04963555  0.05579734
 ## ARTHAUD       -0.007883352 -0.014676490  0.045796823  0.04465344  0.04477698
@@ -763,12 +809,12 @@ vote</h2>
 ## PÉCRESSE      -0.097868336 -0.06601509 -0.2395896
 ## POUTOU         0.434081194  0.01549765 -0.1926758
 ## DUPONT.AIGNAN  0.004989125 -0.41590161 -0.3553173</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="co"># écarts types</span></span>
-<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>res<span class="sc">$</span>sdev</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="co"># écarts types</span></span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>res<span class="sc">$</span>sdev</span></code></pre></div>
 <pre><code>##  [1] 7.9531935 3.1156838 1.5592099 1.2291338 0.6162500 0.5365126 0.4836316
 ##  [8] 0.3352212 0.3063857 0.2489920 0.2371094 0.1552216 0.1247693</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="co"># variance</span></span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> res<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="fu">sum</span>(res<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span>)   </span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="co"># variance</span></span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> res<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="fu">sum</span>(res<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span>)   </span></code></pre></div>
 <pre><code>##  [1] 80.91934688 12.41869651  3.11012916  1.93271392  0.48582862  0.36823840
 ##  [7]  0.29922551  0.14375804  0.12008981  0.07931222  0.07192283  0.03082289
 ## [13]  0.01991521</code></pre>
@@ -782,8 +828,8 @@ devoir maison</h1>
 <div id="filtre-sur-bondy" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Filtre sur Bondy</h2>
 <p>Cela fonctionne mais on a perdu 2 bureaux</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/devoirMaison/base.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> base [base<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/devoirMaison/base.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> base [base<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span></code></pre></div>
 </div>
 <div id="une-vision-cartographique" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Une vision
@@ -801,7 +847,7 @@ réduire</h2>
 <p><img src="img/acpCentreNONReduite.png" /> <img
 src="img/acpCentreReduite.png" /></p>
 <p>Idem avec la classification</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>pct.cr <span class="ot">&lt;-</span> <span class="fu">scale</span>(pct, <span class="at">center =</span> T, <span class="at">scale =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>pct.cr <span class="ot">&lt;-</span> <span class="fu">scale</span>(pct, <span class="at">center =</span> T, <span class="at">scale =</span> T)</span></code></pre></div>
 </div>
 </div>
 
