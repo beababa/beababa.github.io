@@ -1,81 +1,81 @@
-prénom,présent / absent (oui/non),ville choisie - code INSEE,groupe
-Lina,oui,1249,1
-Rafaël,oui,95582,1
-Lysandre,oui,92044,1
-Clément,oui,72181,1
-Priyanka,oui,14118,1
-Louve,oui,92046,1
-HugoH,oui,94600,1
-Ange,oui,13055,1
-Orlane,oui,94019,1
-Laura,oui,92063,1
-Kaleen Akaash,oui,92073,1
-VALENTIN ,oui,92048,1
-Carlotta,non,,1
-Marissa,oui,77083,1
-Jaël,oui,93010,1
-Tom,non,,1
-louis,non,,1
-Matis,oui,12202,1
+"prénom","présent / absent (oui/non)","ville choisie - code INSEE","groupe"
+"Lina","oui",1249,1
+"Rafaël","oui",95582,1
+"Lysandre","oui",92044,1
+"Clément","oui",72181,1
+"Priyanka","oui",14118,1
+"Louve","oui",92046,1
+"HugoH","oui",94600,1
+"Ange","oui",13055,1
+"Orlane","oui",94019,1
+"Laura","oui",92063,1
+"Kaleen Akaash","oui",92073,1
+"VALENTIN ","oui",92048,1
+"Carlotta","non",50218,1
+"Marissa","oui",77083,1
+"Jaël","oui",93010,1
+"Tom","non",,1
+"louis","non",1202,1
+"Matis","oui",12202,1
 ,,,1
-Hala,oui,1150,1
-Louis,oui,92051,1
-YOBA,oui,78190,2
-Ornella,oui,94044,2
-Giulia,non, ,2
-HugoD,oui,57672,2
-clarisse,oui,80021,2
-jada,oui,94038,2
-Rosalie,non,,2
-Alix,oui,78000,2
-Kalma,oui,92023,2
-Joseph,oui,94041,2
-Valentin,non,,2
-Pia,oui,85163,2
-Julia,non,,2
-Linda,oui,91377,2
-Sarah,oui,94068,2
-Titouan,oui,76217,2
-Gabriel,non,,2
-Gloire Marcellin,oui,93063,2
-Amandine,oui,93031,2
-Adèle,oui,94068,2
-Rime,oui,94028,2
-Jessie,oui,6088,2
-Timothée,oui,59553,2
-Hadrien,oui,pas de choix,2
-Mahel,oui,69123,2
-Aglaé,oui,pas de choix,2
-Leslie,,,2
-Valentin,oui,92026,2
-Mathis,oui,pas de choix,2
-jonathan,oui,95127,2
-Paul-Alexis,oui,6083,3
-Sacha ,oui,10387,3
-Giulia,oui,24294,3
-Priscille,oui,45203,3
-Isis,oui,94081,3
-Léo,oui,91471,3
+"Hala","oui",1150,1
+"Louis","oui",92051,1
+"YOBA","oui",78190,2
+"Ornella","oui",94044,2
+"Giulia","non"," ",2
+"HugoD","oui",57672,2
+"clarisse","oui",80021,2
+"jada","oui",94038,2
+"Rosalie","non",,2
+"Alix","oui",78000,2
+"Kalma","oui",92023,2
+"Joseph","oui",94041,2
+"Valentin","non",,2
+"Pia","oui",85163,2
+"Julia","non",,2
+"Linda","oui",91377,2
+"Sarah","oui",94068,2
+"Titouan","oui",76217,2
+"Gabriel","non",,2
+"Gloire Marcellin","oui",93063,2
+"Amandine","oui",93031,2
+"Adèle","oui",94068,2
+"Rime","oui",94028,2
+"Jessie","oui",6088,2
+"Timothée","oui",59553,2
+"Hadrien","oui","pas de choix",2
+"Mahel","oui",69123,2
+"Aglaé","oui","pas de choix",2
+"Leslie",,,2
+"Valentin","oui",92026,2
+"Mathis","oui","pas de choix",2
+"jonathan","oui",95127,2
+"Paul-Alexis","oui",6083,3
+"Sacha ","oui",10387,3
+"Giulia","oui",24294,3
+"Priscille","oui",45203,3
+"Isis","oui",94081,3
+"Léo","oui",91471,3
 ,,,
-Céline,oui,94041,3
-Carla,oui,92004,3
-Eve,oui,29075,3
-Lise,oui,69244,3
+"Céline","oui",94041,3
+"Carla","oui",92004,3
+"Eve","oui",29075,3
+"Lise","oui",69244,3
 ,,,
-Matias,oui,93070,3
-Côme ,Oui,71342,3
-Jingren,oui,78005,3
-Kyojin,oui,78600,3
-Franck,oui,73008,3
-Benjamin,oui,69034,3
-pierre,oui,89024,3
-Raphael ,oui,,
-Julia,oui,74012,3
-ilona,oui,13005,3
-Anna,oui,78551,3
-Lucas,oui,15012,3
-Edwin,oui,91021,3
-sacha,oui,,3
-Marwan,oui,92130,3
+"Matias","oui",93070,3
+"Côme ","Oui",71342,3
+"Jingren","oui",78005,3
+"Kyojin","oui",78600,3
+"Franck","oui",73008,3
+"Benjamin","oui",69034,3
+"pierre","oui",89024,3
+"Raphael ","oui",,
+"Julia","oui",74012,3
+"ilona","oui",13005,3
+"Anna","oui",78551,3
+"Lucas","oui",15012,3
+"Edwin","oui",91021,3
+"sacha","oui",,3
+"Marwan","oui",92130,3
 ,,,
-Jeanne,oui,94038,3
+"Jeanne","oui",94038,3
