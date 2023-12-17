@@ -13,7 +13,7 @@
 
 <title>Multivariées</title>
 
-<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -29,12 +29,12 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -92,11 +92,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -105,14 +105,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -127,13 +127,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -229,11 +236,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -262,8 +273,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -271,16 +282,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -452,15 +456,15 @@ div.tocify {
 </div>
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
-<pre><code>## Linking to GEOS 3.10.2, GDAL 3.4.1, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
+<pre><code>## Linking to GEOS 3.9.3, GDAL 3.5.2, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span></code></pre></div>
 <div id="préparation-de-la-donnée" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Préparation de la
 donnée</h1>
 <p>On lit la donnée, on filtre sur Bondy</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/election2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/election2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
 <pre><code>##   [1] &quot;Code.du.département&quot;           &quot;Libellé.du.département&quot;       
 ##   [3] &quot;Code.de.la.circonscription&quot;    &quot;Libellé.de.la.circonscription&quot;
 ##   [5] &quot;Code.de.la.commune&quot;            &quot;Libellé.de.la.commune&quot;        
@@ -514,44 +518,44 @@ donnée</h1>
 ## [101] &quot;Nom.11&quot;                        &quot;Prénom.11&quot;                    
 ## [103] &quot;Voix.11&quot;                       &quot;X..Voix.Ins.11&quot;               
 ## [105] &quot;X..Voix.Exp.11&quot;                &quot;INSEE_COM&quot;</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#data &lt;- data [data$INSEE_COM == &#39;72154&#39;,]</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># la flèche</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co">#data &lt;- data [data$INSEE_COM == &#39;72154&#39;,]</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co"># la flèche</span></span></code></pre></div>
 <p>On la met en forme au niveau des colonnes :</p>
 <ul>
 <li><p>colonne des % des inscrits</p></li>
 <li><p>récupération des noms des candidats</p></li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;Ins&quot;</span>, <span class="fu">names</span>(data))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pct <span class="ot">&lt;-</span> data [, ind]</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;Nom&quot;</span>, <span class="fu">names</span>(data))</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># la 1e ligne suffit</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>noms <span class="ot">&lt;-</span> data [<span class="dv">1</span>,ind]</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># on attribue les noms des candidats</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)] </span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;Ins&quot;</span>, <span class="fu">names</span>(data))</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>pct <span class="ot">&lt;-</span> data [, ind]</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;Nom&quot;</span>, <span class="fu">names</span>(data))</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co"># la 1e ligne suffit</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>noms <span class="ot">&lt;-</span> data [<span class="dv">1</span>,ind]</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co"># on attribue les noms des candidats</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)] </span></code></pre></div>
 <pre><code>##  [1] &quot;X..Voix.Ins&quot;    &quot;X..Voix.Ins.1&quot;  &quot;X..Voix.Ins.2&quot;  &quot;X..Voix.Ins.3&quot; 
 ##  [5] &quot;X..Voix.Ins.4&quot;  &quot;X..Voix.Ins.5&quot;  &quot;X..Voix.Ins.6&quot;  &quot;X..Voix.Ins.7&quot; 
 ##  [9] &quot;X..Voix.Ins.8&quot;  &quot;X..Voix.Ins.9&quot;  &quot;X..Voix.Ins.10&quot; &quot;X..Voix.Ins.11&quot;</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)] <span class="ot">&lt;-</span> noms</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)] <span class="ot">&lt;-</span> noms</span></code></pre></div>
 <p>On retient uniquement l’abstention</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [,<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)]</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;abst&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [,<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">18</span>)]</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">names</span>(pct) [<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;abst&quot;</span></span></code></pre></div>
 <p>On attribue les numéros des bureaux</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(pct) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(data<span class="sc">$</span>Code.du.b.vote))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(pct)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">rownames</span>(pct) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(data<span class="sc">$</span>Code.du.b.vote))</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">rownames</span>(pct)</span></code></pre></div>
 <pre><code>##  [1] &quot;1&quot;  &quot;2&quot;  &quot;3&quot;  &quot;4&quot;  &quot;5&quot;  &quot;6&quot;  &quot;7&quot;  &quot;8&quot;  &quot;9&quot;  &quot;10&quot; &quot;11&quot; &quot;12&quot; &quot;13&quot; &quot;14&quot; &quot;15&quot;
 ## [16] &quot;16&quot; &quot;17&quot; &quot;18&quot; &quot;19&quot; &quot;20&quot; &quot;21&quot; &quot;22&quot; &quot;23&quot; &quot;24&quot; &quot;25&quot; &quot;26&quot; &quot;27&quot; &quot;28&quot; &quot;29&quot; &quot;30&quot;
 ## [31] &quot;31&quot; &quot;32&quot;</code></pre>
 <p>On sauvegarde pour pouvoir l’utiliser à nouveau</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(pct, <span class="st">&quot;data/pctBondy.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">write.csv</span>(pct, <span class="st">&quot;data/pctBondy.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 </div>
 <div id="exploration-de-la-donnée" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Exploration de la
 donnée</h1>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pct <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/pctBondy.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># élimination de la 1e colonne si nécessaire</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [,<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pct)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>pct <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/pctBondy.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co"># élimination de la 1e colonne si nécessaire</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="fu">summary</span>(pct)</span></code></pre></div>
 <pre><code>##       abst          ARTHAUD          ROUSSEL          MACRON     
 ##  Min.   :20.80   Min.   :0.0000   Min.   :0.120   Min.   : 7.92  
 ##  1st Qu.:26.56   1st Qu.:0.2075   1st Qu.:0.530   1st Qu.:10.97  
@@ -580,7 +584,7 @@ donnée</h1>
 ##  Mean   :0.8472  
 ##  3rd Qu.:1.1450  
 ##  Max.   :1.7600</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pct)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">cor</span>(pct)</span></code></pre></div>
 <pre><code>##                      abst     ARTHAUD     ROUSSEL      MACRON   LASSALLE
 ## abst           1.00000000 -0.09124502 -0.60695243 -0.86646274 -0.5864629
 ## ARTHAUD       -0.09124502  1.00000000 -0.13340523  0.31314843  0.1097814
@@ -623,19 +627,19 @@ donnée</h1>
 ## PÉCRESSE       1.00000000  0.04772693    0.54522523
 ## POUTOU         0.04772693  1.00000000    0.08205208
 ## DUPONT.AIGNAN  0.54522523  0.08205208    1.00000000</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(pct)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">pairs</span>(pct)</span></code></pre></div>
 <p><img src="jour7_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 <div id="acp-analyse-en-composante-principale" class="section level1"
 number="3">
 <h1><span class="header-section-number">3</span> ACP analyse en
 composante principale</h1>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(pct, <span class="at">scale. =</span> F)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(pct, <span class="at">scale. =</span> F)</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">plot</span>(res)</span></code></pre></div>
 <p><img src="jour7_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/acpCentreNONReduite.png&quot;</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(res)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/acpCentreNONReduite.png&quot;</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="fu">biplot</span>(res)</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## png 
 ##   2</code></pre>
 <p><img src="img/acpCentreNONReduite.png" /></p>
@@ -655,20 +659,20 @@ relation)</p></li>
 <div id="classification-hiérarchique" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Classification
 hiérarchique</h1>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># matrice des distances</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>d.pct <span class="ot">&lt;-</span> <span class="fu">dist</span>(pct)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>cah <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d.pct)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cah)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># matrice des distances</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>d.pct <span class="ot">&lt;-</span> <span class="fu">dist</span>(pct)</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>cah <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d.pct)</span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="fu">plot</span>(cah)</span></code></pre></div>
 <p><img src="jour7_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Dendrogramme avec matérialisation des groupes</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#png(&quot;img/lafleche3.png&quot;)</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cah)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rect.hclust</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co">#png(&quot;img/lafleche3.png&quot;)</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">plot</span>(cah)</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="fu">rect.hclust</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span></code></pre></div>
 <p><img src="jour7_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>groupes.cah <span class="ot">&lt;-</span> <span class="fu">cutree</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">#liste des groupes</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sort</span>(groupes.cah))</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>groupes.cah <span class="ot">&lt;-</span> <span class="fu">cutree</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="co">#dev.off()</span></span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="co">#liste des groupes</span></span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sort</span>(groupes.cah))</span></code></pre></div>
 <pre><code>##  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 4 4</code></pre>
 </div>
 <div id="quelques-remarques-autour-de-ces-premiers-résultats"
@@ -685,13 +689,13 @@ de correlation et dendrogramme</h2>
 sous représenté et Macron sur représenté.</p>
 <p>On prend le bureau 13 qui est à l’opposé sur le cercle de
 corrélation</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># on filtre sur les deux bureaux</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>pct_13_17 <span class="ot">&lt;-</span> pct [<span class="fu">c</span>(<span class="dv">13</span>,<span class="dv">17</span>),]</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># on transforme en matrice pour pouvoir faire un graphique de comparaison des répartitions</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(pct_13_17)</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/lafleche2.png&quot;</span>)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mat, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">beside =</span> T, <span class="at">col =</span> <span class="fu">terrain.colors</span>(<span class="dv">2</span>))</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># on filtre sur les deux bureaux</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>pct_13_17 <span class="ot">&lt;-</span> pct [<span class="fu">c</span>(<span class="dv">13</span>,<span class="dv">17</span>),]</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="co"># on transforme en matrice pour pouvoir faire un graphique de comparaison des répartitions</span></span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(pct_13_17)</span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/lafleche2.png&quot;</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a><span class="fu">barplot</span>(mat, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">beside =</span> T, <span class="at">col =</span> <span class="fu">terrain.colors</span>(<span class="dv">2</span>))</span>
+<span id="cb26-7"><a href="#cb26-7" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <p><img src="img/lafleche2.png" /></p>
 </div>
 <div id="quelques-graphiques-pour-mieux-observer" class="section level2"
@@ -702,11 +706,11 @@ pour mieux observer</h2>
 class="section level3" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> Comparer les
 bureaux variable par variable</h3>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/election2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">dec =</span><span class="st">&quot;,&quot;</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> commune [commune<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(commune<span class="sc">$</span>Inscrits<span class="sc">~</span>commune<span class="sc">$</span>Code.du.b.vote, <span class="at">las =</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/election2022.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">dec =</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>commune <span class="ot">&lt;-</span> commune [commune<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="fu">barplot</span>(commune<span class="sc">$</span>Inscrits<span class="sc">~</span>commune<span class="sc">$</span>Code.du.b.vote, <span class="at">las =</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="jour7_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(commune<span class="sc">$</span>Abstentions<span class="sc">~</span>commune<span class="sc">$</span>Code.du.b.vote, <span class="at">las =</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">barplot</span>(commune<span class="sc">$</span>Abstentions<span class="sc">~</span>commune<span class="sc">$</span>Code.du.b.vote, <span class="at">las =</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="jour7_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
 </div>
 <div id="plus-complexe-bureau-par-bureau" class="section level3"
@@ -714,24 +718,24 @@ number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> Plus complexe,
 bureau par bureau</h3>
 <p>Il faut transformer en matrice</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/pctBondy.csv&quot;</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [,<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># suppression 1e colonne si nécessaire</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>matrice <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(data)</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(matrice, <span class="at">las=</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/pctBondy.csv&quot;</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a><span class="co"># suppression 1e colonne si nécessaire</span></span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>matrice <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(data)</span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a><span class="fu">boxplot</span>(matrice, <span class="at">las=</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="jour7_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transposition de la matrice</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">t</span>(matrice), <span class="at">las=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="co"># transposition de la matrice</span></span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">t</span>(matrice), <span class="at">las=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="jour7_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>candidats <span class="ot">&lt;-</span> <span class="fu">colnames</span>(matrice)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>matrice <span class="ot">&lt;-</span> matrice [<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(matrice)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>candidats <span class="ot">&lt;-</span> <span class="fu">colnames</span>(matrice)</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>matrice <span class="ot">&lt;-</span> matrice [<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]</span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a><span class="fu">colnames</span>(matrice)</span></code></pre></div>
 <pre><code>##  [1] &quot;abst&quot;          &quot;ARTHAUD&quot;       &quot;ROUSSEL&quot;       &quot;MACRON&quot;       
-##  [5] &quot;LASSALLE&quot;      &quot;LE.PEN&quot;        &quot;ZEMMOUR&quot;       &quot;MÃ.LENCHON&quot;   
-##  [9] &quot;HIDALGO&quot;       &quot;JADOT&quot;         &quot;PÃ.CRESSE&quot;     &quot;POUTOU&quot;       
+##  [5] &quot;LASSALLE&quot;      &quot;LE.PEN&quot;        &quot;ZEMMOUR&quot;       &quot;MÉLENCHON&quot;    
+##  [9] &quot;HIDALGO&quot;       &quot;JADOT&quot;         &quot;PÉCRESSE&quot;      &quot;POUTOU&quot;       
 ## [13] &quot;DUPONT.AIGNAN&quot;</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">t</span>(matrice), <span class="at">beside =</span> T, </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;bureaux de vote&quot;</span>, <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="at">legend.text =</span> candidats)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">t</span>(matrice), <span class="at">beside =</span> T, </span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;bureaux de vote&quot;</span>, <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="at">legend.text =</span> candidats)</span></code></pre></div>
 <p><img src="jour7_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 </div>
 </div>
@@ -748,12 +752,12 @@ l’ACP, on filtre</h1>
 <div id="les-candidats" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Les candidats</h2>
 <p>On veut montrer uniquement les petits candidats</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pct)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">names</span>(pct)</span></code></pre></div>
 <pre><code>##  [1] &quot;abst&quot;          &quot;ARTHAUD&quot;       &quot;ROUSSEL&quot;       &quot;MACRON&quot;       
 ##  [5] &quot;LASSALLE&quot;      &quot;LE.PEN&quot;        &quot;ZEMMOUR&quot;       &quot;MÉLENCHON&quot;    
 ##  [9] &quot;HIDALGO&quot;       &quot;JADOT&quot;         &quot;PÉCRESSE&quot;      &quot;POUTOU&quot;       
 ## [13] &quot;DUPONT.AIGNAN&quot;</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">10</span><span class="sc">:</span><span class="dv">13</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">10</span><span class="sc">:</span><span class="dv">13</span>)]</span></code></pre></div>
 <p>Et on reproduit le code.</p>
 <p><img src="img/ptit.png" /></p>
 </div>
@@ -761,11 +765,11 @@ l’ACP, on filtre</h1>
 <h2><span class="header-section-number">6.2</span> Les bureaux de
 vote</h2>
 <p>On choisit un bureau dans chacun des 4 groupes : 3 15 29 13</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pct <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/pctBondy.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [,<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">15</span>,<span class="dv">29</span>,<span class="dv">13</span>),]</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(pct)</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(acp)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>pct <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/pctBondy.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a>pct <span class="ot">&lt;-</span> pct [<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">15</span>,<span class="dv">29</span>,<span class="dv">13</span>),]</span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(pct)</span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a><span class="fu">biplot</span>(acp)</span></code></pre></div>
 <p><img src="jour7_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>
 </div>
@@ -787,25 +791,24 @@ de vote</h3>
 <p>Cette carte permet de comprendre les problèmes liés à la base. En
 effet, comme le dessin du bureau est fait automatiquement, il y a des
 bureaux discontinus.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>bv <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/geo.gpkg&quot;</span>, <span class="st">&quot;bv&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `bv&#39; from data source 
-##   `C:\Users\enseignant-426\01_stat\data\gros\geo.gpkg&#39; using driver `GPKG&#39;
-## Simple feature collection with 2849 features and 3 fields
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>bv <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/geo.gpkg&quot;</span>, <span class="st">&quot;bv&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `bv&#39; from data source `C:\Users\tachasa\01_stat\data\gros\geo.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 2128 features and 3 fields
 ## Geometry type: MULTIPOLYGON
 ## Dimension:     XY
 ## Bounding box:  xmin: -6269833 ymin: 6116038 xmax: 1064508 ymax: 7056193
-## Projected CRS: RGF93 / Lambert-93</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>bvBondy <span class="ot">&lt;-</span> bv [bv<span class="sc">$</span>insee <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>bureau <span class="ot">&lt;-</span> <span class="fu">substring</span>(bvBondy<span class="sc">$</span>bureau,<span class="dv">7</span>,<span class="dv">9</span>)</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(bvBondy) <span class="ot">&lt;-</span> bureau</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>bv32 <span class="ot">&lt;-</span> bvBondy [<span class="fu">rownames</span>(bvBondy)<span class="sc">==</span><span class="dv">32</span>,]</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/bv32.png&quot;</span>)</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_init</span>(bv32)</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(bvBondy, <span class="at">type =</span> <span class="st">&quot;typo&quot;</span>, <span class="at">var =</span> <span class="st">&quot;bureau&quot;</span>, <span class="at">add =</span> T, <span class="at">leg_pos =</span> <span class="cn">NA</span>)</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(bv32, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>, <span class="at">add =</span> T)</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_label</span>(bvBondy, <span class="at">var =</span> <span class="st">&quot;bureau&quot;</span>, <span class="at">overlap =</span> F)</span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Bureau de vote discontinu&quot;</span>, <span class="st">&quot;opendata, réutilisation des REU&quot;</span>)</span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+## Projected CRS: RGF93 v1 / Lambert-93</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a>bvBondy <span class="ot">&lt;-</span> bv [bv<span class="sc">$</span>insee <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a>bureau <span class="ot">&lt;-</span> <span class="fu">substring</span>(bvBondy<span class="sc">$</span>bureau,<span class="dv">7</span>,<span class="dv">9</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a><span class="fu">rownames</span>(bvBondy) <span class="ot">&lt;-</span> bureau</span>
+<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a>bv32 <span class="ot">&lt;-</span> bvBondy [<span class="fu">rownames</span>(bvBondy)<span class="sc">==</span><span class="dv">32</span>,]</span>
+<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/bv32.png&quot;</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a><span class="fu">mf_init</span>(bv32)</span>
+<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a><span class="fu">mf_map</span>(bvBondy, <span class="at">type =</span> <span class="st">&quot;typo&quot;</span>, <span class="at">var =</span> <span class="st">&quot;bureau&quot;</span>, <span class="at">add =</span> T, <span class="at">leg_pos =</span> <span class="cn">NA</span>)</span>
+<span id="cb40-8"><a href="#cb40-8" tabindex="-1"></a><span class="fu">mf_map</span>(bv32, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>, <span class="at">add =</span> T)</span>
+<span id="cb40-9"><a href="#cb40-9" tabindex="-1"></a><span class="fu">mf_label</span>(bvBondy, <span class="at">var =</span> <span class="st">&quot;bureau&quot;</span>, <span class="at">overlap =</span> F)</span>
+<span id="cb40-10"><a href="#cb40-10" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Bureau de vote discontinu&quot;</span>, <span class="st">&quot;opendata, réutilisation des REU&quot;</span>)</span>
+<span id="cb40-11"><a href="#cb40-11" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## png 
 ##   2</code></pre>
 <p><img src="img/bv32.png" /></p>
@@ -821,20 +824,19 @@ exemple.</p>
 <p>Ainsi, sur Bondy</p>
 <p>Les bureaux 10, 12, 14, 23 représentent des profils</p>
 <p><img src="img/acpCentreNONReduite.png" /></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>bvBondy <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/geo.gpkg&quot;</span>, <span class="st">&quot;bv&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `bv&#39; from data source 
-##   `C:\Users\enseignant-426\01_stat\data\gros\geo.gpkg&#39; using driver `GPKG&#39;
-## Simple feature collection with 2849 features and 3 fields
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a>bvBondy <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/geo.gpkg&quot;</span>, <span class="st">&quot;bv&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `bv&#39; from data source `C:\Users\tachasa\01_stat\data\gros\geo.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 2128 features and 3 fields
 ## Geometry type: MULTIPOLYGON
 ## Dimension:     XY
 ## Bounding box:  xmin: -6269833 ymin: 6116038 xmax: 1064508 ymax: 7056193
-## Projected CRS: RGF93 / Lambert-93</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>bvBondy  <span class="ot">&lt;-</span> bvBondy [bvBondy<span class="sc">$</span>nom <span class="sc">==</span> <span class="st">&quot;Bondy&quot;</span>,] </span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(bvBondy)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>bvBondy<span class="sc">$</span>nom <span class="ot">&lt;-</span> <span class="fu">substring</span>(bvBondy<span class="sc">$</span>bureau,<span class="dv">7</span>,<span class="dv">9</span>)</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>bvProfil <span class="ot">&lt;-</span> bvBondy[bvBondy<span class="sc">$</span>nom <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">23</span>),]</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_label</span>(bvProfil, <span class="at">var =</span> <span class="st">&quot;nom&quot;</span>)</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span> (<span class="st">&quot;Des profils différents au centre de Bondy même&quot;</span>, <span class="st">&quot;opendata/ élections 2022 et REU&quot;</span>)</span></code></pre></div>
+## Projected CRS: RGF93 v1 / Lambert-93</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a>bvBondy  <span class="ot">&lt;-</span> bvBondy [bvBondy<span class="sc">$</span>nom <span class="sc">==</span> <span class="st">&quot;Bondy&quot;</span>,] </span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a><span class="fu">mf_map</span>(bvBondy)</span>
+<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a>bvBondy<span class="sc">$</span>nom <span class="ot">&lt;-</span> <span class="fu">substring</span>(bvBondy<span class="sc">$</span>bureau,<span class="dv">7</span>,<span class="dv">9</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" tabindex="-1"></a>bvProfil <span class="ot">&lt;-</span> bvBondy[bvBondy<span class="sc">$</span>nom <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">23</span>),]</span>
+<span id="cb44-5"><a href="#cb44-5" tabindex="-1"></a><span class="fu">mf_label</span>(bvProfil, <span class="at">var =</span> <span class="st">&quot;nom&quot;</span>)</span>
+<span id="cb44-6"><a href="#cb44-6" tabindex="-1"></a><span class="fu">mf_layout</span> (<span class="st">&quot;Des profils différents au centre de Bondy même&quot;</span>, <span class="st">&quot;opendata/ élections 2022 et REU&quot;</span>)</span></code></pre></div>
 <p><img src="jour7_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 </div>
 </div>
@@ -848,14 +850,14 @@ qui doivent être réglés avant de lancer l’ACP.</p>
 <h3><span class="header-section-number">7.2.1</span> Disparition de
 bureaux</h3>
 <p>Cela fonctionne mais on a perdu 2 bureaux</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/devoirMaison/base.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> base [base<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(bondy<span class="sc">$</span>bureau)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/devoirMaison/base.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> base [base<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&#39;93010&#39;</span>,]</span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a><span class="fu">length</span>(bondy<span class="sc">$</span>bureau)</span></code></pre></div>
 <pre><code>## [1] 30</code></pre>
 </div>
 <div id="doublons" class="section level3" number="7.2.2">
 <h3><span class="header-section-number">7.2.2</span> Doublons</h3>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(bondy<span class="sc">$</span>bureau)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="fu">table</span>(bondy<span class="sc">$</span>bureau)</span></code></pre></div>
 <pre><code>## 
 ##  93010_1 93010_10 93010_12 93010_13 93010_14 93010_15 93010_16 93010_17 
 ##        1        1        1        1        1        1        1        1 
@@ -865,17 +867,17 @@ bureaux</h3>
 ##        1        1        1        1        1        1        1        1 
 ##  93010_4  93010_6  93010_7  93010_8  93010_9 
 ##        1        1        2        1        1</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 fois le bureau 7</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># la commande duplicated permet de voir les doublons</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># le ! indique que l&#39;on ne veut pas du doublon</span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>doublon <span class="ot">&lt;-</span> bondy [<span class="fu">duplicated</span>(bondy<span class="sc">$</span>bureau),]</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> bondy [<span class="sc">!</span><span class="fu">duplicated</span>(bondy<span class="sc">$</span>bureau),]</span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="co"># la donnée sans doublons est considérée comme propre, on met les num de bureaux</span></span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># et on enregistre</span></span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(bondy) <span class="ot">&lt;-</span> <span class="fu">substring</span>(bondy<span class="sc">$</span>bureau,<span class="dv">7</span>,<span class="dv">9</span>)</span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co"># on supprime la 1e colonne, celle des bureaux puisqu&#39;on a les étiquettes</span></span>
-<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> bondy [,<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(bondy,<span class="st">&quot;data/baseBondy.csv&quot;</span>, <span class="at">row.names =</span> F, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="co"># 2 fois le bureau 7</span></span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a><span class="co"># la commande duplicated permet de voir les doublons</span></span>
+<span id="cb49-3"><a href="#cb49-3" tabindex="-1"></a><span class="co"># le ! indique que l&#39;on ne veut pas du doublon</span></span>
+<span id="cb49-4"><a href="#cb49-4" tabindex="-1"></a>doublon <span class="ot">&lt;-</span> bondy [<span class="fu">duplicated</span>(bondy<span class="sc">$</span>bureau),]</span>
+<span id="cb49-5"><a href="#cb49-5" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> bondy [<span class="sc">!</span><span class="fu">duplicated</span>(bondy<span class="sc">$</span>bureau),]</span>
+<span id="cb49-6"><a href="#cb49-6" tabindex="-1"></a><span class="co"># la donnée sans doublons est considérée comme propre, on met les num de bureaux</span></span>
+<span id="cb49-7"><a href="#cb49-7" tabindex="-1"></a><span class="co"># et on enregistre</span></span>
+<span id="cb49-8"><a href="#cb49-8" tabindex="-1"></a><span class="fu">rownames</span>(bondy) <span class="ot">&lt;-</span> <span class="fu">substring</span>(bondy<span class="sc">$</span>bureau,<span class="dv">7</span>,<span class="dv">9</span>)</span>
+<span id="cb49-9"><a href="#cb49-9" tabindex="-1"></a><span class="co"># on supprime la 1e colonne, celle des bureaux puisqu&#39;on a les étiquettes</span></span>
+<span id="cb49-10"><a href="#cb49-10" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> bondy [,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb49-11"><a href="#cb49-11" tabindex="-1"></a><span class="fu">write.csv</span>(bondy,<span class="st">&quot;data/baseBondy.csv&quot;</span>, <span class="at">row.names =</span> F, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 </div>
 <div id="données-incomplètes" class="section level3" number="7.2.3">
 <h3><span class="header-section-number">7.2.3</span> Données
@@ -884,8 +886,8 @@ incomplètes</h3>
 <div id="cas-de-pointe-à-pitre" class="section level4" number="7.2.3.1">
 <h4><span class="header-section-number">7.2.3.1</span> Cas de Pointe à
 Pitre</h4>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/devoirMaison/97120.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/devoirMaison/97120.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
 <pre><code>##   [1] &quot;X.1&quot;                           &quot;bureau&quot;                       
 ##   [3] &quot;X&quot;                             &quot;Code.du.département&quot;          
 ##   [5] &quot;Libellé.du.département&quot;        &quot;Code.de.la.circonscription&quot;   
@@ -957,54 +959,23 @@ sont pas fiables.</p>
 <div id="centrer-et-réduire" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> Centrer et
 réduire</h2>
-<p>Centrer et réduire permet de comparer les variables dont les montants
-sont très différents.</p>
-<p>Centrer : on compte les écarts à la moyenne</p>
-<p>Réduire : on divise toutes les valeurs par l’écart type.</p>
 <div id="comprendre-loption-scale.-dans-la-commande"
 class="section level3" number="7.3.1">
 <h3><span class="header-section-number">7.3.1</span> Comprendre l’option
 “scale.” dans la commande</h3>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(pct, <span class="at">scale. =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p>Il faut faire varier l’option avec FALSE et TRUE.</p>
-<p>Le FALSE permet d’obtenir uniquement les gros candidats.</p>
-<p><img src="img/acpCentreNONReduite.png" /></p>
-<p>Le TRUE permet de pouvoir comparer tous les candidats</p>
-<p><img src="img/acpCentreReduite.png" /></p>
-</div>
-<div id="idem-avec-la-classification" class="section level3"
-number="7.3.2">
-<h3><span class="header-section-number">7.3.2</span> Idem avec la
-classification</h3>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>pct.cr <span class="ot">&lt;-</span> <span class="fu">scale</span>(pct, <span class="at">center =</span> T, <span class="at">scale =</span> T)</span></code></pre></div>
-</div>
-<div id="au-niveau-des-données" class="section level3" number="7.3.3">
-<h3><span class="header-section-number">7.3.3</span> Au niveau des
-données</h3>
-<p>On peut également utiliser la fonction scale pour les données
-elles-mêmes</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/baseBondy.csv&quot;</span>)</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filtre sur 2 colonnes </span></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> base [,<span class="fu">c</span>(<span class="st">&quot;Valeur.fonciere&quot;</span>, <span class="st">&quot;X..Voix.Exp.11&quot;</span>)]</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># renommer les colonnes</span></span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(base) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;vf&quot;</span>, <span class="st">&quot;Dupont Aignant&quot;</span>)</span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co"># transformation en matrice</span></span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(base)</span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="co"># graphiques pour comparer les 2 variables par bureau de vote</span></span>
-<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mat, <span class="at">beside=</span>T)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># on ne voit rien, il faut centrer réduire</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">scale</span>(mat)</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mat, <span class="at">beside =</span> T)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-24-2.png" width="672" /></p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(pct, <span class="at">scale. =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="img/acpCentreNONReduite.png" /> <img
+src="img/acpCentreReduite.png" /></p>
+<p>Idem avec la classification</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a>pct.cr <span class="ot">&lt;-</span> <span class="fu">scale</span>(pct, <span class="at">center =</span> T, <span class="at">scale =</span> T)</span></code></pre></div>
 </div>
 </div>
 <div id="utiliser-toutes-les-variables" class="section level2"
 number="7.4">
 <h2><span class="header-section-number">7.4</span> Utiliser toutes les
 variables</h2>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/baseBondy.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/baseBondy.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
 <pre><code>##   [1] &quot;Valeur.fonciere&quot;               &quot;Surface.reelle.bati&quot;          
 ##   [3] &quot;Nombre.pieces.principales&quot;     &quot;Surface.terrain&quot;              
 ##   [5] &quot;P19_MAISON&quot;                    &quot;P19_RP_120M2P&quot;                
@@ -1079,17 +1050,17 @@ variables</h2>
 ## [143] &quot;Nom.11&quot;                        &quot;Prénom.11&quot;                    
 ## [145] &quot;Voix.11&quot;                       &quot;X..Voix.Ins.11&quot;               
 ## [147] &quot;X..Voix.Exp.11&quot;                &quot;INSEE_COM&quot;</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="sc">-</span><span class="fu">c</span>(<span class="dv">43</span><span class="sc">:</span><span class="dv">49</span>)]</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;Voix&quot;</span>, <span class="fu">names</span>(data))</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span> data [,<span class="fu">c</span>( <span class="dv">2</span><span class="sc">:</span><span class="dv">57</span>, ind)] </span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [,<span class="sc">-</span><span class="dv">42</span>]</span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data, <span class="at">scale =</span> F)</span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(pca)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">43</span>,<span class="dv">15</span>,<span class="dv">41</span>)]</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data, <span class="at">scale =</span> T)</span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(pca)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-25-2.png" width="672" /></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="sc">-</span><span class="fu">c</span>(<span class="dv">43</span><span class="sc">:</span><span class="dv">49</span>)]</span>
+<span id="cb56-2"><a href="#cb56-2" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;Voix&quot;</span>, <span class="fu">names</span>(data))</span>
+<span id="cb56-3"><a href="#cb56-3" tabindex="-1"></a>data<span class="ot">&lt;-</span> data [,<span class="fu">c</span>( <span class="dv">2</span><span class="sc">:</span><span class="dv">57</span>, ind)] </span>
+<span id="cb56-4"><a href="#cb56-4" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [,<span class="sc">-</span><span class="dv">42</span>]</span>
+<span id="cb56-5"><a href="#cb56-5" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data, <span class="at">scale =</span> F)</span>
+<span id="cb56-6"><a href="#cb56-6" tabindex="-1"></a><span class="fu">biplot</span>(pca)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">43</span>,<span class="dv">15</span>,<span class="dv">41</span>)]</span>
+<span id="cb57-2"><a href="#cb57-2" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data, <span class="at">scale =</span> T)</span>
+<span id="cb57-3"><a href="#cb57-3" tabindex="-1"></a><span class="fu">biplot</span>(pca)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-24-2.png" width="672" /></p>
 <p>Reprendre le script en classe et indiquer les commentaires</p>
 </div>
 </div>

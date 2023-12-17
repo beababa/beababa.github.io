@@ -13,7 +13,7 @@
 
 <title>Introduction</title>
 
-<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -33,8 +33,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -726,36 +726,143 @@ devoirs : chiffres clés</h2>
 <h3><span class="header-section-number">3.2.1</span> Effectif et
 cours</h3>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>fic <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;data/&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;^cours&quot;</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>fic</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co"># on recherche le fichier le plus haut</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>nb <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fu">as.integer</span>(<span class="fu">substring</span>(fic, <span class="dv">6</span>,<span class="dv">7</span>)))</span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>i <span class="ot">&lt;-</span>  <span class="dv">1</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nb) {</span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>  nomFic <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;data/cours&quot;</span>, i, <span class="st">&quot;.csv&quot;</span>)</span>
-<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(nomFic, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data [data [,<span class="dv">2</span>] <span class="sc">==</span> <span class="st">&quot;oui&quot;</span>,]</span>
-<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>groupe)</span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tab , tmp)</span>
-<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a>}</span>
-<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a>tab</span>
-<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="fu">row.names</span>(tab) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;cours &quot;</span>,<span class="fu">seq</span>(<span class="dv">1</span>,nb, <span class="at">by =</span> <span class="dv">1</span>))</span>
-<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;cours &quot;</span>,<span class="fu">seq</span>(<span class="dv">1</span>,nb, <span class="at">by =</span> <span class="dv">1</span>))</span>
-<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tab)</span>
-<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="co"># Graphique</span></span>
-<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">barplot</span>(tab, <span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;nombre d&#39;étudiants par groupe et par cours&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;groupe&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span>, <span class="at">col =</span> <span class="fu">terrain.colors</span>(nb) </span>
-<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span></code></pre></div>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>fic</span></code></pre></div>
+<pre><code>##  [1] &quot;cours1.csv&quot;  &quot;cours10.csv&quot; &quot;cours11.csv&quot; &quot;cours2.csv&quot;  &quot;cours3.csv&quot; 
+##  [6] &quot;cours4.csv&quot;  &quot;cours5.csv&quot;  &quot;cours6.csv&quot;  &quot;cours7.csv&quot;  &quot;cours8.csv&quot; 
+## [11] &quot;cours9.csv&quot;</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># on recherche le fichier le plus haut</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>nb <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fu">as.integer</span>(<span class="fu">substring</span>(fic, <span class="dv">6</span>,<span class="dv">7</span>)))</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>i <span class="ot">&lt;-</span>  <span class="dv">1</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nb) {</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>  nomFic <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;data/cours&quot;</span>, i, <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(nomFic, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data [data [,<span class="dv">2</span>] <span class="sc">==</span> <span class="st">&quot;oui&quot;</span>,]</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>groupe)</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tab , tmp)</span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10
+## [1] 11</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>tab</span></code></pre></div>
+<pre><code>##      1  2  3
+## tmp 18 28 26
+## tmp 17 24 24
+## tmp 18 22 18
+## tmp 21 21 20
+## tmp 21 21 21
+## tmp 17 17 21
+## tmp 18 21 21
+## tmp 16 15 22
+## tmp 15 18 24
+## tmp 16 18 18
+## tmp 13 16 18</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">row.names</span>(tab) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;cours &quot;</span>,<span class="fu">seq</span>(<span class="dv">1</span>,nb, <span class="at">by =</span> <span class="dv">1</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;cours &quot;</span>,<span class="fu">seq</span>(<span class="dv">1</span>,nb, <span class="at">by =</span> <span class="dv">1</span>))</span></code></pre></div>
+<pre><code>##  [1] &quot;cours 1&quot;  &quot;cours 2&quot;  &quot;cours 3&quot;  &quot;cours 4&quot;  &quot;cours 5&quot;  &quot;cours 6&quot; 
+##  [7] &quot;cours 7&quot;  &quot;cours 8&quot;  &quot;cours 9&quot;  &quot;cours 10&quot; &quot;cours 11&quot;</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tab)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">cours 1</td>
+<td align="right">18</td>
+<td align="right">28</td>
+<td align="right">26</td>
+</tr>
+<tr class="even">
+<td align="left">cours 2</td>
+<td align="right">17</td>
+<td align="right">24</td>
+<td align="right">24</td>
+</tr>
+<tr class="odd">
+<td align="left">cours 3</td>
+<td align="right">18</td>
+<td align="right">22</td>
+<td align="right">18</td>
+</tr>
+<tr class="even">
+<td align="left">cours 4</td>
+<td align="right">21</td>
+<td align="right">21</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="left">cours 5</td>
+<td align="right">21</td>
+<td align="right">21</td>
+<td align="right">21</td>
+</tr>
+<tr class="even">
+<td align="left">cours 6</td>
+<td align="right">17</td>
+<td align="right">17</td>
+<td align="right">21</td>
+</tr>
+<tr class="odd">
+<td align="left">cours 7</td>
+<td align="right">18</td>
+<td align="right">21</td>
+<td align="right">21</td>
+</tr>
+<tr class="even">
+<td align="left">cours 8</td>
+<td align="right">16</td>
+<td align="right">15</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="left">cours 9</td>
+<td align="right">15</td>
+<td align="right">18</td>
+<td align="right">24</td>
+</tr>
+<tr class="even">
+<td align="left">cours 10</td>
+<td align="right">16</td>
+<td align="right">18</td>
+<td align="right">18</td>
+</tr>
+<tr class="odd">
+<td align="left">cours 11</td>
+<td align="right">13</td>
+<td align="right">16</td>
+<td align="right">18</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Graphique</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">barplot</span>(tab, <span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;nombre d&#39;étudiants par groupe et par cours&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;groupe&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span>, <span class="at">col =</span> <span class="fu">terrain.colors</span>(nb) </span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="les-rendus-dexercices" class="section level3" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Les rendus
 d’exercices</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>rendu <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>,<span class="dv">59</span>, <span class="dv">56</span>, <span class="dv">45</span>,<span class="dv">58</span>,<span class="dv">49</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>titre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;distribution&quot;</span>, <span class="st">&quot;univarié&quot;</span>, <span class="st">&quot;contingence&quot;</span>, <span class="st">&quot;khi2&quot;</span>, <span class="st">&quot;regression&quot;</span>, <span class="st">&quot;1er script&quot;</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">6</span>))</span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">barplot</span>(rendu, <span class="at">names =</span> titre, <span class="at">cex.names =</span> <span class="fl">0.8</span>, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;rendu devoirs (effectif 75 étudiants environ)&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="fu">text</span>(p, <span class="at">y =</span> rendu <span class="sc">-</span> <span class="dv">1</span>, <span class="at">labels =</span> rendu )</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>rendu <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>,<span class="dv">59</span>, <span class="dv">56</span>, <span class="dv">45</span>,<span class="dv">58</span>,<span class="dv">49</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>titre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;distribution&quot;</span>, <span class="st">&quot;univarié&quot;</span>, <span class="st">&quot;contingence&quot;</span>, <span class="st">&quot;khi2&quot;</span>, <span class="st">&quot;regression&quot;</span>, <span class="st">&quot;1er script&quot;</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">6</span>))</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">barplot</span>(rendu, <span class="at">names =</span> titre, <span class="at">cex.names =</span> <span class="fl">0.8</span>, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;rendu devoirs (effectif 75 étudiants environ)&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="fu">text</span>(p, <span class="at">y =</span> rendu <span class="sc">-</span> <span class="dv">1</span>, <span class="at">labels =</span> rendu )</span></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <div id="les-notes-des-exercices" class="section level4"
 number="3.2.2.1">
@@ -768,33 +875,33 @@ exercices</h4>
 <ul>
 <li>Distribution des totaux</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/exo.csv&quot;</span>,  <span class="at">na.strings =</span> <span class="st">&#39;-&#39;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">names</span>(res)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/exo.csv&quot;</span>,  <span class="at">na.strings =</span> <span class="st">&#39;-&#39;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">names</span>(res)</span></code></pre></div>
 <pre><code>## [1] &quot;X5_regression&quot; &quot;X1_Univarié.1&quot; &quot;X2_Univarié.2&quot; &quot;X3_khi2&quot;      
 ## [5] &quot;X4_Khi2.2&quot;     &quot;X6_R&quot;</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> res [, <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">6</span>)]</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co"># recodage : si note 2, alors note1 = 0 si NA</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>res<span class="sc">$</span>X1_Univarié<span class="fl">.1</span> [<span class="fu">is.na</span>(res<span class="sc">$</span>X1_Univarié<span class="fl">.1</span> )<span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(res<span class="sc">$</span>X2_Univarié<span class="fl">.2</span>)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>res<span class="sc">$</span>X1_Univarié<span class="fl">.1</span> [ <span class="fu">is.na</span>(res<span class="sc">$</span>X2_Univarié<span class="fl">.2</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co"># graphique</span></span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(res))){</span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>  p <span class="ot">&lt;-</span><span class="fu">barplot</span>(<span class="fu">table</span>(res[,i]), <span class="at">main =</span> <span class="fu">names</span>(res)[i])</span>
-<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> res [, <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">6</span>)]</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="co"># recodage : si note 2, alors note1 = 0 si NA</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>res<span class="sc">$</span>X1_Univarié<span class="fl">.1</span> [<span class="fu">is.na</span>(res<span class="sc">$</span>X1_Univarié<span class="fl">.1</span> )<span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(res<span class="sc">$</span>X2_Univarié<span class="fl">.2</span>)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a>res<span class="sc">$</span>X1_Univarié<span class="fl">.1</span> [ <span class="fu">is.na</span>(res<span class="sc">$</span>X2_Univarié<span class="fl">.2</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a><span class="co"># graphique</span></span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(res))){</span>
+<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a>  p <span class="ot">&lt;-</span><span class="fu">barplot</span>(<span class="fu">table</span>(res[,i]), <span class="at">main =</span> <span class="fu">names</span>(res)[i])</span>
+<span id="cb21-9"><a href="#cb21-9" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 </div>
 </div>
 <div id="notes-finales" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Notes finales</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>note <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/noteFin.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">na.strings =</span> <span class="st">&quot;en attente&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">summary</span>(note<span class="sc">$</span>note.sur<span class="fl">.20</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">hist</span>(note<span class="sc">$</span>note.sur<span class="fl">.20</span>, <span class="at">main =</span> <span class="st">&quot;Etalement note finale - 95 obs&quot;</span>, <span class="at">freq =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>resSansZero <span class="ot">&lt;-</span> note [note<span class="sc">$</span>note.sur<span class="fl">.20</span>  <span class="sc">!=</span><span class="dv">0</span>,]</span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(note<span class="sc">$</span>note.sur<span class="fl">.20</span>, <span class="at">na.rm =</span> T),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a> <span class="fu">mean</span>(note<span class="sc">$</span>note.sur<span class="fl">.20</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="fu">hist</span>(resSansZero<span class="sc">$</span>note.sur<span class="fl">.20</span>, <span class="at">main =</span> <span class="st">&quot;Etalement note finale - 73 obs&quot;</span>, <span class="at">freq =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(resSansZero<span class="sc">$</span>note.sur<span class="fl">.20</span>, <span class="at">na.rm =</span> T),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>note <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/noteFinales.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">&quot;EN ATTENTE&quot;</span>, <span class="st">&quot;NA&quot;</span>,<span class="st">&quot;-&quot;</span>), <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="fu">summary</span>(note)</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/noteFin.png&quot;</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="fu">hist</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">main =</span> <span class="st">&quot;Etalement note finale - 64 obs&quot;</span>, <span class="at">freq =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">na.rm =</span> T),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">na.rm=</span>T), <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<p><img src="img/noteFin.png" /></p>
 </div>
 </div>
 <div id="ressources-autre-que-la-bibliographie-officielle"
