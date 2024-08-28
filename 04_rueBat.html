@@ -131,7 +131,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Rues et bâtiments |</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/beababa/coursP8" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -364,20 +371,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bv <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/bondy.gpkg"</span>, <span class="st">"bureaudevoteinseereuopenstreetmap__bureauBondy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Reading layer `bureaudevoteinseereuopenstreetmap__bureauBondy' from data source 
-  `C:\Users\tachasa\coursP8_2024\data\bondy.gpkg' using driver `GPKG'
-Simple feature collection with 32 features and 4 fields
-Geometry type: MULTIPOLYGON
-Dimension:     XY
-Bounding box:  xmin: 2.468947 ymin: 48.88697 xmax: 2.500121 ymax: 48.92025
-Geodetic CRS:  WGS 84</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">"data/socle.gpkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bv <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/bondy.gpkg"</span>, <span class="st">"bureaudevoteinseereuopenstreetmap__bureauBondy"</span>, <span class="at">quiet=</span>T)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">"data/socle.gpkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Driver: GPKG 
@@ -403,23 +398,10 @@ Available layers:
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rue <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/socle.gpkg"</span>, <span class="st">"rue2023__rue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Reading layer `rue2023__rue' from data source 
-  `C:\Users\tachasa\coursP8_2024\data\socle.gpkg' using driver `GPKG'
-Simple feature collection with 370 features and 6 fields
-Geometry type: MULTILINESTRING
-Dimension:     XYZ
-Bounding box:  xmin: 661061.9 ymin: 6865433 xmax: 663349.6 ymax: 6869034
-z_range:       zmin: -1000 zmax: 70.7
-Projected CRS: RGF93 v1 / Lambert-93</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>bv <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bv, <span class="at">crs =</span> <span class="dv">2154</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>bv<span class="sc">$</span>numBureau <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"93010_"</span>,<span class="st">""</span>,bv<span class="sc">$</span>bureau)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(rue, bv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rue <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/socle.gpkg"</span>, <span class="st">"rue2023__rue"</span>, <span class="at">quiet=</span>T)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>bv <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bv, <span class="at">crs =</span> <span class="dv">2154</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>bv<span class="sc">$</span>numBureau <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"93010_"</span>,<span class="st">""</span>,bv<span class="sc">$</span>bureau)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(rue, bv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: attribute variables are assumed to be spatially constant throughout
@@ -427,14 +409,9 @@ all geometries</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> inter [, <span class="fu">c</span>(<span class="st">"NATURE"</span>, <span class="st">"NOM_1_G"</span>,<span class="st">"numBureau"</span>)]</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(inter, <span class="st">"data/bondy.gpkg"</span>, <span class="st">"rueParBureau"</span>, <span class="at">delete_layer =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> inter [, <span class="fu">c</span>(<span class="st">"NATURE"</span>, <span class="st">"NOM_1_G"</span>,<span class="st">"numBureau"</span>)]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(inter, <span class="st">"data/bondy.gpkg"</span>, <span class="st">"rueParBureau"</span>, <span class="at">delete_layer =</span> T, <span class="at">quiet =</span>T )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Deleting layer `rueParBureau' using driver `GPKG'
-Writing layer `rueParBureau' to data source `data/bondy.gpkg' using driver `GPKG'
-Writing 608 features with 3 fields and geometry type Unknown (any).</code></pre>
-</div>
 </div>
 </section>
 </section>
@@ -444,8 +421,8 @@ Writing 608 features with 3 fields and geometry type Unknown (any).</code></pre>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pbNoms <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/pbNoms.csv"</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(pbNoms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pbNoms <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/pbNoms.csv"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(pbNoms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
@@ -503,7 +480,7 @@ Writing 608 features with 3 fields and geometry type Unknown (any).</code></pre>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">"data/socle.gpkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">"data/socle.gpkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Driver: GPKG 
@@ -529,24 +506,12 @@ Available layers:
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>poi <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/socle.gpkg"</span>, <span class="st">"tout_poi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Reading layer `tout_poi' from data source 
-  `C:\Users\tachasa\coursP8_2024\data\socle.gpkg' using driver `GPKG'
-Simple feature collection with 177 features and 10 fields (with 1 geometry empty)
-Geometry type: POINT
-Dimension:     XY
-Bounding box:  xmin: 661156.4 ymin: 6865614 xmax: 663192.6 ymax: 6868716
-Projected CRS: RGF93 v1 / Lambert-93</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># retrouver la table d'équivalence des couleurs à partir du fichier final</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>couleur <span class="ot">&lt;-</span> poi [,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>), drop<span class="ot">=</span>T]</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>couleur <span class="ot">&lt;-</span> <span class="fu">unique</span>(couleur)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(couleur, <span class="st">"data/equivCouleur.csv"</span>, <span class="at">fileEncoding =</span> <span class="st">"UTF-8"</span>)</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span> (<span class="fu">head</span>(couleur))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>poi <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/socle.gpkg"</span>, <span class="st">"tout_poi"</span>, <span class="at">quiet=</span>T)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># retrouver la table d'équivalence des couleurs à partir du fichier final</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>couleur <span class="ot">&lt;-</span> poi [,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>), drop<span class="ot">=</span>T]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>couleur <span class="ot">&lt;-</span> <span class="fu">unique</span>(couleur)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(couleur, <span class="st">"data/equivCouleur.csv"</span>, <span class="at">fileEncoding =</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span> (<span class="fu">head</span>(couleur))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">

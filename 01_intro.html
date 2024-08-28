@@ -131,7 +131,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Rues et bâtiments |</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/beababa/coursP8" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -167,7 +174,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#précisions-techniques" id="toc-précisions-techniques" class="nav-link" data-scroll-target="#précisions-techniques"><span class="header-section-number">3.5</span> Précisions techniques</a>
   <ul class="collapse">
   <li><a href="#support-et-procédures" id="toc-support-et-procédures" class="nav-link" data-scroll-target="#support-et-procédures"><span class="header-section-number">3.5.1</span> Support et procédures</a></li>
-  <li><a href="#dépôt-git" id="toc-dépôt-git" class="nav-link" data-scroll-target="#dépôt-git"><span class="header-section-number">3.5.2</span> Dépôt git</a></li>
+  <li><a href="#dépôt-des-cartes" id="toc-dépôt-des-cartes" class="nav-link" data-scroll-target="#dépôt-des-cartes"><span class="header-section-number">3.5.2</span> Dépôt des cartes</a></li>
+  <li><a href="#projet-git" id="toc-projet-git" class="nav-link" data-scroll-target="#projet-git"><span class="header-section-number">3.5.3</span> Projet git</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#présentation-en-binôme" id="toc-présentation-en-binôme" class="nav-link" data-scroll-target="#présentation-en-binôme"><span class="header-section-number">4</span> Présentation en binôme</a></li>
@@ -306,15 +314,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Les procédures employées sous QGIS sont à rechercher sur internet.</p>
 <p>Essai : “Qgis compter les points dans un polygone” Quel est le menu qui permet de le faire ?</p>
 </section>
-<section id="dépôt-git" class="level3" data-number="3.5.2">
-<h3 data-number="3.5.2" class="anchored" data-anchor-id="dépôt-git"><span class="header-section-number">3.5.2</span> Dépôt git</h3>
-<p>Le dépot des cartes se fera sur le git s’il n’y a pas de partage réseau.</p>
-<ul>
-<li><p>copie du projet GIT en début et en fin de session</p></li>
-<li><p>Dépôt des cartes sur le dépôt P8</p></li>
-</ul>
-<p>Déposer son image dans github dans le répertoire <em>img/carteEtudiant</em> du dépot <em>coursP8</em> avec comme syntaxe : <em>P8_prenom.png</em></p>
-<p><img src="img/depotGIT.PNG" class="img-fluid"></p>
+<section id="dépôt-des-cartes" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="dépôt-des-cartes"><span class="header-section-number">3.5.2</span> Dépôt des cartes</h3>
+<p>Le dépôt des cartes se fera sur le partage réseau.</p>
+<p>Au niveau de la zone de recherche, taper</p>
+<pre><code>\\C210-P</code></pre>
+<p>Sélectionner ensuite le répertoire <em>partage géographie</em> et <em>OSM</em>, clic droit <em>Ajouter un raccourci rapide</em></p>
+<p>Déposer son image dans le répertoire <em>img/cartes</em> avec comme syntaxe : <em>prenom.png</em></p>
+</section>
+<section id="projet-git" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="projet-git"><span class="header-section-number">3.5.3</span> Projet git</h3>
+<p>En utilisant l’icone à droite du cours, copie du projet GIT en <em>début</em> et en <em>fin</em> de session (via l’option <em>download zip</em>)</p>
 </section>
 </section>
 </section>
@@ -326,35 +336,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/etudiant.csv"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>passé)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/etudiant.csv"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>passé.lieu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-    ?   est ouest    p8 paris   sud 
-    3     1     1     2     3     5 </code></pre>
+    ? paris   sud 
+    2     9     4 </code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(data<span class="sc">$</span>passé), <span class="at">las =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(data<span class="sc">$</span>passé.lieu), <span class="at">las =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="01_intro_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(data<span class="sc">$</span>présent), <span class="at">las =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(data<span class="sc">$</span>passé.thème), <span class="at">las =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="01_intro_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(data<span class="sc">$</span>futur), <span class="at">las =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(data<span class="sc">$</span>présent), <span class="at">las =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="01_intro_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(data<span class="sc">$</span>futur), <span class="at">las =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="01_intro_files/figure-html/unnamed-chunk-2-4.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
