@@ -1,7 +1,8 @@
-num,date,détail prévu
-TD6,6/3,Markdown + structure projet ET objets dans R : vecteurs et dataframe
-examen,13/3,
-TD7,20/3,intégrer des données spatiales : format gpkg
-TD8,27/3,Géotraitement
-TD9,3/04,Affichage carte
-TD10,15/5,rendu projet
+"num","date","détail prévu"
+"TD6","6/3","Markdown + structure projet ET objets dans R : vecteurs et dataframe"
+"examen","13/3",
+"TD7","20/3","intégrer des données spatiales : format gpkg"
+"TD8","27/3","Géotraitement"
+"TD9","3/4","Résultat (affichage carte) + oral de présentation des projets (5 mn par groupe)"
+,"7/5","Rendu de projet (aucun retard toléré)"
+"TD10","15/5","Rendu des notes et correction des projets"
