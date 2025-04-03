@@ -4,5 +4,3 @@ Cours 2025 pour L6GECSIG Sorbonne
 
 [06_donnees.html](https://beababa.github.io/06_donnees.html)
 
-
-test d'edotop,
