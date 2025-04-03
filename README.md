@@ -4,4 +4,4 @@
 
 [06_donnees.html](https://beababa.github.io/06_donnees.html)
 
-![](img/knit.png)
+![](img/vote.png)
