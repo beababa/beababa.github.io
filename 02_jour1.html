@@ -159,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#interface-josm" id="toc-interface-josm" class="nav-link" data-scroll-target="#interface-josm"><span class="header-section-number">2.1</span> Interface JOSM</a></li>
   <li><a href="#primitives-géométriques-noeud-et-chemin" id="toc-primitives-géométriques-noeud-et-chemin" class="nav-link" data-scroll-target="#primitives-géométriques-noeud-et-chemin"><span class="header-section-number">2.2</span> Primitives géométriques : noeud et chemin</a></li>
   <li><a href="#tag-clé-valeur" id="toc-tag-clé-valeur" class="nav-link" data-scroll-target="#tag-clé-valeur"><span class="header-section-number">2.3</span> Tag = clé + valeur</a></li>
-  <li><a href="#outil-de-qualité" id="toc-outil-de-qualité" class="nav-link" data-scroll-target="#outil-de-qualité"><span class="header-section-number">2.4</span> outil de qualité</a></li>
+  <li><a href="#outil-de-qualité" id="toc-outil-de-qualité" class="nav-link" data-scroll-target="#outil-de-qualité"><span class="header-section-number">2.4</span> Outil de qualité</a></li>
   </ul></li>
   <li><a href="#extractions-diverses-osm" id="toc-extractions-diverses-osm" class="nav-link" data-scroll-target="#extractions-diverses-osm"><span class="header-section-number">3</span> Extractions diverses OSM</a>
   <ul class="collapse">
@@ -252,12 +252,12 @@ Tip
 </section>
 <section id="tag-clé-valeur" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="tag-clé-valeur"><span class="header-section-number">2.3</span> Tag = clé + valeur</h2>
-<p>https://taginfo.openstreetmap.org/</p>
+<p><a href="https://taginfo.openstreetmap.org/">https://taginfo.openstreetmap.org/</a></p>
 <p>on utilise directement l’éditeur intégré <em>id</em> sur osm.org trouver le tag directement à partir de l’éditeur.</p>
 <p>exercice : faire une saisie sur un point connu</p>
 </section>
 <section id="outil-de-qualité" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="outil-de-qualité"><span class="header-section-number">2.4</span> outil de qualité</h2>
+<h2 data-number="2.4" class="anchored" data-anchor-id="outil-de-qualité"><span class="header-section-number">2.4</span> Outil de qualité</h2>
 <p><a href="https://resultmaps.neis-one.org/osm-changesets?comment=paris8#4/32.58/-6.77">utilisation du changeset</a></p>
 <p><a href="https://resultmaps.neis-one.org/oooc?zoom=15&amp;lat=48.90494&amp;lon=2.493&amp;layers=BTFFFFFT&amp;contributors=TTTTFF">carte des utilisateurs</a></p>
 <p>Voir les saisies pmr effectuées par les étudiants avec overpass turbo</p>
@@ -345,12 +345,13 @@ Tip
 <h1 data-number="5"><span class="header-section-number">5</span> Utiliser une deuxième source</h1>
 <section id="pourquoi-une-deuxième-source" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="pourquoi-une-deuxième-source"><span class="header-section-number">5.1</span> Pourquoi une deuxième source ?</h2>
-<p>Voir <span class="citation" data-cites="sources">@sources</span> , différence en nombre d’éléments.</p>
+<p>Voir tableau des sources , différence en nombre d’éléments.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>carte <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/patrimoine.gpkg"</span>, <span class="st">"patrimoineFiltre2154"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lecture de la couche filtrée (issus de m3_prescription_surf)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>carte <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/patrimoine.gpkg"</span>, <span class="st">"patrimoineFiltre2154"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `patrimoineFiltre2154' from data source 
@@ -363,8 +364,10 @@ Projected CRS: RGF93 v1 / Lambert-93</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>elementsCarte <span class="ot">&lt;-</span> <span class="fu">length</span>(carte<span class="sc">$</span>LIBELLE)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>geocodage <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/patrimoine.gpkg"</span>, <span class="st">"geocodageM3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nb d'éléments</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>elementsCarte <span class="ot">&lt;-</span> <span class="fu">length</span>(carte<span class="sc">$</span>LIBELLE)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># lecture de la couche issue du tableau de la M3</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>geocodage <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/patrimoine.gpkg"</span>, <span class="st">"geocodageM3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `geocodageM3' from data source 
@@ -377,8 +380,10 @@ Geodetic CRS:  WGS 84</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>elementsGeocodage <span class="ot">&lt;-</span> <span class="fu">length</span>(geocodage<span class="sc">$</span>typo)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>elementsCarte <span class="sc">-</span> elementsGeocodage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nb d'éléments</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>elementsGeocodage <span class="ot">&lt;-</span> <span class="fu">length</span>(geocodage<span class="sc">$</span>typo)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># différence</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>elementsCarte <span class="sc">-</span> elementsGeocodage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 67</code></pre>
@@ -464,8 +469,8 @@ Tip
 <table class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 9%">
-<col style="width: 22%">
-<col style="width: 68%">
+<col style="width: 21%">
+<col style="width: 69%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -482,7 +487,7 @@ Tip
 </tr>
 <tr class="even">
 <td style="text-align: left;">géocodage</td>
-<td style="text-align: left;">topoloogie plus complexe</td>
+<td style="text-align: left;">topologie plus complexe</td>
 <td style="text-align: left;">dépend de la qualité du géocodageà la parcelle, mais au point adresse</td>
 </tr>
 </tbody>
@@ -586,8 +591,8 @@ Tip
 </ul>
 <p>Toutes les anomalies sont notées dans le framacalc dans les 2 colonnes prévues (correspondance bat-pt et cohérence typologie)</p>
 </section>
-<section id="cartographie-et-base-adresse" class="level4" data-number="7.2.1.2">
-<h4 data-number="7.2.1.2" class="anchored" data-anchor-id="cartographie-et-base-adresse"><span class="header-section-number">7.2.1.2</span> Cartographie et base adresse</h4>
+<section id="cartographie-et-base-adresse-carte-2" class="level4" data-number="7.2.1.2">
+<h4 data-number="7.2.1.2" class="anchored" data-anchor-id="cartographie-et-base-adresse-carte-2"><span class="header-section-number">7.2.1.2</span> Cartographie et base adresse (CARTE 2)</h4>
 <p>Pour l’une des anomalies, l’étudiant en documente une sur une carte (CARTE 2) et rectifie au moins un géocodage sur la <a href="https://adresse.data.gouv.fr/decouvrir-la-BAN">base adresse</a>.</p>
 </section>
 </section>
