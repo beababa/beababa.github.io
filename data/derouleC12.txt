@@ -1,0 +1,17 @@
+Cours 12 :
+
+1 - Questions ?
+
+2 - point de rappel : contour bureau de vote et autres (échelle)
+
+3 - exercice sur affichage différentes variables
+
+4 - points importants du cours
+
+5 - test
+
+--------------------------------------------------------------------
+
+Faire un script permettant une ACP sur les données complètes de Bondy pour 10 variables.
+
+L'ACP n'est pas forcément jolie (elle a de grandes chances d'être moche)
