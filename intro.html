@@ -597,9 +597,27 @@ class="uri">https://www.data.gouv.fr/datasets/comptes-des-communes-2017-2024/</a
 <div id="préparer-les-données" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Préparer les
 données</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/gros/ofgl-base-communes.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">header =</span> T)</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>data93 <span class="ot">&lt;-</span> data2002 [ data<span class="sc">$</span>ville <span class="sc">==</span> <span class="st">&quot;Bondy&quot;</span>,]</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">write.csv</span>(data93, <span class="st">&quot;data/data93.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<p>23 millions d’observations au total, un fichier de 6 G°de données</p>
+<p><img src="img/source.png" /> voir la <a
+href="https://data.ofgl.fr/explore/dataset/ofgl-base-communes/table/?disjunctive.nomen&amp;disjunctive.agregat&amp;disjunctive.tranche_revenu_imposable_par_habitant&amp;disjunctive.tranche_population&amp;disjunctive.epci_name&amp;disjunctive.reg_name&amp;disjunctive.dep_name&amp;disjunctive.com_name&amp;sort=exer">source
+originale</a></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co"># on charge par tranche de 5 millions d&#39;enregistrements</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;data/gros/ofgl-base-communes.csv&quot;</span>, <span class="at">nrows =</span> <span class="dv">5000000</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;data/gros/ofgl-base-communes.csv&quot;</span>, <span class="at">skip =</span> <span class="dv">5000000</span>, <span class="at">nrows =</span> <span class="dv">5000000</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>data3 <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;data/gros/ofgl-base-communes.csv&quot;</span>, <span class="at">skip =</span> <span class="dv">10000000</span>, <span class="at">nrows =</span> <span class="dv">5000000</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co"># liste de toutes les colonnes</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="fu">names</span>(data)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co"># combien d&#39;enregistrement pour le 93 ?</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Code Insee 2024 Département</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">93</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="co"># filtre sur le dpt</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>data93 <span class="ot">&lt;-</span> data [ data<span class="sc">$</span><span class="st">`</span><span class="at">Code Insee 2024 Département</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">93</span>,]</span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co"># sauvegarde de la donnée</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="fu">write.csv</span>(data93, <span class="st">&quot;data/data93.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="fu">table</span>(data93<span class="sc">$</span>Agrégat)</span></code></pre></div>
+<p>Il est plus facile d’utiliser l’<a
+href="https://data.ofgl.fr/pages/cartographie/">outil</a> proposé par
+l’Observatoire des finances et de la gestion publique locale.</p>
 </div>
 </div>
 <div id="présentation-rapide-vous-êtes-nombreux" class="section level1"
@@ -610,19 +628,19 @@ number="3">
 <h2><span class="header-section-number">3.1</span> Qui sont les
 étudiants ?</h2>
 <ul>
-<li>74 étudiants sur 3 cours</li>
+<li>80 étudiants sur 3 cours</li>
 </ul>
 <p>Les questions posées sont sur le passé / présent / futur des
 étudiants, leur appétence en stats et le nombre d’années depuis le
 dernier apprentissage.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&quot;data/cours1.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&quot;data/TD3_stats_2025.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">names</span>(etudiant)</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">names</span>(etudiant)[<span class="dv">8</span><span class="sc">:</span><span class="dv">9</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;appétence&quot;</span>, <span class="st">&quot;nb d&#39;années&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">names</span>(etudiant)[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;appétence&quot;</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/quisontils.png&quot;</span>, <span class="at">width =</span> <span class="dv">10000</span>, <span class="at">height =</span> <span class="dv">10000</span>, <span class="at">res=</span><span class="dv">1800</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#par(mar = c(2,16,2,4))</span></span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">9</span>){</span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>  (<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">16</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">7</span>)){</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>  (<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">20</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
 <span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">sort</span>(<span class="fu">table</span>(etudiant [,i])), <span class="at">border =</span> <span class="cn">NA</span>,</span>
 <span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>          <span class="at">horiz =</span> T, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">cex.names =</span> <span class="fl">0.8</span>, </span>
 <span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">names</span> (etudiant) [i])</span>

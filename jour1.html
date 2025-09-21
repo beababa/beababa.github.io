@@ -525,7 +525,7 @@ municipale</em>), on choisit la colonne de la dénomination des communes
 (26 communes sur le 93) et le nombre d’agents</p>
 <p>Cet exercice permet d’utiliser dans le tableur :</p>
 <ul>
-<li><p>utilisation de la barre d’adresse</p></li>
+<li><p>utilisation de la barre de formule</p></li>
 <li><p>formule frequence, formule matricielle (CTRL + MAJ +
 ENTREE)</p></li>
 <li><p>le graphique en barre et la personnalisation (transformation
@@ -540,8 +540,18 @@ données étiquettes)</p></li>
 ?</h3>
 <ul>
 <li>étendue</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">summary</span>(maData<span class="sc">$</span>Nombre.de.policiers.et.de.gardes.champêtres)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    3.00    9.25   14.00   16.15   19.00   63.00</code></pre>
+<p>Concernant notre exemple, il y a une grande disparité entre les
+communes, certaines ont 3 agents, d’autres 63</p>
+<ul>
 <li>forme de la distribution</li>
 </ul>
+<p>L’énorme majorité des communes ont moins de 20 agents. Une seule
+commune possède plus de 60 agents, il s’agit d’Aulnay sous Bois. Son
+maire étant un ancien lieutenant de la police nationale.</p>
 </div>
 </div>
 <div id="a-explorer" class="section level2" number="2.4">
@@ -551,82 +561,101 @@ données étiquettes)</p></li>
 étiquettes et non pas comme une série de valeurs.</p>
 <p>Sous R, l’histogramme est un des graphiques le plus simple à
 obtenir.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">hist</span>(maData<span class="sc">$</span>Nombre.de.policiers.et.de.gardes.champêtres)</span></code></pre></div>
-<p><img src="jour1_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">hist</span>(maData<span class="sc">$</span>Nombre.de.policiers.et.de.gardes.champêtres)</span></code></pre></div>
+<p><img src="jour1_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>L’histogramme souligne l’originalité d’Aulnay sous bois par rapport
+autres communes.</p>
 </div>
 <div id="correction-exercice-dénombrement-des-agrégats-financiers"
 class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Correction exercice
 dénombrement des agrégats financiers</h2>
-<p>Des retours très nombreux.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>communes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Annemasse&quot;</span>, <span class="st">&quot;Tasson la demi lune&quot;</span>, <span class="st">&quot;Clamart&quot;</span>, <span class="st">&quot;Epinay-sur-Seine&quot;</span>,</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>              <span class="st">&quot;Santes&quot;</span>, <span class="st">&quot;Thionville&quot;</span>, <span class="st">&quot;Vitry-Sur-Seine&quot;</span>, <span class="st">&quot;Massy&quot;</span>, <span class="st">&quot;Montpon-Ménestérol&quot;</span>, <span class="st">&quot;Choisy-le-Roi&quot;</span>, <span class="st">&quot;Malakoff&quot;</span>, <span class="st">&quot;Caluire-et-Cuire&quot;</span>, <span class="st">&quot;Dieppe&quot;</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>              <span class="st">&quot;Levallois-Perret&quot;</span>, <span class="st">&quot;Achères&quot;</span>, <span class="st">&quot;Neuily-Sur-Seine&quot;</span>, <span class="st">&quot;Nice&quot;</span>, <span class="st">&quot;Rueil-Malmaison&quot;</span>, <span class="st">&quot;Romainville&quot;</span>, <span class="st">&quot;Lagnieu&quot;</span>, <span class="st">&quot;Sannois&quot;</span>, <span class="st">&quot;Arpajon-sur-Cère&quot;</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>              <span class="st">&quot;Limeil-Brévannes&quot;</span>, <span class="st">&quot;Saint-Maur&quot;</span>, <span class="st">&quot;Miribel&quot;</span>, <span class="st">&quot;Caen&quot;</span>, <span class="st">&quot;Ivry-sur-Seine&quot;</span>, <span class="st">&quot;Noirmoutier en l&#39;île&quot;</span>, <span class="st">&quot;Orsay&quot;</span>, <span class="st">&quot;Amiens&quot;</span>, <span class="st">&quot;Troyes&quot;</span>, <span class="st">&quot;Meung-sur-Loire&quot;</span>, <span class="st">&quot;Guipavas&quot;</span>, <span class="st">&quot;Auxerre&quot;</span>, <span class="st">&quot;Issy-les-Moulineaux&quot;</span>, <span class="st">&quot;Saint-Ouen&quot;</span>)</span></code></pre></div>
-<p>36 communes pour 55 étudiants.</p>
+<p>Des retours très nombreux (46 sur 60). Beaucoup d’étudiants ont buté
+sur la difficulté de la numérotation décimale et ont utilisé le fichier
+vu en classe, pas de problème dans le cadre d’un exercice.</p>
+<div id="le-séparateur-décimal-ou-." class="section level3"
+number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Le séparateur
+décimal (, ou . ?)</h3>
+<p>Sous Calc, l’astuce consiste à modifier les paramètres
+linguistiques.</p>
+<p><img src="img/decimal.png" /></p>
+<p>Pour un tableur, le chiffre se positionne à droite de la cellule, le
+texte à gauche.</p>
+<p>L’autre solution était d’utiliser le format excel.</p>
+</div>
 <div
 id="commentaires-généraux-qui-valent-pour-tous-les-exercices-et-surtout-le-dst"
-class="section level3" number="2.5.1">
-<h3><span class="header-section-number">2.5.1</span> Commentaires
+class="section level3" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Commentaires
 généraux qui valent pour tous les exercices et surtout le DST</h3>
-<div id="pour-la-forme" class="section level4" number="2.5.1.1">
-<h4><span class="header-section-number">2.5.1.1</span> Pour la
+<div id="de-quoi-on-parle" class="section level4" number="2.5.2.1">
+<h4><span class="header-section-number">2.5.2.1</span> De quoi on parle
+?</h4>
+<p>Attention à toujours définir sa donnée dés le départ, dans le cadre
+de notre cours, c’est la commune et son <em>département</em> puis
+l’agrégat choisi.</p>
+</div>
+<div id="pour-la-forme" class="section level4" number="2.5.2.2">
+<h4><span class="header-section-number">2.5.2.2</span> Pour la
 forme</h4>
+<p>Ne jamais mettre un tableau de données dans sa copie !</p>
+<p>Ne jamais prendre en photo son écran !</p>
 <p>Le mieux traitement de texte dans lequel on insère un graphique
 image.</p>
 <p>Attention aux nombreuses pages inutiles si on passe directement du
 tableur au traitement de texte.</p>
+<p>Soigner ses titres</p>
+<p>Par contre, pas de carte, ce n’est pas le sujet du cours. La
+discrétisation avec un logiciel SIG est souvent automatisée, et ce cours
+permet de faire les choses <em>à la main</em>.</p>
 </div>
 <div id="concision-du-commentaire" class="section level4"
-number="2.5.1.2">
-<h4><span class="header-section-number">2.5.1.2</span> Concision du
+number="2.5.2.3">
+<h4><span class="header-section-number">2.5.2.3</span> Concision du
 commentaire</h4>
 <p><img src="img/trop.png" /></p>
 <p>même si, un strict respect de la consigne donnait :</p>
 <p><img src="img/tropTechnique.png" /></p>
-<p>Prochain exercice, commentaire plus court. 2 phrases maximum, aller à
-l’essentiel.</p>
-<p><em>Il y a plus de petits bureaux de vote que de gros</em> (ou
-l’inverse)</p>
+<p>Prochain exercice, commentaire plus court. 2 phrases maximum, 1 page
+au total, aller à l’essentiel.</p>
+<p><em>Il y plus de grosses dépenses en fonctionnement que de
+petites</em> (ou l’inverse)</p>
 <p>Ou plus osé :</p>
-<p><em>La ville ne maîtrise pas le nombre d’électeurs par bureaux de
-vote</em></p>
-<p>Ou plus profond, répondre à la question : quelle est la répartition
-idéale pour les bureaux de vote ? Est-ce que mon exemple le respecte
-?</p>
+<p><em>Certaines villes ne maîtrisent pas leurs dépenses de
+personnel</em></p>
+<p>Et préciser quelle ville est remarquable et pourquoi ?</p>
 <p><img src="img/oui.png" /></p>
 </div>
-<div id="vocabulaire" class="section level4" number="2.5.1.3">
-<h4><span class="header-section-number">2.5.1.3</span> Vocabulaire</h4>
+<div id="vocabulaire" class="section level4" number="2.5.2.4">
+<h4><span class="header-section-number">2.5.2.4</span> Vocabulaire</h4>
 <p>Revenir sur le terme : formule <em>fréquence et son
 graphique</em></p>
 <p>Diagramme de fréquence, histogramme…</p>
-<p>Le mieux : <em>Discrétisation des bureaux de vote en fonction des
-inscrits</em> (cf le manuel Béguin Pumain)</p>
-<p><img src="img/raleigh.png" /></p>
+<p>Le mieux : <em>Discrétisation des dépenses de personnel en fonction
+des villes</em></p>
 </div>
 </div>
-<div id="plus-précisemment" class="section level3" number="2.5.2">
-<h3><span class="header-section-number">2.5.2</span> Plus
+<div id="plus-précisemment" class="section level3" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> Plus
 précisemment</h3>
 <div id="problème-sur-les-classes-dans-le-graphique"
-class="section level4" number="2.5.2.1">
-<h4><span class="header-section-number">2.5.2.1</span> Problème sur les
+class="section level4" number="2.5.3.1">
+<h4><span class="header-section-number">2.5.3.1</span> Problème sur les
 classes dans le graphique</h4>
 <p>Il faut afficher les bornes.</p>
 <p><img src="img/faux.png" /></p>
-<p>Affichage de l’histogramme dans R</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/bondy2022.csv&quot;</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>Inscrits)</span></code></pre></div>
-<p><img src="jour1_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p><img src="img/inscrits2002.png" /></p>
+<p><em>Bug</em> repéré sous Libre Office</p>
+<p>Une solution, afficher les étiquettes sur les barres</p>
+<p><img src="img/etikok.png" /></p>
 </div>
-<div id="quelle-opération-fallait-il-faire-sur-le-fichier-2002"
-class="section level4" number="2.5.2.2">
-<h4><span class="header-section-number">2.5.2.2</span> Quelle opération
-fallait-il faire sur le fichier 2002 ?</h4>
-<p><img src="img/miseEnFormeDonnee.png" /></p>
 </div>
+<div id="autres-méthodes" class="section level3" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> Autres
+méthodes</h3>
+<p>Une méthode différente est valide également (le tableau croisé
+dynamique)</p>
+<p><img src="img/excel.png" /></p>
 </div>
 </div>
 </div>
@@ -638,77 +667,55 @@ indicateurs</h1>
 a d’autres. Ils servent à résumer la série statistique</p>
 <p>Nous allons montrer comment calculer médiane, moyenne et écart type
 dans le tableur.</p>
-<p>Pour l’exemple, on prend la commune choisie l’abstention (votants /
-inscrits) puis tous les résultats des candidats dans chaque bureau de
-vote.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>bondy2002 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/bondy2002.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">str</span>(bondy2002)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    306 obs. of  8 variables:
-##  $ X       : int  974096 974097 974098 974099 974100 974101 974102 974103 974104 974105 ...
-##  $ ville   : chr  &quot;Bondy&quot; &quot;Bondy&quot; &quot;Bondy&quot; &quot;Bondy&quot; ...
-##  $ bv      : int  1 1 1 1 1 1 1 1 1 1 ...
-##  $ inscrits: int  1299 1299 1299 1299 1299 1299 1299 1299 1299 1299 ...
-##  $ votants : int  868 868 868 868 868 868 868 868 868 868 ...
-##  $ exprimes: int  850 850 850 850 850 850 850 850 850 850 ...
-##  $ nom     : chr  &quot;MEGRET&quot; &quot;LEPAGE&quot; &quot;GLUCKSTEIN&quot; &quot;BAYROU&quot; ...
-##  $ nb      : int  18 18 1 60 143 148 39 8 56 147 ...</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">table</span>(bondy2002<span class="sc">$</span>bv)</span></code></pre></div>
-<pre><code>## 
-##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 
-## 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># extraction abstention</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> bondy2002 [bondy2002<span class="sc">$</span>nom <span class="sc">==</span> <span class="st">&quot;MEGRET&quot;</span>,]</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/inscrits2002.png&quot;</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>inscrits <span class="ot">&lt;-</span> data<span class="sc">$</span>inscrits</span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="fu">hist</span>(inscrits)</span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<pre><code>## png 
-##   2</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>abs <span class="ot">&lt;-</span> <span class="fu">round</span>( (data<span class="sc">$</span>votants <span class="sc">/</span> data<span class="sc">$</span>inscrits) <span class="sc">*</span><span class="dv">100</span>, <span class="dv">0</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">write.csv</span>(abs,<span class="st">&quot;data/abstention2002.csv&quot;</span>, </span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>          <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
-<p>Le tableau de 2002 se présente différemment de celui de 2022.</p>
-<div id="calcul-valeurs-centrales-et-dispersion" class="section level2"
+<p>Pour l’exemple, on prend l’agrégat financier de l’exercice : celui
+des frais du personnel.</p>
+<p>Afin de pouvoir comparer les communes de taille différente, on
+utilise plutôt les montants par habitant.</p>
+<p><img src="img/agregat.png" /></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/fraisPersonnel.csv&quot;</span>, <span class="at">dec=</span> <span class="st">&quot;.&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    40 obs. of  2 variables:
+##  $ Nom            : chr  &quot;Dugny&quot; &quot;Pantin&quot; &quot;Coubron&quot; &quot;Villemomble&quot; ...
+##  $ montant.par.hbt: num  1308 1133 737 832 459 ...</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>montant.par.hbt, <span class="at">freq =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(data<span class="sc">$</span>montant.par.hbt), <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="jour1_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div id="valeurs-centrales-moyenne-et-médiane" class="section level2"
 number="3.1">
-<h2><span class="header-section-number">3.1</span> Calcul : valeurs
-centrales et dispersion</h2>
-<div id="valeurs-centrales-moyenne-et-médiane" class="section level3"
-number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Valeurs centrales :
-moyenne et médiane</h3>
+<h2><span class="header-section-number">3.1</span> Valeurs centrales :
+moyenne et médiane</h2>
 <p>Il s’agit de caractériser une distribution par son centre.</p>
-<div id="calcul" class="section level4" number="3.1.1.1">
-<h4><span class="header-section-number">3.1.1.1</span> Calcul</h4>
+<div id="calcul" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Calcul</h3>
 <p>Le calcul de la moyenne est connu. Celui de la médiane beaucoup
 moins.</p>
 <p>Sur le tableau complet, créer une colonne rang. Et relever le rang
 médian</p>
-<p><img src="img/mediane.jpg" /></p>
+<p><img src="img/mediane.png" /></p>
 </div>
-<div id="savoir-faire-tableur" class="section level4" number="3.1.1.2">
-<h4><span class="header-section-number">3.1.1.2</span> Savoir faire
-tableur</h4>
+<div id="savoir-faire-tableur" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Savoir faire
+tableur</h3>
 <ul>
-<li><p>valeur fixe et relative (utilisation du $ et F4)</p></li>
-<li><p>au niveau graphique, rajout d’un axe par le menu insertion après
-double clic sur le graphique (onglet positionnement, menu déroulant
-valeur)</p></li>
+<li>nommer la plage de données</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(abs)</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>med <span class="ot">&lt;-</span> <span class="fu">median</span>(abs)</span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="fu">hist</span>(abs, <span class="at">main =</span> <span class="st">&quot;Distribution des abstentions&quot;</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p><img src="jour1_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p>Pour la variable abstention, quelle est l’indicateur le plus utile
-?</p>
+<p><img src="img/nom.png" /> ### Représentation graphique</p>
+<p>Elle consiste à tracer moyenne et médiane sur le graphique, elle
+n’est pas possible sous le tableur.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(data<span class="sc">$</span>montant.par.hbt)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>med <span class="ot">&lt;-</span> <span class="fu">median</span>(data<span class="sc">$</span>montant.par.hbt)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>montant.par.hbt, <span class="at">main =</span> <span class="st">&quot;Distribution des dépenses de personnel par hbt&quot;</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="jour1_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Pour la variable <em>dépense de personnel</em>, quelle est
+l’indicateur le plus utile ?</p>
 </div>
-<div id="que-retenir" class="section level4" number="3.1.1.3">
-<h4><span class="header-section-number">3.1.1.3</span> Que retenir
-?</h4>
+<div id="que-retenir" class="section level3" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Que retenir ?</h3>
 <div id="expliquer-ces-phrases-issues-du-chadule" class="section level5"
-number="3.1.1.3.1">
-<h5><span class="header-section-number">3.1.1.3.1</span> Expliquer ces
+number="3.1.3.0.1">
+<h5><span class="header-section-number">3.1.3.0.1</span> Expliquer ces
 phrases issues du Chadule</h5>
 <ul>
 <li>La médiane est dans une distribution la valeur la plus
@@ -722,8 +729,8 @@ distribution.</p>
 </ul>
 </div>
 <div id="rapport-entre-médiane-et-moyenne" class="section level5"
-number="3.1.1.3.2">
-<h5><span class="header-section-number">3.1.1.3.2</span> Rapport entre
+number="3.1.3.0.2">
+<h5><span class="header-section-number">3.1.3.0.2</span> Rapport entre
 médiane et moyenne</h5>
 <p>Que peut-on dire de la forme de la distribution</p>
 <ul>
@@ -731,46 +738,380 @@ médiane et moyenne</h5>
 <li><p>si moyenne &gt; médiane</p></li>
 <li><p>si médiane &gt; moyenne</p></li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>candidat <span class="ot">&lt;-</span> <span class="fu">unique</span>(bondy2002<span class="sc">$</span>nom)</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/medmoy.png&quot;</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(candidat)){</span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> bondy2002 [bondy2002<span class="sc">$</span>nom <span class="sc">==</span> candidat [i],]</span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>  moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(tmp<span class="sc">$</span>nb)</span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>  med <span class="ot">&lt;-</span> <span class="fu">median</span>(tmp<span class="sc">$</span>nb)</span>
-<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>  <span class="fu">hist</span>(tmp<span class="sc">$</span>nb, <span class="at">main =</span> candidat  [i])</span>
-<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
-<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a>}</span>
-<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<p>Démonstration avec les agrégats du 93</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/data93.csv&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># liste des agrégats</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<pre><code>##  [1] &quot;X&quot;                                    
+##  [2] &quot;Exercice&quot;                             
+##  [3] &quot;Outre.mer&quot;                            
+##  [4] &quot;Code.Insee.2024.Région&quot;               
+##  [5] &quot;Nom.2024.Région&quot;                      
+##  [6] &quot;Code.Insee.2024.Département&quot;          
+##  [7] &quot;Nom.2024.Département&quot;                 
+##  [8] &quot;Code.Siren.2024.EPCI&quot;                 
+##  [9] &quot;Nom.2024.EPCI&quot;                        
+## [10] &quot;Strate.population.2024&quot;               
+## [11] &quot;Commune.rurale&quot;                       
+## [12] &quot;Commune.de.montagne&quot;                  
+## [13] &quot;Commune.touristique&quot;                  
+## [14] &quot;Tranche.revenu.par.habitant&quot;          
+## [15] &quot;Présence.QPV&quot;                         
+## [16] &quot;Code.Insee.2024.Commune&quot;              
+## [17] &quot;Nom.2024.Commune&quot;                     
+## [18] &quot;Catégorie&quot;                            
+## [19] &quot;Code.Siren.Collectivité&quot;              
+## [20] &quot;Code.Insee.Collectivité&quot;              
+## [21] &quot;Siret.Budget&quot;                         
+## [22] &quot;Libellé.Budget&quot;                       
+## [23] &quot;Type.de.budget&quot;                       
+## [24] &quot;Nomenclature&quot;                         
+## [25] &quot;Agrégat&quot;                              
+## [26] &quot;Montant&quot;                              
+## [27] &quot;Montant.en.millions&quot;                  
+## [28] &quot;Population.totale&quot;                    
+## [29] &quot;Montant.en...par.habitant&quot;            
+## [30] &quot;Compte.2024.Disponible&quot;               
+## [31] &quot;code_type_budget&quot;                     
+## [32] &quot;ordre_analyse1_section1&quot;              
+## [33] &quot;ordre_analyse1_section2&quot;              
+## [34] &quot;ordre_analyse1_section3&quot;              
+## [35] &quot;ordre_analyse2_section1&quot;              
+## [36] &quot;ordre_analyse2_section2&quot;              
+## [37] &quot;ordre_analyse2_section3&quot;              
+## [38] &quot;ordre_analyse3_section1&quot;              
+## [39] &quot;ordre_analyse3_section2&quot;              
+## [40] &quot;ordre_analyse3_section3&quot;              
+## [41] &quot;ordre_analyse4_section1&quot;              
+## [42] &quot;annee_join&quot;                           
+## [43] &quot;Population.totale.du.dernier.exercice&quot;</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Exercice)</span></code></pre></div>
+<pre><code>## 
+## 2017 2018 2019 
+## 1919 2566  517</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># filtre sur le budget principal et l&#39;année</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Type.de.budget)</span></code></pre></div>
+<pre><code>## 
+##    Budget annexe Budget principal 
+##             1727             3275</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>Exercice <span class="sc">==</span> <span class="dv">2018</span> <span class="sc">&amp;</span> data<span class="sc">$</span>Type.de.budget <span class="sc">==</span> <span class="st">&#39;Budget principal&#39;</span>, <span class="fu">c</span>(<span class="st">&quot;Nom.2024.Commune&quot;</span>, <span class="st">&quot;Agrégat&quot;</span>, <span class="st">&quot;Montant.en...par.habitant&quot;</span> )]</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co"># simplification des noms des colonnes</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">names</span>(data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ville&quot;</span>, <span class="st">&quot;agregat&quot;</span>,<span class="st">&quot;montant&quot;</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>agregat <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>agregat))</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>ville)</span></code></pre></div>
+<pre><code>## 
+##           Aubervilliers        Aulnay-sous-Bois                Bagnolet 
+##                      42                      43                      43 
+##                 Bobigny                   Bondy        Clichy-sous-Bois 
+##                      42                      42                      43 
+##                 Coubron                  Drancy                   Dugny 
+##                      42                      42                      42 
+##        Épinay-sur-Seine                   Gagny       Gournay-sur-Marne 
+##                      42                      42                      43 
+##       L&#39;Île-Saint-Denis            La Courneuve         Le Blanc-Mesnil 
+##                      41                      42                      42 
+##              Le Bourget    Le Pré-Saint-Gervais               Le Raincy 
+##                      42                      43                      42 
+##               Les Lilas Les Pavillons-sous-Bois            Livry-Gargan 
+##                      42                      42                      42 
+##             Montfermeil               Montreuil       Neuilly-Plaisance 
+##                      42                      42                      42 
+##       Neuilly-sur-Marne          Noisy-le-Grand            Noisy-le-Sec 
+##                      42                      43                      42 
+##                  Pantin   Pierrefitte-sur-Seine             Romainville 
+##                      42                      42                      42 
+##         Rosny-sous-Bois             Saint-Denis    Saint-Ouen-sur-Seine 
+##                      42                      42                      42 
+##                  Sevran                  Stains      Tremblay-en-France 
+##                      42                      42                      42 
+##                Vaujours             Villemomble              Villepinte 
+##                      41                      42                      42 
+##            Villetaneuse 
+##                      42</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/medmoy.png&quot;</span>, <span class="at">width =</span> <span class="dv">1200</span>, <span class="at">height =</span> <span class="dv">1200</span>, <span class="at">res=</span><span class="dv">90</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">7</span>))</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(agregat)){</span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat <span class="sc">==</span> agregat [i],]</span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>  moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(tmp<span class="sc">$</span>montant)</span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a>  med <span class="ot">&lt;-</span> <span class="fu">median</span>(tmp<span class="sc">$</span>montant)</span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a>  sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(tmp<span class="sc">$</span>montant)</span>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a>  mar <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a>  titre <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">substring</span>(agregat [i], <span class="dv">1</span>, <span class="dv">15</span>),<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,<span class="fu">round</span>(sigma,<span class="dv">0</span>))</span>
+<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a>  <span class="fu">hist</span>(tmp<span class="sc">$</span>montant, <span class="at">main =</span> titre, <span class="at">font.main=</span><span class="dv">1</span>,  <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a>}</span>
+<span id="cb17-15"><a href="#cb17-15" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## png 
 ##   2</code></pre>
-<p><img src="img/medmoy.png" /></p>
-<p>Chercher à caractériser les voix pour les différents candidats en
-fonction de la médiane / moyenne</p>
+<p><img src="img/medmoy.png" /> moyenne en bleue, médiane en rouge</p>
+<p>Chercher un ou deux agrégats pour lequel médiane et moyenne sont
+différentes.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="co"># moyenne &gt; médiane</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>agregat [<span class="dv">43</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;Taxe d&#39;enlévement des ordures ménagères&quot;</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat <span class="sc">==</span> agregat [<span class="dv">43</span>],]</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">hist</span>(tmp<span class="sc">$</span>montant, <span class="at">main =</span> agregat [<span class="dv">43</span>])</span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(tmp<span class="sc">$</span>montant)</span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a>med <span class="ot">&lt;-</span> <span class="fu">median</span>(tmp<span class="sc">$</span>montant)</span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a><span class="co"># également</span></span>
+<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a>agregat [<span class="dv">37</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;Recettes d&#39;investissement hors emprunts&quot;</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat <span class="sc">==</span> agregat [<span class="dv">37</span>],]</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">hist</span>(tmp<span class="sc">$</span>montant, <span class="at">main =</span> agregat [<span class="dv">37</span>])</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(tmp<span class="sc">$</span>montant)</span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>med <span class="ot">&lt;-</span> <span class="fu">median</span>(tmp<span class="sc">$</span>montant)</span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="jour1_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
 </div>
 </div>
-<div id="dispersion-ecart-type-et-variance" class="section level3"
-number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> Dispersion :
-Ecart-type et variance</h3>
+<div id="dispersion-ecart-type-et-variance" class="section level2"
+number="3.2">
+<h2><span class="header-section-number">3.2</span> Dispersion :
+Ecart-type et variance</h2>
 <p>La distribution est-elle hétérogène ?</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/ecartType.png&quot;</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(candidat)){</span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> bondy2002 [bondy2002<span class="sc">$</span>nom <span class="sc">==</span> candidat [i],]</span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>  sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(tmp<span class="sc">$</span>nb)</span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>  med <span class="ot">&lt;-</span> <span class="fu">median</span>(tmp<span class="sc">$</span>nb)</span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>  <span class="fu">hist</span>(tmp<span class="sc">$</span>nb, <span class="at">main =</span> <span class="fu">paste0</span>(candidat  [i], <span class="st">&quot; &quot;</span>, <span class="fu">round</span>(sigma,<span class="dv">0</span>)))</span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>}</span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<pre><code>## png 
-##   2</code></pre>
-<p><img src="img/ecartType.png" /> Commenter l’écart type le plus
-élevé</p>
-<div id="définitions" class="section level4" number="3.1.2.1">
-<h4><span class="header-section-number">3.1.2.1</span> 2 définitions
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>agg <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(data<span class="sc">$</span>montant, <span class="at">by =</span> <span class="fu">list</span>(data<span class="sc">$</span>agregat), sd)</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fu">names</span>(agg) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;agregat&quot;</span>, <span class="st">&quot;sigma&quot;</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="fu">hist</span>(agg<span class="sc">$</span>sigma)</span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(agg<span class="sc">$</span>sigma)</span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a>med <span class="ot">&lt;-</span> <span class="fu">median</span>(agg<span class="sc">$</span>sigma)</span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="jour1_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Commenter l’écart type le plus élevé</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>agg<span class="sc">$</span>agregat [agg<span class="sc">$</span>sigma <span class="sc">==</span> <span class="fu">max</span>(agg<span class="sc">$</span>sigma)]</span></code></pre></div>
+<pre><code>## [1] &quot;Encours de dette&quot;</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>sel <span class="ot">&lt;-</span> agregat [<span class="dv">23</span>]</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat <span class="sc">==</span> sel,]</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="fu">hist</span>(tmp<span class="sc">$</span>montant, </span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>     <span class="at">main =</span> paste0</span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a>      (sel,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a>        <span class="fu">round</span>(<span class="fu">sd</span>(tmp<span class="sc">$</span>montant),<span class="dv">0</span>)))</span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(tmp<span class="sc">$</span>montant)</span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a>med <span class="ot">&lt;-</span> <span class="fu">median</span>(tmp<span class="sc">$</span>montant)</span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="jour1_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tmp [<span class="fu">order</span>(tmp<span class="sc">$</span>montant), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)])</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">ville</th>
+<th align="right">montant</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">900</td>
+<td align="left">Villemomble</td>
+<td align="right">40.62938</td>
+</tr>
+<tr class="even">
+<td align="left">870</td>
+<td align="left">Neuilly-sur-Marne</td>
+<td align="right">112.67203</td>
+</tr>
+<tr class="odd">
+<td align="left">899</td>
+<td align="left">Vaujours</td>
+<td align="right">165.07995</td>
+</tr>
+<tr class="even">
+<td align="left">884</td>
+<td align="left">Le Raincy</td>
+<td align="right">197.57228</td>
+</tr>
+<tr class="odd">
+<td align="left">883</td>
+<td align="left">Le Pré-Saint-Gervais</td>
+<td align="right">218.30181</td>
+</tr>
+<tr class="even">
+<td align="left">898</td>
+<td align="left">Tremblay-en-France</td>
+<td align="right">268.90836</td>
+</tr>
+<tr class="odd">
+<td align="left">857</td>
+<td align="left">Gagny</td>
+<td align="right">462.27251</td>
+</tr>
+<tr class="even">
+<td align="left">881</td>
+<td align="left">Les Pavillons-sous-Bois</td>
+<td align="right">476.39053</td>
+</tr>
+<tr class="odd">
+<td align="left">855</td>
+<td align="left">Dugny</td>
+<td align="right">534.02930</td>
+</tr>
+<tr class="even">
+<td align="left">856</td>
+<td align="left">Épinay-sur-Seine</td>
+<td align="right">625.08258</td>
+</tr>
+<tr class="odd">
+<td align="left">863</td>
+<td align="left">Livry-Gargan</td>
+<td align="right">626.95219</td>
+</tr>
+<tr class="even">
+<td align="left">901</td>
+<td align="left">Villepinte</td>
+<td align="right">633.13923</td>
+</tr>
+<tr class="odd">
+<td align="left">850</td>
+<td align="left">Clichy-sous-Bois</td>
+<td align="right">685.27861</td>
+</tr>
+<tr class="even">
+<td align="left">869</td>
+<td align="left">Neuilly-Plaisance</td>
+<td align="right">689.67335</td>
+</tr>
+<tr class="odd">
+<td align="left">902</td>
+<td align="left">Villetaneuse</td>
+<td align="right">695.95430</td>
+</tr>
+<tr class="even">
+<td align="left">849</td>
+<td align="left">Le Bourget</td>
+<td align="right">795.05535</td>
+</tr>
+<tr class="odd">
+<td align="left">860</td>
+<td align="left">L’Île-Saint-Denis</td>
+<td align="right">837.21256</td>
+</tr>
+<tr class="even">
+<td align="left">859</td>
+<td align="left">Gournay-sur-Marne</td>
+<td align="right">917.65716</td>
+</tr>
+<tr class="odd">
+<td align="left">852</td>
+<td align="left">Coubron</td>
+<td align="right">1038.29143</td>
+</tr>
+<tr class="even">
+<td align="left">888</td>
+<td align="left">Saint-Denis</td>
+<td align="right">1176.78851</td>
+</tr>
+<tr class="odd">
+<td align="left">861</td>
+<td align="left">Les Lilas</td>
+<td align="right">1296.92713</td>
+</tr>
+<tr class="even">
+<td align="left">866</td>
+<td align="left">Montfermeil</td>
+<td align="right">1312.18070</td>
+</tr>
+<tr class="odd">
+<td align="left">842</td>
+<td align="left">Le Blanc-Mesnil</td>
+<td align="right">1365.81610</td>
+</tr>
+<tr class="even">
+<td align="left">886</td>
+<td align="left">Rosny-sous-Bois</td>
+<td align="right">1368.44978</td>
+</tr>
+<tr class="odd">
+<td align="left">897</td>
+<td align="left">Stains</td>
+<td align="right">1478.38195</td>
+</tr>
+<tr class="even">
+<td align="left">876</td>
+<td align="left">Noisy-le-Grand</td>
+<td align="right">1521.10530</td>
+</tr>
+<tr class="odd">
+<td align="left">840</td>
+<td align="left">Aulnay-sous-Bois</td>
+<td align="right">1598.90491</td>
+</tr>
+<tr class="even">
+<td align="left">879</td>
+<td align="left">Pantin</td>
+<td align="right">1633.76774</td>
+</tr>
+<tr class="odd">
+<td align="left">882</td>
+<td align="left">Pierrefitte-sur-Seine</td>
+<td align="right">1666.49611</td>
+</tr>
+<tr class="even">
+<td align="left">854</td>
+<td align="left">Drancy</td>
+<td align="right">1686.00963</td>
+</tr>
+<tr class="odd">
+<td align="left">885</td>
+<td align="left">Romainville</td>
+<td align="right">1749.62821</td>
+</tr>
+<tr class="even">
+<td align="left">895</td>
+<td align="left">Sevran</td>
+<td align="right">1783.80980</td>
+</tr>
+<tr class="odd">
+<td align="left">853</td>
+<td align="left">La Courneuve</td>
+<td align="right">1795.52814</td>
+</tr>
+<tr class="even">
+<td align="left">878</td>
+<td align="left">Noisy-le-Sec</td>
+<td align="right">1813.37526</td>
+</tr>
+<tr class="odd">
+<td align="left">848</td>
+<td align="left">Bondy</td>
+<td align="right">1827.18076</td>
+</tr>
+<tr class="even">
+<td align="left">846</td>
+<td align="left">Bobigny</td>
+<td align="right">1833.79321</td>
+</tr>
+<tr class="odd">
+<td align="left">837</td>
+<td align="left">Aubervilliers</td>
+<td align="right">1867.99237</td>
+</tr>
+<tr class="even">
+<td align="left">868</td>
+<td align="left">Montreuil</td>
+<td align="right">1989.09136</td>
+</tr>
+<tr class="odd">
+<td align="left">889</td>
+<td align="left">Saint-Ouen-sur-Seine</td>
+<td align="right">3097.60968</td>
+</tr>
+<tr class="even">
+<td align="left">841</td>
+<td align="left">Bagnolet</td>
+<td align="right">3962.44848</td>
+</tr>
+</tbody>
+</table>
+<div id="définitions" class="section level4" number="3.2.0.1">
+<h4><span class="header-section-number">3.2.0.1</span> 2 définitions
 :</h4>
 <ul>
 <li><p>écart moyen des valeurs à leur moyenne arithmétique</p></li>
@@ -778,8 +1119,8 @@ Ecart-type et variance</h3>
 </ul>
 </div>
 <div id="une-question-fondamentale-pourquoi-utiliser-les-carrés"
-class="section level4" number="3.1.2.2">
-<h4><span class="header-section-number">3.1.2.2</span> Une question
+class="section level4" number="3.2.0.2">
+<h4><span class="header-section-number">3.2.0.2</span> Une question
 fondamentale : pourquoi utiliser les carrés ?</h4>
 <p><a
 href="https://qastack.fr/stats/118/why-square-the-difference-instead-of-taking-the-absolute-value-in-standard-devia"
@@ -792,9 +1133,8 @@ vous donne la vraie distance, où ce que vous avez suggéré (qui, en fait,
 est la déviation absolue ) ressemble plus à un calcul de distance
 manhattan .</em></p>
 </div>
-</div>
-<div id="utilisation-du-tableur" class="section level3" number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> Utilisation du
+<div id="utilisation-du-tableur" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Utilisation du
 tableur</h3>
 <p>Toujours sans passer par les formules, mais avec un tableau <em>pas à
 pas</em>, créer les indicateurs.</p>
@@ -806,21 +1146,22 @@ pas</em>, créer les indicateurs.</p>
 (variance), l’écart type est la racine carrée.</p></li>
 </ul>
 </div>
-<div id="corrections-quelques-remarques" class="section level3"
-number="3.1.4">
-<h3><span class="header-section-number">3.1.4</span> Corrections
-quelques remarques</h3>
+<div
+id="corrections-quelques-remarques-attention-correction-exercice-2023"
+class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Corrections
+quelques remarques (attention correction exercice 2023)</h3>
 <p>L’objectif de l’exercice était d’obtenir un commentaire clair avec
 quelques repères statistiques.</p>
 <p><img src="img/bonmed.png" /></p>
 <p><img src="img/indicComplet.png" /> <img
 src="img/indicAppui.png" /></p>
-<div id="quelles-erreurs" class="section level5" number="3.1.4.0.1">
-<h5><span class="header-section-number">3.1.4.0.1</span> Quelles erreurs
+<div id="quelles-erreurs" class="section level5" number="3.2.2.0.1">
+<h5><span class="header-section-number">3.2.2.0.1</span> Quelles erreurs
 ?</h5>
 </div>
-<div id="facile-à-évaluer" class="section level5" number="3.1.4.0.2">
-<h5><span class="header-section-number">3.1.4.0.2</span> Facile à
+<div id="facile-à-évaluer" class="section level5" number="3.2.2.0.2">
+<h5><span class="header-section-number">3.2.2.0.2</span> Facile à
 évaluer</h5>
 <ul>
 <li>Mise en forme : zéro</li>
@@ -847,8 +1188,8 @@ src="img/indicAppui.png" /></p>
 </ul>
 <p><img src="img/indicTechnique.png" /></p>
 </div>
-<div id="non-pris-en-compte" class="section level5" number="3.1.4.0.3">
-<h5><span class="header-section-number">3.1.4.0.3</span> Non pris en
+<div id="non-pris-en-compte" class="section level5" number="3.2.2.0.3">
+<h5><span class="header-section-number">3.2.2.0.3</span> Non pris en
 compte</h5>
 <ul>
 <li><p>Affichage de la médiane : ce n’est pas très facile sous le
@@ -868,8 +1209,8 @@ médiane (cas Chevènement)</p>
 centrale la plus représentative.</p>
 </div>
 <div id="erreurs-intéressantes-par-rapport-à-lécart-type"
-class="section level5" number="3.1.4.0.4">
-<h5><span class="header-section-number">3.1.4.0.4</span> Erreurs
+class="section level5" number="3.2.2.0.4">
+<h5><span class="header-section-number">3.2.2.0.4</span> Erreurs
 intéressantes par rapport à l’écart type</h5>
 <ul>
 <li><p>Sauf cas extrême, L’écart type ne peut pas avoir le même ordre de
