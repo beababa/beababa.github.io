@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Statistiques bi variées - khi 2</title>
+
+<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="intro.html">Introduction</a>
+</li>
+<li>
+  <a href="jour1.html">univariées</a>
+</li>
+<li>
+  <a href="jour2.html">bivariées</a>
+</li>
+<li>
+  <a href="jour3.html">régression </a>
+</li>
+<li>
+  <a href="jour4.html">khi2</a>
+</li>
+<li>
+  <a href="jour5.html">examen</a>
+</li>
+<li>
+  <a href="jour6.html">variance</a>
+</li>
+<li>
+  <a href="jour7.html">multivariées</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/beababa/01_stat">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Statistiques bi variées - khi 2</h1>
+
+</div>
+
+
+<div id="déroulement" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Déroulement</h1>
+<div id="données-dexemple" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Données
+d’exemple</h2>
+<p>hypothèse : relation entre les villes et le montant par habitant de
+quelques agrégats</p>
+<p>l’hypothèse nulle (H<sub>0</sub>) : indépendance entre villes et
+agrégats</p>
+<p>Deux distributions de variables de catégorie.</p>
+<p>Pour récupérer les données, utiliser le site de l’OFGL comme vu le
+cours précédent</p>
+<p><img src="img/interfaceOFGL.png" /></p>
+<p>Proposition d’agrégats :</p>
+<ul>
+<li><p>Annuité de la dette (= poids de la dette)</p></li>
+<li><p>Dépenses d’équipement</p></li>
+<li><p>Dotation globale de fonctionnement</p></li>
+<li><p>Frais de personnel</p></li>
+<li><p>Impôts locaux</p></li>
+</ul>
+<p>Ces 5 agrégats sont représentatifs de l’état des finances de chaque
+commune.</p>
+</div>
+<div id="différentes-étapes" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Différentes
+étapes</h2>
+<ul>
+<li><p>Tableau de contingence</p></li>
+<li><p>calcul du khi2</p></li>
+<li><p>comparaison avec le khi2 théorique</p></li>
+</ul>
+</div>
+</div>
+<div id="tableau-de-contingence" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Tableau de
+contingence</h1>
+<p>Au sens anglais du terme, <em>ce qui peut exister</em></p>
+<div id="création" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Création</h2>
+<p>Utiliser l’outil de table dynamique (dans le menu données) pour le
+créer</p>
+<p><img src="img/asstcd.png" /></p>
+<p>Résultat attendu :</p>
+<p><img src="img/restcd.png" /></p>
+</div>
+<div id="analyse-dun-tableau-de-contingence" class="section level2"
+number="2.2">
+<h2><span class="header-section-number">2.2</span> Analyse d’un tableau
+de contingence</h2>
+<ul>
+<li><p>Il faut présenter les sources, la structure et le contenu du
+tableau.</p></li>
+<li><p>Lister les questions susceptibles d’être posées, notamment en
+étudiant les fréquences conditionnelles</p></li>
+</ul>
+<div id="format-conditionnel" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Format
+conditionnel</h3>
+<p><img src="img/formatConditionnel.png" /></p>
+<p>Cet outil est-il utile ici ?</p>
+</div>
+<div id="fréquences-conditionnelles-en-ligne-et-colonne"
+class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Fréquences
+conditionnelles en ligne et colonne</h3>
+<p>Pour pouvoir comparer les villes, chaque groupe est ramené à une même
+base égale à 100.</p>
+<p>savoir-faire tableur</p>
+<ul>
+<li>Objectif : saisir une seule cellule et étendre la formule.</li>
+</ul>
+<p>Quel élément fixer, ligne ou colonne ?(raccourci clavier F4)</p>
+<p><img src="img/fixer.png" /></p>
+<ul>
+<li>utilisation du format %</li>
+</ul>
+<p><img src="img/frequenceLG.png" /></p>
+<p>Analyse après avoir mis le format conditionnel.</p>
+<ul>
+<li>Quelles sont les agrégats qui varient le plus entre les villes
+?</li>
+</ul>
+<p>Les écarts à la moyenne par agrégat sont peut-être plus parlants</p>
+<ul>
+<li>pour pouvoir raisonner sur le graphique, il est nécessaire de poser
+un filtre sur quelques villes déjà repérées pour leur originalité
+(exemple pour le 93 : Tremblay en France et Le Raincy)</li>
+</ul>
+<p><img src="img/filtreGraphEcMoyenne.png" /></p>
+<p><img src="img/ecMoyenne.png" /></p>
+<p>Qu’apporterait une étude des fréquences conditionnelles en colonnes
+?</p>
+</div>
+</div>
+</div>
+<div id="tableau-de-contingence-correction-attention-correction-2023"
+class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Tableau de contingence
+: correction (attention correction 2023)</h1>
+<div id="manipulation-du-tableau" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Manipulation du
+tableau</h2>
+<p>Il fallait travailler sur les élections 2022. Le tableau est présenté
+en longueur.</p>
+<p>Pour pouvoir obtenir un tableau de contingence :</p>
+<ul>
+<li>Récupérer le nom de chaque candidat avec une formule</li>
+</ul>
+<p><img src="img/continRecup.png" /> - faire une recopie incrémentée sur
+la droite</p>
+<ul>
+<li><p>transposer le tableau et faire une copie spéciale valeurs
+uniquement (CTRL + MAJ + V)</p></li>
+<li><p>poser un filtre et récupérer uniquement les noms des
+candidats</p></li>
+</ul>
+<p><img src="img/continFiltre.png" /></p>
+<ul>
+<li>ne pas oublier de faire un copier - coller du tableau final en
+transposant</li>
+</ul>
+</div>
+<div id="correction-rapide" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Correction
+rapide</h2>
+<div id="description-de-la-donnée" class="section level3"
+number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Description de la
+donnée</h3>
+<p>Il s’agit des résultats de la présidentielle sur 2022 à Bondy
+(chiffres du ministère de l’intérieur via data.gouv.fr)</p>
+<p>La donnée comporte 2 variables :</p>
+<ul>
+<li>les 32 bureaux de vote</li>
+<li>les 12 candidats</li>
+</ul>
+</div>
+<div id="graphique" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Graphique</h3>
+<p><img src="img/continGraphique.png" /></p>
+<p>Remarquer le titre</p>
+<p>au niveau de la présentation des séries, la boite de dialogue
+<em>plages de données</em> permet de classer les séries</p>
+<p><img src="img/continEtik.png" /></p>
+</div>
+<div id="analyse" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Analyse</h3>
+<p>Sur les 12 candidats, 3 arrivent en tête dans tous les bureaux avec
+cependant un vote majoritaire pour Mélenchon dans l’échantillon des 4
+bureaux. Les voies se répartissent de manière quasiment homogène sur les
+9 autres candidats. Même si les bureaux restent différents, les
+répartitions des votes se ressemblent. Les différences entre bureaux
+étaient plus marquées en 2002.</p>
+</div>
+<div id="observations-sur-les-villes-choisies" class="section level3"
+number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Observations sur
+les villes choisies</h3>
+</div>
+</div>
+</div>
+<div id="khi2-un-exemple-sur-un-dé-truqué" class="section level1"
+number="4">
+<h1><span class="header-section-number">4</span> Khi2 : un exemple sur
+un dé truqué</h1>
+<p>Le dé est-il truqué ?</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">face</th>
+<th align="right">effectif</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">7</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">17</td>
+</tr>
+</tbody>
+</table>
+<p>Le nombre total de lancers est de 60.</p>
+<div id="hypothèse-dindépendance" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Hypothèse
+d’indépendance</h2>
+<p>hypothèse H<sub>0</sub> : le dé n’est pas truqué (il y a indépendance
+entre la face et le nombre de fois où elle sort)</p>
+</div>
+<div id="effectifs-théoriques" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Effectifs
+théoriques</h2>
+<p>Sur le total des lancers (60), chaque face pourrait sortir 10
+fois.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">face</th>
+<th align="right">effectif</th>
+<th align="right">effectifThéorique</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">15</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">11</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">6</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">17</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="calcul-du-khi2" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Calcul du khi2</h2>
+<p>distance entre effectifs théoriques et observés</p>
+<p>Elle se mesure avec le khi2</p>
+<p>On calcule l’écart, puis le carré de cet écart et on pondère par
+l’effectif théorique.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>(ecart <span class="ot">&lt;-</span> df<span class="sc">$</span>effectif <span class="sc">-</span> df<span class="sc">$</span>effectifThéorique)</span></code></pre></div>
+<pre><code>## [1]  5 -3 -6  1 -4  7</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>(distance <span class="ot">&lt;-</span>  ecart<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 25  9 36  1 16 49</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>(relatif <span class="ot">&lt;-</span> distance <span class="sc">/</span> df<span class="sc">$</span>effectifThéorique)</span></code></pre></div>
+<pre><code>## [1] 2.5 0.9 3.6 0.1 1.6 4.9</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>(khi2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(relatif))</span></code></pre></div>
+<pre><code>## [1] 13.6</code></pre>
+</div>
+<div id="test-du-khi2" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Test du khi2</h2>
+<div id="paramètres-du-test" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Paramètres du
+test</h3>
+<ul>
+<li>degré de liberté : 5</li>
+</ul>
+<p>C’est le nombre de valeurs possibles -1 (car on peut déterminer la 6e
+valeur à partir des 5 autres)</p>
+<ul>
+<li>Pour un risque à 0,05 (5 chances sur 100 de se tromper)</li>
+</ul>
+</div>
+<div id="résultat" class="section level3" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Résultat</h3>
+<p>Lecture dans la table du khi2</p>
+<p><img src="img/khi2table.png" /></p>
+<p>Le khi2 théorique est de 11,07, il est donc inférieur au khi2 observé
+(13,6).</p>
+<p>Quand le khi2 théorique est inférieur, le test est rejeté.</p>
+<p>Le test est rejeté avec</p>
+<ul>
+<li><p>un risque de 5 % (on se trompe 5 fois sur 100)</p></li>
+<li><p>mais on aurait pu aller jusqu’au risque de 2.5 % (2,5 chances de
+se tromper sur 100)</p></li>
+</ul>
+<p>Donc, le dé est truqué.</p>
+<p>Version R</p>
+<pre><code>##   face effectif effectifThéorique
+## 1    1       15                10
+## 2    2        7                10
+## 3    3        4                10
+## 4    4       11                10
+## 5    5        6                10
+## 6    6       17                10</code></pre>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  df[, 2]
+## X-squared = 13.6, df = 5, p-value = 0.01836</code></pre>
+</div>
+</div>
+</div>
+<div id="mise-en-pratique-sur-les-agrégats-financiers"
+class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Mise en pratique sur
+les agrégats financiers</h1>
+<div id="ennoncer-lhypothèse-h0" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Ennoncer l’hypothèse
+H<sub>0</sub></h2>
+<p>Il n’y a pas de lien entre les villes et la sélection d’agrégats
+financiers retenue.</p>
+</div>
+<div id="effectif-théorique" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Effectif
+théorique</h2>
+<p>La première case reçoit la formule :</p>
+<ul>
+<li>(total lg / total) * total colonne</li>
+</ul>
+<p>C’est ce qu’on appelle également le produit des marges</p>
+<p><img src="img/prodMARGE.png" /></p>
+<p><img src="img/effectifTheorique.png" /></p>
+</div>
+<div id="ecarts-entre-observés-et-théoriques" class="section level2"
+number="5.3">
+<h2><span class="header-section-number">5.3</span> Ecarts entre observés
+et théoriques</h2>
+<p>Que signifie une valeur zéro ?</p>
+<p>Utiliser la notion</p>
+<ul>
+<li>sur représentation / sous représentation</li>
+</ul>
+<p><img src="img/ecartsTableauComplet.png" /></p>
+<p>Sur Tremblay, on observe une sur-représentation des impôts locaux et
+des frais de personnel et une sous-représentation de la DGF. C’est le
+contraire sur Clichy sous Bois. On voit également bien l’importance des
+impôts locaux au Raincy.</p>
+<p>A noter que la ville d’Aulnay sous Bois se rapproche du modèle défini
+par le hasard.</p>
+<p>Bref, les villes semblent très différentes.</p>
+</div>
+<div id="le-khi2" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Le Khi2</h2>
+<p>Le khi2 va permettre de valider le rejet de l’hypothèse
+d’indépendance.</p>
+<p>rappel : métrique euclidienne plutôt que les valeurs absolues on
+utilise les carrés</p>
+<div id="le-khi2-partiel" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Le Khi2
+partiel</h3>
+<ul>
+<li><p>On met les écarts rapportés à la valeur théorique d’indépendance
+au carré (on mesure ainsi une <em>distance</em>)</p></li>
+<li><p>on divise par l’effectif théorique (on relativise)</p></li>
+</ul>
+<p><img src="img/khi2partiel.png" /></p>
+</div>
+<div id="le-khi2-1" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Le Khi2</h3>
+<p>C’est le total des khi2 partiels (dans notre exemple 768)</p>
+<p><img src="img/khi2Total.png" /></p>
+<p>Ici le montant du khi2 est très élevé. On sait tout de suite qu’il
+sera supérieur au khi2 théorique.</p>
+<p>Quel est le maximum dans le tableau ?</p>
+</div>
+<div id="test-du-khi2-1" class="section level3" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Test du Khi2</h3>
+<p>On définit :</p>
+<ul>
+<li>degré de liberté lg -1 * col -1</li>
+</ul>
+<p>5 agrégats et 40 villes</p>
+<pre><code>## [1] 156</code></pre>
+<p>Le risque est extrêmement faible puisque nous sommes hors
+tableau.</p>
+<ul>
+<li>risque 1, 5 et 10 %</li>
+</ul>
+<p>Sur internet, dans n’importe quelle table, on cherche les valeurs
+correspondantes.</p>
+<p><a
+href="https://jeanpaullaurent.fr/media/docetud/table_khi2_complete.pdf"
+class="uri">https://jeanpaullaurent.fr/media/docetud/table_khi2_complete.pdf</a></p>
+</div>
+<div id="rejet-de-h0-ou-pas" class="section level3" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> Rejet de H0 ou
+pas</h3>
+<p>HO hypothèse d’indépendance. son rejet implique qu’il y a une
+relation.</p>
+<p>Les villes et les agrégats financiers ont une relation avec une marge
+d’erreur faible puisque le khi2 augmente quand le risque d’erreur
+baisse.</p>
+<p>Les logiciels de stats proposent le risque limite, la valeur de
+bascule entre le rejet et l’acceptation de l’hypothèse nulle.</p>
+</div>
+</div>
+</div>
+<div id="sous-r-vérification-des-calculs" class="section level1"
+number="6">
+<h1><span class="header-section-number">6</span> Sous R, vérification
+des calculs</h1>
+<p>Constitution de la table de contingence</p>
+<pre><code>##  Nom.2024.Commune   Annuité de la dette Dépenses d&#39;équipement
+##  Length:40          Min.   :  4.164     Min.   : 130.6       
+##  Class :character   1st Qu.: 75.868     1st Qu.: 316.9       
+##  Mode  :character   Median :155.981     Median : 441.8       
+##                     Mean   :141.818     Mean   : 468.6       
+##                     3rd Qu.:197.103     3rd Qu.: 529.6       
+##                     Max.   :370.055     Max.   :1161.2       
+##  Dotation globale de fonctionnement Frais de personnel Impôts locaux   
+##  Min.   :  5.355                    Min.   : 459.0     Min.   : 761.6  
+##  1st Qu.:126.346                    1st Qu.: 865.4     1st Qu.: 972.2  
+##  Median :241.123                    Median : 968.1     Median :1080.0  
+##  Mean   :261.720                    Mean   : 981.6     Mean   :1170.1  
+##  3rd Qu.:378.380                    3rd Qu.:1042.9     3rd Qu.:1344.6  
+##  Max.   :924.843                    Max.   :1766.1     Max.   :2331.0</code></pre>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  jointure[, -1]
+## X-squared = 11605, df = 156, p-value &lt; 2.2e-16</code></pre>
+<p>carto</p>
+<pre><code>## Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.3.1; sf_use_s2() is TRUE</code></pre>
+<p><img src="jour4_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre><code>## Reading layer `communes93&#39; from data source 
+##   `C:\Users\tachasa\01_stat\data\communes93.geojson&#39; using driver `GeoJSON&#39;
+## Simple feature collection with 307 features and 48 fields
+## Geometry type: GEOMETRY
+## Dimension:     XY
+## Bounding box:  xmin: 2.288278 ymin: 48.80725 xmax: 2.6033 ymax: 49.01233
+## Geodetic CRS:  WGS 84</code></pre>
+<p><img src="jour4_files/figure-html/unnamed-chunk-10-2.png" width="672" /><img src="jour4_files/figure-html/unnamed-chunk-10-3.png" width="672" /></p>
+</div>
+<div id="en-guise-de-conclusion-pourquoi-le-khi2" class="section level1"
+number="7">
+<h1><span class="header-section-number">7</span> En guise de conclusion
+: pourquoi le khi2 ?</h1>
+<div id="les-fréquences-conditionnelles-suffisent-t-elles"
+class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Les fréquences
+conditionnelles suffisent-t-elles ?</h2>
+<p>Comparaison des 2 tableaux</p>
+<p>Fréquence conditionnelle en ligne</p>
+<p><img src="img/frequenceLG.png" /></p>
+<p>La distance entre les données observées et théoriques</p>
+<p><img src="img/tabObsTheo.png" /></p>
+<p>Estimation des écarts fondés sur la pondération des masses</p>
+</div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<small><p>L5GEABIM Analyses bivariées et multivariées</p></small>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

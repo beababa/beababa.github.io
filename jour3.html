@@ -462,13 +462,15 @@ div.tocify {
 On récupère la donnée à partir de l’interface <a
 href="https://data.ofgl.fr/explore/?exclude.theme=INTERNE&amp;disjunctive.theme&amp;disjunctive.publisher&amp;disjunctive.keyword&amp;sort=title">les
 données de l’ofgl</a> plutôt que celle de <em>la cartographie</em>.</p>
-<p>Comprendre les variables</p>
+<p><img src="img/interfaceOFGL.png" /></p>
 <p>Enoncer les hypothèses possibles de la comparaison, attention
 variable explicative (X) et à expliquer (Y)</p>
-<p>(cf moodle exercice <em>Introduction = régression</em>)</p>
+<p><img src="img/XYexplicatif.png" /></p>
 <p>Pour le cours, l’hypothèse est que la non maîtrise des frais de
-personnel (x) amène l’augmentation des impôts locaux (y) sur le 93
-(budgets consolidés).</p>
+personnel (X) amène l’augmentation des impôts locaux (Y) sur le 93
+(budgets).</p>
+<p>Pour mémoire, l’hypothèse nulle (H<sub>0</sub>) est l’absence de
+relation entre impôts locaux et frais de personnel.</p>
 </div>
 <div id="nuage-de-points" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Nuage de points</h1>
@@ -489,15 +491,15 @@ personnel (x) amène l’augmentation des impôts locaux (y) sur le 93
 <pre><code>## png 
 ##   2</code></pre>
 <p><img src="img/agregatChoix.png" /></p>
-<p>Attention, variable explicative et expliquée.</p>
+<p>Attention, encore une fois, variable explicative et expliquée.</p>
 </div>
 <div id="savoirs-faire-tableur" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Savoirs faire
 tableur</h2>
 <p>Mise en forme du tableau</p>
 <ul>
-<li>tcd le fameux tableau croisé dynamique (données table dynamique dans
-Calc)</li>
+<li>tcd le fameux <em>tableau croisé dynamique</em> (données table
+dynamique dans Calc)</li>
 </ul>
 <p><img src="img/tcd.png" /></p>
 <ul>
@@ -508,6 +510,8 @@ tcd)</li>
 <ul>
 <li>types de diagramme ; xy - dispersion</li>
 </ul>
+<p>Attention, le diagramme ne s’affiche pas correctement à partir du
+tcd, il faut faire une copie des deux variables.</p>
 </div>
 <div id="simplification-des-chiffres" class="section level2"
 number="2.3">
@@ -554,10 +558,35 @@ X</p></li>
 </ul>
 <p><img src="img/regression.jpg" /> La distance MP doit être minimale
 d’où le terme <em>droite des moindres carrées</em></p>
-<div id="droite-de-régression-sous-r" class="section level4"
-number="3.0.0.1">
-<h4><span class="header-section-number">3.0.0.1</span> Droite de
-régression sous R</h4>
+<div id="correction-exercice-droite-de-régression"
+class="section level3" number="3.0.1">
+<h3><span class="header-section-number">3.0.1</span> Correction exercice
+droite de régression</h3>
+<div id="analyse-le-message-est-passé" class="section level4"
+number="3.0.1.1">
+<h4><span class="header-section-number">3.0.1.1</span> Analyse : le
+message est passé</h4>
+<p><img src="img/detailPrecis.png" /></p>
+</div>
+<div id="vocabulaire" class="section level4" number="3.0.1.2">
+<h4><span class="header-section-number">3.0.1.2</span> Vocabulaire</h4>
+<p>Les variables</p>
+<p><img src="img/combienDeVariable.png" /></p>
+<p><img src="img/erreur.png" /> Hypothèse nulle</p>
+<p><img src="img/hypotheseNulle.png" /></p>
+</div>
+<div id="le-graphique" class="section level4" number="3.0.1.3">
+<h4><span class="header-section-number">3.0.1.3</span> Le graphique</h4>
+<p><img src="img/joliGraphique.png" /> <img
+src="img/relationForte.png" /></p>
+<p><img src="img/dispersionMaisRelation.png" /></p>
+<p><img src="img/nonPasDeRelation.png" /></p>
+</div>
+</div>
+<div id="droite-de-régression-sous-r" class="section level3"
+number="3.0.2">
+<h3><span class="header-section-number">3.0.2</span> Droite de
+régression sous R</h3>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">plot</span>(data<span class="sc">$</span>fraisPersonnel, data<span class="sc">$</span>impots, <span class="at">pch=</span><span class="dv">20</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co"># modèle de régression</span></span>
@@ -573,8 +602,11 @@ régression sous R</h4>
 <span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="fu">text</span>( sel<span class="sc">$</span>fraisPersonnel, sel<span class="sc">$</span>impots,<span class="at">labels =</span> <span class="fu">as.character</span>(<span class="fu">row.names</span>(sel))</span>
 <span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>      , <span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">pos =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
 <p><img src="jour3_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>Dans calc, cliquer sur les points et insérer courbe de tendance (on
-peut également afficher l’équation de la droite.)</p>
+</div>
+<div id="dans-calc" class="section level3" number="3.0.3">
+<h3><span class="header-section-number">3.0.3</span> Dans Calc</h3>
+<p>Dans Calc, cliquer sur les points et insérer courbe de tendance
+(Trouver comment afficher l’équation de la droite.)</p>
 <p><img src="img/graphiqueRegression.png" /></p>
 <p>Visuellement, on voit bien qu’il existe un lien entre les deux
 variables, mais il y a beaucoup de points éparses (les résidus)</p>
@@ -687,8 +719,8 @@ résidus</h1>
 <span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Frais de personnel et impôts : étude des résidus&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;OFGL, 2024&quot;</span>)</span>
 <span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <p><img src="img/residusCarte.png" /></p>
-<p>Tremblay et Rosny sous Bois sont écartées, elles ne correspondent pas
-du tout au modèle.</p>
+<p>Tremblay et Rosny sous Bois sont écartées, elles représentaient des
+extrêmes.</p>
 <p>Les villes dans les teintes les plus foncées s’éloignent le plus du
 modèle.</p>
 </div>
