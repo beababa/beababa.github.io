@@ -552,69 +552,64 @@ un filtre sur quelques villes déjà repérées pour leur originalité
 </div>
 </div>
 </div>
-<div id="tableau-de-contingence-correction-attention-correction-2023"
-class="section level1" number="3">
+<div id="tableau-de-contingence-correction" class="section level1"
+number="3">
 <h1><span class="header-section-number">3</span> Tableau de contingence
-: correction (attention correction 2023)</h1>
-<div id="manipulation-du-tableau" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Manipulation du
-tableau</h2>
-<p>Il fallait travailler sur les élections 2022. Le tableau est présenté
-en longueur.</p>
-<p>Pour pouvoir obtenir un tableau de contingence :</p>
+: correction</h1>
+<p>Beaucoup de rendus et … beaucoup de mauvaises notes</p>
+<p><img src="img/rendu.png" /></p>
+<div id="définition-des-variables" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Définition des
+variables</h2>
 <ul>
-<li>Récupérer le nom de chaque candidat avec une formule</li>
+<li>Il ne s’agissait pas de décrire les variables du graphique</li>
 </ul>
-<p><img src="img/continRecup.png" /> - faire une recopie incrémentée sur
-la droite</p>
+<p><img src="img/defVariableEtik.png" /></p>
+<p>La bonne réponse correspondait au cours :</p>
 <ul>
-<li><p>transposer le tableau et faire une copie spéciale valeurs
-uniquement (CTRL + MAJ + V)</p></li>
-<li><p>poser un filtre et récupérer uniquement les noms des
-candidats</p></li>
+<li>exemple 1 : au moins, c’est clair</li>
 </ul>
-<p><img src="img/continFiltre.png" /></p>
+<p><img src="img/defVariable.png" /></p>
 <ul>
-<li>ne pas oublier de faire un copier - coller du tableau final en
-transposant</li>
+<li>Le plus complet</li>
 </ul>
-</div>
-<div id="correction-rapide" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Correction
-rapide</h2>
-<div id="description-de-la-donnée" class="section level3"
-number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Description de la
-donnée</h3>
-<p>Il s’agit des résultats de la présidentielle sur 2022 à Bondy
-(chiffres du ministère de l’intérieur via data.gouv.fr)</p>
-<p>La donnée comporte 2 variables :</p>
+<p><img src="img/defVariableNormand.png" /> <img
+src="img/defVariableGraphique.png" /></p>
 <ul>
-<li>les 32 bureaux de vote</li>
-<li>les 12 candidats</li>
+<li>le moins clair</li>
 </ul>
+<p><img src="img/defVariableIncomprehensible.png" /></p>
+<ul>
+<li>le plus court</li>
+</ul>
+<p><img src="img/defVariableConcis.png" /></p>
+<ul>
+<li>on y est presque</li>
+</ul>
+<p><img src="img/defVariableDommage.png" /> <img
+src="img/defVariableDommage2.png" /></p>
 </div>
-<div id="graphique" class="section level3" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Graphique</h3>
-<p><img src="img/continGraphique.png" /></p>
-<p>Remarquer le titre</p>
-<p>au niveau de la présentation des séries, la boite de dialogue
-<em>plages de données</em> permet de classer les séries</p>
-<p><img src="img/continEtik.png" /></p>
+<div id="ecart-à-la-moyenne-des-fréquences-par-commune"
+class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Ecart à la moyenne
+des fréquences par commune</h2>
+<div id="pas-un-déficit" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Pas un déficit</h3>
+<p>Attention, dans ce cas une valeur négative n’est pas un déficit !</p>
+<p><img src="img/ecartMoyenne.png" /></p>
 </div>
-<div id="analyse" class="section level3" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Analyse</h3>
-<p>Sur les 12 candidats, 3 arrivent en tête dans tous les bureaux avec
-cependant un vote majoritaire pour Mélenchon dans l’échantillon des 4
-bureaux. Les voies se répartissent de manière quasiment homogène sur les
-9 autres candidats. Même si les bureaux restent différents, les
-répartitions des votes se ressemblent. Les différences entre bureaux
-étaient plus marquées en 2002.</p>
-</div>
-<div id="observations-sur-les-villes-choisies" class="section level3"
-number="3.2.4">
-<h3><span class="header-section-number">3.2.4</span> Observations sur
-les villes choisies</h3>
+<div id="pourquoi-calculer-au-niveau-départemental"
+class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Pourquoi calculer
+au niveau départemental ?</h3>
+<ul>
+<li>exemple 1</li>
+</ul>
+<p><img src="img/ecartDpt.png" /></p>
+<ul>
+<li>exemple 2</li>
+</ul>
+<p><img src="img/ecartDpt2.png" /></p>
 </div>
 </div>
 </div>
@@ -869,7 +864,10 @@ bascule entre le rejet et l’acceptation de l’hypothèse nulle.</p>
 number="6">
 <h1><span class="header-section-number">6</span> Sous R, vérification
 des calculs</h1>
-<p>Constitution de la table de contingence</p>
+<div id="constitution-de-la-table-de-contingence" class="section level2"
+number="6.1">
+<h2><span class="header-section-number">6.1</span> Constitution de la
+table de contingence</h2>
 <pre><code>##  Nom.2024.Commune   Annuité de la dette Dépenses d&#39;équipement
 ##  Length:40          Min.   :  4.164     Min.   : 130.6       
 ##  Class :character   1st Qu.: 75.868     1st Qu.: 316.9       
@@ -889,9 +887,13 @@ des calculs</h1>
 ## 
 ## data:  jointure[, -1]
 ## X-squared = 11605, df = 156, p-value &lt; 2.2e-16</code></pre>
-<p>carto</p>
+</div>
+<div id="cartographie-contribution-au-khi2" class="section level2"
+number="6.2">
+<h2><span class="header-section-number">6.2</span> Cartographie :
+contribution au khi2</h2>
 <pre><code>## Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.3.1; sf_use_s2() is TRUE</code></pre>
-<p><img src="jour4_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="jour4_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <pre><code>## Reading layer `communes93&#39; from data source 
 ##   `C:\Users\tachasa\01_stat\data\communes93.geojson&#39; using driver `GeoJSON&#39;
 ## Simple feature collection with 307 features and 48 fields
@@ -899,7 +901,8 @@ des calculs</h1>
 ## Dimension:     XY
 ## Bounding box:  xmin: 2.288278 ymin: 48.80725 xmax: 2.6033 ymax: 49.01233
 ## Geodetic CRS:  WGS 84</code></pre>
-<p><img src="jour4_files/figure-html/unnamed-chunk-10-2.png" width="672" /><img src="jour4_files/figure-html/unnamed-chunk-10-3.png" width="672" /></p>
+<p><img src="jour4_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+</div>
 </div>
 <div id="en-guise-de-conclusion-pourquoi-le-khi2" class="section level1"
 number="7">

@@ -463,13 +463,13 @@ cours</h1>
 <p><em>“L5GEABIM Analyses bivariées et multivariées”</em></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deroule2025.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col width="8%" />
 <col width="7%" />
-<col width="61%" />
+<col width="17%" />
+<col width="55%" />
 <col width="6%" />
-<col width="15%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -498,14 +498,15 @@ cours</h1>
 <tr class="odd">
 <td align="right">3</td>
 <td align="left">29/09/25</td>
-<td align="left">bivariée : base + contingence</td>
+<td align="left">bivariée : base + régression début</td>
 <td align="left"></td>
 <td align="right">2</td>
 </tr>
 <tr class="even">
 <td align="right">4</td>
 <td align="left">06/10/25</td>
-<td align="left">régression</td>
+<td align="left">régression fin + khi début (tableau de
+contingence)</td>
 <td align="left"></td>
 <td align="right">2</td>
 </tr>
@@ -519,8 +520,8 @@ cours</h1>
 <tr class="even">
 <td align="right">6</td>
 <td align="left">20/10/25</td>
-<td align="left">devoir sur table</td>
-<td align="left"></td>
+<td align="left">initiation R</td>
+<td align="left">R</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
@@ -533,37 +534,35 @@ cours</h1>
 <tr class="even">
 <td align="right">7</td>
 <td align="left">03/11/25</td>
-<td align="left">initiation R</td>
-<td align="left">R</td>
+<td align="left">initiation R / boite à moustaches</td>
+<td align="left"></td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
 <td align="right">8</td>
 <td align="left">10/11/25</td>
-<td align="left">initiation R / boite à moustaches</td>
+<td align="left">initiation R / variance + sujet DM</td>
 <td align="left"></td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="right">9</td>
 <td align="left">17/11/25</td>
-<td align="left">initiation R / variance</td>
+<td align="left">multivariée : régression linéaire multiple</td>
 <td align="left"></td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="right">10</td>
 <td align="left">24/11/25</td>
-<td align="left">multivariée : analyse factorielle, classification +
-sujet DM</td>
+<td align="left">multivariée : analyse factorielle</td>
 <td align="left"></td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="right">11</td>
 <td align="left">01/12/25</td>
-<td align="left">multivariée : analyse factorielle et
-classification</td>
+<td align="left">multivariée : classification</td>
 <td align="left"></td>
 <td align="right">NA</td>
 </tr>
@@ -578,7 +577,14 @@ classification</td>
 <tr class="even">
 <td align="right">13</td>
 <td align="left">15/12/25</td>
-<td align="left">rendu du devoir maison et bilan formation</td>
+<td align="left">révisions</td>
+<td align="left"></td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">14</td>
+<td align="left">Entre 6 et 16 janvier</td>
+<td align="left">partiel</td>
 <td align="left"></td>
 <td align="right">NA</td>
 </tr>
@@ -630,11 +636,10 @@ number="3">
 <h2><span class="header-section-number">3.1</span> Qui sont les
 étudiants ?</h2>
 <ul>
-<li>80 étudiants sur 3 cours</li>
+<li>84 étudiants inscrits sur 3 cours (70 présents environ)</li>
 </ul>
 <p>Les questions posées sont sur le passé / présent / futur des
-étudiants, leur appétence en stats et le nombre d’années depuis le
-dernier apprentissage.</p>
+étudiants, leur appétence en stats</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&quot;data/TD3_stats_2025.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>etudiant2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tdLundi.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">names</span>(etudiant)</span>
@@ -679,57 +684,43 @@ cours</h3>
 <div id="les-rendus-dexercices" class="section level3" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Les rendus
 d’exercices</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>renduTD1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">24</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>renduTD2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">28</span>, <span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>renduTD3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">28</span>, <span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>titre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;distribution&quot;</span>, <span class="st">&quot;univarié&quot;</span>, <span class="st">&quot;contingence&quot;</span>, <span class="st">&quot;khi2&quot;</span>, <span class="st">&quot;regression&quot;</span>, <span class="st">&quot;1er script&quot;</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/rendu.png&quot;</span>, <span class="at">width =</span> <span class="dv">500</span>, <span class="at">height =</span> <span class="dv">1000</span>, <span class="at">res =</span> <span class="dv">100</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">6</span>), <span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))</span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="fu">barplot</span>(renduTD1, <span class="at">names =</span> titre, <span class="at">cex.names =</span> <span class="fl">0.8</span>, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;rendu devoirs Gr 1 (effectif 30 étudiants)&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="fu">text</span>(p, <span class="at">y =</span> renduTD1 <span class="sc">-</span> <span class="dv">1</span>, <span class="at">labels =</span> renduTD1 )</span>
-<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="fu">barplot</span>(renduTD2, <span class="at">names =</span> titre, <span class="at">cex.names =</span> <span class="fl">0.8</span>, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;rendu devoirs Gr 2 (effectif 36 étudiants)&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="fu">text</span>(p, <span class="at">y =</span> renduTD2 <span class="sc">-</span> <span class="dv">1</span>, <span class="at">labels =</span> renduTD2 )</span>
-<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="fu">barplot</span>(renduTD3, <span class="at">names =</span> titre, <span class="at">cex.names =</span> <span class="fl">0.8</span>, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;rendu devoirs Gr 1 (effectif 20 étudiants)&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="fu">text</span>(p, <span class="at">y =</span> renduTD3 <span class="sc">-</span> <span class="dv">1</span>, <span class="at">labels =</span> renduTD3 )</span>
-<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/notesDM1_4.csv&quot;</span>, <span class="at">na.strings =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>)]</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>)]</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>titre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1_distribution&quot;</span>, <span class="st">&quot;2_univarié&quot;</span>, <span class="st">&quot;3_regression&quot;</span>, <span class="st">&quot;4_contingence&quot;</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/rendu.png&quot;</span>, <span class="at">width =</span> <span class="dv">1000</span>, <span class="at">height =</span> <span class="dv">1000</span>, <span class="at">res =</span> <span class="dv">100</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="fu">par</span>( <span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>tot <span class="ot">&lt;-</span> <span class="fu">length</span>(data)</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>i <span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>tot)){</span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">table</span>(data [,i])</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>  <span class="fu">barplot</span>(tmp,  <span class="at">cex.names =</span> <span class="fl">0.8</span>, <span class="at">las =</span> <span class="dv">1</span>, </span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">paste0</span>(titre [i], <span class="st">&quot; (&quot;</span>, <span class="fu">sum</span>(tmp), <span class="st">&quot; observations)&quot;</span>), <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">col =</span> <span class="st">&quot;wheat&quot;</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>  }</span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <p><img src="img/rendu.png" /></p>
-<div id="les-notes-des-exercices" class="section level4"
-number="3.2.2.1">
-<h4><span class="header-section-number">3.2.2.1</span> Les notes des
-exercices</h4>
 <ul>
 <li>Le critère externe : des points faciles ?</li>
 </ul>
-<p>le nom du fichier le temps du rendu (avant la limite)</p>
+<p>le nom du fichier</p>
+<p>le temps du rendu (avant la limite)</p>
 <ul>
-<li>Distribution des totaux</li>
+<li>Augmentation des erreurs avec l’exercice 4</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/exo.csv&quot;</span>,  <span class="at">na.strings =</span> <span class="st">&#39;-&#39;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">names</span>(res)</span></code></pre></div>
-<pre><code>## [1] &quot;X5_regression&quot; &quot;X1_Univarié.1&quot; &quot;X2_Univarié.2&quot; &quot;X3_khi2&quot;      
-## [5] &quot;X4_Khi2.2&quot;     &quot;X6_R&quot;</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> res [, <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">6</span>)]</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># recodage : si note 2, alors note1 = 0 si NA</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>res<span class="sc">$</span>X1_Univarié<span class="fl">.1</span> [<span class="fu">is.na</span>(res<span class="sc">$</span>X1_Univarié<span class="fl">.1</span> )<span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(res<span class="sc">$</span>X2_Univarié<span class="fl">.2</span>)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>res<span class="sc">$</span>X1_Univarié<span class="fl">.1</span> [ <span class="fu">is.na</span>(res<span class="sc">$</span>X2_Univarié<span class="fl">.2</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co"># graphique</span></span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(res))){</span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  p <span class="ot">&lt;-</span><span class="fu">barplot</span>(<span class="fu">table</span>(res[,i]), <span class="at">main =</span> <span class="fu">names</span>(res)[i])</span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-</div>
+<p>Attention à la consigne !</p>
 </div>
 </div>
 <div id="notes-finales" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Notes finales</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>note <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/noteFinales.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">&quot;EN ATTENTE&quot;</span>, <span class="st">&quot;NA&quot;</span>,<span class="st">&quot;-&quot;</span>), <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">summary</span>(note)</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/noteFin.png&quot;</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="fu">hist</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">main =</span> <span class="st">&quot;Etalement note finale - 64 obs&quot;</span>, <span class="at">freq =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">na.rm =</span> T),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">na.rm=</span>T), <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>note <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/noteFinales.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">&quot;EN ATTENTE&quot;</span>, <span class="st">&quot;NA&quot;</span>,<span class="st">&quot;-&quot;</span>), <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">summary</span>(note)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/noteFin.png&quot;</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="fu">hist</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">main =</span> <span class="st">&quot;Etalement note finale - 64 obs&quot;</span>, <span class="at">freq =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">na.rm =</span> T),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">na.rm=</span>T), <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <p><img src="img/noteFin.png" /></p>
 </div>
 </div>

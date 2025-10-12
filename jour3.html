@@ -614,10 +614,11 @@ variables, mais il y a beaucoup de points éparses (les résidus)</p>
 l’aide de calculs.</p>
 </div>
 </div>
-<div id="intensité-du-lien-covariance-et-coefficient-de-bravais-pearson"
-class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Intensité du lien :
-covariance et coefficient de Bravais-Pearson</h1>
+<div id="coefficient-de-correlation" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Coefficient de
+correlation</h1>
+<p>Autrement dit, le coefficient de Bravais-Pearson (1896). Pearson
+propose une formule mathématique pour la notion de corrélation.</p>
 <p>Savoir-faire tableur : utiliser les noms pour les colonnes</p>
 <div id="premier-temps" class="section level3" number="4.0.1">
 <h3><span class="header-section-number">4.0.1</span> Premier temps</h3>
@@ -677,7 +678,17 @@ Tremblay sont conservées.</p>
 number="5">
 <h1><span class="header-section-number">5</span> Coefficient de
 détermination</h1>
-<p>C’est le carré du coefficient de corrélation linéaire</p>
+<p>Au niveau mathématiques, c’est le carré du coefficient de corrélation
+linéaire</p>
+<p>Mais c’est surtout :</p>
+<p>Le rapport entre</p>
+<ul>
+<li>la variation de Y expliquée par le modèle</li>
+</ul>
+<p>et</p>
+<ul>
+<li>la variation totale de Y</li>
+</ul>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">cor</span>(varCorr)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>##                fraisPersonnel   impots
 ## fraisPersonnel       1.000000 0.354562
@@ -701,7 +712,7 @@ sont élévés. A Clichy sous Bois, les frais de personnel sont élévés mais
 les impots sont bas.</p>
 </div>
 <div id="cartographie-des-résidus" class="section level1" number="7">
-<h1><span class="header-section-number">7</span> cartographie des
+<h1><span class="header-section-number">7</span> Cartographie des
 résidus</h1>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
 <span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>communes <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/communes93.geojson&quot;</span>)</span>
