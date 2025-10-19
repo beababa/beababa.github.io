@@ -18,7 +18,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <style>h1 {font-size: 34px;}
        h1.title {font-size: 38px;}
@@ -426,7 +425,7 @@ div.tocify {
   <a href="jour4.html">khi2</a>
 </li>
 <li>
-  <a href="jour5.html">examen</a>
+  <a href="jour5.html">bases R</a>
 </li>
 <li>
   <a href="jour6.html">variance</a>
@@ -904,13 +903,155 @@ contribution au khi2</h2>
 <p><img src="jour4_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
 </div>
 </div>
-<div id="en-guise-de-conclusion-pourquoi-le-khi2" class="section level1"
+<div id="correction-de-lexercice-sur-le-khi2" class="section level1"
 number="7">
-<h1><span class="header-section-number">7</span> En guise de conclusion
+<h1><span class="header-section-number">7</span> Correction de
+l’exercice sur le Khi2</h1>
+<div id="rappel-de-la-consigne" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Rappel de la
+consigne</h2>
+<ul>
+<li><p>une description de la donnée (agrégats (au moins 5) et communes
+(au moins 10), attention il s’agit de deux variables de catégorie /
+classe</p></li>
+<li><p>poser l’hypothèse nulle</p></li>
+<li><p>calculer le khi2 et la contribution au khi2 (en %), faire un
+graphique de fréquence de la contribution au khi2 (en %).</p></li>
+<li><p>analyser cette contribution : que signifie une forte contribution
+?</p></li>
+</ul>
+<div id="fallait-il-comparer-khi2-théorique-et-khi2-observé"
+class="section level3" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Fallait-il comparer
+khi2 théorique et khi2 observé ?</h3>
+<p>Il n’était pas nécessaire de chercher si le test était significatif
+ou non.</p>
+<p>Les khi2 observés étaient-ils des chiffres importants ?</p>
+<p>Si on observe une table de khi2, quelle est la grandeur des chiffres
+?</p>
+</div>
+</div>
+<div id="analyse-de-la-contribution" class="section level2"
+number="7.2">
+<h2><span class="header-section-number">7.2</span> Analyse de la
+contribution</h2>
+<p>L’erreur surprise</p>
+<p><img src="img/contribution02.png" /></p>
+<p>L’erreur intéressante : confusion significativité du test et
+importance de la contribution</p>
+<p><img src="img/confusionContributionRejet.png" /></p>
+<p><img src="img/confusionContrib.png" /> <img
+src="img/confusionContrib3.png" /></p>
+</div>
+<div id="le-graphique" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Le graphique</h2>
+<p>consigne : faire un graphique de fréquence de la contribution au khi2
+(en %)</p>
+<p><img src="img/mauvaisGraphiquePasJoli.png" /></p>
+<p><img src="img/mauvaisGraphiqueJoli.png" /></p>
+<p><img src="img/mauvaisGraphiqueBonneIdee.png" /></p>
+<p><img src="img/bonGraphique.png" /></p>
+<p><img src="img/chatGPT.png" /></p>
+</div>
+<div id="correction-complète" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Correction
+complète</h2>
+<p>Cas de la communauté d’agglo de Cergy-Pontoise</p>
+<p>Il y a ici croisement de deux variables de type classe / catégorie :
+- Communes (effectif = 12) - Agrégats (effectif = 3), modalités =
+dépense de fonctionnement / frais de personnel / impôts locaux</p>
+<p>Comme il s’agit de deux variables qualitatives, on utilise un test de
+khi<sup>2</sup> Celui va nous permettre de tester l’hypothèse
+H<sub>0</sub>, à savoir les variables communes et agrégats sont
+indépendantes.</p>
+<p>Mise en forme de la donnée</p>
+<pre><code>##  [1] &quot;Exercice&quot;                             
+##  [2] &quot;Outre.mer&quot;                            
+##  [3] &quot;Code.Insee.2024.Région&quot;               
+##  [4] &quot;Nom.2024.Région&quot;                      
+##  [5] &quot;Code.Insee.2024.Département&quot;          
+##  [6] &quot;Nom.2024.Département&quot;                 
+##  [7] &quot;Code.Siren.2024.EPCI&quot;                 
+##  [8] &quot;Nom.2024.EPCI&quot;                        
+##  [9] &quot;Strate.population.2024&quot;               
+## [10] &quot;Commune.rurale&quot;                       
+## [11] &quot;Commune.de.montagne&quot;                  
+## [12] &quot;Commune.touristique&quot;                  
+## [13] &quot;Tranche.revenu.par.habitant&quot;          
+## [14] &quot;Présence.QPV&quot;                         
+## [15] &quot;Code.Insee.2024.Commune&quot;              
+## [16] &quot;Nom.2024.Commune&quot;                     
+## [17] &quot;Catégorie&quot;                            
+## [18] &quot;Code.Siren.Collectivité&quot;              
+## [19] &quot;Code.Insee.Collectivité&quot;              
+## [20] &quot;Siret.Budget&quot;                         
+## [21] &quot;Libellé.Budget&quot;                       
+## [22] &quot;Type.de.budget&quot;                       
+## [23] &quot;Nomenclature&quot;                         
+## [24] &quot;Agrégat&quot;                              
+## [25] &quot;Montant&quot;                              
+## [26] &quot;Montant.en.millions&quot;                  
+## [27] &quot;Population.totale&quot;                    
+## [28] &quot;Montant.en...par.habitant&quot;            
+## [29] &quot;Compte.2024.Disponible&quot;               
+## [30] &quot;code_type_budget&quot;                     
+## [31] &quot;ordre_analyse1_section1&quot;              
+## [32] &quot;ordre_analyse1_section2&quot;              
+## [33] &quot;ordre_analyse1_section3&quot;              
+## [34] &quot;ordre_analyse2_section1&quot;              
+## [35] &quot;ordre_analyse2_section2&quot;              
+## [36] &quot;ordre_analyse2_section3&quot;              
+## [37] &quot;ordre_analyse3_section1&quot;              
+## [38] &quot;ordre_analyse3_section2&quot;              
+## [39] &quot;ordre_analyse3_section3&quot;              
+## [40] &quot;ordre_analyse4_section1&quot;              
+## [41] &quot;annee_join&quot;                           
+## [42] &quot;Population.totale.du.dernier.exercice&quot;</code></pre>
+<pre><code>##             ville fonctionnement personnel impots
+## 1       Boisemont          812.7     283.7  583.9
+## 2           Cergy         1250.1     818.7  835.4
+## 3    Courdimanche         1117.1     737.2  818.8
+## 4          Éragny         1187.1     797.5  838.7
+## 5 Jouy-le-Moutier         1174.2     799.2  878.7
+## 6       Menucourt          934.5     612.7  794.8</code></pre>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  data
+## X-squared = 279.3, df = 22, p-value &lt; 2.2e-16</code></pre>
+<p><img src="jour4_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="jour4_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>Analyse :</p>
+<p>Boisemont et Neuville sur Oise contribuent fortement au
+khi<sup>2</sup>. Boisement est un petit village qui ne doit pas avoir
+beaucoup d’agent. Neuville sur Oise est un peu plus gros mais a des
+impôts élevés. Dans les deux cas, ces deux communes sont différentes des
+autres communes de la ca de Cergy.</p>
+<pre><code>##                     fonctionnement personnel impots
+## Boisemont                     3.80     -7.10   1.98
+## Cergy                         0.59      2.70  -3.09
+## Courdimanche                 -0.43      1.97  -1.26
+## Éragny                       -0.24      2.72  -2.17
+## Jouy-le-Moutier              -0.96      2.50  -1.14
+## Menucourt                    -1.81      0.49   1.65
+## Neuville-sur-Oise            -1.25     -6.00   6.81
+## Osny                         -1.45      2.26  -0.35
+## Pontoise                     -0.51     -0.36   0.90
+## Puiseux-Pontoise              1.33     -5.62   3.51
+## Saint-Ouen-l&#39;Aumône           1.32      0.05  -1.56
+## Vauréal                       0.39      2.96  -3.10</code></pre>
+<p>Voir l’outil stat locale de l’insee.</p>
+<p><a href="https://www.insee.fr/fr/outil-interactif/7737357/map.html"
+class="uri">https://www.insee.fr/fr/outil-interactif/7737357/map.html</a></p>
+</div>
+</div>
+<div id="en-guise-de-conclusion-pourquoi-le-khi2" class="section level1"
+number="8">
+<h1><span class="header-section-number">8</span> En guise de conclusion
 : pourquoi le khi2 ?</h1>
 <div id="les-fréquences-conditionnelles-suffisent-t-elles"
-class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Les fréquences
+class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Les fréquences
 conditionnelles suffisent-t-elles ?</h2>
 <p>Comparaison des 2 tableaux</p>
 <p>Fréquence conditionnelle en ligne</p>
