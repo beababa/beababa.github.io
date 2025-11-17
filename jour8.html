@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Multivariées : descriptif</title>
+
+<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="intro.html">Introduction</a>
+</li>
+<li>
+  <a href="jour1.html">univariées</a>
+</li>
+<li>
+  <a href="jour2.html">bivariées</a>
+</li>
+<li>
+  <a href="jour3.html">régression </a>
+</li>
+<li>
+  <a href="jour4.html">khi2</a>
+</li>
+<li>
+  <a href="jour5.html">bases R</a>
+</li>
+<li>
+  <a href="jour6.html">variance</a>
+</li>
+<li>
+  <a href="jour7.html">multivariées 1</a>
+</li>
+<li>
+  <a href="jour8.html">multivariées 2</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/beababa/01_stat">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Multivariées : descriptif</h1>
+
+</div>
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
+<pre><code>## Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.3.1; sf_use_s2() is TRUE</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span></code></pre></div>
+<p>Les analyses factorielles sont une démarche descriptive. Il s’agit de
+résumer de grands tableaux d’informations en passant des colonnes aux
+axes factoriels.</p>
+<p>Attention, contrairement à la régression il ne s’agit pas d’expliquer
+mais de résumer.</p>
+<div id="préparation-de-la-donnée" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Préparation de la
+donnée</h1>
+<p>On reprend la donnée construite pour la régression multiple</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/baseMultivarie.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span> )</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##                      vente personnel     emprunt equipement    pop
+## Aubervilliers     8.922840  86.23647  0.07647707   28.68539 9.0259
+## Aulnay-sous-Bois 11.969172  94.39636  1.27871516   21.21589 8.6522
+## Bagnolet          4.606493  45.23602  4.40000000   17.85997 3.9493
+## Bobigny          12.026500  71.44153 16.05282400   47.42069 5.5191
+## Bondy             6.127473  51.13971  5.00000000   11.42274 5.3067
+## Clichy-sous-Bois  1.793706  30.31320  0.00000000   13.83377 2.9806</code></pre>
+<p>Il s’agit d’une matrice numérique.</p>
+</div>
+<div id="exploration-de-la-donnée" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Exploration de la
+donnée</h1>
+<p>Il s’agit de commandes à faire à chaque fois que l’on découvre une
+donnée</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code></pre></div>
+<pre><code>##      vente           personnel          emprunt            equipement     
+##  Min.   : 0.7324   Min.   :  3.766   Min.   : 0.000000   Min.   : 0.9604  
+##  1st Qu.: 2.1699   1st Qu.: 20.409   1st Qu.: 0.007286   1st Qu.: 9.6207  
+##  Median : 4.0436   Median : 39.584   Median : 3.000590   Median :13.6374  
+##  Mean   : 5.3179   Mean   : 42.091   Mean   : 4.801627   Mean   :18.4521  
+##  3rd Qu.: 8.1072   3rd Qu.: 56.226   3rd Qu.: 8.198120   3rd Qu.:23.0387  
+##  Max.   :19.1979   Max.   :122.243   Max.   :20.226050   Max.   :70.7883  
+##       pop         
+##  Min.   : 0.5107  
+##  1st Qu.: 2.3076  
+##  Median : 3.9146  
+##  Mean   : 4.1881  
+##  3rd Qu.: 5.3399  
+##  Max.   :11.4782</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">cor</span>(data)</span></code></pre></div>
+<pre><code>##                vente personnel   emprunt equipement       pop
+## vente      1.0000000 0.8331551 0.5593201  0.7053665 0.8639097
+## personnel  0.8331551 1.0000000 0.5320888  0.7178396 0.9688553
+## emprunt    0.5593201 0.5320888 1.0000000  0.7133739 0.4884455
+## equipement 0.7053665 0.7178396 0.7133739  1.0000000 0.7074864
+## pop        0.8639097 0.9688553 0.4884455  0.7074864 1.0000000</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">pairs</span>(data)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="acp-analyse-en-composante-principale" class="section level1"
+number="3">
+<h1><span class="header-section-number">3</span> ACP analyse en
+composante principale</h1>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data, <span class="at">scale. =</span> F)</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">plot</span>(res)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/acpCentreNONReduite.png&quot;</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">biplot</span>(res)</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<pre><code>## png 
+##   2</code></pre>
+<p><img src="img/acpCentreNONReduite.png" /></p>
+<p>Deux graphiques superposés :</p>
+<ul>
+<li><p>cercle des corrélations (les agrégats et la population)</p></li>
+<li><p>nuage de points (les communes du 93)</p></li>
+</ul>
+<p>On résume la donnée sur 2 axes seulement (PC1 et PC2)</p>
+<p>Dans le cercle de corrélations :</p>
+<ul>
+<li><p>longueur flèche (mauvaise / bonne représentation)</p></li>
+<li><p>position - proche / opposée - orthogonale (= aucune
+relation)</p></li>
+</ul>
+</div>
+<div id="classification-hiérarchique" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Classification
+hiérarchique</h1>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># matrice des distances</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>ddata <span class="ot">&lt;-</span> <span class="fu">dist</span>(data)</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>cah <span class="ot">&lt;-</span> <span class="fu">hclust</span>(ddata)</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="fu">plot</span>(cah)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Dendrogramme avec matérialisation des groupes</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co">#png(&quot;img/lafleche3.png&quot;)</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">plot</span>(cah)</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">rect.hclust</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>groupes.cah <span class="ot">&lt;-</span> <span class="fu">cutree</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co">#dev.off()</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co">#liste des groupes</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sort</span>(groupes.cah))</span></code></pre></div>
+<pre><code>##           Aubervilliers        Aulnay-sous-Bois               Montreuil 
+##                       1                       1                       1 
+##             Saint-Denis                Bagnolet                   Bondy 
+##                       1                       2                       2 
+##        Clichy-sous-Bois        Épinay-sur-Seine                   Gagny 
+##                       2                       2                       2 
+##            La Courneuve         Le Blanc-Mesnil               Les Lilas 
+##                       2                       2                       2 
+##            Livry-Gargan             Montfermeil       Neuilly-sur-Marne 
+##                       2                       2                       2 
+##            Noisy-le-Sec   Pierrefitte-sur-Seine             Romainville 
+##                       2                       2                       2 
+##         Rosny-sous-Bois    Saint-Ouen-sur-Seine                  Sevran 
+##                       2                       2                       2 
+##                  Stains      Tremblay-en-France             Villemomble 
+##                       2                       2                       2 
+##              Villepinte                 Bobigny                  Drancy 
+##                       2                       3                       3 
+##          Noisy-le-Grand                  Pantin                 Coubron 
+##                       3                       3                       4 
+##                   Dugny       Gournay-sur-Marne       L&#39;Île-Saint-Denis 
+##                       4                       4                       4 
+##              Le Bourget    Le Pré-Saint-Gervais               Le Raincy 
+##                       4                       4                       4 
+## Les Pavillons-sous-Bois       Neuilly-Plaisance                Vaujours 
+##                       4                       4                       4 
+##            Villetaneuse 
+##                       4</code></pre>
+</div>
+<div id="quelques-remarques-autour-de-ces-premiers-résultats"
+class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Quelques remarques
+autour de ces premiers résultats</h1>
+<div id="correspondance-cercle-de-correlation-et-dendrogramme"
+class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Correspondance cercle
+de correlation et dendrogramme</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># on filtre sur les communes de Pantin et d&#39;Aulnay sous Bois</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">rownames</span>(data)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>sel <span class="ot">&lt;-</span> data [<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">28</span>),]</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># on transforme en matrice pour pouvoir faire un graphique de comparaison des répartitions</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(sel)</span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/lafleche.png&quot;</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="fu">barplot</span>(mat, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">beside =</span> T, <span class="at">col =</span> <span class="fu">terrain.colors</span>(<span class="dv">2</span>), <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<p><img src="img/lafleche.png" /></p>
+</div>
+<div id="quelques-graphiques-pour-mieux-observer" class="section level2"
+number="5.2">
+<h2><span class="header-section-number">5.2</span> Quelques graphiques
+pour mieux observer</h2>
+<div id="comparer-les-communes-variable-par-variable"
+class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Comparer les
+communes variable par variable</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">barplot</span>(data<span class="sc">$</span>vente<span class="sc">~</span><span class="fu">rownames</span>(data), <span class="at">las =</span><span class="dv">2</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="fu">barplot</span>(data<span class="sc">$</span>personnel<span class="sc">~</span><span class="fu">rownames</span>(data), <span class="at">las =</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="plus-complexe-commune-par-commune" class="section level3"
+number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Plus complexe,
+commune par commune</h3>
+<p>Il faut transformer en matrice</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>matrice <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(data)</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="fu">boxplot</span>((matrice), <span class="at">las=</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># transposition de la matrice</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">t</span>(matrice), <span class="at">las=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="deuxième-approche-de-lacp-on-filtre" class="section level1"
+number="6">
+<h1><span class="header-section-number">6</span> Deuxième approche de
+l’ACP, on filtre</h1>
+<p>Deux directions possibles :</p>
+<ul>
+<li><p>on distingue petites et grandes villes</p></li>
+<li><p>on zoome sur certaines villes</p></li>
+</ul>
+<div id="les-variables" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Les variables</h2>
+<p>On veut montrer uniquement les petites villes, celles dont la
+population est moindre</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>pop)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>pop <span class="sc">&lt;</span> <span class="dv">6</span>,]</span></code></pre></div>
+<p>Et on reproduit le code jusqu’à l’ACP</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/ptit.png&quot;</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fu">biplot</span>(res)</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<pre><code>## png 
+##   2</code></pre>
+<p><img src="img/ptit.png" /></p>
+</div>
+<div id="les-communes" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Les communes</h2>
+<p>On choisit une ville dans chacun des r4 groupes : Pantin,
+Aubervilliers, Vaujours et Villepinte</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/baseMultivarie.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>sel <span class="ot">&lt;-</span> data [<span class="fu">row.names</span>(data) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Pantin&quot;</span>, <span class="st">&quot;Aubervilliers&quot;</span>, <span class="st">&quot;Vaujours&quot;</span>,<span class="st">&quot;Villepinte&quot;</span>),]</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(sel)</span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a><span class="fu">biplot</span>(acp)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="centrer-et-réduire" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Centrer et
+réduire</h2>
+<p>Centrer et réduire permet de comparer les variables dont les montants
+sont très différents.</p>
+<p>Centrer : on compte les écarts à la moyenne</p>
+<p>Réduire : on divise toutes les valeurs par l’écart type.</p>
+<div id="comprendre-loption-scale.-dans-la-commande"
+class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Comprendre l’option
+“scale.” dans la commande</h3>
+<p>Il faut faire varier l’option avec FALSE et TRUE.</p>
+<p>Le FALSE permet d’obtenir uniquement les variables les plus
+importantes.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data, <span class="at">scale. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="fu">biplot</span>(acp)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Le TRUE permet de pouvoir comparer toutes les variables</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data, <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="fu">biplot</span>(acp)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="idem-avec-la-classification" class="section level3"
+number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Idem avec la
+classification</h3>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>data.cr <span class="ot">&lt;-</span> <span class="fu">scale</span>(data, <span class="at">center =</span> T, <span class="at">scale =</span> T)</span></code></pre></div>
+</div>
+<div id="au-niveau-des-données" class="section level3" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Au niveau des
+données</h3>
+<p>On peut également utiliser la fonction scale pour les données
+elles-mêmes</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a><span class="co"># transformation en matrice</span></span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(data [, <span class="fu">c</span>(<span class="st">&quot;emprunt&quot;</span>, <span class="st">&quot;pop&quot;</span>)])</span>
+<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a><span class="co"># graphiques pour comparer les 2 variables par bureau de vote</span></span>
+<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a><span class="fu">barplot</span>(mat, <span class="at">beside=</span>T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a><span class="fu">hist</span>(mat)</span>
+<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a><span class="co"># on ne voit rien, il faut centrer réduire</span></span>
+<span id="cb30-8"><a href="#cb30-8" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">scale</span>(mat)</span>
+<span id="cb30-9"><a href="#cb30-9" tabindex="-1"></a><span class="fu">barplot</span>(mat, <span class="at">beside =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb30-10"><a href="#cb30-10" tabindex="-1"></a><span class="fu">hist</span>(mat)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<small><p>L5GEABIM Analyses bivariées et multivariées</p></small>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
