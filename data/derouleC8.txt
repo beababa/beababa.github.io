@@ -1,0 +1,36 @@
+cours : L5GEABIM - TD - Analyses bivariées et multivariées - BMaranget
+mots de passe Moodle
+8h-Lundi
+9h30-Lundi
+17h30-Vendredi
+---------------------------------
+connexion cours https://beababa.github.io/intro.html
+beatrice.maranget@bondy.fr
+--------------------------------------
+
+
+
+-------------------------
+Télécharger un agrégat sur deux départements à partir des communes (sauf celui de l'épargne), l'ouvrir sous R
+--------------------------------------------------------------
+En suivant 2.2.3, ouvrir le fichier, sélectionner les colonnes et obtenir le nb de communes par dpt
+-------------------------
+calculer la variance avec la formule var
+ou avec la formule "manuelle" : moyenne des écarts à la moyenne 4.2
+---------------------------------
+Suivre le cours (5) et faire l'analyse de variance
+
+
+
+
+# transformation en variable de catégorie (une précaution)
+sel$dpt <- as.factor(sel$dpt) #Variable de catégorie
+# construction du modèle (on ne peut pas lancer une analyse de 
+# variance sur la réalité)
+modele <- lm (montant ~ dpt, data = sel)
+anova(modele)
+-----------------
+Attention ! changer le nom des objets R pour qu'ils correspondent à
+votre script
+---------------
+comprendre ces 3 lignes

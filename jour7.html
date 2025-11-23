@@ -539,8 +539,36 @@ urbaine</p></li>
 ##                          40                          40 
 ##          Frais de personnel Ventes de biens et services 
 ##                          40                          40</code></pre>
-<p>exercice : utiliser l’aide F1 pour voir les options utiles de
+<div id="exercice-de-cours" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Exercice de
+cours</h2>
+<p>Utiliser l’aide F1 pour voir les options utiles de
 <em>read.csv2</em></p>
+<p>Analyse des réponses données par les étudiants :</p>
+<p>on retrouve :</p>
+<ul>
+<li>dec, sep, fileEncoding (peu utilisé avec les données de l’Ofgl)</li>
+</ul>
+<p>mais aussi :</p>
+<ul>
+<li>header, FileEncoding, row.names, skip</li>
+</ul>
+<p>Un exemple pour le row.names</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/communeEtudiant.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">2</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">head</span>(tmp)</span></code></pre></div>
+<pre><code>##                              code departement region commune plm      epci
+## Marseille 8e Arrondissement 13208          13     93   13055  NA        NA
+## La Rochelle                 17300          17     75      NA  NA 241700434
+## Plouhinec                   29197          29     53      NA  NA 242900629
+## Bordeaux                    33063          33     75      NA  NA 243300316
+## Montpellier                 34172          34     76      NA  NA 243400017
+## Nantes                      44109          44     52      NA  NA 244400404</code></pre>
+<p>Attention</p>
+<ul>
+<li>getwd(), names() sont des <em>fonctions</em> et non des
+paramètres</li>
+</ul>
+</div>
 </div>
 <div id="transformation-du-tableau" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Transformation du
@@ -555,22 +583,43 @@ représente une grosse partie de l’étude.</p>
 chiffres</h2>
 <p>Concernant la population de la ville, l’ordre de grandeurs se voit au
 travers de l’histogramme</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>pop)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>pop)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Afin d’avoir des chiffres plus faciles à appréhender, on raisonne en
 dizaine de milliers pour la population.</p>
 <p>Mais, il ne faudra pas oublier de le rappeler à chaque graphique.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>data<span class="sc">$</span>pop <span class="ot">&lt;-</span>  data<span class="sc">$</span>pop<span class="sc">/</span><span class="dv">10000</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>pop, <span class="at">main =</span> <span class="st">&quot;Répartition population villes 93&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;population (en dizaine de milliers)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb de communes&quot;</span>)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>data<span class="sc">$</span>pop <span class="ot">&lt;-</span>  data<span class="sc">$</span>pop<span class="sc">/</span><span class="dv">10000</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>pop, <span class="at">main =</span> <span class="st">&quot;Répartition population villes 93&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;population (en dizaine de milliers)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb de communes&quot;</span>)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Remarque : ordres de grandeur pour les données étudiants</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>dataEtudiant <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/communeEtudiant.csv&quot;</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">unique</span>(dataEtudiant<span class="sc">$</span>departement)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co"># 28 dpt choisis</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co"># on récupère la donnée sur statistiques locale de la population par dpt</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/popDep.csv&quot;</span>, <span class="at">na.strings =</span> <span class="st">&quot;N/A - résultat non disponible&quot;</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co"># attention au pb du NA</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pop [pop<span class="sc">$</span>Code <span class="sc">%in%</span> dpt,]</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co"># 28 dpt avec pop</span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="fu">hist</span>(pop<span class="sc">$</span>Population.municipale<span class="fl">.2022</span>, <span class="at">col =</span> <span class="st">&quot;cadetblue2&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">main =</span> <span class="st">&quot;Ordres de grandeur dpt choisis par les étudiants&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;pop dpt&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;nb de dpt&quot;</span>)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">hist</span>(pop<span class="sc">$</span>Population.municipale<span class="fl">.2022</span><span class="sc">/</span><span class="dv">100000</span>, <span class="at">col =</span> <span class="st">&quot;cadetblue2&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">main =</span> <span class="st">&quot;Ordres de grandeur dpt choisis par les étudiants&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;pop dpt (en centaine de milliers)&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;nb de dpt&quot;</span>)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<p>Cependant, dans les réponses étudiant à la question de l’ordre de
+grandeur de 10 000 et inférieurs.</p>
 <p>2 exercices à faire :</p>
 <ul>
-<li><p>comment utiliser l’aide F1 pour trouver les options nécessaires
-pour présenter le graphique</p></li>
-<li><p>quelle est l’analyse de ce graphique ?</p></li>
+<li>comment utiliser l’aide F1 pour trouver les options nécessaires pour
+présenter le graphique</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>data<span class="sc">$</span>popArr <span class="ot">&lt;-</span> <span class="fu">round</span>(data<span class="sc">$</span>pop,<span class="dv">0</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">unique</span>(data [<span class="fu">order</span>(data<span class="sc">$</span>popArr), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">7</span>)])</span></code></pre></div>
+<p>Remarquer notamment : main (titre), xlab (titre axe X), ylab (titre
+axe Y)</p>
+<ul>
+<li>quelle est l’analyse de ce graphique ?</li>
+</ul>
+<p>Il y a quelques très petites villes et grosses villes mais la
+majorité des villes sont entre 500 000 et 1,5 million.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>data<span class="sc">$</span>popArr <span class="ot">&lt;-</span> <span class="fu">round</span>(data<span class="sc">$</span>pop,<span class="dv">0</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">unique</span>(data [<span class="fu">order</span>(data<span class="sc">$</span>popArr), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">7</span>)])</span></code></pre></div>
 <pre><code>##                    commune popArr
 ## 8               Le Bourget      1
 ## 10                 Coubron      1
@@ -617,6 +666,11 @@ pour présenter le graphique</p></li>
 <li>A quoi servent les fonctions <em>round</em>, <em>unique</em> et
 <em>order</em> ?</li>
 </ul>
+<p>réponse :</p>
+<p>Les fonctions servent à arrondir les chiffres, à supprimer les
+doublons et à classer par ordre croissant</p>
+<p>L’option qui permet de classer en ordre décroissant est
+decreasing=TRUE (consulter l’aide F1 pour le voir)</p>
 </div>
 <div id="montant-relatif-ou-montant-absolu" class="section level2"
 number="2.2">
@@ -624,11 +678,13 @@ number="2.2">
 montant absolu ?</h2>
 <p>On choisit d’utiliser le montant en millions puisque le but de
 l’exercice est d’avoir des variables indépendantes.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">plot</span>(data<span class="sc">$</span>montantTX, data<span class="sc">$</span>pop, <span class="at">xlab =</span> <span class="st">&quot;Montant / hbt&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;population (en dizaine de milliers)&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Utilisation du montant par habitant&quot;</span>)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">plot</span>(data<span class="sc">$</span>montantM, data<span class="sc">$</span>pop, <span class="at">xlab =</span> <span class="st">&quot;Montant (millions)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;population (en dizaine de milliers)&quot;</span>)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">plot</span>(data<span class="sc">$</span>montantTX, data<span class="sc">$</span>pop, <span class="at">xlab =</span> <span class="st">&quot;Montant / hbt&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;population (en dizaine de milliers)&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Utilisation du montant par habitant&quot;</span>)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">plot</span>(data<span class="sc">$</span>montantM, data<span class="sc">$</span>pop, <span class="at">xlab =</span> <span class="st">&quot;Montant (millions)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;population (en dizaine de milliers)&quot;</span>)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
 <p>exercice : que permettent de voir ces deux graphiques ?</p>
+<p>La relation entre montant en millions et population est plus claire
+que celle existant entre montant par hbt et population.</p>
 </div>
 <div id="constitution-de-la-base" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Constitution de la
@@ -639,19 +695,19 @@ par agrégat.</p>
 <p>Sous R, on utilise une jointure : pour chaque commune, donne moi
 l’élément correspondant de l’agrégat.</p>
 <p>On répète l’opération dans une boucle afin d’aller plus vite</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>varX <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>agregat))</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>fin <span class="ot">&lt;-</span> <span class="fu">unique</span>(data [, <span class="fu">c</span>(<span class="st">&quot;commune&quot;</span>,<span class="st">&quot;pop&quot;</span>)])</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="co"># A chaque variable</span></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="cf">for</span> (v <span class="cf">in</span> varX){</span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>  <span class="co"># définir une table temporaire uniquement pour la variable choisie</span></span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat<span class="sc">==</span>v, <span class="fu">c</span>(<span class="st">&quot;commune&quot;</span>,<span class="st">&quot;montantM&quot;</span>)]</span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>  <span class="co"># nommer les sommes sélectionnées du nom de la variable</span></span>
-<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>  <span class="fu">names</span>(tmp) [<span class="dv">2</span>] <span class="ot">&lt;-</span> v</span>
-<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>  jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(tmp, fin, <span class="at">by =</span> <span class="st">&quot;commune&quot;</span>)</span>
-<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>  <span class="co"># Récupérer le tableau pour le tableau final</span></span>
-<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a>  fin <span class="ot">&lt;-</span> jointure</span>
-<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>}</span>
-<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>fin</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>varX <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>agregat))</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>fin <span class="ot">&lt;-</span> <span class="fu">unique</span>(data [, <span class="fu">c</span>(<span class="st">&quot;commune&quot;</span>,<span class="st">&quot;pop&quot;</span>)])</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="co"># A chaque variable</span></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="cf">for</span> (v <span class="cf">in</span> varX){</span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>  <span class="co"># définir une table temporaire uniquement pour la variable choisie</span></span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat<span class="sc">==</span>v, <span class="fu">c</span>(<span class="st">&quot;commune&quot;</span>,<span class="st">&quot;montantM&quot;</span>)]</span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a>  <span class="co"># nommer les sommes sélectionnées du nom de la variable</span></span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a>  <span class="fu">names</span>(tmp) [<span class="dv">2</span>] <span class="ot">&lt;-</span> v</span>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a>  jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(tmp, fin, <span class="at">by =</span> <span class="st">&quot;commune&quot;</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a>  <span class="co"># Récupérer le tableau pour le tableau final</span></span>
+<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a>  fin <span class="ot">&lt;-</span> jointure</span>
+<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a>}</span>
+<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a>fin</span></code></pre></div>
 <pre><code>##                    commune Ventes de biens et services Frais de personnel
 ## 1            Aubervilliers                   8.9228405          86.236467
 ## 2         Aulnay-sous-Bois                  11.9691717          94.396357
@@ -734,55 +790,211 @@ l’élément correspondant de l’agrégat.</p>
 ## 38        0.01627696             8.6810302  3.0514
 ## 39        5.00140500            10.5189276  3.8798
 ## 40        3.00117976            13.5816948  1.2752</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># anciens noms</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">names</span>(fin)  [<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># anciens noms</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">names</span>(fin)  [<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;Ventes de biens et services&quot; &quot;Frais de personnel&quot;         
 ## [3] &quot;Emprunts hors GAD&quot;           &quot;Dépenses d&#39;équipement&quot;</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># simplification des noms</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">names</span>(fin) [<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;vente&quot;</span>, <span class="st">&quot;personnel&quot;</span>, <span class="st">&quot;emprunt&quot;</span>, <span class="st">&quot;equipement&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># simplification des noms</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">names</span>(fin) [<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;vente&quot;</span>, <span class="st">&quot;personnel&quot;</span>, <span class="st">&quot;emprunt&quot;</span>, <span class="st">&quot;equipement&quot;</span>)</span></code></pre></div>
+<p>Enregistrement du tableau de données mis en forme</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">write.csv</span>(fin, <span class="st">&quot;data/baseMultivarie.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<p>Dans l’exercice moodle, à la question “A quoi sert une boucle”, un
+étudiant a répondu</p>
+<p><em>à concevoir la base de données et à avoir une colonne par agrégat
+avec ses valeurs</em></p>
+<p>Ce qui correspond à la réponse précise sur la boucle</p>
+</div>
+<div id="base-pour-les-étudiants" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Base pour les
+étudiants</h2>
+<p>Afin de fournir une donnée propre pour le multivarié, voici
+l’extraction pour les 28 dpt recensés.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/gros/baseEtudiantMultivarie.csv&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/communeEtudiant.csv&quot;</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">unique</span>(dpt<span class="sc">$</span>departement)</span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="co"># filtre colonne</span></span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">27</span>,<span class="dv">16</span>, <span class="dv">24</span>,<span class="dv">26</span>)]</span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<pre><code>## [1] &quot;Code.Insee.2024.Département&quot; &quot;Population.totale&quot;          
+## [3] &quot;Nom.2024.Commune&quot;            &quot;Agrégat&quot;                    
+## [5] &quot;Montant.en.millions&quot;</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">names</span>(data) <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">&quot;dpt&quot;</span>, <span class="st">&quot;pop&quot;</span>, <span class="st">&quot;commune&quot;</span>, <span class="st">&quot;agregat&quot;</span>, <span class="st">&quot;montant&quot;</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>agregat)</span></code></pre></div>
+<pre><code>## 
+##    Concours de l&#39;Etat Dépenses d&#39;équipement     Emprunts hors GAD 
+##                 34908                 34908                 34908 
+##    Frais de personnel 
+##                 34908</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>dpt)</span></code></pre></div>
+<pre><code>## 
+##   01   02   03   04   05   06   07   08   09   10   11   12   13   14   15   16 
+## 1568 3156 1264  792  648  652 1340 1792 1304 1724 1732 1140  472 2108  984 1448 
+##   17   18   19   21   22   23   24   25   26   27   28   29   2A   2B   30   31 
+## 1852 1140 1108 2792 1392 1024 2012 2276 1448 2340 1460 1104  496  944 1404 2344 
+##   32   33   34   35   36   37   38   39   40   41   42   43   44   45   46   47 
+## 1844 2140 1368 1328  964 1088 2048 1976 1304 1068 1292 1028  828 1300 1252 1276 
+##   48   49   50   51   52   53   54   55   56   57   58   59   60   61   62   63 
+##  608  704 1780 2444 1704  960 2364 1996  996 2892 1236 2592 2716 1540 3556 1856 
+##   64   65   66   67   68   69   70   71   72   73   74   75   76   77   78   79 
+## 2180 1876  904 2056 1464 1064 2156 2256 1416 1088 1116    4 2828 2028 1036 1024 
+##   80   81   82   83   84   85   86   87   88   89   90   91   92   93   94   95 
+## 3084 1256  780  612  604 1016 1060  780 2024 1692  404  776  144  160  188  732 
+##  971  972  973  974  976 
+##  128  136   88   96   68</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>dpt <span class="sc">%in%</span> dpt,]</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(data<span class="sc">$</span>dpt))</span></code></pre></div>
+<pre><code>## [1] 28</code></pre>
+<p>On a les données pour 28 dpts</p>
+<p>Puis on relance la boucle (avec quelques modifications)</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>varX <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>agregat))</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>fin <span class="ot">&lt;-</span> <span class="fu">unique</span>(data [, <span class="fu">c</span>(<span class="st">&quot;dpt&quot;</span>,<span class="st">&quot;commune&quot;</span>,<span class="st">&quot;pop&quot;</span>)])</span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a><span class="co"># A chaque variable</span></span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a><span class="cf">for</span> (v <span class="cf">in</span> varX){</span>
+<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>  <span class="co"># définir une table temporaire uniquement pour la variable choisie</span></span>
+<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat<span class="sc">==</span>v, <span class="fu">c</span>(<span class="st">&quot;dpt&quot;</span>,<span class="st">&quot;commune&quot;</span>,<span class="st">&quot;montant&quot;</span>)]</span>
+<span id="cb31-7"><a href="#cb31-7" tabindex="-1"></a>  <span class="co"># nommer les sommes sélectionnées du nom de la variable</span></span>
+<span id="cb31-8"><a href="#cb31-8" tabindex="-1"></a>  <span class="fu">names</span>(tmp) [<span class="dv">3</span>] <span class="ot">&lt;-</span> v</span>
+<span id="cb31-9"><a href="#cb31-9" tabindex="-1"></a>  jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(tmp, fin, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;dpt&quot;</span>,<span class="st">&quot;commune&quot;</span>))</span>
+<span id="cb31-10"><a href="#cb31-10" tabindex="-1"></a>  <span class="co"># Récupérer le tableau pour le tableau final</span></span>
+<span id="cb31-11"><a href="#cb31-11" tabindex="-1"></a>  fin <span class="ot">&lt;-</span> jointure</span>
+<span id="cb31-12"><a href="#cb31-12" tabindex="-1"></a>}</span>
+<span id="cb31-13"><a href="#cb31-13" tabindex="-1"></a><span class="fu">head</span>(fin,<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##   dpt         commune Frais de personnel Emprunts hors GAD
+## 1  13 Aix-en-Provence          119.75129              15.0
+## 2  13         Allauch           18.63726               0.0
+## 3  13         Alleins            1.34797               0.5
+## 4  13           Arles           56.15431               3.0
+## 5  13         Aubagne           45.09675               8.0
+##   Dépenses d&#39;équipement Concours de l&#39;Etat    pop
+## 1            56.1587902         13.6326763 150641
+## 2             8.6785402          2.9560111  21717
+## 3             0.8096122          0.1667214   2833
+## 4            19.0449456         12.1349166  51121
+## 5            11.5732716          5.1952482  47747</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="co"># anciens noms</span></span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a><span class="fu">names</span>(fin)  [<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;Frais de personnel&quot;    &quot;Emprunts hors GAD&quot;     &quot;Dépenses d&#39;équipement&quot;
+## [4] &quot;Concours de l&#39;Etat&quot;</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="co"># simplification des noms</span></span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="fu">names</span>(fin) [<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;personnel&quot;</span>, <span class="st">&quot;emprunt&quot;</span>, <span class="st">&quot;equipement&quot;</span>, <span class="st">&quot;etat&quot;</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="fu">write.csv</span>(fin,<span class="st">&quot;data/baseMultivarieSel.csv&quot;</span>, <span class="at">row.names =</span> F)</span></code></pre></div>
+<p>On avait au départ 33 000 enregistrements, à la fin, après le
+traitement, il ne reste plus “que” 8253 observations.</p>
 </div>
 </div>
 <div id="modèle-de-régression-multiple" class="section level1"
 number="3">
 <h1><span class="header-section-number">3</span> Modèle de régression
 multiple</h1>
+<p>On utilise la base faite ci-dessus et on sélectionne son
+département.</p>
 <div id="préparation-de-la-donnée-1" class="section level2"
 number="3.1">
 <h2><span class="header-section-number">3.1</span> Préparation de la
 donnée</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">head</span>(fin)</span></code></pre></div>
-<pre><code>##            commune     vente personnel     emprunt equipement    pop
-## 1    Aubervilliers  8.922840  86.23647  0.07647707   28.68539 9.0259
-## 2 Aulnay-sous-Bois 11.969172  94.39636  1.27871516   21.21589 8.6522
-## 3         Bagnolet  4.606493  45.23602  4.40000000   17.85997 3.9493
-## 4          Bobigny 12.026500  71.44153 16.05282400   47.42069 5.5191
-## 5            Bondy  6.127473  51.13971  5.00000000   11.42274 5.3067
-## 6 Clichy-sous-Bois  1.793706  30.31320  0.00000000   13.83377 2.9806</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">rownames</span>(fin) <span class="ot">&lt;-</span> fin<span class="sc">$</span>commune</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>fin <span class="ot">&lt;-</span> fin [, <span class="sc">-</span><span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/baseMultivarieSel.csv&quot;</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>dpt <span class="sc">==</span> <span class="dv">93</span>,]</span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a><span class="fu">head</span>(data,<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##      dpt          commune personnel     emprunt equipement      etat   pop
+## 7918  93    Aubervilliers  86.23647  0.07647707   28.68539 41.759990 90259
+## 7919  93 Aulnay-sous-Bois  94.39636  1.27871516   21.21589 29.077736 86522
+## 7920  93         Bagnolet  45.23602  4.40000000   17.85997  7.012409 39493
+## 7921  93          Bobigny  71.44153 16.05282400   47.42069 25.699245 55191
+## 7922  93            Bondy  51.13971  5.00000000   11.42274 26.481537 53067</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="co"># on place les noms des communes comme étiquette</span></span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a><span class="fu">rownames</span>(data) <span class="ot">&lt;-</span> data<span class="sc">$</span>commune</span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a><span class="co"># on supprime les 2 premières colonnes</span></span>
+<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]</span>
+<span id="cb38-5"><a href="#cb38-5" tabindex="-1"></a><span class="fu">head</span>(data,<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##                  personnel     emprunt equipement      etat   pop
+## Aubervilliers     86.23647  0.07647707   28.68539 41.759990 90259
+## Aulnay-sous-Bois  94.39636  1.27871516   21.21589 29.077736 86522
+## Bagnolet          45.23602  4.40000000   17.85997  7.012409 39493
+## Bobigny           71.44153 16.05282400   47.42069 25.699245 55191
+## Bondy             51.13971  5.00000000   11.42274 26.481537 53067</code></pre>
 <p>On obtient ainsi un tableau dont les étiquettes sont intégrées dans
 l’entête des lignes et qui ne contient que des chiffres.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code></pre></div>
+<pre><code>##    personnel          emprunt            equipement           etat        
+##  Min.   :  3.766   Min.   : 0.000000   Min.   : 0.9604   Min.   : 0.5018  
+##  1st Qu.: 20.409   1st Qu.: 0.007286   1st Qu.: 9.6207   1st Qu.: 6.0715  
+##  Median : 39.584   Median : 3.000590   Median :13.6374   Median : 9.4962  
+##  Mean   : 42.091   Mean   : 4.801627   Mean   :18.4521   Mean   :13.5642  
+##  3rd Qu.: 56.226   3rd Qu.: 8.198120   3rd Qu.:23.0387   3rd Qu.:23.9559  
+##  Max.   :122.243   Max.   :20.226050   Max.   :70.7883   Max.   :41.7600  
+##       pop        
+##  Min.   :  5107  
+##  1st Qu.: 23076  
+##  Median : 39146  
+##  Mean   : 41881  
+##  3rd Qu.: 53399  
+##  Max.   :114782</code></pre>
 </div>
 <div id="coefficient-de-correlation-détermination"
 class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Coefficient de
 correlation / détermination</h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">pairs</span>(fin)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">cor</span>(fin)</span></code></pre></div>
-<pre><code>##                vente personnel   emprunt equipement       pop
-## vente      1.0000000 0.8331551 0.5593201  0.7053665 0.8639097
-## personnel  0.8331551 1.0000000 0.5320888  0.7178396 0.9688553
-## emprunt    0.5593201 0.5320888 1.0000000  0.7133739 0.4884455
-## equipement 0.7053665 0.7178396 0.7133739  1.0000000 0.7074864
-## pop        0.8639097 0.9688553 0.4884455  0.7074864 1.0000000</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">cor</span>(fin)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
-<pre><code>##                vente personnel   emprunt equipement       pop
-## vente      1.0000000 0.6941474 0.3128390  0.4975419 0.7463399
-## personnel  0.6941474 1.0000000 0.2831185  0.5152936 0.9386806
-## emprunt    0.3128390 0.2831185 1.0000000  0.5089023 0.2385790
-## equipement 0.4975419 0.5152936 0.5089023  1.0000000 0.5005370
-## pop        0.7463399 0.9386806 0.2385790  0.5005370 1.0000000</code></pre>
+<div id="quelques-rappels-et-quelques-calculs" class="section level3"
+number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Quelques rappels et
+quelques calculs</h3>
+<p>Pour mémoire, la variance = moyenne du carré des écarts à la
+moyenne</p>
+<p>covariance = moyenne du produit des écarts (combien deux variables
+varient l’une avec l’autre)</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a>varPerso <span class="ot">&lt;-</span> <span class="fu">var</span>(data<span class="sc">$</span>personnel)</span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a>varEmprunt <span class="ot">&lt;-</span> <span class="fu">var</span>(data<span class="sc">$</span>emprunt)</span>
+<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a><span class="co"># affichage scientifique ou pas</span></span>
+<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a><span class="fu">options</span>( <span class="st">&quot;scipen&quot;</span><span class="ot">=</span><span class="sc">-</span><span class="dv">100</span>) </span>
+<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a><span class="fu">options</span>(<span class="st">&quot;scipen&quot;</span><span class="ot">=</span> <span class="dv">100</span>)</span>
+<span id="cb42-6"><a href="#cb42-6" tabindex="-1"></a><span class="fu">boxplot</span>(data)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="co"># aie, il faut diviser la population par 1000</span></span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>data<span class="sc">$</span>pop <span class="ot">&lt;-</span> data<span class="sc">$</span>pop <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a><span class="fu">boxplot</span>(data)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="co"># on voit bien la petite variance et la grande variance</span></span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a>varPerso</span></code></pre></div>
+<pre><code>## [1] 861.028</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>varEmprunt</span></code></pre></div>
+<pre><code>## [1] 34.67135</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a><span class="co"># calcul des écarts à la moyenne (différence et non pas distance)</span></span>
+<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a>prodEcart <span class="ot">&lt;-</span> (data<span class="sc">$</span>personnel<span class="sc">-</span><span class="fu">mean</span>(data<span class="sc">$</span>personnel))<span class="sc">*</span>(data<span class="sc">$</span>emprunt<span class="sc">-</span><span class="fu">mean</span>(data<span class="sc">$</span>emprunt))</span>
+<span id="cb48-3"><a href="#cb48-3" tabindex="-1"></a>moyProEcart <span class="ot">&lt;-</span> <span class="fu">mean</span>(prodEcart)</span>
+<span id="cb48-4"><a href="#cb48-4" tabindex="-1"></a>covarFormule <span class="ot">&lt;-</span> <span class="fu">cov</span>(data<span class="sc">$</span>personnel,data<span class="sc">$</span>emprunt)</span>
+<span id="cb48-5"><a href="#cb48-5" tabindex="-1"></a>moyProEcart</span></code></pre></div>
+<pre><code>## [1] 89.63606</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a>covarFormule</span></code></pre></div>
+<pre><code>## [1] 91.93442</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a><span class="co"># la différence tient à la pondération par n-1 dans le calcul de la covariance</span></span></code></pre></div>
+<p>le calcul de la corrélation inclue un facteur de correction (le
+produit des écarts types)</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a>moyProEcart<span class="sc">/</span>(<span class="fu">sqrt</span>(<span class="fu">var</span>(data<span class="sc">$</span>personnel))<span class="sc">*</span><span class="fu">sqrt</span>(<span class="fu">var</span>(data<span class="sc">$</span>emprunt)))</span></code></pre></div>
+<pre><code>## [1] 0.5187866</code></pre>
+</div>
+<div id="matrices-à-connaître" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Matrices à
+connaître</h3>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a><span class="co"># matrice graphiquee</span></span>
+<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a><span class="fu">pairs</span>(data)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a><span class="co"># matrice de correlation</span></span>
+<span id="cb56-2"><a href="#cb56-2" tabindex="-1"></a><span class="fu">cor</span>(data)</span></code></pre></div>
+<pre><code>##            personnel   emprunt equipement      etat       pop
+## personnel  1.0000000 0.5320888  0.7178396 0.6884993 0.9688553
+## emprunt    0.5320888 1.0000000  0.7133739 0.1965875 0.4884455
+## equipement 0.7178396 0.7133739  1.0000000 0.4562961 0.7074864
+## etat       0.6884993 0.1965875  0.4562961 1.0000000 0.7233578
+## pop        0.9688553 0.4884455  0.7074864 0.7233578 1.0000000</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a><span class="co"># matrice de détermination</span></span>
+<span id="cb58-2"><a href="#cb58-2" tabindex="-1"></a><span class="co"># détermination R² : la donnée X explique tant de % de la population</span></span>
+<span id="cb58-3"><a href="#cb58-3" tabindex="-1"></a><span class="fu">cor</span>(data)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>##            personnel    emprunt equipement       etat       pop
+## personnel  1.0000000 0.28311851  0.5152936 0.47403130 0.9386806
+## emprunt    0.2831185 1.00000000  0.5089023 0.03864663 0.2385790
+## equipement 0.5152936 0.50890233  1.0000000 0.20820616 0.5005370
+## etat       0.4740313 0.03864663  0.2082062 1.00000000 0.5232465
+## pop        0.9386806 0.23857904  0.5005370 0.52324649 1.0000000</code></pre>
 <p>On cherche :</p>
 <ul>
 <li><p>des variables corrélées avec la population (dernière
@@ -792,125 +1004,148 @@ effet de redondance</p></li>
 </ul>
 <p>On retire la variable emprunt qui n’apparaît pas liée à la
 population</p>
-<p>Vente, personnel et équipement semblent corrélées entre elle, mais,
-les plus fortes corrélations restent avec la population sauf pour
-l’équipement.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (<span class="at">formula =</span> pop <span class="sc">~</span> equipement <span class="sc">+</span> personnel <span class="sc">+</span> vente, <span class="at">data =</span> fin)</span></code></pre></div>
+<p>Personnel, dotation de l’Etat et équipement semblent corrélées entre
+elles.</p>
+<p>Cependant la correlation est la plus importante pour personnel et
+dotation de l’Etat. Concernent l’équipement, c’est quasiment la
+même.</p>
+</div>
+</div>
+<div id="modèle-une-confirmation-de-lobservation-des-matrices"
+class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Modèle : une
+confirmation de l’observation des matrices</h2>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (<span class="at">formula =</span> pop <span class="sc">~</span> equipement <span class="sc">+</span> personnel <span class="sc">+</span> etat, <span class="at">data =</span> data)</span></code></pre></div>
 <p>Tout s’est-il bien déroulé ?</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>modele</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" tabindex="-1"></a>modele</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = pop ~ equipement + personnel + vente, data = fin)
+## lm(formula = pop ~ equipement + personnel + etat, data = data)
 ## 
 ## Coefficients:
-## (Intercept)   equipement    personnel        vente  
-##    0.416114    -0.003289     0.075224     0.125315</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">summary</span>(modele)</span></code></pre></div>
+## (Intercept)   equipement    personnel         etat  
+##     3.57829      0.06213      0.79587      0.26962</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a><span class="fu">summary</span>(modele)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = pop ~ equipement + personnel + vente, data = fin)
+## lm(formula = pop ~ equipement + personnel + etat, data = data)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -1.80566 -0.29070  0.09656  0.33364  1.09894 
+## -23.7589  -2.7627   0.6657   4.3411  10.0472 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  0.416114   0.179376   2.320   0.0261 *  
-## equipement  -0.003289   0.010459  -0.314   0.7550    
-## personnel    0.075224   0.006582  11.429 1.56e-13 ***
-## vente        0.125315   0.046202   2.712   0.0102 *  
+##             Estimate Std. Error t value            Pr(&gt;|t|)    
+## (Intercept)  3.57829    1.90517   1.878              0.0685 .  
+## equipement   0.06213    0.10471   0.593              0.5567    
+## personnel    0.79587    0.06308  12.616 0.00000000000000889 ***
+## etat         0.26962    0.13285   2.029              0.0499 *  
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.6292 on 36 degrees of freedom
-## Multiple R-squared:  0.9493, Adjusted R-squared:  0.9451 
-## F-statistic: 224.8 on 3 and 36 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 6.541 on 36 degrees of freedom
+## Multiple R-squared:  0.9452, Adjusted R-squared:  0.9407 
+## F-statistic: 207.1 on 3 and 36 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 <p>On se contente de faire la lecture de la significativité du test (les
 étoiles) qui ne fait que confirmer l’analyse de la matrice de
 corrélation.</p>
-<p>Le modèle est utile car la valeur de p est modeste.</p>
+<p>Le modèle est utile car la valeur de p est modeste pour un risque de
+10 %</p>
 <p>Population et personnel ont une liaison particulièrement
 significative.</p>
-<p>Si équipement et vente restent constants, le personnel augmente de
-0.07 (millions d’euros, 70 000 euros) quand la population augmente d’une
-unité (ici 10 000 hbt).</p>
+<p>La manière d’interpréter la sortie des coefficients :</p>
+<p>Si équipement et dotation de l’Etat restent constants, quand les
+dépenses du personnel augmente de 8 unités, la population augmentera de
+10 individus.</p>
+<p>pop = coeff perso + coeff equipement + coeff etat</p>
 </div>
 </div>
 <div id="résidus" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Résidus</h1>
 <p>L’étude spatiale des résidus peut permettre de déterminer une
 organisation du territoire.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">hist</span>(modele<span class="sc">$</span>residuals)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>residus <span class="ot">&lt;-</span> modele<span class="sc">$</span>residuals</span>
-<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>residus <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(residus)</span>
-<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a>residus<span class="sc">$</span>name <span class="ot">&lt;-</span> <span class="fu">row.names</span>(residus)</span></code></pre></div>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>communes <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/communes93.geojson&quot;</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a>communes <span class="ot">&lt;-</span> communes [<span class="sc">!</span><span class="fu">is.na</span>(communes<span class="sc">$</span>ref.INSEE), <span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;ref.INSEE&quot;</span>)]</span>
-<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a>communes<span class="sc">$</span>name</span>
-<span id="cb33-5"><a href="#cb33-5" tabindex="-1"></a>residus<span class="sc">$</span>name</span>
-<span id="cb33-6"><a href="#cb33-6" tabindex="-1"></a><span class="co"># on fait une jointure entre les résidus et la géographie des communes</span></span>
-<span id="cb33-7"><a href="#cb33-7" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(communes, residus, <span class="at">by =</span> <span class="st">&quot;name&quot;</span>)</span>
-<span id="cb33-8"><a href="#cb33-8" tabindex="-1"></a><span class="fu">setdiff</span>(residus<span class="sc">$</span>name, jointure<span class="sc">$</span>name)</span>
-<span id="cb33-9"><a href="#cb33-9" tabindex="-1"></a><span class="fu">summary</span>(jointure<span class="sc">$</span>residus)</span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/residusCarte2.png&quot;</span>)</span>
-<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="fu">mf_map</span>(jointure, <span class="at">var =</span> <span class="st">&quot;residus&quot;</span>, <span class="at">type=</span><span class="st">&quot;choro&quot;</span>, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="fl">0.5</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">1.5</span>), <span class="at">pal =</span> <span class="fu">cm.colors</span>(<span class="dv">4</span>), <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">leg_pos =</span> <span class="fu">c</span>(<span class="fl">2.31589950651953</span>, <span class="fl">48.8793057936166</span>) )</span>
-<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a><span class="co">#mf_label(communes, var = &quot;name&quot;, overlap = FALSE, col= &quot;wheat4&quot;, cex = 0.8)</span></span>
-<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Population  et 3 variables (personnel / vente / équipement ) : étude des résidus&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;OFGL, 2024&quot;</span>)</span>
-<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a><span class="fu">hist</span>(modele<span class="sc">$</span>residuals)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" tabindex="-1"></a>residus <span class="ot">&lt;-</span> modele<span class="sc">$</span>residuals</span>
+<span id="cb66-2"><a href="#cb66-2" tabindex="-1"></a>residus <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(residus)</span>
+<span id="cb66-3"><a href="#cb66-3" tabindex="-1"></a>residus<span class="sc">$</span>name <span class="ot">&lt;-</span> <span class="fu">row.names</span>(residus)</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb67-2"><a href="#cb67-2" tabindex="-1"></a>communes <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/communes93.geojson&quot;</span>)</span>
+<span id="cb67-3"><a href="#cb67-3" tabindex="-1"></a>communes <span class="ot">&lt;-</span> communes [<span class="sc">!</span><span class="fu">is.na</span>(communes<span class="sc">$</span>ref.INSEE), <span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;ref.INSEE&quot;</span>)]</span>
+<span id="cb67-4"><a href="#cb67-4" tabindex="-1"></a>communes<span class="sc">$</span>name</span>
+<span id="cb67-5"><a href="#cb67-5" tabindex="-1"></a>residus<span class="sc">$</span>name</span>
+<span id="cb67-6"><a href="#cb67-6" tabindex="-1"></a><span class="co"># on fait une jointure entre les résidus et la géographie des communes</span></span>
+<span id="cb67-7"><a href="#cb67-7" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(communes, residus, <span class="at">by =</span> <span class="st">&quot;name&quot;</span>)</span>
+<span id="cb67-8"><a href="#cb67-8" tabindex="-1"></a><span class="fu">setdiff</span>(residus<span class="sc">$</span>name, jointure<span class="sc">$</span>name)</span>
+<span id="cb67-9"><a href="#cb67-9" tabindex="-1"></a><span class="fu">summary</span>(jointure<span class="sc">$</span>residus)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb68-2"><a href="#cb68-2" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/residusCarte2.png&quot;</span>)</span>
+<span id="cb68-3"><a href="#cb68-3" tabindex="-1"></a><span class="fu">mf_map</span>(jointure, <span class="at">var =</span> <span class="st">&quot;residus&quot;</span>, <span class="at">type=</span><span class="st">&quot;choro&quot;</span>, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">25</span>, <span class="sc">-</span><span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">15</span>),<span class="at">pal =</span> <span class="fu">cm.colors</span>(<span class="dv">4</span>), <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">leg_pos =</span> <span class="fu">c</span>(<span class="fl">2.31589950651953</span>, <span class="fl">48.8793057936166</span>) )</span>
+<span id="cb68-4"><a href="#cb68-4" tabindex="-1"></a><span class="fu">mf_label</span>(jointure [jointure<span class="sc">$</span>residus <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">|</span> jointure<span class="sc">$</span>residus <span class="sc">&lt;</span> <span class="sc">-</span> <span class="dv">10</span>,], <span class="at">var =</span> <span class="st">&quot;name&quot;</span>, <span class="at">overlap =</span> <span class="cn">FALSE</span>, <span class="at">col=</span> <span class="st">&quot;wheat4&quot;</span>, <span class="at">cex =</span> <span class="fl">0.8</span>)</span>
+<span id="cb68-5"><a href="#cb68-5" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Population  et 3 variables (personnel / dotations Etat / équipement ) : étude des résidus&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;OFGL, 2024&quot;</span>)</span>
+<span id="cb68-6"><a href="#cb68-6" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <p><img src="img/residusCarte2.png" /></p>
-<p>Les villes se conforment mieux au modèle quand elles sont à proximité
-de Paris sauf Montreuil et Tremblay.</p>
+<p>Tremblay, Bobigny et Gagny s’écartent du modèle pop liées aux
+dépenses du personnel, dotation de l’Etat et équipement.</p>
 </div>
 <div id="deuxième-modèle" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> Deuxième modèle</h1>
 <p>On refait l’analyse sans les dépenses d’équipement</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (<span class="at">formula =</span> pop <span class="sc">~</span> personnel <span class="sc">+</span> vente, <span class="at">data =</span> fin)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (<span class="at">formula =</span> pop <span class="sc">~</span> personnel <span class="sc">+</span> etat, <span class="at">data =</span> data)</span></code></pre></div>
+<div id="représentation-graphique" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Représentation
+graphique</h2>
 <p>Comme il n’y a que 3 variables, on peut faire un graphique en 3D</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="fu">library</span>(scatterplot3d)</span>
-<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>s3d <span class="ot">&lt;-</span> <span class="fu">scatterplot3d</span>(fin<span class="sc">$</span>vente, fin<span class="sc">$</span>personnel, fin<span class="sc">$</span>pop, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a><span class="co"># plan de régression</span></span>
-<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a>s3d<span class="sc">$</span><span class="fu">plane3d</span>(modele)</span>
-<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a><span class="fu">text</span>(s3d<span class="sc">$</span><span class="fu">xyz.convert</span> (fin  [,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>)]), <span class="at">labels =</span> <span class="fu">rownames</span>(fin), <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code></pre></div>
-<p><img src="jour7_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" tabindex="-1"></a><span class="fu">library</span>(scatterplot3d)</span>
+<span id="cb70-2"><a href="#cb70-2" tabindex="-1"></a>s3d <span class="ot">&lt;-</span> <span class="fu">scatterplot3d</span>(data<span class="sc">$</span>etat, data<span class="sc">$</span>personnel, data<span class="sc">$</span>pop, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb70-3"><a href="#cb70-3" tabindex="-1"></a><span class="co"># plan de régression</span></span>
+<span id="cb70-4"><a href="#cb70-4" tabindex="-1"></a>s3d<span class="sc">$</span><span class="fu">plane3d</span>(modele)</span>
+<span id="cb70-5"><a href="#cb70-5" tabindex="-1"></a><span class="fu">text</span>(s3d<span class="sc">$</span><span class="fu">xyz.convert</span> (data  [,<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">5</span>)]), <span class="at">labels =</span> <span class="fu">rownames</span>(data), <span class="at">cex =</span> <span class="fl">0.4</span>)</span></code></pre></div>
+<p><img src="jour7_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>Comparer Saint Denis et Montreuil, par exemple</p>
+<p>Globalement, cela n’est pas si lisible même à 3 dimensions.</p>
+</div>
+<div id="résultat-algébrique" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Résultat
+algébrique</h2>
 <p>Tout s’est-il bien déroulé ?</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">summary</span>(modele)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="fu">summary</span>(modele)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = pop ~ personnel + vente, data = fin)
+## lm(formula = pop ~ personnel + etat, data = data)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -1.8054 -0.2724  0.1013  0.3398  1.1102 
+##      Min       1Q   Median       3Q      Max 
+## -24.2824  -2.7072   0.5153   4.2891  10.3639 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 0.405884   0.174240   2.329  0.02540 *  
-## personnel   0.074536   0.006133  12.154 1.74e-14 ***
-## vente       0.121266   0.043828   2.767  0.00878 ** 
+##             Estimate Std. Error t value            Pr(&gt;|t|)    
+## (Intercept)  3.81955    1.84490   2.070              0.0455 *  
+## personnel    0.81928    0.04879  16.794 &lt;0.0000000000000002 ***
+## etat         0.26370    0.13131   2.008              0.0520 .  
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.6215 on 37 degrees of freedom
-## Multiple R-squared:  0.9492, Adjusted R-squared:  0.9464 
-## F-statistic: 345.6 on 2 and 37 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 6.483 on 37 degrees of freedom
+## Multiple R-squared:  0.9447, Adjusted R-squared:  0.9417 
+## F-statistic: 316.1 on 2 and 37 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 <p>La significativité entre vente et population augmente si on supprime
 la variable équipement.</p>
-<p>La carte des résidus varie un peu</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="fu">hist</span>(modele<span class="sc">$</span>residuals)</span>
-<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a><span class="co"># permet de voir les bornes pour la cartographie</span></span>
-<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/residusCarte3.png&quot;</span>)</span>
-<span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a><span class="fu">mf_map</span>(jointure, <span class="at">var =</span> <span class="st">&quot;residus&quot;</span>, <span class="at">type=</span><span class="st">&quot;choro&quot;</span>, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="fl">0.5</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">1.5</span>), <span class="at">pal =</span> <span class="fu">cm.colors</span>(<span class="dv">4</span>), <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">leg_pos =</span> <span class="fu">c</span>(<span class="fl">2.31589950651953</span>, <span class="fl">48.8793057936166</span>) )</span>
-<span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a><span class="co">#mf_label(communes, var = &quot;name&quot;, overlap = FALSE, col= &quot;wheat4&quot;, cex = 0.8)</span></span>
-<span id="cb39-7"><a href="#cb39-7" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Population  et 3 variables (personnel / vente / équipement ) : étude des résidus&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;OFGL, 2024&quot;</span>)</span>
-<span id="cb39-8"><a href="#cb39-8" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+</div>
+<div id="cartographie" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Cartographie</h2>
+<p>La carte des résidus ne varie pas du tout.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" tabindex="-1"></a><span class="fu">hist</span>(modele<span class="sc">$</span>residuals)</span>
+<span id="cb73-2"><a href="#cb73-2" tabindex="-1"></a><span class="co"># permet de voir les bornes pour la cartographie</span></span>
+<span id="cb73-3"><a href="#cb73-3" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb73-4"><a href="#cb73-4" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/residusCarte3.png&quot;</span>)</span>
+<span id="cb73-5"><a href="#cb73-5" tabindex="-1"></a><span class="fu">mf_map</span>(jointure, <span class="at">var =</span> <span class="st">&quot;residus&quot;</span>, <span class="at">type=</span><span class="st">&quot;choro&quot;</span>, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">25</span>, <span class="sc">-</span><span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">15</span>), <span class="at">pal =</span> <span class="fu">cm.colors</span>(<span class="dv">4</span>), <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">leg_pos =</span> <span class="fu">c</span>(<span class="fl">2.31589950651953</span>, <span class="fl">48.8793057936166</span>) )</span>
+<span id="cb73-6"><a href="#cb73-6" tabindex="-1"></a><span class="fu">mf_label</span>( jointure [jointure<span class="sc">$</span>residus <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">|</span> jointure<span class="sc">$</span>residus <span class="sc">&lt;</span> <span class="sc">-</span> <span class="dv">10</span>,], <span class="at">var =</span> <span class="st">&quot;name&quot;</span>, <span class="at">overlap =</span> <span class="cn">FALSE</span>, <span class="at">col=</span> <span class="st">&quot;wheat4&quot;</span>, <span class="at">cex =</span> <span class="fl">0.8</span>)</span>
+<span id="cb73-7"><a href="#cb73-7" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Population  et 2 variables (personnel / dotation de l&#39;Etat) : étude des résidus&quot;</span>, <span class="at">credits =</span> <span class="st">&quot;OFGL, 2024&quot;</span>)</span>
+<span id="cb73-8"><a href="#cb73-8" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <p><img src="img/residusCarte2.png" /><img
 src="img/residusCarte3.png" /></p>
+</div>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
