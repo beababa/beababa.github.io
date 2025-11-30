@@ -459,35 +459,37 @@ div.tocify {
 </div>
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
-<pre><code>## Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.3.1; sf_use_s2() is TRUE</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span></code></pre></div>
 <p>Les analyses factorielles sont une démarche descriptive. Il s’agit de
 résumer de grands tableaux d’informations en passant des colonnes aux
 axes factoriels.</p>
 <p>Attention, contrairement à la régression il ne s’agit pas d’expliquer
 mais de résumer.</p>
+<p>Autrement dit, quelle est la meilleure de représenter en 2D, un objet
+de plusieurs dimensions ?</p>
 <div id="préparation-de-la-donnée" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Préparation de la
 donnée</h1>
 <p>On reprend la donnée construite pour la régression multiple</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/baseMultivarie.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span> )</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
-<pre><code>##                      vente personnel     emprunt equipement    pop
-## Aubervilliers     8.922840  86.23647  0.07647707   28.68539 9.0259
-## Aulnay-sous-Bois 11.969172  94.39636  1.27871516   21.21589 8.6522
-## Bagnolet          4.606493  45.23602  4.40000000   17.85997 3.9493
-## Bobigny          12.026500  71.44153 16.05282400   47.42069 5.5191
-## Bondy             6.127473  51.13971  5.00000000   11.42274 5.3067
-## Clichy-sous-Bois  1.793706  30.31320  0.00000000   13.83377 2.9806</code></pre>
-<p>Il s’agit d’une matrice numérique.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/baseMultivarie.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">2</span> )</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co"># les noms de commune deviennent des étiquettes, on vérifie avec le head</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##                  X     vente personnel     emprunt equipement    pop
+## Aubervilliers    1  8.922840  86.23647  0.07647707   28.68539 9.0259
+## Aulnay-sous-Bois 2 11.969172  94.39636  1.27871516   21.21589 8.6522
+## Bagnolet         3  4.606493  45.23602  4.40000000   17.85997 3.9493
+## Bobigny          4 12.026500  71.44153 16.05282400   47.42069 5.5191
+## Bondy            5  6.127473  51.13971  5.00000000   11.42274 5.3067
+## Clichy-sous-Bois 6  1.793706  30.31320  0.00000000   13.83377 2.9806</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># attention supprimer la première colonne X</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="sc">-</span><span class="dv">1</span>]</span></code></pre></div>
+<p>Il s’agit d’une matrice numérique de 5 variables et 40 individus.</p>
+<p>L’ACP permet de traiter des tableaux beaucoup plus importants.</p>
 </div>
 <div id="exploration-de-la-donnée" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Exploration de la
 donnée</h1>
-<p>Il s’agit de commandes à faire à chaque fois que l’on découvre une
-donnée</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code></pre></div>
+<p>Commandes à faire à chaque fois que l’on découvre une donnée</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code></pre></div>
 <pre><code>##      vente           personnel          emprunt            equipement     
 ##  Min.   : 0.7324   Min.   :  3.766   Min.   : 0.000000   Min.   : 0.9604  
 ##  1st Qu.: 2.1699   1st Qu.: 20.409   1st Qu.: 0.007286   1st Qu.: 9.6207  
@@ -502,212 +504,329 @@ donnée</p>
 ##  Mean   : 4.1881  
 ##  3rd Qu.: 5.3399  
 ##  Max.   :11.4782</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">cor</span>(data)</span></code></pre></div>
-<pre><code>##                vente personnel   emprunt equipement       pop
-## vente      1.0000000 0.8331551 0.5593201  0.7053665 0.8639097
-## personnel  0.8331551 1.0000000 0.5320888  0.7178396 0.9688553
-## emprunt    0.5593201 0.5320888 1.0000000  0.7133739 0.4884455
-## equipement 0.7053665 0.7178396 0.7133739  1.0000000 0.7074864
-## pop        0.8639097 0.9688553 0.4884455  0.7074864 1.0000000</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">pairs</span>(data)</span></code></pre></div>
-<p><img src="jour8_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># ordres de grandeur</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">cor</span>(data),<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##            vente personnel emprunt equipement pop
+## vente        1.0       0.8     0.6        0.7 0.9
+## personnel    0.8       1.0     0.5        0.7 1.0
+## emprunt      0.6       0.5     1.0        0.7 0.5
+## equipement   0.7       0.7     0.7        1.0 0.7
+## pop          0.9       1.0     0.5        0.7 1.0</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># relations (numériques)</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">pairs</span>(data)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># relations (graphiques)</span></span></code></pre></div>
 </div>
 <div id="acp-analyse-en-composante-principale" class="section level1"
 number="3">
 <h1><span class="header-section-number">3</span> ACP analyse en
 composante principale</h1>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data, <span class="at">scale. =</span> F)</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">plot</span>(res)</span></code></pre></div>
+<div id="termes-de-vocabulaire" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Termes de
+vocabulaire</h2>
+<p>Définir</p>
+<ul>
+<li><p>matrice d’information spatiale</p></li>
+<li><p>analyse en composante principale</p></li>
+<li><p>matrice d’inertie</p></li>
+<li><p>axe d’allongement principal</p></li>
+<li><p>axe factoriel</p></li>
+<li><p>vecteur propre</p></li>
+<li><p>valeur propre</p></li>
+<li><p>qualité de représentation d’une variable à un axe</p></li>
+<li><p>contribution d’une variable à un axe</p></li>
+</ul>
+</div>
+<div id="centrer---réduire" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Centrer -
+réduire</h2>
+<p>Centrer et réduire permet de comparer les variables dont les ordres
+de grandeur sont très différents. On dit aussi <em>normer</em>,
+<em>standardiser</em></p>
+<p>Centrer : on compte les écarts à la moyenne</p>
+<p>Réduire : on divise toutes les valeurs par l’écart type.</p>
+</div>
+<div id="une-seule-commande-mais-deux-choix-pour-le-paramètre"
+class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Une seule commande
+mais deux choix pour le paramètre</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data, <span class="at">scale. =</span> F)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># ACP normée</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data, <span class="at">scale. =</span> T)</span></code></pre></div>
+</div>
+<div id="premier-résultat-les-axes-factoriels" class="section level2"
+number="3.4">
+<h2><span class="header-section-number">3.4</span> Premier résultat :
+les axes factoriels</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">plot</span>(res, <span class="st">&quot;Valeur propre des axes factoriels&quot;</span>, <span class="at">col=</span><span class="st">&quot;brown&quot;</span>, <span class="at">border=</span> <span class="cn">NA</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>variance <span class="ot">&lt;-</span> <span class="fu">summary</span>(res)<span class="sc">$</span>importance [<span class="dv">2</span>,]</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="fu">barplot</span>(variance, <span class="at">main=</span> <span class="st">&quot;% d&#39;inertie de chaque axe&quot;</span>, <span class="at">col =</span><span class="st">&quot;brown&quot;</span>, <span class="at">border=</span> <span class="cn">NA</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="fu">plot</span>(res2, <span class="st">&quot;Valeur propre des axes factoriels (ACP normée)&quot;</span>, <span class="at">col=</span><span class="st">&quot;chartreuse&quot;</span>, <span class="at">border=</span> <span class="cn">NA</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>variance <span class="ot">&lt;-</span> <span class="fu">summary</span>(res2)<span class="sc">$</span>importance [<span class="dv">2</span>,]</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="fu">barplot</span>(variance, <span class="at">main=</span> <span class="st">&quot;% d&#39;inertie de chaque axe (ACP normée)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;chartreuse&quot;</span>,<span class="at">border=</span> <span class="cn">NA</span>)</span></code></pre></div>
 <p><img src="jour8_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/acpCentreNONReduite.png&quot;</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">biplot</span>(res)</span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<pre><code>## png 
-##   2</code></pre>
-<p><img src="img/acpCentreNONReduite.png" /></p>
+<p>Un axe d’allongement très marqué. Interrelations entre variables
+fortes permettant une structure de l’espace.</p>
+<p>Dans notre cas, le nuage de point s’explique très bien avec un seul
+axe, c’est un objet de type <em>banane</em>. <img src="img/banane.jpg"
+width="100" /></p>
+<p>La difficulté de calcul de l’ACP vient de cette notion itérative : on
+calcule un premier axe, puis le deuxième…</p>
+</div>
+<div id="deuxième-résultat-le-biplot" class="section level2"
+number="3.5">
+<h2><span class="header-section-number">3.5</span> Deuxième résultat :
+le biplot</h2>
+<div id="affichage-variables-et-individus" class="section level3"
+number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Affichage variables
+et individus</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">bg=</span><span class="st">&quot;cornsilk&quot;</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">biplot</span>(res, <span class="at">main=</span> <span class="st">&quot;Résultat d&#39;une ACP&quot;</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;brown&quot;</span>))</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="fu">biplot</span>(res, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;brown&quot;</span>),  <span class="at">main =</span> <span class="st">&quot;Variables&quot;</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="fu">biplot</span>(res, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;white&quot;</span>), <span class="at">main =</span> <span class="st">&quot;Individus&quot;</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="fu">biplot</span>(res2, <span class="at">main=</span> <span class="st">&quot;Résultat d&#39;une ACP normée&quot;</span>, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;chartreuse&quot;</span>))</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="fu">biplot</span>(res2, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;chartreuse&quot;</span>),  <span class="at">main =</span> <span class="st">&quot;Variables&quot;</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="fu">biplot</span>(res2, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;white&quot;</span>), <span class="at">main =</span> <span class="st">&quot;Individus&quot;</span>)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Deux graphiques superposés :</p>
 <ul>
-<li><p>cercle des corrélations (les agrégats et la population)</p></li>
+<li><p>cercle des corrélations (les variables : les agrégats et la
+population)</p></li>
 <li><p>nuage de points (les communes du 93)</p></li>
 </ul>
 <p>On résume la donnée sur 2 axes seulement (PC1 et PC2)</p>
-<p>Dans le cercle de corrélations :</p>
+</div>
+<div id="interprétation-des-variables-longueur-et-position"
+class="section level3" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Interprétation des
+variables : longueur et position</h3>
+<p>Dans le cercle de corrélations, retenir 2 éléments :</p>
 <ul>
-<li><p>longueur flèche (mauvaise / bonne représentation)</p></li>
-<li><p>position - proche / opposée - orthogonale (= aucune
+<li><p><em>longueur</em> flèche (mauvaise / bonne
+représentation)</p></li>
+<li><p><em>position</em> proche / opposée - orthogonale (= aucune
 relation)</p></li>
 </ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># le résultat premier est  les coordonnées sur les axes de chaque variable</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>res<span class="sc">$</span>rotation</span></code></pre></div>
+<pre><code>##                    PC1         PC2          PC3         PC4          PC5
+## vente      -0.10988811 -0.02328499 -0.060076252  0.98164076  0.141967188
+## personnel  -0.91523227  0.38223415 -0.007038127 -0.10435429  0.072853278
+## emprunt    -0.11079393 -0.29416742 -0.945710998 -0.07120690 -0.041839244
+## equipement -0.36245900 -0.87513578  0.317591777 -0.04294237  0.007228722
+## pop        -0.08137984  0.03094775  0.033278818  0.13629798 -0.986273259</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># les coordonnées sur les axes de chaque individu</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>res<span class="sc">$</span>x</span></code></pre></div>
+<pre><code>##                                 PC1          PC2         PC3          PC4
+## Aubervilliers           -44.3783669   9.37397242   7.3523602 -0.511596684
+## Aulnay-sous-Bois        -49.5767183  18.59363128   3.5902593  1.811502607
+## Bagnolet                 -2.5212336   1.84747749   0.2044235 -1.005052370
+## Bobigny                 -39.4540927 -17.55760270  -2.0055008  1.658863815
+## Bondy                    -5.9353294   9.56760906  -2.4951664  0.290644328
+## Clichy-sous-Bois         13.4713604   0.99679376   3.3286365 -1.854765485
+## Coubron                  42.7472998   2.06278937  -0.5939104  0.130554094
+## Drancy                  -33.5670648 -16.09505277   3.4986449 -1.032994041
+## Dugny                    30.1599315   0.75409737  -1.8593697 -0.350720329
+## Épinay-sur-Seine          0.2662156  -3.21525392   5.4580300  7.791893213
+## Gagny                    12.7446942  -4.00675738   4.7850533  1.009228950
+## Gournay-sur-Marne        38.9039899   0.06301253   0.3237323  0.106063105
+## L&#39;Île-Saint-Denis        37.3985794   0.62325366   0.5247763 -0.452240055
+## La Courneuve            -10.1758106  -6.86996645 -11.5451775 -3.097902295
+## Le Blanc-Mesnil         -14.8262926  -6.79992157   4.7083034 -0.189396307
+## Le Bourget               31.8772862   2.19339031   0.5944001  0.704087996
+## Le Pré-Saint-Gervais     29.5176504  -4.02723253  -3.4564385 -0.118542454
+## Le Raincy                35.1222448  -7.92129380  -6.0926725 -0.002322712
+## Les Lilas                20.5798537   1.90013058   1.9988786  0.783470484
+## Les Pavillons-sous-Bois  24.3475762   3.47689444   0.2000721  1.241069708
+## Livry-Gargan              0.2023316   1.61923840  -0.1978569  0.774757536
+## Montfermeil              19.6507507  -0.41926706   2.8346813  0.947082890
+## Montreuil               -80.1609467   8.25306747  -9.8470094  4.746974850
+## Neuilly-Plaisance        26.8072248   2.70127407   1.1149600 -0.267188036
+## Neuilly-sur-Marne         7.2279307   3.44206485   2.9810512  1.761460925
+## Noisy-le-Grand          -34.4422134  -6.87813660   0.4799323 -0.836263918
+## Noisy-le-Sec              5.0116270   5.47599601   2.8190605 -0.077027615
+## Pantin                  -46.0546939 -40.03911811   1.7805849 -0.793298430
+## Pierrefitte-sur-Seine    13.2972208  -0.85279636   0.1002500 -1.410772445
+## Romainville              14.8894980   1.01135229   0.9089025  0.092433482
+## Rosny-sous-Bois          -3.0171089  -1.89234668  -3.1983301  3.094458501
+## Saint-Denis             -82.9869124  10.19819642   1.3374311 -3.432855373
+## Saint-Ouen-sur-Seine    -20.4557204  13.10248450  -7.2468057  0.492179275
+## Sevran                  -12.0559079  -2.22190110  -1.2294658 -1.823050620
+## Stains                    6.4511983  11.87553728  -1.6100273 -1.702192076
+## Tremblay-en-France      -21.2916421  10.16044528   4.7512034 -5.742817400
+## Vaujours                 35.6340552  -3.60029955  -3.8364359 -0.930539254
+## Villemomble              19.5900950   3.57623798   1.5845314  0.998089784
+## Villepinte                5.3436252   5.97561504  -2.5876969 -1.315264532
+## Villetaneuse             29.6578153  -6.44761528   0.5417048 -1.488013115
+##                                   PC5
+## Aubervilliers           -7.718161e-01
+## Aulnay-sous-Bois         5.194123e-01
+## Bagnolet                 3.761551e-01
+## Bobigny                  1.516599e+00
+## Bondy                   -3.882163e-01
+## Clichy-sous-Bois         4.684969e-05
+## Coubron                  2.641484e-01
+## Drancy                  -7.752061e-01
+## Dugny                    5.176757e-01
+## Épinay-sur-Seine        -5.382978e-02
+## Gagny                   -7.290494e-01
+## Gournay-sur-Marne        3.598413e-01
+## L&#39;Île-Saint-Denis        2.549446e-01
+## La Courneuve            -7.419134e-01
+## Le Blanc-Mesnil         -5.317857e-01
+## Le Bourget               2.946256e-01
+## Le Pré-Saint-Gervais    -1.633788e-01
+## Le Raincy               -6.336376e-01
+## Les Lilas                3.919278e-01
+## Les Pavillons-sous-Bois  6.421771e-02
+## Livry-Gargan            -3.052075e-01
+## Montfermeil             -1.075507e-02
+## Montreuil                8.479130e-02
+## Neuilly-Plaisance       -6.383564e-02
+## Neuilly-sur-Marne        2.857507e-01
+## Noisy-le-Grand          -4.027769e-01
+## Noisy-le-Sec            -5.980461e-01
+## Pantin                   5.598411e-01
+## Pierrefitte-sur-Seine   -3.568428e-01
+## Romainville             -2.876867e-01
+## Rosny-sous-Bois          1.061798e-01
+## Saint-Denis             -6.533564e-01
+## Saint-Ouen-sur-Seine     7.626852e-01
+## Sevran                  -3.945416e-01
+## Stains                  -3.034037e-01
+## Tremblay-en-France       1.890202e+00
+## Vaujours                 1.697350e-01
+## Villemomble             -1.602708e-01
+## Villepinte              -2.098733e-01
+## Villetaneuse             1.166505e-01</code></pre>
+<p>Dans notre cas, l’ACP non normée permet de voir qu’équipement et
+personnel sont les 2 variables les mieux représentées, mais c’est
+omettre la population qui n’a pas du tout la même unité que les données
+financières.</p>
+<p>Du coup, dans le second cas, les variables ont quasiment toute la
+même variation (la réduction se fait à l’écart type)</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">biplot</span>(res2, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;chartreuse&quot;</span>),  <span class="at">main =</span> <span class="st">&quot;Variables&quot;</span>)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>res2</span></code></pre></div>
+<pre><code>## Standard deviations (1, .., p=5):
+## [1] 1.9648395 0.8306785 0.4885905 0.4292480 0.1624946
+## 
+## Rotation (n x k) = (5 x 5):
+##                   PC1        PC2         PC3        PC4         PC5
+## vente      -0.4635555 -0.2109344  0.32034608  0.7894462  0.12155713
+## personnel  -0.4757898 -0.3205019  0.04423367 -0.4844345  0.65899100
+## emprunt    -0.3706591  0.7688519  0.47795981 -0.1954703 -0.06945735
+## equipement -0.4433861  0.3350211 -0.81606260  0.1581743  0.01386799
+## pop        -0.4740896 -0.3865395  0.03190652 -0.2808384 -0.73887623</code></pre>
+<p>Les dépenses d’équipement sont corrélées avec deux groupes de
+variable (emprunt) et un deuxième groupe constitué des variables vente /
+population et personnel.</p>
+<p>Par contre, emprunt et vente / personnel et population ne sont
+quasiment pas corrélés.</p>
+<p>L’ACP permet ainsi de simplifier la description des variables.</p>
+</div>
+<div id="interprétation-des-individus" class="section level3"
+number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Interprétation des
+individus</h3>
+<p><img src="img/acpVariableIndividu.png" /> L’ACP permet de situer les
+individus par rapport aux variables.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">biplot</span>(res2, <span class="at">main=</span> <span class="st">&quot;Résultat d&#39;une ACP normée&quot;</span>, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;chartreuse&quot;</span>))</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">row.names</span>(data)</span></code></pre></div>
+<pre><code>##  [1] &quot;Aubervilliers&quot;           &quot;Aulnay-sous-Bois&quot;       
+##  [3] &quot;Bagnolet&quot;                &quot;Bobigny&quot;                
+##  [5] &quot;Bondy&quot;                   &quot;Clichy-sous-Bois&quot;       
+##  [7] &quot;Coubron&quot;                 &quot;Drancy&quot;                 
+##  [9] &quot;Dugny&quot;                   &quot;Épinay-sur-Seine&quot;       
+## [11] &quot;Gagny&quot;                   &quot;Gournay-sur-Marne&quot;      
+## [13] &quot;L&#39;Île-Saint-Denis&quot;       &quot;La Courneuve&quot;           
+## [15] &quot;Le Blanc-Mesnil&quot;         &quot;Le Bourget&quot;             
+## [17] &quot;Le Pré-Saint-Gervais&quot;    &quot;Le Raincy&quot;              
+## [19] &quot;Les Lilas&quot;               &quot;Les Pavillons-sous-Bois&quot;
+## [21] &quot;Livry-Gargan&quot;            &quot;Montfermeil&quot;            
+## [23] &quot;Montreuil&quot;               &quot;Neuilly-Plaisance&quot;      
+## [25] &quot;Neuilly-sur-Marne&quot;       &quot;Noisy-le-Grand&quot;         
+## [27] &quot;Noisy-le-Sec&quot;            &quot;Pantin&quot;                 
+## [29] &quot;Pierrefitte-sur-Seine&quot;   &quot;Romainville&quot;            
+## [31] &quot;Rosny-sous-Bois&quot;         &quot;Saint-Denis&quot;            
+## [33] &quot;Saint-Ouen-sur-Seine&quot;    &quot;Sevran&quot;                 
+## [35] &quot;Stains&quot;                  &quot;Tremblay-en-France&quot;     
+## [37] &quot;Vaujours&quot;                &quot;Villemomble&quot;            
+## [39] &quot;Villepinte&quot;              &quot;Villetaneuse&quot;</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co"># La Courneuve / Pantin 14 et 28 (Emprunt important)</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>data [<span class="fu">c</span>(<span class="dv">14</span>,<span class="dv">28</span>),]</span></code></pre></div>
+<pre><code>##                  vente personnel  emprunt equipement    pop
+## La Courneuve  4.143342  49.12927 19.12000   24.61360 4.7289
+## Pantin       10.504885  69.04895 20.03156   70.78833 6.0959</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="co"># Aubervilliers / Aulnay sous Bois (population et personnel)</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>data [<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),]</span></code></pre></div>
+<pre><code>##                     vente personnel    emprunt equipement    pop
+## Aubervilliers     8.92284  86.23647 0.07647707   28.68539 9.0259
+## Aulnay-sous-Bois 11.96917  94.39636 1.27871516   21.21589 8.6522</code></pre>
+<p>Au niveau des individus, il faudrait procéder groupe par groupe pour
+identifier chacun, c’est le rôle des classifications.</p>
+</div>
+</div>
 </div>
 <div id="classification-hiérarchique" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Classification
 hiérarchique</h1>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># matrice des distances</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>ddata <span class="ot">&lt;-</span> <span class="fu">dist</span>(data)</span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>cah <span class="ot">&lt;-</span> <span class="fu">hclust</span>(ddata)</span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="fu">plot</span>(cah)</span></code></pre></div>
-<p><img src="jour8_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>Dendrogramme avec matérialisation des groupes</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co">#png(&quot;img/lafleche3.png&quot;)</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">plot</span>(cah)</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">rect.hclust</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="jour8_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>groupes.cah <span class="ot">&lt;-</span> <span class="fu">cutree</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co">#dev.off()</span></span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co">#liste des groupes</span></span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sort</span>(groupes.cah))</span></code></pre></div>
-<pre><code>##           Aubervilliers        Aulnay-sous-Bois               Montreuil 
-##                       1                       1                       1 
-##             Saint-Denis                Bagnolet                   Bondy 
-##                       1                       2                       2 
-##        Clichy-sous-Bois        Épinay-sur-Seine                   Gagny 
-##                       2                       2                       2 
-##            La Courneuve         Le Blanc-Mesnil               Les Lilas 
-##                       2                       2                       2 
-##            Livry-Gargan             Montfermeil       Neuilly-sur-Marne 
-##                       2                       2                       2 
-##            Noisy-le-Sec   Pierrefitte-sur-Seine             Romainville 
-##                       2                       2                       2 
-##         Rosny-sous-Bois    Saint-Ouen-sur-Seine                  Sevran 
-##                       2                       2                       2 
-##                  Stains      Tremblay-en-France             Villemomble 
-##                       2                       2                       2 
-##              Villepinte                 Bobigny                  Drancy 
-##                       2                       3                       3 
-##          Noisy-le-Grand                  Pantin                 Coubron 
-##                       3                       3                       4 
-##                   Dugny       Gournay-sur-Marne       L&#39;Île-Saint-Denis 
-##                       4                       4                       4 
-##              Le Bourget    Le Pré-Saint-Gervais               Le Raincy 
-##                       4                       4                       4 
-## Les Pavillons-sous-Bois       Neuilly-Plaisance                Vaujours 
-##                       4                       4                       4 
-##            Villetaneuse 
-##                       4</code></pre>
-</div>
-<div id="quelques-remarques-autour-de-ces-premiers-résultats"
-class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Quelques remarques
-autour de ces premiers résultats</h1>
-<div id="correspondance-cercle-de-correlation-et-dendrogramme"
-class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Correspondance cercle
-de correlation et dendrogramme</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># on filtre sur les communes de Pantin et d&#39;Aulnay sous Bois</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">rownames</span>(data)</span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>sel <span class="ot">&lt;-</span> data [<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">28</span>),]</span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># on transforme en matrice pour pouvoir faire un graphique de comparaison des répartitions</span></span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(sel)</span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/lafleche.png&quot;</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="fu">barplot</span>(mat, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">beside =</span> T, <span class="at">col =</span> <span class="fu">terrain.colors</span>(<span class="dv">2</span>), <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<p><img src="img/lafleche.png" /></p>
-</div>
-<div id="quelques-graphiques-pour-mieux-observer" class="section level2"
-number="5.2">
-<h2><span class="header-section-number">5.2</span> Quelques graphiques
-pour mieux observer</h2>
-<div id="comparer-les-communes-variable-par-variable"
-class="section level3" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> Comparer les
-communes variable par variable</h3>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">barplot</span>(data<span class="sc">$</span>vente<span class="sc">~</span><span class="fu">rownames</span>(data), <span class="at">las =</span><span class="dv">2</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="fu">barplot</span>(data<span class="sc">$</span>personnel<span class="sc">~</span><span class="fu">rownames</span>(data), <span class="at">las =</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="jour8_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-</div>
-<div id="plus-complexe-commune-par-commune" class="section level3"
-number="5.2.2">
-<h3><span class="header-section-number">5.2.2</span> Plus complexe,
-commune par commune</h3>
-<p>Il faut transformer en matrice</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>matrice <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(data)</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="fu">boxplot</span>((matrice), <span class="at">las=</span> <span class="dv">2</span>)</span></code></pre></div>
+<div id="dendogramme" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Dendogramme</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="co"># matrice des distances</span></span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>ddata <span class="ot">&lt;-</span> <span class="fu">dist</span>(data)</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>cah <span class="ot">&lt;-</span> <span class="fu">hclust</span>(ddata)</span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="fu">plot</span>(cah, <span class="at">cex=</span><span class="fl">0.5</span>, <span class="at">main =</span> <span class="st">&quot;CAH&quot;</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="co"># normée</span></span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">scale</span>(data, <span class="at">center =</span> T, <span class="at">scale =</span> T)</span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a>ddata2 <span class="ot">&lt;-</span> <span class="fu">dist</span>(data2)</span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a>cah2 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(ddata2)</span>
+<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a><span class="fu">plot</span>(cah2, <span class="at">cex=</span><span class="fl">0.5</span>, <span class="at">main =</span> <span class="st">&quot;CAH normée&quot;</span>)</span></code></pre></div>
 <p><img src="jour8_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># transposition de la matrice</span></span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">t</span>(matrice), <span class="at">las=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="jour8_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
-</div>
-</div>
-</div>
-<div id="deuxième-approche-de-lacp-on-filtre" class="section level1"
-number="6">
-<h1><span class="header-section-number">6</span> Deuxième approche de
-l’ACP, on filtre</h1>
-<p>Deux directions possibles :</p>
-<ul>
-<li><p>on distingue petites et grandes villes</p></li>
-<li><p>on zoome sur certaines villes</p></li>
-</ul>
-<div id="les-variables" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Les variables</h2>
-<p>On veut montrer uniquement les petites villes, celles dont la
-population est moindre</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>pop)</span></code></pre></div>
+<p>Dendrogramme avec matérialisation des groupes</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="fu">plot</span>(cah,  <span class="at">cex=</span><span class="fl">0.5</span>,  <span class="at">main =</span> <span class="st">&quot;CAH&quot;</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="fu">rect.hclust</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>groupes.cah <span class="ot">&lt;-</span> <span class="fu">cutree</span>(cah,<span class="at">k=</span><span class="dv">4</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a><span class="co"># normée</span></span>
+<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a><span class="fu">plot</span>(cah2, <span class="at">cex=</span><span class="fl">0.5</span>, <span class="at">main =</span> <span class="st">&quot;CAH normée&quot;</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" tabindex="-1"></a><span class="fu">rect.hclust</span>(cah2,<span class="at">k=</span><span class="dv">4</span>)</span></code></pre></div>
 <p><img src="jour8_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>pop <span class="sc">&lt;</span> <span class="dv">6</span>,]</span></code></pre></div>
-<p>Et on reproduit le code jusqu’à l’ACP</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/ptit.png&quot;</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fu">biplot</span>(res)</span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<pre><code>## png 
-##   2</code></pre>
-<p><img src="img/ptit.png" /></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>groupes.cah2 <span class="ot">&lt;-</span> <span class="fu">cutree</span>(cah2,<span class="at">k=</span><span class="dv">4</span>)</span></code></pre></div>
+<p>Observer Pantin / La Courneuve et Aubervilliers / Aulnay sous Bois,
+par exemple</p>
 </div>
-<div id="les-communes" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Les communes</h2>
-<p>On choisit une ville dans chacun des r4 groupes : Pantin,
-Aubervilliers, Vaujours et Villepinte</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/baseMultivarie.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>sel <span class="ot">&lt;-</span> data [<span class="fu">row.names</span>(data) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Pantin&quot;</span>, <span class="st">&quot;Aubervilliers&quot;</span>, <span class="st">&quot;Vaujours&quot;</span>,<span class="st">&quot;Villepinte&quot;</span>),]</span>
-<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(sel)</span>
-<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a><span class="fu">biplot</span>(acp)</span></code></pre></div>
-<p><img src="jour8_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-</div>
-<div id="centrer-et-réduire" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Centrer et
-réduire</h2>
-<p>Centrer et réduire permet de comparer les variables dont les montants
-sont très différents.</p>
-<p>Centrer : on compte les écarts à la moyenne</p>
-<p>Réduire : on divise toutes les valeurs par l’écart type.</p>
-<div id="comprendre-loption-scale.-dans-la-commande"
-class="section level3" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Comprendre l’option
-“scale.” dans la commande</h3>
-<p>Il faut faire varier l’option avec FALSE et TRUE.</p>
-<p>Le FALSE permet d’obtenir uniquement les variables les plus
-importantes.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data, <span class="at">scale. =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="fu">biplot</span>(acp)</span></code></pre></div>
-<p><img src="jour8_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<p>Le TRUE permet de pouvoir comparer toutes les variables</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>acp <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(data, <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="fu">biplot</span>(acp)</span></code></pre></div>
-<p><img src="jour8_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-</div>
-<div id="idem-avec-la-classification" class="section level3"
-number="6.3.2">
-<h3><span class="header-section-number">6.3.2</span> Idem avec la
-classification</h3>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>data.cr <span class="ot">&lt;-</span> <span class="fu">scale</span>(data, <span class="at">center =</span> T, <span class="at">scale =</span> T)</span></code></pre></div>
-</div>
-<div id="au-niveau-des-données" class="section level3" number="6.3.3">
-<h3><span class="header-section-number">6.3.3</span> Au niveau des
-données</h3>
-<p>On peut également utiliser la fonction scale pour les données
-elles-mêmes</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a><span class="co"># transformation en matrice</span></span>
-<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(data [, <span class="fu">c</span>(<span class="st">&quot;emprunt&quot;</span>, <span class="st">&quot;pop&quot;</span>)])</span>
-<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a><span class="co"># graphiques pour comparer les 2 variables par bureau de vote</span></span>
-<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a><span class="fu">barplot</span>(mat, <span class="at">beside=</span>T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a><span class="fu">hist</span>(mat)</span>
-<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a><span class="co"># on ne voit rien, il faut centrer réduire</span></span>
-<span id="cb30-8"><a href="#cb30-8" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">scale</span>(mat)</span>
-<span id="cb30-9"><a href="#cb30-9" tabindex="-1"></a><span class="fu">barplot</span>(mat, <span class="at">beside =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb30-10"><a href="#cb30-10" tabindex="-1"></a><span class="fu">hist</span>(mat)</span></code></pre></div>
-<p><img src="jour8_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-</div>
+<div id="cartographie" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Cartographie</h2>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
+<pre><code>## Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.3.1; sf_use_s2() is TRUE</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a>palette <span class="ot">&lt;-</span> <span class="fu">brewer.pal</span>(<span class="dv">4</span>, <span class="st">&quot;Accent&quot;</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a>geo <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/communes93.geojson&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `communes93&#39; from data source 
+##   `C:\Users\tachasa\01_stat\data\communes93.geojson&#39; using driver `GeoJSON&#39;
+## Simple feature collection with 307 features and 48 fields
+## Geometry type: GEOMETRY
+## Dimension:     XY
+## Bounding box:  xmin: 2.288278 ymin: 48.80725 xmax: 2.6033 ymax: 49.01233
+## Geodetic CRS:  WGS 84</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="co"># transformation de la liste des groupes en dataframe</span></span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">groupe =</span> groupes.cah2, <span class="at">name=</span><span class="fu">names</span>(groupes.cah2))</span>
+<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="co"># jointure entre la géométrie et la donnée</span></span>
+<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(geo, df,  <span class="at">by =</span> <span class="st">&quot;name&quot;</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a><span class="fu">mf_map</span>(jointure, <span class="at">type =</span> <span class="st">&quot;typo&quot;</span>, <span class="at">var =</span> <span class="st">&quot;groupe&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">leg_pos =</span> <span class="cn">NA</span>, <span class="at">pal =</span> palette)</span>
+<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a><span class="fu">mf_legend</span>(<span class="st">&quot;typo&quot;</span>, <span class="at">title=</span><span class="st">&quot;&quot;</span>,<span class="at">val=</span> <span class="fu">c</span>(<span class="st">&quot;groupe 1 : importance de l&#39;emprunt&quot;</span>,</span>
+<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a>                         <span class="st">&quot;groupe 2 : équipements&quot;</span>,</span>
+<span id="cb34-8"><a href="#cb34-8" tabindex="-1"></a>                          <span class="st">&quot;groupe 3 : moins d&#39;emprunt&quot;</span>,</span>
+<span id="cb34-9"><a href="#cb34-9" tabindex="-1"></a><span class="st">&quot;groupe 4 : population / personnel et vente des services&quot;</span>),  <span class="at">pal =</span> palette, <span class="at">pos =</span> <span class="st">&quot;bottomleft&quot;</span>)</span>
+<span id="cb34-10"><a href="#cb34-10" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;CAH normée = groupes&quot;</span>, <span class="st">&quot;OFGL 2025&quot;</span>)</span></code></pre></div>
+<p><img src="jour8_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 </div>
 
