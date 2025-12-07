@@ -1,0 +1,5 @@
+quelles sont les fonctions R à retenir ?
+----------------
+ouvrir la base régression multiple sous R
+-----------------
+adapter le script univari

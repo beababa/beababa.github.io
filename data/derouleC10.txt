@@ -1,54 +1,37 @@
-1. Emargement
+COURS 9
+----------------------------------
+cours : L5GEABIM - TD - Analyses bivariées et multivariées - BMaranget
+mots de passe Moodle
+8h-Lundi
+9h30-Lundi
+17h30-Vendredi
+---------------------------------
+connexion cours https://beababa.github.io/intro.html
+beatrice.maranget@bondy.fr
+--------------------------------------
+DM = questions par mail notamment au niveau de statistiques locales
+difficulté = lire le fichier .csv dans R
+-------------------------------------
+CONSTITUER LE TABLEAU
 
-------
+ouverture et lecture du fichier dans R baseMultivarieSel.csv (Moodle)
+filtre sur votre dpt
 
-DM : consigne => voir résultat et analyse
+OU reprise de vos données de la semaine dernière
 
------------------------------------
-
-EXO 1
-
-Télécharger base cours, l'ouvrir dans R et commencer l'exploration
-
-
-
-names
-
-str
-
-summary
-
-
-puis  questionnaire moodle
-
-
----------------------------------------
-EXO 2 préparation des données et ACP + CAH
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+et affichage des 5 premières lignes
+------------------------------
+utilisation du row.names
+-----------------------------
+affichage des 3 matrices et commentaire
+enlever les valeurs aberrantes !
+filtre <- data [data$pop < 800 000,] par exemple pour
+faire disparaître les grosses villes
+---------------------------
+faire le modèle et comparer les étoiles avec les résultats obtenus à partir des matrices deux à deux.
+----------------------------
+enlever une variable (celle sans ou avec le moins d'étoile), faire le 2e modèle et comparer avec le 1er modèle
+--------------------------
+multivarié descriptif
+télécharger le script, le jouer en l'adaptant, le commenter
+et remplir le Moodle pour la prochaine fois.

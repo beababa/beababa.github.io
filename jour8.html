@@ -524,7 +524,7 @@ composante principale</h1>
 <div id="termes-de-vocabulaire" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Termes de
 vocabulaire</h2>
-<p>Définir</p>
+<p>Définir et classer en 2 groupes (important / pas important)</p>
 <ul>
 <li><p>matrice d’information spatiale</p></li>
 <li><p>analyse en composante principale</p></li>
@@ -618,89 +618,13 @@ relation)</p></li>
 ## equipement -0.36245900 -0.87513578  0.317591777 -0.04294237  0.007228722
 ## pop        -0.08137984  0.03094775  0.033278818  0.13629798 -0.986273259</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># les coordonnées sur les axes de chaque individu</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>res<span class="sc">$</span>x</span></code></pre></div>
-<pre><code>##                                 PC1          PC2         PC3          PC4
-## Aubervilliers           -44.3783669   9.37397242   7.3523602 -0.511596684
-## Aulnay-sous-Bois        -49.5767183  18.59363128   3.5902593  1.811502607
-## Bagnolet                 -2.5212336   1.84747749   0.2044235 -1.005052370
-## Bobigny                 -39.4540927 -17.55760270  -2.0055008  1.658863815
-## Bondy                    -5.9353294   9.56760906  -2.4951664  0.290644328
-## Clichy-sous-Bois         13.4713604   0.99679376   3.3286365 -1.854765485
-## Coubron                  42.7472998   2.06278937  -0.5939104  0.130554094
-## Drancy                  -33.5670648 -16.09505277   3.4986449 -1.032994041
-## Dugny                    30.1599315   0.75409737  -1.8593697 -0.350720329
-## Épinay-sur-Seine          0.2662156  -3.21525392   5.4580300  7.791893213
-## Gagny                    12.7446942  -4.00675738   4.7850533  1.009228950
-## Gournay-sur-Marne        38.9039899   0.06301253   0.3237323  0.106063105
-## L&#39;Île-Saint-Denis        37.3985794   0.62325366   0.5247763 -0.452240055
-## La Courneuve            -10.1758106  -6.86996645 -11.5451775 -3.097902295
-## Le Blanc-Mesnil         -14.8262926  -6.79992157   4.7083034 -0.189396307
-## Le Bourget               31.8772862   2.19339031   0.5944001  0.704087996
-## Le Pré-Saint-Gervais     29.5176504  -4.02723253  -3.4564385 -0.118542454
-## Le Raincy                35.1222448  -7.92129380  -6.0926725 -0.002322712
-## Les Lilas                20.5798537   1.90013058   1.9988786  0.783470484
-## Les Pavillons-sous-Bois  24.3475762   3.47689444   0.2000721  1.241069708
-## Livry-Gargan              0.2023316   1.61923840  -0.1978569  0.774757536
-## Montfermeil              19.6507507  -0.41926706   2.8346813  0.947082890
-## Montreuil               -80.1609467   8.25306747  -9.8470094  4.746974850
-## Neuilly-Plaisance        26.8072248   2.70127407   1.1149600 -0.267188036
-## Neuilly-sur-Marne         7.2279307   3.44206485   2.9810512  1.761460925
-## Noisy-le-Grand          -34.4422134  -6.87813660   0.4799323 -0.836263918
-## Noisy-le-Sec              5.0116270   5.47599601   2.8190605 -0.077027615
-## Pantin                  -46.0546939 -40.03911811   1.7805849 -0.793298430
-## Pierrefitte-sur-Seine    13.2972208  -0.85279636   0.1002500 -1.410772445
-## Romainville              14.8894980   1.01135229   0.9089025  0.092433482
-## Rosny-sous-Bois          -3.0171089  -1.89234668  -3.1983301  3.094458501
-## Saint-Denis             -82.9869124  10.19819642   1.3374311 -3.432855373
-## Saint-Ouen-sur-Seine    -20.4557204  13.10248450  -7.2468057  0.492179275
-## Sevran                  -12.0559079  -2.22190110  -1.2294658 -1.823050620
-## Stains                    6.4511983  11.87553728  -1.6100273 -1.702192076
-## Tremblay-en-France      -21.2916421  10.16044528   4.7512034 -5.742817400
-## Vaujours                 35.6340552  -3.60029955  -3.8364359 -0.930539254
-## Villemomble              19.5900950   3.57623798   1.5845314  0.998089784
-## Villepinte                5.3436252   5.97561504  -2.5876969 -1.315264532
-## Villetaneuse             29.6578153  -6.44761528   0.5417048 -1.488013115
-##                                   PC5
-## Aubervilliers           -7.718161e-01
-## Aulnay-sous-Bois         5.194123e-01
-## Bagnolet                 3.761551e-01
-## Bobigny                  1.516599e+00
-## Bondy                   -3.882163e-01
-## Clichy-sous-Bois         4.684969e-05
-## Coubron                  2.641484e-01
-## Drancy                  -7.752061e-01
-## Dugny                    5.176757e-01
-## Épinay-sur-Seine        -5.382978e-02
-## Gagny                   -7.290494e-01
-## Gournay-sur-Marne        3.598413e-01
-## L&#39;Île-Saint-Denis        2.549446e-01
-## La Courneuve            -7.419134e-01
-## Le Blanc-Mesnil         -5.317857e-01
-## Le Bourget               2.946256e-01
-## Le Pré-Saint-Gervais    -1.633788e-01
-## Le Raincy               -6.336376e-01
-## Les Lilas                3.919278e-01
-## Les Pavillons-sous-Bois  6.421771e-02
-## Livry-Gargan            -3.052075e-01
-## Montfermeil             -1.075507e-02
-## Montreuil                8.479130e-02
-## Neuilly-Plaisance       -6.383564e-02
-## Neuilly-sur-Marne        2.857507e-01
-## Noisy-le-Grand          -4.027769e-01
-## Noisy-le-Sec            -5.980461e-01
-## Pantin                   5.598411e-01
-## Pierrefitte-sur-Seine   -3.568428e-01
-## Romainville             -2.876867e-01
-## Rosny-sous-Bois          1.061798e-01
-## Saint-Denis             -6.533564e-01
-## Saint-Ouen-sur-Seine     7.626852e-01
-## Sevran                  -3.945416e-01
-## Stains                  -3.034037e-01
-## Tremblay-en-France       1.890202e+00
-## Vaujours                 1.697350e-01
-## Villemomble             -1.602708e-01
-## Villepinte              -2.098733e-01
-## Villetaneuse             1.166505e-01</code></pre>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">head</span>(res<span class="sc">$</span>x,<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##                         PC1        PC2        PC3        PC4        PC5
+## Aubervilliers    -44.378367   9.373972  7.3523602 -0.5115967 -0.7718161
+## Aulnay-sous-Bois -49.576718  18.593631  3.5902593  1.8115026  0.5194123
+## Bagnolet          -2.521234   1.847477  0.2044235 -1.0050524  0.3761551
+## Bobigny          -39.454093 -17.557603 -2.0055008  1.6588638  1.5165990
+## Bondy             -5.935329   9.567609 -2.4951664  0.2906443 -0.3882163</code></pre>
 <p>Dans notre cas, l’ACP non normée permet de voir qu’équipement et
 personnel sont les 2 variables les mieux représentées, mais c’est
 omettre la population qui n’a pas du tout la même unité que les données
@@ -732,8 +656,8 @@ quasiment pas corrélés.</p>
 number="3.5.3">
 <h3><span class="header-section-number">3.5.3</span> Interprétation des
 individus</h3>
-<p><img src="img/acpVariableIndividu.png" /> L’ACP permet de situer les
-individus par rapport aux variables.</p>
+<p><img src="img/acpVariableIndividu.png" /></p>
+<p>L’ACP permet de situer les individus par rapport aux variables.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">biplot</span>(res2, <span class="at">main=</span> <span class="st">&quot;Résultat d&#39;une ACP normée&quot;</span>, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;chartreuse&quot;</span>))</span></code></pre></div>
 <p><img src="jour8_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">row.names</span>(data)</span></code></pre></div>
