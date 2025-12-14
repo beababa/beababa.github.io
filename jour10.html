@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Préparation partiel</title>
+
+<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="intro.html">Introduction</a>
+</li>
+<li>
+  <a href="jour1.html">univariées</a>
+</li>
+<li>
+  <a href="jour2.html">bivariées</a>
+</li>
+<li>
+  <a href="jour3.html">régression </a>
+</li>
+<li>
+  <a href="jour4.html">khi2</a>
+</li>
+<li>
+  <a href="jour5.html">bases R</a>
+</li>
+<li>
+  <a href="jour6.html">variance</a>
+</li>
+<li>
+  <a href="jour7.html">multivariées 1</a>
+</li>
+<li>
+  <a href="jour8.html">multivariées 2</a>
+</li>
+<li>
+  <a href="jour9.html">DM</a>
+</li>
+<li>
+  <a href="jour10.html">préparation DST</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/beababa/01_stat">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Préparation partiel</h1>
+
+</div>
+
+
+<p>Plusieurs difficultés possibles en fonction de votre état
+d’avancement</p>
+<div id="ouverture-et-lecture-de-fichiers" class="section level1"
+number="1">
+<h1><span class="header-section-number">1</span> Ouverture et lecture de
+fichiers</h1>
+<p>Ces exercices permettent de vous familiariser avec différents types
+d’interface.</p>
+<p>Votre objectif restent de filtrer au maximum les données et de
+télécharger un .csv pour l’ouvrir directement sous R.</p>
+<p>Évitez de passer par un tableur…</p>
+<div id="logements-vacants" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Logements
+vacants</h2>
+<p>Attention il faut faire :</p>
+<p>Pour avoir accès à la plateforme de la donnée. On retrouve alors la
+même interface que pour les statistiques locales de l’Insee vue pour le
+DM.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>logvac <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/LOGVAC.csv&quot;</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co"># séparateur &quot;;&quot; et 2 lignes de titre</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">summary</span>(logvac)</span></code></pre></div>
+<pre><code>##       Code         Libellé          Nombre.de.logements.vacants.2022
+##  Min.   :75056   Length:1266        Min.   :     0                  
+##  1st Qu.:77330   Class :character   1st Qu.:    15                  
+##  Median :78332   Mode  :character   Median :    41                  
+##  Mean   :83784                      Mean   :   341                  
+##  3rd Qu.:91661                      3rd Qu.:   184                  
+##  Max.   :95690                      Max.   :136957</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># vérification du type de la variable</span></span></code></pre></div>
+</div>
+<div id="eurostat" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Eurostat</h2>
+<p>Passer par</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>eurostat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/eurostat.csv&quot;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">summary</span>(eurostat)</span></code></pre></div>
+<pre><code>##    DATAFLOW         LAST.UPDATE            freq               unit          
+##  Length:40          Length:40          Length:40          Length:40         
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                             
+##                                                                             
+##                                                                             
+##     coicop              geo             TIME_PERIOD     OBS_VALUE     
+##  Length:40          Length:40          Min.   :2024   Min.   : 0.900  
+##  Class :character   Class :character   1st Qu.:2024   1st Qu.: 2.000  
+##  Mode  :character   Mode  :character   Median :2024   Median : 2.600  
+##                                        Mean   :2024   Mean   : 4.105  
+##                                        3rd Qu.:2024   3rd Qu.: 3.625  
+##                                        Max.   :2024   Max.   :58.500  
+##    OBS_FLAG         CONF_STATUS   
+##  Length:40          Mode:logical  
+##  Class :character   NA&#39;s:40       
+##  Mode  :character                 
+##                                   
+##                                   
+## </code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># filtre sur colonnes geo et OBS_VALUE</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>eurostat <span class="ot">&lt;-</span> eurostat [,<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">8</span>)]</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">head</span>(eurostat)</span></code></pre></div>
+<pre><code>##        geo OBS_VALUE
+## 1  Albanie       2.6
+## 2 Autriche       2.9
+## 3 Belgique       4.3
+## 4 Bulgarie       2.6
+## 5   Suisse       1.1
+## 6   Chypre       2.3</code></pre>
+</div>
+<div id="valeurs-foncières-data.gouv" class="section level2"
+number="1.3">
+<h2><span class="header-section-number">1.3</span> Valeurs foncières
+data.gouv</h2>
+<p>Passer par</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>dvf <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/gros/dvf.csv&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>dvf <span class="ot">&lt;-</span> dvf [dvf<span class="sc">$</span>nom_commune <span class="sc">==</span> <span class="st">&#39;Bondy&#39;</span>, <span class="fu">c</span>(<span class="st">&quot;id_parcelle&quot;</span>,<span class="st">&quot;valeur_fonciere&quot;</span>)]</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">summary</span>(dvf)</span></code></pre></div>
+<pre><code>##  id_parcelle        valeur_fonciere   
+##  Length:17715       Length:17715      
+##  Class :character   Class :character  
+##  Mode  :character   Mode  :character</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># on filtre sur la commune et comme colonne l&#39;identifiant parcelle et la valeur foncière</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># on force le champs valeur foncière en numérique ce qui crée des NA que l&#39;on supprime</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>dvf<span class="sc">$</span>valeur_fonciere <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dvf<span class="sc">$</span>valeur_fonciere)</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>dvf <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(dvf)</span></code></pre></div>
+<p>5 lignes supprimées sur 1266 = c’est minime</p>
+</div>
+<div id="origine-et-taille-de-chacune-des-données."
+class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Origine et taille de
+chacune des données.</h2>
+<p>Dans chacun des 3 cas, il s’agit de sources fiables.</p>
+<p>La taille des dvf est beaucoup plus importante que les 2 autres
+sources (problème de téléchargement possible en salle de cours)</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/donnees_cours13.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
+<table>
+<colgroup>
+<col width="21%" />
+<col width="51%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">donnée</th>
+<th align="left">origine</th>
+<th align="left">taille</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">logement vacant</td>
+<td align="left">Observatoire des territoires (ANCT, Etablissement
+Public)</td>
+<td align="left">39 communes du 93</td>
+</tr>
+<tr class="even">
+<td align="left">Inflation 2024</td>
+<td align="left">Eurostat (site officiel des stats pour l’Europe)</td>
+<td align="left">40 pays européens + totaux divers</td>
+</tr>
+<tr class="odd">
+<td align="left">demandes de valeurs foncières (dvf)</td>
+<td align="left">Ministère de l’Économie, des Finances et de l’Industrie
+(disponible sur data.gouv)</td>
+<td align="left">268 556 transactions immobilières sur le 93</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="univarié" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Univarié</h1>
+<div id="logements-vacants-1" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Logements
+vacants</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">hist</span>(logvac<span class="sc">$</span>Nombre.de.logements.vacants<span class="fl">.2022</span>)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">head</span>(logvac [<span class="fu">order</span>(logvac<span class="sc">$</span>Nombre.de.logements.vacants<span class="fl">.2022</span>, <span class="at">decreasing =</span> T),])</span></code></pre></div>
+<pre><code>##       Code              Libellé Nombre.de.logements.vacants.2022
+## 1    75056                Paris                           136957
+## 966  92012 Boulogne-Billancourt                             4545
+## 974  92026           Courbevoie                             4395
+## 1028 93066          Saint-Denis                             4236
+## 963  92004   Asnières-sur-Seine                             4038
+## 755  78646           Versailles                             3567</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Exclure Paris</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>logvac <span class="ot">&lt;-</span> logvac [logvac<span class="sc">$</span>Code <span class="sc">!=</span> <span class="dv">75056</span>,]</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># avec un peu de mise en forme</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="fu">hist</span>(logvac<span class="sc">$</span>Nombre.de.logements.vacants<span class="fl">.2022</span><span class="sc">/</span><span class="dv">1000</span>, <span class="at">main =</span> <span class="st">&quot;Répartition du nb de logements vacants</span><span class="sc">\n</span><span class="st">Ile de France&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Montants (milliers de logements)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Nb de communes du 93&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">col =</span> <span class="st">&quot;cadetblue&quot;</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co"># affichage médiane / moyenne</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(logvac<span class="sc">$</span>Nombre.de.logements.vacants<span class="fl">.2022</span>, <span class="at">na.rm =</span> T)<span class="sc">/</span><span class="dv">1000</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="fu">abline</span> (<span class="at">v=</span><span class="fu">median</span>(logvac<span class="sc">$</span>Nombre.de.logements.vacants<span class="fl">.2022</span>, <span class="at">na.rm =</span> T)<span class="sc">/</span><span class="dv">1000</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+</div>
+<div id="inflation" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Inflation</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">hist</span>(eurostat<span class="sc">$</span>OBS_VALUE)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># il y a une valeur extrême</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">summary</span>(eurostat)</span></code></pre></div>
+<pre><code>##      geo              OBS_VALUE     
+##  Length:40          Min.   : 0.900  
+##  Class :character   1st Qu.: 2.000  
+##  Mode  :character   Median : 2.600  
+##                     Mean   : 4.105  
+##                     3rd Qu.: 3.625  
+##                     Max.   :58.500</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">head</span>(eurostat [<span class="fu">order</span>(eurostat<span class="sc">$</span>OBS_VALUE, <span class="at">decreasing =</span> T),])</span></code></pre></div>
+<pre><code>##                  geo OBS_VALUE
+## 38           Turquie      58.5
+## 33          Roumanie       5.8
+## 34            Serbie       4.8
+## 21           Islande       4.5
+## 3           Belgique       4.3
+## 27 Macédoine du Nord       4.2</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># c&#39;est la Turquie, si on l&#39;enlève</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>eurostat <span class="ot">&lt;-</span> eurostat [eurostat<span class="sc">$</span>geo <span class="sc">!=</span> <span class="st">&#39;Turquie&#39;</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">hist</span>(eurostat<span class="sc">$</span>OBS_VALUE)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co"># avec un peu de mise en forme</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">hist</span>(eurostat<span class="sc">$</span>OBS_VALUE, <span class="at">main =</span> <span class="st">&quot;Répartition des taux d&#39;inflation 2024</span><span class="sc">\n</span><span class="st">Europe&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Tx de variation moyen sur 2024 (%)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Nb de pays européens&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">col =</span> <span class="st">&quot;wheat&quot;</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="co"># affichage médiane / moyenne</span></span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(eurostat<span class="sc">$</span>OBS_VALUE), <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a><span class="fu">abline</span> (<span class="at">v=</span><span class="fu">median</span>(eurostat<span class="sc">$</span>OBS_VALUE), <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
+</div>
+<div id="valeurs-foncières" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Valeurs
+foncières</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">100</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fu">summary</span>(dvf<span class="sc">$</span>valeur_fonciere<span class="sc">/</span><span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##       0     210   19747   50228  103038  103038</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">hist</span>(dvf<span class="sc">$</span>valeur_fonciere)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="fu">hist</span>(dvf<span class="sc">$</span>valeur_fonciere<span class="sc">/</span><span class="dv">1000</span>, <span class="at">main =</span> <span class="st">&quot;Répartition du montant des transactions immobilières</span><span class="sc">\n</span><span class="st">Bondy&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Montant&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Nb de transactions&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">col =</span> <span class="st">&quot;wheat&quot;</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="co"># affichage médiane / moyenne</span></span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(dvf<span class="sc">$</span>valeur_fonciere<span class="sc">/</span><span class="dv">1000</span>), <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a><span class="fu">abline</span> (<span class="at">v=</span><span class="fu">median</span>(dvf<span class="sc">$</span>valeur_fonciere<span class="sc">/</span><span class="dv">1000</span>), <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="courte-analyse" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Courte analyse</h2>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/analyseCours13.csv&quot;</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
+<table>
+<colgroup>
+<col width="5%" />
+<col width="54%" />
+<col width="39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">thème</th>
+<th align="left">analyse</th>
+<th align="left">valeur.aberrante</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">logement vacant</td>
+<td align="left">Beaucoup de communes ont peu de logements vacants dans
+le 93, mais il faudrait rapporter à la taille des communes pour avoir
+une idée plus juste.</td>
+<td align="left">St Denis semble avoir beaucoup de logements, en tous
+cas plus que Montreuil qui est de taille comparable.</td>
+</tr>
+<tr class="even">
+<td align="left">inflation</td>
+<td align="left">Les pays ont des profils très différents, on distingue
+un groupe à faible inflation et un autre groupe à plus forte
+inflation.</td>
+<td align="left">Turquie, on retire, la valeur est trop différente de la
+moyenne des autres.</td>
+</tr>
+<tr class="odd">
+<td align="left">dvf</td>
+<td align="left">Beaucoup de petites transactions (- de 10 000 euros) et
+de très grosses transactions (ordre de grandeur au million d’euros)</td>
+<td align="left">non</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="bivariée" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Bivariée</h1>
+<div id="khi2-logements-vacants-par-dpt" class="section level2"
+number="3.1">
+<h2><span class="header-section-number">3.1</span> Khi2 : logements
+vacants par dpt</h2>
+<div id="tableau-de-contingence" class="section level4"
+number="3.1.0.1">
+<h4><span class="header-section-number">3.1.0.1</span> Tableau de
+contingence</h4>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">hist</span>(logvac<span class="sc">$</span>Nombre.de.logements.vacants<span class="fl">.2022</span>)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>logvac<span class="sc">$</span>categorie <span class="ot">&lt;-</span> <span class="fu">cut</span>(logvac<span class="sc">$</span>Nombre.de.logements.vacants<span class="fl">.2022</span>, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">500</span>,<span class="dv">750</span>,<span class="dv">5000</span>))</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a><span class="fu">table</span>(logvac<span class="sc">$</span>categorie)</span></code></pre></div>
+<pre><code>## 
+##     (0,500]   (500,750] (750,5e+03] 
+##        1080          64         116</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>logvac<span class="sc">$</span>dpt <span class="ot">&lt;-</span> <span class="fu">substring</span>(logvac<span class="sc">$</span>Code,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(logvac<span class="sc">$</span>dpt,logvac<span class="sc">$</span>categorie)</span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a>tab</span></code></pre></div>
+<pre><code>##     
+##      (0,500] (500,750] (750,5e+03]
+##   77     487        12           7
+##   78     229        14          14
+##   91     169        10          14
+##   92       5         5          26
+##   93       8         5          26
+##   94      19         9          19
+##   95     163         9          10</code></pre>
+</div>
+<div id="khi2" class="section level4" number="3.1.0.2">
+<h4><span class="header-section-number">3.1.0.2</span> Khi2</h4>
+<p>Pas de chiffre &lt; 5, on peut faire un khi2</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tab)</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>test</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  tab
+## X-squared = 481.35, df = 12, p-value &lt; 0.00000000000000022</code></pre>
+<p>La p-value est réduite donc l’hypothèse nulle est rejetée, il y a
+bien un lien entre les dpts et le nombre de logements vacants en Ile de
+France.</p>
+<p>Il paraît d’ailleurs évident au vu du tableau de contingence qu’il y
+a moins de logements vacants dans le 77 78, 91 et 95 que dans le
+92,93,94.</p>
+<p>Mais, encore une fois, le nombre de logements vacants doit être
+dépendant de la taille des villes.</p>
+</div>
+</div>
+<div id="régression-tx-dinflation-et-chomage-milliers-de-personnes"
+class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Régression : tx
+d’inflation et chomage (milliers de personnes)</h2>
+<div id="constitution-de-la-base-inflation-et-chômage"
+class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Constitution de la
+base : inflation et chômage</h3>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>chomage <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/chomage.csv&quot;</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>chomage <span class="ot">&lt;-</span> chomage [, <span class="fu">c</span>(<span class="st">&quot;geo&quot;</span>,<span class="st">&quot;OBS_VALUE&quot;</span>)]</span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span> (eurostat, chomage, <span class="at">by =</span> <span class="st">&quot;geo&quot;</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a><span class="fu">names</span>(jointure) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pays&quot;</span>, <span class="st">&quot;inflation&quot;</span>, <span class="st">&quot;chomage&quot;</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a><span class="fu">hist</span>(jointure<span class="sc">$</span>chomage)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>filtre <span class="ot">&lt;-</span> jointure  [jointure<span class="sc">$</span>chomage <span class="sc">&lt;</span> <span class="dv">2000</span>,]</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="fu">hist</span>(filtre<span class="sc">$</span>chomage)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>filtre <span class="ot">&lt;-</span> jointure  [jointure<span class="sc">$</span>chomage <span class="sc">&lt;</span> <span class="dv">500</span>,]</span></code></pre></div>
+<p>On a effectué un double filtre de manière à avoir une donnée de
+taille comparable.</p>
+</div>
+<div id="modèle" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Modèle</h3>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a>lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(filtre<span class="sc">$</span>chomage<span class="sc">~</span>filtre<span class="sc">$</span>inflation)</span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a><span class="fu">plot</span>(filtre<span class="sc">$</span>inflation, filtre<span class="sc">$</span>chomage, <span class="at">xlab=</span><span class="st">&quot;variable explicative</span><span class="sc">\n</span><span class="st">inflation&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;à expliquer : chômage&quot;</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a><span class="fu">abline</span>(lm, <span class="at">lty =</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a><span class="fu">text</span>(filtre<span class="sc">$</span>inflation, filtre<span class="sc">$</span>chomage,<span class="at">labels =</span> filtre<span class="sc">$</span>pays</span>
+<span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a>      , <span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">pos =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="fu">cor</span>(filtre [,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)])</span></code></pre></div>
+<pre><code>##           inflation   chomage
+## inflation 1.0000000 0.2091469
+## chomage   0.2091469 1.0000000</code></pre>
+<p>Il apparaît qu’il n’y a pas de relation entre tx d’inflation et
+chomage. Le filtre a sélectionné des pays de taille comparable mais leur
+position est trop dispersée. Apparaît cependant des groupes qui
+pourraient éventuellement permettre d’établir une division spatiale des
+pays européens.</p>
+</div>
+</div>
+<div id="variance-logements-vacants-par-dpt" class="section level2"
+number="3.3">
+<h2><span class="header-section-number">3.3</span> Variance : logements
+vacants par dpt</h2>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="fu">boxplot</span>(logvac<span class="sc">$</span>Nombre.de.logements.vacants<span class="fl">.2022</span><span class="sc">~</span>logvac<span class="sc">$</span>dpt)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="fu">names</span>(logvac)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">&quot;nb&quot;</span></span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>modele <span class="ot">&lt;-</span> <span class="fu">lm</span> (nb <span class="sc">~</span> dpt, <span class="at">data =</span> logvac)</span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a><span class="fu">anova</span>(modele)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: nb
+##             Df    Sum Sq  Mean Sq F value                Pr(&gt;F)    
+## dpt          6 123269791 20544965   135.9 &lt; 0.00000000000000022 ***
+## Residuals 1258 190183251   151179                                  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Comme le montre le résultat de l’ANOVA, il y a une forte
+différenciation entre les départements d’île de France autour des
+logements vacants.</p>
+</div>
+</div>
+<div id="acp-déplacements-domicile-travail" class="section level1"
+number="4">
+<h1><span class="header-section-number">4</span> ACP : déplacements
+domicile travail</h1>
+<div
+id="travail-préparatoire-sur-le-fichier-avant-lacp-le-fichier-est-trop-gros"
+class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Travail préparatoire
+sur le fichier avant l’ACP : le fichier est trop gros</h2>
+<p>Préparation du fichier final, on filtre sur les dpts utilisés en
+cours</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="co"># très gros fichier, on filtre sur les dpts </span></span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>dep <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/gros/depl_dom_trav_co2_2022.csv&quot;</span>, <span class="at">na.strings =</span> <span class="st">&quot;NA&quot;</span>)</span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a>lieu <span class="ot">&lt;-</span> <span class="fu">c</span>(lieu, <span class="st">&quot;06088&quot;</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a>filtre <span class="ot">&lt;-</span> dep [dep<span class="sc">$</span>LIEU_RESID <span class="sc">%in%</span> lieu,]</span>
+<span id="cb45-5"><a href="#cb45-5" tabindex="-1"></a><span class="fu">write.csv</span>(filtre,<span class="st">&quot;data/gros/deplacement.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span> )</span></code></pre></div>
+<p>On coupe le fichier par dpt pour que les étudiants puissent
+l’ouvrir</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>dep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/gros/deplacement.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a><span class="fu">names</span> (dep)</span>
+<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">table</span>(dep<span class="sc">$</span>DEP_RESID))</span>
+<span id="cb46-4"><a href="#cb46-4" tabindex="-1"></a><span class="cf">for</span> (d <span class="cf">in</span> dpt){</span>
+<span id="cb46-5"><a href="#cb46-5" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> dep [dep<span class="sc">$</span>DEP_RESID <span class="sc">==</span> d,]</span>
+<span id="cb46-6"><a href="#cb46-6" tabindex="-1"></a>  <span class="fu">write.csv</span>(tmp, <span class="fu">paste0</span>(<span class="st">&quot;data/deplacement&quot;</span>, d, <span class="st">&quot;.csv&quot;</span>), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb46-7"><a href="#cb46-7" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="au-choix-on-traite-dun-département" class="section level2"
+number="4.2">
+<h2><span class="header-section-number">4.2</span> Au choix on traite
+d’un département</h2>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a>dep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/gros/deplacement93.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<p>On fait le choix des numériques DIST_HEBDO CO2_HEBDO DUREE
+CARBU_HEBDO avec l’idée que toutes les valeurs sont corrélées</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a>dep <span class="ot">&lt;-</span> dep [, <span class="fu">c</span>(<span class="st">&quot;DIST_HEBDO&quot;</span>, <span class="st">&quot;CO2_HEBDO&quot;</span>, <span class="st">&quot;DUREE&quot;</span>, <span class="st">&quot;CARBU_HEBDO&quot;</span>)]</span>
+<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a>dep <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(dep)</span>
+<span id="cb48-3"><a href="#cb48-3" tabindex="-1"></a><span class="co"># attention bcp de na on passe de  50 M à 16 M</span></span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="fu">summary</span>(dep)</span></code></pre></div>
+<pre><code>##    DIST_HEBDO        CO2_HEBDO            DUREE         CARBU_HEBDO     
+##  Min.   :  5.482   Min.   :   644.3   Min.   : 1.803   Min.   : 0.2673  
+##  1st Qu.: 30.630   1st Qu.:  4662.9   1st Qu.: 5.416   1st Qu.: 1.9348  
+##  Median : 72.709   Median : 10580.0   Median :11.912   Median : 4.3901  
+##  Mean   : 87.897   Mean   : 12638.6   Mean   :13.801   Mean   : 5.2443  
+##  3rd Qu.:118.836   3rd Qu.: 17150.8   3rd Qu.:18.941   3rd Qu.: 7.1165  
+##  Max.   :779.694   Max.   :112615.1   Max.   :78.972   Max.   :46.7283</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a><span class="co"># ordres de grandeur</span></span>
+<span id="cb51-2"><a href="#cb51-2" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">cor</span>(dep),<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##             DIST_HEBDO CO2_HEBDO DUREE CARBU_HEBDO
+## DIST_HEBDO           1       1.0   1.0         1.0
+## CO2_HEBDO            1       1.0   0.9         1.0
+## DUREE                1       0.9   1.0         0.9
+## CARBU_HEBDO          1       1.0   0.9         1.0</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a><span class="co"># relations (numériques)</span></span>
+<span id="cb53-2"><a href="#cb53-2" tabindex="-1"></a><span class="fu">pairs</span>(dep)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a><span class="co"># relations (graphiques)</span></span></code></pre></div>
+<p>On voit que si CARBU et HEBDO sont totalement liées, distance et
+durée vers les valeurs hautes sont plus diversifiées</p>
+<p>On sélectionne les individus à la durée la plus longue</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a><span class="fu">hist</span>(dep<span class="sc">$</span>DUREE)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a>dep <span class="ot">&lt;-</span> dep [dep<span class="sc">$</span>DUREE <span class="sc">&gt;</span> <span class="dv">40</span>,]</span></code></pre></div>
+<p>L’ACP est normée car les unités sont différentes</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(dep, <span class="at">scale. =</span> T)</span>
+<span id="cb57-2"><a href="#cb57-2" tabindex="-1"></a><span class="fu">biplot</span>(res, <span class="at">main=</span> <span class="st">&quot;Résultat d&#39;une ACP normée&quot;</span>, <span class="at">col=</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;chartreuse&quot;</span>), <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="jour10_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Il y a beaucoup d’individus qui sont loin des axes. Il faut examiner
+leur caractéristiques.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a>remarquable <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">48327</span>, <span class="dv">48421</span>, <span class="dv">48324</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" tabindex="-1"></a>dep<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="fu">rownames</span>(dep)</span>
+<span id="cb58-3"><a href="#cb58-3" tabindex="-1"></a>dep [dep<span class="sc">$</span>id <span class="sc">%in%</span> remarquable,]</span></code></pre></div>
+<pre><code>##       DIST_HEBDO CO2_HEBDO    DUREE CARBU_HEBDO    id
+## 48324   544.2194  87274.17 52.49604    36.21335 48324
+## 48327   447.2211  55413.33 70.98574    22.99308 48327
+## 48421   331.6676  46284.41 66.56000    19.20515 48421</code></pre>
+<p>On peut voit donc avec ces 3 cas que pour une durée similaire, les
+consommations de carburant et l’émission de CO2 vont du simple au
+double. Cela dépend du moyen de transport utilisé, à noter également que
+la distance est plus faible pour celui qui doit utiliser un transport en
+commun.</p>
+</div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<small><p>L5GEABIM Analyses bivariées et multivariées</p></small>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
