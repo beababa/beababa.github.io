@@ -1,17 +1,31 @@
-Cours 12 :
+COURS 11
+----------------------------------
+cours : L5GEABIM - TD - Analyses bivariées et multivariées - BMaranget
+mots de passe Moodle
+8h-Lundi
+9h30-Lundi
+17h30-Vendredi
+---------------------------------
+connexion cours https://beababa.github.io/intro.html
+beatrice.maranget@bondy.fr
+--------------------------------------
+attention annonce prochain cours
+--------------------------------------
+lire le fichier sous R et faire l'ACP (jouer le script)
+- fichier
+- script
 
-1 - Questions ?
+Filtrer sur un seul dpt et mettre les communes en row.names
+row.names(data) <- data$communes
+----------------
+définitions à connaître après avoir regardé vidéo Husson
+-----------------
+esthétique de l'ACP
+présentation centrer / réduire à partir des img
+le faire
+------------------
+interprétation : ajouter commentaire dans le tableau
+-----------------
+CAH : repérer deux valeurs dans le graphique ACP et vérifier qu'elles sont dans le même groupe dans la CAH
+et compléter le tableau
 
-2 - point de rappel : contour bureau de vote et autres (échelle)
-
-3 - exercice sur affichage différentes variables
-
-4 - points importants du cours
-
-5 - test
-
---------------------------------------------------------------------
-
-Faire un script permettant une ACP sur les données complètes de Bondy pour 10 variables.
-
-L'ACP n'est pas forcément jolie (elle a de grandes chances d'être moche)
