@@ -8,7 +8,7 @@
 
 <meta name="author" content="B Maranget">
 
-<title>_site - Introduction</title>
+<title>_site - Recherche de données</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,11 +128,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./intro.html" aria-current="page"> 
+    <a class="nav-link" href="./intro.html"> 
 <span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./01_TD1.html"> 
+    <a class="nav-link active" href="./01_TD1.html" aria-current="page"> 
 <span class="menu-text">Données</span></a>
   </li>  
   <li class="nav-item">
@@ -185,10 +185,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#objet" id="toc-objet" class="nav-link active" data-scroll-target="#objet">Objet</a></li>
-  <li><a href="#déroulé" id="toc-déroulé" class="nav-link" data-scroll-target="#déroulé">Déroulé</a></li>
-  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation">Evaluation</a></li>
-  <li><a href="#données" id="toc-données" class="nav-link" data-scroll-target="#données">Données</a></li>
-  <li><a href="#ressources" id="toc-ressources" class="nav-link" data-scroll-target="#ressources">Ressources</a></li>
+  <li><a href="#quel-type-de-donnée" id="toc-quel-type-de-donnée" class="nav-link" data-scroll-target="#quel-type-de-donnée">Quel type de donnée ?</a>
+  <ul class="collapse">
+  <li><a href="#donnée-osm" id="toc-donnée-osm" class="nav-link" data-scroll-target="#donnée-osm">Donnée OSM</a></li>
+  <li><a href="#donnée-filosofi" id="toc-donnée-filosofi" class="nav-link" data-scroll-target="#donnée-filosofi">Donnée filosofi</a></li>
+  <li><a href="#cadastre" id="toc-cadastre" class="nav-link" data-scroll-target="#cadastre">Cadastre</a></li>
+  </ul></li>
+  <li><a href="#intégrer-la-donnée-dans-arcgis" id="toc-intégrer-la-donnée-dans-arcgis" class="nav-link" data-scroll-target="#intégrer-la-donnée-dans-arcgis">Intégrer la donnée dans Arcgis</a></li>
+  <li><a href="#sous-r" id="toc-sous-r" class="nav-link" data-scroll-target="#sous-r">Sous R</a>
+  <ul class="collapse">
+  <li><a href="#lecture-des-fichiers" id="toc-lecture-des-fichiers" class="nav-link" data-scroll-target="#lecture-des-fichiers">Lecture des fichiers</a></li>
+  <li><a href="#problèmes-éventuels-de-géométries" id="toc-problèmes-éventuels-de-géométries" class="nav-link" data-scroll-target="#problèmes-éventuels-de-géométries">Problèmes éventuels de géométries</a></li>
+  <li><a href="#intersections" id="toc-intersections" class="nav-link" data-scroll-target="#intersections">Intersections</a></li>
+  <li><a href="#carto" id="toc-carto" class="nav-link" data-scroll-target="#carto">Carto</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -197,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction</h1>
+<h1 class="title">Recherche de données</h1>
 </div>
 
 
@@ -222,139 +232,125 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="objet" class="level1">
 <h1>Objet</h1>
-<p>L6ECSIG Construction et utilisation des SIG 2025/26</p>
-<p>(Gr. 6 et , Jeudi 16h30 - 19h30 Salle 217 sur le campus de Clignancourt)</p>
-<p>L’idée du cours est de consolider les acquis de la L2 et de familiariser les étudiants à Arcgis pro et au codage avec R (une plateforme de versioning très utilisée.)</p>
-<p>La thématique utilisée est <em>Commune pauvre et/ou riche ?</em></p>
+<p>Rechercher de la donnée</p>
 </section>
-<section id="déroulé" class="level1">
-<h1>Déroulé</h1>
+<section id="quel-type-de-donnée" class="level1">
+<h1>Quel type de donnée ?</h1>
+<p>Parcourir le cours du groupe 3 et donner les 3 types de plateforme de données présentées.</p>
+<p>Le présent cours ne portera que sur des données vectorielles.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/deroule.csv"</span>, <span class="at">header =</span> T, <span class="at">fileEncoding =</span> <span class="st">"UTF-8"</span>)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/data.csv"</span>, <span class="at">fileEncoding =</span> <span class="st">"UTF-8"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 4%">
-<col style="width: 8%">
-<col style="width: 74%">
-<col style="width: 12%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">num</th>
-<th style="text-align: left;">date</th>
-<th style="text-align: left;">détail.prévu</th>
-<th style="text-align: right;">exercice.pts</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">TD1</td>
-<td style="text-align: left;">29.01.26</td>
-<td style="text-align: left;">Recherches de données</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TD2</td>
-<td style="text-align: left;">05.02.26</td>
-<td style="text-align: left;">Géoréférencement</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TD3</td>
-<td style="text-align: left;">12.02.26</td>
-<td style="text-align: left;">Traitements vectoriels</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TD4</td>
-<td style="text-align: left;">19.02.26</td>
-<td style="text-align: left;">traitements rasters</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TD5</td>
-<td style="text-align: left;">26.02.26</td>
-<td style="text-align: left;">MNS et MNT</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TD6</td>
-<td style="text-align: left;">12.03.26</td>
-<td style="text-align: left;">Jointures attributaires et spatiales</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TD7</td>
-<td style="text-align: left;">19.03.26</td>
-<td style="text-align: left;">Réseaux</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TD8</td>
-<td style="text-align: left;">26.03.26</td>
-<td style="text-align: left;">Markdown + structure projet ET objets dans R&nbsp;: vecteurs et dataframe</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TD9</td>
-<td style="text-align: left;">02.04.26</td>
-<td style="text-align: left;">intégrer des données spatiales&nbsp;: format gpkg</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TD10</td>
-<td style="text-align: left;">09.04.26</td>
-<td style="text-align: left;">Géotraitement</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TD11</td>
-<td style="text-align: left;">16.04.26</td>
-<td style="text-align: left;">Résultat (affichage carte) + oral de présentation des projets (5 mn par groupe)</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TD12</td>
-<td style="text-align: left;">07.05.26</td>
-<td style="text-align: left;">Rendu de projet (aucun retard toléré) + révisions partiel</td>
-<td style="text-align: right;">NA</td>
-</tr>
-</tbody>
-</table>
 </div>
-</div>
-</section>
-<section id="evaluation" class="level1">
-<h1>Evaluation</h1>
-<p>régime du contrôle continu,</p>
-<p>Deux notes :</p>
-<p>- une partiel</p>
-<p>- une note maison (+ les exercices pour moitié de la note maison)</p>
-<p>Le partiel sera sur machine d’une durée de 1h30 : - un exercice sous Arcgis Pro (10 pt) - et un autre sous R(10 pt) (avec un rendu en .pdf)</p>
-</section>
-<section id="données" class="level1">
-<h1>Données</h1>
-<p>Il s’agit de vos données pour la commune choisie. Principalement :</p>
+<p>Pour trouver la projection dans Arcgis Pro</p>
+<p>clic droit sur couche / propriétés de la couche / source / référence spatiale</p>
+<section id="donnée-osm" class="level2">
+<h2 class="anchored" data-anchor-id="donnée-osm">Donnée OSM</h2>
 <ul>
-<li><p>OFGL</p></li>
-<li><p>Filosofi</p></li>
+<li>notion de tag</li>
 </ul>
+<p><img src="img/tag.png" class="img-fluid"></p>
+<ul>
+<li>overpasss (https://overpass-turbo.eu/)</li>
+</ul>
+<p><img src="img/osm.png" class="img-fluid"></p>
+</section>
+<section id="donnée-filosofi" class="level2">
+<h2 class="anchored" data-anchor-id="donnée-filosofi">Donnée filosofi</h2>
+<ul>
+<li>Visionner le carroyage</li>
+</ul>
+<p>https://www.insee.fr/fr/outil-interactif/7737357/map.html</p>
+<p>Voir 200 m ou 1 km (en cours télécharger le 1 km, à la maison le 200 m)</p>
+<ul>
+<li><p>carroyage</p></li>
+<li><p>date</p></li>
+</ul>
+<p>https://www.data.gouv.fr/datasets/revenus-pauvrete-et-niveau-de-vie-donnees-carroyees/discussions</p>
+<ul>
+<li>chercher le carroyage de 2018 à partir de : data.gouv / insee / le moteur de recherche</li>
+</ul>
+<p>On doit tomber sur :</p>
+<p>https://www.insee.fr/fr/statistiques/7655475?sommaire=7655515</p>
+</section>
+<section id="cadastre" class="level2">
+<h2 class="anchored" data-anchor-id="cadastre">Cadastre</h2>
+<p>A partir de data.gouv, on tombe sur le <em>cadastre etalab</em></p>
+<p><img src="img/etalab.png" class="img-fluid"></p>
+<p>On prend les parcelles de sa commune ET les limites des communes de son département.</p>
+</section>
+</section>
+<section id="intégrer-la-donnée-dans-arcgis" class="level1">
+<h1>Intégrer la donnée dans Arcgis</h1>
+<p>Télécharger votre donnée et la mettre dans un répertoire par exemple <em>dataCours1</em></p>
+<p>Utiliser la fenêtre <em>Catalogue</em> pour connecter votre répertoire</p>
+<p>Tout dépend du format de votre donnée.</p>
+<ul>
+<li><p>shapefile (cliquer / glisser)</p></li>
+<li><p>gpkg (cliquer / glisser)</p></li>
+<li><p>geojson (json dans la zone de recherche de commandes Alt + Q)</p></li>
+</ul>
+<p><img src="img/geojsonEsri.png" class="img-fluid"></p>
+</section>
+<section id="sous-r" class="level1">
+<h1>Sous R</h1>
+<section id="lecture-des-fichiers" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-des-fichiers">Lecture des fichiers</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>insee <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/insee.csv"</span>, <span class="at">header =</span> F)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>insee</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>parcelle <span class="ot">&lt;-</span> <span class="fu">st_read</span> (<span class="st">"data/dataCours1/cadastre-93010-parcelles.json"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/dataCours1/communes.shp"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/dataCours1/export.geojson"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/Filosofi2019_carreaux_200m_gpkg/carreaux_200m_met.gpkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="ressources" class="level1">
-<h1>Ressources</h1>
-<p><a href="https://learn.arcgis.com/fr/gallery/#?p=arcgispro" class="uri">https://learn.arcgis.com/fr/gallery/#?p=arcgispro</a></p>
-<p>https://framabook.org/r-et-espace/</p>
-<p>Données communales</p>
-<p><a href="https://www.data.gouv.fr/pages/donnees-geo" class="uri">https://www.data.gouv.fr/pages/donnees-geo</a></p>
-<p><a href="https://www.insee.fr/fr/information/3544265" class="uri">https://www.insee.fr/fr/information/3544265</a></p>
+<section id="problèmes-éventuels-de-géométries" class="level2">
+<h2 class="anchored" data-anchor-id="problèmes-éventuels-de-géométries">Problèmes éventuels de géométries</h2>
+<p>Attention extraction uniquement du polygone et des polygones valides</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># le geojson a des géométries différentes</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bondy<span class="sc">$</span>geometry)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> <span class="fu">st_collection_extract</span>(bondy, <span class="st">"POLYGON"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># verif des autres géométries</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dpt<span class="sc">$</span>geometry)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(parcelle<span class="sc">$</span>geometry)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">st_is_valid</span>(parcelle<span class="sc">$</span>geometry))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="intersections" class="level2">
+<h2 class="anchored" data-anchor-id="intersections">Intersections</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Systèmes de projection</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bondy)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(car)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(parcelle)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformations de projection</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bondy, <span class="dv">2154</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>parcelle <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(parcelle, <span class="dv">2154</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Intersections</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>inter1 <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(car, bondy)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>inter2 <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(car, dpt)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Enregistrement dans un gpkg</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(inter2,<span class="st">"data/dataCours1/car.gpkg"</span>, <span class="st">"dpt"</span>, <span class="at">delete_layer =</span> T)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(inter1,<span class="st">"data/dataCours1/car.gpkg"</span>, <span class="st">"bondy"</span>, <span class="at">delete_layer =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="carto" class="level2">
+<h2 class="anchored" data-anchor-id="carto">Carto</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(parcelle, <span class="at">col=</span> <span class="st">"wheat"</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(inter1, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">"cadetblue1"</span>, <span class="at">lwd =</span> <span class="dv">2</span> ,<span class="at">add =</span> T)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"parcelles cadastre Bondy et ses carreaux filosofi"</span>,<span class="st">"filosofi 2018, osm</span><span class="sc">\n</span><span class="st">Janvier 2026"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(inter2)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(bondy, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">"wheat"</span>, <span class="at">lwd=</span><span class="dv">2</span>,<span class="at">add =</span> T)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"carreaux filosofi dpt et limites ville Bondy"</span>,<span class="st">"filosofi 2018, osm</span><span class="sc">\n</span><span class="st">Janvier 2026"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

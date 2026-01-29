@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "Objet\nL6ECSIG Construction et utilisation des SIG 2025/26\n(Gr. 6 et , Jeudi 16h30 - 19h30 Salle 217 sur le campus de Clignancourt)\nL’idée du cours est de consolider les acquis de la L2 et de familiariser les étudiants à Arcgis pro et au codage avec R (une plateforme de versioning très utilisée.)\nLa thématique utilisée est Commune pauvre et/ou riche ?\n\n\nDéroulé\n\ndata &lt;- read.csv(\"data/deroule.csv\", header = T, fileEncoding = \"UTF-8\")\nknitr::kable(data)\n\n\n\n\n\n\n\n\n\n\nnum\ndate\ndétail.prévu\nexercice.pts\n\n\n\n\nTD1\n29.01.26\nRecherches de données\n3\n\n\nTD2\n05.02.26\nGéoréférencement\n1\n\n\nTD3\n12.02.26\nTraitements vectoriels\n2\n\n\nTD4\n19.02.26\ntraitements rasters\n1\n\n\nTD5\n26.02.26\nMNS et MNT\n1\n\n\nTD6\n12.03.26\nJointures attributaires et spatiales\n2\n\n\nTD7\n19.03.26\nRéseaux\nNA\n\n\nTD8\n26.03.26\nMarkdown + structure projet ET objets dans R : vecteurs et dataframe\nNA\n\n\nTD9\n02.04.26\nintégrer des données spatiales : format gpkg\nNA\n\n\nTD10\n09.04.26\nGéotraitement\nNA\n\n\nTD11\n16.04.26\nRésultat (affichage carte) + oral de présentation des projets (5 mn par groupe)\nNA\n\n\nTD12\n07.05.26\nRendu de projet (aucun retard toléré) + révisions partiel\nNA\n\n\n\n\n\n\n\nEvaluation\nrégime du contrôle continu,\nDeux notes :\n- une partiel\n- une note maison (+ les exercices pour moitié de la note maison)\nLe partiel sera sur machine d’une durée de 1h30 : - un exercice sous Arcgis Pro (10 pt) - et un autre sous R(10 pt) (avec un rendu en .pdf)\n\n\nDonnées\nIl s’agit de vos données pour la commune choisie. Principalement :\n\nOFGL\nFilosofi\n\n\ninsee &lt;- read.csv(\"data/insee.csv\", header = F)\ninsee\n\n\n\nRessources\nhttps://learn.arcgis.com/fr/gallery/#?p=arcgispro\nhttps://framabook.org/r-et-espace/\nDonnées communales\nhttps://www.data.gouv.fr/pages/donnees-geo\nhttps://www.insee.fr/fr/information/3544265"
+  },
+  {
+    "objectID": "01_TD1.html",
+    "href": "01_TD1.html",
+    "title": "Recherche de données",
+    "section": "",
+    "text": "Rechercher de la donnée"
+  },
+  {
+    "objectID": "01_TD1.html#donnée-osm",
+    "href": "01_TD1.html#donnée-osm",
+    "title": "Recherche de données",
+    "section": "Donnée OSM",
+    "text": "Donnée OSM\n\nnotion de tag\n\n\n\noverpasss (https://overpass-turbo.eu/)"
+  },
+  {
+    "objectID": "01_TD1.html#donnée-filosofi",
+    "href": "01_TD1.html#donnée-filosofi",
+    "title": "Recherche de données",
+    "section": "Donnée filosofi",
+    "text": "Donnée filosofi\n\nVisionner le carroyage\n\nhttps://www.insee.fr/fr/outil-interactif/7737357/map.html\nVoir 200 m ou 1 km (en cours télécharger le 1 km, à la maison le 200 m)\n\ncarroyage\ndate\n\nhttps://www.data.gouv.fr/datasets/revenus-pauvrete-et-niveau-de-vie-donnees-carroyees/discussions\n\nchercher le carroyage de 2018 à partir de : data.gouv / insee / le moteur de recherche\n\nOn doit tomber sur :\nhttps://www.insee.fr/fr/statistiques/7655475?sommaire=7655515"
+  },
+  {
+    "objectID": "01_TD1.html#cadastre",
+    "href": "01_TD1.html#cadastre",
+    "title": "Recherche de données",
+    "section": "Cadastre",
+    "text": "Cadastre\nA partir de data.gouv, on tombe sur le cadastre etalab\n\nOn prend les parcelles de sa commune ET les limites des communes de son département."
+  },
+  {
+    "objectID": "01_TD1.html#lecture-des-fichiers",
+    "href": "01_TD1.html#lecture-des-fichiers",
+    "title": "Recherche de données",
+    "section": "Lecture des fichiers",
+    "text": "Lecture des fichiers\n\nlibrary(sf)\nparcelle &lt;- st_read (\"data/dataCours1/cadastre-93010-parcelles.json\")\ndpt &lt;- st_read(\"data/dataCours1/communes.shp\")\nbondy &lt;- st_read(\"data/dataCours1/export.geojson\")\ncar &lt;- st_read(\"data/gros/Filosofi2019_carreaux_200m_gpkg/carreaux_200m_met.gpkg\")"
+  },
+  {
+    "objectID": "01_TD1.html#problèmes-éventuels-de-géométries",
+    "href": "01_TD1.html#problèmes-éventuels-de-géométries",
+    "title": "Recherche de données",
+    "section": "Problèmes éventuels de géométries",
+    "text": "Problèmes éventuels de géométries\nAttention extraction uniquement du polygone et des polygones valides\n\n# le geojson a des géométries différentes\nsummary(bondy$geometry)\nbondy &lt;- st_collection_extract(bondy, \"POLYGON\")\n# verif des autres géométries\nsummary(dpt$geometry)\nsummary(parcelle$geometry)\ntable(st_is_valid(parcelle$geometry))"
+  },
+  {
+    "objectID": "01_TD1.html#intersections",
+    "href": "01_TD1.html#intersections",
+    "title": "Recherche de données",
+    "section": "Intersections",
+    "text": "Intersections\n\n# Systèmes de projection\nst_crs(bondy)\nst_crs(car)\nst_crs(parcelle)\n# Transformations de projection\nbondy &lt;- st_transform(bondy, 2154)\nparcelle &lt;- st_transform(parcelle, 2154)\n# Intersections\ninter1 &lt;- st_intersection(car, bondy)\ninter2 &lt;- st_intersection(car, dpt)\n# Enregistrement dans un gpkg\nst_write(inter2,\"data/dataCours1/car.gpkg\", \"dpt\", delete_layer = T)\nst_write(inter1,\"data/dataCours1/car.gpkg\", \"bondy\", delete_layer = T)"
+  },
+  {
+    "objectID": "01_TD1.html#carto",
+    "href": "01_TD1.html#carto",
+    "title": "Recherche de données",
+    "section": "Carto",
+    "text": "Carto\n\nlibrary(mapsf)\nmf_map(parcelle, col= \"wheat\", border = NA)\nmf_map(inter1, col = NA, border = \"cadetblue1\", lwd = 2 ,add = T)\nmf_layout(\"parcelles cadastre Bondy et ses carreaux filosofi\",\"filosofi 2018, osm\\nJanvier 2026\")\n\n\nmf_map(inter2)\nmf_map(bondy, col = NA, border = \"wheat\", lwd=2,add = T)\nmf_layout(\"carreaux filosofi dpt et limites ville Bondy\",\"filosofi 2018, osm\\nJanvier 2026\")"
+  }
+]
