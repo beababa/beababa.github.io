@@ -95,7 +95,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -124,31 +124,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Données</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./03_basesR.html" rel="" target="">
- <span class="menu-text">Bases R</span></a>
+    <a class="nav-link active" href="./02_TD2.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Projections</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./04_Rspatial.html" rel="" target="">
- <span class="menu-text">R spatial</span></a>
+    <a class="nav-link" href="./03_TD3.html" rel="" target="">
+ <span class="menu-text">Vecteurs</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./05_correction.html" rel="" target="">
- <span class="menu-text">Correction</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./06_Donnees.html" rel="" target="">
- <span class="menu-text">Donnees</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./07_traitement.html" rel="" target="">
- <span class="menu-text">Traitement</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./08_resultat.html" rel="" target="">
- <span class="menu-text">Resultat</span></a>
-  </li>  
-  <li class="dropdown-header">
- <span class="menu-text">about.qmd</span></li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -173,10 +155,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#objet" id="toc-objet" class="nav-link active" data-scroll-target="#objet">Objet</a></li>
+  <li><a href="#datums-à-connaître" id="toc-datums-à-connaître" class="nav-link" data-scroll-target="#datums-à-connaître">3 datums à connaître</a></li>
   <li><a href="#wgs84-et-lambert-93" id="toc-wgs84-et-lambert-93" class="nav-link" data-scroll-target="#wgs84-et-lambert-93">WGS84 et Lambert 93</a></li>
   <li><a href="#exercice-1-trouver-la-projection-des-premiers-carreaux-insee" id="toc-exercice-1-trouver-la-projection-des-premiers-carreaux-insee" class="nav-link" data-scroll-target="#exercice-1-trouver-la-projection-des-premiers-carreaux-insee">Exercice 1 = trouver la projection des premiers carreaux insee</a></li>
-  <li><a href="#arcgis-pro" id="toc-arcgis-pro" class="nav-link" data-scroll-target="#arcgis-pro">Arcgis Pro</a></li>
+  <li><a href="#arcgis-pro" id="toc-arcgis-pro" class="nav-link" data-scroll-target="#arcgis-pro">Arcgis Pro</a>
+  <ul class="collapse">
+  <li><a href="#emprise-des-données" id="toc-emprise-des-données" class="nav-link" data-scroll-target="#emprise-des-données">Emprise des données</a></li>
+  <li><a href="#systèmes-de-coordonnées" id="toc-systèmes-de-coordonnées" class="nav-link" data-scroll-target="#systèmes-de-coordonnées">Systèmes de coordonnées</a>
+  <ul class="collapse">
+  <li><a href="#au-niveau-du-projet-arcgis" id="toc-au-niveau-du-projet-arcgis" class="nav-link" data-scroll-target="#au-niveau-du-projet-arcgis">Au niveau du projet Arcgis</a></li>
   <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#exercice-2-aire-des-carreaux" id="toc-exercice-2-aire-des-carreaux" class="nav-link" data-scroll-target="#exercice-2-aire-des-carreaux">Exercice 2 aire des carreaux</a></li>
   <li><a href="#géoréférencer-un-plan-dao-en-oo" id="toc-géoréférencer-un-plan-dao-en-oo" class="nav-link" data-scroll-target="#géoréférencer-un-plan-dao-en-oo">Géoréférencer un plan DAO en O,O</a></li>
   </ul>
@@ -187,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Géoréférencement</h1>
+<div class="quarto-title-block"><div><h1 class="title">Géoréférencement</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -206,21 +196,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Objet</h1>
 <p>En fait au delà de l’exercice pratique de géoréférencement, il s’agit de faire un point sur les projections.</p>
 </section>
+<section id="datums-à-connaître" class="level1">
+<h1>3 datums à connaître</h1>
+<p>WGS84 / RGF93 / ETRS89</p>
+</section>
 <section id="wgs84-et-lambert-93" class="level1">
 <h1>WGS84 et Lambert 93</h1>
 <p>Observer une carte topo IGN : comprendre le quadrillage</p>
 <p>2 quadrillages WGS 84 et Lambert 93</p>
 <p><img src="img/carteIGN.jpg" class="img-fluid"></p>
-<p>A connaître, les emprises de la France dans les deux systèmes</p>
+<p>A connaître, les <em>emprises</em> de la France dans les deux systèmes</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">"data/2Grilles.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>           X           lat                long
+1      WGS84       41 / 52             -4&nbsp;/ 10
+2 Lambert 93 6&nbsp;/ 7 millons 100 M / 1.2 million</code></pre>
 </div>
-<p>Mais il y a beaucoup d’autres grilles, tous les CRS possibles sur une zone donnée avec les emprises <em>CRS explorer</em> (à retenir ?)</p>
+</div>
+<p>Mais il y a beaucoup d’autres grilles, tous les CRS possibles sur une zone donnée avec les emprises <em>CRS explorer</em></p>
 <p>Autre outil :</p>
-<p>https://geofree.fr/gf/projguess.asp</p>
+<p>http://bboxfinder.com/#0.000000,0.000000,0.000000,0.000000</p>
 </section>
 <section id="exercice-1-trouver-la-projection-des-premiers-carreaux-insee" class="level1">
 <h1>Exercice 1 = trouver la projection des premiers carreaux insee</h1>
@@ -233,35 +232,127 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="arcgis-pro" class="level1">
 <h1>Arcgis Pro</h1>
 <p>Sous Arcgis Pro, la donnée s’ouvre-t-elle ?</p>
-<p>Prendre plutôt le fichier mise à dispo car.</p>
+<p>Image pb licence</p>
+<p>Prendre plutôt le fichier mise à dispo carreauPB.gpkg.</p>
+<section id="emprise-des-données" class="level2">
+<h2 class="anchored" data-anchor-id="emprise-des-données">Emprise des données</h2>
+<p><img src="img/emprise.png" class="img-fluid"></p>
+<p>Il faut trouver un Y de 2 millions et un X de 500 M</p>
+<p>https://geofree.fr/gf/projguess.asp, le tableau permet de voir toutes les emprises</p>
+<p>voire même de mettre l’ordre de grandeur de l’emprise</p>
+<p><img src="img/geoFree.png" class="img-fluid"></p>
+</section>
+<section id="systèmes-de-coordonnées" class="level2">
+<h2 class="anchored" data-anchor-id="systèmes-de-coordonnées">Systèmes de coordonnées</h2>
+<section id="au-niveau-du-projet-arcgis" class="level3">
+<h3 class="anchored" data-anchor-id="au-niveau-du-projet-arcgis">Au niveau du projet Arcgis</h3>
+<p><img src="img/unnames.png" class="img-fluid"> ### Couche</p>
 <p><img src="img/arcgisProCar.png" class="img-fluid"><img src="img/arcgisPro2154.png" class="img-fluid"></p>
 <p>Qu’en déduire ?</p>
 </section>
-<section id="r" class="level1">
-<h1>R</h1>
+<section id="r" class="level3">
+<h3 class="anchored" data-anchor-id="r">R</h3>
 <p>On charge la donnée</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/R_rfl09_LAEA1000.mid"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(crsuggest)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>coordBondy <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="fl">48.9</span>,<span class="fl">2.46</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">guess_crs</span>(data, coordBondy)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span> (data) <span class="ot">&lt;-</span> <span class="dv">32639</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(data, <span class="at">crs =</span> <span class="dv">4326</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.3.1; sf_use_s2() is TRUE</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/R_rfl09_LAEA1000.mid"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `R_rfl09_LAEA1000' from data source 
+  `C:\Users\tachasa\L6ECSIG\data\gros\R_rfl09_LAEA1000.mid' using driver `MapInfo File'</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 375278 features and 4 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 47880.75 ymin: 1620477 xmax: 1198092 ymax: 2677278
+CRS:           NA</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>petit <span class="ot">&lt;-</span> data [<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]  <span class="co"># pour faire des tests</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Verif</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># une bibliothèque permmet de suggérer le crs inexistant</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(crsuggest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Using the EPSG Dataset v10.019, a product of the International Association of Oil &amp; Gas Producers. 
+Please view the terms of use at https://epsg.org/terms-of-use.html.</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>coordBondy <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="fl">48.9</span>,<span class="fl">2.46</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">guess_crs</span>(petit, coordBondy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Evaluating CRS options...</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The 'best guess' for the CRS of your data is EPSG code 32439.
+Use `sf::st_crs(your_data) &lt;- 32439` to use this CRS for your data.
+View the returned dataset for other possible options.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+  crs_code dist_km
+  &lt;chr&gt;      &lt;dbl&gt;
+1 32439      2149.
+2 32639      2149.
+3 32239      2149.
+4 6933       5117.
+5 3857       5801.
+6 3395       5802.
+7 6931      10525.
+8 3832      11505.</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span> (petit) <span class="ot">&lt;-</span> <span class="dv">32439</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p><img src="img/32639.png" class="img-fluid"></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c'est un epsg qui concerne l'Azerbaidjan...</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>petit <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(petit, <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>petit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 10 features and 4 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 46.63099 ymin: 21.71906 xmax: 46.67323 ymax: 21.75716
+Geodetic CRS:  WGS 84
+    x_laea  y_laea   ind indXYNE1                       geometry
+1  3210000 2929000  10.0        0 POLYGON ((46.63358 21.72672...
+2  3210000 2930000  26.0        0 POLYGON ((46.63228 21.73562...
+3  3211000 2928000   1.0        0 POLYGON ((46.64446 21.71906...
+4  3211000 2930000  46.0        0 POLYGON ((46.64188 21.73686...
+5  3212000 2928000  42.5        0 POLYGON ((46.65405 21.72031...
+6  3212000 2929000  55.0        1 POLYGON ((46.65276 21.72921...
+7  3212000 2930000 157.5        0 POLYGON ((46.65147 21.73811...
+8  3212000 2931000   5.0        0 POLYGON ((46.65018 21.74701...
+9  3213000 2928000  23.0        0 POLYGON ((46.66364 21.72155...
+10 3213000 2929000  90.0        0 POLYGON ((46.66235 21.73045...</code></pre>
+</div>
+</div>
 <p>Dommage, mais 46,21 ce n’est pas -4 / 10 …</p>
-<p>Avec crs explorer, on recherche d’autres possibilités mais aucune ne convient.</p>
 <p>Heureusement, cela fonctionne sous Qgis de façon automatique.</p>
+</section>
+</section>
 </section>
 <section id="exercice-2-aire-des-carreaux" class="level1">
 <h1>Exercice 2 aire des carreaux</h1>
@@ -270,16 +361,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/R_rfl09_LAEA1000.mid"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filtrage sur insee</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>aire <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">st_area</span>(data<span class="sc">$</span>geometry), <span class="dv">0</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>aire)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># pour cartographier on filtre sur les 1500 premiers carreaux</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">150000</span>),]</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(data,<span class="st">"data/carreauPB.gpkg"</span>, <span class="st">"carLeger"</span>, <span class="at">delete_layer =</span> T)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(data, <span class="at">type =</span> <span class="st">"choro"</span>, <span class="at">var =</span> <span class="st">"aire"</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">st_area</span>(data<span class="sc">$</span>geometry))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output-display">
+<p><img src="02_TD2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filtrage pour représentation carto</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">13000</span>),]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>aire <span class="ot">&lt;-</span> <span class="fu">st_area</span>(data<span class="sc">$</span>geometry)<span class="sc">/</span><span class="dv">1000000</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>aire)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.9995  1.0002  1.0004  1.0004  1.0006  1.0011 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pour cartographier on filtre sur les 1500 premiers carreaux</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(data,<span class="st">"data/carreauPB.gpkg"</span>, <span class="st">"carLeger"</span>, <span class="at">delete_layer =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>writing: substituting ENGCRS["Undefined Cartesian SRS with unknown unit"] for missing CRS</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Deleting layer `carLeger' using driver `GPKG'
+Writing layer `carLeger' to data source `data/carreauPB.gpkg' using driver `GPKG'
+Writing 13000 features with 5 fields and geometry type Polygon.</code></pre>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(data, <span class="at">type =</span> <span class="st">"choro"</span>, <span class="at">var =</span> <span class="st">"aire"</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">leg_val_rnd =</span> <span class="dv">5</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Carreaux 1 km : évolution nord sud"</span>, <span class="st">"insee 2013"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="02_TD2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 <p>Que dire sur la déformation de l’espace ?</p>
 </section>
@@ -288,6 +409,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>C’est le cas le plus fréquent en commune, les plans DAO ne sont dans aucun système de coordonnées.</p>
 <p>Du coup, on le géoréférence à la main.</p>
 
+
+<!-- -->
 
 </section>
 
@@ -371,6 +494,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -524,7 +698,165 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb25" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Géoréférencement"</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> </span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html: </span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">    number_sections: true</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">cache =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Passer la valeur suivante à TRUE pour reproduire les extractions.</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">eval =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">warning =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="fu"># Objet</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>En fait au delà de l'exercice pratique de géoréférencement, il s'agit de faire un point sur les projections.</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3 datums à connaître</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>WGS84 / RGF93 / ETRS89</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="fu"># WGS84 et Lambert 93</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>Observer une carte topo IGN : comprendre le quadrillage</span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>2 quadrillages WGS 84 et Lambert 93</span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/carteIGN.jpg)</span></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>A connaître, les *emprises* de la France dans les deux systèmes</span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">"data/2Grilles.csv"</span>)</span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a>Mais il y a beaucoup d'autres grilles, tous les CRS possibles sur une zone donnée avec les emprises *CRS explorer*</span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>Autre outil :</span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a>http://bboxfinder.com/#0.000000,0.000000,0.000000,0.000000</span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a><span class="fu"># Exercice 1 = trouver la projection des premiers carreaux insee</span></span>
+<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a>La ressource est sur le site de l'insee, terme de recherche :</span>
+<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a>*carreaux 1 km recensement population*</span>
+<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a>Il faut prendre l'item : données carroyées à 1 kilomètre</span>
+<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a>Regarder le .pdf et trouver le système de projection</span>
+<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a>Qui porte ce système ? Pourquoi l'insee choisit ce système ?</span>
+<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-62"><a href="#cb25-62" aria-hidden="true" tabindex="-1"></a><span class="fu"># Arcgis Pro</span></span>
+<span id="cb25-63"><a href="#cb25-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a>Sous Arcgis Pro, la donnée s'ouvre-t-elle ?</span>
+<span id="cb25-65"><a href="#cb25-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-66"><a href="#cb25-66" aria-hidden="true" tabindex="-1"></a>Image pb licence</span>
+<span id="cb25-67"><a href="#cb25-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-68"><a href="#cb25-68" aria-hidden="true" tabindex="-1"></a>Prendre plutôt le fichier mise à dispo carreauPB.gpkg.</span>
+<span id="cb25-69"><a href="#cb25-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-70"><a href="#cb25-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-71"><a href="#cb25-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-72"><a href="#cb25-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## Emprise des données</span></span>
+<span id="cb25-73"><a href="#cb25-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-74"><a href="#cb25-74" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/emprise.png)</span></span>
+<span id="cb25-75"><a href="#cb25-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-76"><a href="#cb25-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-77"><a href="#cb25-77" aria-hidden="true" tabindex="-1"></a>Il faut trouver un Y de 2 millions et un X de 500 M</span>
+<span id="cb25-78"><a href="#cb25-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-79"><a href="#cb25-79" aria-hidden="true" tabindex="-1"></a>https://geofree.fr/gf/projguess.asp, le tableau permet de voir toutes les emprises</span>
+<span id="cb25-80"><a href="#cb25-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-81"><a href="#cb25-81" aria-hidden="true" tabindex="-1"></a>voire même de mettre l'ordre de grandeur de l'emprise</span>
+<span id="cb25-82"><a href="#cb25-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-83"><a href="#cb25-83" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/geoFree.png)</span></span>
+<span id="cb25-84"><a href="#cb25-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-85"><a href="#cb25-85" aria-hidden="true" tabindex="-1"></a><span class="fu">## Systèmes de coordonnées</span></span>
+<span id="cb25-86"><a href="#cb25-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-87"><a href="#cb25-87" aria-hidden="true" tabindex="-1"></a><span class="fu">### Au niveau du projet Arcgis</span></span>
+<span id="cb25-88"><a href="#cb25-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/unnames.png)</span></span>
+<span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a><span class="fu">### Couche</span></span>
+<span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-92"><a href="#cb25-92" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/arcgisProCar.png)![](img/arcgisPro2154.png)</span></span>
+<span id="cb25-93"><a href="#cb25-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-94"><a href="#cb25-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-95"><a href="#cb25-95" aria-hidden="true" tabindex="-1"></a>Qu'en déduire ?</span>
+<span id="cb25-96"><a href="#cb25-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-97"><a href="#cb25-97" aria-hidden="true" tabindex="-1"></a><span class="fu">### R</span></span>
+<span id="cb25-98"><a href="#cb25-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-99"><a href="#cb25-99" aria-hidden="true" tabindex="-1"></a>On charge la donnée</span>
+<span id="cb25-100"><a href="#cb25-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-103"><a href="#cb25-103" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-104"><a href="#cb25-104" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb25-105"><a href="#cb25-105" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/R_rfl09_LAEA1000.mid"</span>)</span>
+<span id="cb25-106"><a href="#cb25-106" aria-hidden="true" tabindex="-1"></a>petit <span class="ot">&lt;-</span> data [<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]  <span class="co"># pour faire des tests</span></span>
+<span id="cb25-107"><a href="#cb25-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-108"><a href="#cb25-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-109"><a href="#cb25-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-112"><a href="#cb25-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-113"><a href="#cb25-113" aria-hidden="true" tabindex="-1"></a><span class="co"># une bibliothèque permmet de suggérer le crs inexistant</span></span>
+<span id="cb25-114"><a href="#cb25-114" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(crsuggest)</span>
+<span id="cb25-115"><a href="#cb25-115" aria-hidden="true" tabindex="-1"></a>coordBondy <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="fl">48.9</span>,<span class="fl">2.46</span>)</span>
+<span id="cb25-116"><a href="#cb25-116" aria-hidden="true" tabindex="-1"></a><span class="fu">guess_crs</span>(petit, coordBondy)</span>
+<span id="cb25-117"><a href="#cb25-117" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span> (petit) <span class="ot">&lt;-</span> <span class="dv">32439</span></span>
+<span id="cb25-118"><a href="#cb25-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-119"><a href="#cb25-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-120"><a href="#cb25-120" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/32639.png)</span></span>
+<span id="cb25-121"><a href="#cb25-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a><span class="co"># c'est un epsg qui concerne l'Azerbaidjan...</span></span>
+<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a>petit <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(petit, <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb25-128"><a href="#cb25-128" aria-hidden="true" tabindex="-1"></a>petit</span>
+<span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-130"><a href="#cb25-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-131"><a href="#cb25-131" aria-hidden="true" tabindex="-1"></a>Dommage, mais 46,21 ce n'est pas -4 / 10 ...</span>
+<span id="cb25-132"><a href="#cb25-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a>Heureusement, cela fonctionne sous Qgis  de façon automatique.</span>
+<span id="cb25-134"><a href="#cb25-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-135"><a href="#cb25-135" aria-hidden="true" tabindex="-1"></a><span class="fu"># Exercice 2 aire des carreaux</span></span>
+<span id="cb25-136"><a href="#cb25-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-137"><a href="#cb25-137" aria-hidden="true" tabindex="-1"></a>Angle vs Aire</span>
+<span id="cb25-138"><a href="#cb25-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-139"><a href="#cb25-139" aria-hidden="true" tabindex="-1"></a>Dans les faits, on mesure les carreaux, ils sont supposés faire 1 km donc... en m² ?</span>
+<span id="cb25-140"><a href="#cb25-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-143"><a href="#cb25-143" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-144"><a href="#cb25-144" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">st_area</span>(data<span class="sc">$</span>geometry))</span>
+<span id="cb25-145"><a href="#cb25-145" aria-hidden="true" tabindex="-1"></a><span class="co"># filtrage pour représentation carto</span></span>
+<span id="cb25-146"><a href="#cb25-146" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">13000</span>),]</span>
+<span id="cb25-147"><a href="#cb25-147" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>aire <span class="ot">&lt;-</span> <span class="fu">st_area</span>(data<span class="sc">$</span>geometry)<span class="sc">/</span><span class="dv">1000000</span></span>
+<span id="cb25-148"><a href="#cb25-148" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>aire)</span>
+<span id="cb25-149"><a href="#cb25-149" aria-hidden="true" tabindex="-1"></a><span class="co"># pour cartographier on filtre sur les 1500 premiers carreaux</span></span>
+<span id="cb25-150"><a href="#cb25-150" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(data,<span class="st">"data/carreauPB.gpkg"</span>, <span class="st">"carLeger"</span>, <span class="at">delete_layer =</span> T)</span>
+<span id="cb25-151"><a href="#cb25-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-152"><a href="#cb25-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-153"><a href="#cb25-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-156"><a href="#cb25-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-157"><a href="#cb25-157" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb25-158"><a href="#cb25-158" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(data, <span class="at">type =</span> <span class="st">"choro"</span>, <span class="at">var =</span> <span class="st">"aire"</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">leg_val_rnd =</span> <span class="dv">5</span>)</span>
+<span id="cb25-159"><a href="#cb25-159" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Carreaux 1 km : évolution nord sud"</span>, <span class="st">"insee 2013"</span>)</span>
+<span id="cb25-160"><a href="#cb25-160" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-161"><a href="#cb25-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-162"><a href="#cb25-162" aria-hidden="true" tabindex="-1"></a>Que dire sur la déformation de l'espace ?</span>
+<span id="cb25-163"><a href="#cb25-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-164"><a href="#cb25-164" aria-hidden="true" tabindex="-1"></a><span class="fu"># Géoréférencer un plan DAO en O,O</span></span>
+<span id="cb25-165"><a href="#cb25-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-166"><a href="#cb25-166" aria-hidden="true" tabindex="-1"></a>C'est le cas le plus fréquent en commune, les plans DAO ne sont dans aucun système de coordonnées.</span>
+<span id="cb25-167"><a href="#cb25-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-168"><a href="#cb25-168" aria-hidden="true" tabindex="-1"></a>Du coup, on le géoréférence à la main.</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 
