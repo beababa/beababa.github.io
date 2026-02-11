@@ -166,13 +166,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#objet" id="toc-objet" class="nav-link active" data-scroll-target="#objet">Objet</a></li>
   <li><a href="#schéma-de-géotraitement" id="toc-schéma-de-géotraitement" class="nav-link" data-scroll-target="#schéma-de-géotraitement">Schéma de géotraitement</a>
   <ul class="collapse">
-  <li><a href="#géotraitement-1-agréger" id="toc-géotraitement-1-agréger" class="nav-link" data-scroll-target="#géotraitement-1-agréger">Géotraitement 1 = Agréger</a></li>
-  <li><a href="#géotraitement-2-délimiter" id="toc-géotraitement-2-délimiter" class="nav-link" data-scroll-target="#géotraitement-2-délimiter">Géotraitement 2 = Délimiter</a></li>
-  <li><a href="#géotraitement-3-combiner" id="toc-géotraitement-3-combiner" class="nav-link" data-scroll-target="#géotraitement-3-combiner">Géotraitement 3 = Combiner</a></li>
+  <li><a href="#géotraitement-1-délimiter" id="toc-géotraitement-1-délimiter" class="nav-link" data-scroll-target="#géotraitement-1-délimiter">Géotraitement 1 = Délimiter</a></li>
+  <li><a href="#géotraitement-2-combiner" id="toc-géotraitement-2-combiner" class="nav-link" data-scroll-target="#géotraitement-2-combiner">Géotraitement 2 = Combiner</a></li>
+  <li><a href="#géotraitement-3-fusionner" id="toc-géotraitement-3-fusionner" class="nav-link" data-scroll-target="#géotraitement-3-fusionner">Géotraitement 3 = Fusionner</a></li>
   </ul></li>
-  <li><a href="#agréger" id="toc-agréger" class="nav-link" data-scroll-target="#agréger">Agréger</a></li>
-  <li><a href="#délimiter" id="toc-délimiter" class="nav-link" data-scroll-target="#délimiter">Délimiter</a></li>
-  <li><a href="#combiner" id="toc-combiner" class="nav-link" data-scroll-target="#combiner">Combiner</a></li>
+  <li><a href="#données" id="toc-données" class="nav-link" data-scroll-target="#données">Données</a></li>
+  <li><a href="#délimiter" id="toc-délimiter" class="nav-link" data-scroll-target="#délimiter">Délimiter</a>
+  <ul class="collapse">
+  <li><a href="#dans-arcgis" id="toc-dans-arcgis" class="nav-link" data-scroll-target="#dans-arcgis">Dans Arcgis</a></li>
+  </ul></li>
+  <li><a href="#combiner" id="toc-combiner" class="nav-link" data-scroll-target="#combiner">Combiner</a>
+  <ul class="collapse">
+  <li><a href="#dans-arcgis-1" id="toc-dans-arcgis-1" class="nav-link" data-scroll-target="#dans-arcgis-1">Dans Arcgis</a></li>
+  </ul></li>
+  <li><a href="#fusionner" id="toc-fusionner" class="nav-link" data-scroll-target="#fusionner">Fusionner</a>
+  <ul class="collapse">
+  <li><a href="#sous-arcgis" id="toc-sous-arcgis" class="nav-link" data-scroll-target="#sous-arcgis">Sous Arcgis</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -207,8 +217,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="schéma-de-géotraitement" class="level1">
 <h1>Schéma de géotraitement</h1>
-<section id="géotraitement-1-agréger" class="level2">
-<h2 class="anchored" data-anchor-id="géotraitement-1-agréger">Géotraitement 1 = Agréger</h2>
+<section id="géotraitement-1-délimiter" class="level2">
+<h2 class="anchored" data-anchor-id="géotraitement-1-délimiter">Géotraitement 1 = Délimiter</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A[carreaux] --&gt; C{intersecter}
+  B[limites\nCommune] --&gt; C{intersecter}
+  C --&gt; D[carreaux délimités]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="géotraitement-2-combiner" class="level2">
+<h2 class="anchored" data-anchor-id="géotraitement-2-combiner">Géotraitement 2 = Combiner</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A[carreaux intérieur commune] --&gt; C{combiner}
+  B[carreaux limite commune] --&gt; C{combiner}
+  C --&gt; D[carreaux combinés]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="géotraitement-3-fusionner" class="level2">
+<h2 class="anchored" data-anchor-id="géotraitement-3-fusionner">Géotraitement 3 = Fusionner</h2>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -226,46 +272,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="géotraitement-2-délimiter" class="level2">
-<h2 class="anchored" data-anchor-id="géotraitement-2-délimiter">Géotraitement 2 = Délimiter</h2>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-  A[carreaux] --&gt; C{intersecter}
-  B[limites\nCommune] --&gt; C{intersecter}
-  C --&gt; D[carreaux délimités]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
 </section>
-<section id="géotraitement-3-combiner" class="level2">
-<h2 class="anchored" data-anchor-id="géotraitement-3-combiner">Géotraitement 3 = Combiner</h2>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-  A[carreaux intérieur commune] --&gt; C{combiner}
-  B[carreaux limite commune] --&gt; C{combiner}
-  C --&gt; D[carreaux combinés]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
+<section id="données" class="level1">
+<h1>Données</h1>
+<ul>
+<li><p>les carreaux par dpt dans construction.gpkg (gros fichier = 260 M°)</p></li>
+<li><p>les polygones des communes dans cours3.gpkg</p></li>
+<li><p>les carreaux positionnés sur les limites des communes sont dans cours3.gpkg</p></li>
+</ul>
+<p>Attention, il y a 2 communes en Martinique, la projection est différente (5490)</p>
 </section>
-</section>
-<section id="agréger" class="level1">
-<h1>Agréger</h1>
-<p>Agréger carreaux riches / carreaux pauvres</p>
+<section id="délimiter" class="level1">
+<h1>Délimiter</h1>
+<p>Sélectionner les carreaux de sa commune dans les carreaux départementaux. Cela va couper les carreaux, comme un pochoir.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -276,8 +295,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/bondy.gpkg"</span>, <span class="st">"carreau"</span>, <span class="at">quiet =</span> T)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(car<span class="sc">$</span>men_pauv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lecture des données</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours3.gpkg"</span>, <span class="st">"commune"</span>, <span class="at">quiet =</span> T)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> bondy [bondy<span class="sc">$</span>code <span class="sc">==</span> <span class="dv">93010</span>,]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/construction.gpkg"</span>, <span class="st">"93"</span>,  <span class="at">quiet =</span> T) </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># intersection</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(car, bondy)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(inter, <span class="st">"data/bondy.gpkg"</span>, <span class="st">"carreau"</span>, <span class="at">delete_layer =</span> T,  <span class="at">quiet =</span> T)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># carto</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(inter, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">"darkgoldenrod"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Découpage carreaux sur Bondy"</span>, <span class="st">"insee 2021</span><span class="sc">\n</span><span class="st">OSM"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -286,89 +314,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(car<span class="sc">$</span>men_pauv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-   0.00   12.00   23.50   38.73   44.25  285.00 </code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>quantile <span class="ot">&lt;-</span> <span class="fu">quantile</span>(car<span class="sc">$</span>men_pauv)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>car<span class="sc">$</span>men_pauv_rapport <span class="ot">&lt;-</span> <span class="st">"moyen"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>car<span class="sc">$</span>men_pauv_rapport [car<span class="sc">$</span>men_pauv <span class="sc">&lt;</span> quantile [<span class="dv">2</span>]] <span class="ot">&lt;-</span> <span class="st">"Moins de ménages pauvres"</span> </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>car<span class="sc">$</span>men_pauv_rapport [car<span class="sc">$</span>men_pauv <span class="sc">&gt;</span> quantile [<span class="dv">3</span>]] <span class="ot">&lt;-</span> <span class="st">"Plus de ménages pauvres"</span> </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(car<span class="sc">$</span>men_pauv_rapport)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Moins de ménages pauvres                    moyen  Plus de ménages pauvres 
-                      40                       42                       82 </code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rapport <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(car  [, <span class="fu">c</span>(<span class="st">"men_pauv_rapport"</span>)], <span class="at">by =</span> <span class="fu">list</span>(car<span class="sc">$</span>men_pauv_rapport), length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(rapport, <span class="at">type =</span> <span class="st">"typo"</span>, <span class="at">var =</span> <span class="st">"Group.1"</span>, <span class="at">border=</span> <span class="cn">NA</span>, <span class="at">leg_title =</span> <span class="st">""</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Densité des ménages pauvres"</span>, <span class="st">"Insee 2021</span><span class="sc">\n</span><span class="st">OSM 2026"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="03_TD3_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>Egalement, zones tampons, enveloppes</p>
+<section id="dans-arcgis" class="level2">
+<h2 class="anchored" data-anchor-id="dans-arcgis">Dans Arcgis</h2>
+<p>Quel outil ?</p>
+<p>Etape 1 : charger les couches, lesquelles ?</p>
+<p>Etape 2 ; sélectionner la commune et enregistrer la sélection (clic droit)</p>
+<p><img src="img/selection.png" class="img-fluid"></p>
+<p>Etape 3 : utiliser l’outil</p>
 </section>
-<section id="délimiter" class="level1">
-<h1>Délimiter</h1>
-<p>Sélectionner les carreaux de sa commune dans les carreaux départementaux. Cela va couper les carreaux, comme un pochoir.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/bondy.gpkg"</span>, <span class="st">"commune"</span>, <span class="at">quiet =</span> T)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/construction.gpkg"</span>, <span class="st">"93"</span>,  <span class="at">quiet =</span> T) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(car, bondy)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(inter, <span class="st">"data/bondy.gpkg"</span>, <span class="st">"carreau"</span>, <span class="at">delete_layer =</span> T,  <span class="at">quiet =</span> T)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(inter, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">"darkgoldenrod"</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Découpage carreaux sur Bondy"</span>, <span class="st">"insee 2021</span><span class="sc">\n</span><span class="st">OSM"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="03_TD3_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>zones tampons, enveloppes</p>
 </section>
 <section id="combiner" class="level1">
 <h1>Combiner</h1>
-<p>Intersection</p>
 <p>Union, différence</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/dataCours1/communes.shp"</span>, <span class="at">quiet =</span> T)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/construction.gpkg"</span>, <span class="st">"93"</span>,  <span class="at">quiet =</span> T) </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> car [<span class="fu">grep</span>(<span class="st">"93010"</span>, car<span class="sc">$</span>lcog_geo),]</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(car)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(bondy, <span class="at">border =</span> <span class="st">"deeppink4"</span>, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Carreaux entiers incluant Bondy"</span>, <span class="st">"Insee 2021</span><span class="sc">\n</span><span class="st">OSM2026"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/bondy.gpkg"</span>, <span class="st">"carreau"</span> ,<span class="at">quiet =</span> T)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>carLimite <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours3.gpkg"</span>, <span class="st">"carLimite"</span>, <span class="at">quiet=</span>T) </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>carLimiteBondy <span class="ot">&lt;-</span> carLimite [<span class="fu">grep</span>(<span class="st">"93010"</span>, carLimite<span class="sc">$</span>lcog_geo),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(car, <span class="at">col=</span> <span class="st">"cadetblue1"</span>, <span class="at">border =</span> <span class="st">"yellow"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(carLimiteBondy, <span class="at">border =</span> <span class="st">"deeppink4"</span>, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Carreaux entiers incluant Bondy"</span>, <span class="st">"Insee 2021</span><span class="sc">\n</span><span class="st">OSM2026"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_TD3_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="dans-arcgis-1" class="level2">
+<h2 class="anchored" data-anchor-id="dans-arcgis-1">Dans Arcgis</h2>
+<p>étape 1 : on ne garde que la couche résultant de la délimitation</p>
+<p>étape 2 : on charge les carreaux limites</p>
+<p>étape 3 : sélection attributaire (CTRL + T) et créer une nelle couche</p>
+<p><img src="img/selectionAttribut.png" class="img-fluid"></p>
+<p>étape 4 : Données / Exporter les entités (ne garder que le champs ménage pauvre)</p>
+<p><img src="img/menPauv.png" class="img-fluid"></p>
+<p>Pour sélectionner tous les champs : CTRL + A puis CTRL pour enlever men_pauv et SUPPR</p>
+<p>Faire la même chose avec la découpe</p>
+<p>étape 5 : réunir les 2 couches, trouver l’outil et l’utiliser</p>
+</section>
+</section>
+<section id="fusionner" class="level1">
+<h1>Fusionner</h1>
+<p>phase préparatoire</p>
+<p>Un seul champs nécessaire pour l’agrégation</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> car [, <span class="st">"men_pauv"</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 328</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>carLimiteBondy <span class="ot">&lt;-</span> carLimiteBondy [, <span class="st">"men_pauv"</span>]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 99</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>tot <span class="ot">&lt;-</span> <span class="fu">rbind</span>(car, carLimiteBondy)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(tot, <span class="st">"data/bondy.gpkg"</span>, <span class="st">"carreauTot"</span>, <span class="at">quiet =</span> T, <span class="at">delete_layer =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Agréger carreaux riches / carreaux pauvres</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/bondy.gpkg"</span>, <span class="st">"carreauTot"</span>, <span class="at">quiet =</span> T)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(car<span class="sc">$</span>men_pauv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -377,9 +394,56 @@ Moins de ménages pauvres                    moyen  Plus de ménages pauvres
 </figure>
 </div>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(car<span class="sc">$</span>men_pauv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.00   10.00   20.00   33.32   33.50  285.00 </code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>quantile <span class="ot">&lt;-</span> <span class="fu">quantile</span>(car<span class="sc">$</span>men_pauv, <span class="at">na.rm =</span> T)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>car<span class="sc">$</span>men_pauv_rapport <span class="ot">&lt;-</span> <span class="st">"moyen"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>car<span class="sc">$</span>men_pauv_rapport [car<span class="sc">$</span>men_pauv <span class="sc">&lt;</span> quantile [<span class="dv">2</span>]] <span class="ot">&lt;-</span> <span class="st">"Moins de ménages pauvres"</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>car<span class="sc">$</span>men_pauv_rapport [car<span class="sc">$</span>men_pauv <span class="sc">&gt;</span> quantile [<span class="dv">3</span>]] <span class="ot">&lt;-</span> <span class="st">"Plus de ménages pauvres"</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(car<span class="sc">$</span>men_pauv_rapport)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Moins de ménages pauvres                    moyen  Plus de ménages pauvres 
+                      65                       69                      129 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>rapport <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(car  [, <span class="fu">c</span>(<span class="st">"men_pauv_rapport"</span>)], <span class="at">by =</span> <span class="fu">list</span>(car<span class="sc">$</span>men_pauv_rapport), length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(rapport, <span class="at">type =</span> <span class="st">"typo"</span>, <span class="at">var =</span> <span class="st">"Group.1"</span>, <span class="at">border=</span> <span class="cn">NA</span>, <span class="at">leg_title =</span> <span class="st">""</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Densité des ménages pauvres"</span>, <span class="st">"Insee 2021</span><span class="sc">\n</span><span class="st">OSM 2026"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_TD3_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="sous-arcgis" class="level2">
+<h2 class="anchored" data-anchor-id="sous-arcgis">Sous Arcgis</h2>
+<p>Etape 1 : supprimer les couches inutiles</p>
+<p>Etape 2 : recoder le champs menage pauvre</p>
+<p><img src="img/recodage.png" class="img-fluid"></p>
+<p>Etape 3 : quel outil pour fusionner en fonction des attributs ?</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

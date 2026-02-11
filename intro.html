@@ -313,8 +313,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Evaluation</h1>
 <p>régime du contrôle continu,</p>
 <p>Deux notes :</p>
-<p>- une partiel</p>
-<p>- une note maison (+ les exercices pour moitié de la note maison)</p>
+<ul>
+<li><p>une partiel</p></li>
+<li><p>une note maison (+ les exercices pour moitié de la note maison)</p></li>
+</ul>
 <p>Le partiel sera sur machine d’une durée de 1h30 : - un exercice sous Arcgis Pro (10 pt) - et un autre sous R(10 pt) (avec un rendu en .pdf)</p>
 </section>
 <section id="données-1" class="level1">
@@ -331,19 +333,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/codeINSEEetudiant.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">c</span>(choix<span class="sc">$</span>choix.de.la.commune..code.INSEE., choix<span class="sc">$</span>choix.de.la.commune..code.INSEE..<span class="dv">1</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># on enlève les NA et les villes identiques</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">unique</span>(choix[<span class="sc">!</span><span class="fu">is.na</span>(choix)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">unique</span>(choix[<span class="sc">!</span><span class="fu">is.na</span>(choix)])</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">c</span>(choix,<span class="dv">93010</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(choix, <span class="st">"data/choix.csv"</span>, <span class="at">fileEncoding =</span> <span class="st">"UTF-8"</span>, <span class="at">row.names =</span> F, <span class="at">col.names =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>35 communes</p>
+<p>Récupération des carreaux 200 m pour les communes</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>filosofi <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/carreaux_200m_met.gpkg"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>filosofi <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/carreaux_200m_met.gpkg"</span>, <span class="at">quiet=</span>T)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>filosofi<span class="sc">$</span>dpt <span class="ot">&lt;-</span> <span class="fu">substring</span>(filosofi<span class="sc">$</span>lcog_geo,<span class="dv">1</span>,<span class="dv">2</span>) </span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">substring</span>(choix, <span class="dv">1</span>,<span class="dv">2</span>)) </span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>choisir <span class="ot">&lt;-</span> <span class="cf">function</span>(dpt){</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> filosofi [<span class="fu">grep</span>(dpt, filosofi<span class="sc">$</span>dpt),]</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_write</span>(data  , <span class="st">"data/gros/construction.gpkg"</span>, dpt, <span class="at">delete_layer =</span> T)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_write</span>(data  , <span class="st">"data/gros/construction.gpkg"</span>, dpt, <span class="at">delete_layer =</span> T, <span class="at">quiet=</span>T)</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">lapply</span>(dpt, choisir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -359,22 +365,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mart <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/carreaux_200m_mart.gpkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Reading layer `carreaux_200m_mart' from data source 
-  `C:\Users\bmaranget\L6ECSIG\data\gros\carreaux_200m_mart.gpkg' 
-  using driver `GPKG'
-Simple feature collection with 11220 features and 34 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 690600 ymin: 1592600 xmax: 735000 ymax: 1645800
-Projected CRS: RGAF09 / UTM zone 20N</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mart <span class="ot">&lt;-</span> mart [mart<span class="sc">$</span>lcog_geo <span class="sc">==</span> choix [<span class="dv">2</span>],]</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(mart,<span class="st">"data/gros/construction.gpkg"</span>, <span class="st">"97"</span>, <span class="at">delete_layer =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mart <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/carreaux_200m_mart.gpkg"</span>, <span class="at">quiet=</span>T)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mart <span class="ot">&lt;-</span> mart [mart<span class="sc">$</span>lcog_geo <span class="sc">==</span> choix [<span class="dv">2</span>],]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(mart,<span class="st">"data/gros/construction.gpkg"</span>, <span class="st">"97"</span>, <span class="at">delete_layer =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Deleting layer `97' using driver `GPKG'
@@ -388,9 +381,9 @@ Writing 515 features with 34 fields and geometry type Polygon.</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">"data/gros/construction.gpkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">"data/gros/construction.gpkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Driver: GPKG 
@@ -417,34 +410,36 @@ Available layers:
 19         59       Polygon    45594     35 RGF93 v1 / Lambert-93
 20         91       Polygon    12033     35 RGF93 v1 / Lambert-93
 21         75       Polygon     2036     35 RGF93 v1 / Lambert-93
-22         97       Polygon      515     34 RGAF09 / UTM zone 20N</code></pre>
+22    commune       Polygon       34      2 RGF93 v1 / Lambert-93
+23         97       Polygon      515     34 RGAF09 / UTM zone 20N</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> <span class="fu">st_layers</span>(<span class="st">"data/gros/construction.gpkg"</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> couches<span class="sc">$</span>name</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> couches [couches <span class="sc">!=</span> <span class="st">'97'</span>]</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>union <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> couches [<span class="dv">1</span>]</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (c <span class="cf">in</span> couches){</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/construction.gpkg"</span>, c, <span class="at">quiet=</span>T)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_union</span>(tmp<span class="sc">$</span>geom)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(tmp)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  union <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tmp,union)</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>union <span class="ot">&lt;-</span> <span class="fu">st_convex_hull</span>(union)</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/departements.geojson"</span>, <span class="at">quiet=</span>T)</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(dpt, <span class="dv">2154</span>)</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>dptSel <span class="ot">&lt;-</span> dpt [dpt<span class="sc">$</span>code <span class="sc">%in%</span> couches,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> <span class="fu">st_layers</span>(<span class="st">"data/gros/construction.gpkg"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 23</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> couches<span class="sc">$</span>name</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> couches [couches <span class="sc">!=</span> <span class="st">'97'</span>]</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> couches [couches <span class="sc">!=</span> <span class="st">'commune'</span>]</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>union <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (c <span class="cf">in</span> couches){</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/construction.gpkg"</span>, c, <span class="at">quiet=</span>T)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_union</span>(tmp<span class="sc">$</span>geom)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(tmp)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  union <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tmp,union)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>union <span class="ot">&lt;-</span> <span class="fu">st_convex_hull</span>(union)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/departements.geojson"</span>, <span class="at">quiet=</span>T)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(dpt, <span class="dv">2154</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>dptSel <span class="ot">&lt;-</span> dpt [dpt<span class="sc">$</span>code <span class="sc">%in%</span> couches,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(dpt, <span class="at">col =</span> <span class="st">"wheat"</span>, <span class="at">border=</span><span class="st">"grey"</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(union, <span class="at">col =</span> <span class="st">"pink"</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_label</span>(dptSel, <span class="at">var =</span> <span class="st">"nom"</span>, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">overlap =</span> F, <span class="at">col =</span><span class="st">"red"</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Choix étudiants hors Martinique"</span>, <span class="st">"Insee 2019</span><span class="sc">\n</span><span class="st">Cours L6ECSIG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(dpt, <span class="at">col =</span> <span class="st">"wheat"</span>, <span class="at">border=</span><span class="st">"grey"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(union, <span class="at">col =</span> <span class="st">"pink"</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_label</span>(dptSel, <span class="at">var =</span> <span class="st">"nom"</span>, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">overlap =</span> F, <span class="at">col =</span><span class="st">"red"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Choix étudiants hors Martinique"</span>, <span class="st">"Insee 2019</span><span class="sc">\n</span><span class="st">Cours L6ECSIG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
