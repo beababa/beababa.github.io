@@ -137,6 +137,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./03_TD3.html"> 
 <span class="menu-text">GT Vecteurs</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./04_TD4.html"> 
+<span class="menu-text">GT Rasters</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -334,11 +338,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">c</span>(choix<span class="sc">$</span>choix.de.la.commune..code.INSEE., choix<span class="sc">$</span>choix.de.la.commune..code.INSEE..<span class="dv">1</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># on enlève les NA et les villes identiques</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">unique</span>(choix[<span class="sc">!</span><span class="fu">is.na</span>(choix)])</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">c</span>(choix,<span class="dv">93010</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">c</span>(choix,<span class="dv">93010</span>,<span class="dv">70550</span>,<span class="dv">60508</span>,<span class="dv">78311</span>)</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(choix, <span class="st">"data/choix.csv"</span>, <span class="at">fileEncoding =</span> <span class="st">"UTF-8"</span>, <span class="at">row.names =</span> F, <span class="at">col.names =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>35 communes</p>
+<p>38 communes + Bondy</p>
 <p>Récupération des carreaux 200 m pour les communes</p>
 <div class="cell">
 <details class="code-fold">
@@ -365,14 +369,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mart <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/carreaux_200m_mart.gpkg"</span>, <span class="at">quiet=</span>T)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mart <span class="ot">&lt;-</span> mart [mart<span class="sc">$</span>lcog_geo <span class="sc">==</span> choix [<span class="dv">2</span>],]</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(mart,<span class="st">"data/gros/construction.gpkg"</span>, <span class="st">"97"</span>, <span class="at">delete_layer =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/choix.csv"</span>, <span class="at">header =</span> F)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> choix [<span class="fu">grep</span>(<span class="st">"^97"</span>, choix<span class="sc">$</span>V1),]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mart <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/carreaux_200m_mart.gpkg"</span>, <span class="at">quiet=</span>T)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(mart,<span class="st">"data/gros/construction.gpkg"</span>, <span class="st">"97"</span>, <span class="at">delete_layer =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Deleting layer `97' using driver `GPKG'
 Writing layer `97' to data source `data/gros/construction.gpkg' using driver `GPKG'
-Writing 515 features with 34 fields and geometry type Polygon.</code></pre>
+Writing 11220 features with 34 fields and geometry type Polygon.</code></pre>
 </div>
 </div>
 </section>
@@ -389,29 +394,30 @@ Writing 515 features with 34 fields and geometry type Polygon.</code></pre>
 <pre><code>Driver: GPKG 
 Available layers:
    layer_name geometry_type features fields              crs_name
-1          73       Polygon    16387     35 RGF93 v1 / Lambert-93
-2          93       Polygon     4238     35 RGF93 v1 / Lambert-93
-3          31       Polygon    42359     35 RGF93 v1 / Lambert-93
-4          95       Polygon     8763     35 RGF93 v1 / Lambert-93
-5          64       Polygon    38211     35 RGF93 v1 / Lambert-93
-6          44       Polygon    45780     35 RGF93 v1 / Lambert-93
-7          69       Polygon    28758     35 RGF93 v1 / Lambert-93
-8          92       Polygon     3288     35 RGF93 v1 / Lambert-93
-9          28       Polygon    17735     35 RGF93 v1 / Lambert-93
-10         78       Polygon    15076     35 RGF93 v1 / Lambert-93
-11         33       Polygon    54580     35 RGF93 v1 / Lambert-93
-12         50       Polygon    41602     35 RGF93 v1 / Lambert-93
-13         49       Polygon    38684     35 RGF93 v1 / Lambert-93
-14         72       Polygon    36668     35 RGF93 v1 / Lambert-93
-15         63       Polygon    29873     35 RGF93 v1 / Lambert-93
-16         94       Polygon     4207     35 RGF93 v1 / Lambert-93
-17         13       Polygon    32947     35 RGF93 v1 / Lambert-93
-18         60       Polygon    20282     35 RGF93 v1 / Lambert-93
-19         59       Polygon    45594     35 RGF93 v1 / Lambert-93
-20         91       Polygon    12033     35 RGF93 v1 / Lambert-93
-21         75       Polygon     2036     35 RGF93 v1 / Lambert-93
-22    commune       Polygon       34      2 RGF93 v1 / Lambert-93
-23         97       Polygon      515     34 RGAF09 / UTM zone 20N</code></pre>
+1     commune       Polygon       34      2 RGF93 v1 / Lambert-93
+2          73       Polygon    16387     35 RGF93 v1 / Lambert-93
+3          93       Polygon     4238     35 RGF93 v1 / Lambert-93
+4          31       Polygon    42359     35 RGF93 v1 / Lambert-93
+5          95       Polygon     8763     35 RGF93 v1 / Lambert-93
+6          64       Polygon    38211     35 RGF93 v1 / Lambert-93
+7          44       Polygon    45780     35 RGF93 v1 / Lambert-93
+8          69       Polygon    28758     35 RGF93 v1 / Lambert-93
+9          92       Polygon     3288     35 RGF93 v1 / Lambert-93
+10         28       Polygon    17735     35 RGF93 v1 / Lambert-93
+11         78       Polygon    15076     35 RGF93 v1 / Lambert-93
+12         33       Polygon    54580     35 RGF93 v1 / Lambert-93
+13         50       Polygon    41602     35 RGF93 v1 / Lambert-93
+14         49       Polygon    38684     35 RGF93 v1 / Lambert-93
+15         72       Polygon    36668     35 RGF93 v1 / Lambert-93
+16         63       Polygon    29873     35 RGF93 v1 / Lambert-93
+17         94       Polygon     4207     35 RGF93 v1 / Lambert-93
+18         13       Polygon    32947     35 RGF93 v1 / Lambert-93
+19         60       Polygon    20282     35 RGF93 v1 / Lambert-93
+20         59       Polygon    45594     35 RGF93 v1 / Lambert-93
+21         91       Polygon    12033     35 RGF93 v1 / Lambert-93
+22         75       Polygon     2036     35 RGF93 v1 / Lambert-93
+23         70       Polygon    13347     35 RGF93 v1 / Lambert-93
+24         97       Polygon    11220     34 RGAF09 / UTM zone 20N</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
