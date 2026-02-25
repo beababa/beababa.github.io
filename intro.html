@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>cours L6ECSIG - Introduction</title>
+<title>L6ECSIG - Introduction</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,6 +94,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -95,18 +102,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">cours L6ECSIG</span>
+    <span class="navbar-title">L6ECSIG</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -116,32 +122,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./intro.html" rel="" target="" aria-current="page">
- <span class="menu-text">Introduction</span></a>
+    <a class="nav-link active" href="./intro.html" aria-current="page"> 
+<span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./01_TD1.html" rel="" target="">
- <span class="menu-text">Données</span></a>
+    <a class="nav-link" href="./01_TD1.html"> 
+<span class="menu-text">Données</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./02_TD2.html" rel="" target="">
- <span class="menu-text">Projections</span></a>
+    <a class="nav-link" href="./02_TD2.html"> 
+<span class="menu-text">Projections</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./03_TD3.html" rel="" target="">
- <span class="menu-text">Vecteurs</span></a>
+    <a class="nav-link" href="./03_TD3.html"> 
+<span class="menu-text">GT Vecteurs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./04_TD4.html"> 
+<span class="menu-text">GT Rasters</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/beababa/beababa.github.io" rel="" target=""><i class="bi bi-fa-github" role="img">
+    <a class="nav-link" href="https://github.com/beababa/beababa.github.io"> <i class="bi bi-fa-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -159,6 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#déroulé" id="toc-déroulé" class="nav-link" data-scroll-target="#déroulé">Déroulé</a></li>
   <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation">Evaluation</a></li>
   <li><a href="#données-1" id="toc-données-1" class="nav-link" data-scroll-target="#données-1">Données</a></li>
+  <li><a href="#cartographie" id="toc-cartographie" class="nav-link" data-scroll-target="#cartographie">Cartographie</a></li>
   <li><a href="#ressources" id="toc-ressources" class="nav-link" data-scroll-target="#ressources">Ressources</a></li>
   </ul>
 </nav>
@@ -168,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Introduction</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<h1 class="title">Introduction</h1>
 </div>
 
 
@@ -181,7 +192,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="objet" class="level1">
 <h1>Objet</h1>
@@ -201,13 +214,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="déroulé" class="level1">
 <h1>Déroulé</h1>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/deroule.csv"</span>, <span class="at">header =</span> T, <span class="at">fileEncoding =</span> <span class="st">"UTF-8"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 4%">
 <col style="width: 8%">
@@ -304,8 +317,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Evaluation</h1>
 <p>régime du contrôle continu,</p>
 <p>Deux notes :</p>
-<p>- une partiel</p>
-<p>- une note maison (+ les exercices pour moitié de la note maison)</p>
+<ul>
+<li><p>une partiel</p></li>
+<li><p>une note maison (+ les exercices pour moitié de la note maison)</p></li>
+</ul>
 <p>Le partiel sera sur machine d’une durée de 1h30 : - un exercice sous Arcgis Pro (10 pt) - et un autre sous R(10 pt) (avec un rendu en .pdf)</p>
 </section>
 <section id="données-1" class="level1">
@@ -317,50 +332,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>communes choisies</p></li>
 </ul>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/codeINSEEetudiant.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">c</span>(choix<span class="sc">$</span>choix.de.la.commune..code.INSEE., choix<span class="sc">$</span>choix.de.la.commune..code.INSEE..<span class="dv">1</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># on enlève les NA et les villes identiques</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">unique</span>(choix[<span class="sc">!</span><span class="fu">is.na</span>(choix)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">unique</span>(choix[<span class="sc">!</span><span class="fu">is.na</span>(choix)])</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">c</span>(choix,<span class="dv">93010</span>,<span class="dv">70550</span>,<span class="dv">60508</span>,<span class="dv">78311</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(choix, <span class="st">"data/choix.csv"</span>, <span class="at">fileEncoding =</span> <span class="st">"UTF-8"</span>, <span class="at">row.names =</span> F, <span class="at">col.names =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>38 communes + Bondy</p>
+<p>Récupération des carreaux 200 m pour les communes</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>filosofi <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/carreaux_200m_met.gpkg"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(filosofi)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>filosofi<span class="sc">$</span>dpt <span class="ot">&lt;-</span> <span class="fu">substring</span>(filosofi<span class="sc">$</span>lcog_geo,<span class="dv">1</span>,<span class="dv">2</span>) </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">substring</span>(choix, <span class="dv">1</span>,<span class="dv">2</span>)) </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>choisir <span class="ot">&lt;-</span> <span class="cf">function</span>(dpt){</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> filosofi [<span class="fu">grep</span>(dpt, filosofi<span class="sc">$</span>dpt),]</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_write</span>(data  , <span class="st">"data/construction.gpkg"</span>, dpt, <span class="at">delete_layer =</span> T)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">lapply</span>(dpt, choisir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>filosofi <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/carreaux_200m_met.gpkg"</span>, <span class="at">quiet=</span>T)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>filosofi<span class="sc">$</span>dpt <span class="ot">&lt;-</span> <span class="fu">substring</span>(filosofi<span class="sc">$</span>lcog_geo,<span class="dv">1</span>,<span class="dv">2</span>) </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">substring</span>(choix, <span class="dv">1</span>,<span class="dv">2</span>)) </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>choisir <span class="ot">&lt;-</span> <span class="cf">function</span>(dpt){</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> filosofi [<span class="fu">grep</span>(dpt, filosofi<span class="sc">$</span>dpt),]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_write</span>(data  , <span class="st">"data/gros/construction.gpkg"</span>, dpt, <span class="at">delete_layer =</span> T, <span class="at">quiet=</span>T)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">lapply</span>(dpt, choisir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Attention au 97</p>
-<p>Cartographie</p>
+<p>Attention au 97, il faut prendre un autre fichier filosofi</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.3.1; sf_use_s2() is TRUE</code></pre>
+<pre><code>Linking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE</code></pre>
 </div>
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">"data/construction.gpkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/choix.csv"</span>, <span class="at">header =</span> F)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> choix [<span class="fu">grep</span>(<span class="st">"^97"</span>, choix<span class="sc">$</span>V1),]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mart <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/carreaux_200m_mart.gpkg"</span>, <span class="at">quiet=</span>T)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(mart,<span class="st">"data/gros/construction.gpkg"</span>, <span class="st">"97"</span>, <span class="at">delete_layer =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Deleting layer `97' using driver `GPKG'
+Writing layer `97' to data source `data/gros/construction.gpkg' using driver `GPKG'
+Writing 11220 features with 34 fields and geometry type Polygon.</code></pre>
+</div>
+</div>
+</section>
+<section id="cartographie" class="level1">
+<h1>Cartographie</h1>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">"data/gros/construction.gpkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Driver: GPKG 
 Available layers:
    layer_name geometry_type features fields              crs_name
-1          73       Polygon    16387     35 RGF93 v1 / Lambert-93
-2          97                      0     35 RGF93 v1 / Lambert-93
+1     commune       Polygon       34      2 RGF93 v1 / Lambert-93
+2          73       Polygon    16387     35 RGF93 v1 / Lambert-93
 3          93       Polygon     4238     35 RGF93 v1 / Lambert-93
 4          31       Polygon    42359     35 RGF93 v1 / Lambert-93
 5          95       Polygon     8763     35 RGF93 v1 / Lambert-93
@@ -380,243 +415,56 @@ Available layers:
 19         60       Polygon    20282     35 RGF93 v1 / Lambert-93
 20         59       Polygon    45594     35 RGF93 v1 / Lambert-93
 21         91       Polygon    12033     35 RGF93 v1 / Lambert-93
-22         75       Polygon     2036     35 RGF93 v1 / Lambert-93</code></pre>
+22         75       Polygon     2036     35 RGF93 v1 / Lambert-93
+23         70       Polygon    13347     35 RGF93 v1 / Lambert-93
+24         97       Polygon    11220     34 RGAF09 / UTM zone 20N</code></pre>
 </div>
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> <span class="fu">st_layers</span>(<span class="st">"data/construction.gpkg"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> couches<span class="sc">$</span>name</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>union <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> couches [<span class="dv">1</span>]</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (c <span class="cf">in</span> couches){</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/construction.gpkg"</span>, c)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_union</span>(tmp<span class="sc">$</span>geom)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(tmp)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  union <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tmp,union)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> <span class="fu">st_layers</span>(<span class="st">"data/gros/construction.gpkg"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 23</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> couches<span class="sc">$</span>name</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> couches [couches <span class="sc">!=</span> <span class="st">'97'</span>]</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> couches [couches <span class="sc">!=</span> <span class="st">'commune'</span>]</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>union <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (c <span class="cf">in</span> couches){</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/construction.gpkg"</span>, c, <span class="at">quiet=</span>T)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_union</span>(tmp<span class="sc">$</span>geom)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(tmp)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  union <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tmp,union)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>union <span class="ot">&lt;-</span> <span class="fu">st_convex_hull</span>(union)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/departements.geojson"</span>, <span class="at">quiet=</span>T)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(dpt, <span class="dv">2154</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>dptSel <span class="ot">&lt;-</span> dpt [dpt<span class="sc">$</span>code <span class="sc">%in%</span> couches,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Reading layer `73' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 16387 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 904530.9 ymin: 6448964 xmax: 1019792 ymax: 6541000
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `97' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 0 features and 35 fields
-Bounding box:  xmin: NA ymin: NA xmax: NA ymax: NA
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `93' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 4238 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 647797.6 ymin: 6856393 xmax: 670975.5 ymax: 6876433
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `31' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 42359 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 492211.1 ymin: 6184815 xmax: 622517.3 ymax: 6314320
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `95' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 8763 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 598612.2 ymin: 6868539 xmax: 669369.1 ymax: 6905080
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `64' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 38211 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 312045.4 ymin: 6195724 xmax: 457828.4 ymax: 6282631
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `44' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 45780 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 280820.8 ymin: 6650266 xmax: 402652.8 ymax: 6757550
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `69' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 28758 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 796702.5 ymin: 6485519 xmax: 867698.1 ymax: 6579416
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `92' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 3288 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 637203.4 ymin: 6847947 xmax: 651502.3 ymax: 6872269
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `28' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 17735 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 534055.8 ymin: 6763261 xmax: 624538.5 ymax: 6871478
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `78' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 15076 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 586663.8 ymin: 6816723 xmax: 643074 ymax: 6887707
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `33' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 54580 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 362510.7 ymin: 6350085 xmax: 487702.7 ymax: 6505085
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `50' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 41602 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 343258.5 ymin: 6826360 xmax: 424701.9 ymax: 6968769
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `49' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 38684 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 372020 ymin: 6659681 xmax: 492038.4 ymax: 6753919
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `72' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 36668 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 442429.8 ymin: 6722111 xmax: 544689.7 ymax: 6823353
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `63' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 29873 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 653530.3 ymin: 6466167 xmax: 776550.5 ymax: 6572815
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `94' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 4207 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 649292.5 ymin: 6843259 xmax: 670655.6 ymax: 6862510
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `13' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 32947 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 806628 ymin: 6232934 xmax: 923773.6 ymax: 6314729
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `60' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 20282 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 605785.1 ymin: 6884733 xmax: 710532.5 ymax: 6963497
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `59' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 45594 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 636182.3 ymin: 6986465 xmax: 787594 ymax: 7109901
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `91' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 12033 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 620327.8 ymin: 6799063 xmax: 668965.6 ymax: 6852263
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `75' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\construction.gpkg' using driver `GPKG'
-Simple feature collection with 2036 features and 35 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 643067.5 ymin: 6857462 xmax: 661170 ymax: 6867108
-Projected CRS: RGF93 v1 / Lambert-93</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/regions-1000m.geojson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Reading layer `regions-1000m' from data source 
-  `C:\Users\tachasa\L6ECSIG\data\regions-1000m.geojson' using driver `GeoJSON'
-Simple feature collection with 26 features and 2 fields
-Geometry type: MULTIPOLYGON
-Dimension:     XY
-Bounding box:  xmin: -178.182 ymin: -85.05 xmax: 168.133 ymax: 51.089
-Geodetic CRS:  WGS 84</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(region, <span class="dv">2154</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> region [<span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">26</span>),]</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>region</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Simple feature collection with 21 features and 2 fields
-Geometry type: MULTIPOLYGON
-Dimension:     XY
-Bounding box:  xmin: -15451320 ymin: -6076012 xmax: 114256800 ymax: 34188480
-Projected CRS: RGF93 v1 / Lambert-93
-First 10 features:
-   code                     nom                       geometry
-6    11           Île-de-France MULTIPOLYGON (((664333.1 67...
-7    24     Centre-Val de Loire MULTIPOLYGON (((667196.2 66...
-8    27 Bourgogne-Franche-Comté MULTIPOLYGON (((820904.8 67...
-9    28               Normandie MULTIPOLYGON (((503090.7 69...
-10   32         Hauts-de-France MULTIPOLYGON (((771691.8 69...
-11   44               Grand Est MULTIPOLYGON (((825441.2 70...
-12   52        Pays de la Loire MULTIPOLYGON (((291885.1 67...
-13   53                Bretagne MULTIPOLYGON (((259233.4 68...
-14   75      Nouvelle-Aquitaine MULTIPOLYGON (((376796.3 65...
-15   76               Occitanie MULTIPOLYGON (((596159.2 61...</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(region, <span class="at">col =</span> <span class="st">"wheat"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(union, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Choix étudiants"</span>, <span class="st">"Insee 2019</span><span class="sc">\n</span><span class="st">Cours L6ECSIG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="intro_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
-</div>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>insee <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/insee.csv"</span>, <span class="at">header =</span> F)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>insee</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># on récupère la géométrie des vilels</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#https://geo.api.gouv.fr/communes?code=44109&amp;format=geojson&amp;geometry=contour</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(dpt, <span class="at">col =</span> <span class="st">"wheat"</span>, <span class="at">border=</span><span class="st">"grey"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(union, <span class="at">col =</span> <span class="st">"pink"</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_label</span>(dptSel, <span class="at">var =</span> <span class="st">"nom"</span>, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">overlap =</span> F, <span class="at">col =</span><span class="st">"red"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Choix étudiants hors Martinique"</span>, <span class="st">"Insee 2019</span><span class="sc">\n</span><span class="st">Cours L6ECSIG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 <section id="ressources" class="level1">
 <h1>Ressources</h1>
-<p><a href="https://learn.arcgis.com/fr/gallery/#?p=arcgispro" class="uri">https://learn.arcgis.com/fr/gallery/#?p=arcgispro</a></p>
-<p><a href="https://framabook.org/r-et-espace/" class="uri">https://framabook.org/r-et-espace/</a></p>
+<p><a href="https://learn.arcgis.com/fr/gallery/#?p=arcgispro">Argis, learn arcgis</a></p>
+<p><a href="https://framabook.org/r-et-espace/">R la base</a></p>
 <p>Données communales</p>
-<p><a href="https://www.data.gouv.fr/pages/donnees-geo" class="uri">https://www.data.gouv.fr/pages/donnees-geo</a></p>
-<p><a href="https://www.insee.fr/fr/information/3544265" class="uri">https://www.insee.fr/fr/information/3544265</a></p>
+<p><a href="https://data.smartidf.services/explore/dataset/demographyref-france-donnees-carroyees-200m-millesime/information/?disjunctive.com_arm_code&amp;disjunctive.year&amp;disjunctive.com_code&amp;disjunctive.com_arm_name&amp;disjunctive.com_name&amp;disjunctive.epci_name&amp;disjunctive.epci_code&amp;disjunctive.dep_name&amp;disjunctive.dep_code&amp;disjunctive.reg_name&amp;disjunctive.reg_code">Requeteur de carreaux sur site IDF</a></p>
+<p><a href="https://www.data.gouv.fr/pages/donnees-geo">data.gouv</a></p>
+<p><a href="https://www.insee.fr/fr/information/3544265">insee</a></p>
 
-
-<!-- -->
 
 </section>
 
@@ -700,61 +548,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-  function tippyHover(el, contentFn) {
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -764,8 +578,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -777,7 +600,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -821,6 +767,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -846,6 +793,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -904,142 +877,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb16" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Introduction"</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> </span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html: </span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">    number_sections: true</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">cache =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Passer la valeur suivante à TRUE pour reproduire les extractions.</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">eval =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">warning =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="fu"># Objet</span></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>L6ECSIG Construction et utilisation des SIG 2025/26</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>(Gr. 6 et , Jeudi 16h30 - 19h30 Salle 217 sur le campus de Clignancourt)</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>L'idée du cours est de consolider les acquis de la L2 et de familiariser les étudiants à Arcgis pro et au codage avec R (une plateforme de versioning très utilisée.)</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>La thématique utilisée est *Commune pauvre et/ou riche ?*</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="fu"># Données</span></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>limites communes dans OSM</span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>carreaux filosofi 200 m (données infra communales)</span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>données ofgl (données communales)</span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a><span class="fu"># Déroulé</span></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/deroule.csv"</span>, <span class="at">header =</span> T, <span class="at">fileEncoding =</span> <span class="st">"UTF-8"</span>)</span>
-<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a><span class="fu"># Evaluation</span></span>
-<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>régime du contrôle continu,</span>
-<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>Deux notes :</span>
-<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="sc">\-</span> une partiel</span>
-<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a><span class="sc">\-</span> une note maison (+ les exercices pour moitié de la note maison)</span>
-<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>Le partiel sera sur machine d'une durée de 1h30 : - un exercice sous Arcgis Pro (10 pt) - et un autre sous R(10 pt) (avec un rendu en .pdf)</span>
-<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a><span class="fu"># Données</span></span>
-<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a>Il s'agit de vos données pour la commune choisie. Principalement :</span>
-<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>OFGL</span>
-<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Filosofi</span>
-<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>communes choisies</span>
-<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=TRUE}</span></span>
-<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/codeINSEEetudiant.csv"</span>)</span>
-<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">c</span>(choix<span class="sc">$</span>choix.de.la.commune..code.INSEE., choix<span class="sc">$</span>choix.de.la.commune..code.INSEE..<span class="dv">1</span>)</span>
-<span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a><span class="co"># on enlève les NA et les villes identiques</span></span>
-<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a>choix <span class="ot">&lt;-</span> <span class="fu">unique</span>(choix[<span class="sc">!</span><span class="fu">is.na</span>(choix)])</span>
-<span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-74"><a href="#cb16-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-75"><a href="#cb16-75" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb16-76"><a href="#cb16-76" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb16-77"><a href="#cb16-77" aria-hidden="true" tabindex="-1"></a>filosofi <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/carreaux_200m_met.gpkg"</span>)</span>
-<span id="cb16-78"><a href="#cb16-78" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(filosofi)</span>
-<span id="cb16-79"><a href="#cb16-79" aria-hidden="true" tabindex="-1"></a>filosofi<span class="sc">$</span>dpt <span class="ot">&lt;-</span> <span class="fu">substring</span>(filosofi<span class="sc">$</span>lcog_geo,<span class="dv">1</span>,<span class="dv">2</span>) </span>
-<span id="cb16-80"><a href="#cb16-80" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">substring</span>(choix, <span class="dv">1</span>,<span class="dv">2</span>)) </span>
-<span id="cb16-81"><a href="#cb16-81" aria-hidden="true" tabindex="-1"></a>choisir <span class="ot">&lt;-</span> <span class="cf">function</span>(dpt){</span>
-<span id="cb16-82"><a href="#cb16-82" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> filosofi [<span class="fu">grep</span>(dpt, filosofi<span class="sc">$</span>dpt),]</span>
-<span id="cb16-83"><a href="#cb16-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_write</span>(data  , <span class="st">"data/construction.gpkg"</span>, dpt, <span class="at">delete_layer =</span> T)</span>
-<span id="cb16-84"><a href="#cb16-84" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb16-85"><a href="#cb16-85" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">lapply</span>(dpt, choisir)</span>
-<span id="cb16-86"><a href="#cb16-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-87"><a href="#cb16-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-88"><a href="#cb16-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-89"><a href="#cb16-89" aria-hidden="true" tabindex="-1"></a>Attention au 97</span>
-<span id="cb16-90"><a href="#cb16-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-91"><a href="#cb16-91" aria-hidden="true" tabindex="-1"></a>Cartographie</span>
-<span id="cb16-92"><a href="#cb16-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-93"><a href="#cb16-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-96"><a href="#cb16-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb16-97"><a href="#cb16-97" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb16-98"><a href="#cb16-98" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb16-99"><a href="#cb16-99" aria-hidden="true" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">"data/construction.gpkg"</span>)</span>
-<span id="cb16-100"><a href="#cb16-100" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> <span class="fu">st_layers</span>(<span class="st">"data/construction.gpkg"</span>)</span>
-<span id="cb16-101"><a href="#cb16-101" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> couches<span class="sc">$</span>name</span>
-<span id="cb16-102"><a href="#cb16-102" aria-hidden="true" tabindex="-1"></a>union <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb16-103"><a href="#cb16-103" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> couches [<span class="dv">1</span>]</span>
-<span id="cb16-104"><a href="#cb16-104" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (c <span class="cf">in</span> couches){</span>
-<span id="cb16-105"><a href="#cb16-105" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/construction.gpkg"</span>, c)</span>
-<span id="cb16-106"><a href="#cb16-106" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_union</span>(tmp<span class="sc">$</span>geom)</span>
-<span id="cb16-107"><a href="#cb16-107" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(tmp)</span>
-<span id="cb16-108"><a href="#cb16-108" aria-hidden="true" tabindex="-1"></a>  union <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tmp,union)</span>
-<span id="cb16-109"><a href="#cb16-109" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb16-110"><a href="#cb16-110" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/regions-1000m.geojson"</span>)</span>
-<span id="cb16-111"><a href="#cb16-111" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(region, <span class="dv">2154</span>)</span>
-<span id="cb16-112"><a href="#cb16-112" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> region [<span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">26</span>),]</span>
-<span id="cb16-113"><a href="#cb16-113" aria-hidden="true" tabindex="-1"></a>region</span>
-<span id="cb16-114"><a href="#cb16-114" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(region, <span class="at">col =</span> <span class="st">"wheat"</span>)</span>
-<span id="cb16-115"><a href="#cb16-115" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(union, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
-<span id="cb16-116"><a href="#cb16-116" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Choix étudiants"</span>, <span class="st">"Insee 2019</span><span class="sc">\n</span><span class="st">Cours L6ECSIG"</span>)</span>
-<span id="cb16-117"><a href="#cb16-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-118"><a href="#cb16-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-119"><a href="#cb16-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb16-120"><a href="#cb16-120" aria-hidden="true" tabindex="-1"></a>insee <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/insee.csv"</span>, <span class="at">header =</span> F)</span>
-<span id="cb16-121"><a href="#cb16-121" aria-hidden="true" tabindex="-1"></a>insee</span>
-<span id="cb16-122"><a href="#cb16-122" aria-hidden="true" tabindex="-1"></a><span class="co"># on récupère la géométrie des vilels</span></span>
-<span id="cb16-123"><a href="#cb16-123" aria-hidden="true" tabindex="-1"></a><span class="co">#https://geo.api.gouv.fr/communes?code=44109&amp;format=geojson&amp;geometry=contour</span></span>
-<span id="cb16-124"><a href="#cb16-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-125"><a href="#cb16-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-126"><a href="#cb16-126" aria-hidden="true" tabindex="-1"></a><span class="fu"># Ressources</span></span>
-<span id="cb16-127"><a href="#cb16-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-128"><a href="#cb16-128" aria-hidden="true" tabindex="-1"></a><span class="ot">&lt;https://learn.arcgis.com/fr/gallery/#?p=arcgispro&gt;</span></span>
-<span id="cb16-129"><a href="#cb16-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-130"><a href="#cb16-130" aria-hidden="true" tabindex="-1"></a><span class="ot">&lt;https://framabook.org/r-et-espace/&gt;</span></span>
-<span id="cb16-131"><a href="#cb16-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-132"><a href="#cb16-132" aria-hidden="true" tabindex="-1"></a>Données communales</span>
-<span id="cb16-133"><a href="#cb16-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-134"><a href="#cb16-134" aria-hidden="true" tabindex="-1"></a><span class="ot">&lt;https://www.data.gouv.fr/pages/donnees-geo&gt;</span></span>
-<span id="cb16-135"><a href="#cb16-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-136"><a href="#cb16-136" aria-hidden="true" tabindex="-1"></a><span class="ot">&lt;https://www.insee.fr/fr/information/3544265&gt;</span></span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div></div></div></div>
+</script>
 </div> <!-- /content -->
+
 
 
 
