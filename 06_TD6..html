@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Géotraitements rasters – L6ECSIG</title>
+<title>Jointures – L6ECSIG</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -146,7 +146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">GT Vecteurs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./04_TD4.html" aria-current="page"> 
+    <a class="nav-link" href="./04_TD4.html"> 
 <span class="menu-text">GT Rasters</span></a>
   </li>  
   <li class="nav-item">
@@ -181,23 +181,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#objet" id="toc-objet" class="nav-link active" data-scroll-target="#objet">Objet</a></li>
-  <li><a href="#utiliser-copernicus-hub-pour-obtenir-une-image-aérienne" id="toc-utiliser-copernicus-hub-pour-obtenir-une-image-aérienne" class="nav-link" data-scroll-target="#utiliser-copernicus-hub-pour-obtenir-une-image-aérienne">Utiliser copernicus hub pour obtenir une image aérienne</a>
+  <li><a href="#jointure-attributaire" id="toc-jointure-attributaire" class="nav-link" data-scroll-target="#jointure-attributaire">Jointure attributaire</a>
   <ul class="collapse">
-  <li><a href="#paramétrage" id="toc-paramétrage" class="nav-link" data-scroll-target="#paramétrage">Paramétrage</a></li>
-  </ul></li>
-  <li><a href="#etapes-géotraitements" id="toc-etapes-géotraitements" class="nav-link" data-scroll-target="#etapes-géotraitements">Etapes géotraitements</a>
+  <li><a href="#repérer-la-clé" id="toc-repérer-la-clé" class="nav-link" data-scroll-target="#repérer-la-clé">Repérer la clé</a></li>
+  <li><a href="#sens-de-la-jointure" id="toc-sens-de-la-jointure" class="nav-link" data-scroll-target="#sens-de-la-jointure">Sens de la jointure</a></li>
+  <li><a href="#exemple-données-ofgl-et-communes-du-dpt" id="toc-exemple-données-ofgl-et-communes-du-dpt" class="nav-link" data-scroll-target="#exemple-données-ofgl-et-communes-du-dpt">Exemple données OFGL et communes du dpt</a>
   <ul class="collapse">
-  <li><a href="#géotraitement-1-reprojeter" id="toc-géotraitement-1-reprojeter" class="nav-link" data-scroll-target="#géotraitement-1-reprojeter">Géotraitement 1 = Reprojeter</a></li>
-  <li><a href="#géotraitement-2-découper-le-raster" id="toc-géotraitement-2-découper-le-raster" class="nav-link" data-scroll-target="#géotraitement-2-découper-le-raster">Géotraitement 2 = Découper le raster</a>
+  <li><a href="#osm" id="toc-osm" class="nav-link" data-scroll-target="#osm">OSM</a></li>
+  <li><a href="#ofgl" id="toc-ofgl" class="nav-link" data-scroll-target="#ofgl">OFGL</a></li>
+  <li><a href="#la-clé" id="toc-la-clé" class="nav-link" data-scroll-target="#la-clé">La clé</a></li>
+  <li><a href="#la-jointure" id="toc-la-jointure" class="nav-link" data-scroll-target="#la-jointure">La jointure</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#jointure-spatiale" id="toc-jointure-spatiale" class="nav-link" data-scroll-target="#jointure-spatiale">Jointure spatiale</a>
   <ul class="collapse">
-  <li><a href="#carreaux-manquants" id="toc-carreaux-manquants" class="nav-link" data-scroll-target="#carreaux-manquants">Carreaux manquants</a></li>
-  <li><a href="#découper-le-raster" id="toc-découper-le-raster" class="nav-link" data-scroll-target="#découper-le-raster">Découper le raster</a></li>
+  <li><a href="#points-et-polygones" id="toc-points-et-polygones" class="nav-link" data-scroll-target="#points-et-polygones">Points et polygones</a>
+  <ul class="collapse">
+  <li><a href="#batiments-centroides-et-carreau" id="toc-batiments-centroides-et-carreau" class="nav-link" data-scroll-target="#batiments-centroides-et-carreau">Batiments (centroides) et carreau</a></li>
   </ul></li>
-  <li><a href="#géotraitement-3-convertir-la-couleur-du-raster-en-niveaux-de-gris" id="toc-géotraitement-3-convertir-la-couleur-du-raster-en-niveaux-de-gris" class="nav-link" data-scroll-target="#géotraitement-3-convertir-la-couleur-du-raster-en-niveaux-de-gris">Géotraitement 3 = convertir la couleur du raster en niveaux de gris</a></li>
-  <li><a href="#géotraitement-4-seuillage" id="toc-géotraitement-4-seuillage" class="nav-link" data-scroll-target="#géotraitement-4-seuillage">Géotraitement 4 : seuillage</a></li>
-  <li><a href="#géotraitement-5-raster-vecteur" id="toc-géotraitement-5-raster-vecteur" class="nav-link" data-scroll-target="#géotraitement-5-raster-vecteur">Géotraitement 5 = raster =&gt; vecteur</a></li>
+  <li><a href="#polygones-et-polygones" id="toc-polygones-et-polygones" class="nav-link" data-scroll-target="#polygones-et-polygones">Polygones et polygones</a></li>
+  <li><a href="#calcul-statistique-à-effectuer" id="toc-calcul-statistique-à-effectuer" class="nav-link" data-scroll-target="#calcul-statistique-à-effectuer">Calcul statistique à effectuer</a></li>
   </ul></li>
-  <li><a href="#schéma-complet" id="toc-schéma-complet" class="nav-link" data-scroll-target="#schéma-complet">Schéma complet</a></li>
   </ul>
 </nav>
     </div>
@@ -206,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Géotraitements rasters</h1>
+<h1 class="title">Jointures</h1>
 </div>
 
 
@@ -225,60 +229,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="objet" class="level1">
 <h1>Objet</h1>
-<p>L’objectif est de comprendre pourquoi le carroyage filosofi ne recouvre pas tout l’espace.</p>
+<p>Les jointures permettent d’enrichir les données en liant plusieurs tables ensemble. Les attributs des 2 tables vont se retrouver dans la jointure.</p>
+<p>La jointure attributaire est facile à comprendre. Le point de vigilance est de vérifier :</p>
+<ul>
+<li><p>le nombre d’entités au départ</p></li>
+<li><p>et après la jointure</p></li>
+</ul>
+<p>La jointure spatiale est plus complexe et coûteuse en terme de calculs, se méfier notamment des croisements polygones / polygones, il vaut mieux passer par les centroides.</p>
+<p>Les jointures spatiales reposent sur les relations topologique (inclusion, adjacence et intersection).</p>
+</section>
+<section id="jointure-attributaire" class="level1">
+<h1>Jointure attributaire</h1>
+<p>Vu la sélection attributaire,</p>
+<p>A voir, l’ensemble de définition sur une seule couche.</p>
+<section id="repérer-la-clé" class="level2">
+<h2 class="anchored" data-anchor-id="repérer-la-clé">Repérer la clé</h2>
+<p>Simplicité de la clé (éviter les noms, privilégier les chiffres)</p>
+<p>Cas des noms de rue</p>
+</section>
+<section id="sens-de-la-jointure" class="level2">
+<h2 class="anchored" data-anchor-id="sens-de-la-jointure">Sens de la jointure</h2>
+<p>Table avec géométrie en premier</p>
+</section>
+<section id="exemple-données-ofgl-et-communes-du-dpt" class="level2">
+<h2 class="anchored" data-anchor-id="exemple-données-ofgl-et-communes-du-dpt">Exemple données OFGL et communes du dpt</h2>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
-  A[image raster] --&gt; C{découper}
-  B[carreaux vecteur] --&gt; C{découper}
-  C --&gt; D[image hors carreau]
+  A[géométrie commune] --&gt; C{joindre}
+  B[chiffres ofgl] --&gt; C{joindre}
+  C --&gt; D[carte symbologie graduée]
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>Comment s’appelle le schéma ci-dessus ?</p>
-</section>
-<section id="utiliser-copernicus-hub-pour-obtenir-une-image-aérienne" class="level1">
-<h1>Utiliser copernicus hub pour obtenir une image aérienne</h1>
-<section id="paramétrage" class="level2">
-<h2 class="anchored" data-anchor-id="paramétrage">Paramétrage</h2>
-<p>Déterminer la zone, de quelle manière ?</p>
-<p>Quelle type d’image prendre ?</p>
-<p><img src="img/copernicusHubrecherche.png" class="img-fluid"></p>
-<p>Téléchargement de la carte</p>
-<p><img src="img/enregistremetnCoper.png" class="img-fluid"> <img src="img/enregistrementCopernicusHub.png" class="img-fluid"></p>
-<p>Justifier les options choisies :</p>
-<ul>
-<li><p>format image</p></li>
-<li><p>type de résolution</p></li>
-<li><p>projection</p></li>
-</ul>
-</section>
-</section>
-<section id="etapes-géotraitements" class="level1">
-<h1>Etapes géotraitements</h1>
-<section id="géotraitement-1-reprojeter" class="level2">
-<h2 class="anchored" data-anchor-id="géotraitement-1-reprojeter">Géotraitement 1 = Reprojeter</h2>
-<p><img src="img/taillePixel.png" class="img-fluid"></p>
-<p>Quelle est la taille du pixel ? S’agit-il de mètres ?</p>
-<p>A part la taille du pixel, à quoi sert de reprojeter le raster ?</p>
-</section>
-<section id="géotraitement-2-découper-le-raster" class="level2">
-<h2 class="anchored" data-anchor-id="géotraitement-2-découper-le-raster">Géotraitement 2 = Découper le raster</h2>
-<p>On se sert des carreaux manquants pour découper le raster dessus.</p>
-<section id="carreaux-manquants" class="level3">
-<h3 class="anchored" data-anchor-id="carreaux-manquants">Carreaux manquants</h3>
-<p>L’extraction des carreaux manquants est faite sous R par département et fournie aux étudiants.</p>
-<p>La question à régler est sur l’importance des carreaux manquants. On fait un test sur Bondy, puis une comparaison par dpt et enfin le cas spécifique de la Martinique.</p>
-<section id="bondy" class="level4">
-<h4 class="anchored" data-anchor-id="bondy">Bondy</h4>
-<p>Données et intersection limite commune et carreau</p>
-<p>Chargement des couches : commune et carreaux</p>
+<section id="osm" class="level3">
+<h3 class="anchored" data-anchor-id="osm">OSM</h3>
+<p>Récupération des limites communales dans le dpt dans OSM</p>
+<p>requête : admin_level=8 in 93</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -289,230 +282,252 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours5.gpkg"</span>, <span class="st">"commune"</span>, <span class="at">quiet=</span>T)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> commune [commune<span class="sc">$</span>code <span class="sc">==</span> <span class="st">'93010'</span>,]</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">"data/dataCours1/car.gpkg"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours6/communes93.geojson"</span>, <span class="at">quiet=</span>T)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraction uniquement des polygones</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">st_collection_extract</span>(commune, <span class="st">"POLYGON"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="ofgl" class="level3">
+<h3 class="anchored" data-anchor-id="ofgl">OFGL</h3>
+<p><img src="img/ofgl.png" class="img-fluid"></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ofgl <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"data/cours6/donnees_carto_communes.csv"</span>, <span class="at">dec =</span><span class="st">"."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="la-clé" class="level3">
+<h3 class="anchored" data-anchor-id="la-clé">La clé</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>commune<span class="sc">$</span>ref.INSEE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Driver: GPKG 
-Available layers:
-  layer_name geometry_type features fields              crs_name
-1        dpt                   5360     38 RGF93 v1 / Lambert-93
-2      bondy                    164     50 RGF93 v1 / Lambert-93</code></pre>
+<pre><code> [1] "93055" "93061" "93070" "93001" "93039" "93048" "93006" "93051" "93045"
+[10] "93064" "93063" "93053" "93008" "93049" "93033" "93027" "93029" "93013"
+[19] "93010" "93072" "93030" "93073" "93007" "93005" "93078" "93077" "93062"
+[28] "93057" "93071" "93032" "93050" "93046" "93074" "93015" "93047" "93031"
+[37] "93079" "93014" "93066" NA     </code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/dataCours1/car.gpkg"</span>, <span class="st">"dpt"</span>, <span class="at">quiet=</span>T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ofgl<span class="sc">$</span>Insee</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 93029 93070 93014 93015 93048 93059 93062 93005 93006 93007 93031 93047
+[13] 93008 93010 93045 93050 93071 93027 93033 93053 93063 93064 93013 93030
+[25] 93039 93046 93049 93055 93061 93073 93078 93001 93032 93051 93057 93066
+[37] 93072 93074 93077 93079</code></pre>
 </div>
-<p>Intersection Bondy - carreaux dpt puis union des carreaux pour accélérer les traitements.</p>
-<p>En effet les traitements spatiaux sur des polygones peuvent être très lents, autant traiter une union des carreaux plutôt que chaque carreau séparé.</p>
+</div>
+<p>Dans Arcgis, la jointure ne passera pas.</p>
+<p>Il faut convertir le code insee en chiffre.</p>
+<p><img src="img/conversion.png" class="img-fluid"></p>
+</section>
+<section id="la-jointure" class="level3">
+<h3 class="anchored" data-anchor-id="la-jointure">La jointure</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_union</span>(<span class="fu">st_intersection</span>(bondy,car))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(commune, ofgl, <span class="at">by.x =</span> <span class="st">"ref.INSEE"</span>, <span class="at">by.y =</span> <span class="st">"Insee"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>Différence symétrique entre la zone communale et le gros carreau</p>
+<p>Avec Arcgis, on utilise le menu <em>Jointure et relation</em> du clic droit sur la couche</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span> <span class="fu">st_difference</span>(bondy<span class="sc">$</span>geom, inter)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<p>Cartographie</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(diff)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(bondy, <span class="at">add =</span> T, <span class="at">col =</span> <span class="cn">NA</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Carreaux manquants sur Bondy"</span>,<span class="st">"Filosofi 2019</span><span class="sc">\n</span><span class="st">IGN 2026"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(jointure<span class="sc">$</span>Montant.par.habitant<span class="fl">.2024</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_TD4_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="06_TD6._files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(jointure, <span class="at">type =</span> <span class="st">"choro"</span>, <span class="at">var =</span> <span class="st">"Montant.par.habitant.2024"</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#mf_label(jointure, "name" , overlap = F, halo = T)</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Dépenses personnel par habitant dans le 93"</span>, <span class="st">"OFGL 2024, OSM 2026"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_TD6._files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The scale bar does not work on unprojected (long/lat) maps.</code></pre>
+</div>
+</div>
+<p>Sous Arcgis, faire une symbologie <em>couleurs gradués</em></p>
 </section>
-<section id="le-shéma-de-lopération" class="level4">
-<h4 class="anchored" data-anchor-id="le-shéma-de-lopération">Le shéma de l’opération</h4>
+</section>
+</section>
+<section id="jointure-spatiale" class="level1">
+<h1>Jointure spatiale</h1>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
-  A[car] --&gt; C{intersecter}
-  B[commune] --&gt; C{intersecter}
-  C --&gt; D[inter]
-  D --&gt; E{fusion}
-  E --&gt; F[car fusionnés]
-  F --&gt; H{difference}
-  B[commune] --&gt; H
-  H --&gt; I(carreaux absents)
+  A[carreau] --&gt; C{intersecter}
+  B[bat] --&gt; C{intersecter}
+  C --&gt; D[bat avec l'identifiant du carreau]
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-</section>
-<section id="traitement-par-lot" class="level4">
-<h4 class="anchored" data-anchor-id="traitement-par-lot">Traitement par lot</h4>
-<p>On procéde par dpt, pour éviter d’avoir des délais de traitement trop longs.</p>
+<p>Pas de champs attributaire commun entre les 2 géométries, il faut se servir de la topologie.</p>
+<p>Attention aux statistiques issues de ces jointures !</p>
+<p>L’idée est de compter le nombre de bâtiments par carreau afin de calculer les données filosofi au bâtiment.</p>
+<p>La récupération des bâtiments se fait sur overpass turbo : <em>building=yes in bondy</em></p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours5.gpkg"</span>, <span class="st">"commune"</span>, <span class="at">quiet=</span>T)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span> (<span class="st">"data/cours5.gpkg"</span>, <span class="st">"car"</span>, <span class="at">quiet=</span>T)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># on agrège les carreaux par dpt</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>aggCar <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(car [, <span class="fu">c</span>( <span class="st">"dpt.1"</span>)], <span class="at">by =</span> <span class="fu">list</span>(car<span class="sc">$</span>dpt<span class="fl">.1</span>), length)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># même opération sur les communes</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>aggCommune <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(commune [, <span class="st">"dpt"</span>], <span class="at">by=</span><span class="fu">list</span>(commune<span class="sc">$</span>dpt), length)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(aggCar)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dpt"</span>, <span class="st">"nb"</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(aggCommune)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dpt"</span>, <span class="st">"nb"</span>)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span>  <span class="cn">NULL</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> commune[commune<span class="sc">$</span>dpt <span class="sc">!=</span> <span class="dv">97</span>,]</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">unique</span>(commune<span class="sc">$</span>dpt)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (d <span class="cf">in</span> dpt){</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#print(d)</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_difference</span>(aggCommune [aggCommune<span class="sc">$</span>dpt <span class="sc">==</span> d, <span class="fu">c</span>(<span class="st">"dpt"</span>)], aggCar [aggCar<span class="sc">$</span>dpt <span class="sc">==</span> d, <span class="fu">c</span>(<span class="st">"dpt"</span>)])</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  diff <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tmp, diff)</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/dataCours1/car.gpkg"</span>, <span class="at">quiet =</span> T)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>bat <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours6/bat.geojson"</span>, <span class="at">quiet=</span>T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
+<p>Quelles sont les projections ?</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#diff &lt;- st_cast(diff,"POLYGON")</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(diff, commune)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> inter [, <span class="fu">c</span>(<span class="st">"code"</span>, <span class="st">"nom"</span>)]</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(inter , <span class="st">"data/cours5.gpkg"</span>, <span class="st">"carreau_manquant"</span>, <span class="at">delete_layer =</span> T, <span class="at">quiet =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>bat <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bat, <span class="dv">2154</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
+<p>Affichage des données</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span> (<span class="st">"data/cours5.gpkg"</span>, <span class="st">"car"</span>, <span class="at">quiet=</span>T)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours5.gpkg"</span>, <span class="st">"commune"</span>, <span class="at">quiet=</span>T)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>car<span class="sc">$</span>dpt <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(car<span class="sc">$</span>dpt)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="dv">93</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (d <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">93</span>,<span class="dv">94</span>)){</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mf_map(car [car$dpt.1== d,])</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mf_map</span>(commune [commune<span class="sc">$</span>dpt <span class="sc">==</span> d,], <span class="at">col=</span><span class="cn">NA</span>, <span class="at">border=</span><span class="st">"cadetblue4"</span>, <span class="at">lwd =</span> <span class="dv">4</span>)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mf_map</span>(diff [diff<span class="sc">$</span>dpt<span class="fl">.1</span> <span class="sc">==</span> d,], <span class="at">col=</span><span class="st">"red"</span>, <span class="at">add =</span> T)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mf_layout</span> (<span class="fu">paste0</span>(<span class="st">"Carreaux absents comm du dpt "</span>, d), <span class="st">"insee 2018, IGN 2026"</span>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(car [car<span class="sc">$</span>id <span class="sc">==</span> <span class="dv">93010</span>,], <span class="at">col=</span><span class="cn">NA</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(bat, <span class="at">col =</span> <span class="st">"cadetblue"</span>, <span class="at">border=</span><span class="cn">NA</span>,<span class="at">add =</span> T)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Carreaux et bâtiments"</span>, <span class="st">"Filosofi 2019 / OSM 2026"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_TD4_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="06_TD6._files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="cas-de-la-martinique" class="level4">
-<h4 class="anchored" data-anchor-id="cas-de-la-martinique">Cas de la Martinique</h4>
+<p>Les jointures spatiales peuvent être coûteuses en calcul, du coup, souvent, on utilise les centroides.</p>
+<p>Il est plus facile pour les logiciels de calculer une intersection centroide / polygone que polygone / polygone.</p>
+<section id="points-et-polygones" class="level2">
+<h2 class="anchored" data-anchor-id="points-et-polygones">Points et polygones</h2>
+<section id="batiments-centroides-et-carreau" class="level3">
+<h3 class="anchored" data-anchor-id="batiments-centroides-et-carreau">Batiments (centroides) et carreau</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span> (<span class="st">"data/cours5.gpkg"</span>, <span class="st">"car97"</span>, <span class="at">quiet=</span>T)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours5.gpkg"</span>, <span class="st">"commune"</span>, <span class="at">quiet=</span>T)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> commune[commune<span class="sc">$</span>dpt <span class="sc">==</span> <span class="dv">97</span>,]</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(commune, <span class="dv">5490</span> )</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>agg <span class="ot">&lt;-</span> <span class="fu">aggregate</span> (commune [, <span class="fu">c</span>(<span class="st">"dpt"</span>)], <span class="at">by =</span> <span class="fu">list</span>(commune<span class="sc">$</span>dpt), length)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>agg2 <span class="ot">&lt;-</span> <span class="fu">aggregate</span> (car [,<span class="fu">c</span>(<span class="st">"dpt"</span>)], <span class="at">by =</span> <span class="fu">list</span>(car<span class="sc">$</span>dpt), length)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>diff97 <span class="ot">&lt;-</span> <span class="fu">st_difference</span>(agg, agg2 )</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># on garde par commune</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(diff97, commune [, <span class="fu">c</span>(<span class="st">"code"</span>, <span class="st">"nom"</span>)])</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> inter [,<span class="fu">c</span>(<span class="st">"code"</span>, <span class="st">"nom"</span>)]</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_cast</span>(inter,<span class="st">"POLYGON"</span>)</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(inter, <span class="st">"data/cours5.gpkg"</span>, <span class="st">"carreau_manquant97"</span>, <span class="at">delete_layer =</span> T, <span class="at">quiet =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>bat <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours6/bat.geojson"</span>, <span class="at">quiet=</span>T)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>bat <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bat, <span class="dv">2154</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/bondy.gpkg"</span>, <span class="st">"carreau"</span>, <span class="at">quiet=</span>T)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> car [, <span class="fu">c</span>(<span class="st">"idcar_200m"</span>)]</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> car [<span class="sc">!</span><span class="fu">duplicated</span>(car),]</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>car<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">length</span>(car<span class="sc">$</span>idcar_200m))</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_collection_extract</span>(car, <span class="st">"POLYGON"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(inter, <span class="at">col =</span> <span class="st">"red"</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#mf_map(car, add = T)  </span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(commune, <span class="at">add =</span> T, <span class="at">col=</span><span class="cn">NA</span>, <span class="at">border=</span><span class="st">"cadetblue4"</span>, <span class="at">lwd =</span> <span class="dv">4</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># mf_map(diff97, col="red", add = T)</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span> (<span class="st">"Carreaux absents sur la Martinique "</span>, <span class="st">"insee 2018, IGN 2026"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (mapsf)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(car)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_label</span>(car, <span class="st">"id"</span>, <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_TD4_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="06_TD6._files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="découper-le-raster" class="level3">
-<h3 class="anchored" data-anchor-id="découper-le-raster">Découper le raster</h3>
-<p>Essayer de découper le raster à la commune, puis au carreau manquant</p>
-<p><img src="img/decouperRaster.png" class="img-fluid"></p>
-<p>Essayer avec ou sans l’option <em>utiliser la géométrie en entrée</em>…</p>
-</section>
-</section>
-<section id="géotraitement-3-convertir-la-couleur-du-raster-en-niveaux-de-gris" class="level2">
-<h2 class="anchored" data-anchor-id="géotraitement-3-convertir-la-couleur-du-raster-en-niveaux-de-gris">Géotraitement 3 = convertir la couleur du raster en niveaux de gris</h2>
-<p>Il s’agit de créer un masque binaire, avec les valeurs 0 et 1</p>
-<p>outil <em>Reclassification</em></p>
-<p>Si on prend l’indice ndvi est-ce nécessaire ?</p>
-<p><img src="img/ndvi.png" class="img-fluid"></p>
-</section>
-<section id="géotraitement-4-seuillage" class="level2">
-<h2 class="anchored" data-anchor-id="géotraitement-4-seuillage">Géotraitement 4 : seuillage</h2>
-<p>Outil informations sur l’image, quelles valeurs à retenir ?</p>
-</section>
-<section id="géotraitement-5-raster-vecteur" class="level2">
-<h2 class="anchored" data-anchor-id="géotraitement-5-raster-vecteur">Géotraitement 5 = raster =&gt; vecteur</h2>
-<p>outil Raster vers polygone</p>
-<p>puis taille et lissage</p>
-<ul>
-<li><p>calculer la géométrie (clic droit sur table attributaire)</p></li>
-<li><p>puis lisser un polygone</p></li>
-</ul>
-</section>
-</section>
-<section id="schéma-complet" class="level1">
-<h1>Schéma complet</h1>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-  A[image copernicus] --&gt; B{reprojeter}
-  B --&gt; C[image reprojetée]
-  C --&gt; E{Découper}
-  D[carreaux manquantes] --&gt; E
-  E --&gt; F[extractions image]
-  F --&gt; G{convertir en niveaux de gris}
-  G --&gt; H[image grise]
-  H --&gt; I{seuillage}
-  I --&gt; J[carreaux bat et végétation]
-  J --&gt; K{vectoriser}
-  K --&gt; L[bat et végétation vectorisés]
-  L --&gt; M{supprimer les petites géométries}
-  M --&gt; N[carte finale]
-</pre>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># centroides bat</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>centroid <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(bat<span class="sc">$</span>geometry)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>centroid <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(centroid, <span class="dv">2154</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(car, <span class="dv">2154</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># intersection : c'est la relation topologique passe partout</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(car, centroid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-<p></p></figure><p></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">table</span>(jointure<span class="sc">$</span>id))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ 9 10 11 12 13 14 
+10 11  2  2 48 64 </code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> jointure [jointure<span class="sc">$</span>id <span class="sc">&lt;</span> <span class="dv">3</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"img/jointureSpatiale1.png"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_init</span>(car [<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,])</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(car, ,<span class="at">col =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(bat, <span class="at">col =</span> <span class="st">"wheat"</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">add=</span> T)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(jointure, <span class="at">type=</span><span class="st">"typo"</span>, <span class="at">var=</span><span class="st">"id"</span>, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">add =</span> T, <span class="at">leg_pos =</span> <span class="cn">NA</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Centroide batiment et id carreau"</span>, <span class="st">"OSM, INSEE 2019</span><span class="sc">\n</span><span class="st">Mars 2026"</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
+<p><img src="img/jointureSpatiale1.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="polygones-et-polygones" class="level2">
+<h2 class="anchored" data-anchor-id="polygones-et-polygones">Polygones et polygones</h2>
+<p>bat et carreaux</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>jointure2 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>jointure2 <span class="ot">&lt;-</span>  <span class="fu">st_intersection</span>(car, bat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> jointure2</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> jointure [jointure<span class="sc">$</span>id <span class="sc">&lt;</span> <span class="dv">3</span>,]</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"img/jointureSpatiale2.png"</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_init</span>(car [<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,])</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(car, ,<span class="at">col =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(bat, <span class="at">col =</span> <span class="st">"wheat"</span>, <span class="at">border=</span><span class="cn">NA</span>, <span class="at">add=</span> T)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(jointure [jointure], <span class="at">type=</span><span class="st">"typo"</span>, <span class="at">var=</span><span class="st">"id"</span>, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">add =</span> T, <span class="at">leg_pos =</span> <span class="cn">NA</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"batiment et id carreau"</span>, <span class="st">"OSM, INSEE 2019</span><span class="sc">\n</span><span class="st">Mars 2026"</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><img src="img/jointureSpatiale2.png" class="img-fluid"></p>
+</section>
+<section id="calcul-statistique-à-effectuer" class="level2">
+<h2 class="anchored" data-anchor-id="calcul-statistique-à-effectuer">Calcul statistique à effectuer</h2>
+<p>Dans Arcgis Pro, trouver comment calculer le nombre de bâtiments par carreaux (centroides et polygones)</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -150,6 +150,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./05_TD5_TT.html"> 
 <span class="menu-text">MNT</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./06_TD6.html"> 
+<span class="menu-text">Jointures</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -586,18 +590,13 @@ PROJCRS["RGAF09 / UTM zone 20N",
 <div class="cell-output cell-output-stdout">
 <pre><code>Driver: GPKG 
 Available layers:
-           layer_name geometry_type features fields              crs_name
-1              cours4 Multi Polygon        1      2 RGF93 v1 / Lambert-93
-2                parc       Polygon        1      2 RGF93 v1 / Lambert-93
-3               bondy       Polygon        1      2 RGF93 v1 / Lambert-93
-4              bondy4       Polygon        1      3 RGF93 v1 / Lambert-93
-5             batourq Multi Polygon       42      2 RGF93 v1 / Lambert-93
-6    carreau_manquant                     42      2 RGF93 v1 / Lambert-93
-7  carreau_manquant97       Polygon      115      2 RGAF09 / UTM zone 20N
-8              tampon                      3      2 RGF93 v1 / Lambert-93
-9             commune       Polygon       43      3 RGF93 v1 / Lambert-93
-10                car                  43259     38 RGF93 v1 / Lambert-93
-11              car97                   1383     37 RGAF09 / UTM zone 20N</code></pre>
+          layer_name geometry_type features fields              crs_name
+1             tampon                      3      2 RGF93 v1 / Lambert-93
+2   carreau_manquant                     42      2 RGF93 v1 / Lambert-93
+3 carreau_manquant97       Polygon      115      2 RGAF09 / UTM zone 20N
+4            commune       Polygon       43      3 RGF93 v1 / Lambert-93
+5                car                  43259     38 RGF93 v1 / Lambert-93
+6              car97                   1383     37 RGAF09 / UTM zone 20N</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
@@ -696,18 +695,13 @@ Projected CRS: RGF93 v1 / Lambert-93
 <div class="cell-output cell-output-stdout">
 <pre><code>Driver: GPKG 
 Available layers:
-           layer_name geometry_type features fields              crs_name
-1              cours4 Multi Polygon        1      2 RGF93 v1 / Lambert-93
-2                parc       Polygon        1      2 RGF93 v1 / Lambert-93
-3               bondy       Polygon        1      2 RGF93 v1 / Lambert-93
-4              bondy4       Polygon        1      3 RGF93 v1 / Lambert-93
-5             batourq Multi Polygon       42      2 RGF93 v1 / Lambert-93
-6    carreau_manquant                     42      2 RGF93 v1 / Lambert-93
-7  carreau_manquant97       Polygon      115      2 RGAF09 / UTM zone 20N
-8              tampon                      3      2 RGF93 v1 / Lambert-93
-9             commune       Polygon       43      3 RGF93 v1 / Lambert-93
-10                car                  43259     38 RGF93 v1 / Lambert-93
-11              car97                   1383     37 RGAF09 / UTM zone 20N</code></pre>
+          layer_name geometry_type features fields              crs_name
+1             tampon                      3      2 RGF93 v1 / Lambert-93
+2   carreau_manquant                     42      2 RGF93 v1 / Lambert-93
+3 carreau_manquant97       Polygon      115      2 RGAF09 / UTM zone 20N
+4            commune       Polygon       43      3 RGF93 v1 / Lambert-93
+5                car                  43259     38 RGF93 v1 / Lambert-93
+6              car97                   1383     37 RGAF09 / UTM zone 20N</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
@@ -716,67 +710,26 @@ Available layers:
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>couches</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "cours4"             "parc"               "bondy"             
- [4] "bondy4"             "batourq"            "carreau_manquant"  
- [7] "carreau_manquant97" "tampon"             "commune"           
-[10] "car"                "car97"             </code></pre>
+<pre><code>[1] "tampon"             "carreau_manquant"   "carreau_manquant97"
+[4] "commune"            "car"                "car97"             </code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>couche <span class="ot">&lt;-</span> couches [<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">11</span>)]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>couche <span class="ot">&lt;-</span> couches [<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>)]</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (c <span class="cf">in</span> couche){</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours5.gpkg"</span>, c)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours5.gpkg"</span>, c, <span class="at">quiet=</span>T)</span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_write</span>(tmp, <span class="st">"data/base.gpkg"</span>, c, <span class="at">delete_layer=</span>T, <span class="at">quiet=</span>T)</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Reading layer `batourq' from data source 
-  `C:\Users\bmaranget\L6ECSIG\data\cours5.gpkg' using driver `GPKG'
-Simple feature collection with 42 features and 2 fields (with 1 geometry empty)
-Geometry type: MULTIPOLYGON
-Dimension:     XY
-Bounding box:  xmin: 661609.7 ymin: 6867103 xmax: 662091.6 ymax: 6867720
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `carreau_manquant' from data source 
-  `C:\Users\bmaranget\L6ECSIG\data\cours5.gpkg' using driver `GPKG'
-Simple feature collection with 42 features and 2 fields
-Geometry type: GEOMETRY
-Dimension:     XY
-Bounding box:  xmin: 329638.1 ymin: 6262553 xmax: 1017228 ymax: 7023834
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `carreau_manquant97' from data source 
-  `C:\Users\bmaranget\L6ECSIG\data\cours5.gpkg' using driver `GPKG'
-Simple feature collection with 115 features and 2 fields
-Geometry type: POLYGON
-Dimension:     XY
-Bounding box:  xmin: 704274.4 ymin: 1613883 xmax: 715971.8 ymax: 1628777
-Projected CRS: RGAF09 / UTM zone 20N
-Reading layer `car' from data source `C:\Users\bmaranget\L6ECSIG\data\cours5.gpkg' using driver `GPKG'
-Simple feature collection with 43259 features and 38 fields
-Geometry type: MULTIPOLYGON
-Dimension:     XY
-Bounding box:  xmin: 329741 ymin: 6262556 xmax: 1008859 ymax: 7023831
-Projected CRS: RGF93 v1 / Lambert-93
-Reading layer `car97' from data source 
-  `C:\Users\bmaranget\L6ECSIG\data\cours5.gpkg' using driver `GPKG'
-Simple feature collection with 1383 features and 37 fields
-Geometry type: MULTIPOLYGON
-Dimension:     XY
-Bounding box:  xmin: 705200 ymin: 1614400 xmax: 715982.4 ymax: 1626800
-Projected CRS: RGAF09 / UTM zone 20N</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">"data/base.gpkg"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">"data/base.gpkg"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Driver: GPKG 
 Available layers:
           layer_name geometry_type features fields              crs_name
-1            commune       Polygon       43      3 RGF93 v1 / Lambert-93
-2            batourq Multi Polygon       42      2 RGF93 v1 / Lambert-93
-3   carreau_manquant                     42      2 RGF93 v1 / Lambert-93
-4 carreau_manquant97       Polygon      115      2 RGAF09 / UTM zone 20N
+1            batourq Multi Polygon       42      2 RGF93 v1 / Lambert-93
+2   carreau_manquant                     42      2 RGF93 v1 / Lambert-93
+3 carreau_manquant97       Polygon      115      2 RGAF09 / UTM zone 20N
+4            commune       Polygon       43      3 RGF93 v1 / Lambert-93
 5                car Multi Polygon    43259     38 RGF93 v1 / Lambert-93
 6              car97 Multi Polygon     1383     37 RGAF09 / UTM zone 20N</code></pre>
 </div>
