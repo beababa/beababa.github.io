@@ -298,7 +298,7 @@
     "href": "complement.html#sans-la-martinique",
     "title": "Complements",
     "section": "Sans la Martinique",
-    "text": "Sans la Martinique\n\n\nCode\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet = T)\ncommune &lt;- commune [-grep(\"97\", commune$dpt),]\ndpt &lt;- commune$dpt\n# intersections\ninter &lt;- NULL\nfor (d in dpt){\n  car &lt;- st_read(\"data/gros/construction.gpkg\", d, quiet=T)\n  interTMP &lt;- st_intersection(car, commune)\n  inter &lt;- rbind(interTMP, inter)\n}\nst_write(inter, \"data/cours5.gpkg\", \"car\", delete_layer = T, quiet = T)\n\n\nMartinique\n\n\nCode\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet = T)\ncommune &lt;- commune [grep(\"97\", commune$dpt),]\ncar &lt;- st_read(\"data/gros/construction.gpkg\", unique(commune$dpt), quiet=T)\nst_crs(car)\n\n\nCoordinate Reference System:\n  User input: RGAF09 / UTM zone 20N \n  wkt:\nPROJCRS[\"RGAF09 / UTM zone 20N\",\n    BASEGEOGCRS[\"RGAF09\",\n        DATUM[\"Reseau Geodesique des Antilles Francaises 2009\",\n            ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n                LENGTHUNIT[\"metre\",1]]],\n        PRIMEM[\"Greenwich\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        ID[\"EPSG\",5489]],\n    CONVERSION[\"UTM zone 20N\",\n        METHOD[\"Transverse Mercator\",\n            ID[\"EPSG\",9807]],\n        PARAMETER[\"Latitude of natural origin\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8801]],\n        PARAMETER[\"Longitude of natural origin\",-63,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8802]],\n        PARAMETER[\"Scale factor at natural origin\",0.9996,\n            SCALEUNIT[\"unity\",1],\n            ID[\"EPSG\",8805]],\n        PARAMETER[\"False easting\",500000,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8806]],\n        PARAMETER[\"False northing\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8807]]],\n    CS[Cartesian,2],\n        AXIS[\"(E)\",east,\n            ORDER[1],\n            LENGTHUNIT[\"metre\",1]],\n        AXIS[\"(N)\",north,\n            ORDER[2],\n            LENGTHUNIT[\"metre\",1]],\n    USAGE[\n        SCOPE[\"Engineering survey, topographic mapping.\"],\n        AREA[\"French Antilles onshore and offshore west of 60°W - Guadeloupe (including Grande Terre, Basse Terre, Marie Galante, Les Saintes, Iles de la Petite Terre, La Desirade); Martinique; St Barthélemy; northern St Martin.\"],\n        BBOX[14.08,-63.66,18.32,-60]],\n    ID[\"EPSG\",5490]]\n\n\nCode\ncommune &lt;- st_transform(commune, 5490)\ninter &lt;- st_intersection(car, commune)\nst_write(inter, \"data/cours5.gpkg\", \"car97\", delete_layer = T, quiet = T)\n\n\n\n\nCode\nmf_map(inter)"
+    "text": "Sans la Martinique\n\n\nCode\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet = T)\ncommune &lt;- commune [-grep(\"97\", commune$dpt),]\ndpt &lt;- commune$dpt\n# intersections\ninter &lt;- NULL\nfor (d in dpt){\n  car &lt;- st_read(\"data/gros/construction.gpkg\", d, quiet=T)\n  interTMP &lt;- st_intersection(car, commune)\n  inter &lt;- rbind(interTMP, inter)\n}\nst_write(inter, \"data/cours5.gpkg\", \"car\", delete_layer = T, quiet = T)\n\n\nMartinique\n\n\nCode\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet = T)\ncommune &lt;- commune [grep(\"97\", commune$dpt),]\ncar &lt;- st_read(\"data/gros/construction.gpkg\", unique(commune$dpt), quiet=T)\nst_crs(car)\ncommune &lt;- st_transform(commune, 5490)\ninter &lt;- st_intersection(car, commune)\nst_write(inter, \"data/cours5.gpkg\", \"car97\", delete_layer = T, quiet = T)\n\n\n\n\nCode\npng(\"img/interMartinique.png\")\nmf_map(inter)\ndev.off()\n\n\n # fichiers cours 3\nuniquement men_pauv et recodage une couche par commune\non charge le 93 on affiche osm on charge commune on sélectionne et on crée une nelle couche on découpe car par commune on décoche les couches"
   },
   {
     "objectID": "05_TD5.html#simplification",
@@ -446,5 +446,40 @@
     "title": "Jointures",
     "section": "Calcul statistique à effectuer",
     "text": "Calcul statistique à effectuer\nDans Arcgis Pro, trouver comment calculer le nombre de bâtiments par carreaux (centroides et polygones)"
+  },
+  {
+    "objectID": "07_TD7.html",
+    "href": "07_TD7.html",
+    "title": "Distances",
+    "section": "",
+    "text": "Au niveau d’Arcgis, c’est la barre d’outils network analyst\n\nLa distance est une composante essentielle en géographie, notamment car elle mène à l’analyse spatiale qui peut être considérée comme une autre famille de traitements spatiaux.\nPlutôt que de passer en revue tous les outils (cf TD groupe 3), l’idée est d’évoquer\n\nun traitement simple : les aires d’influence\nun traitement plus complexe : une analyse d’accessibilité\n\nCela permet d’utiliser\n\nla distance à vol d’oiseau (= euclidienne)\net la distance basée sur un réseau"
+  },
+  {
+    "objectID": "07_TD7.html#nécessité-dun-réseau-topologique-sous-arcgis",
+    "href": "07_TD7.html#nécessité-dun-réseau-topologique-sous-arcgis",
+    "title": "Distances",
+    "section": "Nécessité d’un réseau topologique sous Arcgis",
+    "text": "Nécessité d’un réseau topologique sous Arcgis\n\nLa démarche\nLa mise en place du réseau sous Arcgis se fait en différentes étapes :\n\ncréation du jeu de classes d’entités dans la gdb (au niveau de la gdb, nouveau / jeu de classes d’entité)\nimportation de la classe d’entité shape issue de la BD TOPO (au niveau du jeu, importer / cl d’entité)\ncréation du jeu de données réseau (outil créer un jeu de données réseau / pas d’altitude, la cible est le jeu défini au départ)\n\n\n\nLa donnée : BD TOPO\nCette opération est complexe notamment car la récupération du réseau de la BD TOPO représente des gros volumes de données.\n\n1,69 G° pour l’ensemble du gpkg pour le 93\n\n\n\nCode\nlibrary(sf)\ncouches &lt;- st_layers(\"data/gros/BDT_3-5_GPKG_LAMB93_D093-ED2025-12-15.gpkg\")\ncouches &lt;- couches$name\ndata &lt;- st_read(\"data/gros/BDT_3-5_GPKG_LAMB93_D093-ED2025-12-15.gpkg\", \"route_numerotee_ou_nommee\")\nst_write(data,\"data/cours7/route.gpkg\", \"bdtopo\")\n\n\n\n6 M° pour l’extraction des petites routes"
+  },
+  {
+    "objectID": "07_TD7.html#les-api-de-lign-et-le-nouveau-géoportail-cartes.gouv",
+    "href": "07_TD7.html#les-api-de-lign-et-le-nouveau-géoportail-cartes.gouv",
+    "title": "Distances",
+    "section": "Les API de l’IGN et le nouveau Géoportail (Cartes.gouv)",
+    "text": "Les API de l’IGN et le nouveau Géoportail (Cartes.gouv)\nAujourd’hui, l’IGN met à disposition des outils qui permettent de faire des itinéraires ou des traitements autour des distances par le biais d’API. Tout se passe au niveau de Carte.gouv, le remplaçant du Géoportail.\nFaire des isochrones avec l’IGN\nPour le TD, créer quelques isochrones avec cet outil et les importer dans Arcgis."
+  },
+  {
+    "objectID": "07_TD7.html#r-obtenir-un-ensemble-disochrones-basé-sur-lapi",
+    "href": "07_TD7.html#r-obtenir-un-ensemble-disochrones-basé-sur-lapi",
+    "title": "Distances",
+    "section": "R : obtenir un ensemble d’isochrones basé sur l’API",
+    "text": "R : obtenir un ensemble d’isochrones basé sur l’API\nSous R, on utilise une librairie qui permet d’avoir une syntaxe simple de cette API. On peut ainsi reprendre le fichier des maisons de quartier et obtenir les isochrones.\n\n\nCode\ndata &lt;- st_read(\"data/cours7.gpkg\", \"maisonDeQuartier\", quiet = T)\nlibrary(rgeoservices)\ndata &lt;- st_transform(data, 4326)\naccessibilite &lt;- NULL\nnom &lt;- NULL\ni &lt;- 1\nfor (i in c(1:length(data$geom))){\n  pt &lt;- unlist(data$geom  [i])\nlongitude &lt;- pt [1]\nlatitude &lt;- pt [2]\ntmp &lt;- gs_get_isochrone(\n  longitude,\n  latitude,\n  cost_value = 10,\n  profile = \"pedestrian\",\n  direction = \"departure\",\n  time_unit = \"minute\"\n)\ntmpN &lt;- data$name [i]\naccessibilite &lt;- rbind(tmp, accessibilite)\nnom &lt;- c(tmpN, nom)\n}\naccessibilite$nom &lt;- nom\n\n\n\n\nCode\ncommune &lt;- st_transform(commune, 4326)\nmf_map(commune)\nmf_map(data, col = \"red\", add = T)\nmf_map(accessibilite, type=\"typo\", var = \"nom\", add = T, alpha = 0.5, border = NA, leg_pos=NA)\nmf_layout(\"Isochrones 10 mn à pied autour des Maisons de Quartier\", \"librairie rgeoservices\\nMars 2026\")\n\n\n\n\n\n\n\n\n\nThe scale bar does not work on unprojected (long/lat) maps."
+  },
+  {
+    "objectID": "07_TD7.html#la-solution-le-flux-wfs",
+    "href": "07_TD7.html#la-solution-le-flux-wfs",
+    "title": "Distances",
+    "section": "La solution : le flux WFS",
+    "text": "La solution : le flux WFS\nHeureusement il existe des flux WFS\nLe flux est utile à partir d’une échelle au 1/25 0000e\nDans Arcgis, charger la couche de la commune, cliquer glisser sur l’espace carte, ne pas oublier de côcher étendue de la couche.\n Les deux couches sont :\n\ntronçons de route (les routes principales)\nvoies nommées (les routes internes à la commune)\n\nCe jeu de données peut servir de base au réseau et aux différentes propositions du TD groupe 3.\nEn TD, nous essaierons juste de créer le réseau à partir de la couche tronçons de route\nIl existe également une alternative plus simple."
   }
 ]
