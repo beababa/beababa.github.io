@@ -203,6 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#connexion-r-et-git" id="toc-connexion-r-et-git" class="nav-link" data-scroll-target="#connexion-r-et-git">Connexion R et git</a></li>
   <li><a href="#premier-script-r" id="toc-premier-script-r" class="nav-link" data-scroll-target="#premier-script-r">Premier script R</a></li>
+  <li><a href="#premier-push-de-r-vers-git" id="toc-premier-push-de-r-vers-git" class="nav-link" data-scroll-target="#premier-push-de-r-vers-git">Premier push de R vers git</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -384,9 +385,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="connexion-r-et-git" class="level3">
 <h3 class="anchored" data-anchor-id="connexion-r-et-git">Connexion R et git</h3>
 <p><a href="https://thinkr.fr/travailler-avec-git-via-rstudio-et-versionner-son-code/">versionner son code</a></p>
+<p>points de vigilance</p>
+<ul>
+<li>création de la clé SSH dans Rstudio et recopie dans git</li>
+</ul>
+<p>La clé se positionne dans le répertoire .ssh de votre profil utilisateur</p>
+<p><img src="img/cleSSH.png" class="img-fluid"></p>
 </section>
 <section id="premier-script-r" class="level3">
 <h3 class="anchored" data-anchor-id="premier-script-r">Premier script R</h3>
+<section id="création-du-script" class="level4">
+<h4 class="anchored" data-anchor-id="création-du-script">Création du script</h4>
+<p>Fichier / nouveau / R markdown</p>
+<p>Le markdown permet d’introduire un peu de présentation avec le script.</p>
+<p><img src="img/gitPremierScript.png" class="img-fluid"></p>
+</section>
+<section id="le-script" class="level4">
+<h4 class="anchored" data-anchor-id="le-script">Le script</h4>
 <p>distinguer le data frame et le vecteur</p>
 <div class="cell">
 <details class="code-fold">
@@ -406,6 +421,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(v1,v2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
+</section>
+</section>
+<section id="premier-push-de-r-vers-git" class="level3">
+<h3 class="anchored" data-anchor-id="premier-push-de-r-vers-git">Premier push de R vers git</h3>
+<ul>
+<li><p>Enregistrer les changements en cochant dans l’onglet git</p></li>
+<li><p>Valider le commit</p></li>
+</ul>
+<p><img src="img/gitCommit.png" class="img-fluid"></p>
+<ul>
+<li>Envoyer sur le serveur</li>
+</ul>
+<p><img src="img/gitPousser.png" class="img-fluid"></p>
+<ul>
+<li>Observer l’arborescence</li>
+</ul>
+<p><img src="img/gitarborescenceProjet.png" class="img-fluid"></p>
 
 
 </section>
