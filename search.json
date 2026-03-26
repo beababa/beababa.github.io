@@ -18,7 +18,7 @@
     "href": "08_TD8.html#rstudio-et-r",
     "title": "Environnment",
     "section": "Rstudio et R",
-    "text": "Rstudio et R\nDistinguer les deux : langage et IDE\nAttention, paramétrer les historiques sinon cela va générer de gros fichiers encombrants.\n\n\nConnexion R et git\nversionner son code\n\n\nPremier script R\ndistinguer le data frame et le vecteur\n\n\nCode\nv1 &lt;- c(\"ville1\", \"ville2\")\nv2 &lt;- c(\"RN\", \"LFI\")\ndf &lt;- data.frame(ville = v1, vainqueur = v2)\ndf\n\n\n   ville vainqueur\n1 ville1        RN\n2 ville2       LFI\n\n\nCode\ndf &lt;- as.data.frame(v1,v2)"
+    "text": "Rstudio et R\nDistinguer les deux : langage et IDE\nAttention, paramétrer les historiques sinon cela va générer de gros fichiers encombrants.\n\n\nConnexion R et git\nversionner son code\npoints de vigilance\n\ncréation de la clé SSH dans Rstudio et recopie dans git\n\nLa clé se positionne dans le répertoire .ssh de votre profil utilisateur\n\n\n\nPremier script R\n\nCréation du script\nFichier / nouveau / R markdown\nLe markdown permet d’introduire un peu de présentation avec le script.\n\n\n\nLe script\ndistinguer le data frame et le vecteur\n\n\nCode\nv1 &lt;- c(\"ville1\", \"ville2\")\nv2 &lt;- c(\"RN\", \"LFI\")\ndf &lt;- data.frame(ville = v1, vainqueur = v2)\ndf\n\n\n   ville vainqueur\n1 ville1        RN\n2 ville2       LFI\n\n\nCode\ndf &lt;- as.data.frame(v1,v2)\n\n\n\n\n\nPremier push de R vers git\n\nEnregistrer les changements en cochant dans l’onglet git\nValider le commit\n\n\n\nEnvoyer sur le serveur\n\n\n\nObserver l’arborescence"
   },
   {
     "objectID": "08_TD8.html#première-attribution-par-dpt",
@@ -341,5 +341,117 @@
     "title": "Distances",
     "section": "R : obtenir un ensemble d’isochrones basé sur l’API",
     "text": "R : obtenir un ensemble d’isochrones basé sur l’API\nSous R, on utilise une librairie qui permet d’avoir une syntaxe simple de cette API. On peut ainsi reprendre le fichier des maisons de quartier et obtenir les isochrones.\n\n\nCode\ndata &lt;- st_read(\"data/cours7.gpkg\", \"maisonDeQuartier\", quiet = T)\nlibrary(rgeoservices)\ndata &lt;- st_transform(data, 4326)\naccessibilite &lt;- NULL\nnom &lt;- NULL\ni &lt;- 1\nfor (i in c(1:length(data$geom))){\n  pt &lt;- unlist(data$geom  [i])\nlongitude &lt;- pt [1]\nlatitude &lt;- pt [2]\ntmp &lt;- gs_get_isochrone(\n  longitude,\n  latitude,\n  cost_value = 10,\n  profile = \"pedestrian\",\n  direction = \"departure\",\n  time_unit = \"minute\"\n)\ntmpN &lt;- data$name [i]\naccessibilite &lt;- rbind(tmp, accessibilite)\nnom &lt;- c(tmpN, nom)\n}\naccessibilite$nom &lt;- nom\n\n\n\n\nCode\ncommune &lt;- st_transform(commune, 4326)\nmf_map(commune)\nmf_map(data, col = \"red\", add = T)\nmf_map(accessibilite, type=\"typo\", var = \"nom\", add = T, alpha = 0.5, border = NA, leg_pos=NA)\nmf_layout(\"Isochrones 10 mn à pied autour des Maisons de Quartier\", \"librairie rgeoservices\\nMars 2026\")\n\n\n\n\n\n\n\n\n\nThe scale bar does not work on unprojected (long/lat) maps."
+  },
+  {
+    "objectID": "complement.html",
+    "href": "complement.html",
+    "title": "Complements",
+    "section": "",
+    "text": "Préparation des fichiers"
+  },
+  {
+    "objectID": "complement.html#sans-la-martinique",
+    "href": "complement.html#sans-la-martinique",
+    "title": "Complements",
+    "section": "Sans la Martinique",
+    "text": "Sans la Martinique\n\n\nCode\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet = T)\ncommune &lt;- commune [-grep(\"97\", commune$dpt),]\ndpt &lt;- commune$dpt\n# intersections\ninter &lt;- NULL\nfor (d in dpt){\n  car &lt;- st_read(\"data/gros/construction.gpkg\", d, quiet=T)\n  interTMP &lt;- st_intersection(car, commune)\n  inter &lt;- rbind(interTMP, inter)\n}\nst_write(inter, \"data/cours5.gpkg\", \"car\", delete_layer = T, quiet = T)\n\n\nMartinique\n\n\nCode\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet = T)\ncommune &lt;- commune [grep(\"97\", commune$dpt),]\ncar &lt;- st_read(\"data/gros/construction.gpkg\", unique(commune$dpt), quiet=T)\nst_crs(car)\ncommune &lt;- st_transform(commune, 5490)\ninter &lt;- st_intersection(car, commune)\nst_write(inter, \"data/cours5.gpkg\", \"car97\", delete_layer = T, quiet = T)\n\n\n\n\nCode\npng(\"img/interMartinique.png\")\nmf_map(inter)\ndev.off()\n\n\n # fichiers cours 3\nuniquement men_pauv et recodage une couche par commune\non charge le 93 on affiche osm on charge commune on sélectionne et on crée une nelle couche on découpe car par commune on décoche les couches"
+  },
+  {
+    "objectID": "05_TD5.html",
+    "href": "05_TD5.html",
+    "title": "MNS et MNT - 1er essai",
+    "section": "",
+    "text": "Les images Sentinel de Copernicus Hub sont faciles d’accès et permettent d’évaluer les changements récents.\nPour le MNS et le MNT, la campagne LIDAR de l’IGN qui se termine actuellement a permis de récupérer des données beaucoup plus précises.\nLe cours portera sur l’exploitation de cette donnée raster plus spécifique l’élévation. Nous explorerons la donnée, après l’avoir coupée, en la visualisant avec différentes symbologies.\nNous aborderons ensuite les opérations mathématiques simples possibles permises par la structure en raster.\nEnfin, comme pour le 1er cours sur le raster, nous essaierons de construire une chaîne de géotraitement plutôt que d’explorer chaque outil un par un."
+  },
+  {
+    "objectID": "05_TD5.html#rechercher-la-donnée",
+    "href": "05_TD5.html#rechercher-la-donnée",
+    "title": "MNS et MNT - 1er essai",
+    "section": "Rechercher la donnée",
+    "text": "Rechercher la donnée\nLe mieux est de repérer les zones et de chercher les dalles sur cartes.gouv.fr. 2 liens utiles :\n\nla communauté lidar hd\nL’interface de téléchargement sur cartes.gouv\n\nPour Bondy, par rapport aux zones de carreaux manquants, 2 zones concernées\n\n\nCode\ndir(\"data/cours5/\", pattern = \"tif$\")\n\n\npour la ZAC (0661 / 6868)\n\n\nCode\nlibrary(terra)\nmnt &lt;- rast(\"data/cours5/LHD_FXX_0661_6868_MNT_O_0M50_LAMB93_IGN69.tif\")\nplot(mnt)\nmns &lt;- rast(\"data/cours5/LHD_FXX_0661_6868_MNS_O_0M50_LAMB93_IGN69.tif\")\nplot(mns)\nmnh &lt;- mns-mnt\n\n\npour le parc (0662 / 6869)\nD’après le nom du fichier, quelle est la précision ?\nCharger les 2 dalles\nObserver le poids\nA t on besoin de reprojeter ?"
+  },
+  {
+    "objectID": "05_TD5.html#couper-au-carreau-manquant",
+    "href": "05_TD5.html#couper-au-carreau-manquant",
+    "title": "MNS et MNT - 1er essai",
+    "section": "Couper au carreau manquant",
+    "text": "Couper au carreau manquant\nExplorer le menu imagerie / processus et raster functions, quelle est la différence ?\n\n\nSous R : carreau zac\nLes carreaux sont en multipolygone, il faut les éclater en forçant le format polygone afin de retenir uniquement le carreau de la ZAC. C’est la commande disagg\n\n\nCode\nlibrary(terra)\ncar &lt;- vect(\"data/cours5.gpkg\", \"bondy\")\ncar &lt;- disagg(car)\n# aire de chq carreau en hac\na &lt;- round(expanse(car)/10000,0)\nplot(car)\ntext(car, labels=a)\n# on coupe le carreau 4\nzac &lt;- crop(mnh, car [4])\n# parc &lt;- crop(mnh, car [1])\n\n\n\n\nCode\nplot(zac)"
+  },
+  {
+    "objectID": "05_TD5.html#symbologie",
+    "href": "05_TD5.html#symbologie",
+    "title": "MNS et MNT - 1er essai",
+    "section": "Symbologie",
+    "text": "Symbologie\nclic droit au niveau de la fenêtre contenu / symbologie\nRechercher la palette élévation dans le mode continu\nObserver les différences avec l’image de départ"
+  },
+  {
+    "objectID": "05_TD5.html#informations-image",
+    "href": "05_TD5.html#informations-image",
+    "title": "MNS et MNT - 1er essai",
+    "section": "Informations image",
+    "text": "Informations image\n\nPrendre les arbres ou les bâtiments, trouver une fourchette de hauteurs.\n\nUtiliser l’outil statistiques zonales\nRefaire une symbologie"
+  },
+  {
+    "objectID": "05_TD5.html#calculatrice-raster-calcul-mnh",
+    "href": "05_TD5.html#calculatrice-raster-calcul-mnh",
+    "title": "MNS et MNT - 1er essai",
+    "section": "Calculatrice raster : calcul MNH",
+    "text": "Calculatrice raster : calcul MNH\n\nVoir la différence mnt, mns et mnh\n\n\nCode\nlibrary(terra)\nmnt &lt;- rast(\"data/cours5/LHD_FXX_0661_6868_MNT_O_0M50_LAMB93_IGN69.tif\")\nplot(mnt)\nmns &lt;- rast(\"data/cours5/LHD_FXX_0661_6868_MNS_O_0M50_LAMB93_IGN69.tif\")\nplot(mns)\n\n\n\n\nCode\nmnh &lt;- mns-mnt\nplot(mnh)"
+  },
+  {
+    "objectID": "05_TD5.html#histogramme",
+    "href": "05_TD5.html#histogramme",
+    "title": "MNS et MNT - 1er essai",
+    "section": "Histogramme",
+    "text": "Histogramme\n\n\nCode\noptions(scipen = 999)\nhist(mns, col=\"wheat\",  main= \"MNS et MNT\")\nhist(mnt, add = T)\nhist(mnh, main = \"MNH\")"
+  },
+  {
+    "objectID": "05_TD5.html#exemple-dutilisation-de-contour",
+    "href": "05_TD5.html#exemple-dutilisation-de-contour",
+    "title": "MNS et MNT - 1er essai",
+    "section": "Exemple d’utilisation de contour",
+    "text": "Exemple d’utilisation de contour\nL’outil sert à construire les courbes de niveau, mais il sert à autre chose ci-dessous.\n\n\nCode\nplot(zac)\ncontour(zac, col=\"red\",add = T)\ncontour(zac, filled=T, nlevels = 5)"
+  },
+  {
+    "objectID": "05_TD5.html#reclassification",
+    "href": "05_TD5.html#reclassification",
+    "title": "MNS et MNT - 1er essai",
+    "section": "Reclassification",
+    "text": "Reclassification\nIl s’agit d’isoler les pixels entre 1 et 4 m.\n\n\nCode\nhist(zac)\nreclassif &lt;- matrix (c(-1,0,1,\n                       1,4,2,\n                       5,62,3),\n                     ncol = 3,\n                     byrow = TRUE)\nzac2 &lt;- classify(zac, rcl = reclassif)\npal &lt;- c(\"blue\", \"white\", \"red\")\nplot(zac2, col = pal)\n\n\nAffichage de chaque couche\n\n\nCode\nzac_by_class &lt;- segregate(zac2, keep = T, other = NA, round=T)\nplot(zac_by_class)"
+  },
+  {
+    "objectID": "05_TD5.html#seuillage",
+    "href": "05_TD5.html#seuillage",
+    "title": "MNS et MNT - 1er essai",
+    "section": "Seuillage",
+    "text": "Seuillage\nGarder les pixels appartenant à la classe 2 uniquement\n\n\nCode\nzac3 &lt;- clamp(zac2, lower = 2 , upper= 2.1, values=TRUE)\nplot(zac3)"
+  },
+  {
+    "objectID": "05_TD5.html#densité-des-points-cluster-et-kmeans",
+    "href": "05_TD5.html#densité-des-points-cluster-et-kmeans",
+    "title": "MNS et MNT - 1er essai",
+    "section": "Densité des points (cluster et kmeans)",
+    "text": "Densité des points (cluster et kmeans)\nIl s’agit d’utiliser l’algorithme du kmeans qui permet de regrouper les pixels en fonction de leur valeur.\nTransformation de la donnée en tableau de chiffres\n\n\nCode\ndf &lt;- as.data.frame(zac, cell=T)\nnames(df)[2] &lt;- \"valeur\"\n\n\nAlgo\n\n\nCode\nset.seed(99)\n# centre des nuages de point\nkmncluster &lt;- kmeans(df[,-1], centers=10, iter.max = 500, nstart = 5, algorithm=\"Lloyd\")\n# on veut 10 clusters avec 500 iterations à partir de 5 pt au hasard\nstr(kmncluster)\n\n\n9 éléments\nla taille de chq groupe varie (size)\nRetour au format géométrique\nOn ajoute l’identification du cluster au pixel\n\n\nCode\nkmr &lt;- rast(zac, nlyr=1)\nkmr [df$cell] &lt;- kmncluster$cluster\nkmr\n\n\n\n\nCode\nplot(zac, main = \"Image de départ\")\nplot(kmr, main = \"Classification non supervisée\")\n\n\nL’idée est définir plus de classes quitte à les fusionner ensuite."
+  },
+  {
+    "objectID": "05_TD5.html#ré-échantillonage-et-vectorisation",
+    "href": "05_TD5.html#ré-échantillonage-et-vectorisation",
+    "title": "MNS et MNT - 1er essai",
+    "section": "Ré échantillonage et vectorisation",
+    "text": "Ré échantillonage et vectorisation\nAssembler les pixels en diminuant la résolution\n\n\nCode\nzaclowermodel &lt;- zac2\nres(zac2)\nres(zaclowermodel) &lt;- 1\nzac4 &lt;- resample(zac2, zaclowermodel, method = \"near\")\n\n\nPuis vectoriser\n\n\nCode\nlibrary(sf)\nzac_poly &lt;- as.polygons(zac4)\nzac_poly &lt;- st_as_sf(zac_poly)\nzac_poly$cl &lt;- zac_poly$LHD_FXX_0661_6868_MNS_O_0M50_LAMB93_IGN69\nplot(zac_poly$geometry)\n\n\nFiltrer à nouveau sur la classe\n\n\nCode\nzac_poly1 &lt;- zac_poly [zac_poly$cl == 3,]\nplot(zac_poly1$geometry)"
+  },
+  {
+    "objectID": "05_TD5.html#tamisage",
+    "href": "05_TD5.html#tamisage",
+    "title": "MNS et MNT - 1er essai",
+    "section": "Tamisage",
+    "text": "Tamisage\nLes pixels sont plus gros, mais afin d’obtenir des polygones représentant des bâtiments, il faut agréger tous les petits polygones appartenant à la même classe.\n\n\nCode\nagg &lt;- aggregate(zac_poly1, by = list(zac_poly1$cl), length)\nagg &lt;- st_cast(agg, \"POLYGON\")\nplot(agg$geometry, main = \"Agrégation des polygones\")\n\n\nPuis on mesure l’aire et on supprime les plus petits et le plus gros\n\n\nCode\nagg$aire &lt;- st_area(agg)\nhist(agg$aire)\n\n\n\n\nCode\nlibrary(units)\nagg$aire &lt;- drop_units(agg$aire)\nagg &lt;- agg [agg$aire &gt; 150 & agg$aire &lt; 1600,]\n\n\n\n\nCode\nplot(zac4)\nplot(agg$geometry)"
+  },
+  {
+    "objectID": "05_TD5.html#simplification",
+    "href": "05_TD5.html#simplification",
+    "title": "MNS et MNT - 1er essai",
+    "section": "Simplification",
+    "text": "Simplification\n\n\nCode\nsimpli5 &lt;- st_simplify(agg, dTolerance=5)\nsimpli10 &lt;- st_simplify(agg, dTolerance=10)\nplot(simpli5$geometry)\nplot(simpli10$geometry)\n\n\nComment récupérer la hauteur ?\nComment supprimer l’aire non construite ?"
   }
 ]
