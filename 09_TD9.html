@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Environnment – L6ECSIG</title>
+<title>Script – L6ECSIG</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -159,11 +124,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Distance</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./08_TD8.html" aria-current="page"> 
+    <a class="nav-link" href="./08_TD8.html"> 
 <span class="menu-text">Environnement</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./09_TD9.html"> 
+    <a class="nav-link active" href="./09_TD9.html" aria-current="page"> 
 <span class="menu-text">Script</span></a>
   </li>  
 </ul>
@@ -190,26 +155,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#objet" id="toc-objet" class="nav-link active" data-scroll-target="#objet">Objet</a></li>
-  <li><a href="#constitution-des-groupes" id="toc-constitution-des-groupes" class="nav-link" data-scroll-target="#constitution-des-groupes">Constitution des groupes</a>
-  <ul class="collapse">
-  <li><a href="#première-attribution-par-dpt" id="toc-première-attribution-par-dpt" class="nav-link" data-scroll-target="#première-attribution-par-dpt">Première attribution par dpt</a></li>
-  <li><a href="#attribution-par-région" id="toc-attribution-par-région" class="nav-link" data-scroll-target="#attribution-par-région">Attribution par région</a></li>
-  <li><a href="#attribution-finale" id="toc-attribution-finale" class="nav-link" data-scroll-target="#attribution-finale">attribution finale</a></li>
-  </ul></li>
-  <li><a href="#environnement-de-travail" id="toc-environnement-de-travail" class="nav-link" data-scroll-target="#environnement-de-travail">Environnement de travail</a>
-  <ul class="collapse">
-  <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github">Github</a>
-  <ul class="collapse">
-  <li><a href="#création-du-compte" id="toc-création-du-compte" class="nav-link" data-scroll-target="#création-du-compte">Création du compte</a></li>
-  <li><a href="#le-site-web" id="toc-le-site-web" class="nav-link" data-scroll-target="#le-site-web">le site web</a></li>
-  </ul></li>
-  <li><a href="#rstudio-et-r" id="toc-rstudio-et-r" class="nav-link" data-scroll-target="#rstudio-et-r">Rstudio et R</a>
-  <ul class="collapse">
-  <li><a href="#connexion-r-et-git" id="toc-connexion-r-et-git" class="nav-link" data-scroll-target="#connexion-r-et-git">Connexion R et git</a></li>
-  <li><a href="#premier-script-r" id="toc-premier-script-r" class="nav-link" data-scroll-target="#premier-script-r">Premier script R</a></li>
-  <li><a href="#premier-commit" id="toc-premier-commit" class="nav-link" data-scroll-target="#premier-commit">Premier commit</a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown">Markdown</a></li>
+  <li><a href="#structure-dun-projet-r" id="toc-structure-dun-projet-r" class="nav-link" data-scroll-target="#structure-dun-projet-r">Structure d’un projet R</a></li>
+  <li><a href="#le-.yml" id="toc-le-.yml" class="nav-link" data-scroll-target="#le-.yml">Le .yml</a></li>
+  <li><a href="#le-site-web" id="toc-le-site-web" class="nav-link" data-scroll-target="#le-site-web">Le site web</a></li>
+  <li><a href="#lecture-du-.gpkg" id="toc-lecture-du-.gpkg" class="nav-link" data-scroll-target="#lecture-du-.gpkg">Lecture du .gpkg</a></li>
   </ul>
 </nav>
     </div>
@@ -218,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Environnment</h1>
+<h1 class="title">Script</h1>
 </div>
 
 
@@ -237,207 +187,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="objet" class="level1">
 <h1>Objet</h1>
-<p>Projet : reprendre la thématique ville pauvre - riche sous R en y incluant tous les traitements vus sous Arcgis.</p>
-<p>Binômes : Distinguer 2 rôles technique et rédacteur, par groupe et zones géographiques proches par dpt</p>
-</section>
-<section id="constitution-des-groupes" class="level1">
-<h1>Constitution des groupes</h1>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/codeINSEEetudiant.csv"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>part1 <span class="ot">&lt;-</span> data [,(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)]</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>part2 <span class="ot">&lt;-</span> data [,<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">5</span>)]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>nom <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"prénom"</span>, <span class="st">"groupe"</span>, <span class="st">"code"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(part1) <span class="ot">&lt;-</span> nom</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(part2) <span class="ot">&lt;-</span> nom</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>tot <span class="ot">&lt;-</span> <span class="fu">rbind</span>(part1, part2)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>tot <span class="ot">&lt;-</span> tot [<span class="sc">!</span><span class="fu">is.na</span>(tot<span class="sc">$</span>groupe),]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<p>37 étudiants (43 communes)</p>
-<p>Faire compléter le tableau</p>
-<section id="première-attribution-par-dpt" class="level2">
-<h2 class="anchored" data-anchor-id="première-attribution-par-dpt">Première attribution par dpt</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tot<span class="sc">$</span>dpt <span class="ot">&lt;-</span> <span class="fu">substring</span>(tot<span class="sc">$</span>code,<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(tot<span class="sc">$</span>dpt, tot<span class="sc">$</span>groupe)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>    
-     6 7
-  13 0 1
-  28 0 1
-  31 1 0
-  33 0 1
-  44 3 0
-  49 0 1
-  50 0 1
-  59 0 1
-  60 0 1
-  63 0 1
-  64 1 0
-  69 1 0
-  72 0 1
-  73 1 0
-  75 0 1
-  78 1 0
-  91 0 1
-  92 4 1
-  93 1 7
-  94 0 1
-  95 1 0
-  97 0 2</code></pre>
-</div>
-</div>
-<p>première attribution : 44 / 92 / 93 / 93 + 95 / 92 + 94 etc …</p>
-</section>
-<section id="attribution-par-région" class="level2">
-<h2 class="anchored" data-anchor-id="attribution-par-région">Attribution par région</h2>
-<p>on procéde par région</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Linking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/region/regions-20180101.shp"</span>, <span class="at">quiet=</span>T)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(region, <span class="dv">2154</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> region [<span class="sc">!</span>region<span class="sc">$</span>code_insee <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"01"</span>, <span class="st">"02"</span>, <span class="st">"03"</span>,<span class="st">"04"</span>,<span class="st">"06"</span>,<span class="st">"11"</span>),]</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>idf <span class="ot">&lt;-</span> region [region<span class="sc">$</span>code_insee <span class="sc">==</span> <span class="st">"11"</span>,]</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>drom <span class="ot">&lt;-</span>region [region<span class="sc">$</span>code_insee <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"01"</span>, <span class="st">"02"</span>, <span class="st">"03"</span>,<span class="st">"04"</span>,<span class="st">"06"</span>),]</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours5.gpkg"</span>, <span class="st">"commune"</span>, <span class="at">quiet =</span> T)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>joint <span class="ot">&lt;-</span> <span class="fu">merge</span>(commune, tot, <span class="at">by =</span> <span class="st">"code"</span>, <span class="at">all.x =</span> T)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>joint <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(joint, <span class="dv">2154</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(joint, region)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(region, <span class="at">col =</span> <span class="st">"wheat"</span>, <span class="at">border =</span> <span class="st">"cornsilk"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(inter, <span class="at">add =</span> T)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_label</span>(inter, <span class="at">var =</span> <span class="st">"groupe"</span>, <span class="at">halo =</span> T, <span class="at">overlap =</span> F, <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="08_TD8_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(inter<span class="sc">$</span>groupe, inter<span class="sc">$</span>nom<span class="fl">.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>   
-    Auvergne-Rhône-Alpes Bourgogne-Franche-Comté Centre-Val de Loire
-  6                    2                       0                   0
-  7                    1                       0                   1
-   
-    Hauts-de-France Normandie Nouvelle-Aquitaine Occitanie Pays de la Loire
-  6               0         0                  1         1                3
-  7               2         1                  1         0                2
-   
-    Provence-Alpes-Côte d'Azur
-  6                          0
-  7                          1</code></pre>
-</div>
-</div>
-<p>2e attribution région Auvergne, Hauts, Pays de la Loire</p>
-</section>
-<section id="attribution-finale" class="level2">
-<h2 class="anchored" data-anchor-id="attribution-finale">attribution finale</h2>
-<p>Chaque groupe inscrit sa région / son dpt dans le tableau + un nom de groupe + les prénoms</p>
-</section>
-</section>
-<section id="environnement-de-travail" class="level1">
-<h1>Environnement de travail</h1>
-<p>Il s’agit de construire votre environnement de travail pour le projet de fin de semestre</p>
-<p>A savoir :</p>
+<p>A travers d’un modèle de projet disponible sur github <a href="https://github.com/beababa/modeleProjet" class="uri">https://github.com/beababa/modeleProjet</a>, les notions suivantes sont abordées :</p>
 <ul>
-<li><p>git : à télécharger <a href="https://github.com/git-for-windows/git/releases/download/v2.53.0.windows.2/Git-2.53.0.2-64-bit.exe">ici</a></p></li>
-<li><p><a href="https://posit.co/download/rstudio-desktop/">R studio</a></p></li>
-<li><p>R</p></li>
+<li><p>Markdown</p></li>
+<li><p>Structure d’un projet R</p></li>
+<li><p>Le .yml</p></li>
+<li><p>Le site web</p></li>
+<li><p>Lecture de .gpkg dans un script</p></li>
 </ul>
-<p>La découverte de la plateforme data gouv et la fonction de ré-utilisation sera faite au cours prochain.</p>
-<section id="github" class="level2">
-<h2 class="anchored" data-anchor-id="github">Github</h2>
-<section id="création-du-compte" class="level3">
-<h3 class="anchored" data-anchor-id="création-du-compte">Création du compte</h3>
-<p>github.com</p>
 </section>
-<section id="le-site-web" class="level3">
-<h3 class="anchored" data-anchor-id="le-site-web">le site web</h3>
-<p><a href="https://arfp.github.io/tp/git/github/20-github-pages">créer un site web avec git</a></p>
-<p>Uniquement les points 1 et 2, pas le point 3</p>
-<p>Pour créer un fichier, il suffit de créer par exemple un readme</p>
-<p><img src="img/git creer fichier.png" class="img-fluid"> et de faire son premier commit (= <em>engagement</em>)</p>
-<p><img src="img/commit1.png" class="img-fluid"></p>
+<section id="markdown" class="level1">
+<h1>Markdown</h1>
+<p>Récupérer une cheatsheet par exemple, celle qui est intégrée dans R Studio,</p>
+<p>menu <em>Aide / Cheatsheet / rmarkdown</em></p>
+<p>Détailler les parties les plus importantes pour la mise en forme.</p>
+<p>Utiliser l’option <em>rendu</em>, observer les éléments proposés de l’en-tête Yaml</p>
 </section>
+<section id="structure-dun-projet-r" class="level1">
+<h1>Structure d’un projet R</h1>
+<p><img src="img/structureProjet2.png" class="img-fluid"> Détailler l’utilité de chaque fichier.</p>
 </section>
-<section id="rstudio-et-r" class="level2">
-<h2 class="anchored" data-anchor-id="rstudio-et-r">Rstudio et R</h2>
-<p>Distinguer les deux : langage et IDE (Environnement de développement, <em>integrated development environment</em>)</p>
-<p>Attention, paramétrer les historiques sinon cela va générer de gros fichiers encombrants.</p>
-<p><img src="img/parametrageRstudio.png" class="img-fluid"></p>
-<section id="connexion-r-et-git" class="level3">
-<h3 class="anchored" data-anchor-id="connexion-r-et-git">Connexion R et git</h3>
-<p><a href="https://thinkr.fr/travailler-avec-git-via-rstudio-et-versionner-son-code/">versionner son code</a></p>
-<p>A partir de <em>Configuration</em> et juste le protocole SSH</p>
-<p>points de vigilance</p>
-<ul>
-<li>création de la clé SSH dans Rstudio et recopie dans git</li>
-</ul>
-<p>La clé se positionne dans le répertoire .ssh de votre profil utilisateur</p>
-<p><img src="img/cleSSH.png" class="img-fluid"></p>
-<p>Sauvegarder l’ensemble du répertoire .ssh afin de le recopier sur les ordinateurs sur lesquels vous travaillez.</p>
-<p>Puis, suivre <em>Initialisation d’un projet R avec Git</em></p>
+<section id="le-.yml" class="level1">
+<h1>Le .yml</h1>
+<p><a href="https://rmarkdown.rstudio.com/lesson-13.html" class="uri">https://rmarkdown.rstudio.com/lesson-13.html</a></p>
+<p>exemple de .yml</p>
+<pre><code>name: "modèle projet"
+navbar:
+  left:
+    - text: "Script 1"
+      href: script1.html
+    - text: "Script 2"
+      href: script2.html
+  right:
+    - icon: fa-github
+      href: https://github.com/beababa/
+output: 
+  html_document:
+    toc_float: TRUE  
+    theme: united
+    highlight: tango</code></pre>
+<p>Au niveau des thèmes : “default”, “cerulean”, “journal”, “flatly”, “readable”, “spacelab”, “united”, and “cosmo”.</p>
 </section>
-<section id="premier-script-r" class="level3">
-<h3 class="anchored" data-anchor-id="premier-script-r">Premier script R</h3>
-<p>distinguer le data frame et le vecteur</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ville1"</span>, <span class="st">"ville2"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"RN"</span>, <span class="st">"LFI"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ville =</span> v1, <span class="at">vainqueur =</span> v2)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>   ville vainqueur
-1 ville1        RN
-2 ville2       LFI</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(v1,v2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
+<section id="le-site-web" class="level1">
+<h1>Le site web</h1>
+<p>Si le projet est bien structuré et que le _site.yml, il suffit de faire le <em>rendu</em></p>
+<p><img src="img/arborescence.png" class="img-fluid"> Le rendu</p>
+<p><img src="img/le rendu.png" class="img-fluid"></p>
 </section>
-<section id="premier-commit" class="level3">
-<h3 class="anchored" data-anchor-id="premier-commit">Premier commit</h3>
-<p>Une fois le script enregistré il faut faire :</p>
-<ul>
-<li><p>enregistrer les modifications = cocher les fichiers que l’on veut envoyer sur le serveur git</p></li>
-<li><p>le commit (validation des modifications), mettre un message clair</p></li>
-<li><p>le push</p></li>
-</ul>
+<section id="lecture-du-.gpkg" class="level1">
+<h1>Lecture du .gpkg</h1>
+<p>Adapter le script proposé à sa propre commune.</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

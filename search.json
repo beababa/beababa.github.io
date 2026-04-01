@@ -18,7 +18,7 @@
     "href": "08_TD8.html#rstudio-et-r",
     "title": "Environnment",
     "section": "Rstudio et R",
-    "text": "Rstudio et R\nDistinguer les deux : langage et IDE\nAttention, paramétrer les historiques sinon cela va générer de gros fichiers encombrants.\n\n\nConnexion R et git\nversionner son code\npoints de vigilance\n\ncréation de la clé SSH dans Rstudio et recopie dans git\n\nLa clé se positionne dans le répertoire .ssh de votre profil utilisateur\n\n\n\nPremier script R\n\nCréation du script\nFichier / nouveau / R markdown\nLe markdown permet d’introduire un peu de présentation avec le script.\n\n\n\nLe script\ndistinguer le data frame et le vecteur\n\n\nCode\nv1 &lt;- c(\"ville1\", \"ville2\")\nv2 &lt;- c(\"RN\", \"LFI\")\ndf &lt;- data.frame(ville = v1, vainqueur = v2)\ndf\n\n\n   ville vainqueur\n1 ville1        RN\n2 ville2       LFI\n\n\nCode\ndf &lt;- as.data.frame(v1,v2)\n\n\n\n\n\nPremier push de R vers git\n\nEnregistrer les changements en cochant dans l’onglet git\nValider le commit\n\n\n\nEnvoyer sur le serveur\n\n\n\nObserver l’arborescence"
+    "text": "Rstudio et R\nDistinguer les deux : langage et IDE (Environnement de développement, integrated development environment)\nAttention, paramétrer les historiques sinon cela va générer de gros fichiers encombrants.\n\n\nConnexion R et git\nversionner son code\nA partir de Configuration et juste le protocole SSH\npoints de vigilance\n\ncréation de la clé SSH dans Rstudio et recopie dans git\n\nLa clé se positionne dans le répertoire .ssh de votre profil utilisateur\n\nSauvegarder l’ensemble du répertoire .ssh afin de le recopier sur les ordinateurs sur lesquels vous travaillez.\nPuis, suivre Initialisation d’un projet R avec Git\n\n\nPremier script R\ndistinguer le data frame et le vecteur\n\n\nCode\nv1 &lt;- c(\"ville1\", \"ville2\")\nv2 &lt;- c(\"RN\", \"LFI\")\ndf &lt;- data.frame(ville = v1, vainqueur = v2)\ndf\n\n\n   ville vainqueur\n1 ville1        RN\n2 ville2       LFI\n\n\nCode\ndf &lt;- as.data.frame(v1,v2)\n\n\n\n\nPremier commit\nUne fois le script enregistré il faut faire :\n\nenregistrer les modifications = cocher les fichiers que l’on veut envoyer sur le serveur git\nle commit (validation des modifications), mettre un message clair\nle push"
   },
   {
     "objectID": "08_TD8.html#première-attribution-par-dpt",
@@ -453,5 +453,19 @@
     "title": "MNS et MNT - 1er essai",
     "section": "Simplification",
     "text": "Simplification\n\n\nCode\nsimpli5 &lt;- st_simplify(agg, dTolerance=5)\nsimpli10 &lt;- st_simplify(agg, dTolerance=10)\nplot(simpli5$geometry)\nplot(simpli10$geometry)\n\n\nComment récupérer la hauteur ?\nComment supprimer l’aire non construite ?"
+  },
+  {
+    "objectID": "09_TD9.html",
+    "href": "09_TD9.html",
+    "title": "Script",
+    "section": "",
+    "text": "Objet\nA travers d’un modèle de projet disponible sur github https://github.com/beababa/modeleProjet, les notions suivantes sont abordées :\n\nMarkdown\nStructure d’un projet R\nLe .yml\nLe site web\nLecture de .gpkg dans un script\n\n\n\nMarkdown\nRécupérer une cheatsheet par exemple, celle qui est intégrée dans R Studio,\nmenu Aide / Cheatsheet / rmarkdown\nDétailler les parties les plus importantes pour la mise en forme.\nUtiliser l’option rendu, observer les éléments proposés de l’en-tête Yaml\n\n\nStructure d’un projet R\n Détailler l’utilité de chaque fichier.\n\n\nLe .yml\nhttps://rmarkdown.rstudio.com/lesson-13.html\nexemple de .yml\nname: \"modèle projet\"\nnavbar:\n  left:\n    - text: \"Script 1\"\n      href: script1.html\n    - text: \"Script 2\"\n      href: script2.html\n  right:\n    - icon: fa-github\n      href: https://github.com/beababa/\noutput: \n  html_document:\n    toc_float: TRUE  \n    theme: united\n    highlight: tango\nAu niveau des thèmes : “default”, “cerulean”, “journal”, “flatly”, “readable”, “spacelab”, “united”, and “cosmo”.\n\n\nLe site web\nSi le projet est bien structuré et que le _site.yml, il suffit de faire le rendu\n Le rendu\n\n\n\nLecture du .gpkg\nAdapter le script proposé à sa propre commune."
+  },
+  {
+    "objectID": "08_TD8.html#github",
+    "href": "08_TD8.html#github",
+    "title": "Environnment",
+    "section": "Github",
+    "text": "Github\n\nCréation du compte\ngithub.com\n\n\nle site web\ncréer un site web avec git\nUniquement les points 1 et 2, pas le point 3\nPour créer un fichier, il suffit de créer par exemple un readme\n et de faire son premier commit (= engagement)"
   }
 ]
