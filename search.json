@@ -1,54 +1,5 @@
 [
   {
-    "objectID": "08_TD8.html",
-    "href": "08_TD8.html",
-    "title": "Environnment",
-    "section": "",
-    "text": "Projet : reprendre la thématique ville pauvre - riche sous R en y incluant tous les traitements vus sous Arcgis.\nBinômes : Distinguer 2 rôles technique et rédacteur, par groupe et zones géographiques proches par dpt"
-  },
-  {
-    "objectID": "08_TD8.html#git",
-    "href": "08_TD8.html#git",
-    "title": "Environnment",
-    "section": "Git",
-    "text": "Git\n\nCréation du compte\ngithub.com\n\n\nle site web\ncréer un site web avec git"
-  },
-  {
-    "objectID": "08_TD8.html#rstudio-et-r",
-    "href": "08_TD8.html#rstudio-et-r",
-    "title": "Environnment",
-    "section": "Rstudio et R",
-    "text": "Rstudio et R\nDistinguer les deux : langage et IDE (Environnement de développement, integrated development environment)\nAttention, paramétrer les historiques sinon cela va générer de gros fichiers encombrants.\n\n\nConnexion R et git\nversionner son code\nA partir de Configuration et juste le protocole SSH\npoints de vigilance\n\ncréation de la clé SSH dans Rstudio et recopie dans git\n\nLa clé se positionne dans le répertoire .ssh de votre profil utilisateur\n\nSauvegarder l’ensemble du répertoire .ssh afin de le recopier sur les ordinateurs sur lesquels vous travaillez.\nPuis, suivre Initialisation d’un projet R avec Git\n\n\nPremier script R\ndistinguer le data frame et le vecteur\n\n\nCode\nv1 &lt;- c(\"ville1\", \"ville2\")\nv2 &lt;- c(\"RN\", \"LFI\")\ndf &lt;- data.frame(ville = v1, vainqueur = v2)\ndf\n\n\n   ville vainqueur\n1 ville1        RN\n2 ville2       LFI\n\n\nCode\ndf &lt;- as.data.frame(v1,v2)\n\n\n\n\nPremier commit\nUne fois le script enregistré il faut faire :\n\nenregistrer les modifications = cocher les fichiers que l’on veut envoyer sur le serveur git\nle commit (validation des modifications), mettre un message clair\nle push"
-  },
-  {
-    "objectID": "08_TD8.html#première-attribution-par-dpt",
-    "href": "08_TD8.html#première-attribution-par-dpt",
-    "title": "Environnment",
-    "section": "Première attribution par dpt",
-    "text": "Première attribution par dpt\n\n\nCode\ntot$dpt &lt;- substring(tot$code,1,2)\ntable(tot$dpt, tot$groupe)\n\n\n    \n     6 7\n  13 0 1\n  28 0 1\n  31 1 0\n  33 0 1\n  44 3 0\n  49 0 1\n  50 0 1\n  59 0 1\n  60 0 1\n  63 0 1\n  64 1 0\n  69 1 0\n  72 0 1\n  73 1 0\n  75 0 1\n  78 1 0\n  91 0 1\n  92 4 1\n  93 1 7\n  94 0 1\n  95 1 0\n  97 0 2\n\n\npremière attribution : 44 / 92 / 93 / 93 + 95 / 92 + 94 etc …"
-  },
-  {
-    "objectID": "08_TD8.html#attribution-par-région",
-    "href": "08_TD8.html#attribution-par-région",
-    "title": "Environnment",
-    "section": "Attribution par région",
-    "text": "Attribution par région\non procéde par région\n\n\nCode\nlibrary(sf)\n\n\nLinking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE\n\n\nCode\nregion &lt;- st_read(\"data/region/regions-20180101.shp\", quiet=T)\nregion &lt;- st_transform(region, 2154)\nregion &lt;- region [!region$code_insee %in% c(\"01\", \"02\", \"03\",\"04\",\"06\",\"11\"),]\nidf &lt;- region [region$code_insee == \"11\",]\ndrom &lt;-region [region$code_insee %in% c(\"01\", \"02\", \"03\",\"04\",\"06\"),]\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet = T)\njoint &lt;- merge(commune, tot, by = \"code\", all.x = T)\njoint &lt;- st_transform(joint, 2154)\n\n\n\n\nCode\nlibrary(mapsf)\ninter &lt;- st_intersection(joint, region)\nmf_map(region, col = \"wheat\", border = \"cornsilk\")\nmf_map(inter, add = T)\nmf_label(inter, var = \"groupe\", halo = T, overlap = F, cex = 1.2)\n\n\n\n\n\n\n\n\n\n\n\nCode\ntable(inter$groupe, inter$nom.1)\n\n\n   \n    Auvergne-Rhône-Alpes Bourgogne-Franche-Comté Centre-Val de Loire\n  6                    2                       0                   0\n  7                    1                       0                   1\n   \n    Hauts-de-France Normandie Nouvelle-Aquitaine Occitanie Pays de la Loire\n  6               0         0                  1         1                3\n  7               2         1                  1         0                2\n   \n    Provence-Alpes-Côte d'Azur\n  6                          0\n  7                          1\n\n\n2e attribution région Auvergne, Hauts, Pays de la Loire"
-  },
-  {
-    "objectID": "08_TD8.html#attribution-finale",
-    "href": "08_TD8.html#attribution-finale",
-    "title": "Environnment",
-    "section": "attribution finale",
-    "text": "attribution finale\nChaque groupe inscrit sa région / son dpt dans le tableau + un nom de groupe + les prénoms"
-  },
-  {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "Introduction",
-    "section": "",
-    "text": "Objet\nL6ECSIG Construction et utilisation des SIG 2025/26\n(Gr. 6 et , Jeudi 16h30 - 19h30 Salle 217 sur le campus de Clignancourt)\nL’idée du cours est de consolider les acquis de la L2 et de familiariser les étudiants à Arcgis pro et au codage avec R (une plateforme de versioning très utilisée.)\nLa thématique utilisée est Commune pauvre et/ou riche ?\n\n\nDonnées\n\nlimites communes dans OSM\ncarreaux filosofi 200 m (données infra communales)\ndonnées ofgl (données communales)\n\n\n\nDéroulé\n\n\nCode\ndata &lt;- read.csv(\"data/deroule.csv\", header = T, fileEncoding = \"UTF-8\")\nknitr::kable(data)\n\n\n\n\n\n\n\n\n\n\n\nnum\ndate\ndétail.prévu\nexercice.pts\n\n\n\n\nTD1\n29.01.26\nRecherches de données\n3\n\n\nTD2\n05.02.26\nGéoréférencement\n1\n\n\nTD3\n12.02.26\nTraitements vectoriels\n2\n\n\nTD4\n19.02.26\ntraitements rasters\n1\n\n\nTD5\n26.02.26\nMNS et MNT\n1\n\n\nTD6\n12.03.26\nJointures attributaires et spatiales\n2\n\n\nTD7\n19.03.26\nRéseaux\nNA\n\n\nTD8\n26.03.26\nMarkdown + structure projet ET objets dans R : vecteurs et dataframe\nNA\n\n\nTD9\n02.04.26\nintégrer des données spatiales : format gpkg\nNA\n\n\nTD10\n09.04.26\nGéotraitement\nNA\n\n\nTD11\n16.04.26\nRésultat (affichage carte) + oral de présentation des projets (5 mn par groupe)\nNA\n\n\nTD12\n07.05.26\nRendu de projet (aucun retard toléré) + révisions partiel\nNA\n\n\n\n\n\n\n\nEvaluation\nrégime du contrôle continu,\nDeux notes :\n\nune partiel\nune note maison (+ les exercices pour moitié de la note maison)\n\nLe partiel sera sur machine d’une durée de 1h30 : - un exercice sous Arcgis Pro (10 pt) - et un autre sous R(10 pt) (avec un rendu en .pdf)\n\n\nDonnées\nIl s’agit de vos données pour la commune choisie. Principalement :\n\nOFGL\nFilosofi\ncommunes choisies\n\n\n\nCode\nchoix &lt;- read.csv(\"data/codeINSEEetudiant.csv\")\nchoix &lt;- c(choix$choix.de.la.commune..code.INSEE., choix$choix.de.la.commune..code.INSEE..1)\n# on enlève les NA et les villes identiques\nchoix &lt;- unique(choix[!is.na(choix)])\nchoix &lt;- c(choix,93010,70550,60508,78311,93045,93005,13040,92044)\nwrite.table(choix, \"data/choix.csv\", fileEncoding = \"UTF-8\", row.names = F, col.names = F)\n\n\n42 communes + Bondy\nRécupération des carreaux 200 m pour les communes\n\n\nCode\nlibrary(sf)\nfilosofi &lt;- st_read(\"data/gros/carreaux_200m_met.gpkg\", quiet=T)\nfilosofi$dpt &lt;- substring(filosofi$lcog_geo,1,2) \ndpt &lt;- unique(substring(choix, 1,2)) \nchoisir &lt;- function(dpt){\n  data &lt;- filosofi [grep(dpt, filosofi$dpt),]\n  st_write(data  , \"data/gros/construction.gpkg\", dpt, delete_layer = T, quiet=T)\n}\nres &lt;- lapply(dpt, choisir)\n\n\nAttention au 97, il faut prendre un autre fichier filosofi\n\n\nCode\nlibrary(sf)\n\n\nLinking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE\n\n\nCode\nchoix &lt;- read.csv(\"data/choix.csv\", header = F)\nchoix &lt;- choix [grep(\"^97\", choix$V1),]\nmart &lt;- st_read(\"data/gros/carreaux_200m_mart.gpkg\", quiet=T)\nst_write(mart,\"data/gros/construction.gpkg\", \"97\", delete_layer = T)\n\n\nDeleting layer `97' using driver `GPKG'\nWriting layer `97' to data source `data/gros/construction.gpkg' using driver `GPKG'\nWriting 11220 features with 34 fields and geometry type Polygon.\n\n\n\n\nCartographie\n\n\nCode\nlibrary(sf)\nlibrary(mapsf)\nst_layers(\"data/gros/construction.gpkg\")\n\n\nDriver: GPKG \nAvailable layers:\n   layer_name geometry_type features fields              crs_name\n1     commune       Polygon       34      2 RGF93 v1 / Lambert-93\n2          73       Polygon    16387     35 RGF93 v1 / Lambert-93\n3          93       Polygon     4238     35 RGF93 v1 / Lambert-93\n4          31       Polygon    42359     35 RGF93 v1 / Lambert-93\n5          95       Polygon     8763     35 RGF93 v1 / Lambert-93\n6          64       Polygon    38211     35 RGF93 v1 / Lambert-93\n7          44       Polygon    45780     35 RGF93 v1 / Lambert-93\n8          69       Polygon    28758     35 RGF93 v1 / Lambert-93\n9          92       Polygon     3288     35 RGF93 v1 / Lambert-93\n10         28       Polygon    17735     35 RGF93 v1 / Lambert-93\n11         78       Polygon    15076     35 RGF93 v1 / Lambert-93\n12         33       Polygon    54580     35 RGF93 v1 / Lambert-93\n13         50       Polygon    41602     35 RGF93 v1 / Lambert-93\n14         49       Polygon    38684     35 RGF93 v1 / Lambert-93\n15         72       Polygon    36668     35 RGF93 v1 / Lambert-93\n16         63       Polygon    29873     35 RGF93 v1 / Lambert-93\n17         94       Polygon     4207     35 RGF93 v1 / Lambert-93\n18         13       Polygon    32947     35 RGF93 v1 / Lambert-93\n19         60       Polygon    20282     35 RGF93 v1 / Lambert-93\n20         59       Polygon    45594     35 RGF93 v1 / Lambert-93\n21         91       Polygon    12033     35 RGF93 v1 / Lambert-93\n22         75       Polygon     2036     35 RGF93 v1 / Lambert-93\n23         70       Polygon    13347     35 RGF93 v1 / Lambert-93\n24         97       Polygon    11220     34 RGAF09 / UTM zone 20N\n\n\nCode\ncouches &lt;- st_layers(\"data/gros/construction.gpkg\")\n# 23\ncouches &lt;- couches$name\ncouches &lt;- couches [couches != '97']\ncouches &lt;- couches [couches != 'commune']\nunion &lt;- NULL\nfor (c in couches){\n  tmp &lt;- st_read(\"data/gros/construction.gpkg\", c, quiet=T)\n  tmp &lt;- st_union(tmp$geom)\n  tmp &lt;- st_as_sf(tmp)\n  union &lt;- rbind(tmp,union)\n}\nunion &lt;- st_convex_hull(union)\ndpt &lt;- st_read(\"data/departements.geojson\", quiet=T)\ndpt &lt;- st_transform(dpt, 2154)\ndptSel &lt;- dpt [dpt$code %in% couches,]\n\n\n\n\nCode\nmf_map(dpt, col = \"wheat\", border=\"grey\")\nmf_map(union, col = \"pink\", border = NA, add = T)\nmf_label(dptSel, var = \"nom\", cex = 0.6, overlap = F, col =\"red\")\nmf_layout(\"Choix étudiants hors Martinique\", \"Insee 2019\\nCours L6ECSIG\")\n\n\n\n\n\n\n\n\n\n\n\nRessources\nArgis, learn arcgis\nR la base\nDonnées communales\nRequeteur de carreaux sur site IDF\ndata.gouv\ninsee"
-  },
-  {
     "objectID": "01_TD1.html",
     "href": "01_TD1.html",
     "title": "Recherche de données",
@@ -103,6 +54,139 @@
     "title": "Recherche de données",
     "section": "Carto",
     "text": "Carto\n\n\nCode\nlibrary(mapsf)\nmf_map(parcelle, col= \"wheat\", border = NA)\nmf_map(inter1, col = NA, border = \"cadetblue1\", lwd = 2 ,add = T)\nmf_layout(\"parcelles cadastre Bondy et ses carreaux filosofi\",\"filosofi 2018, osm\\nJanvier 2026\")\n\n\n\n\n\n\n\n\n\n\n\nCode\nmf_map(inter2)\nmf_map(bondy, col = NA, border = \"wheat\", lwd=2,add = T)\nmf_layout(\"carreaux filosofi dpt et limites ville Bondy\",\"filosofi 2018, osm\\nJanvier 2026\")"
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "Objet\nL6ECSIG Construction et utilisation des SIG 2025/26\n(Gr. 6 et , Jeudi 16h30 - 19h30 Salle 217 sur le campus de Clignancourt)\nL’idée du cours est de consolider les acquis de la L2 et de familiariser les étudiants à Arcgis pro et au codage avec R (une plateforme de versioning très utilisée.)\nLa thématique utilisée est Commune pauvre et/ou riche ?\n\n\nDonnées\n\nlimites communes dans OSM\ncarreaux filosofi 200 m (données infra communales)\ndonnées ofgl (données communales)\n\n\n\nDéroulé\n\n\nCode\ndata &lt;- read.csv(\"data/deroule.csv\", header = T, fileEncoding = \"UTF-8\")\nknitr::kable(data)\n\n\n\n\n\n\n\n\n\n\n\nnum\ndate\ndétail.prévu\nexercice.pts\n\n\n\n\nTD1\n29.01.26\nRecherches de données\n3\n\n\nTD2\n05.02.26\nGéoréférencement\n1\n\n\nTD3\n12.02.26\nTraitements vectoriels\n2\n\n\nTD4\n19.02.26\ntraitements rasters\n1\n\n\nTD5\n26.02.26\nMNS et MNT\n1\n\n\nTD6\n12.03.26\nJointures attributaires et spatiales\n2\n\n\nTD7\n19.03.26\nRéseaux\nNA\n\n\nTD8\n26.03.26\nMarkdown + structure projet ET objets dans R : vecteurs et dataframe\nNA\n\n\nTD9\n02.04.26\nintégrer des données spatiales : format gpkg\nNA\n\n\nTD10\n09.04.26\nGéotraitement\nNA\n\n\nTD11\n16.04.26\nRésultat (affichage carte) + oral de présentation des projets (5 mn par groupe)\nNA\n\n\nTD12\n07.05.26\nRendu de projet (aucun retard toléré) + révisions partiel\nNA\n\n\n\n\n\n\n\nEvaluation\nrégime du contrôle continu,\nDeux notes :\n\nune partiel\nune note maison (+ les exercices pour moitié de la note maison)\n\nLe partiel sera sur machine d’une durée de 1h30 : - un exercice sous Arcgis Pro (10 pt) - et un autre sous R(10 pt) (avec un rendu en .pdf)\n\n\nDonnées\nIl s’agit de vos données pour la commune choisie. Principalement :\n\nOFGL\nFilosofi\ncommunes choisies\n\n\n\nCode\nchoix &lt;- read.csv(\"data/codeINSEEetudiant.csv\")\nchoix &lt;- c(choix$choix.de.la.commune..code.INSEE., choix$choix.de.la.commune..code.INSEE..1)\n# on enlève les NA et les villes identiques\nchoix &lt;- unique(choix[!is.na(choix)])\nchoix &lt;- c(choix,93010,70550,60508,78311,93045,93005,13040,92044)\nwrite.table(choix, \"data/choix.csv\", fileEncoding = \"UTF-8\", row.names = F, col.names = F)\n\n\n42 communes + Bondy\nRécupération des carreaux 200 m pour les communes\n\n\nCode\nlibrary(sf)\nfilosofi &lt;- st_read(\"data/gros/carreaux_200m_met.gpkg\", quiet=T)\nfilosofi$dpt &lt;- substring(filosofi$lcog_geo,1,2) \ndpt &lt;- unique(substring(choix, 1,2)) \nchoisir &lt;- function(dpt){\n  data &lt;- filosofi [grep(dpt, filosofi$dpt),]\n  st_write(data  , \"data/gros/construction.gpkg\", dpt, delete_layer = T, quiet=T)\n}\nres &lt;- lapply(dpt, choisir)\n\n\nAttention au 97, il faut prendre un autre fichier filosofi\n\n\nCode\nlibrary(sf)\n\n\nLinking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE\n\n\nCode\nchoix &lt;- read.csv(\"data/choix.csv\", header = F)\nchoix &lt;- choix [grep(\"^97\", choix$V1),]\nmart &lt;- st_read(\"data/gros/carreaux_200m_mart.gpkg\", quiet=T)\nst_write(mart,\"data/gros/construction.gpkg\", \"97\", delete_layer = T)\n\n\nDeleting layer `97' using driver `GPKG'\nWriting layer `97' to data source `data/gros/construction.gpkg' using driver `GPKG'\nWriting 11220 features with 34 fields and geometry type Polygon.\n\n\n\n\nCartographie\n\n\nCode\nlibrary(sf)\nlibrary(mapsf)\nst_layers(\"data/gros/construction.gpkg\")\n\n\nDriver: GPKG \nAvailable layers:\n   layer_name geometry_type features fields              crs_name\n1     commune       Polygon       34      2 RGF93 v1 / Lambert-93\n2          73       Polygon    16387     35 RGF93 v1 / Lambert-93\n3          93       Polygon     4238     35 RGF93 v1 / Lambert-93\n4          31       Polygon    42359     35 RGF93 v1 / Lambert-93\n5          95       Polygon     8763     35 RGF93 v1 / Lambert-93\n6          64       Polygon    38211     35 RGF93 v1 / Lambert-93\n7          44       Polygon    45780     35 RGF93 v1 / Lambert-93\n8          69       Polygon    28758     35 RGF93 v1 / Lambert-93\n9          92       Polygon     3288     35 RGF93 v1 / Lambert-93\n10         28       Polygon    17735     35 RGF93 v1 / Lambert-93\n11         78       Polygon    15076     35 RGF93 v1 / Lambert-93\n12         33       Polygon    54580     35 RGF93 v1 / Lambert-93\n13         50       Polygon    41602     35 RGF93 v1 / Lambert-93\n14         49       Polygon    38684     35 RGF93 v1 / Lambert-93\n15         72       Polygon    36668     35 RGF93 v1 / Lambert-93\n16         63       Polygon    29873     35 RGF93 v1 / Lambert-93\n17         94       Polygon     4207     35 RGF93 v1 / Lambert-93\n18         13       Polygon    32947     35 RGF93 v1 / Lambert-93\n19         60       Polygon    20282     35 RGF93 v1 / Lambert-93\n20         59       Polygon    45594     35 RGF93 v1 / Lambert-93\n21         91       Polygon    12033     35 RGF93 v1 / Lambert-93\n22         75       Polygon     2036     35 RGF93 v1 / Lambert-93\n23         70       Polygon    13347     35 RGF93 v1 / Lambert-93\n24         97       Polygon    11220     34 RGAF09 / UTM zone 20N\n\n\nCode\ncouches &lt;- st_layers(\"data/gros/construction.gpkg\")\n# 23\ncouches &lt;- couches$name\ncouches &lt;- couches [couches != '97']\ncouches &lt;- couches [couches != 'commune']\nunion &lt;- NULL\nfor (c in couches){\n  tmp &lt;- st_read(\"data/gros/construction.gpkg\", c, quiet=T)\n  tmp &lt;- st_union(tmp$geom)\n  tmp &lt;- st_as_sf(tmp)\n  union &lt;- rbind(tmp,union)\n}\nunion &lt;- st_convex_hull(union)\ndpt &lt;- st_read(\"data/departements.geojson\", quiet=T)\ndpt &lt;- st_transform(dpt, 2154)\ndptSel &lt;- dpt [dpt$code %in% couches,]\n\n\n\n\nCode\nmf_map(dpt, col = \"wheat\", border=\"grey\")\nmf_map(union, col = \"pink\", border = NA, add = T)\nmf_label(dptSel, var = \"nom\", cex = 0.6, overlap = F, col =\"red\")\nmf_layout(\"Choix étudiants hors Martinique\", \"Insee 2019\\nCours L6ECSIG\")\n\n\n\n\n\n\n\n\n\n\n\nRessources\nArgis, learn arcgis\nR la base\nDonnées communales\nRequeteur de carreaux sur site IDF\ndata.gouv\ninsee"
+  },
+  {
+    "objectID": "09_TD9.html",
+    "href": "09_TD9.html",
+    "title": "Script",
+    "section": "",
+    "text": "Objet\nA travers d’un modèle de projet disponible sur github https://github.com/beababa/modeleProjet, les notions suivantes sont abordées :\n\nMarkdown\nStructure d’un projet R\nLe .yml\nLe site web\nLecture de .gpkg dans un script\n\n\n\nMarkdown\nRécupérer une cheatsheet par exemple, celle qui est intégrée dans R Studio,\nmenu Aide / Cheatsheet / rmarkdown\nDétailler les parties les plus importantes pour la mise en forme.\nUtiliser l’option rendu, observer les éléments proposés de l’en-tête Yaml\n\n\nStructure d’un projet R\n Détailler l’utilité de chaque fichier.\n\n\nLe .yml\nhttps://rmarkdown.rstudio.com/lesson-13.html\nexemple de .yml\nname: \"modèle projet\"\nnavbar:\n  left:\n    - text: \"Script 1\"\n      href: script1.html\n    - text: \"Script 2\"\n      href: script2.html\n  right:\n    - icon: fa-github\n      href: https://github.com/beababa/\noutput: \n  html_document:\n    toc_float: TRUE  \n    theme: united\n    highlight: tango\nAu niveau des thèmes : “default”, “cerulean”, “journal”, “flatly”, “readable”, “spacelab”, “united”, and “cosmo”.\n\n\nLe site web\nSi le projet est bien structuré et que le _site.yml, il suffit de faire le rendu\n Le rendu\n\n\n\nLecture du .gpkg\nRécupérer le script et l’adapter à ses besoins. Le renommer de son prénom et si possible par le git le renvoyer sur la plateforme.\nAdapter le script proposé à sa propre commune."
+  },
+  {
+    "objectID": "07_TD7.html",
+    "href": "07_TD7.html",
+    "title": "Distances",
+    "section": "",
+    "text": "Au niveau d’Arcgis, c’est la barre d’outils network analyst\n\nLa distance est une composante essentielle en géographie, notamment car elle mène à l’analyse spatiale qui peut être considérée comme une autre famille de traitements spatiaux.\nPlutôt que de passer en revue tous les outils (cf TD groupe 3), l’idée est d’évoquer\n\nun traitement simple : les aires d’influence\nun traitement plus complexe : une analyse d’accessibilité\n\nCela permet d’utiliser\n\nla distance à vol d’oiseau (= euclidienne)\net la distance basée sur un réseau"
+  },
+  {
+    "objectID": "07_TD7.html#nécessité-dun-réseau-topologique-sous-arcgis",
+    "href": "07_TD7.html#nécessité-dun-réseau-topologique-sous-arcgis",
+    "title": "Distances",
+    "section": "Nécessité d’un réseau topologique sous Arcgis",
+    "text": "Nécessité d’un réseau topologique sous Arcgis\n\nLa démarche\nLa mise en place du réseau sous Arcgis se fait en différentes étapes :\n\ncréation du jeu de classes d’entités dans la gdb (au niveau de la gdb, nouveau / jeu de classes d’entité)\nimportation de la classe d’entité shape issue de la BD TOPO (au niveau du jeu, importer / cl d’entité)\ncréation du jeu de données réseau (outil créer un jeu de données réseau / pas d’altitude, la cible est le jeu défini au départ)\n\n\n\nLa donnée : BD TOPO\nCette opération est complexe notamment car la récupération du réseau de la BD TOPO représente des gros volumes de données.\n\n1,69 G° pour l’ensemble du gpkg pour le 93\n\n\n\nCode\nlibrary(sf)\ncouches &lt;- st_layers(\"data/gros/BDT_3-5_GPKG_LAMB93_D093-ED2025-12-15.gpkg\")\ncouches &lt;- couches$name\ndata &lt;- st_read(\"data/gros/BDT_3-5_GPKG_LAMB93_D093-ED2025-12-15.gpkg\", \"route_numerotee_ou_nommee\")\nst_write(data,\"data/cours7/route.gpkg\", \"bdtopo\")\n\n\n\n6 M° pour l’extraction des petites routes"
+  },
+  {
+    "objectID": "07_TD7.html#la-solution-le-flux-wfs",
+    "href": "07_TD7.html#la-solution-le-flux-wfs",
+    "title": "Distances",
+    "section": "La solution : le flux WFS",
+    "text": "La solution : le flux WFS\nHeureusement il existe des flux WFS\nLe flux est utile à partir d’une échelle au 1/25 0000e.\nDans Arcgis, charger la couche de la commune, cliquer glisser sur l’espace carte, ne pas oublier de côcher étendue de la couche.\n Les deux couches sont :\n\ntronçons de route (les routes principales)\nvoies nommées (les routes internes à la commune)\n\nCe jeu de données peut servir de base au réseau et aux différentes propositions du TD groupe 3.\nEn TD, nous essaierons juste de créer le réseau à partir de la couche tronçons de route\nIl existe également une alternative plus simple."
+  },
+  {
+    "objectID": "07_TD7.html#les-api-de-lign-et-le-nouveau-géoportail-cartes.gouv",
+    "href": "07_TD7.html#les-api-de-lign-et-le-nouveau-géoportail-cartes.gouv",
+    "title": "Distances",
+    "section": "Les API de l’IGN et le nouveau Géoportail (Cartes.gouv)",
+    "text": "Les API de l’IGN et le nouveau Géoportail (Cartes.gouv)\nAujourd’hui, l’IGN met à disposition des outils qui permettent de faire des itinéraires ou des traitements autour des distances par le biais d’API. Tout se passe au niveau de Carte.gouv, le remplaçant du Géoportail.\nFaire des isochrones avec l’IGN\nPour le TD, créer quelques isochrones avec cet outil et les importer dans Arcgis."
+  },
+  {
+    "objectID": "07_TD7.html#r-obtenir-un-ensemble-disochrones-basé-sur-lapi",
+    "href": "07_TD7.html#r-obtenir-un-ensemble-disochrones-basé-sur-lapi",
+    "title": "Distances",
+    "section": "R : obtenir un ensemble d’isochrones basé sur l’API",
+    "text": "R : obtenir un ensemble d’isochrones basé sur l’API\nSous R, on utilise une librairie qui permet d’avoir une syntaxe simple de cette API. On peut ainsi reprendre le fichier des maisons de quartier et obtenir les isochrones.\n\n\nCode\ndata &lt;- st_read(\"data/cours7.gpkg\", \"maisonDeQuartier\", quiet = T)\nlibrary(rgeoservices)\ndata &lt;- st_transform(data, 4326)\naccessibilite &lt;- NULL\nnom &lt;- NULL\ni &lt;- 1\nfor (i in c(1:length(data$geom))){\n  pt &lt;- unlist(data$geom  [i])\nlongitude &lt;- pt [1]\nlatitude &lt;- pt [2]\ntmp &lt;- gs_get_isochrone(\n  longitude,\n  latitude,\n  cost_value = 10,\n  profile = \"pedestrian\",\n  direction = \"departure\",\n  time_unit = \"minute\"\n)\ntmpN &lt;- data$name [i]\naccessibilite &lt;- rbind(tmp, accessibilite)\nnom &lt;- c(tmpN, nom)\n}\naccessibilite$nom &lt;- nom\n\n\n\n\nCode\ncommune &lt;- st_transform(commune, 4326)\nmf_map(commune)\nmf_map(data, col = \"red\", add = T)\nmf_map(accessibilite, type=\"typo\", var = \"nom\", add = T, alpha = 0.5, border = NA, leg_pos=NA)\nmf_layout(\"Isochrones 10 mn à pied autour des Maisons de Quartier\", \"librairie rgeoservices\\nMars 2026\")\n\n\n\n\n\n\n\n\n\nThe scale bar does not work on unprojected (long/lat) maps."
+  },
+  {
+    "objectID": "05_TD5_TT.html",
+    "href": "05_TD5_TT.html",
+    "title": "MNS et MNT",
+    "section": "",
+    "text": "Les images Sentinel sont faciles d’accès et permettent d’évaluer les changements récents.\nPour le MNS et le MNT, la campagne LIDAR de l’IGN qui se termine actuellement a permis de récupérer des données beaucoup plus précises.\nConcernant notre problématique spécifique (richesse / pauvreté commune et administrés), l’idée est d’examniner les mnt / mns de 3 rues importantes de votre commune (pas de départementale), pour voir si la voirie est lisse (= sans nid de poule).\nLe MNT issu du Lidar permet-il de repérer les problèmes voirie ?"
+  },
+  {
+    "objectID": "05_TD5_TT.html#tampon-le-plus-petit-possible",
+    "href": "05_TD5_TT.html#tampon-le-plus-petit-possible",
+    "title": "MNS et MNT",
+    "section": "Tampon le plus petit possible",
+    "text": "Tampon le plus petit possible\nQuelle est la largeur d’une chaussée ?\n\n\nCode\nlibrary(sf)\n\n\nLinking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE\n\n\nCode\nrue &lt;- st_read(\"data/cours5/3rues.geojson\", quiet = T)\n# agréger les géométries par rues\nrue &lt;- aggregate(rue [, \"name\"], by = list(rue$name), length)\nrue &lt;- st_transform(rue, 2154)\ntampon &lt;- st_buffer(rue,2)\nnames(tampon) [1:2] &lt;- c(\"nom\", \"nb\")\nlibrary(mapview)\nmapview(tampon)\n\n\n\n\n\n\nCode\nst_write(tampon, \"data/cours5.gpkg\", \"tampon\", delete_layer = T, quiet = T)"
+  },
+  {
+    "objectID": "05_TD5_TT.html#couper-crop-mask",
+    "href": "05_TD5_TT.html#couper-crop-mask",
+    "title": "MNS et MNT",
+    "section": "Couper (= crop / mask)",
+    "text": "Couper (= crop / mask)\nPour couper, explorer le menu imagerie / processus et raster functions, quelle est la différence ?\nDans fonctions rasters, tout est dans gestion des données\n\n\nCode\nMNT &lt;- crop(mnt, tampon, mask=T)\nMNS &lt;- crop(mns, tampon, mask=T)\n\n\n\n\nCode\nplot(MNT)\n\n\n\n\n\n\n\n\n\nparamètres à appliquer :\n\nne pas oublier de cocher “couper la géométrie” sinon la coupure se fait par défaut au carré.\n\nDans Arcgis, ne pas oublier de cocher “couper la géométrie” sinon la coupure se fait par défaut au carré"
+  },
+  {
+    "objectID": "05_TD5_TT.html#statistiques",
+    "href": "05_TD5_TT.html#statistiques",
+    "title": "MNS et MNT",
+    "section": "Statistiques",
+    "text": "Statistiques\nQuelle différence dans les étendues min / max ?\n\n\nCode\nfreqMNS &lt;- freq(MNS)\nfreqMNT &lt;- freq(MNT)\nhead(freqMNT)\n\n\n  layer value count\n1     1    51  4534\n2     1    52 14471\n3     1    53  5658\n4     1    54 14964\n5     1    55  6083\n6     1    56  4403\n\n\nCode\npar(mf_row = c(1,2))\nbarplot(MNT, main = \"MNT\")\n\n\n\n\n\n\n\n\n\nCode\nbarplot(MNS, main = \"MNS\")\n\n\n\n\n\n\n\n\n\nDans Arcgis, explorer l’outil informations image"
+  },
+  {
+    "objectID": "05_TD5_TT.html#la-question",
+    "href": "05_TD5_TT.html#la-question",
+    "title": "MNS et MNT",
+    "section": "La question !",
+    "text": "La question !\nEt surtout peut-on déjà supposer que la route n’est pas totalement lisse ?"
+  },
+  {
+    "objectID": "04_TD4.html",
+    "href": "04_TD4.html",
+    "title": "Géotraitements rasters",
+    "section": "",
+    "text": "L’objectif est de comprendre pourquoi le carroyage filosofi ne recouvre pas tout l’espace.\n\n\n\n\n\nflowchart LR\n  A[image raster] --&gt; C{découper}\n  B[carreaux vecteur] --&gt; C{découper}\n  C --&gt; D[image hors carreau]\n\n\n\n\n\n\nComment s’appelle le schéma ci-dessus ?"
+  },
+  {
+    "objectID": "04_TD4.html#paramétrage",
+    "href": "04_TD4.html#paramétrage",
+    "title": "Géotraitements rasters",
+    "section": "Paramétrage",
+    "text": "Paramétrage\nDéterminer la zone, de quelle manière ?\nQuelle type d’image prendre ?\n\nTéléchargement de la carte\n \nJustifier les options choisies :\n\nformat image\ntype de résolution\nprojection"
+  },
+  {
+    "objectID": "04_TD4.html#géotraitement-1-reprojeter",
+    "href": "04_TD4.html#géotraitement-1-reprojeter",
+    "title": "Géotraitements rasters",
+    "section": "Géotraitement 1 = Reprojeter",
+    "text": "Géotraitement 1 = Reprojeter\n\nQuelle est la taille du pixel ? S’agit-il de mètres ?\nA part la taille du pixel, à quoi sert de reprojeter le raster ?"
+  },
+  {
+    "objectID": "04_TD4.html#géotraitement-2-découper-le-raster",
+    "href": "04_TD4.html#géotraitement-2-découper-le-raster",
+    "title": "Géotraitements rasters",
+    "section": "Géotraitement 2 = Découper le raster",
+    "text": "Géotraitement 2 = Découper le raster\nOn se sert des carreaux manquants pour découper le raster dessus.\n\nCarreaux manquants\nL’extraction des carreaux manquants est faite sous R par département et fournie aux étudiants.\nLa question à régler est sur l’importance des carreaux manquants. On fait un test sur Bondy, puis une comparaison par dpt et enfin le cas spécifique de la Martinique.\n\nBondy\nDonnées et intersection limite commune et carreau\nChargement des couches : commune et carreaux\n\n\nCode\nlibrary(sf)\n\n\nLinking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE\n\n\nCode\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet=T)\nbondy &lt;- commune [commune$code == '93010',]\nst_layers(\"data/dataCours1/car.gpkg\")\n\n\nDriver: GPKG \nAvailable layers:\n  layer_name geometry_type features fields              crs_name\n1        dpt                    169      5 RGF93 v1 / Lambert-93\n2      bondy       Polygon      132     17 RGF93 v1 / Lambert-93\n\n\nCode\ncar &lt;- st_read(\"data/dataCours1/car.gpkg\", \"dpt\", quiet=T)\n\n\nIntersection Bondy - carreaux dpt puis union des carreaux pour accélérer les traitements.\nEn effet les traitements spatiaux sur des polygones peuvent être très lents, autant traiter une union des carreaux plutôt que chaque carreau séparé.\n\n\nCode\ninter &lt;- st_union(st_intersection(bondy,car))\n\n\nDifférence symétrique entre la zone communale et le gros carreau\n\n\nCode\ndiff &lt;- st_difference(bondy$geom, inter)\n\n\nCartographie\n\n\nCode\nlibrary(mapsf)\nmf_map(diff)\nmf_map(bondy, add = T, col = NA)\nmf_layout(\"Carreaux manquants sur Bondy\",\"Filosofi 2019\\nIGN 2026\")\n\n\n\n\n\n\n\n\n\n\n\nLe shéma de l’opération\n\n\n\n\n\nflowchart LR\n  A[car] --&gt; C{intersecter}\n  B[commune] --&gt; C{intersecter}\n  C --&gt; D[inter]\n  D --&gt; E{fusion}\n  E --&gt; F[car fusionnés]\n  F --&gt; H{difference}\n  B[commune] --&gt; H\n  H --&gt; I(carreaux absents)\n\n\n\n\n\n\n\n\nTraitement par lot\nOn procéde par dpt, pour éviter d’avoir des délais de traitement trop longs.\n\n\nCode\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet=T)\ncar &lt;- st_read (\"data/cours5.gpkg\", \"car\", quiet=T)\n# on agrège les carreaux par dpt\naggCar &lt;- aggregate(car [, c( \"dpt.1\")], by = list(car$dpt.1), length)\n# même opération sur les communes\naggCommune &lt;- aggregate(commune [, \"dpt\"], by=list(commune$dpt), length)\nnames(aggCar)[1:2] &lt;- c(\"dpt\", \"nb\")\nnames(aggCommune)[1:2] &lt;- c(\"dpt\", \"nb\")\ndiff &lt;-  NULL\ncommune &lt;- commune[commune$dpt != 97,]\ndpt &lt;- unique(commune$dpt)\nfor (d in dpt){\n  #print(d)\n  tmp &lt;- st_difference(aggCommune [aggCommune$dpt == d, c(\"dpt\")], aggCar [aggCar$dpt == d, c(\"dpt\")])\n  diff &lt;- rbind(tmp, diff)\n}\n\n\n\n\nCode\n#diff &lt;- st_cast(diff,\"POLYGON\")\ninter &lt;- st_intersection(diff, commune)\ninter &lt;- inter [, c(\"code\", \"nom\")]\nst_write(inter , \"data/cours5.gpkg\", \"carreau_manquant\", delete_layer = T, quiet = T)\n\n\n\n\nCode\ncar &lt;- st_read (\"data/cours5.gpkg\", \"car\", quiet=T)\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet=T)\ncar$dpt &lt;- as.integer(car$dpt)\npar(mfrow=c(1,2))\nd &lt;- 93\nfor (d in c(93,94)){\n  #mf_map(car [car$dpt.1== d,])\n  mf_map(commune [commune$dpt == d,], col=NA, border=\"cadetblue4\", lwd = 4)\n  mf_map(diff [diff$dpt.1 == d,], col=\"red\", add = T)\n  mf_layout (paste0(\"Carreaux absents comm du dpt \", d), \"insee 2018, IGN 2026\")\n}\n\n\n\n\n\n\n\n\n\n\n\nCas de la Martinique\n\n\nCode\ncar &lt;- st_read (\"data/cours5.gpkg\", \"car97\", quiet=T)\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet=T)\ncommune &lt;- commune[commune$dpt == 97,]\ncommune &lt;- st_transform(commune, 5490 )\nagg &lt;- aggregate (commune [, c(\"dpt\")], by = list(commune$dpt), length)\nagg2 &lt;- aggregate (car [,c(\"dpt\")], by = list(car$dpt), length)\ndiff97 &lt;- st_difference(agg, agg2 )\n# on garde par commune\ninter &lt;- st_intersection(diff97, commune [, c(\"code\", \"nom\")])\ninter &lt;- inter [,c(\"code\", \"nom\")]\ninter &lt;- st_cast(inter,\"POLYGON\")\nst_write(inter, \"data/cours5.gpkg\", \"carreau_manquant97\", delete_layer = T, quiet = T)\n\n\n\n\nCode\nmf_map(inter, col = \"red\")\n#mf_map(car, add = T)  \nmf_map(commune, add = T, col=NA, border=\"cadetblue4\", lwd = 4)\n# mf_map(diff97, col=\"red\", add = T)\nmf_layout (\"Carreaux absents sur la Martinique \", \"insee 2018, IGN 2026\")\n\n\n\n\n\n\n\n\n\n\n\n\nDécouper le raster\nEssayer de découper le raster à la commune, puis au carreau manquant\n\nEssayer avec ou sans l’option utiliser la géométrie en entrée…"
+  },
+  {
+    "objectID": "04_TD4.html#géotraitement-3-convertir-la-couleur-du-raster-en-niveaux-de-gris",
+    "href": "04_TD4.html#géotraitement-3-convertir-la-couleur-du-raster-en-niveaux-de-gris",
+    "title": "Géotraitements rasters",
+    "section": "Géotraitement 3 = convertir la couleur du raster en niveaux de gris",
+    "text": "Géotraitement 3 = convertir la couleur du raster en niveaux de gris\nIl s’agit de créer un masque binaire, avec les valeurs 0 et 1\noutil Reclassification\nSi on prend l’indice ndvi est-ce nécessaire ?"
+  },
+  {
+    "objectID": "04_TD4.html#géotraitement-4-seuillage",
+    "href": "04_TD4.html#géotraitement-4-seuillage",
+    "title": "Géotraitements rasters",
+    "section": "Géotraitement 4 : seuillage",
+    "text": "Géotraitement 4 : seuillage\nOutil informations sur l’image, quelles valeurs à retenir ?"
+  },
+  {
+    "objectID": "04_TD4.html#géotraitement-5-raster-vecteur",
+    "href": "04_TD4.html#géotraitement-5-raster-vecteur",
+    "title": "Géotraitements rasters",
+    "section": "Géotraitement 5 = raster => vecteur",
+    "text": "Géotraitement 5 = raster =&gt; vecteur\noutil Raster vers polygone\npuis taille et lissage\n\ncalculer la géométrie (clic droit sur table attributaire)\npuis lisser un polygone"
   },
   {
     "objectID": "02_TD2.html",
@@ -173,188 +257,6 @@
     "title": "Géotraitements vectoriels",
     "section": "Sous Arcgis",
     "text": "Sous Arcgis\nEtape 1 : supprimer les couches inutiles\nEtape 2 : recoder le champs menage pauvre\n\nEtape 3 : quel outil pour fusionner en fonction des attributs ?"
-  },
-  {
-    "objectID": "04_TD4.html",
-    "href": "04_TD4.html",
-    "title": "Géotraitements rasters",
-    "section": "",
-    "text": "L’objectif est de comprendre pourquoi le carroyage filosofi ne recouvre pas tout l’espace.\n\n\n\n\n\nflowchart LR\n  A[image raster] --&gt; C{découper}\n  B[carreaux vecteur] --&gt; C{découper}\n  C --&gt; D[image hors carreau]\n\n\n\n\n\n\nComment s’appelle le schéma ci-dessus ?"
-  },
-  {
-    "objectID": "04_TD4.html#paramétrage",
-    "href": "04_TD4.html#paramétrage",
-    "title": "Géotraitements rasters",
-    "section": "Paramétrage",
-    "text": "Paramétrage\nDéterminer la zone, de quelle manière ?\nQuelle type d’image prendre ?\n\nTéléchargement de la carte\n \nJustifier les options choisies :\n\nformat image\ntype de résolution\nprojection"
-  },
-  {
-    "objectID": "04_TD4.html#géotraitement-1-reprojeter",
-    "href": "04_TD4.html#géotraitement-1-reprojeter",
-    "title": "Géotraitements rasters",
-    "section": "Géotraitement 1 = Reprojeter",
-    "text": "Géotraitement 1 = Reprojeter\n\nQuelle est la taille du pixel ? S’agit-il de mètres ?\nA part la taille du pixel, à quoi sert de reprojeter le raster ?"
-  },
-  {
-    "objectID": "04_TD4.html#géotraitement-2-découper-le-raster",
-    "href": "04_TD4.html#géotraitement-2-découper-le-raster",
-    "title": "Géotraitements rasters",
-    "section": "Géotraitement 2 = Découper le raster",
-    "text": "Géotraitement 2 = Découper le raster\nOn se sert des carreaux manquants pour découper le raster dessus.\n\nCarreaux manquants\nL’extraction des carreaux manquants est faite sous R par département et fournie aux étudiants.\nLa question à régler est sur l’importance des carreaux manquants. On fait un test sur Bondy, puis une comparaison par dpt et enfin le cas spécifique de la Martinique.\n\nBondy\nDonnées et intersection limite commune et carreau\nChargement des couches : commune et carreaux\n\n\nCode\nlibrary(sf)\n\n\nLinking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE\n\n\nCode\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet=T)\nbondy &lt;- commune [commune$code == '93010',]\nst_layers(\"data/dataCours1/car.gpkg\")\n\n\nDriver: GPKG \nAvailable layers:\n  layer_name geometry_type features fields              crs_name\n1        dpt                    169      5 RGF93 v1 / Lambert-93\n2      bondy       Polygon      132     17 RGF93 v1 / Lambert-93\n\n\nCode\ncar &lt;- st_read(\"data/dataCours1/car.gpkg\", \"dpt\", quiet=T)\n\n\nIntersection Bondy - carreaux dpt puis union des carreaux pour accélérer les traitements.\nEn effet les traitements spatiaux sur des polygones peuvent être très lents, autant traiter une union des carreaux plutôt que chaque carreau séparé.\n\n\nCode\ninter &lt;- st_union(st_intersection(bondy,car))\n\n\nDifférence symétrique entre la zone communale et le gros carreau\n\n\nCode\ndiff &lt;- st_difference(bondy$geom, inter)\n\n\nCartographie\n\n\nCode\nlibrary(mapsf)\nmf_map(diff)\nmf_map(bondy, add = T, col = NA)\nmf_layout(\"Carreaux manquants sur Bondy\",\"Filosofi 2019\\nIGN 2026\")\n\n\n\n\n\n\n\n\n\n\n\nLe shéma de l’opération\n\n\n\n\n\nflowchart LR\n  A[car] --&gt; C{intersecter}\n  B[commune] --&gt; C{intersecter}\n  C --&gt; D[inter]\n  D --&gt; E{fusion}\n  E --&gt; F[car fusionnés]\n  F --&gt; H{difference}\n  B[commune] --&gt; H\n  H --&gt; I(carreaux absents)\n\n\n\n\n\n\n\n\nTraitement par lot\nOn procéde par dpt, pour éviter d’avoir des délais de traitement trop longs.\n\n\nCode\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet=T)\ncar &lt;- st_read (\"data/cours5.gpkg\", \"car\", quiet=T)\n# on agrège les carreaux par dpt\naggCar &lt;- aggregate(car [, c( \"dpt.1\")], by = list(car$dpt.1), length)\n# même opération sur les communes\naggCommune &lt;- aggregate(commune [, \"dpt\"], by=list(commune$dpt), length)\nnames(aggCar)[1:2] &lt;- c(\"dpt\", \"nb\")\nnames(aggCommune)[1:2] &lt;- c(\"dpt\", \"nb\")\ndiff &lt;-  NULL\ncommune &lt;- commune[commune$dpt != 97,]\ndpt &lt;- unique(commune$dpt)\nfor (d in dpt){\n  #print(d)\n  tmp &lt;- st_difference(aggCommune [aggCommune$dpt == d, c(\"dpt\")], aggCar [aggCar$dpt == d, c(\"dpt\")])\n  diff &lt;- rbind(tmp, diff)\n}\n\n\n\n\nCode\n#diff &lt;- st_cast(diff,\"POLYGON\")\ninter &lt;- st_intersection(diff, commune)\ninter &lt;- inter [, c(\"code\", \"nom\")]\nst_write(inter , \"data/cours5.gpkg\", \"carreau_manquant\", delete_layer = T, quiet = T)\n\n\n\n\nCode\ncar &lt;- st_read (\"data/cours5.gpkg\", \"car\", quiet=T)\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet=T)\ncar$dpt &lt;- as.integer(car$dpt)\npar(mfrow=c(1,2))\nd &lt;- 93\nfor (d in c(93,94)){\n  #mf_map(car [car$dpt.1== d,])\n  mf_map(commune [commune$dpt == d,], col=NA, border=\"cadetblue4\", lwd = 4)\n  mf_map(diff [diff$dpt.1 == d,], col=\"red\", add = T)\n  mf_layout (paste0(\"Carreaux absents comm du dpt \", d), \"insee 2018, IGN 2026\")\n}\n\n\n\n\n\n\n\n\n\n\n\nCas de la Martinique\n\n\nCode\ncar &lt;- st_read (\"data/cours5.gpkg\", \"car97\", quiet=T)\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet=T)\ncommune &lt;- commune[commune$dpt == 97,]\ncommune &lt;- st_transform(commune, 5490 )\nagg &lt;- aggregate (commune [, c(\"dpt\")], by = list(commune$dpt), length)\nagg2 &lt;- aggregate (car [,c(\"dpt\")], by = list(car$dpt), length)\ndiff97 &lt;- st_difference(agg, agg2 )\n# on garde par commune\ninter &lt;- st_intersection(diff97, commune [, c(\"code\", \"nom\")])\ninter &lt;- inter [,c(\"code\", \"nom\")]\ninter &lt;- st_cast(inter,\"POLYGON\")\nst_write(inter, \"data/cours5.gpkg\", \"carreau_manquant97\", delete_layer = T, quiet = T)\n\n\n\n\nCode\nmf_map(inter, col = \"red\")\n#mf_map(car, add = T)  \nmf_map(commune, add = T, col=NA, border=\"cadetblue4\", lwd = 4)\n# mf_map(diff97, col=\"red\", add = T)\nmf_layout (\"Carreaux absents sur la Martinique \", \"insee 2018, IGN 2026\")\n\n\n\n\n\n\n\n\n\n\n\n\nDécouper le raster\nEssayer de découper le raster à la commune, puis au carreau manquant\n\nEssayer avec ou sans l’option utiliser la géométrie en entrée…"
-  },
-  {
-    "objectID": "04_TD4.html#géotraitement-3-convertir-la-couleur-du-raster-en-niveaux-de-gris",
-    "href": "04_TD4.html#géotraitement-3-convertir-la-couleur-du-raster-en-niveaux-de-gris",
-    "title": "Géotraitements rasters",
-    "section": "Géotraitement 3 = convertir la couleur du raster en niveaux de gris",
-    "text": "Géotraitement 3 = convertir la couleur du raster en niveaux de gris\nIl s’agit de créer un masque binaire, avec les valeurs 0 et 1\noutil Reclassification\nSi on prend l’indice ndvi est-ce nécessaire ?"
-  },
-  {
-    "objectID": "04_TD4.html#géotraitement-4-seuillage",
-    "href": "04_TD4.html#géotraitement-4-seuillage",
-    "title": "Géotraitements rasters",
-    "section": "Géotraitement 4 : seuillage",
-    "text": "Géotraitement 4 : seuillage\nOutil informations sur l’image, quelles valeurs à retenir ?"
-  },
-  {
-    "objectID": "04_TD4.html#géotraitement-5-raster-vecteur",
-    "href": "04_TD4.html#géotraitement-5-raster-vecteur",
-    "title": "Géotraitements rasters",
-    "section": "Géotraitement 5 = raster => vecteur",
-    "text": "Géotraitement 5 = raster =&gt; vecteur\noutil Raster vers polygone\npuis taille et lissage\n\ncalculer la géométrie (clic droit sur table attributaire)\npuis lisser un polygone"
-  },
-  {
-    "objectID": "05_TD5_TT.html",
-    "href": "05_TD5_TT.html",
-    "title": "MNS et MNT",
-    "section": "",
-    "text": "Les images Sentinel sont faciles d’accès et permettent d’évaluer les changements récents.\nPour le MNS et le MNT, la campagne LIDAR de l’IGN qui se termine actuellement a permis de récupérer des données beaucoup plus précises.\nConcernant notre problématique spécifique (richesse / pauvreté commune et administrés), l’idée est d’examniner les mnt / mns de 3 rues importantes de votre commune (pas de départementale), pour voir si la voirie est lisse (= sans nid de poule).\nLe MNT issu du Lidar permet-il de repérer les problèmes voirie ?"
-  },
-  {
-    "objectID": "05_TD5_TT.html#tampon-le-plus-petit-possible",
-    "href": "05_TD5_TT.html#tampon-le-plus-petit-possible",
-    "title": "MNS et MNT",
-    "section": "Tampon le plus petit possible",
-    "text": "Tampon le plus petit possible\nQuelle est la largeur d’une chaussée ?\n\n\nCode\nlibrary(sf)\n\n\nLinking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE\n\n\nCode\nrue &lt;- st_read(\"data/cours5/3rues.geojson\", quiet = T)\n# agréger les géométries par rues\nrue &lt;- aggregate(rue [, \"name\"], by = list(rue$name), length)\nrue &lt;- st_transform(rue, 2154)\ntampon &lt;- st_buffer(rue,2)\nnames(tampon) [1:2] &lt;- c(\"nom\", \"nb\")\nlibrary(mapview)\nmapview(tampon)\n\n\n\n\n\n\nCode\nst_write(tampon, \"data/cours5.gpkg\", \"tampon\", delete_layer = T, quiet = T)"
-  },
-  {
-    "objectID": "05_TD5_TT.html#couper-crop-mask",
-    "href": "05_TD5_TT.html#couper-crop-mask",
-    "title": "MNS et MNT",
-    "section": "Couper (= crop / mask)",
-    "text": "Couper (= crop / mask)\nPour couper, explorer le menu imagerie / processus et raster functions, quelle est la différence ?\nDans fonctions rasters, tout est dans gestion des données\n\n\nCode\nMNT &lt;- crop(mnt, tampon, mask=T)\nMNS &lt;- crop(mns, tampon, mask=T)\n\n\n\n\nCode\nplot(MNT)\n\n\n\n\n\n\n\n\n\nparamètres à appliquer :\n\nne pas oublier de cocher “couper la géométrie” sinon la coupure se fait par défaut au carré.\n\nDans Arcgis, ne pas oublier de cocher “couper la géométrie” sinon la coupure se fait par défaut au carré"
-  },
-  {
-    "objectID": "05_TD5_TT.html#statistiques",
-    "href": "05_TD5_TT.html#statistiques",
-    "title": "MNS et MNT",
-    "section": "Statistiques",
-    "text": "Statistiques\nQuelle différence dans les étendues min / max ?\n\n\nCode\nfreqMNS &lt;- freq(MNS)\nfreqMNT &lt;- freq(MNT)\nhead(freqMNT)\n\n\n  layer value count\n1     1    51  4534\n2     1    52 14471\n3     1    53  5658\n4     1    54 14964\n5     1    55  6083\n6     1    56  4403\n\n\nCode\npar(mf_row = c(1,2))\nbarplot(MNT, main = \"MNT\")\n\n\n\n\n\n\n\n\n\nCode\nbarplot(MNS, main = \"MNS\")\n\n\n\n\n\n\n\n\n\nDans Arcgis, explorer l’outil informations image"
-  },
-  {
-    "objectID": "05_TD5_TT.html#la-question",
-    "href": "05_TD5_TT.html#la-question",
-    "title": "MNS et MNT",
-    "section": "La question !",
-    "text": "La question !\nEt surtout peut-on déjà supposer que la route n’est pas totalement lisse ?"
-  },
-  {
-    "objectID": "06_TD6.html",
-    "href": "06_TD6.html",
-    "title": "Jointures",
-    "section": "",
-    "text": "Les jointures permettent d’enrichir les données en liant plusieurs tables ensemble. Les attributs des 2 tables vont se retrouver dans la jointure.\nLa jointure attributaire est facile à comprendre. Le point de vigilance est de vérifier :\n\nle nombre d’entités au départ\net après la jointure\n\nLa jointure spatiale est plus complexe et coûteuse en terme de calculs, se méfier notamment des croisements polygones / polygones, il vaut mieux passer par les centroides.\nLes jointures spatiales reposent sur les relations topologique (inclusion, adjacence et intersection)."
-  },
-  {
-    "objectID": "06_TD6.html#repérer-la-clé",
-    "href": "06_TD6.html#repérer-la-clé",
-    "title": "Jointures",
-    "section": "Repérer la clé",
-    "text": "Repérer la clé\nSimplicité de la clé (éviter les noms, privilégier les chiffres)\nCas des noms de rue"
-  },
-  {
-    "objectID": "06_TD6.html#sens-de-la-jointure",
-    "href": "06_TD6.html#sens-de-la-jointure",
-    "title": "Jointures",
-    "section": "Sens de la jointure",
-    "text": "Sens de la jointure\nTable avec géométrie en premier"
-  },
-  {
-    "objectID": "06_TD6.html#exemple-données-ofgl-et-communes-du-dpt",
-    "href": "06_TD6.html#exemple-données-ofgl-et-communes-du-dpt",
-    "title": "Jointures",
-    "section": "Exemple données OFGL et communes du dpt",
-    "text": "Exemple données OFGL et communes du dpt\n\n\n\n\n\nflowchart LR\n  A[géométrie commune] --&gt; C{joindre}\n  B[chiffres ofgl] --&gt; C{joindre}\n  C --&gt; D[carte symbologie graduée]\n\n\n\n\n\n\n\nOSM\nRécupération des limites communales dans le dpt dans OSM\nrequête : admin_level=8 in 93\n\n\nCode\nlibrary(sf)\n\n\nLinking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE\n\n\nCode\nlibrary(mapsf)\ncommune &lt;- st_read(\"data/cours6/communes93.geojson\", quiet=T)\n# Extraction uniquement des polygones\ncommune &lt;- st_collection_extract(commune, \"POLYGON\")\n\n\n\n\nOFGL\n\n\n\nCode\nofgl &lt;- read.csv2(\"data/cours6/donnees_carto_communes.csv\", dec =\".\")\n\n\n\n\nLa clé\n\n\nCode\ncommune$ref.INSEE\n\n\n [1] \"93055\" \"93061\" \"93070\" \"93001\" \"93039\" \"93048\" \"93006\" \"93051\" \"93045\"\n[10] \"93064\" \"93063\" \"93053\" \"93008\" \"93049\" \"93033\" \"93027\" \"93029\" \"93013\"\n[19] \"93010\" \"93072\" \"93030\" \"93073\" \"93007\" \"93005\" \"93078\" \"93077\" \"93062\"\n[28] \"93057\" \"93071\" \"93032\" \"93050\" \"93046\" \"93074\" \"93015\" \"93047\" \"93031\"\n[37] \"93079\" \"93014\" \"93066\" NA     \n\n\nCode\nofgl$Insee\n\n\n [1] 93029 93070 93014 93015 93048 93059 93062 93005 93006 93007 93031 93047\n[13] 93008 93010 93045 93050 93071 93027 93033 93053 93063 93064 93013 93030\n[25] 93039 93046 93049 93055 93061 93073 93078 93001 93032 93051 93057 93066\n[37] 93072 93074 93077 93079\n\n\nDans Arcgis, la jointure ne passera pas.\nIl faut convertir le code insee en chiffre.\n\n\n\nLa jointure\n\n\nCode\njointure &lt;- merge(commune, ofgl, by.x = \"ref.INSEE\", by.y = \"Insee\")\n\n\nAvec Arcgis, on utilise le menu Jointure et relation du clic droit sur la couche\n\n\nCode\nhist(jointure$Montant.par.habitant.2024)\n\n\n\n\n\n\n\n\n\nCode\nmf_map(jointure, type = \"choro\", var = \"Montant.par.habitant.2024\", border = NA)\n#mf_label(jointure, \"name\" , overlap = F, halo = T)\nmf_layout(\"Dépenses personnel par habitant dans le 93\", \"OFGL 2024, OSM 2026\")\n\n\n\n\n\n\n\n\n\nThe scale bar does not work on unprojected (long/lat) maps.\n\n\nSous Arcgis, faire une symbologie couleurs gradués"
-  },
-  {
-    "objectID": "06_TD6.html#points-et-polygones",
-    "href": "06_TD6.html#points-et-polygones",
-    "title": "Jointures",
-    "section": "Points et polygones",
-    "text": "Points et polygones\n\nBatiments (centroides) et carreau\n\n\nCode\nlibrary(sf)\nbat &lt;- st_read(\"data/cours6/bat.geojson\", quiet=T)\nbat &lt;- st_transform(bat, 2154)\ncar &lt;- st_read(\"data/bondy.gpkg\", \"carreau\", quiet=T)\ncar &lt;- car [, c(\"idcar_200m\")]\ncar &lt;- car [!duplicated(car),]\ncar$id &lt;- seq(1, length(car$idcar_200m))\ncar &lt;- st_collection_extract(car, \"POLYGON\")\n\n\n\n\nCode\nlibrary (mapsf)\nmf_map(car)\nmf_label(car, \"id\", cex = 0.5)\n\n\n\n\n\n\n\n\n\n\n\nCode\n# centroides bat\ncentroid &lt;- st_centroid(bat$geometry)\ncentroid &lt;- st_transform(centroid, 2154)\ncar &lt;- st_transform(car, 2154)\n# intersection : c'est la relation topologique passe partout\njointure &lt;- st_intersection(car, centroid)\n\n\n\n\nCode\nhead(table(jointure$id))\n\n\n\n 9 10 11 12 13 14 \n10 11  2  2 48 64 \n\n\nCode\njointure &lt;- jointure [jointure$id &lt; 3,]\n\n\n\n\nCode\npng(\"img/jointureSpatiale1.png\")\nmf_init(car [1:3,])\nmf_map(car, ,col = NA, add = T)\nmf_map(bat, col = \"wheat\", border=NA, add= T)\nmf_map(jointure, type=\"typo\", var=\"id\", pch=21, add = T, leg_pos = NA)\nmf_layout(\"Centroide batiment et id carreau\", \"OSM, INSEE 2019\\nMars 2026\")\ndev.off()"
-  },
-  {
-    "objectID": "06_TD6.html#polygones-et-polygones",
-    "href": "06_TD6.html#polygones-et-polygones",
-    "title": "Jointures",
-    "section": "Polygones et polygones",
-    "text": "Polygones et polygones\nbat et carreaux\n\n\nCode\njointure2 &lt;- NULL\njointure2 &lt;-  st_intersection(car, bat)\n\n\n\n\nCode\njointure &lt;- jointure2\njointure &lt;- jointure [jointure$id &lt; 3,]\npng(\"img/jointureSpatiale2.png\")\nmf_init(car [1:3,])\nmf_map(car, ,col = NA, add = T)\nmf_map(bat, col = \"wheat\", border=NA, add= T)\nmf_map(jointure [jointure], type=\"typo\", var=\"id\", pch=21, add = T, leg_pos = NA)\nmf_layout(\"batiment et id carreau\", \"OSM, INSEE 2019\\nMars 2026\")\ndev.off()"
-  },
-  {
-    "objectID": "06_TD6.html#calcul-statistique-à-effectuer",
-    "href": "06_TD6.html#calcul-statistique-à-effectuer",
-    "title": "Jointures",
-    "section": "Calcul statistique à effectuer",
-    "text": "Calcul statistique à effectuer\nDans Arcgis Pro, trouver comment calculer le nombre de bâtiments par carreaux (centroides et polygones)"
-  },
-  {
-    "objectID": "07_TD7.html",
-    "href": "07_TD7.html",
-    "title": "Distances",
-    "section": "",
-    "text": "Au niveau d’Arcgis, c’est la barre d’outils network analyst\n\nLa distance est une composante essentielle en géographie, notamment car elle mène à l’analyse spatiale qui peut être considérée comme une autre famille de traitements spatiaux.\nPlutôt que de passer en revue tous les outils (cf TD groupe 3), l’idée est d’évoquer\n\nun traitement simple : les aires d’influence\nun traitement plus complexe : une analyse d’accessibilité\n\nCela permet d’utiliser\n\nla distance à vol d’oiseau (= euclidienne)\net la distance basée sur un réseau"
-  },
-  {
-    "objectID": "07_TD7.html#nécessité-dun-réseau-topologique-sous-arcgis",
-    "href": "07_TD7.html#nécessité-dun-réseau-topologique-sous-arcgis",
-    "title": "Distances",
-    "section": "Nécessité d’un réseau topologique sous Arcgis",
-    "text": "Nécessité d’un réseau topologique sous Arcgis\n\nLa démarche\nLa mise en place du réseau sous Arcgis se fait en différentes étapes :\n\ncréation du jeu de classes d’entités dans la gdb (au niveau de la gdb, nouveau / jeu de classes d’entité)\nimportation de la classe d’entité shape issue de la BD TOPO (au niveau du jeu, importer / cl d’entité)\ncréation du jeu de données réseau (outil créer un jeu de données réseau / pas d’altitude, la cible est le jeu défini au départ)\n\n\n\nLa donnée : BD TOPO\nCette opération est complexe notamment car la récupération du réseau de la BD TOPO représente des gros volumes de données.\n\n1,69 G° pour l’ensemble du gpkg pour le 93\n\n\n\nCode\nlibrary(sf)\ncouches &lt;- st_layers(\"data/gros/BDT_3-5_GPKG_LAMB93_D093-ED2025-12-15.gpkg\")\ncouches &lt;- couches$name\ndata &lt;- st_read(\"data/gros/BDT_3-5_GPKG_LAMB93_D093-ED2025-12-15.gpkg\", \"route_numerotee_ou_nommee\")\nst_write(data,\"data/cours7/route.gpkg\", \"bdtopo\")\n\n\n\n6 M° pour l’extraction des petites routes"
-  },
-  {
-    "objectID": "07_TD7.html#la-solution-le-flux-wfs",
-    "href": "07_TD7.html#la-solution-le-flux-wfs",
-    "title": "Distances",
-    "section": "La solution : le flux WFS",
-    "text": "La solution : le flux WFS\nHeureusement il existe des flux WFS\nLe flux est utile à partir d’une échelle au 1/25 0000e.\nDans Arcgis, charger la couche de la commune, cliquer glisser sur l’espace carte, ne pas oublier de côcher étendue de la couche.\n Les deux couches sont :\n\ntronçons de route (les routes principales)\nvoies nommées (les routes internes à la commune)\n\nCe jeu de données peut servir de base au réseau et aux différentes propositions du TD groupe 3.\nEn TD, nous essaierons juste de créer le réseau à partir de la couche tronçons de route\nIl existe également une alternative plus simple."
-  },
-  {
-    "objectID": "07_TD7.html#les-api-de-lign-et-le-nouveau-géoportail-cartes.gouv",
-    "href": "07_TD7.html#les-api-de-lign-et-le-nouveau-géoportail-cartes.gouv",
-    "title": "Distances",
-    "section": "Les API de l’IGN et le nouveau Géoportail (Cartes.gouv)",
-    "text": "Les API de l’IGN et le nouveau Géoportail (Cartes.gouv)\nAujourd’hui, l’IGN met à disposition des outils qui permettent de faire des itinéraires ou des traitements autour des distances par le biais d’API. Tout se passe au niveau de Carte.gouv, le remplaçant du Géoportail.\nFaire des isochrones avec l’IGN\nPour le TD, créer quelques isochrones avec cet outil et les importer dans Arcgis."
-  },
-  {
-    "objectID": "07_TD7.html#r-obtenir-un-ensemble-disochrones-basé-sur-lapi",
-    "href": "07_TD7.html#r-obtenir-un-ensemble-disochrones-basé-sur-lapi",
-    "title": "Distances",
-    "section": "R : obtenir un ensemble d’isochrones basé sur l’API",
-    "text": "R : obtenir un ensemble d’isochrones basé sur l’API\nSous R, on utilise une librairie qui permet d’avoir une syntaxe simple de cette API. On peut ainsi reprendre le fichier des maisons de quartier et obtenir les isochrones.\n\n\nCode\ndata &lt;- st_read(\"data/cours7.gpkg\", \"maisonDeQuartier\", quiet = T)\nlibrary(rgeoservices)\ndata &lt;- st_transform(data, 4326)\naccessibilite &lt;- NULL\nnom &lt;- NULL\ni &lt;- 1\nfor (i in c(1:length(data$geom))){\n  pt &lt;- unlist(data$geom  [i])\nlongitude &lt;- pt [1]\nlatitude &lt;- pt [2]\ntmp &lt;- gs_get_isochrone(\n  longitude,\n  latitude,\n  cost_value = 10,\n  profile = \"pedestrian\",\n  direction = \"departure\",\n  time_unit = \"minute\"\n)\ntmpN &lt;- data$name [i]\naccessibilite &lt;- rbind(tmp, accessibilite)\nnom &lt;- c(tmpN, nom)\n}\naccessibilite$nom &lt;- nom\n\n\n\n\nCode\ncommune &lt;- st_transform(commune, 4326)\nmf_map(commune)\nmf_map(data, col = \"red\", add = T)\nmf_map(accessibilite, type=\"typo\", var = \"nom\", add = T, alpha = 0.5, border = NA, leg_pos=NA)\nmf_layout(\"Isochrones 10 mn à pied autour des Maisons de Quartier\", \"librairie rgeoservices\\nMars 2026\")\n\n\n\n\n\n\n\n\n\nThe scale bar does not work on unprojected (long/lat) maps."
-  },
-  {
-    "objectID": "complement.html",
-    "href": "complement.html",
-    "title": "Complements",
-    "section": "",
-    "text": "Préparation des fichiers"
-  },
-  {
-    "objectID": "complement.html#sans-la-martinique",
-    "href": "complement.html#sans-la-martinique",
-    "title": "Complements",
-    "section": "Sans la Martinique",
-    "text": "Sans la Martinique\n\n\nCode\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet = T)\ncommune &lt;- commune [-grep(\"97\", commune$dpt),]\ndpt &lt;- commune$dpt\n# intersections\ninter &lt;- NULL\nfor (d in dpt){\n  car &lt;- st_read(\"data/gros/construction.gpkg\", d, quiet=T)\n  interTMP &lt;- st_intersection(car, commune)\n  inter &lt;- rbind(interTMP, inter)\n}\nst_write(inter, \"data/cours5.gpkg\", \"car\", delete_layer = T, quiet = T)\n\n\nMartinique\n\n\nCode\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet = T)\ncommune &lt;- commune [grep(\"97\", commune$dpt),]\ncar &lt;- st_read(\"data/gros/construction.gpkg\", unique(commune$dpt), quiet=T)\nst_crs(car)\ncommune &lt;- st_transform(commune, 5490)\ninter &lt;- st_intersection(car, commune)\nst_write(inter, \"data/cours5.gpkg\", \"car97\", delete_layer = T, quiet = T)\n\n\n\n\nCode\npng(\"img/interMartinique.png\")\nmf_map(inter)\ndev.off()\n\n\n # fichiers cours 3\nuniquement men_pauv et recodage une couche par commune\non charge le 93 on affiche osm on charge commune on sélectionne et on crée une nelle couche on découpe car par commune on décoche les couches"
   },
   {
     "objectID": "05_TD5.html",
@@ -455,11 +357,81 @@
     "text": "Simplification\n\n\nCode\nsimpli5 &lt;- st_simplify(agg, dTolerance=5)\nsimpli10 &lt;- st_simplify(agg, dTolerance=10)\nplot(simpli5$geometry)\nplot(simpli10$geometry)\n\n\nComment récupérer la hauteur ?\nComment supprimer l’aire non construite ?"
   },
   {
-    "objectID": "09_TD9.html",
-    "href": "09_TD9.html",
-    "title": "Script",
+    "objectID": "06_TD6.html",
+    "href": "06_TD6.html",
+    "title": "Jointures",
     "section": "",
-    "text": "Objet\nA travers d’un modèle de projet disponible sur github https://github.com/beababa/modeleProjet, les notions suivantes sont abordées :\n\nMarkdown\nStructure d’un projet R\nLe .yml\nLe site web\nLecture de .gpkg dans un script\n\n\n\nMarkdown\nRécupérer une cheatsheet par exemple, celle qui est intégrée dans R Studio,\nmenu Aide / Cheatsheet / rmarkdown\nDétailler les parties les plus importantes pour la mise en forme.\nUtiliser l’option rendu, observer les éléments proposés de l’en-tête Yaml\n\n\nStructure d’un projet R\n Détailler l’utilité de chaque fichier.\n\n\nLe .yml\nhttps://rmarkdown.rstudio.com/lesson-13.html\nexemple de .yml\nname: \"modèle projet\"\nnavbar:\n  left:\n    - text: \"Script 1\"\n      href: script1.html\n    - text: \"Script 2\"\n      href: script2.html\n  right:\n    - icon: fa-github\n      href: https://github.com/beababa/\noutput: \n  html_document:\n    toc_float: TRUE  \n    theme: united\n    highlight: tango\nAu niveau des thèmes : “default”, “cerulean”, “journal”, “flatly”, “readable”, “spacelab”, “united”, and “cosmo”.\n\n\nLe site web\nSi le projet est bien structuré et que le _site.yml, il suffit de faire le rendu\n Le rendu\n\n\n\nLecture du .gpkg\nAdapter le script proposé à sa propre commune."
+    "text": "Les jointures permettent d’enrichir les données en liant plusieurs tables ensemble. Les attributs des 2 tables vont se retrouver dans la jointure.\nLa jointure attributaire est facile à comprendre. Le point de vigilance est de vérifier :\n\nle nombre d’entités au départ\net après la jointure\n\nLa jointure spatiale est plus complexe et coûteuse en terme de calculs, se méfier notamment des croisements polygones / polygones, il vaut mieux passer par les centroides.\nLes jointures spatiales reposent sur les relations topologique (inclusion, adjacence et intersection)."
+  },
+  {
+    "objectID": "06_TD6.html#repérer-la-clé",
+    "href": "06_TD6.html#repérer-la-clé",
+    "title": "Jointures",
+    "section": "Repérer la clé",
+    "text": "Repérer la clé\nSimplicité de la clé (éviter les noms, privilégier les chiffres)\nCas des noms de rue"
+  },
+  {
+    "objectID": "06_TD6.html#sens-de-la-jointure",
+    "href": "06_TD6.html#sens-de-la-jointure",
+    "title": "Jointures",
+    "section": "Sens de la jointure",
+    "text": "Sens de la jointure\nTable avec géométrie en premier"
+  },
+  {
+    "objectID": "06_TD6.html#exemple-données-ofgl-et-communes-du-dpt",
+    "href": "06_TD6.html#exemple-données-ofgl-et-communes-du-dpt",
+    "title": "Jointures",
+    "section": "Exemple données OFGL et communes du dpt",
+    "text": "Exemple données OFGL et communes du dpt\n\n\n\n\n\nflowchart LR\n  A[géométrie commune] --&gt; C{joindre}\n  B[chiffres ofgl] --&gt; C{joindre}\n  C --&gt; D[carte symbologie graduée]\n\n\n\n\n\n\n\nOSM\nRécupération des limites communales dans le dpt dans OSM\nrequête : admin_level=8 in 93\n\n\nCode\nlibrary(sf)\n\n\nLinking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE\n\n\nCode\nlibrary(mapsf)\ncommune &lt;- st_read(\"data/cours6/communes93.geojson\", quiet=T)\n# Extraction uniquement des polygones\ncommune &lt;- st_collection_extract(commune, \"POLYGON\")\n\n\n\n\nOFGL\n\n\n\nCode\nofgl &lt;- read.csv2(\"data/cours6/donnees_carto_communes.csv\", dec =\".\")\n\n\n\n\nLa clé\n\n\nCode\ncommune$ref.INSEE\n\n\n [1] \"93055\" \"93061\" \"93070\" \"93001\" \"93039\" \"93048\" \"93006\" \"93051\" \"93045\"\n[10] \"93064\" \"93063\" \"93053\" \"93008\" \"93049\" \"93033\" \"93027\" \"93029\" \"93013\"\n[19] \"93010\" \"93072\" \"93030\" \"93073\" \"93007\" \"93005\" \"93078\" \"93077\" \"93062\"\n[28] \"93057\" \"93071\" \"93032\" \"93050\" \"93046\" \"93074\" \"93015\" \"93047\" \"93031\"\n[37] \"93079\" \"93014\" \"93066\" NA     \n\n\nCode\nofgl$Insee\n\n\n [1] 93029 93070 93014 93015 93048 93059 93062 93005 93006 93007 93031 93047\n[13] 93008 93010 93045 93050 93071 93027 93033 93053 93063 93064 93013 93030\n[25] 93039 93046 93049 93055 93061 93073 93078 93001 93032 93051 93057 93066\n[37] 93072 93074 93077 93079\n\n\nDans Arcgis, la jointure ne passera pas.\nIl faut convertir le code insee en chiffre.\n\n\n\nLa jointure\n\n\nCode\njointure &lt;- merge(commune, ofgl, by.x = \"ref.INSEE\", by.y = \"Insee\")\n\n\nAvec Arcgis, on utilise le menu Jointure et relation du clic droit sur la couche\n\n\nCode\nhist(jointure$Montant.par.habitant.2024)\n\n\n\n\n\n\n\n\n\nCode\nmf_map(jointure, type = \"choro\", var = \"Montant.par.habitant.2024\", border = NA)\n#mf_label(jointure, \"name\" , overlap = F, halo = T)\nmf_layout(\"Dépenses personnel par habitant dans le 93\", \"OFGL 2024, OSM 2026\")\n\n\n\n\n\n\n\n\n\nThe scale bar does not work on unprojected (long/lat) maps.\n\n\nSous Arcgis, faire une symbologie couleurs gradués"
+  },
+  {
+    "objectID": "06_TD6.html#points-et-polygones",
+    "href": "06_TD6.html#points-et-polygones",
+    "title": "Jointures",
+    "section": "Points et polygones",
+    "text": "Points et polygones\n\nBatiments (centroides) et carreau\n\n\nCode\nlibrary(sf)\nbat &lt;- st_read(\"data/cours6/bat.geojson\", quiet=T)\nbat &lt;- st_transform(bat, 2154)\ncar &lt;- st_read(\"data/bondy.gpkg\", \"carreau\", quiet=T)\ncar &lt;- car [, c(\"idcar_200m\")]\ncar &lt;- car [!duplicated(car),]\ncar$id &lt;- seq(1, length(car$idcar_200m))\ncar &lt;- st_collection_extract(car, \"POLYGON\")\n\n\n\n\nCode\nlibrary (mapsf)\nmf_map(car)\nmf_label(car, \"id\", cex = 0.5)\n\n\n\n\n\n\n\n\n\n\n\nCode\n# centroides bat\ncentroid &lt;- st_centroid(bat$geometry)\ncentroid &lt;- st_transform(centroid, 2154)\ncar &lt;- st_transform(car, 2154)\n# intersection : c'est la relation topologique passe partout\njointure &lt;- st_intersection(car, centroid)\n\n\n\n\nCode\nhead(table(jointure$id))\n\n\n\n 9 10 11 12 13 14 \n10 11  2  2 48 64 \n\n\nCode\njointure &lt;- jointure [jointure$id &lt; 3,]\n\n\n\n\nCode\npng(\"img/jointureSpatiale1.png\")\nmf_init(car [1:3,])\nmf_map(car, ,col = NA, add = T)\nmf_map(bat, col = \"wheat\", border=NA, add= T)\nmf_map(jointure, type=\"typo\", var=\"id\", pch=21, add = T, leg_pos = NA)\nmf_layout(\"Centroide batiment et id carreau\", \"OSM, INSEE 2019\\nMars 2026\")\ndev.off()"
+  },
+  {
+    "objectID": "06_TD6.html#polygones-et-polygones",
+    "href": "06_TD6.html#polygones-et-polygones",
+    "title": "Jointures",
+    "section": "Polygones et polygones",
+    "text": "Polygones et polygones\nbat et carreaux\n\n\nCode\njointure2 &lt;- NULL\njointure2 &lt;-  st_intersection(car, bat)\n\n\n\n\nCode\njointure &lt;- jointure2\njointure &lt;- jointure [jointure$id &lt; 3,]\npng(\"img/jointureSpatiale2.png\")\nmf_init(car [1:3,])\nmf_map(car, ,col = NA, add = T)\nmf_map(bat, col = \"wheat\", border=NA, add= T)\nmf_map(jointure [jointure], type=\"typo\", var=\"id\", pch=21, add = T, leg_pos = NA)\nmf_layout(\"batiment et id carreau\", \"OSM, INSEE 2019\\nMars 2026\")\ndev.off()"
+  },
+  {
+    "objectID": "06_TD6.html#calcul-statistique-à-effectuer",
+    "href": "06_TD6.html#calcul-statistique-à-effectuer",
+    "title": "Jointures",
+    "section": "Calcul statistique à effectuer",
+    "text": "Calcul statistique à effectuer\nDans Arcgis Pro, trouver comment calculer le nombre de bâtiments par carreaux (centroides et polygones)"
+  },
+  {
+    "objectID": "08_TD8.html",
+    "href": "08_TD8.html",
+    "title": "Environnment",
+    "section": "",
+    "text": "Projet : reprendre la thématique ville pauvre - riche sous R en y incluant tous les traitements vus sous Arcgis.\nBinômes : Distinguer 2 rôles technique et rédacteur, par groupe et zones géographiques proches par dpt"
+  },
+  {
+    "objectID": "08_TD8.html#première-attribution-par-dpt",
+    "href": "08_TD8.html#première-attribution-par-dpt",
+    "title": "Environnment",
+    "section": "Première attribution par dpt",
+    "text": "Première attribution par dpt\n\n\nCode\ntot$dpt &lt;- substring(tot$code,1,2)\ntable(tot$dpt, tot$groupe)\n\n\n    \n     6 7\n  13 0 1\n  28 0 1\n  31 1 0\n  33 0 1\n  44 3 0\n  49 0 1\n  50 0 1\n  59 0 1\n  60 0 1\n  63 0 1\n  64 1 0\n  69 1 0\n  72 0 1\n  73 1 0\n  75 0 1\n  78 1 0\n  91 0 1\n  92 4 1\n  93 1 7\n  94 0 1\n  95 1 0\n  97 0 2\n\n\npremière attribution : 44 / 92 / 93 / 93 + 95 / 92 + 94 etc …"
+  },
+  {
+    "objectID": "08_TD8.html#attribution-par-région",
+    "href": "08_TD8.html#attribution-par-région",
+    "title": "Environnment",
+    "section": "Attribution par région",
+    "text": "Attribution par région\non procéde par région\n\n\nCode\nlibrary(sf)\n\n\nLinking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE\n\n\nCode\nregion &lt;- st_read(\"data/region/regions-20180101.shp\", quiet=T)\nregion &lt;- st_transform(region, 2154)\nregion &lt;- region [!region$code_insee %in% c(\"01\", \"02\", \"03\",\"04\",\"06\",\"11\"),]\nidf &lt;- region [region$code_insee == \"11\",]\ndrom &lt;-region [region$code_insee %in% c(\"01\", \"02\", \"03\",\"04\",\"06\"),]\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet = T)\njoint &lt;- merge(commune, tot, by = \"code\", all.x = T)\njoint &lt;- st_transform(joint, 2154)\n\n\n\n\nCode\nlibrary(mapsf)\ninter &lt;- st_intersection(joint, region)\nmf_map(region, col = \"wheat\", border = \"cornsilk\")\nmf_map(inter, add = T)\nmf_label(inter, var = \"groupe\", halo = T, overlap = F, cex = 1.2)\n\n\n\n\n\n\n\n\n\n\n\nCode\ntable(inter$groupe, inter$nom.1)\n\n\n   \n    Auvergne-Rhône-Alpes Bourgogne-Franche-Comté Centre-Val de Loire\n  6                    2                       0                   0\n  7                    1                       0                   1\n   \n    Hauts-de-France Normandie Nouvelle-Aquitaine Occitanie Pays de la Loire\n  6               0         0                  1         1                3\n  7               2         1                  1         0                2\n   \n    Provence-Alpes-Côte d'Azur\n  6                          0\n  7                          1\n\n\n2e attribution région Auvergne, Hauts, Pays de la Loire"
+  },
+  {
+    "objectID": "08_TD8.html#attribution-finale",
+    "href": "08_TD8.html#attribution-finale",
+    "title": "Environnment",
+    "section": "attribution finale",
+    "text": "attribution finale\nChaque groupe inscrit sa région / son dpt dans le tableau + un nom de groupe + les prénoms"
   },
   {
     "objectID": "08_TD8.html#github",
@@ -467,5 +439,26 @@
     "title": "Environnment",
     "section": "Github",
     "text": "Github\n\nCréation du compte\ngithub.com\n\n\nle site web\ncréer un site web avec git\nUniquement les points 1 et 2, pas le point 3\nPour créer un fichier, il suffit de créer par exemple un readme\n et de faire son premier commit (= engagement)"
+  },
+  {
+    "objectID": "08_TD8.html#rstudio-et-r",
+    "href": "08_TD8.html#rstudio-et-r",
+    "title": "Environnment",
+    "section": "Rstudio et R",
+    "text": "Rstudio et R\nDistinguer les deux : langage et IDE (Environnement de développement, integrated development environment)\nAttention, paramétrer les historiques sinon cela va générer de gros fichiers encombrants.\n\n\nConnexion R et git\nversionner son code\nA partir de Configuration et juste le protocole SSH\npoints de vigilance\n\ncréation de la clé SSH dans Rstudio et recopie dans git\n\nLa clé se positionne dans le répertoire .ssh de votre profil utilisateur\n\nSauvegarder l’ensemble du répertoire .ssh afin de le recopier sur les ordinateurs sur lesquels vous travaillez.\nPuis, suivre Initialisation d’un projet R avec Git\n\n\nPremier script R\ndistinguer le data frame et le vecteur\n\n\nCode\nv1 &lt;- c(\"ville1\", \"ville2\")\nv2 &lt;- c(\"RN\", \"LFI\")\ndf &lt;- data.frame(ville = v1, vainqueur = v2)\ndf\n\n\n   ville vainqueur\n1 ville1        RN\n2 ville2       LFI\n\n\nCode\ndf &lt;- as.data.frame(v1,v2)\n\n\n\n\nPremier commit\nUne fois le script enregistré il faut faire :\n\nenregistrer les modifications = cocher les fichiers que l’on veut envoyer sur le serveur git\nle commit (validation des modifications), mettre un message clair\nle push"
+  },
+  {
+    "objectID": "complement.html",
+    "href": "complement.html",
+    "title": "Complements",
+    "section": "",
+    "text": "Préparation des fichiers"
+  },
+  {
+    "objectID": "complement.html#sans-la-martinique",
+    "href": "complement.html#sans-la-martinique",
+    "title": "Complements",
+    "section": "Sans la Martinique",
+    "text": "Sans la Martinique\n\n\nCode\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet = T)\ncommune &lt;- commune [-grep(\"97\", commune$dpt),]\ndpt &lt;- commune$dpt\n# intersections\ninter &lt;- NULL\nfor (d in dpt){\n  car &lt;- st_read(\"data/gros/construction.gpkg\", d, quiet=T)\n  interTMP &lt;- st_intersection(car, commune)\n  inter &lt;- rbind(interTMP, inter)\n}\nst_write(inter, \"data/cours5.gpkg\", \"car\", delete_layer = T, quiet = T)\n\n\nMartinique\n\n\nCode\ncommune &lt;- st_read(\"data/cours5.gpkg\", \"commune\", quiet = T)\ncommune &lt;- commune [grep(\"97\", commune$dpt),]\ncar &lt;- st_read(\"data/gros/construction.gpkg\", unique(commune$dpt), quiet=T)\nst_crs(car)\ncommune &lt;- st_transform(commune, 5490)\ninter &lt;- st_intersection(car, commune)\nst_write(inter, \"data/cours5.gpkg\", \"car97\", delete_layer = T, quiet = T)\n\n\n\n\nCode\npng(\"img/interMartinique.png\")\nmf_map(inter)\ndev.off()\n\n\n # fichiers cours 3\nuniquement men_pauv et recodage une couche par commune\non charge le 93 on affiche osm on charge commune on sélectionne et on crée une nelle couche on découpe car par commune on décoche les couches"
   }
 ]
