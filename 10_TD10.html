@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Géoréférencement – L6ECSIG</title>
+<title>GT R – L6ECSIG</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Données</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./02_TD2.html" aria-current="page"> 
+    <a class="nav-link" href="./02_TD2.html"> 
 <span class="menu-text">Projections</span></a>
   </li>  
   <li class="nav-item">
@@ -153,6 +153,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li class="nav-item">
     <a class="nav-link" href="./06_TD6.html"> 
 <span class="menu-text">Jointures</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./07_TD7.html"> 
+<span class="menu-text">Distance</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./08_TD8.html"> 
+<span class="menu-text">Environnement</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./09_TD9.html"> 
+<span class="menu-text">Script</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./10_TD10.html" aria-current="page"> 
+<span class="menu-text">GT R</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -178,20 +194,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#objet" id="toc-objet" class="nav-link active" data-scroll-target="#objet">Objet</a></li>
-  <li><a href="#datums-à-connaître" id="toc-datums-à-connaître" class="nav-link" data-scroll-target="#datums-à-connaître">3 datums à connaître</a></li>
-  <li><a href="#wgs84-et-lambert-93" id="toc-wgs84-et-lambert-93" class="nav-link" data-scroll-target="#wgs84-et-lambert-93">WGS84 et Lambert 93</a></li>
-  <li><a href="#exercice-1-trouver-la-projection-des-premiers-carreaux-insee" id="toc-exercice-1-trouver-la-projection-des-premiers-carreaux-insee" class="nav-link" data-scroll-target="#exercice-1-trouver-la-projection-des-premiers-carreaux-insee">Exercice 1 = trouver la projection des premiers carreaux insee</a></li>
-  <li><a href="#arcgis-pro" id="toc-arcgis-pro" class="nav-link" data-scroll-target="#arcgis-pro">Arcgis Pro</a>
+  <li><a href="#la-donnée" id="toc-la-donnée" class="nav-link" data-scroll-target="#la-donnée">La donnée</a>
   <ul class="collapse">
-  <li><a href="#emprise-des-données" id="toc-emprise-des-données" class="nav-link" data-scroll-target="#emprise-des-données">Emprise des données</a></li>
-  <li><a href="#systèmes-de-coordonnées" id="toc-systèmes-de-coordonnées" class="nav-link" data-scroll-target="#systèmes-de-coordonnées">Systèmes de coordonnées</a>
-  <ul class="collapse">
-  <li><a href="#au-niveau-du-projet-arcgis" id="toc-au-niveau-du-projet-arcgis" class="nav-link" data-scroll-target="#au-niveau-du-projet-arcgis">Au niveau du projet Arcgis</a></li>
-  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
+  <li><a href="#liste-définitive-des-communes" id="toc-liste-définitive-des-communes" class="nav-link" data-scroll-target="#liste-définitive-des-communes">Liste définitive des communes</a></li>
+  <li><a href="#récupération-des-géométries" id="toc-récupération-des-géométries" class="nav-link" data-scroll-target="#récupération-des-géométries">Récupération des géométries</a></li>
+  <li><a href="#récupérer-une-orthophoto" id="toc-récupérer-une-orthophoto" class="nav-link" data-scroll-target="#récupérer-une-orthophoto">Récupérer une orthophoto</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#exercice-2-aire-des-carreaux" id="toc-exercice-2-aire-des-carreaux" class="nav-link" data-scroll-target="#exercice-2-aire-des-carreaux">Exercice 2 aire des carreaux</a></li>
-  <li><a href="#géoréférencer-un-plan-dao-en-oo" id="toc-géoréférencer-un-plan-dao-en-oo" class="nav-link" data-scroll-target="#géoréférencer-un-plan-dao-en-oo">Géoréférencer un plan DAO en O,O</a></li>
+  <li><a href="#gt-raster-découpage-de-raster" id="toc-gt-raster-découpage-de-raster" class="nav-link" data-scroll-target="#gt-raster-découpage-de-raster">GT raster : Découpage de raster</a></li>
+  <li><a href="#gt-vecteur-centroides-et-tampons" id="toc-gt-vecteur-centroides-et-tampons" class="nav-link" data-scroll-target="#gt-vecteur-centroides-et-tampons">GT vecteur : Centroides et tampons</a></li>
+  <li><a href="#isochrones" id="toc-isochrones" class="nav-link" data-scroll-target="#isochrones">Isochrones</a></li>
   </ul>
 </nav>
     </div>
@@ -200,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Géoréférencement</h1>
+<h1 class="title">GT R</h1>
 </div>
 
 
@@ -219,122 +230,280 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="objet" class="level1">
 <h1>Objet</h1>
-<p>En fait au delà de l’exercice pratique de géoréférencement, il s’agit de faire un point sur les projections.</p>
+<p>L’objet de ce cours est de faire des géotraitements avec R et markdown.</p>
+<p>Utilisation du script 2 dans le modèle de projet disponible sur github <a href="https://github.com/beababa/modeleProjet" class="uri">https://github.com/beababa/modeleProjet</a></p>
+<p>Mais cette fois ci,</p>
+<ul>
+<li><p>créer le script2.Rmd</p></li>
+<li><p>utiliser l’autocomplétion en tapant les commandes.</p></li>
+</ul>
+<p>De plus, nous allons utiliser une nouvelle libraire : happign</p>
+<p>Une librairie très simple d’utilisation qui permet de récupérer les données ign.</p>
+<p>librairie <a href="https://paul-carteron.github.io/happign/">happign</a></p>
+<p>Pour mémoire, faire le point sur</p>
+<ul>
+<li>les librairies et leur installation</li>
+</ul>
+<p>Autre référence incontournable :</p>
+<ul>
+<li>Géotraitements avec R à partir de la <a href="https://github.com/rstudio/cheatsheets/blob/main/sf.pdf">cheat sheet</a> de la librairie sf</li>
+</ul>
 </section>
-<section id="datums-à-connaître" class="level1">
-<h1>3 datums à connaître</h1>
-<p>WGS84 / RGF93 / ETRS89</p>
-</section>
-<section id="wgs84-et-lambert-93" class="level1">
-<h1>WGS84 et Lambert 93</h1>
-<p>Observer une carte topo IGN : comprendre le quadrillage</p>
-<p>2 quadrillages WGS 84 et Lambert 93</p>
-<p><img src="img/carteIGN.jpg" class="img-fluid"></p>
-<p>A connaître, les <em>emprises</em> de la France dans les deux systèmes</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">"data/2Grilles.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<section id="la-donnée" class="level1">
+<h1>La donnée</h1>
+<section id="liste-définitive-des-communes" class="level2">
+<h2 class="anchored" data-anchor-id="liste-définitive-des-communes">Liste définitive des communes</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>Mais il y a beaucoup d’autres grilles, tous les CRS possibles sur une zone donnée avec les emprises <em>CRS explorer</em></p>
-<p>Autre outil :</p>
-<p><a href="http://bboxfinder.com/#0.000000,0.000000,0.000000,0.000000">bboxfinder</a></p>
-</section>
-<section id="exercice-1-trouver-la-projection-des-premiers-carreaux-insee" class="level1">
-<h1>Exercice 1 = trouver la projection des premiers carreaux insee</h1>
-<p>La ressource est sur le site de l’insee, terme de recherche :</p>
-<p><em>carreaux 1 km recensement population</em></p>
-<p>Il faut prendre l’item : données carroyées à 1 kilomètre</p>
-<p>Regarder le .pdf et trouver le système de projection</p>
-<p>Qui porte ce système ? Pourquoi l’insee choisit ce système ?</p>
-</section>
-<section id="arcgis-pro" class="level1">
-<h1>Arcgis Pro</h1>
-<p>Sous Arcgis Pro, la donnée s’ouvre-t-elle ?</p>
-<p>Image pb licence</p>
-<p>Prendre plutôt le fichier mise à dispo carreauPB.gpkg.</p>
-<section id="emprise-des-données" class="level2">
-<h2 class="anchored" data-anchor-id="emprise-des-données">Emprise des données</h2>
-<p><img src="img/emprise.png" class="img-fluid"></p>
-<p>Il faut trouver un Y de 2 millions et un X de 500 M</p>
-<p>https://geofree.fr/gf/projguess.asp, le tableau permet de voir toutes les emprises</p>
-<p>voire même de mettre l’ordre de grandeur de l’emprise</p>
-<p><img src="img/geoFree.png" class="img-fluid"></p>
-</section>
-<section id="systèmes-de-coordonnées" class="level2">
-<h2 class="anchored" data-anchor-id="systèmes-de-coordonnées">Systèmes de coordonnées</h2>
-<section id="au-niveau-du-projet-arcgis" class="level3">
-<h3 class="anchored" data-anchor-id="au-niveau-du-projet-arcgis">Au niveau du projet Arcgis</h3>
-<p><img src="img/unnames.png" class="img-fluid"> ### Couche</p>
-<p><img src="img/arcgisProCar.png" class="img-fluid"><img src="img/arcgisPro2154.png" class="img-fluid"></p>
-<p>Qu’en déduire ?</p>
-</section>
-<section id="r" class="level3">
-<h3 class="anchored" data-anchor-id="r">R</h3>
-<p>On charge la donnée</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/R_rfl09_LAEA1000.mid"</span>, <span class="at">quiet=</span>T)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>petit <span class="ot">&lt;-</span> data [<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]  <span class="co"># pour faire des tests</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>EXO 1 = Recopier et commenter les étapes avec le #</p>
+</div>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># une bibliothèque permmet de suggérer le crs inexistant</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(crsuggest)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>coordBondy <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="fl">48.9</span>,<span class="fl">2.46</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">guess_crs</span>(petit, coordBondy)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span> (petit) <span class="ot">&lt;-</span> <span class="dv">32439</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/framaCalcCours9.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Lecture du fichier</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> commune  [, <span class="fu">c</span>(<span class="dv">3</span>)]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">unique</span>(commune)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> commune[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">34</span><span class="sc">:</span><span class="dv">35</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p><img src="img/32639.png" class="img-fluid"></p>
+</section>
+<section id="récupération-des-géométries" class="level2">
+<h2 class="anchored" data-anchor-id="récupération-des-géométries">Récupération des géométries</h2>
+<p>Quelle méthode avons nous utiliser en cours pour récupérer les géométries ?</p>
+<p>Examiner la simplicité de la syntaxe de la librairie.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c'est un epsg qui concerne l'Azerbaidjan...</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>petit <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(petit, <span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>petit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE</code></pre>
 </div>
-<p>Dommage, mais 46,21 ce n’est pas -4 / 10 …</p>
-<p>Heureusement, cela fonctionne sous Qgis de façon automatique.</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(happign)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Please make sure you have an internet connection.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Use happign::get_last_news() to display latest geoservice news.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attachement du package : 'happign'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>L'objet suivant est masqué depuis 'package:base':
+
+    within</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> <span class="fu">get_apicarto_cadastre</span>(<span class="st">"93010"</span>, <span class="at">type =</span> <span class="st">"commune"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>⠙ iterating 1 done (0.24/s) | 4.1s</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>iterating ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tot <span class="ot">&lt;-</span> <span class="fu">get_apicarto_cadastre</span>(commune, <span class="at">type =</span> <span class="st">"commune"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>⠙ iterating 1 done (0.32/s) | 3.1s
+iterating ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(tot, <span class="st">"data/projet.gpkg"</span>, <span class="st">"commune"</span>, <span class="at">delete_layer =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Deleting layer `commune' using driver `GPKG'
+Writing layer `commune' to data source `data/projet.gpkg' using driver `GPKG'
+Writing 33 features with 5 fields and geometry type Multi Polygon.</code></pre>
+</div>
+</div>
+<p>Cela fonctionne égalemetn pour les rasters</p>
 </section>
-</section>
-</section>
-<section id="exercice-2-aire-des-carreaux" class="level1">
-<h1>Exercice 2 aire des carreaux</h1>
-<p>Angle vs Aire</p>
-<p>Dans les faits, on mesure les carreaux, ils sont supposés faire 1 km donc… en m² ?</p>
+<section id="récupérer-une-orthophoto" class="level2">
+<h2 class="anchored" data-anchor-id="récupérer-une-orthophoto">Récupérer une orthophoto</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>EXO 2 : En adaptant le code, couper aux carreaux manquants de sa commune.</p>
+<p>La donnée carreau manquant est dans le fichier cours10.gpkg</p>
+</div>
+</div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">st_area</span>(data<span class="sc">$</span>geometry))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filtrage pour représentation carto</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">13000</span>),]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>aire <span class="ot">&lt;-</span> <span class="fu">st_area</span>(data<span class="sc">$</span>geometry)<span class="sc">/</span><span class="dv">1000000</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>aire)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># pour cartographier on filtre sur les 1500 premiers carreaux</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(data,<span class="st">"data/carreauPB.gpkg"</span>, <span class="st">"carLeger"</span>, <span class="at">delete_layer =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">get_wms_raster</span>(bondy,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">layer =</span> <span class="st">"ORTHOIMAGERY.ORTHOPHOTOS"</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">res =</span> <span class="dv">10</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">crs =</span> <span class="dv">2154</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">rgb =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">filename =</span> <span class="st">"data/bondy.tif"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">overwrite =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Using cached file: C:\Users\forma\L6ECSIG\data\bondy.tif</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>terra 1.9.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attachement du package : 'terra'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>L'objet suivant est masqué depuis 'package:happign':
+
+    relate</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"data/bondy.tif"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(r)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="10_TD10_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="gt-raster-découpage-de-raster" class="level1">
+<h1>GT raster : Découpage de raster</h1>
+<p>On reprend l’idée d’examiner les carreaux absents</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(data, <span class="at">type =</span> <span class="st">"choro"</span>, <span class="at">var =</span> <span class="st">"aire"</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">leg_val_rnd =</span> <span class="dv">5</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Carreaux 1 km : évolution nord sud"</span>, <span class="st">"insee 2013"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours5.gpkg"</span>, <span class="st">"carreau_manquant"</span>, <span class="at">quiet=</span>T)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>carBondy <span class="ot">&lt;-</span> car [car<span class="sc">$</span>code <span class="sc">==</span> <span class="dv">93010</span>,]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(carBondy<span class="sc">$</span>geom)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="10_TD10_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>cr <span class="ot">&lt;-</span> <span class="fu">crop</span>(r, carBondy, <span class="at">mask =</span> T)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="10_TD10_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Observer un seul carreau</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>carBondy <span class="ot">&lt;-</span> <span class="fu">st_cast</span>(carBondy,<span class="st">"POLYGON"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>carBondy <span class="ot">&lt;-</span> carBondy [<span class="dv">1</span>,]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>cr <span class="ot">&lt;-</span> <span class="fu">crop</span>(r, carBondy, <span class="at">mask =</span> T)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="10_TD10_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Que dire de la qualité de l’orthophoto ?</p>
+</section>
+<section id="gt-vecteur-centroides-et-tampons" class="level1">
+<h1>GT vecteur : Centroides et tampons</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>EXO 3 = Trouver la fonction pour le centroide et les tampons sur la cheasheet de la librairie sf et le faire à partir du centroide de votre commune.</p>
+</div>
+</div>
+</section>
+<section id="isochrones" class="level1">
+<h1>Isochrones</h1>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pt <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(bondy)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>longlat <span class="ot">&lt;-</span> <span class="fu">unlist</span>(pt<span class="sc">$</span>geometry )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>Que dire sur la déformation de l’espace ?</p>
-</section>
-<section id="géoréférencer-un-plan-dao-en-oo" class="level1">
-<h1>Géoréférencer un plan DAO en O,O</h1>
-<p>C’est le cas le plus fréquent en commune, les plans DAO ne sont dans aucun système de coordonnées.</p>
-<p>Du coup, on le géoréférence à la main.</p>
+<p>Malheureusement, le get_isochrone de happign ne fonctionne pas.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>iso <span class="ot">&lt;-</span> <span class="fu">get_isochrone</span>(pt, <span class="at">time =</span> <span class="dv">15</span>, <span class="at">profile =</span> <span class="st">"pedestrian"</span>, <span class="at">source =</span> <span class="st">"pgr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Utiliser rgeoservices</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgeoservices)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>iso <span class="ot">&lt;-</span> <span class="fu">gs_get_isochrone</span>(</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">longitude =</span> longlat [<span class="dv">1</span>],</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">latitude =</span> longlat [<span class="dv">2</span>],</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">cost_value =</span> <span class="dv">15</span>,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">profile =</span> <span class="st">"pedestrian"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"departure"</span>,</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">time_unit =</span> <span class="st">"minute"</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iso)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="10_TD10_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
