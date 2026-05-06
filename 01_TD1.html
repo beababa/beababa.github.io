@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./intro.html"> 
-<span class="menu-text">Introduction</span></a>
+<span class="menu-text">Intro</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./01_TD1.html" aria-current="page"> 
@@ -160,11 +160,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./08_TD8.html"> 
-<span class="menu-text">Environnement</span></a>
+<span class="menu-text">Env</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./09_TD9.html"> 
 <span class="menu-text">Script</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./10_TD10.html"> 
+<span class="menu-text">GT R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./11_TD11.html"> 
+<span class="menu-text">exam</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -378,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `cadastre-93010-parcelles' from data source 
-  `C:\Users\forma\L6ECSIG\data\dataCours1\cadastre-93010-parcelles.json' 
+  `C:\Users\bmaranget\L6ECSIG\data\dataCours1\cadastre-93010-parcelles.json' 
   using driver `GeoJSON'
 Simple feature collection with 7157 features and 9 fields
 Geometry type: POLYGON
@@ -392,7 +400,7 @@ Geodetic CRS:  WGS 84</code></pre>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `communes' from data source 
-  `C:\Users\forma\L6ECSIG\data\dataCours1\communes.shp' using driver `ESRI Shapefile'
+  `C:\Users\bmaranget\L6ECSIG\data\dataCours1\communes.shp' using driver `ESRI Shapefile'
 Simple feature collection with 39 features and 4 fields
 Geometry type: POLYGON
 Dimension:     XY
@@ -405,7 +413,8 @@ Projected CRS: RGF93 v1 / Lambert-93</code></pre>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `export' from data source 
-  `C:\Users\forma\L6ECSIG\data\dataCours1\export.geojson' using driver `GeoJSON'
+  `C:\Users\bmaranget\L6ECSIG\data\dataCours1\export.geojson' 
+  using driver `GeoJSON'
 Simple feature collection with 2 features and 16 fields
 Geometry type: GEOMETRY
 Dimension:     XY
@@ -417,7 +426,7 @@ Geodetic CRS:  WGS 84</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/dataCours1/demographyref-france-donnees-carroyees-200m-millesime.geojson"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Reading layer `demographyref-france-donnees-carroyees-200m-millesime' from data source `C:\Users\forma\L6ECSIG\data\dataCours1\demographyref-france-donnees-carroyees-200m-millesime.geojson' 
+<pre><code>Reading layer `demographyref-france-donnees-carroyees-200m-millesime' from data source `C:\Users\bmaranget\L6ECSIG\data\dataCours1\demographyref-france-donnees-carroyees-200m-millesime.geojson' 
   using driver `GeoJSON'
 Simple feature collection with 132 features and 47 fields
 Geometry type: POLYGON

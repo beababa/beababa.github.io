@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./intro.html"> 
-<span class="menu-text">Introduction</span></a>
+<span class="menu-text">Intro</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./01_TD1.html"> 
@@ -160,11 +160,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./08_TD8.html"> 
-<span class="menu-text">Environnement</span></a>
+<span class="menu-text">Env</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./09_TD9.html"> 
 <span class="menu-text">Script</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./10_TD10.html"> 
+<span class="menu-text">GT R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./11_TD11.html"> 
+<span class="menu-text">exam</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -200,6 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#tri-fichier" id="toc-tri-fichier" class="nav-link" data-scroll-target="#tri-fichier">Tri fichier</a></li>
   <li><a href="#les-communes-des-dpts" id="toc-les-communes-des-dpts" class="nav-link" data-scroll-target="#les-communes-des-dpts">les communes des dpts</a></li>
   <li><a href="#les-batiments-dans-le-cadastre-etalab" id="toc-les-batiments-dans-le-cadastre-etalab" class="nav-link" data-scroll-target="#les-batiments-dans-le-cadastre-etalab">les batiments dans le cadastre etalab</a></li>
+  <li><a href="#carreaux-manquants-pour-communes-finales" id="toc-carreaux-manquants-pour-communes-finales" class="nav-link" data-scroll-target="#carreaux-manquants-pour-communes-finales">carreaux manquants pour communes finales</a></li>
   </ul>
 </nav>
     </div>
@@ -443,9 +452,9 @@ Available layers:
 1            commune       Polygon       43      3 RGF93 v1 / Lambert-93
 2                car                  43259     38 RGF93 v1 / Lambert-93
 3              car97                   1383     37 RGAF09 / UTM zone 20N
-4             tampon                      3      2 RGF93 v1 / Lambert-93
-5   carreau_manquant                     42      2 RGF93 v1 / Lambert-93
-6 carreau_manquant97       Polygon      115      2 RGAF09 / UTM zone 20N</code></pre>
+4   carreau_manquant                     42      2 RGF93 v1 / Lambert-93
+5 carreau_manquant97       Polygon      115      2 RGAF09 / UTM zone 20N
+6             tampon                      3      2 RGF93 v1 / Lambert-93</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
@@ -473,7 +482,7 @@ Projected CRS: RGF93 v1 / Lambert-93
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(units)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>udunits database from C:/Users/forma/AppData/Local/R/win-library/4.5/units/share/udunits/udunits2.xml</code></pre>
+<pre><code>udunits database from C:/Users/bmaranget/AppData/Local/Programs/R/R-4.5.2/library/units/share/udunits/udunits2.xml</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
@@ -569,6 +578,58 @@ Projected CRS: RGF93 v1 / Lambert-93
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(R.utils)</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span>(<span class="st">"data/bat.json.gz"</span>)</span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>bat <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/bat.json"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="carreaux-manquants-pour-communes-finales" class="level1">
+<h1>carreaux manquants pour communes finales</h1>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/projet.gpkg"</span>, <span class="st">"commune"</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>car <span class="ot">&lt;-</span> filosofi  [filosofi<span class="sc">$</span>lcog_geo <span class="sc">%in%</span> commune<span class="sc">$</span>code_insee,]</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">names</span>(<span class="fu">table</span>(car<span class="sc">$</span>lcog_geo)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Il en manque 2</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(car, <span class="st">"data/projet.gpkg"</span>, <span class="st">"car"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># on agrège les carreaux par dpt</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>car<span class="sc">$</span>dpt <span class="ot">&lt;-</span> <span class="fu">substring</span>(car<span class="sc">$</span>lcog_geo,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>aggCar <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(car [, <span class="fu">c</span>( <span class="st">"dpt"</span>)], <span class="at">by =</span> <span class="fu">list</span>(car<span class="sc">$</span>dpt), length)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># même opération sur les communes</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>aggCommune <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(commune [, <span class="st">"code_dep"</span>], <span class="at">by=</span><span class="fu">list</span>(commune<span class="sc">$</span>code_dep), length)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(aggCar)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dpt"</span>, <span class="st">"nb"</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(aggCommune)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dpt"</span>, <span class="st">"nb"</span>)</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span>  <span class="cn">NULL</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> commune[commune<span class="sc">$</span>code_dep <span class="sc">!=</span> <span class="dv">97</span>,]</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>dpt <span class="ot">&lt;-</span> <span class="fu">unique</span>(commune<span class="sc">$</span>code_dep)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(aggCar)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(aggCommune)</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>aggCommune <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(aggCommune, <span class="dv">2154</span>)</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(commune, <span class="dv">2154</span>)</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (d <span class="cf">in</span> dpt){</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(d)</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">st_difference</span>(aggCommune [aggCommune<span class="sc">$</span>dpt <span class="sc">==</span> d, <span class="fu">c</span>(<span class="st">"dpt"</span>)], aggCar [aggCar<span class="sc">$</span>dpt <span class="sc">==</span> d, <span class="fu">c</span>(<span class="st">"dpt"</span>)])</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>  diff <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tmp, diff)</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#diff &lt;- st_cast(diff,"POLYGON")</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(diff, commune)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> inter [, <span class="fu">c</span>(<span class="st">"gid"</span>, <span class="st">"nom_com"</span>)]</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(inter , <span class="st">"data/projet.gpkg"</span>, <span class="st">"carreau_manquant"</span>, <span class="at">delete_layer =</span> T, <span class="at">quiet =</span> T)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">st_layers</span>(<span class="st">"data/projet.gpkg"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 

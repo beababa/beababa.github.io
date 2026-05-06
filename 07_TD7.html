@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./intro.html"> 
-<span class="menu-text">Introduction</span></a>
+<span class="menu-text">Intro</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./01_TD1.html"> 
@@ -160,11 +160,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./08_TD8.html"> 
-<span class="menu-text">Environnement</span></a>
+<span class="menu-text">Env</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./09_TD9.html"> 
 <span class="menu-text">Script</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./10_TD10.html"> 
+<span class="menu-text">GT R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./11_TD11.html"> 
+<span class="menu-text">exam</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -378,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> <span class="fu">st_layers</span>(<span class="st">"data/gros/BDT_3-5_GPKG_LAMB93_D093-ED2025-12-15.gpkg"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>couches <span class="ot">&lt;-</span> couches<span class="sc">$</span>name</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/gros/BDT_3-5_GPKG_LAMB93_D093-ED2025-12-15.gpkg"</span>, <span class="st">"route_numerotee_ou_nommee"</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(data,<span class="st">"data/cours7/route.gpkg"</span>, <span class="st">"bdtopo"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(data,<span class="st">"data/cours7/route.gpkg"</span>, <span class="st">"bdtopo"</span>, <span class="at">append =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ul>
@@ -404,7 +412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="les-api-de-lign-et-le-nouveau-géoportail-cartes.gouv">Les API de l’IGN et le nouveau Géoportail (Cartes.gouv)</h2>
 <p>Aujourd’hui, l’IGN met à disposition des outils qui permettent de faire des itinéraires ou des traitements autour des distances par le biais d’API. Tout se passe au niveau de Carte.gouv, le remplaçant du Géoportail.</p>
 <p><a href="https://cartes.gouv.fr/aide/fr/guides-utilisateur/visualiseur-cartographique/les-outils-autour-de-la-carte/calculer-une-isochrone/">Faire des isochrones avec l’IGN</a></p>
-<p>Pour le TD, créer quelques isochrones avec cet outil et les importer dans Arcgis.</p>
+<p>Pour le TD, créer quelques isochrones avec la librairie outil et les importer dans Arcgis.</p>
 </section>
 <section id="r-obtenir-un-ensemble-disochrones-basé-sur-lapi" class="level2">
 <h2 class="anchored" data-anchor-id="r-obtenir-un-ensemble-disochrones-basé-sur-lapi">R : obtenir un ensemble d’isochrones basé sur l’API</h2>
@@ -412,49 +420,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours7.gpkg"</span>, <span class="st">"maisonDeQuartier"</span>, <span class="at">quiet =</span> T)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgeoservices)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(data, <span class="dv">4326</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>accessibilite <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>nom <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(data<span class="sc">$</span>geom))){</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  pt <span class="ot">&lt;-</span> <span class="fu">unlist</span>(data<span class="sc">$</span>geom  [i])</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>longitude <span class="ot">&lt;-</span> pt [<span class="dv">1</span>]</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>latitude <span class="ot">&lt;-</span> pt [<span class="dv">2</span>]</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">gs_get_isochrone</span>(</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  longitude,</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  latitude,</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">cost_value =</span> <span class="dv">10</span>,</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">profile =</span> <span class="st">"pedestrian"</span>,</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"departure"</span>,</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">time_unit =</span> <span class="st">"minute"</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>tmpN <span class="ot">&lt;-</span> data<span class="sc">$</span>name [i]</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>accessibilite <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tmp, accessibilite)</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>nom <span class="ot">&lt;-</span> <span class="fu">c</span>(tmpN, nom)</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>accessibilite<span class="sc">$</span>nom <span class="ot">&lt;-</span> nom</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pts <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/cours7.gpkg"</span>, <span class="st">"maisonDeQuartier"</span>, <span class="at">quiet =</span> T)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>pts <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(pts, <span class="dv">4326</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgeoservices)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>iso <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(pts<span class="sc">$</span>geom))){</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a> longlat <span class="ot">&lt;-</span> <span class="fu">unlist</span>(pts<span class="sc">$</span>geom [i])</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  tmpIso <span class="ot">&lt;-</span> <span class="fu">gs_get_isochrone</span>(</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">longitude =</span> longlat [<span class="dv">1</span>],</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">latitude =</span> longlat [<span class="dv">2</span>],</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">cost_value =</span> <span class="dv">15</span>,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">profile =</span> <span class="st">"pedestrian"</span>,</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="st">"departure"</span>,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_unit =</span> <span class="st">"minute"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  iso <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tmpIso, iso)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iso)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_TD7_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>iso<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>La librairie happign propose une fonction plus simple mais qui ne fonctionne pas.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(happign)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>iso <span class="ot">&lt;-</span> <span class="fu">get_isochrone</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  pts,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">time =</span> <span class="dv">10</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">profile =</span> <span class="st">"pedestrian"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"departure"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">unit =</span> <span class="st">"minute"</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(commune, <span class="dv">4326</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(commune)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(data, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">add =</span> T)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(accessibilite, <span class="at">type=</span><span class="st">"typo"</span>, <span class="at">var =</span> <span class="st">"nom"</span>, <span class="at">add =</span> T, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">leg_pos=</span><span class="cn">NA</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Isochrones 10 mn à pied autour des Maisons de Quartier"</span>, <span class="st">"librairie rgeoservices</span><span class="sc">\n</span><span class="st">Mars 2026"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(commune, <span class="dv">4326</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(commune)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(iso, <span class="at">type=</span><span class="st">"typo"</span>, <span class="at">var =</span> <span class="st">"id"</span>, <span class="at">add =</span> T, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">leg_pos=</span><span class="cn">NA</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(pts, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">add =</span> T)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">"Isochrones 10 mn à pied autour des Maisons de Quartier"</span>, <span class="st">"librairie rgeoservices</span><span class="sc">\n</span><span class="st">Mars 2026"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07_TD7_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07_TD7_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>The scale bar cannot be displayed on unprojected (long/lat) maps.</code></pre>
+<pre><code>The scale bar does not work on unprojected (long/lat) maps.</code></pre>
 </div>
 </div>
 

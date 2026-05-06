@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Script – L6ECSIG</title>
+<title>Préparation examen – L6ECSIG</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -128,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Env</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./09_TD9.html" aria-current="page"> 
+    <a class="nav-link" href="./09_TD9.html"> 
 <span class="menu-text">Script</span></a>
   </li>  
   <li class="nav-item">
@@ -136,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">GT R</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./11_TD11.html"> 
+    <a class="nav-link active" href="./11_TD11.html" aria-current="page"> 
 <span class="menu-text">exam</span></a>
   </li>  
 </ul>
@@ -162,13 +197,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#objet" id="toc-objet" class="nav-link active" data-scroll-target="#objet">Objet</a></li>
-  <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown">Markdown</a></li>
-  <li><a href="#structure-dun-projet-r" id="toc-structure-dun-projet-r" class="nav-link" data-scroll-target="#structure-dun-projet-r">Structure d’un projet R</a></li>
-  <li><a href="#le-.yml" id="toc-le-.yml" class="nav-link" data-scroll-target="#le-.yml">Le .yml</a></li>
-  <li><a href="#le-site-web" id="toc-le-site-web" class="nav-link" data-scroll-target="#le-site-web">Le site web</a></li>
-  <li><a href="#basiques-r" id="toc-basiques-r" class="nav-link" data-scroll-target="#basiques-r">Basiques R</a></li>
-  <li><a href="#lecture-du-.gpkg" id="toc-lecture-du-.gpkg" class="nav-link" data-scroll-target="#lecture-du-.gpkg">Lecture du .gpkg</a></li>
+  <li><a href="#raster-et-vecteur" id="toc-raster-et-vecteur" class="nav-link active" data-scroll-target="#raster-et-vecteur">Raster et vecteur</a>
+  <ul class="collapse">
+  <li><a href="#plate-formes" id="toc-plate-formes" class="nav-link" data-scroll-target="#plate-formes">Plate formes</a>
+  <ul class="collapse">
+  <li><a href="#data.gouv" id="toc-data.gouv" class="nav-link" data-scroll-target="#data.gouv">Data.gouv</a></li>
+  <li><a href="#copernic-hub-et-plateforme-lidar-de-lign" id="toc-copernic-hub-et-plateforme-lidar-de-lign" class="nav-link" data-scroll-target="#copernic-hub-et-plateforme-lidar-de-lign">Copernic hub et plateforme LIDAR de l’IGN</a></li>
+  <li><a href="#librarie-r-happign" id="toc-librarie-r-happign" class="nav-link" data-scroll-target="#librarie-r-happign">librarie R : happign</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#requête-osm-et-geojson" id="toc-requête-osm-et-geojson" class="nav-link" data-scroll-target="#requête-osm-et-geojson">Requête OSM et geojson</a></li>
+  <li><a href="#dictionnaire-de-données" id="toc-dictionnaire-de-données" class="nav-link" data-scroll-target="#dictionnaire-de-données">Dictionnaire de données</a></li>
+  <li><a href="#jointure-attributaire" id="toc-jointure-attributaire" class="nav-link" data-scroll-target="#jointure-attributaire">Jointure attributaire</a></li>
+  <li><a href="#cartographie" id="toc-cartographie" class="nav-link" data-scroll-target="#cartographie">Cartographie</a></li>
+  <li><a href="#jointure-spatiale" id="toc-jointure-spatiale" class="nav-link" data-scroll-target="#jointure-spatiale">Jointure spatiale</a></li>
   </ul>
 </nav>
     </div>
@@ -177,7 +219,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Script</h1>
+<h1 class="title">Préparation examen</h1>
 </div>
 
 
@@ -194,68 +236,186 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="objet" class="level1">
-<h1>Objet</h1>
-<p>A travers d’un modèle de projet disponible sur github <a href="https://github.com/beababa/modeleProjet" class="uri">https://github.com/beababa/modeleProjet</a>, les notions suivantes sont abordées :</p>
+<p>Ce cours correspond à une correction indicative pour les exercices préparatoires à l’examen. D’autres solutions sont possibles.</p>
+<p>Librairies utilisées dans R</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf) <span class="co"># traitement spatial</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf) <span class="co"># cartographie</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra) <span class="co"># pour les rasters</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>terra 1.8.93</code></pre>
+</div>
+</div>
+<section id="raster-et-vecteur" class="level1">
+<h1>Raster et vecteur</h1>
+<p>Les données seront fournies sous forme d’un <em>.gpkg</em> afin de permettre aux étudiants qui ne parviennent pas à les trouver de répondre aux questions suivantes.</p>
+<p>Il sera demandé le lien vers les données aux étudiants qui ont réalisé la recherche.</p>
+<section id="plate-formes" class="level2">
+<h2 class="anchored" data-anchor-id="plate-formes">Plate formes</h2>
+<section id="data.gouv" class="level3">
+<h3 class="anchored" data-anchor-id="data.gouv">Data.gouv</h3>
+<p>Chercher par exemple la géographie des limites communales, le meilleur mot clé est <em>contours administratifs</em>, Prendre le jeu du producteur data.gouv Choisir le <a href="https://www.data.gouv.fr/api/1/datasets/r/1e73c1a1-082f-4ad2-8bc3-78f25efa9e2f">jeu le moins précis (à 1000 m)</a></p>
+<p><img src="img/contoursAdministratifs.png" class="img-fluid"></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/communes-1000m.geojson"</span>, <span class="at">quiet =</span> T)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(commune)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="11_TD11_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Aller voir avec Arcgis à quoi correspondent les territoires hors métropole…</p>
+</section>
+<section id="copernic-hub-et-plateforme-lidar-de-lign" class="level3">
+<h3 class="anchored" data-anchor-id="copernic-hub-et-plateforme-lidar-de-lign">Copernic hub et plateforme LIDAR de l’IGN</h3>
+<p>Reprendre le cours onglet GT Rasters et MNT</p>
+</section>
+<section id="librarie-r-happign" class="level3">
+<h3 class="anchored" data-anchor-id="librarie-r-happign">librarie R : happign</h3>
+<p>dans R, la librairie <em>happign</em> permet de récupérer toutes les données IGN de façon simple.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(happign)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Please make sure you have an internet connection.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Use happign::get_last_news() to display latest geoservice news.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attachement du package : 'happign'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>L'objet suivant est masqué depuis 'package:terra':
+
+    relate</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>L'objet suivant est masqué depuis 'package:base':
+
+    within</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>bondy <span class="ot">&lt;-</span> <span class="fu">get_apicarto_cadastre</span>(<span class="st">"93010"</span>, <span class="at">type =</span> <span class="st">"commune"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(bondy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="11_TD11_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="requête-osm-et-geojson" class="level1">
+<h1>Requête OSM et geojson</h1>
+<p>overpass.turbo permet de récupérer toutes les entités d’OSM</p>
+<p>En cours, nous avons vu :</p>
 <ul>
-<li><p>Markdown</p></li>
-<li><p>Structure d’un projet R</p></li>
-<li><p>Le .yml</p></li>
-<li><p>Le site web</p></li>
-<li><p>Lecture de .gpkg dans un script</p></li>
+<li><p>admin_level=8</p></li>
+<li><p>highway=*</p></li>
+<li><p>name ~ “arbusse”</p></li>
 </ul>
-<p>L’idée est de récupérer le modèle de projet avec Rstudio et l’item <em>Nouveau projet / Version Control</em></p>
-<p><img src="img/gitclonehttps.png" class="img-fluid"> <img src="img/gitProjetRep.png" class="img-fluid"> L’idéal serait de <em>pusher</em> les modifications faites en classe sur le dépôt.</p>
-<p><img src="img/gitScript2.png" class="img-fluid"></p>
+<p>Si nous cherchons les poubelles, le tag sera <em>amenity=waste-basket</em> le faire sur votre département (in et le numéro du dpt)</p>
+<p><img src="img/overpassPoubelle.png" class="img-fluid"></p>
+<p>Attention l’intégration du geojson dans Arcgis passe par l’utilisation d’un <a href="https://beababa.github.io/01_TD1.html#int%C3%A9grer-la-donn%C3%A9e-dans-arcgis">outil spécifique</a></p>
 </section>
-<section id="markdown" class="level1">
-<h1>Markdown</h1>
-<p>Récupérer une cheatsheet par exemple, celle qui est intégrée dans R Studio,</p>
-<p>menu <em>Aide / Cheatsheet / rmarkdown</em></p>
-<p>Détailler les parties les plus importantes pour la mise en forme.</p>
-<p>Utiliser l’option <em>rendu</em>, observer les éléments proposés de l’en-tête Yaml</p>
+<section id="dictionnaire-de-données" class="level1">
+<h1>Dictionnaire de données</h1>
+<p>Le <a href="https://beababa.github.io/01_TD1.html#quel-type-de-donn%C3%A9e">tableau du données</a> représente une base possible et non exhaustive</p>
 </section>
-<section id="structure-dun-projet-r" class="level1">
-<h1>Structure d’un projet R</h1>
-<p><img src="img/structureProjet2.png" class="img-fluid"> Détailler l’utilité de chaque fichier.</p>
+<section id="jointure-attributaire" class="level1">
+<h1>Jointure attributaire</h1>
+<p>2 couches : commune et un tableau.</p>
+<p>Pour le tableau, j’ai exporté le [nombre d’entreprises des statistiques locales]((https://statistiques-locales.insee.fr/#c=indicator&amp;i=ds_flores.unit_loc&amp;s=2024&amp;t=A01&amp;view=map1)</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>commune93 <span class="ot">&lt;-</span> commune [commune<span class="sc">$</span>departement <span class="sc">==</span> <span class="dv">93</span>,]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>nbEntreprise <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"data/nbEntreprise.csv"</span>, <span class="at">skip =</span> <span class="dv">2</span>, <span class="at">na.strings =</span> <span class="st">"N/A - résultat non disponible"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(commune93, nbEntreprise, <span class="at">by.x=</span> <span class="st">"code"</span>, <span class="at">by.y =</span> <span class="st">"Code"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(jointure, <span class="st">"data/prepExamen.gpkg"</span>, <span class="st">"jointure"</span>, <span class="at">delete_layer =</span> T, <span class="at">quiet =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Penser à enregistrer les couches pour les récupérer le cas échéant sous Arcgis.</p>
 </section>
-<section id="le-.yml" class="level1">
-<h1>Le .yml</h1>
-<p><a href="https://rmarkdown.rstudio.com/lesson-13.html" class="uri">https://rmarkdown.rstudio.com/lesson-13.html</a></p>
-<p>exemple de .yml</p>
-<pre><code>name: "modèle projet"
-navbar:
-  left:
-    - text: "Script 1"
-      href: script1.html
-    - text: "Script 2"
-      href: script2.html
-  right:
-    - icon: fa-github
-      href: https://github.com/beababa/
-output: 
-  html_document:
-    toc_float: TRUE  
-    theme: united
-    highlight: tango</code></pre>
-<p>Au niveau des thèmes : “default”, “cerulean”, “journal”, “flatly”, “readable”, “spacelab”, “united”, and “cosmo”.</p>
+<section id="cartographie" class="level1">
+<h1>Cartographie</h1>
+<p>Afin d’utiliser Arcgis pour la cartographie, il vaut mieux charger le .gpkg puis faire l’export dans la .gdb afin de ne pas avoir d’erreur.</p>
+<p><img src="img/arcgisImportExport2.png" class="img-fluid"></p>
+<p>Les en-têtes de colonne peuvent être modifiées.Par exemple,</p>
+<p>Par exemple, <em>Nombre.d.établissements.2024</em> devient <em>2024</em></p>
+<p>Pour les symbologies</p>
+<p><img src="img/symboSymboleGradue.png" class="img-fluid"> <img src="img/symboCouleurGradue.png" class="img-fluid"></p>
 </section>
-<section id="le-site-web" class="level1">
-<h1>Le site web</h1>
-<p>Si le projet est bien structuré et que le _site.yml, il suffit de faire le <em>rendu</em></p>
-<p><img src="img/arborescence.png" class="img-fluid"> Le rendu</p>
-<p><img src="img/le rendu.png" class="img-fluid"></p>
-</section>
-<section id="basiques-r" class="level1">
-<h1>Basiques R</h1>
-<p>CTRL + ALT + I</p>
-<p>CTRL + ENTREE</p>
-<p>ALT + -</p>
-</section>
-<section id="lecture-du-.gpkg" class="level1">
-<h1>Lecture du .gpkg</h1>
-<p>Récupérer le script et l’adapter à ses besoins. Le renommer de son prénom et si possible par le git le renvoyer sur la plateforme.</p>
-<p>Adapter le script proposé à sa propre commune.</p>
+<section id="jointure-spatiale" class="level1">
+<h1>Jointure spatiale</h1>
+<p>Pour faire un autre exemple, on récupère le contour des <a href="https://data-interne.ademe.fr/datasets/geo-contours-communes">géométries de l’ADEME</a>, résultat d’une recherche google <em>contours commune France</em>.</p>
+<p>Récupération de la donnée</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/Geo_Contours_Communes_2026.geojson"</span>, <span class="at">quiet =</span> T)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>poubelle <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/poubelle.geojson"</span>, <span class="at">quiet =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Les étapes sont les suivantes : filtre sur le 93, validation de la géométrie</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>commune93 <span class="ot">&lt;-</span> commune [commune<span class="sc">$</span>DDEP_C_COD <span class="sc">==</span> <span class="st">'93'</span>,]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>commune93 <span class="ot">&lt;-</span> <span class="fu">st_make_valid</span>(commune93)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(commune93 [,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)],<span class="st">"data/prepExamen.gpkg"</span>, <span class="st">"commune93"</span>, <span class="at">delete_layer =</span> T, <span class="at">quiet =</span> T)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(poubelle [,<span class="fu">c</span>(<span class="st">"amenity"</span>)], <span class="st">"data/prepExamen.gpkg"</span>, <span class="st">"poubelle"</span>, <span class="at">delete_layer =</span> T, <span class="at">quiet =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>jointure spatiale entre la couche des poubelles et celle des communes (même projection)</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(poubelle, commune93)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Pour voir le nombre de poubelles par commune, une table de dénombrement suffit.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(jointure<span class="sc">$</span>DCOE_C_COD)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+93001 93005 93006 93007 93008 93010 93013 93014 93027 93029 93030 93031 93032 
+  138    33    32    12    72    37     2    14    65    31     4    51    34 
+93033 93039 93045 93046 93047 93048 93049 93050 93051 93053 93055 93061 93062 
+   13    41    14    43    20   124    15     6   124    49    85     2    10 
+93063 93064 93066 93070 93071 93072 93073 93077 93078 93079 
+   44   113   560   199    69    32    64    61    66    28 </code></pre>
+</div>
+</div>
+<p>Dans Arcgis, l’outil pourrait être <em>synthétiser à l’intérieur</em></p>
+<p><img src="img/synthetiser.png" class="img-fluid"></p>
 
 
 </section>
