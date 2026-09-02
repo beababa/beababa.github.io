@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>3e saisie : Itinéraire et amélioration de la saisie – Cours P8 2026 - Plan marche</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,15 +35,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e190511a3d21185c0870d94c400fb6e1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dbd86a02bbe277b8a8cf0ddc412c9625.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,8 +81,6 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Cours P8 2026 - Plan marche</span>
     </a>
@@ -131,20 +131,21 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#objectif" id="toc-objectif" class="nav-link active" data-scroll-target="#objectif"><span class="header-section-number">1</span> Objectif</a></li>
-  <li><a href="#un-premier-round-dobservation" id="toc-un-premier-round-dobservation" class="nav-link" data-scroll-target="#un-premier-round-dobservation"><span class="header-section-number">2</span> Un premier round d’observation</a>
+  <li><a href="#intervention-communauté-osm" id="toc-intervention-communauté-osm" class="nav-link" data-scroll-target="#intervention-communauté-osm"><span class="header-section-number">2</span> Intervention communauté OSM</a></li>
+  <li><a href="#un-premier-round-dobservation" id="toc-un-premier-round-dobservation" class="nav-link" data-scroll-target="#un-premier-round-dobservation"><span class="header-section-number">3</span> Un premier round d’observation</a>
   <ul class="collapse">
-  <li><a href="#dessiner-les-jardins" id="toc-dessiner-les-jardins" class="nav-link" data-scroll-target="#dessiner-les-jardins"><span class="header-section-number">2.1</span> Dessiner les jardins</a></li>
-  <li><a href="#changer-des-tags" id="toc-changer-des-tags" class="nav-link" data-scroll-target="#changer-des-tags"><span class="header-section-number">2.2</span> Changer des tags</a></li>
-  <li><a href="#compléter-le-tag-crossing" id="toc-compléter-le-tag-crossing" class="nav-link" data-scroll-target="#compléter-le-tag-crossing"><span class="header-section-number">2.3</span> Compléter le tag crossing</a></li>
-  <li><a href="#manières-de-figurer-un-passage-piéton" id="toc-manières-de-figurer-un-passage-piéton" class="nav-link" data-scroll-target="#manières-de-figurer-un-passage-piéton"><span class="header-section-number">2.4</span> 2 manières de figurer un passage piéton</a></li>
-  <li><a href="#manières-de-représenter-une-porte-empêchant-le-passage" id="toc-manières-de-représenter-une-porte-empêchant-le-passage" class="nav-link" data-scroll-target="#manières-de-représenter-une-porte-empêchant-le-passage"><span class="header-section-number">2.5</span> 2 manières de représenter une porte empêchant le passage</a></li>
+  <li><a href="#dessiner-les-jardins" id="toc-dessiner-les-jardins" class="nav-link" data-scroll-target="#dessiner-les-jardins"><span class="header-section-number">3.1</span> Dessiner les jardins</a></li>
+  <li><a href="#changer-des-tags" id="toc-changer-des-tags" class="nav-link" data-scroll-target="#changer-des-tags"><span class="header-section-number">3.2</span> Changer des tags</a></li>
+  <li><a href="#compléter-le-tag-crossing" id="toc-compléter-le-tag-crossing" class="nav-link" data-scroll-target="#compléter-le-tag-crossing"><span class="header-section-number">3.3</span> Compléter le tag crossing</a></li>
+  <li><a href="#manières-de-figurer-un-passage-piéton" id="toc-manières-de-figurer-un-passage-piéton" class="nav-link" data-scroll-target="#manières-de-figurer-un-passage-piéton"><span class="header-section-number">3.4</span> 2 manières de figurer un passage piéton</a></li>
+  <li><a href="#manières-de-représenter-une-porte-empêchant-le-passage" id="toc-manières-de-représenter-une-porte-empêchant-le-passage" class="nav-link" data-scroll-target="#manières-de-représenter-une-porte-empêchant-le-passage"><span class="header-section-number">3.5</span> 2 manières de représenter une porte empêchant le passage</a></li>
   </ul></li>
-  <li><a href="#utilisation-de-loutil-plus-court-chemin-dans-qgis" id="toc-utilisation-de-loutil-plus-court-chemin-dans-qgis" class="nav-link" data-scroll-target="#utilisation-de-loutil-plus-court-chemin-dans-qgis"><span class="header-section-number">3</span> Utilisation de l’outil plus court chemin dans QGIS</a></li>
-  <li><a href="#en-guise-de-conclusion-ce-quil-reste-à-faire" id="toc-en-guise-de-conclusion-ce-quil-reste-à-faire" class="nav-link" data-scroll-target="#en-guise-de-conclusion-ce-quil-reste-à-faire"><span class="header-section-number">4</span> En guise de conclusion, ce qu’il reste à faire</a>
+  <li><a href="#utilisation-de-loutil-plus-court-chemin-dans-qgis" id="toc-utilisation-de-loutil-plus-court-chemin-dans-qgis" class="nav-link" data-scroll-target="#utilisation-de-loutil-plus-court-chemin-dans-qgis"><span class="header-section-number">4</span> Utilisation de l’outil plus court chemin dans QGIS</a></li>
+  <li><a href="#en-guise-de-conclusion-ce-quil-reste-à-faire" id="toc-en-guise-de-conclusion-ce-quil-reste-à-faire" class="nav-link" data-scroll-target="#en-guise-de-conclusion-ce-quil-reste-à-faire"><span class="header-section-number">5</span> En guise de conclusion, ce qu’il reste à faire</a>
   <ul class="collapse">
-  <li><a href="#osmi" id="toc-osmi" class="nav-link" data-scroll-target="#osmi"><span class="header-section-number">4.1</span> OSMI</a></li>
-  <li><a href="#panoramax" id="toc-panoramax" class="nav-link" data-scroll-target="#panoramax"><span class="header-section-number">4.2</span> Panoramax</a></li>
-  <li><a href="#street-complete" id="toc-street-complete" class="nav-link" data-scroll-target="#street-complete"><span class="header-section-number">4.3</span> Street Complete</a></li>
+  <li><a href="#osmi" id="toc-osmi" class="nav-link" data-scroll-target="#osmi"><span class="header-section-number">5.1</span> OSMI</a></li>
+  <li><a href="#panoramax" id="toc-panoramax" class="nav-link" data-scroll-target="#panoramax"><span class="header-section-number">5.2</span> Panoramax</a></li>
+  <li><a href="#street-complete" id="toc-street-complete" class="nav-link" data-scroll-target="#street-complete"><span class="header-section-number">5.3</span> Street Complete</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -177,43 +178,47 @@ ul.task-list li input[type="checkbox"] {
 <p>Dans le projet Qgis, on en est à l’étape <em>saisie 3</em></p>
 <p><img src="img/exploCouches.png" class="img-fluid"></p>
 </section>
-<section id="un-premier-round-dobservation" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Un premier round d’observation</h1>
+<section id="intervention-communauté-osm" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Intervention communauté OSM</h1>
+<p>un <a href="https://www.openstreetmap.org/changeset/188358162#map=18/48.906946/2.479706">commentaire</a></p>
+</section>
+<section id="un-premier-round-dobservation" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Un premier round d’observation</h1>
 <p>Il convient de revenir sur ce que le plugin a permis de faire en faisant une requête overpass</p>
 <pre><code>highway=footway or barrier=*
 highway=footway or access=*</code></pre>
-<section id="dessiner-les-jardins" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="dessiner-les-jardins"><span class="header-section-number">2.1</span> Dessiner les jardins</h2>
+<section id="dessiner-les-jardins" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="dessiner-les-jardins"><span class="header-section-number">3.1</span> Dessiner les jardins</h2>
 <p>Le fait de tracer les trottoirs amènent à tracer de nouveaux objets, par exemple, les jardins.</p>
 <p><img src="img/dessinerJardin.png" class="img-fluid"></p>
 <p><img src="img/dessinerJardinSuivantBat.png" class="img-fluid"></p>
 <p>Pour le raccourci voir la procédure 1</p>
 </section>
-<section id="changer-des-tags" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="changer-des-tags"><span class="header-section-number">2.2</span> Changer des tags</h2>
+<section id="changer-des-tags" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="changer-des-tags"><span class="header-section-number">3.2</span> Changer des tags</h2>
 <p>Certains trottoirs sont plutôt des ilôts</p>
 <p><img src="img/changerTag.png" class="img-fluid"></p>
 </section>
-<section id="compléter-le-tag-crossing" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="compléter-le-tag-crossing"><span class="header-section-number">2.3</span> Compléter le tag crossing</h2>
+<section id="compléter-le-tag-crossing" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="compléter-le-tag-crossing"><span class="header-section-number">3.3</span> Compléter le tag crossing</h2>
 <p>Enfin, il est possible dés ce niveau de distinguer les passages piétons marqués ou pas.</p>
 <p><img src="img/raffinementTagCrossing.png" class="img-fluid"></p>
 </section>
-<section id="manières-de-figurer-un-passage-piéton" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="manières-de-figurer-un-passage-piéton"><span class="header-section-number">2.4</span> 2 manières de figurer un passage piéton</h2>
+<section id="manières-de-figurer-un-passage-piéton" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="manières-de-figurer-un-passage-piéton"><span class="header-section-number">3.4</span> 2 manières de figurer un passage piéton</h2>
 <p>Les 2 plugins utilisés amènent à deux façons de tagger, cela se voit avec la représentation graphique utilisé dans JOSM.</p>
 <p><img src="img/crossingV1.png" class="img-fluid"></p>
 <p><img src="img/crossingV1b.png" class="img-fluid"></p>
 </section>
-<section id="manières-de-représenter-une-porte-empêchant-le-passage" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="manières-de-représenter-une-porte-empêchant-le-passage"><span class="header-section-number">2.5</span> 2 manières de représenter une porte empêchant le passage</h2>
+<section id="manières-de-représenter-une-porte-empêchant-le-passage" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="manières-de-représenter-une-porte-empêchant-le-passage"><span class="header-section-number">3.5</span> 2 manières de représenter une porte empêchant le passage</h2>
 <p>Etre piéton, cela transforme la vision d’une porte fermée</p>
 <p><img src="img/crossingV1.png" class="img-fluid"></p>
 <p><img src="img/crossingV2.png" class="img-fluid"></p>
 </section>
 </section>
-<section id="utilisation-de-loutil-plus-court-chemin-dans-qgis" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Utilisation de l’outil plus court chemin dans QGIS</h1>
+<section id="utilisation-de-loutil-plus-court-chemin-dans-qgis" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Utilisation de l’outil plus court chemin dans QGIS</h1>
 <p>Après avoir fait une premier itinéraire, on modifie notamment les <em>barrier=gate</em> en ajoutant et <em>locked=yes</em>, on regarde si cela génère autre chose</p>
 <p><img src="img/graphePieton.png" class="img-fluid"></p>
 <p>Encore une carte avant et après :</p>
@@ -222,20 +227,20 @@ highway=footway or access=*</code></pre>
 <p>Autre routeur à utiliser : <a href="https://graphhopper.com/maps/?profile=car&amp;layer=Omniscale">graphhopper</a></p>
 <p>Voir dans le forum, la <a href="https://forum.openstreetmap.fr/t/comprendre-la-cle-access-et-ses-valeurs-private-surtout/10804">discussion</a></p>
 </section>
-<section id="en-guise-de-conclusion-ce-quil-reste-à-faire" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> En guise de conclusion, ce qu’il reste à faire</h1>
+<section id="en-guise-de-conclusion-ce-quil-reste-à-faire" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> En guise de conclusion, ce qu’il reste à faire</h1>
 <p>3 nouveaux outils</p>
-<section id="osmi" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="osmi"><span class="header-section-number">4.1</span> OSMI</h2>
+<section id="osmi" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="osmi"><span class="header-section-number">5.1</span> OSMI</h2>
 <p>Voir <a href="https://www.openstreetmap.org/changeset/188074369#map=17/48.909872/2.478018">intervention</a></p>
 <p>D’après le commentaire, utilisation d’<a href="https://tools.geofabrik.de/osmi/?view=geometry&amp;lon=2.22781&amp;lat=49.00400&amp;zoom=10&amp;baselayer=Geofabrik%20Standard&amp;overlays=long_ways%2Cways_with_long_segments%2Clong_segments%2Cself_intersection_ways%2Cself_intersection_points%2Csingle_node_in_way%2Cduplicate_node_in_way%2Clong_ways%2Cways_with_long_segments%2Clong_segments%2Cself_intersection_ways%2Cself_intersection_points%2Csingle_node_in_way%2Cduplicate_node_in_way">OSMI</a></p>
 </section>
-<section id="panoramax" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="panoramax"><span class="header-section-number">4.2</span> Panoramax</h2>
+<section id="panoramax" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="panoramax"><span class="header-section-number">5.2</span> Panoramax</h2>
 <p>De l’art et de la manière de faire des photos</p>
 </section>
-<section id="street-complete" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="street-complete"><span class="header-section-number">4.3</span> Street Complete</h2>
+<section id="street-complete" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="street-complete"><span class="header-section-number">5.3</span> Street Complete</h2>
 <p>Rien ne vaut le terrain en nombre !</p>
 
 
