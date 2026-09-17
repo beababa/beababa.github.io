@@ -1,0 +1,20 @@
+Devoir maison
+
+Data.csv
+
+- extraire votre commune
+
+- décrire la source (2) en vous aidant du dictionnaire de variable.
+
+- univarié (la variable la plus importante) 
+
+- bi varié
+
+- multivarié (jusqu'à obtenir un ou deux graphiques avec du sens)
+
+
+barème 2 / 2 / 2 / 4
+
+
+
+Faire sur le moodle pour déposer votre graphique + analyse sous forme .pdf qui aurait dû être fait en cours avant mercredi 20 h.

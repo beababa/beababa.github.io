@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Introduction</title>
+
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="intro.html">Introduction</a>
+</li>
+<li>
+  <a href="jour1.html">univariées</a>
+</li>
+<li>
+  <a href="jour2.html">bivariées</a>
+</li>
+<li>
+  <a href="jour3.html">régression </a>
+</li>
+<li>
+  <a href="jour4.html">khi2</a>
+</li>
+<li>
+  <a href="jour5.html">bases R</a>
+</li>
+<li>
+  <a href="jour6.html">variance</a>
+</li>
+<li>
+  <a href="jour7.html">multivariées 1</a>
+</li>
+<li>
+  <a href="jour8.html">multivariées 2</a>
+</li>
+<li>
+  <a href="jour9.html">DM</a>
+</li>
+<li>
+  <a href="jour10.html">préparation DST</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/beababa/01_stat">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Introduction</h1>
+
+</div>
+
+
+<div id="intitulé-et-déroulé-du-cours" class="section level1"
+number="1">
+<h1><span class="header-section-number">1</span> Intitulé et déroulé du
+cours</h1>
+<p><em>“L5GEABIM Analyses bivariées et multivariées”</em></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deroule2026.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
+<table>
+<colgroup>
+<col width="6%" />
+<col width="9%" />
+<col width="7%" />
+<col width="60%" />
+<col width="5%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">num.cours</th>
+<th align="left">Date.gr.1.et.2</th>
+<th align="left">date.gr.3</th>
+<th align="left">thème</th>
+<th align="left">outil</th>
+<th align="right">exercice.nb.pts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">21.09.26</td>
+<td align="left">18.09.26</td>
+<td align="left">statistique univariée base</td>
+<td align="left">tableur</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">28.09.26</td>
+<td align="left">25.09.26</td>
+<td align="left">statistique univariée indicateurs</td>
+<td align="left"></td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">05.10.26</td>
+<td align="left">02.10.26</td>
+<td align="left">bivariée : base + régression début</td>
+<td align="left"></td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">12.10.26</td>
+<td align="left">09.10.26</td>
+<td align="left">régression fin + khi début (tableau de
+contingence)</td>
+<td align="left"></td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">19.10.26</td>
+<td align="left">16.10.26</td>
+<td align="left">Khi2 + devoir gr 1 et 2 en guise de cours 1</td>
+<td align="left"></td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">NA</td>
+<td align="left">26.10.26</td>
+<td align="left">23.10.26</td>
+<td align="left">CONGES gr 1 et 2 / initiation R gr 3</td>
+<td align="left">R</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="left">02.11.26</td>
+<td align="left">30.10.26</td>
+<td align="left">initiation R gr 1 et 2 / CONGES gr 3</td>
+<td align="left"></td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="left">09.11.26</td>
+<td align="left">06.11.26</td>
+<td align="left">initiation R / boite à moustaches</td>
+<td align="left"></td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">8</td>
+<td align="left">16.11.26</td>
+<td align="left">13.11.26</td>
+<td align="left">initiation R / variance + sujet DM</td>
+<td align="left"></td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="left">23.11.26</td>
+<td align="left">20.11.26</td>
+<td align="left">multivariée : boucle R et mise en forme des données
+(part 1 – régression multiple)</td>
+<td align="left"></td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">10</td>
+<td align="left">30.11.26</td>
+<td align="left">27.11.26</td>
+<td align="left">multivariée : régression multiple (part 2) et script
+analyse factorielle et classification</td>
+<td align="left"></td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">11</td>
+<td align="left">07.12.26</td>
+<td align="left">04.12.26</td>
+<td align="left">multivariée : analyse factorielle et classification
+(données centrées réduites)</td>
+<td align="left"></td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">12</td>
+<td align="left">14.12.26</td>
+<td align="left">11.12.26</td>
+<td align="left">questions autour du devoir maison et confirmation
+groupe partiel</td>
+<td align="left"></td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">13</td>
+<td align="left"></td>
+<td align="left">18.12.26</td>
+<td align="left">révision gr3 (feuille révisions gr 1 et 2)</td>
+<td align="left"></td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">14</td>
+<td align="left">à préciser</td>
+<td align="left">à préciser</td>
+<td align="left">partiel</td>
+<td align="left"></td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<p>Comptes des villes et élections municipales : quels sont les liens
+?</p>
+</div>
+<div id="la-donnée" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> La donnée</h1>
+<div id="où-la-trouver" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Où la trouver ?</h2>
+<p>Data.gouv, portail externe voire portail cartographique</p>
+<div id="data.gouv" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Data.gouv</h3>
+<p>définir avec wikipedia, que retenir par rapport à l’IA ?</p>
+<p>apprendre à chercher :</p>
+<ul>
+<li><p>les élections (que préciser ?)</p></li>
+<li><p>les finances des communes (mot clé <em>compte des
+communes</em>)</p></li>
+</ul>
+</div>
+<div id="le-portail-externe" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Le portail
+externe</h3>
+<p>Trouver la source originale pour les comptes des communes et
+apprendre à utiliser cet outil plutôt que le fichier de data.gouv</p>
+<p>car : 23 millions d’observations au total, un fichier de 6 G°de
+données</p>
+<p><img src="img/source.png" /></p>
+</div>
+<div id="portail-cartographique" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Portail
+cartographique</h3>
+<p>Utiliser l’<a
+href="https://data.ofgl.fr/pages/cartographie/">outil</a> proposé par
+l’OFGL</p>
+<p>Quel est l’apport de la cartographie ?</p>
+</div>
+</div>
+<div id="extraire-la-donnée-à-partir-du-portail-externe"
+class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Extraire la donnée à
+partir du portail externe</h2>
+<p>Explication des différents filtres</p>
+<div id="choix-de-base-compte-consolidé-et-année" class="section level4"
+number="2.2.0.1">
+<h4><span class="header-section-number">2.2.0.1</span> Choix de base :
+compte consolidé et année</h4>
+<ul>
+<li>compte consolidé</li>
+</ul>
+<p><img src="img/choixDeBase.png" /></p>
+<ul>
+<li>pour le premier cours, ne pas faire de choix d’agrégat</li>
+</ul>
+<p><img src="img/agregatListe.png" /></p>
+<p>savoir distinguer investissement et fonctionnement</p>
+<p>dans quelle catégorie classer les frais de personnel ?</p>
+</div>
+<div id="un-choix-géographique-différent-par-étudiant"
+class="section level4" number="2.2.0.2">
+<h4><span class="header-section-number">2.2.0.2</span> Un choix
+géographique différent par étudiant</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>lieu <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/etudiant.csv&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>lieu <span class="ot">&lt;-</span> <span class="fu">unique</span>(lieu<span class="sc">$</span>code.insee.commune.choisie)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>lieu <span class="ot">&lt;-</span> lieu [<span class="sc">!</span><span class="fu">is.na</span>(lieu)]</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
+<pre><code>## Linking to GEOS 3.14.1, GDAL 3.12.1, PROJ 9.7.1; sf_use_s2() is TRUE</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>communes <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/communes-1000m.geojson&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `communes-1000m&#39; from data source 
+##   `C:\Users\forma\01_stat\data\gros\communes-1000m.geojson&#39; using driver `GeoJSON&#39;
+## Simple feature collection with 35014 features and 7 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -178.182 ymin: -85.05 xmax: 168.133 ymax: 51.089
+## Geodetic CRS:  WGS 84</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>communes <span class="ot">&lt;-</span> communes [<span class="fu">st_is_valid</span>(communes),]</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(communes [,<span class="fu">c</span>(<span class="st">&quot;region&quot;</span>)], <span class="at">by =</span> <span class="fu">list</span>(communes<span class="sc">$</span>region), length)</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>data <span class="ot">&lt;-</span> communes [communes<span class="sc">$</span>code <span class="sc">%in%</span> lieu,]</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>departement, data<span class="sc">$</span>region)</span></code></pre></div>
+<pre><code>##      
+##       01 02 11 24 27 28 32 44 52 53 75 76 84 93
+##   13   0  0  0  0  0  0  0  0  0  0  0  0  0  1
+##   17   0  0  0  0  0  0  0  0  0  0  1  0  0  0
+##   29   0  0  0  0  0  0  0  0  0  1  0  0  0  0
+##   33   0  0  0  0  0  0  0  0  0  0  1  0  0  0
+##   34   0  0  0  0  0  0  0  0  0  0  0  1  0  0
+##   44   0  0  0  0  0  0  0  0  1  0  0  0  0  0
+##   45   0  0  0  1  0  0  0  0  0  0  0  0  0  0
+##   58   0  0  0  0  1  0  0  0  0  0  0  0  0  0
+##   59   0  0  0  0  0  0  1  0  0  0  0  0  0  0
+##   60   0  0  0  0  0  0  1  0  0  0  0  0  0  0
+##   61   0  0  0  0  0  1  0  0  0  0  0  0  0  0
+##   63   0  0  0  0  0  0  0  0  0  0  0  0  1  0
+##   64   0  0  0  0  0  0  0  0  0  0  2  0  0  0
+##   67   0  0  0  0  0  0  0  1  0  0  0  0  0  0
+##   69   0  0  0  0  0  0  0  0  0  0  0  0  1  0
+##   72   0  0  0  0  0  0  0  0  1  0  0  0  0  0
+##   74   0  0  0  0  0  0  0  0  0  0  0  0  2  0
+##   75   0  0  9  0  0  0  0  0  0  0  0  0  0  0
+##   77   0  0  2  0  0  0  0  0  0  0  0  0  0  0
+##   78   0  0  1  0  0  0  0  0  0  0  0  0  0  0
+##   84   0  0  0  0  0  0  0  0  0  0  0  0  0  1
+##   85   0  0  0  0  0  0  0  0  1  0  0  0  0  0
+##   92   0  0 11  0  0  0  0  0  0  0  0  0  0  0
+##   93   0  0  7  0  0  0  0  0  0  0  0  0  0  0
+##   94   0  0  9  0  0  0  0  0  0  0  0  0  0  0
+##   95   0  0  2  0  0  0  0  0  0  0  0  0  0  0
+##   971  1  0  0  0  0  0  0  0  0  0  0  0  0  0
+##   972  0  1  0  0  0  0  0  0  0  0  0  0  0  0</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">hist</span>(region<span class="sc">$</span>region)</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>met <span class="ot">&lt;-</span> region [region<span class="sc">$</span>region <span class="sc">&gt;</span> <span class="dv">900</span>,]</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">mf_map</span>(met, <span class="at">col =</span> <span class="st">&quot;wheat&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">mf_map</span>(data, <span class="at">col=</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Choix des communes sur la métropole par les étudiants&quot;</span>, <span class="st">&quot;data.gouv et sources internes</span><span class="sc">\n</span><span class="st">Novembre 2025&quot;</span>)</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-2-2.png" alt="" width="672" /></p>
+<pre><code>## The scale bar cannot be displayed on unprojected (long/lat) maps.</code></pre>
+<p>Deux étudiants ont fait un choix hors métropole</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>horsMet <span class="ot">&lt;-</span> data [data<span class="sc">$</span>departement <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">971</span>,<span class="dv">972</span>),]</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">mf_init</span>(<span class="fu">st_buffer</span>(horsMet,<span class="dv">20000</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">mf_map</span>(region, <span class="at">col =</span> <span class="st">&quot;wheat&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="fu">mf_map</span>(data, <span class="at">col=</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Choix des communes hors métropole par 2 étudiants&quot;</span>, <span class="st">&quot;data.gouv et sources internes</span><span class="sc">\n</span><span class="st">Novembre 2025&quot;</span>)</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" /></p>
+<pre><code>## The scale bar cannot be displayed on unprojected (long/lat) maps.</code></pre>
+<p>Enregistrement de la donnée</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">st_write</span>(data, <span class="st">&quot;data/data.gpkg&quot;</span>, <span class="st">&quot;data&quot;</span>, <span class="at">append =</span> F)</span></code></pre></div>
+<pre><code>## Deleting layer `data&#39; using driver `GPKG&#39;
+## Writing layer `data&#39; to data source `data/data.gpkg&#39; using driver `GPKG&#39;
+## Writing 64 features with 7 fields and geometry type Multi Polygon.</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">st_drop_geometry</span>(data)</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">write.csv</span>(data, <span class="st">&quot;data/communeEtudiant.csv&quot;</span>, <span class="at">row.names =</span> F)</span></code></pre></div>
+</div>
+<div id="choix-pour-le-cours" class="section level4" number="2.2.0.3">
+<h4><span class="header-section-number">2.2.0.3</span> Choix pour le
+cours</h4>
+<p>Le cours sera basé sur la commune de Bondy et le département du 93
+(1967 enregistrements pour tous les agrégats)</p>
+<p><img src="img/sel93.png" /></p>
+<p>A noter, sélectionner la région permet de choisir plus facilement le
+département 93</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/agregatEnsemble.csv&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<pre><code>##  [1] &quot;Exercice&quot;                             
+##  [2] &quot;Outre.mer&quot;                            
+##  [3] &quot;Code.Insee.2025.Région&quot;               
+##  [4] &quot;Nom.2025.Région&quot;                      
+##  [5] &quot;Code.Insee.2025.Département&quot;          
+##  [6] &quot;Nom.2025.Département&quot;                 
+##  [7] &quot;Code.Siren.2025.EPCI&quot;                 
+##  [8] &quot;Nom.2025.EPCI&quot;                        
+##  [9] &quot;Strate.population.2025&quot;               
+## [10] &quot;Commune.rurale&quot;                       
+## [11] &quot;Commune.de.montagne&quot;                  
+## [12] &quot;Commune.touristique&quot;                  
+## [13] &quot;Tranche.revenu.par.habitant&quot;          
+## [14] &quot;Présence.QPV&quot;                         
+## [15] &quot;Code.Insee.2025.Commune&quot;              
+## [16] &quot;Nom.2025.Commune&quot;                     
+## [17] &quot;Catégorie&quot;                            
+## [18] &quot;Code.Siren.Collectivité&quot;              
+## [19] &quot;Code.Insee.Collectivité&quot;              
+## [20] &quot;Libellé.Budget&quot;                       
+## [21] &quot;Agrégat&quot;                              
+## [22] &quot;Montant.BP&quot;                           
+## [23] &quot;Montant.BA&quot;                           
+## [24] &quot;Montant.flux.BP.BA&quot;                   
+## [25] &quot;Montant&quot;                              
+## [26] &quot;Montant.en.millions&quot;                  
+## [27] &quot;Population.totale&quot;                    
+## [28] &quot;Montant.en...par.habitant&quot;            
+## [29] &quot;Compte.2025.Disponible&quot;               
+## [30] &quot;ordre_analyse1_section1&quot;              
+## [31] &quot;ordre_analyse1_section2&quot;              
+## [32] &quot;ordre_analyse1_section3&quot;              
+## [33] &quot;ordre_analyse2_section1&quot;              
+## [34] &quot;ordre_analyse2_section2&quot;              
+## [35] &quot;ordre_analyse2_section3&quot;              
+## [36] &quot;ordre_analyse3_section1&quot;              
+## [37] &quot;ordre_analyse3_section2&quot;              
+## [38] &quot;ordre_analyse3_section3&quot;              
+## [39] &quot;ordre_analyse4_section1&quot;              
+## [40] &quot;annee_join&quot;                           
+## [41] &quot;Population.totale.du.dernier.exercice&quot;</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##   Exercice Outre.mer Code.Insee.2025.Région Nom.2025.Région
+## 1     2025       Non                     11   Île-de-France
+## 2     2025       Non                     11   Île-de-France
+## 3     2025       Non                     11   Île-de-France
+## 4     2025       Non                     11   Île-de-France
+## 5     2025       Non                     11   Île-de-France
+## 6     2025       Non                     11   Île-de-France
+##   Code.Insee.2025.Département Nom.2025.Département Code.Siren.2025.EPCI
+## 1                          93    Seine-Saint-Denis            200057875
+## 2                          93    Seine-Saint-Denis            200057875
+## 3                          93    Seine-Saint-Denis            200057875
+## 4                          93    Seine-Saint-Denis            200057875
+## 5                          93    Seine-Saint-Denis            200057875
+## 6                          93    Seine-Saint-Denis            200057875
+##   Nom.2025.EPCI Strate.population.2025 Commune.rurale Commune.de.montagne
+## 1  Est Ensemble                      9            Non                 Non
+## 2  Est Ensemble                      9            Non                 Non
+## 3  Est Ensemble                      9            Non                 Non
+## 4  Est Ensemble                      9            Non                 Non
+## 5  Est Ensemble                      9            Non                 Non
+## 6  Est Ensemble                      9            Non                 Non
+##   Commune.touristique Tranche.revenu.par.habitant Présence.QPV
+## 1                 Non                           1          Oui
+## 2                 Non                           1          Oui
+## 3                 Non                           1          Oui
+## 4                 Non                           1          Oui
+## 5                 Non                           1          Oui
+## 6                 Non                           1          Oui
+##   Code.Insee.2025.Commune Nom.2025.Commune Catégorie Code.Siren.Collectivité
+## 1                   93010            Bondy   Commune               219300100
+## 2                   93010            Bondy   Commune               219300100
+## 3                   93010            Bondy   Commune               219300100
+## 4                   93010            Bondy   Commune               219300100
+## 5                   93010            Bondy   Commune               219300100
+## 6                   93010            Bondy   Commune               219300100
+##   Code.Insee.Collectivité Libellé.Budget                             Agrégat
+## 1                   93010          BONDY                    Dépôts au Trésor
+## 2                   93010          BONDY             Dépenses d&#39;intervention
+## 3                   93010          BONDY Dépenses d&#39;investissement hors remb
+## 4                   93010          BONDY          Dépenses de fonctionnement
+## 5                   93010          BONDY                       Impôts locaux
+## 6                   93010          BONDY          Recettes de fonctionnement
+##   Montant.BP Montant.BA Montant.flux.BP.BA  Montant Montant.en.millions
+## 1   19636834          0                  0 19636834           19.636834
+## 2    5322354          0                  0  5322354            5.322354
+## 3   12639966          0                  0 12639966           12.639966
+## 4   82353832          0                  0 82353832           82.353832
+## 5   53089924          0                  0 53089924           53.089924
+## 6   95956845          0                  0 95956845           95.956845
+##   Population.totale Montant.en...par.habitant Compte.2025.Disponible
+## 1             51239                  383.2400                      1
+## 2             51239                  103.8731                      1
+## 3             51239                  246.6864                      1
+## 4             51239                 1607.2490                      1
+## 5             51239                 1036.1233                      1
+## 6             51239                 1872.7306                      1
+##   ordre_analyse1_section1 ordre_analyse1_section2 ordre_analyse1_section3
+## 1                      NA                      NA                      NA
+## 2                      NA                      NA                      NA
+## 3                      NA                       5                      NA
+## 4                      NA                       4                      NA
+## 5                      NA                      NA                      NA
+## 6                       4                      NA                      NA
+##   ordre_analyse2_section1 ordre_analyse2_section2 ordre_analyse2_section3
+## 1                      NA                      NA                      NA
+## 2                      NA                       4                      NA
+## 3                      NA                      NA                      NA
+## 4                      NA                       1                       2
+## 5                      NA                      NA                      NA
+## 6                       1                      NA                       1
+##   ordre_analyse3_section1 ordre_analyse3_section2 ordre_analyse3_section3
+## 1                      NA                      NA                      NA
+## 2                      NA                      NA                      NA
+## 3                      NA                       1                       1
+## 4                      NA                      NA                      NA
+## 5                      NA                      NA                      NA
+## 6                      NA                      NA                      NA
+##   ordre_analyse4_section1 annee_join Population.totale.du.dernier.exercice
+## 1                       2       2025                                 51239
+## 2                      NA       2025                                 51239
+## 3                      NA       2025                                 51239
+## 4                      NA       2025                                 51239
+## 5                      NA       2025                                 51239
+## 6                      NA       2025                                 51239</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    49 obs. of  41 variables:
+##  $ Exercice                             : int  2025 2025 2025 2025 2025 2025 2025 2025 2025 2025 ...
+##  $ Outre.mer                            : chr  &quot;Non&quot; &quot;Non&quot; &quot;Non&quot; &quot;Non&quot; ...
+##  $ Code.Insee.2025.Région               : int  11 11 11 11 11 11 11 11 11 11 ...
+##  $ Nom.2025.Région                      : chr  &quot;Île-de-France&quot; &quot;Île-de-France&quot; &quot;Île-de-France&quot; &quot;Île-de-France&quot; ...
+##  $ Code.Insee.2025.Département          : int  93 93 93 93 93 93 93 93 93 93 ...
+##  $ Nom.2025.Département                 : chr  &quot;Seine-Saint-Denis&quot; &quot;Seine-Saint-Denis&quot; &quot;Seine-Saint-Denis&quot; &quot;Seine-Saint-Denis&quot; ...
+##  $ Code.Siren.2025.EPCI                 : int  200057875 200057875 200057875 200057875 200057875 200057875 200057875 200057875 200057875 200057875 ...
+##  $ Nom.2025.EPCI                        : chr  &quot;Est Ensemble&quot; &quot;Est Ensemble&quot; &quot;Est Ensemble&quot; &quot;Est Ensemble&quot; ...
+##  $ Strate.population.2025               : int  9 9 9 9 9 9 9 9 9 9 ...
+##  $ Commune.rurale                       : chr  &quot;Non&quot; &quot;Non&quot; &quot;Non&quot; &quot;Non&quot; ...
+##  $ Commune.de.montagne                  : chr  &quot;Non&quot; &quot;Non&quot; &quot;Non&quot; &quot;Non&quot; ...
+##  $ Commune.touristique                  : chr  &quot;Non&quot; &quot;Non&quot; &quot;Non&quot; &quot;Non&quot; ...
+##  $ Tranche.revenu.par.habitant          : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ Présence.QPV                         : chr  &quot;Oui&quot; &quot;Oui&quot; &quot;Oui&quot; &quot;Oui&quot; ...
+##  $ Code.Insee.2025.Commune              : int  93010 93010 93010 93010 93010 93010 93010 93010 93010 93010 ...
+##  $ Nom.2025.Commune                     : chr  &quot;Bondy&quot; &quot;Bondy&quot; &quot;Bondy&quot; &quot;Bondy&quot; ...
+##  $ Catégorie                            : chr  &quot;Commune&quot; &quot;Commune&quot; &quot;Commune&quot; &quot;Commune&quot; ...
+##  $ Code.Siren.Collectivité              : int  219300100 219300100 219300100 219300100 219300100 219300100 219300100 219300100 219300100 219300100 ...
+##  $ Code.Insee.Collectivité              : int  93010 93010 93010 93010 93010 93010 93010 93010 93010 93010 ...
+##  $ Libellé.Budget                       : chr  &quot;BONDY&quot; &quot;BONDY&quot; &quot;BONDY&quot; &quot;BONDY&quot; ...
+##  $ Agrégat                              : chr  &quot;Dépôts au Trésor&quot; &quot;Dépenses d&#39;intervention&quot; &quot;Dépenses d&#39;investissement hors remb&quot; &quot;Dépenses de fonctionnement&quot; ...
+##  $ Montant.BP                           : num  19636834 5322354 12639966 82353832 53089924 ...
+##  $ Montant.BA                           : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Montant.flux.BP.BA                   : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Montant                              : num  19636834 5322354 12639966 82353832 53089924 ...
+##  $ Montant.en.millions                  : num  19.64 5.32 12.64 82.35 53.09 ...
+##  $ Population.totale                    : int  51239 51239 51239 51239 51239 51239 51239 51239 51239 51239 ...
+##  $ Montant.en...par.habitant            : num  383 104 247 1607 1036 ...
+##  $ Compte.2025.Disponible               : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ ordre_analyse1_section1              : int  NA NA NA NA NA 4 NA NA NA NA ...
+##  $ ordre_analyse1_section2              : int  NA NA 5 4 NA NA NA NA NA NA ...
+##  $ ordre_analyse1_section3              : int  NA NA NA NA NA NA NA NA NA NA ...
+##  $ ordre_analyse2_section1              : int  NA NA NA NA NA 1 NA NA NA NA ...
+##  $ ordre_analyse2_section2              : int  NA 4 NA 1 NA NA NA NA 3 NA ...
+##  $ ordre_analyse2_section3              : int  NA NA NA 2 NA 1 NA NA NA NA ...
+##  $ ordre_analyse3_section1              : int  NA NA NA NA NA NA NA NA NA NA ...
+##  $ ordre_analyse3_section2              : int  NA NA 1 NA NA NA NA NA NA 2 ...
+##  $ ordre_analyse3_section3              : int  NA NA 1 NA NA NA NA NA NA NA ...
+##  $ ordre_analyse4_section1              : int  2 NA NA NA NA NA NA NA NA NA ...
+##  $ annee_join                           : int  2025 2025 2025 2025 2025 2025 2025 2025 2025 2025 ...
+##  $ Population.totale.du.dernier.exercice: int  51239 51239 51239 51239 51239 51239 51239 51239 51239 51239 ...</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># combien d&#39;enregistrement par ville ?</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Code.Insee.<span class="fl">2025.</span>Commune)</span></code></pre></div>
+<pre><code>## 
+## 93010 
+##    49</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># filtre sur l&#39;agrégat et le montant par hbt)</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fu">head</span>(data [ , <span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">28</span>)])</span></code></pre></div>
+<pre><code>##                               Agrégat Montant.en...par.habitant
+## 1                    Dépôts au Trésor                  383.2400
+## 2             Dépenses d&#39;intervention                  103.8731
+## 3 Dépenses d&#39;investissement hors remb                  246.6864
+## 4          Dépenses de fonctionnement                 1607.2490
+## 5                       Impôts locaux                 1036.1233
+## 6          Recettes de fonctionnement                 1872.7306</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># sauvegarde de la donnée</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="fu">write.csv</span>(data [,<span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">28</span>)], <span class="st">&quot;data/agregat.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="co"># Les agrégats ont-ils tous la même importance ?</span></span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>Montant.en...par.habitant)</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="présentation-rapide-vous-êtes-nombreux" class="section level1"
+number="3">
+<h1><span class="header-section-number">3</span> Présentation rapide
+(vous êtes nombreux !)</h1>
+<div id="qui-sont-les-étudiants" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Qui sont les
+étudiants ?</h2>
+<ul>
+<li>84 étudiants inscrits sur 3 cours (70 présents environ)</li>
+</ul>
+<p>Les questions posées sont sur le passé / présent / futur des
+étudiants, leur appétence en stats</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&quot;data/TD3_stats_2025.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>etudiant2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tdLundi.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="fu">names</span>(etudiant)</span></code></pre></div>
+<pre><code>## [1] &quot;prenom&quot;                     &quot;adresse.mail&quot;              
+## [3] &quot;groupe&quot;                     &quot;appetence&quot;                 
+## [5] &quot;code.insee.commune.choisie&quot; &quot;passé&quot;                     
+## [7] &quot;futur&quot;</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">names</span>(etudiant2)</span></code></pre></div>
+<pre><code>## [1] &quot;X&quot;                                             
+## [2] &quot;adresse.mail&quot;                                  
+## [3] &quot;groupe&quot;                                        
+## [4] &quot;appetence.stats..1...4..un.peu..passionnément.&quot;
+## [5] &quot;code.insee.commune.choisie&quot;                    
+## [6] &quot;passé&quot;                                         
+## [7] &quot;présent&quot;                                       
+## [8] &quot;futur&quot;</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">names</span>(etudiant2)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&#39;prenom&#39;</span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a><span class="fu">names</span>(etudiant2)[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="st">&#39;appetence&#39;</span></span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>etudiant2 <span class="ot">&lt;-</span> etudiant2 [, <span class="fu">names</span>(etudiant)]</span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span> <span class="fu">rbind</span>(etudiant, etudiant2)</span>
+<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span> etudiant [<span class="sc">!</span><span class="fu">is.na</span>(etudiant<span class="sc">$</span>prenom),]</span>
+<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a><span class="fu">table</span>(etudiant<span class="sc">$</span>groupe, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##    1    2    3 &lt;NA&gt; 
+##   29   31   21    5</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">write.csv</span>(etudiant, <span class="st">&quot;data/etudiant.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/etudiantModifie.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/quisontils.png&quot;</span>, <span class="at">width =</span> <span class="dv">10000</span>, <span class="at">height =</span> <span class="dv">10000</span>, <span class="at">res=</span><span class="dv">1000</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="co">#par(mar = c(2,16,2,4))</span></span>
+<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">7</span>)){</span>
+<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a>  (<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">30</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
+<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">table</span>(etudiant [,i]), <span class="at">border =</span> <span class="cn">NA</span>,</span>
+<span id="cb34-8"><a href="#cb34-8" tabindex="-1"></a>          <span class="at">horiz =</span> T, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">cex.names =</span> <span class="fl">0.8</span>, </span>
+<span id="cb34-9"><a href="#cb34-9" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">names</span> (etudiant) [i])</span>
+<span id="cb34-10"><a href="#cb34-10" tabindex="-1"></a>}</span>
+<span id="cb34-11"><a href="#cb34-11" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<pre><code>## png 
+##   2</code></pre>
+<p><img src="img/quisontils.png" /></p>
+</div>
+<div id="présence-et-rendu-des-devoirs-chiffres-clés"
+class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Présence et rendu des
+devoirs : chiffres clés</h2>
+<div id="effectif-et-cours" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Effectif et
+cours</h3>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>presence <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/presence.csv&quot;</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(presence)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Cours</th>
+<th align="right">TD1</th>
+<th align="right">TD2</th>
+<th align="right">TD3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">C1</td>
+<td align="right">30</td>
+<td align="right">31</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">C2</td>
+<td align="right">22</td>
+<td align="right">25</td>
+<td align="right">24</td>
+</tr>
+<tr class="odd">
+<td align="left">C3</td>
+<td align="right">23</td>
+<td align="right">27</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="left">C4</td>
+<td align="right">19</td>
+<td align="right">29</td>
+<td align="right">13</td>
+</tr>
+<tr class="odd">
+<td align="left">C5</td>
+<td align="right">25</td>
+<td align="right">23</td>
+<td align="right">18</td>
+</tr>
+<tr class="even">
+<td align="left">C6</td>
+<td align="right">17</td>
+<td align="right">17</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="left">C7</td>
+<td align="right">15</td>
+<td align="right">19</td>
+<td align="right">25</td>
+</tr>
+<tr class="even">
+<td align="left">C8</td>
+<td align="right">15</td>
+<td align="right">25</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="left">C9</td>
+<td align="right">15</td>
+<td align="right">22</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="left">C10</td>
+<td align="right">17</td>
+<td align="right">17</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">C11</td>
+<td align="right">9</td>
+<td align="right">18</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="left">C12</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">C13</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>presence<span class="sc">$</span>numCours <span class="ot">&lt;-</span><span class="fu">as.numeric</span>(<span class="fu">substring</span>(presence<span class="sc">$</span>Cours,<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a><span class="fu">barplot</span>(presence<span class="sc">$</span>TD1<span class="sc">~</span>presence<span class="sc">$</span>numCours, <span class="at">col=</span><span class="st">&quot;chartreuse&quot;</span>, <span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;Evolution de la présence groupe 1&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;cours&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span> </span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a><span class="fu">barplot</span>(presence<span class="sc">$</span>TD2<span class="sc">~</span>presence<span class="sc">$</span>numCours, <span class="at">col =</span> <span class="st">&quot;cyan&quot;</span>, <span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;Evolution de la présence groupe 2&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;cours&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span> </span>
+<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span>
+<span id="cb37-7"><a href="#cb37-7" tabindex="-1"></a><span class="fu">barplot</span>(presence<span class="sc">$</span>TD3<span class="sc">~</span>presence<span class="sc">$</span>numCours, <span class="at">col=</span><span class="st">&quot;darkorange&quot;</span>,<span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;Evolution de la présence groupe 3&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;cours&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span> </span>
+<span id="cb37-8"><a href="#cb37-8" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672" /></p>
+</div>
+<div id="les-rendus-dexercices" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Les rendus
+d’exercices</h3>
+<p>Attention, les exercices sont à rendre 2 jours avant le cours (temps
+de la correction),</p>
+<ul>
+<li><p>gr 3 : mercredi 20 h</p></li>
+<li><p>gr 1 et 2 : vendredi 20 h</p></li>
+</ul>
+<p>Aucun retard toléré</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/notesDM1_7.csv&quot;</span>, <span class="at">na.strings =</span> <span class="st">&quot;-&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">12</span>)]</span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<pre><code>## [1] &quot;Devoir.MAISON.2...Valeurs.centrales.et.dispersion..Brut.&quot;       
+## [2] &quot;Devoir.MAISON.4...contingence.agrégats.communes..Brut.&quot;         
+## [3] &quot;Devoir.MAISON.5...khi2..Brut.&quot;                                  
+## [4] &quot;Devoir.MAISON.3...régression.entre.2.agrégats.financiers..Brut.&quot;
+## [5] &quot;Devoir.MAISON.1...Dénombrement..Brut.&quot;                          
+## [6] &quot;Devoir.MAISON.7...boite.à.moustaches..Brut.&quot;</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">6</span>)]</span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a>titre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1_distribution&quot;</span>, <span class="st">&quot;2_univarié&quot;</span>, <span class="st">&quot;3_regression&quot;</span>, <span class="st">&quot;4_contingence&quot;</span>, <span class="st">&quot;5_khi2&quot;</span>, <span class="st">&quot;6_variance&quot;</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/rendu.png&quot;</span>, <span class="at">width =</span> <span class="dv">600</span>, <span class="at">height =</span> <span class="dv">600</span>, <span class="at">res =</span> <span class="dv">100</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a><span class="fu">par</span>( <span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a>tot <span class="ot">&lt;-</span> <span class="fu">length</span>(data)</span>
+<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a>i <span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb40-8"><a href="#cb40-8" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>tot)){</span>
+<span id="cb40-9"><a href="#cb40-9" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">table</span>(data [,i])</span>
+<span id="cb40-10"><a href="#cb40-10" tabindex="-1"></a>  <span class="fu">barplot</span>(tmp,  <span class="at">cex.names =</span> <span class="fl">0.8</span>, <span class="at">las =</span> <span class="dv">1</span>, </span>
+<span id="cb40-11"><a href="#cb40-11" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">paste0</span>(titre [i], <span class="st">&quot; (&quot;</span>, <span class="fu">sum</span>(tmp), <span class="st">&quot; observations)&quot;</span>), <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">col =</span> <span class="st">&quot;wheat&quot;</span>)</span>
+<span id="cb40-12"><a href="#cb40-12" tabindex="-1"></a>  }</span>
+<span id="cb40-13"><a href="#cb40-13" tabindex="-1"></a></span>
+<span id="cb40-14"><a href="#cb40-14" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<pre><code>## png 
+##   2</code></pre>
+<p><img src="img/rendu.png" /></p>
+<ul>
+<li>Le critère externe : des points faciles ?</li>
+</ul>
+<p>le nom du fichier</p>
+<p>le temps du rendu (avant la limite)</p>
+<ul>
+<li>Augmentation des erreurs avec l’exercice 4</li>
+</ul>
+<p>Attention à la consigne !</p>
+</div>
+</div>
+<div id="notes-finales" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Notes finales</h2>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a>note <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/noteFinales.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">&quot;EN ATTENTE&quot;</span>, <span class="st">&quot;NA&quot;</span>,<span class="st">&quot;-&quot;</span>), <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a><span class="fu">summary</span>(note)</span>
+<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/noteFin.png&quot;</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a><span class="fu">hist</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">main =</span> <span class="st">&quot;Etalement note finale - 64 obs&quot;</span>, <span class="at">freq =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">na.rm =</span> T),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb42-6"><a href="#cb42-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">na.rm=</span>T), <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb42-7"><a href="#cb42-7" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<p><img src="img/noteFin.png" /></p>
+</div>
+</div>
+<div id="ressources-autre-que-la-bibliographie-officielle"
+class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Ressources autre que la
+bibliographie officielle</h1>
+<p>Pour R, la base de tout est</p>
+<p>R et espace (<a
+href="https://archives.framabook.org/r-et-espace/index.html"
+class="uri">https://archives.framabook.org/r-et-espace/index.html</a>)</p>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<small><p>L5GEABIM Analyses bivariées et multivariées</p></small>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

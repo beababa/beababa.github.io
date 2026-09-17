@@ -1,0 +1,22 @@
+cours : L5GEABIM - TD - Analyses bivariées et multivariées - BMaranget
+mots de passe Moodle
+8h-Lundi
+9h30-Lundi
+17h30-Vendredi
+---------------------------------
+connexion cours https://beababa.github.io/intro.html
+beatrice.maranget@bondy.fr
+--------------------------------------
+sujet = données financières des communes en opendata
+évaluation
+émargement
+opendata : 3 séquences
+présentation de l'exercice pour la prochaine fois : dénombrement, exercice sur 1 pt pour la forme prenom.pdf
+
+---------------------------
+telechargement fichier pm => filtre et extraction en s'aidant du Moodle (exploration de fichier…)
+---------------------------
+
+
+
+formule fréquence

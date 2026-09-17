@@ -1,0 +1,12 @@
+Déroulé cours
+
+1.  intro : quelques chiffres et jour4.html
+
+2. correction exercice (exo avant et après)
+
+3. présentation exercice et test
+
+5. regression
+	démarche graphique
+	calculs
+	

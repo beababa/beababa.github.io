@@ -1,0 +1,31 @@
+COURS 11
+----------------------------------
+cours : L5GEABIM - TD - Analyses bivariées et multivariées - BMaranget
+mots de passe Moodle
+8h-Lundi
+9h30-Lundi
+17h30-Vendredi
+---------------------------------
+connexion cours https://beababa.github.io/intro.html
+beatrice.maranget@bondy.fr
+--------------------------------------
+attention annonce prochain cours
+--------------------------------------
+lire le fichier sous R et faire l'ACP (jouer le script)
+- fichier
+- script
+
+Filtrer sur un seul dpt et mettre les communes en row.names
+row.names(data) <- data$communes
+----------------
+définitions à connaître après avoir regardé vidéo Husson
+-----------------
+esthétique de l'ACP
+présentation centrer / réduire à partir des img
+le faire
+------------------
+interprétation : ajouter commentaire dans le tableau
+-----------------
+CAH : repérer deux valeurs dans le graphique ACP et vérifier qu'elles sont dans le même groupe dans la CAH
+et compléter le tableau
+

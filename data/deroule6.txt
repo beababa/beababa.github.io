@@ -1,0 +1,6 @@
+exercice Moodle (2 points à préciser… khi2)
+
+Créer un dataframe sur 3 villes et leur nombre d’habitants Trouver la moyenne du nombre d’habitants
+
+Mettre un .csv dans le répertoire de travail
+Le lire avec la commande read.csv
