@@ -540,6 +540,8 @@ municipale</em>), on choisit la colonne de la dénomination des communes
 tableur</h4>
 <p>Cet exercice permet d’utiliser dans le tableur :</p>
 <ul>
+<li><p>raccourcis claviers de déplacement (CTRL et flèches) et de
+sélection (CTRL et flèches + MAJ)</p></li>
 <li><p>utilisation de la barre de formule</p></li>
 <li><p>formule simple : minimum et maximum</p></li>
 <li><p>formule frequence, formule matricielle (CTRL + MAJ +
@@ -549,6 +551,9 @@ données étiquettes)</p></li>
 </ul>
 <p>Pour mémoire, formules du tableau</p>
 <p><img src="img/frequence.png" /></p>
+<p>Voir également cette <a
+href="https://www.youtube.com/watch?v=xW27DzWoYI4">vidéo</a> sur
+internet</p>
 </div>
 </div>
 <div id="quel-commentaire" class="section level3" number="2.3.2">
@@ -572,23 +577,24 @@ maire étant un ancien lieutenant de la police nationale.</p>
 </div>
 <div id="a-explorer" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> A explorer</h2>
-<p>graphique en barres, lignes (lissage)</p>
+<p>Autres graphiques : graphique en barres, lignes (lissage)</p>
+<p><img src="img/graphAutres.png" /></p>
 <p>Observer la disposition des bornes : elles sont utilisées comme des
 étiquettes et non pas comme une série de valeurs.</p>
 <p>Sous R, l’histogramme est un des graphiques le plus simple à
 obtenir.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">hist</span>(maData<span class="sc">$</span>Nombre.de.policiers.et.de.gardes.champêtres)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">hist</span>(maData<span class="sc">$</span>Nombre.de.policiers.et.de.gardes.champêtres, <span class="at">xlab =</span> <span class="st">&quot;Effectif PM&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Nb de communes&quot;</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Répartition des effectifs de PM par commune&quot;</span>)</span></code></pre></div>
 <p><img src="jour1_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" /></p>
 <p>L’histogramme souligne l’originalité d’Aulnay sous bois par rapport
 autres communes.</p>
 </div>
-<div id="correction-exercice-dénombrement-des-agrégats-financiers"
+<div
+id="correction-exercice-dénombrement-des-agrégats-financiers-maison-1"
 class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Correction exercice
-dénombrement des agrégats financiers</h2>
-<p>Des retours très nombreux (46 sur 60). Beaucoup d’étudiants ont buté
-sur la difficulté de la numérotation décimale et ont utilisé le fichier
-vu en classe, pas de problème dans le cadre d’un exercice.</p>
+dénombrement des agrégats financiers (MAISON 1)</h2>
+<p>Remise 55 sur 74 inscrits.</p>
 <div id="le-séparateur-décimal-ou-." class="section level3"
 number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> Le séparateur
@@ -598,7 +604,6 @@ linguistiques.</p>
 <p><img src="img/decimal.png" /></p>
 <p>Pour un tableur, le chiffre se positionne à droite de la cellule, le
 texte à gauche.</p>
-<p>L’autre solution était d’utiliser le format excel.</p>
 </div>
 <div
 id="commentaires-généraux-qui-valent-pour-tous-les-exercices-et-surtout-le-dst"
@@ -610,57 +615,69 @@ généraux qui valent pour tous les exercices et surtout le DST</h3>
 ?</h4>
 <p>Attention à toujours définir sa donnée dés le départ y compris sa
 source.</p>
-<p><img src="img/deQuoi.png" /> Dans le cadre de notre cours, c’est la
-commune et son <em>département</em> (ou <em>sa communauté de
-communes</em>) puis l’agrégat choisi.</p>
+<p><img src="img/deQuoi.png" /></p>
+<p>Dans le cadre de l’exercice, c’est la commune et ses agrégats
+financiers :</p>
+<ul>
+<li><p>comptes consolidés (tous les budgets de la commune)</p></li>
+<li><p>agrégats liés au budget (dépenses - recettes à l’équilibre), mais
+également solde, bilans…</p></li>
+</ul>
 </div>
 <div id="pour-la-forme" class="section level4" number="2.5.2.2">
 <h4><span class="header-section-number">2.5.2.2</span> Pour la
 forme</h4>
-<p>Ne jamais mettre un tableau de données dans sa copie !</p>
-<p>Ne jamais prendre en photo son écran !</p>
+<p>J’ai sanctionné les copies illisibles.</p>
+<p>A retenir :</p>
+<ul>
+<li><p>Ne jamais mettre un tableau de données dans sa copie !</p></li>
+<li><p>Ne jamais prendre en photo son écran !</p></li>
+<li><p>Eviter absolument une copie d’écran de l’ensemble de son
+écran.</p></li>
+</ul>
 <p>Le mieux <em>traitement de texte</em> dans lequel on insère un
 graphique image (copie d’écran CTRL + MAJ + S puis CTRL + V pour
 coller), puis enregistrement en .pdf au final.</p>
 <p>Attention aux nombreuses pages inutiles si on passe directement du
-tableur au traitement de texte.</p>
-<p>Soigner ses titres</p>
-<p>Par contre, pas de carte, ce n’est pas le sujet du cours. La
-discrétisation avec un logiciel SIG est souvent automatisée, et ce cours
-permet de faire les choses <em>à la main</em>.</p>
+tableur au traitement de texte (la palme revient à un étudiant qui m’a
+envoyé 63 pages)</p>
+<p>Attention également, enregistrement en .pdf de sa copie (éviter le
+.pdf.pdf)</p>
+<p>Ne pas oublier de soigner ses titres.</p>
 </div>
 <div id="concision-du-commentaire" class="section level4"
 number="2.5.2.3">
 <h4><span class="header-section-number">2.5.2.3</span> Concision du
 commentaire</h4>
+<p>Ne jamais oublier que l’exercice ne vaut que 1 ou 2 points et que je
+les corrige rapidement.</p>
 <p><img src="img/trop.png" /></p>
-<p>même si, un strict respect de la consigne donnait :</p>
-<p><img src="img/tropTechnique.png" /></p>
 <p>Prochain exercice, commentaire plus court. 2 phrases maximum, 1 page
 au total, aller à l’essentiel.</p>
-<p><em>Il y plus de grosses dépenses en fonctionnement que de
-petites</em> (ou l’inverse)</p>
-<p>Ou plus osé :</p>
-<p><em>Certaines villes ne maîtrisent pas leurs dépenses de
-personnel</em></p>
-<p>Et préciser quelle ville est remarquable et pourquoi ?</p>
-<p><img src="img/oui.png" /></p>
+<p><em>Il y plus de gros agrégats que de petits</em> (ou l’inverse)</p>
+<p>Et préciser quel agrégat est remarquable et pourquoi ?</p>
+<p><img src="img/agregatDepense.png" /></p>
 </div>
 <div id="vocabulaire" class="section level4" number="2.5.2.4">
 <h4><span class="header-section-number">2.5.2.4</span> Vocabulaire</h4>
 <p>Revenir sur le terme : formule <em>fréquence et son
 graphique</em></p>
 <p>Diagramme de fréquence, histogramme…</p>
-<p>Le mieux : <em>Discrétisation des dépenses de personnel en fonction
-des villes</em></p>
+<p>Le mieux : <em>Discrétisation des agrégats financiers en fonction de
+leur montant (euros / hbt)</em></p>
 </div>
 </div>
 <div id="plus-précisemment" class="section level3" number="2.5.3">
 <h3><span class="header-section-number">2.5.3</span> Plus
 précisemment</h3>
+<div id="résultat-faux" class="section level4" number="2.5.3.1">
+<h4><span class="header-section-number">2.5.3.1</span> Résultat
+faux</h4>
+<p><img src="img/faux2.png" /></p>
+</div>
 <div id="problème-sur-les-classes-dans-le-graphique"
-class="section level4" number="2.5.3.1">
-<h4><span class="header-section-number">2.5.3.1</span> Problème sur les
+class="section level4" number="2.5.3.2">
+<h4><span class="header-section-number">2.5.3.2</span> Problème sur les
 classes dans le graphique</h4>
 <p>Il faut afficher les bornes.</p>
 <p><img src="img/faux.png" /></p>
@@ -668,13 +685,21 @@ classes dans le graphique</h4>
 <p>Une solution, afficher les étiquettes sur les barres</p>
 <p><img src="img/etikok.png" /></p>
 </div>
-<div id="autres-méthodes" class="section level4" number="2.5.3.2">
-<h4><span class="header-section-number">2.5.3.2</span> Autres
+<div id="autres-méthodes" class="section level4" number="2.5.3.3">
+<h4><span class="header-section-number">2.5.3.3</span> Autres
 méthodes</h4>
 <p>Une méthode différente est valide également (le tableau croisé
-dynamique)</p>
+dynamique dit pilote dans libre office)</p>
 <p><img src="img/excel.png" /></p>
 </div>
+</div>
+<div id="les-agrégats-à-supprimer" class="section level3"
+number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> Les agrégats à
+supprimer</h3>
+<p>La bonne réponse était les totaux, j’ai accepté les réponses autour
+des valeurs aberrantes.</p>
+<p><img src="img/agregatAgreges.png" /></p>
 </div>
 </div>
 </div>
@@ -682,23 +707,25 @@ dynamique)</p>
 number="3">
 <h1><span class="header-section-number">3</span> Pour raffiner : les
 indicateurs</h1>
-<p>Nous avons déjà vu l’amplitude à travers minimum et maximum. Il y en
-a d’autres. Ils servent à résumer la série statistique</p>
+<p>Nous avons déjà vu l’amplitude à travers minimum et maximum. Il y a
+d’autres indicateurs. Ils servent à résumer la série statistique</p>
 <p>Nous allons montrer comment calculer médiane, moyenne et écart type
 dans le tableur.</p>
-<p>Pour l’exemple, on prend l’agrégat financier de l’exercice : celui
-des frais du personnel.</p>
+<p>Pour l’exemple, on prend un agrégat budgétaire connu : celui des
+frais du personnel.</p>
 <p>Afin de pouvoir comparer les communes de taille différente, on
-utilise plutôt les montants par habitant.</p>
-<p><img src="img/agregat.png" /></p>
+utilise les montants par habitant.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/fraisPersonnel.csv&quot;</span>, <span class="at">dec=</span> <span class="st">&quot;.&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    40 obs. of  2 variables:
 ##  $ Nom            : chr  &quot;Dugny&quot; &quot;Pantin&quot; &quot;Coubron&quot; &quot;Villemomble&quot; ...
 ##  $ montant.par.hbt: num  1308 1133 737 832 459 ...</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>montant.par.hbt, <span class="at">freq =</span> <span class="cn">FALSE</span>)</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>montant.par.hbt, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> <span class="st">&quot;Dpt 93 - répartition des dépenses du personnel par commune&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;euros par habitant&quot;</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(data<span class="sc">$</span>montant.par.hbt), <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="jour1_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672" /></p>
+<p>La majorité des communes ont des dépenses moyennes (1000) par
+habitant.</p>
+<p>Cas extrêmes : Le Raincy (peu), Tremblay (beaucoup)</p>
 <div id="valeurs-centrales-moyenne-et-médiane" class="section level2"
 number="3.1">
 <h2><span class="header-section-number">3.1</span> Valeurs centrales :
@@ -710,15 +737,13 @@ moyenne et médiane</h2>
 moins.</p>
 <p>Sur le tableau complet, créer une colonne rang. Et relever le rang
 médian</p>
+<p>savoir-faire tableur : recopie incrémentée</p>
 <p><img src="img/mediane.png" /></p>
 </div>
-<div id="savoir-faire-tableur-1" class="section level3" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> Savoir faire
-tableur</h3>
-<ul>
-<li>nommer la plage de données</li>
-</ul>
-<p><img src="img/nom.png" /> ### Représentation graphique</p>
+<div id="représentation-graphique" class="section level3"
+number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Représentation
+graphique</h3>
 <p>Elle consiste à tracer moyenne et médiane sur le graphique, elle
 n’est pas possible sous le tableur.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(data<span class="sc">$</span>montant.par.hbt)</span>
@@ -763,353 +788,118 @@ médiane et moyenne</h5>
 <span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
 <pre><code>## [1] &quot;Libellé.Budget&quot;            &quot;Agrégat&quot;                  
 ## [3] &quot;Montant.en...par.habitant&quot;</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Libellé.Budget)</span></code></pre></div>
-<pre><code>## 
-##                            AUBERVILLIERS 
-##                                       82 
-##                         AULNAY-SOUS-BOIS 
-##                                       83 
-##     BA des COM - RESTAURATION COLLECTIVE 
-##                                       41 
-##                                 BAGNOLET 
-##                                       83 
-##                       BLANC-MESNIL (LE ) 
-##                                       82 
-##                                  BOBIGNY 
-##                                       82 
-##                                    BONDY 
-##                                       82 
-##                            CAMPING CORSE 
-##                                       65 
-##    CENTRE COMMERCIAL LES GENETTES CLICHY 
-##                                       60 
-##                          CENTRE EQUESTRE 
-##                                       65 
-##                CENTRE MUNICIPAL DE SANTE 
-##                                       67 
-##                          CINEMA LE BIJOU 
-##                                       65 
-##  CITE ARTISANALE AVENUE RAYMOND POINCARE 
-##                                       70 
-##                               CLIC GAGNY 
-##                                       67 
-##                         CLICHY-SOUS-BOIS 
-##                                       83 
-##                                  COUBRON 
-##                                       81 
-##                          COURNEUVE (LA ) 
-##                                       82 
-## CSAPA-AUTRES-VILLE DE BLANC-MESNIL (LE ) 
-##                                       60 
-##         CSAPA-AUTRES-VILLE DE SAINT-OUEN 
-##                                       70 
-##       CSAPA-AUTRES-VILLE LE BLANC-MESNIL 
-##                                        7 
-##                              Cycle Terre 
-##                                        7 
-##                      DEUX PIECES CUISINE 
-##                                       65 
-##                                   DRANCY 
-##                                       82 
-##                                    DUGNY 
-##                                       81 
-##                   ENERGIE PHOTOVOLTAIQUE 
-##                                       65 
-##                         EPINAY-SUR-SEINE 
-##                                       82 
-##     FOYER RESIDENCE J LEBAS LIVRY-GARGAN 
-##                                       71 
-##                                    GAGNY 
-##                                       82 
-##                        GOURNAY-SUR-MARNE 
-##                                       82 
-##       HABITAT INDIGNE DES QUATRE CHEMINS 
-##                                       69 
-##                    ILE-SAINT-DENIS (L&#39; ) 
-##                                       79 
-##                               LE BOURGET 
-##                                       82 
-##                              LILAS (LES) 
-##                                       82 
-##                             LIVRY-GARGAN 
-##                                       82 
-##                        MARCHES COMMUNAUX 
-##                                        8 
-##                              MONTFERMEIL 
-##                                       82 
-##                                MONTREUIL 
-##                                       82 
-##                        NEUILLY-PLAISANCE 
-##                                       82 
-##                        NEUILLY-SUR-MARNE 
-##                                       81 
-##                           NOISY-LE-GRAND 
-##                                       83 
-##                             NOISY-LE-SEC 
-##                                       82 
-##            OFFICE DE TOURISME DE BOBIGNY 
-##                                       62 
-##                                   PANTIN 
-##                                       82 
-##                         PARKINGS PUBLICS 
-##                                       67 
-##                PAVILLONS-SOUS-BOIS (LES) 
-##                                       82 
-##                  PEPINIERE D&#39;ENTREPRISES 
-##                                       61 
-##                    PIERREFITTE-SUR-SEINE 
-##                                       82 
-##      PORT DE PLAISANCE NEUILLY-SUR-MARNE 
-##                                       65 
-##                  PRE-SAINT-GERVAIS (LE ) 
-##                                       82 
-##                             RAINCY (LE ) 
-##                                       81 
-##                   REGIE DE STATIONNEMENT 
-##                                       67 
-##              REGIE INTERESSEE SAINT-PAIR 
-##                                       65 
-##        RESEAU DE CHALEUR DE LA ZAC CANAL 
-##                                       59 
-##           RESIDENCE AUTONOMIE LES CEDRES 
-##                                        7 
-##          RESIDENCE AUTONOMIE LES TAMARIS 
-##                                        7 
-## RESTAURATION DES MANIFESTATIONS MUNICIPA 
-##                                       65 
-##                              ROMAINVILLE 
-##                                       82 
-##                          ROSNY-SOUS-BOIS 
-##                                       82 
-##                              SAINT-DENIS 
-##                                       82 
-##                               SAINT-OUEN 
-##                                       73 
-##                     SAINT-OUEN-SUR-SEINE 
-##                                        9 
-## SAINT-OUEN-SUR-SEINE - FOURNITURES REPAS 
-##                                        7 
-##           SAINT-OUEN - FOURNITURES REPAS 
-##                                       60 
-##                                   SEVRAN 
-##                                       82 
-##        SSIAD-PA-AH-VILLE LE BLANC-MESNIL 
-##                                        7 
-##  SSIAD-PA/AH-VILLE DE BLANC-MESNIL (LE ) 
-##                                       60 
-##                         SSIAD SAINT-OUEN 
-##                                       60 
-##            SSID-PA-VILLE DE LIVRY-GARGAN 
-##                                       60 
-##         SSIDPA-PA-VILLE DE AUBERVILLIERS 
-##                                       26 
-##                                   STAINS 
-##                                       82 
-##                       TREMBLAY-EN-FRANCE 
-##                                       82 
-##                                 VAUJOURS 
-##                                       80 
-##                              VILLEMOMBLE 
-##                                       82 
-##                               VILLEPINTE 
-##                                       82 
-##                             VILLETANEUSE 
-##                                       82</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># simplification des noms des colonnes</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">names</span>(data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ville&quot;</span>, <span class="st">&quot;agregat&quot;</span>,<span class="st">&quot;montant&quot;</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>agregat <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>agregat))</span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>ville)</span></code></pre></div>
-<pre><code>## 
-##                            AUBERVILLIERS 
-##                                       82 
-##                         AULNAY-SOUS-BOIS 
-##                                       83 
-##     BA des COM - RESTAURATION COLLECTIVE 
-##                                       41 
-##                                 BAGNOLET 
-##                                       83 
-##                       BLANC-MESNIL (LE ) 
-##                                       82 
-##                                  BOBIGNY 
-##                                       82 
-##                                    BONDY 
-##                                       82 
-##                            CAMPING CORSE 
-##                                       65 
-##    CENTRE COMMERCIAL LES GENETTES CLICHY 
-##                                       60 
-##                          CENTRE EQUESTRE 
-##                                       65 
-##                CENTRE MUNICIPAL DE SANTE 
-##                                       67 
-##                          CINEMA LE BIJOU 
-##                                       65 
-##  CITE ARTISANALE AVENUE RAYMOND POINCARE 
-##                                       70 
-##                               CLIC GAGNY 
-##                                       67 
-##                         CLICHY-SOUS-BOIS 
-##                                       83 
-##                                  COUBRON 
-##                                       81 
-##                          COURNEUVE (LA ) 
-##                                       82 
-## CSAPA-AUTRES-VILLE DE BLANC-MESNIL (LE ) 
-##                                       60 
-##         CSAPA-AUTRES-VILLE DE SAINT-OUEN 
-##                                       70 
-##       CSAPA-AUTRES-VILLE LE BLANC-MESNIL 
-##                                        7 
-##                              Cycle Terre 
-##                                        7 
-##                      DEUX PIECES CUISINE 
-##                                       65 
-##                                   DRANCY 
-##                                       82 
-##                                    DUGNY 
-##                                       81 
-##                   ENERGIE PHOTOVOLTAIQUE 
-##                                       65 
-##                         EPINAY-SUR-SEINE 
-##                                       82 
-##     FOYER RESIDENCE J LEBAS LIVRY-GARGAN 
-##                                       71 
-##                                    GAGNY 
-##                                       82 
-##                        GOURNAY-SUR-MARNE 
-##                                       82 
-##       HABITAT INDIGNE DES QUATRE CHEMINS 
-##                                       69 
-##                    ILE-SAINT-DENIS (L&#39; ) 
-##                                       79 
-##                               LE BOURGET 
-##                                       82 
-##                              LILAS (LES) 
-##                                       82 
-##                             LIVRY-GARGAN 
-##                                       82 
-##                        MARCHES COMMUNAUX 
-##                                        8 
-##                              MONTFERMEIL 
-##                                       82 
-##                                MONTREUIL 
-##                                       82 
-##                        NEUILLY-PLAISANCE 
-##                                       82 
-##                        NEUILLY-SUR-MARNE 
-##                                       81 
-##                           NOISY-LE-GRAND 
-##                                       83 
-##                             NOISY-LE-SEC 
-##                                       82 
-##            OFFICE DE TOURISME DE BOBIGNY 
-##                                       62 
-##                                   PANTIN 
-##                                       82 
-##                         PARKINGS PUBLICS 
-##                                       67 
-##                PAVILLONS-SOUS-BOIS (LES) 
-##                                       82 
-##                  PEPINIERE D&#39;ENTREPRISES 
-##                                       61 
-##                    PIERREFITTE-SUR-SEINE 
-##                                       82 
-##      PORT DE PLAISANCE NEUILLY-SUR-MARNE 
-##                                       65 
-##                  PRE-SAINT-GERVAIS (LE ) 
-##                                       82 
-##                             RAINCY (LE ) 
-##                                       81 
-##                   REGIE DE STATIONNEMENT 
-##                                       67 
-##              REGIE INTERESSEE SAINT-PAIR 
-##                                       65 
-##        RESEAU DE CHALEUR DE LA ZAC CANAL 
-##                                       59 
-##           RESIDENCE AUTONOMIE LES CEDRES 
-##                                        7 
-##          RESIDENCE AUTONOMIE LES TAMARIS 
-##                                        7 
-## RESTAURATION DES MANIFESTATIONS MUNICIPA 
-##                                       65 
-##                              ROMAINVILLE 
-##                                       82 
-##                          ROSNY-SOUS-BOIS 
-##                                       82 
-##                              SAINT-DENIS 
-##                                       82 
-##                               SAINT-OUEN 
-##                                       73 
-##                     SAINT-OUEN-SUR-SEINE 
-##                                        9 
-## SAINT-OUEN-SUR-SEINE - FOURNITURES REPAS 
-##                                        7 
-##           SAINT-OUEN - FOURNITURES REPAS 
-##                                       60 
-##                                   SEVRAN 
-##                                       82 
-##        SSIAD-PA-AH-VILLE LE BLANC-MESNIL 
-##                                        7 
-##  SSIAD-PA/AH-VILLE DE BLANC-MESNIL (LE ) 
-##                                       60 
-##                         SSIAD SAINT-OUEN 
-##                                       60 
-##            SSID-PA-VILLE DE LIVRY-GARGAN 
-##                                       60 
-##         SSIDPA-PA-VILLE DE AUBERVILLIERS 
-##                                       26 
-##                                   STAINS 
-##                                       82 
-##                       TREMBLAY-EN-FRANCE 
-##                                       82 
-##                                 VAUJOURS 
-##                                       80 
-##                              VILLEMOMBLE 
-##                                       82 
-##                               VILLEPINTE 
-##                                       82 
-##                             VILLETANEUSE 
-##                                       82</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/medmoy.png&quot;</span>, <span class="at">width =</span> <span class="dv">1200</span>, <span class="at">height =</span> <span class="dv">1200</span>, <span class="at">res=</span><span class="dv">90</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">7</span>))</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(agregat)){</span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat <span class="sc">==</span> agregat [i],]</span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>  moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(tmp<span class="sc">$</span>montant)</span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>  med <span class="ot">&lt;-</span> <span class="fu">median</span>(tmp<span class="sc">$</span>montant)</span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>  sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(tmp<span class="sc">$</span>montant)</span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a>  mar <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a>  titre <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">substring</span>(agregat [i], <span class="dv">1</span>, <span class="dv">15</span>),<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,<span class="fu">round</span>(sigma,<span class="dv">0</span>))</span>
-<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a>  <span class="fu">hist</span>(tmp<span class="sc">$</span>montant, <span class="at">main =</span> titre, <span class="at">font.main=</span><span class="dv">1</span>,  <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
-<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a>}</span>
-<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># simplification des noms des colonnes</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">names</span>(data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ville&quot;</span>, <span class="st">&quot;agregat&quot;</span>,<span class="st">&quot;montant&quot;</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>agregat <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>agregat))</span></code></pre></div>
+<p>Affichage de tous les agrégats</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/medmoy.png&quot;</span>, <span class="at">width =</span> <span class="dv">1200</span>, <span class="at">height =</span> <span class="dv">1200</span>, <span class="at">res=</span><span class="dv">90</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>))</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(agregat)){</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat <span class="sc">==</span> agregat [i],]</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>  moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(tmp<span class="sc">$</span>montant)</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>  med <span class="ot">&lt;-</span> <span class="fu">median</span>(tmp<span class="sc">$</span>montant)</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>  sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(tmp<span class="sc">$</span>montant)</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>  mar <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>  titre <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">substring</span>(agregat [i], <span class="dv">1</span>, <span class="dv">15</span>),<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,<span class="fu">round</span>(sigma,<span class="dv">0</span>))</span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>  <span class="fu">hist</span>(tmp<span class="sc">$</span>montant, <span class="at">main =</span> titre, <span class="at">font.main=</span><span class="dv">1</span>,  <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a>}</span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## png 
 ##   2</code></pre>
-<p><img src="img/medmoy.png" /> moyenne en bleue, médiane en rouge</p>
+<p><img src="img/medmoy.png" /></p>
+<p>moyenne en bleue, médiane en rouge</p>
 <p>Chercher un ou deux agrégats pour lequel médiane et moyenne sont
 différentes.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>liste <span class="ot">&lt;-</span> <span class="fu">split</span>(data<span class="sc">$</span>montant, data<span class="sc">$</span>agregat)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">str</span>(liste)</span></code></pre></div>
+<pre><code>## List of 50
+##  $ Achats et charges externes                       : num [1:196] 189.4 11.1 1.4 409.1 339.7 ...
+##  $ Annuité de la dette                              : num [1:132] 218 0 0 161 321 ...
+##  $ Autres dépenses d&#39;investissement                 : num [1:132] 0.834 0 0 32.39 0.394 ...
+##  $ Autres dépenses de fonctionnement                : num [1:132] 39.8197 0.0386 0 27.1611 33.3135 ...
+##  $ Autres dotations de fonctionnement               : num [1:110] 4.04 8.03 8.14 12.53 7.94 ...
+##  $ Autres dotations et subventions                  : num [1:196] 74.1 0 0 47.6 100.2 ...
+##  $ Autres impôts et taxes                           : num [1:123] 38.9 164.7 81.7 37.4 28.6 ...
+##  $ Autres recettes d&#39;investissement                 : num [1:132] 16.1 0 0 73.6 159.7 ...
+##  $ Autres recettes de fonctionnement                : num [1:132] 27.24 20.69 1.06 30.96 34.63 ...
+##  $ Capacité ou besoin de financement                : num [1:66] 138.961 0.426 0 -0.575 -114.406 ...
+##  $ Charges financières                              : num [1:130] 59.5 0 0 32.5 132.5 ...
+##  $ Concours de l&#39;Etat                               : num [1:109] 354 0 347 196 332 ...
+##  $ Crédits de trésorerie                            : num [1:132] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ Dépenses d&#39;équipement                            : num [1:196] 119.478 0.437 0 255.092 585.583 ...
+##  $ Dépenses d&#39;intervention                          : num [1:196] 179 0 0 160 122 ...
+##  $ Dépenses d&#39;investissement                        : num [1:132] 295.509 0.437 0 424.239 774.715 ...
+##  $ Dépenses d&#39;investissement hors remb              : num [1:132] 137.515 0.437 0 295.854 585.977 ...
+##  $ Dépenses de fonctionnement                       : num [1:130] 1277.9 60.52 1689.95 6.33 7.74 ...
+##  $ Dépenses totales                                 : num [1:132] 1581.3 62.8 1.4 2142.8 2569.9 ...
+##  $ Dépenses totales hors remb                       : num [1:66] 1423.3 62.8 1.4 2014.4 2381.1 ...
+##  $ Dépôts au Trésor                                 : num [1:132] 298 0 0 150 186 ...
+##  $ DETR                                             : num [1:5] 3.914 5.878 0.366 8.168 3.871
+##  $ Dotation globale de fonctionnement               : num [1:78] 305 145 145 276 328 ...
+##  $ Emprunts hors GAD                                : num [1:132] 0.0135 0 0 194.7071 441.0634 ...
+##  $ Encours de dette                                 : num [1:132] 1868 0 0 1599 3962 ...
+##  $ Encours de dette - Dépôts et cautionnements reçus: num [1:89] 0.283 2.247 2.647 4.637 1.799 ...
+##  $ Encours de dette - Dettes bancaires et assimilées: num [1:84] 1862 1597 3956 1361 1816 ...
+##  $ Epargne brute                                    : num [1:66] 277.711 0.442 1.404 120.051 115.948 ...
+##  $ Epargne de gestion                               : num [1:66] 323.027 0.44 0.346 146.926 243.737 ...
+##  $ Epargne nette                                    : num [1:66] 119.717 0.442 1.404 -8.335 -72.789 ...
+##  $ FCTVA                                            : num [1:66] 22.047 0.152 0 30.419 38.002 ...
+##  $ Flux net de dette                                : num [1:66] -158 0 0 66.3 252.3 ...
+##  $ Fonds de roulement                               : num [1:66] 140.39 1.53 76.83 -22.21 41.65 ...
+##  $ Frais de personnel                               : num [1:66] 817.7 51.2 0 1090.1 1167.6 ...
+##  $ Impôts et taxes                                  : num [1:132] 983 0 0 0 1239 ...
+##  $ Impôts locaux                                    : num [1:41] 930 1088 1341 1073 1292 ...
+##  $ Péréquations et compensations fiscales           : num [1:40] 44.5 193.2 43.3 43.4 75.2 ...
+##  $ Produit des cessions d&#39;immobilisations           : num [1:66] 2.62 0 0 58.97 156.67 ...
+##  $ Recettes d&#39;investissement                        : num [1:132] 139.724 0.909 0 0 335.319 ...
+##  $ Recettes d&#39;investissement hors emprunts          : num [1:66] 112.238 0.152 0 151.663 297.889 ...
+##  $ Recettes de fonctionnement                       : num [1:66] 1563.54 62.79 2.81 1838.59 1911.1 ...
+##  $ Recettes totales                                 : num [1:66] 1750.6 66.5 0 1.8 2230.4 ...
+##  $ Recettes totales hors emprunts                   : num [1:66] 1749.3 66.5 0 1.8 1995 ...
+##  $ Remboursements d&#39;emprunts hors GAD               : num [1:132] 158 0 0 128 189 ...
+##  $ Subventions aux personnes de droit privé         : num [1:40] 108.1 93.7 57 21.3 48.6 ...
+##  $ Subventions d&#39;équipement versées                 : num [1:66] 17.2 0 0 8.37 0 ...
+##  $ Subventions reçues et participations             : num [1:66] 89.3 14.1 82.3 128.9 81.9 ...
+##  $ Taxe d&#39;enlévement des ordures ménagères          : num [1:5] 122.976 0.326 8.24 4.567 4.894
+##  $ Variation du fonds de roulement                  : num [1:66] -16.8 0.426 0 -0.575 -3.721 ...
+##  $ Ventes de biens et services                      : num [1:132] 124.36 28.01 1.75 126.12 128.25 ...</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>moyenne <span class="ot">&lt;-</span> <span class="fu">sapply</span>(liste, mean)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>mediane <span class="ot">&lt;-</span> <span class="fu">sapply</span>(liste, median)</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>maxi <span class="ot">&lt;-</span> <span class="fu">which</span>((moyenne<span class="sc">-</span>mediane)<span class="sc">==</span><span class="fu">max</span>(moyenne<span class="sc">-</span>mediane))</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>mini <span class="ot">&lt;-</span> <span class="fu">which</span>((moyenne<span class="sc">-</span>mediane)<span class="sc">==</span><span class="fu">min</span>(moyenne<span class="sc">-</span>mediane))</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>nulle <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">round</span>(moyenne<span class="sc">-</span>mediane,<span class="dv">0</span>)<span class="sc">==</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
 <span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="co"># moyenne &gt; médiane</span></span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>agregat [<span class="dv">43</span>]</span></code></pre></div>
-<pre><code>## [1] &quot;Recettes totales hors emprunts&quot;</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat <span class="sc">==</span> agregat [<span class="dv">43</span>],]</span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">hist</span>(tmp<span class="sc">$</span>montant, <span class="at">main =</span> agregat [<span class="dv">43</span>])</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>agregat [maxi]</span></code></pre></div>
+<pre><code>## [1] &quot;Encours de dette&quot;</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat <span class="sc">==</span> agregat [maxi],]</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">hist</span>(tmp<span class="sc">$</span>montant, <span class="at">main =</span> agregat [maxi])</span>
 <span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(tmp<span class="sc">$</span>montant)</span>
 <span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>med <span class="ot">&lt;-</span> <span class="fu">median</span>(tmp<span class="sc">$</span>montant)</span>
 <span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
 <span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
-<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="co"># également</span></span>
-<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a>agregat [<span class="dv">37</span>]</span></code></pre></div>
-<pre><code>## [1] &quot;Péréquations et compensations fiscales&quot;</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat <span class="sc">==</span> agregat [<span class="dv">37</span>],]</span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">hist</span>(tmp<span class="sc">$</span>montant, <span class="at">main =</span> agregat [<span class="dv">37</span>])</span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="co"># médiane &gt; moyenne</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a>agregat [mini]</span></code></pre></div>
+<pre><code>## [1] &quot;Dépenses totales hors remb&quot;</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat <span class="sc">==</span> agregat [mini],]</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">hist</span>(tmp<span class="sc">$</span>montant, <span class="at">main =</span> agregat [mini])</span>
 <span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(tmp<span class="sc">$</span>montant)</span>
 <span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a>med <span class="ot">&lt;-</span> <span class="fu">median</span>(tmp<span class="sc">$</span>montant)</span>
 <span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p><img src="jour1_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672" /></p>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a><span class="co"># Moyenne = médiane</span></span>
+<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a>agregat [nulle]</span></code></pre></div>
+<pre><code>## [1] &quot;FCTVA&quot;</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat <span class="sc">==</span> agregat [nulle],]</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">hist</span>(tmp<span class="sc">$</span>montant, <span class="at">main =</span> agregat [nulle])</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(tmp<span class="sc">$</span>montant)</span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>med <span class="ot">&lt;-</span> <span class="fu">median</span>(tmp<span class="sc">$</span>montant)</span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="jour1_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672" /></p>
 </div>
 </div>
 </div>
@@ -1117,30 +907,29 @@ différentes.</p>
 number="3.2">
 <h2><span class="header-section-number">3.2</span> Dispersion :
 Ecart-type et variance</h2>
-<p>La distribution est-elle hétérogène ?</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>agg <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(data<span class="sc">$</span>montant, <span class="at">by =</span> <span class="fu">list</span>(data<span class="sc">$</span>agregat), sd)</span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="fu">names</span>(agg) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;agregat&quot;</span>, <span class="st">&quot;sigma&quot;</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="fu">hist</span>(agg<span class="sc">$</span>sigma)</span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(agg<span class="sc">$</span>sigma)</span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>med <span class="ot">&lt;-</span> <span class="fu">median</span>(agg<span class="sc">$</span>sigma)</span>
-<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p><img src="jour1_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672" /></p>
+<p>La distribution des écarts-type est-elle hétérogène ?</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>agg <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(data<span class="sc">$</span>montant, <span class="at">by =</span> <span class="fu">list</span>(data<span class="sc">$</span>agregat), sd)</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fu">names</span>(agg) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;agregat&quot;</span>, <span class="st">&quot;sigma&quot;</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="fu">hist</span>(agg<span class="sc">$</span>sigma)</span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(agg<span class="sc">$</span>sigma)</span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a>med <span class="ot">&lt;-</span> <span class="fu">median</span>(agg<span class="sc">$</span>sigma)</span>
+<span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="jour1_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672" /></p>
 <p>Commenter l’écart type le plus élevé</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>agg<span class="sc">$</span>agregat [agg<span class="sc">$</span>sigma <span class="sc">==</span> <span class="fu">max</span>(agg<span class="sc">$</span>sigma)]</span></code></pre></div>
-<pre><code>## [1] &quot;Recettes totales&quot;</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>sel <span class="ot">&lt;-</span> agregat [<span class="dv">23</span>]</span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat <span class="sc">==</span> sel,]</span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>maxiSigma <span class="ot">&lt;-</span> agg<span class="sc">$</span>agregat [agg<span class="sc">$</span>sigma <span class="sc">==</span> <span class="fu">max</span>(agg<span class="sc">$</span>sigma)]</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>agregat <span class="sc">==</span> maxiSigma,]</span>
 <span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="fu">hist</span>(tmp<span class="sc">$</span>montant, </span>
 <span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>     <span class="at">main =</span> paste0</span>
-<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a>      (sel,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a>      (maxiSigma,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
 <span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a>        <span class="fu">round</span>(<span class="fu">sd</span>(tmp<span class="sc">$</span>montant),<span class="dv">0</span>)))</span>
 <span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">mean</span>(tmp<span class="sc">$</span>montant)</span>
 <span id="cb25-8"><a href="#cb25-8" tabindex="-1"></a>med <span class="ot">&lt;-</span> <span class="fu">median</span>(tmp<span class="sc">$</span>montant)</span>
 <span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> moy, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
 <span id="cb25-10"><a href="#cb25-10" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> med, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p><img src="jour1_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672" /></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tmp [<span class="fu">order</span>(tmp<span class="sc">$</span>montant), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)])</span></code></pre></div>
+<p><img src="jour1_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(tmp [<span class="fu">order</span>(tmp<span class="sc">$</span>montant), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1151,394 +940,76 @@ Ecart-type et variance</h2>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">3061</td>
-<td align="left">TREMBLAY-EN-FRANCE</td>
-<td align="right">11.53372</td>
+<td align="left">69</td>
+<td align="left">SSIDPA-PA-VILLE DE AUBERVILLIERS</td>
+<td align="right">0.0000000</td>
 </tr>
 <tr class="even">
-<td align="left">833</td>
-<td align="left">TREMBLAY-EN-FRANCE</td>
-<td align="right">11.99039</td>
+<td align="left">126</td>
+<td align="left">ENERGIE PHOTOVOLTAIQUE</td>
+<td align="right">0.1297191</td>
 </tr>
 <tr class="odd">
-<td align="left">830</td>
-<td align="left">SAINT-OUEN</td>
-<td align="right">32.05609</td>
+<td align="left">105</td>
+<td align="left">RESTAURATION DES MANIFESTATIONS MUNICIPA</td>
+<td align="right">0.8679423</td>
 </tr>
 <tr class="even">
-<td align="left">3058</td>
-<td align="left">SAINT-OUEN</td>
-<td align="right">38.89933</td>
+<td align="left">121</td>
+<td align="left">SAINT-OUEN - FOURNITURES REPAS</td>
+<td align="right">1.5382658</td>
 </tr>
 <tr class="odd">
-<td align="left">806</td>
-<td align="left">COUBRON</td>
-<td align="right">76.44645</td>
+<td align="left">70</td>
+<td align="left">RESEAU DE CHALEUR DE LA ZAC CANAL</td>
+<td align="right">1.7950485</td>
 </tr>
 <tr class="even">
-<td align="left">3034</td>
-<td align="left">COUBRON</td>
-<td align="right">79.35825</td>
+<td align="left">102</td>
+<td align="left">CAMPING CORSE</td>
+<td align="right">2.0189935</td>
 </tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">tail</span>(tmp [<span class="fu">order</span>(tmp<span class="sc">$</span>montant), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">ville</th>
+<th align="right">montant</th>
+</tr>
+</thead>
+<tbody>
 <tr class="odd">
-<td align="left">822</td>
-<td align="left">PANTIN</td>
-<td align="right">81.69524</td>
-</tr>
-<tr class="even">
-<td align="left">3050</td>
-<td align="left">PANTIN</td>
-<td align="right">85.41640</td>
-</tr>
-<tr class="odd">
-<td align="left">812</td>
-<td align="left">GOURNAY-SUR-MARNE</td>
-<td align="right">89.24412</td>
-</tr>
-<tr class="even">
-<td align="left">3040</td>
-<td align="left">GOURNAY-SUR-MARNE</td>
-<td align="right">91.52966</td>
-</tr>
-<tr class="odd">
-<td align="left">3032</td>
-<td align="left">LE BOURGET</td>
-<td align="right">96.82061</td>
-</tr>
-<tr class="even">
-<td align="left">804</td>
-<td align="left">LE BOURGET</td>
-<td align="right">98.53689</td>
-</tr>
-<tr class="odd">
-<td align="left">820</td>
-<td align="left">NOISY-LE-GRAND</td>
-<td align="right">101.82457</td>
-</tr>
-<tr class="even">
-<td align="left">823</td>
-<td align="left">PAVILLONS-SOUS-BOIS (LES)</td>
-<td align="right">102.85292</td>
-</tr>
-<tr class="odd">
-<td align="left">3048</td>
-<td align="left">NOISY-LE-GRAND</td>
-<td align="right">103.59962</td>
-</tr>
-<tr class="even">
-<td align="left">3051</td>
-<td align="left">PAVILLONS-SOUS-BOIS (LES)</td>
-<td align="right">103.72646</td>
-</tr>
-<tr class="odd">
-<td align="left">814</td>
-<td align="left">LILAS (LES)</td>
-<td align="right">109.09528</td>
-</tr>
-<tr class="even">
-<td align="left">3042</td>
-<td align="left">LILAS (LES)</td>
-<td align="right">110.73923</td>
-</tr>
-<tr class="odd">
-<td align="left">826</td>
-<td align="left">RAINCY (LE )</td>
-<td align="right">119.43996</td>
-</tr>
-<tr class="even">
-<td align="left">3054</td>
-<td align="left">RAINCY (LE )</td>
-<td align="right">121.87906</td>
-</tr>
-<tr class="odd">
-<td align="left">3045</td>
-<td align="left">MONTREUIL</td>
-<td align="right">125.81036</td>
-</tr>
-<tr class="even">
-<td align="left">817</td>
-<td align="left">MONTREUIL</td>
-<td align="right">126.14941</td>
-</tr>
-<tr class="odd">
-<td align="left">835</td>
-<td align="left">VILLEPINTE</td>
-<td align="right">133.07664</td>
-</tr>
-<tr class="even">
-<td align="left">3063</td>
-<td align="left">VILLEPINTE</td>
-<td align="right">133.15476</td>
-</tr>
-<tr class="odd">
-<td align="left">3027</td>
-<td align="left">AULNAY-SOUS-BOIS</td>
-<td align="right">139.59424</td>
-</tr>
-<tr class="even">
-<td align="left">828</td>
-<td align="left">ROSNY-SOUS-BOIS</td>
-<td align="right">141.94098</td>
-</tr>
-<tr class="odd">
-<td align="left">3056</td>
-<td align="left">ROSNY-SOUS-BOIS</td>
-<td align="right">142.62850</td>
-</tr>
-<tr class="even">
-<td align="left">800</td>
-<td align="left">BAGNOLET</td>
-<td align="right">144.67744</td>
-</tr>
-<tr class="odd">
-<td align="left">3028</td>
-<td align="left">BAGNOLET</td>
-<td align="right">144.82501</td>
-</tr>
-<tr class="even">
-<td align="left">799</td>
-<td align="left">AULNAY-SOUS-BOIS</td>
-<td align="right">145.42896</td>
-</tr>
-<tr class="odd">
-<td align="left">815</td>
-<td align="left">LIVRY-GARGAN</td>
-<td align="right">148.05929</td>
-</tr>
-<tr class="even">
-<td align="left">3043</td>
-<td align="left">LIVRY-GARGAN</td>
-<td align="right">158.90039</td>
-</tr>
-<tr class="odd">
-<td align="left">827</td>
-<td align="left">ROMAINVILLE</td>
-<td align="right">197.15520</td>
-</tr>
-<tr class="even">
-<td align="left">3055</td>
-<td align="left">ROMAINVILLE</td>
-<td align="right">212.29785</td>
-</tr>
-<tr class="odd">
-<td align="left">3057</td>
-<td align="left">SAINT-DENIS</td>
-<td align="right">216.31233</td>
-</tr>
-<tr class="even">
-<td align="left">829</td>
-<td align="left">SAINT-DENIS</td>
-<td align="right">220.68925</td>
-</tr>
-<tr class="odd">
-<td align="left">818</td>
-<td align="left">NEUILLY-PLAISANCE</td>
-<td align="right">227.35747</td>
-</tr>
-<tr class="even">
-<td align="left">3046</td>
-<td align="left">NEUILLY-PLAISANCE</td>
-<td align="right">231.84001</td>
-</tr>
-<tr class="odd">
-<td align="left">834</td>
-<td align="left">VILLEMOMBLE</td>
-<td align="right">232.23617</td>
-</tr>
-<tr class="even">
-<td align="left">3062</td>
-<td align="left">VILLEMOMBLE</td>
-<td align="right">234.11953</td>
-</tr>
-<tr class="odd">
-<td align="left">3039</td>
-<td align="left">GAGNY</td>
-<td align="right">239.80515</td>
-</tr>
-<tr class="even">
-<td align="left">811</td>
-<td align="left">GAGNY</td>
-<td align="right">240.08160</td>
-</tr>
-<tr class="odd">
-<td align="left">3029</td>
-<td align="left">BLANC-MESNIL (LE )</td>
-<td align="right">269.77167</td>
-</tr>
-<tr class="even">
-<td align="left">801</td>
-<td align="left">BLANC-MESNIL (LE )</td>
-<td align="right">276.28277</td>
-</tr>
-<tr class="odd">
-<td align="left">3053</td>
-<td align="left">PRE-SAINT-GERVAIS (LE )</td>
-<td align="right">280.67265</td>
-</tr>
-<tr class="even">
-<td align="left">808</td>
-<td align="left">DRANCY</td>
-<td align="right">282.16551</td>
-</tr>
-<tr class="odd">
-<td align="left">825</td>
-<td align="left">PRE-SAINT-GERVAIS (LE )</td>
-<td align="right">283.90719</td>
-</tr>
-<tr class="even">
-<td align="left">3036</td>
-<td align="left">DRANCY</td>
-<td align="right">289.96530</td>
-</tr>
-<tr class="odd">
-<td align="left">813</td>
-<td align="left">ILE-SAINT-DENIS (L’ )</td>
-<td align="right">295.68356</td>
-</tr>
-<tr class="even">
-<td align="left">3041</td>
-<td align="left">ILE-SAINT-DENIS (L’ )</td>
-<td align="right">295.99154</td>
-</tr>
-<tr class="odd">
-<td align="left">3026</td>
-<td align="left">AUBERVILLIERS</td>
-<td align="right">297.70783</td>
-</tr>
-<tr class="even">
-<td align="left">798</td>
-<td align="left">AUBERVILLIERS</td>
-<td align="right">305.15876</td>
-</tr>
-<tr class="odd">
-<td align="left">3030</td>
+<td align="left">77</td>
 <td align="left">BOBIGNY</td>
-<td align="right">322.04049</td>
+<td align="right">2402.516</td>
 </tr>
 <tr class="even">
-<td align="left">3044</td>
-<td align="left">MONTFERMEIL</td>
-<td align="right">326.83808</td>
+<td align="left">106</td>
+<td align="left">NOISY-LE-GRAND</td>
+<td align="right">2523.768</td>
 </tr>
 <tr class="odd">
-<td align="left">3047</td>
-<td align="left">NEUILLY-SUR-MARNE</td>
-<td align="right">328.20699</td>
+<td align="left">109</td>
+<td align="left">PANTIN</td>
+<td align="right">2575.290</td>
 </tr>
 <tr class="even">
-<td align="left">802</td>
-<td align="left">BOBIGNY</td>
-<td align="right">328.32457</td>
+<td align="left">115</td>
+<td align="left">ROMAINVILLE</td>
+<td align="right">2717.210</td>
 </tr>
 <tr class="odd">
-<td align="left">816</td>
-<td align="left">MONTFERMEIL</td>
-<td align="right">329.71248</td>
+<td align="left">119</td>
+<td align="left">SAINT-OUEN</td>
+<td align="right">2734.692</td>
 </tr>
 <tr class="even">
-<td align="left">819</td>
-<td align="left">NEUILLY-SUR-MARNE</td>
-<td align="right">334.32255</td>
-</tr>
-<tr class="odd">
-<td align="left">3052</td>
-<td align="left">PIERREFITTE-SUR-SEINE</td>
-<td align="right">347.95308</td>
-</tr>
-<tr class="even">
-<td align="left">3035</td>
-<td align="left">COURNEUVE (LA )</td>
-<td align="right">351.09408</td>
-</tr>
-<tr class="odd">
-<td align="left">824</td>
-<td align="left">PIERREFITTE-SUR-SEINE</td>
-<td align="right">359.80618</td>
-</tr>
-<tr class="even">
-<td align="left">807</td>
-<td align="left">COURNEUVE (LA )</td>
-<td align="right">361.61817</td>
-</tr>
-<tr class="odd">
-<td align="left">3049</td>
-<td align="left">NOISY-LE-SEC</td>
-<td align="right">383.07807</td>
-</tr>
-<tr class="even">
-<td align="left">821</td>
-<td align="left">NOISY-LE-SEC</td>
-<td align="right">392.40800</td>
-</tr>
-<tr class="odd">
-<td align="left">3031</td>
-<td align="left">BONDY</td>
-<td align="right">393.69482</td>
-</tr>
-<tr class="even">
-<td align="left">3037</td>
-<td align="left">DUGNY</td>
-<td align="right">404.60268</td>
-</tr>
-<tr class="odd">
-<td align="left">803</td>
-<td align="left">BONDY</td>
-<td align="right">407.91163</td>
-</tr>
-<tr class="even">
-<td align="left">809</td>
-<td align="left">DUGNY</td>
-<td align="right">411.42082</td>
-</tr>
-<tr class="odd">
-<td align="left">3059</td>
-<td align="left">SEVRAN</td>
-<td align="right">451.09239</td>
-</tr>
-<tr class="even">
-<td align="left">3038</td>
-<td align="left">EPINAY-SUR-SEINE</td>
-<td align="right">462.14358</td>
-</tr>
-<tr class="odd">
-<td align="left">831</td>
-<td align="left">SEVRAN</td>
-<td align="right">462.57997</td>
-</tr>
-<tr class="even">
-<td align="left">836</td>
-<td align="left">VILLETANEUSE</td>
-<td align="right">469.20108</td>
-</tr>
-<tr class="odd">
-<td align="left">810</td>
-<td align="left">EPINAY-SUR-SEINE</td>
-<td align="right">477.96553</td>
-</tr>
-<tr class="even">
-<td align="left">3064</td>
-<td align="left">VILLETANEUSE</td>
-<td align="right">478.09537</td>
-</tr>
-<tr class="odd">
-<td align="left">3060</td>
-<td align="left">STAINS</td>
-<td align="right">479.45783</td>
-</tr>
-<tr class="even">
-<td align="left">832</td>
-<td align="left">STAINS</td>
-<td align="right">483.81569</td>
-</tr>
-<tr class="odd">
-<td align="left">3033</td>
-<td align="left">CLICHY-SOUS-BOIS</td>
-<td align="right">707.78330</td>
-</tr>
-<tr class="even">
-<td align="left">805</td>
-<td align="left">CLICHY-SOUS-BOIS</td>
-<td align="right">736.10866</td>
+<td align="left">128</td>
+<td align="left">TREMBLAY-EN-FRANCE</td>
+<td align="right">2956.864</td>
 </tr>
 </tbody>
 </table>
@@ -1576,12 +1047,17 @@ pas</em>, créer les indicateurs.</p>
 <li><p>carré des écarts</p></li>
 <li><p>et à part sur une seule case : moyenne du carré des écarts
 (variance), l’écart type est la racine carrée.</p></li>
+<li><p>nommer <em>maMoy</em> la cellule contenant la moyenne</p></li>
 </ul>
+<p><img src="img/nomMoyenne.png" /></p>
+<p>Pour mémoire, les formules :</p>
+<p><img src="img/formuleVariance.png" /></p>
 </div>
-<div id="corrections-quelques-remarques" class="section level3"
-number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Corrections
-quelques remarques</h3>
+<div
+id="corrections-maison-2-quelques-remarques-attention-exercice-2025"
+class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Corrections MAISON
+2 quelques remarques (attention exercice 2025)</h3>
 <p>L’objectif de l’exercice était d’obtenir un commentaire clair avec
 quelques repères statistiques.</p>
 <div id="forme" class="section level4" number="3.2.2.1">

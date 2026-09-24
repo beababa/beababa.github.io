@@ -661,10 +661,10 @@ class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Extraire la donnée à
 partir du portail externe</h2>
 <p>Explication des différents filtres</p>
-<div id="choix-de-base-compte-consolidé-et-année" class="section level4"
-number="2.2.0.1">
-<h4><span class="header-section-number">2.2.0.1</span> Choix de base :
-compte consolidé et année</h4>
+<div id="choix-de-base-compte-consolidé-et-année" class="section level3"
+number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Choix de base :
+compte consolidé et année</h3>
 <ul>
 <li>compte consolidé</li>
 </ul>
@@ -673,97 +673,53 @@ compte consolidé et année</h4>
 <li>pour le premier cours, ne pas faire de choix d’agrégat</li>
 </ul>
 <p><img src="img/agregatListe.png" /></p>
-<p>savoir distinguer investissement et fonctionnement</p>
-<p>dans quelle catégorie classer les frais de personnel ?</p>
+<p>Sur la notion d’agrégat, au minimum :</p>
+<ul>
+<li><p>Savoir distinguer investissement et fonctionnement</p></li>
+<li><p>Dans quelle catégorie classer les frais de personnel ?</p></li>
+</ul>
 </div>
-<div id="un-choix-géographique-différent-par-étudiant"
-class="section level4" number="2.2.0.2">
-<h4><span class="header-section-number">2.2.0.2</span> Un choix
-géographique différent par étudiant</h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>lieu <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/etudiant.csv&quot;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>lieu <span class="ot">&lt;-</span> <span class="fu">unique</span>(lieu<span class="sc">$</span>code.insee.commune.choisie)</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>lieu <span class="ot">&lt;-</span> lieu [<span class="sc">!</span><span class="fu">is.na</span>(lieu)]</span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
-<pre><code>## Linking to GEOS 3.14.1, GDAL 3.12.1, PROJ 9.7.1; sf_use_s2() is TRUE</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>communes <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/communes-1000m.geojson&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `communes-1000m&#39; from data source 
-##   `C:\Users\forma\01_stat\data\gros\communes-1000m.geojson&#39; using driver `GeoJSON&#39;
-## Simple feature collection with 35014 features and 7 fields
-## Geometry type: MULTIPOLYGON
-## Dimension:     XY
-## Bounding box:  xmin: -178.182 ymin: -85.05 xmax: 168.133 ymax: 51.089
-## Geodetic CRS:  WGS 84</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>communes <span class="ot">&lt;-</span> communes [<span class="fu">st_is_valid</span>(communes),]</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(communes [,<span class="fu">c</span>(<span class="st">&quot;region&quot;</span>)], <span class="at">by =</span> <span class="fu">list</span>(communes<span class="sc">$</span>region), length)</span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>data <span class="ot">&lt;-</span> communes [communes<span class="sc">$</span>code <span class="sc">%in%</span> lieu,]</span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>departement, data<span class="sc">$</span>region)</span></code></pre></div>
-<pre><code>##      
-##       01 02 11 24 27 28 32 44 52 53 75 76 84 93
-##   13   0  0  0  0  0  0  0  0  0  0  0  0  0  1
-##   17   0  0  0  0  0  0  0  0  0  0  1  0  0  0
-##   29   0  0  0  0  0  0  0  0  0  1  0  0  0  0
-##   33   0  0  0  0  0  0  0  0  0  0  1  0  0  0
-##   34   0  0  0  0  0  0  0  0  0  0  0  1  0  0
-##   44   0  0  0  0  0  0  0  0  1  0  0  0  0  0
-##   45   0  0  0  1  0  0  0  0  0  0  0  0  0  0
-##   58   0  0  0  0  1  0  0  0  0  0  0  0  0  0
-##   59   0  0  0  0  0  0  1  0  0  0  0  0  0  0
-##   60   0  0  0  0  0  0  1  0  0  0  0  0  0  0
-##   61   0  0  0  0  0  1  0  0  0  0  0  0  0  0
-##   63   0  0  0  0  0  0  0  0  0  0  0  0  1  0
-##   64   0  0  0  0  0  0  0  0  0  0  2  0  0  0
-##   67   0  0  0  0  0  0  0  1  0  0  0  0  0  0
-##   69   0  0  0  0  0  0  0  0  0  0  0  0  1  0
-##   72   0  0  0  0  0  0  0  0  1  0  0  0  0  0
-##   74   0  0  0  0  0  0  0  0  0  0  0  0  2  0
-##   75   0  0  9  0  0  0  0  0  0  0  0  0  0  0
-##   77   0  0  2  0  0  0  0  0  0  0  0  0  0  0
-##   78   0  0  1  0  0  0  0  0  0  0  0  0  0  0
-##   84   0  0  0  0  0  0  0  0  0  0  0  0  0  1
-##   85   0  0  0  0  0  0  0  0  1  0  0  0  0  0
-##   92   0  0 11  0  0  0  0  0  0  0  0  0  0  0
-##   93   0  0  7  0  0  0  0  0  0  0  0  0  0  0
-##   94   0  0  9  0  0  0  0  0  0  0  0  0  0  0
-##   95   0  0  2  0  0  0  0  0  0  0  0  0  0  0
-##   971  1  0  0  0  0  0  0  0  0  0  0  0  0  0
-##   972  0  1  0  0  0  0  0  0  0  0  0  0  0  0</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">hist</span>(region<span class="sc">$</span>region)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672" /></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>met <span class="ot">&lt;-</span> region [region<span class="sc">$</span>region <span class="sc">&gt;</span> <span class="dv">900</span>,]</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">mf_map</span>(met, <span class="at">col =</span> <span class="st">&quot;wheat&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">mf_map</span>(data, <span class="at">col=</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Choix des communes sur la métropole par les étudiants&quot;</span>, <span class="st">&quot;data.gouv et sources internes</span><span class="sc">\n</span><span class="st">Novembre 2025&quot;</span>)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-2-2.png" alt="" width="672" /></p>
-<pre><code>## The scale bar cannot be displayed on unprojected (long/lat) maps.</code></pre>
-<p>Deux étudiants ont fait un choix hors métropole</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>horsMet <span class="ot">&lt;-</span> data [data<span class="sc">$</span>departement <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">971</span>,<span class="dv">972</span>),]</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">mf_init</span>(<span class="fu">st_buffer</span>(horsMet,<span class="dv">20000</span>))</span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">mf_map</span>(region, <span class="at">col =</span> <span class="st">&quot;wheat&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">add =</span> T)</span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="fu">mf_map</span>(data, <span class="at">col=</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Choix des communes hors métropole par 2 étudiants&quot;</span>, <span class="st">&quot;data.gouv et sources internes</span><span class="sc">\n</span><span class="st">Novembre 2025&quot;</span>)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" /></p>
+<div id="la-commune-un-choix-géographique-différent-par-étudiant"
+class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> La commune : un
+choix géographique différent par étudiant</h3>
+<p>Chaque étudiant choisit une commune et indique son code INSEE</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>lieu <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/insee.csv&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>lieu <span class="ot">&lt;-</span> lieu [<span class="sc">!</span><span class="fu">is.na</span>(lieu)]</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">suppressMessages</span>(<span class="fu">library</span>(sf))</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>communes <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/gros/communes-1000m.geojson&quot;</span>, <span class="at">quiet =</span> T)</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/regions-20140306-100m.shp&quot;</span>, <span class="at">quiet =</span> T)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>region<span class="sc">$</span>code_insee <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(region<span class="sc">$</span>code_insee)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>region <span class="ot">&lt;-</span> region [region<span class="sc">$</span>code_insee <span class="sc">&gt;</span> <span class="dv">10</span>,] </span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>data <span class="ot">&lt;-</span> communes [communes<span class="sc">$</span>code <span class="sc">%in%</span> lieu,]</span></code></pre></div>
+<p>5 communes problématiques</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>lieu [<span class="sc">!</span>(lieu <span class="sc">%in%</span> data<span class="sc">$</span>code)]</span></code></pre></div>
+<pre><code>## [1] &quot;94000&quot; &quot;94110&quot; &quot;6088&quot;  &quot;94250&quot; &quot;92800&quot; &quot;94400&quot;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>lieu <span class="ot">&lt;-</span> <span class="fu">c</span>(lieu,<span class="st">&quot;94028&quot;</span>, <span class="st">&quot;94003&quot;</span>, <span class="st">&quot;06088&quot;</span>, <span class="st">&quot;94037&quot;</span>, <span class="st">&quot;92062&quot;</span>, <span class="st">&quot;94080&quot;</span> )</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> communes [communes<span class="sc">$</span>code <span class="sc">%in%</span> lieu,]</span></code></pre></div>
+<p>Cartographie des choix étudiants</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">mf_map</span>(region, <span class="at">col =</span> <span class="st">&quot;wheat&quot;</span>, <span class="at">border=</span><span class="st">&quot;cornsilk&quot;</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">mf_map</span>(<span class="fu">st_buffer</span>(data, <span class="dv">10000</span>), <span class="at">col=</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Choix des communes</span><span class="sc">\n</span><span class="st">(tampons autour des communes)&quot;</span>, <span class="st">&quot;data.gouv et sources internes</span><span class="sc">\n</span><span class="st">septembre 2026&quot;</span>)</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672" /></p>
 <pre><code>## The scale bar cannot be displayed on unprojected (long/lat) maps.</code></pre>
 <p>Enregistrement de la donnée</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">st_write</span>(data, <span class="st">&quot;data/data.gpkg&quot;</span>, <span class="st">&quot;data&quot;</span>, <span class="at">append =</span> F)</span></code></pre></div>
-<pre><code>## Deleting layer `data&#39; using driver `GPKG&#39;
-## Writing layer `data&#39; to data source `data/data.gpkg&#39; using driver `GPKG&#39;
-## Writing 64 features with 7 fields and geometry type Multi Polygon.</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">st_drop_geometry</span>(data)</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">write.csv</span>(data, <span class="st">&quot;data/communeEtudiant.csv&quot;</span>, <span class="at">row.names =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">st_write</span>(data, <span class="st">&quot;data/cours.gpkg&quot;</span>, <span class="st">&quot;commune&quot;</span>, <span class="at">append =</span> F, <span class="at">quiet =</span> T)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">st_drop_geometry</span>(data)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">write.csv</span>(data, <span class="st">&quot;data/communeEtudiant.csv&quot;</span>, <span class="at">row.names =</span> F)</span></code></pre></div>
 </div>
-<div id="choix-pour-le-cours" class="section level4" number="2.2.0.3">
-<h4><span class="header-section-number">2.2.0.3</span> Choix pour le
-cours</h4>
-<p>Le cours sera basé sur la commune de Bondy et le département du 93
-(1967 enregistrements pour tous les agrégats)</p>
+<div id="choix-pour-le-cours" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Choix pour le
+cours</h3>
+<p>Le cours sera basé sur la commune de Bondy (49 enregistrements pour
+tous les agrégats) et le département du 93 (1967 enregistrements)</p>
 <p><img src="img/sel93.png" /></p>
 <p>A noter, sélectionner la région permet de choisir plus facilement le
 département 93</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/agregatEnsemble.csv&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/agregatEnsemble.csv&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># liste des agrégats</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
 <pre><code>##  [1] &quot;Exercice&quot;                             
 ##  [2] &quot;Outre.mer&quot;                            
 ##  [3] &quot;Code.Insee.2025.Région&quot;               
@@ -805,7 +761,8 @@ département 93</p>
 ## [39] &quot;ordre_analyse4_section1&quot;              
 ## [40] &quot;annee_join&quot;                           
 ## [41] &quot;Population.totale.du.dernier.exercice&quot;</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># début du fichier</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
 <pre><code>##   Exercice Outre.mer Code.Insee.2025.Région Nom.2025.Région
 ## 1     2025       Non                     11   Île-de-France
 ## 2     2025       Non                     11   Île-de-France
@@ -890,7 +847,8 @@ département 93</p>
 ## 4                      NA       2025                                 51239
 ## 5                      NA       2025                                 51239
 ## 6                      NA       2025                                 51239</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># structure du fichier</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    49 obs. of  41 variables:
 ##  $ Exercice                             : int  2025 2025 2025 2025 2025 2025 2025 2025 2025 2025 ...
 ##  $ Outre.mer                            : chr  &quot;Non&quot; &quot;Non&quot; &quot;Non&quot; &quot;Non&quot; ...
@@ -933,13 +891,13 @@ département 93</p>
 ##  $ ordre_analyse4_section1              : int  2 NA NA NA NA NA NA NA NA NA ...
 ##  $ annee_join                           : int  2025 2025 2025 2025 2025 2025 2025 2025 2025 2025 ...
 ##  $ Population.totale.du.dernier.exercice: int  51239 51239 51239 51239 51239 51239 51239 51239 51239 51239 ...</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># combien d&#39;enregistrement par ville ?</span></span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Code.Insee.<span class="fl">2025.</span>Commune)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># combien d&#39;enregistrement par ville ?</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Code.Insee.<span class="fl">2025.</span>Commune)</span></code></pre></div>
 <pre><code>## 
 ## 93010 
 ##    49</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># filtre sur l&#39;agrégat et le montant par hbt)</span></span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fu">head</span>(data [ , <span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">28</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># filtre sur l&#39;agrégat et le montant par hbt)</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">head</span>(data [ , <span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">28</span>)])</span></code></pre></div>
 <pre><code>##                               Agrégat Montant.en...par.habitant
 ## 1                    Dépôts au Trésor                  383.2400
 ## 2             Dépenses d&#39;intervention                  103.8731
@@ -947,11 +905,11 @@ département 93</p>
 ## 4          Dépenses de fonctionnement                 1607.2490
 ## 5                       Impôts locaux                 1036.1233
 ## 6          Recettes de fonctionnement                 1872.7306</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># sauvegarde de la donnée</span></span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="fu">write.csv</span>(data [,<span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">28</span>)], <span class="st">&quot;data/agregat.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="co"># Les agrégats ont-ils tous la même importance ?</span></span>
-<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>Montant.en...par.habitant)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># sauvegarde de la donnée</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">write.csv</span>(data [,<span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">28</span>)], <span class="st">&quot;data/agregatBondy.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co"># Les agrégats ont-ils tous la même importance ?</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>Montant.en...par.habitant)</span></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" alt="" width="672" /></p>
 </div>
 </div>
 </div>
@@ -963,47 +921,21 @@ number="3">
 <h2><span class="header-section-number">3.1</span> Qui sont les
 étudiants ?</h2>
 <ul>
-<li>84 étudiants inscrits sur 3 cours (70 présents environ)</li>
+<li>84 étudiants inscrits sur 3 cours (54 présents environ)</li>
 </ul>
 <p>Les questions posées sont sur le passé / présent / futur des
 étudiants, leur appétence en stats</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&quot;data/TD3_stats_2025.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>etudiant2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tdLundi.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="fu">names</span>(etudiant)</span></code></pre></div>
-<pre><code>## [1] &quot;prenom&quot;                     &quot;adresse.mail&quot;              
-## [3] &quot;groupe&quot;                     &quot;appetence&quot;                 
-## [5] &quot;code.insee.commune.choisie&quot; &quot;passé&quot;                     
-## [7] &quot;futur&quot;</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">names</span>(etudiant2)</span></code></pre></div>
-<pre><code>## [1] &quot;X&quot;                                             
-## [2] &quot;adresse.mail&quot;                                  
-## [3] &quot;groupe&quot;                                        
-## [4] &quot;appetence.stats..1...4..un.peu..passionnément.&quot;
-## [5] &quot;code.insee.commune.choisie&quot;                    
-## [6] &quot;passé&quot;                                         
-## [7] &quot;présent&quot;                                       
-## [8] &quot;futur&quot;</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">names</span>(etudiant2)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&#39;prenom&#39;</span></span>
-<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a><span class="fu">names</span>(etudiant2)[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="st">&#39;appetence&#39;</span></span>
-<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>etudiant2 <span class="ot">&lt;-</span> etudiant2 [, <span class="fu">names</span>(etudiant)]</span>
-<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span> <span class="fu">rbind</span>(etudiant, etudiant2)</span>
-<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span> etudiant [<span class="sc">!</span><span class="fu">is.na</span>(etudiant<span class="sc">$</span>prenom),]</span>
-<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a><span class="fu">table</span>(etudiant<span class="sc">$</span>groupe, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-##    1    2    3 &lt;NA&gt; 
-##   29   31   21    5</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">write.csv</span>(etudiant, <span class="st">&quot;data/etudiant.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/etudiantModifie.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/quisontils.png&quot;</span>, <span class="at">width =</span> <span class="dv">10000</span>, <span class="at">height =</span> <span class="dv">10000</span>, <span class="at">res=</span><span class="dv">1000</span>)</span>
-<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="co">#par(mar = c(2,16,2,4))</span></span>
-<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">7</span>)){</span>
-<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a>  (<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">30</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
-<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">table</span>(etudiant [,i]), <span class="at">border =</span> <span class="cn">NA</span>,</span>
-<span id="cb34-8"><a href="#cb34-8" tabindex="-1"></a>          <span class="at">horiz =</span> T, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">cex.names =</span> <span class="fl">0.8</span>, </span>
-<span id="cb34-9"><a href="#cb34-9" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">names</span> (etudiant) [i])</span>
-<span id="cb34-10"><a href="#cb34-10" tabindex="-1"></a>}</span>
-<span id="cb34-11"><a href="#cb34-11" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/etudiantModifie.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/quisontils.png&quot;</span>, <span class="at">width =</span> <span class="dv">10000</span>, <span class="at">height =</span> <span class="dv">10000</span>, <span class="at">res=</span><span class="dv">1000</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co">#par(mar = c(2,16,2,4))</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>)){</span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a>  (<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">30</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">table</span>(etudiant [,i]), <span class="at">border =</span> <span class="cn">NA</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a>          <span class="at">horiz =</span> T, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">cex.names =</span> <span class="fl">0.8</span>, </span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">names</span> (etudiant) [i])</span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a>}</span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## png 
 ##   2</code></pre>
 <p><img src="img/quisontils.png" /></p>
@@ -1015,8 +947,8 @@ devoirs : chiffres clés</h2>
 <div id="effectif-et-cours" class="section level3" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Effectif et
 cours</h3>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>presence <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/presence.csv&quot;</span>)</span>
-<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(presence)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>presence <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/presence.csv&quot;</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(presence)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1029,69 +961,69 @@ cours</h3>
 <tbody>
 <tr class="odd">
 <td align="left">C1</td>
-<td align="right">30</td>
-<td align="right">31</td>
-<td align="right">22</td>
+<td align="right">21</td>
+<td align="right">24</td>
+<td align="right">7</td>
 </tr>
 <tr class="even">
 <td align="left">C2</td>
-<td align="right">22</td>
-<td align="right">25</td>
-<td align="right">24</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">C3</td>
-<td align="right">23</td>
-<td align="right">27</td>
-<td align="right">19</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="left">C4</td>
-<td align="right">19</td>
-<td align="right">29</td>
-<td align="right">13</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">C5</td>
-<td align="right">25</td>
-<td align="right">23</td>
-<td align="right">18</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="left">C6</td>
-<td align="right">17</td>
-<td align="right">17</td>
-<td align="right">19</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">C7</td>
-<td align="right">15</td>
-<td align="right">19</td>
-<td align="right">25</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="left">C8</td>
-<td align="right">15</td>
-<td align="right">25</td>
-<td align="right">12</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">C9</td>
-<td align="right">15</td>
-<td align="right">22</td>
-<td align="right">23</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="left">C10</td>
-<td align="right">17</td>
-<td align="right">17</td>
-<td align="right">4</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">C11</td>
-<td align="right">9</td>
-<td align="right">18</td>
-<td align="right">13</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="left">C12</td>
@@ -1107,14 +1039,14 @@ cours</h3>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>presence<span class="sc">$</span>numCours <span class="ot">&lt;-</span><span class="fu">as.numeric</span>(<span class="fu">substring</span>(presence<span class="sc">$</span>Cours,<span class="dv">2</span>,<span class="dv">3</span>))</span>
-<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))</span>
-<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a><span class="fu">barplot</span>(presence<span class="sc">$</span>TD1<span class="sc">~</span>presence<span class="sc">$</span>numCours, <span class="at">col=</span><span class="st">&quot;chartreuse&quot;</span>, <span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;Evolution de la présence groupe 1&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;cours&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span> </span>
-<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span>
-<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a><span class="fu">barplot</span>(presence<span class="sc">$</span>TD2<span class="sc">~</span>presence<span class="sc">$</span>numCours, <span class="at">col =</span> <span class="st">&quot;cyan&quot;</span>, <span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;Evolution de la présence groupe 2&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;cours&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span> </span>
-<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span>
-<span id="cb37-7"><a href="#cb37-7" tabindex="-1"></a><span class="fu">barplot</span>(presence<span class="sc">$</span>TD3<span class="sc">~</span>presence<span class="sc">$</span>numCours, <span class="at">col=</span><span class="st">&quot;darkorange&quot;</span>,<span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;Evolution de la présence groupe 3&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;cours&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span> </span>
-<span id="cb37-8"><a href="#cb37-8" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>presence<span class="sc">$</span>numCours <span class="ot">&lt;-</span><span class="fu">as.numeric</span>(<span class="fu">substring</span>(presence<span class="sc">$</span>Cours,<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="fu">barplot</span>(presence<span class="sc">$</span>TD1<span class="sc">~</span>presence<span class="sc">$</span>numCours, <span class="at">col=</span><span class="st">&quot;chartreuse&quot;</span>, <span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;Evolution de la présence groupe 1&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;cours&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span> </span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a><span class="fu">barplot</span>(presence<span class="sc">$</span>TD2<span class="sc">~</span>presence<span class="sc">$</span>numCours, <span class="at">col =</span> <span class="st">&quot;cyan&quot;</span>, <span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;Evolution de la présence groupe 2&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;cours&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span> </span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span>
+<span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a><span class="fu">barplot</span>(presence<span class="sc">$</span>TD3<span class="sc">~</span>presence<span class="sc">$</span>numCours, <span class="at">col=</span><span class="st">&quot;darkorange&quot;</span>,<span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;Evolution de la présence groupe 3&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;cours&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span> </span>
+<span id="cb23-8"><a href="#cb23-8" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672" /></p>
 </div>
 <div id="les-rendus-dexercices" class="section level3" number="3.2.2">
@@ -1124,32 +1056,32 @@ d’exercices</h3>
 de la correction),</p>
 <ul>
 <li><p>gr 3 : mercredi 20 h</p></li>
-<li><p>gr 1 et 2 : vendredi 20 h</p></li>
+<li><p>gr 1 et 2 : jeudi 20 h</p></li>
 </ul>
 <p>Aucun retard toléré</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/notesDM1_7.csv&quot;</span>, <span class="at">na.strings =</span> <span class="st">&quot;-&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">12</span>)]</span>
-<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/notesDM1_7.csv&quot;</span>, <span class="at">na.strings =</span> <span class="st">&quot;-&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">12</span>)]</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
 <pre><code>## [1] &quot;Devoir.MAISON.2...Valeurs.centrales.et.dispersion..Brut.&quot;       
 ## [2] &quot;Devoir.MAISON.4...contingence.agrégats.communes..Brut.&quot;         
 ## [3] &quot;Devoir.MAISON.5...khi2..Brut.&quot;                                  
 ## [4] &quot;Devoir.MAISON.3...régression.entre.2.agrégats.financiers..Brut.&quot;
 ## [5] &quot;Devoir.MAISON.1...Dénombrement..Brut.&quot;                          
 ## [6] &quot;Devoir.MAISON.7...boite.à.moustaches..Brut.&quot;</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">6</span>)]</span>
-<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a>titre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1_distribution&quot;</span>, <span class="st">&quot;2_univarié&quot;</span>, <span class="st">&quot;3_regression&quot;</span>, <span class="st">&quot;4_contingence&quot;</span>, <span class="st">&quot;5_khi2&quot;</span>, <span class="st">&quot;6_variance&quot;</span>)</span>
-<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/rendu.png&quot;</span>, <span class="at">width =</span> <span class="dv">600</span>, <span class="at">height =</span> <span class="dv">600</span>, <span class="at">res =</span> <span class="dv">100</span>)</span>
-<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a><span class="fu">par</span>( <span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
-<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a>tot <span class="ot">&lt;-</span> <span class="fu">length</span>(data)</span>
-<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a>i <span class="ot">&lt;-</span><span class="dv">1</span></span>
-<span id="cb40-8"><a href="#cb40-8" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>tot)){</span>
-<span id="cb40-9"><a href="#cb40-9" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">table</span>(data [,i])</span>
-<span id="cb40-10"><a href="#cb40-10" tabindex="-1"></a>  <span class="fu">barplot</span>(tmp,  <span class="at">cex.names =</span> <span class="fl">0.8</span>, <span class="at">las =</span> <span class="dv">1</span>, </span>
-<span id="cb40-11"><a href="#cb40-11" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">paste0</span>(titre [i], <span class="st">&quot; (&quot;</span>, <span class="fu">sum</span>(tmp), <span class="st">&quot; observations)&quot;</span>), <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">col =</span> <span class="st">&quot;wheat&quot;</span>)</span>
-<span id="cb40-12"><a href="#cb40-12" tabindex="-1"></a>  }</span>
-<span id="cb40-13"><a href="#cb40-13" tabindex="-1"></a></span>
-<span id="cb40-14"><a href="#cb40-14" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">6</span>)]</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>titre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1_distribution&quot;</span>, <span class="st">&quot;2_univarié&quot;</span>, <span class="st">&quot;3_regression&quot;</span>, <span class="st">&quot;4_contingence&quot;</span>, <span class="st">&quot;5_khi2&quot;</span>, <span class="st">&quot;6_variance&quot;</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/rendu.png&quot;</span>, <span class="at">width =</span> <span class="dv">600</span>, <span class="at">height =</span> <span class="dv">600</span>, <span class="at">res =</span> <span class="dv">100</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a><span class="fu">par</span>( <span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a>tot <span class="ot">&lt;-</span> <span class="fu">length</span>(data)</span>
+<span id="cb26-7"><a href="#cb26-7" tabindex="-1"></a>i <span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb26-8"><a href="#cb26-8" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>tot)){</span>
+<span id="cb26-9"><a href="#cb26-9" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">table</span>(data [,i])</span>
+<span id="cb26-10"><a href="#cb26-10" tabindex="-1"></a>  <span class="fu">barplot</span>(tmp,  <span class="at">cex.names =</span> <span class="fl">0.8</span>, <span class="at">las =</span> <span class="dv">1</span>, </span>
+<span id="cb26-11"><a href="#cb26-11" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">paste0</span>(titre [i], <span class="st">&quot; (&quot;</span>, <span class="fu">sum</span>(tmp), <span class="st">&quot; observations)&quot;</span>), <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">col =</span> <span class="st">&quot;wheat&quot;</span>)</span>
+<span id="cb26-12"><a href="#cb26-12" tabindex="-1"></a>  }</span>
+<span id="cb26-13"><a href="#cb26-13" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="#cb26-14" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## png 
 ##   2</code></pre>
 <p><img src="img/rendu.png" /></p>
@@ -1166,13 +1098,13 @@ de la correction),</p>
 </div>
 <div id="notes-finales" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Notes finales</h2>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a>note <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/noteFinales.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">&quot;EN ATTENTE&quot;</span>, <span class="st">&quot;NA&quot;</span>,<span class="st">&quot;-&quot;</span>), <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a><span class="fu">summary</span>(note)</span>
-<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/noteFin.png&quot;</span>)</span>
-<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a><span class="fu">hist</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">main =</span> <span class="st">&quot;Etalement note finale - 64 obs&quot;</span>, <span class="at">freq =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">na.rm =</span> T),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb42-6"><a href="#cb42-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">na.rm=</span>T), <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb42-7"><a href="#cb42-7" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>note <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/noteFinales.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">&quot;EN ATTENTE&quot;</span>, <span class="st">&quot;NA&quot;</span>,<span class="st">&quot;-&quot;</span>), <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="fu">summary</span>(note)</span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/noteFin.png&quot;</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a><span class="fu">hist</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">main =</span> <span class="st">&quot;Etalement note finale - 64 obs&quot;</span>, <span class="at">freq =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">na.rm =</span> T),  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(note<span class="sc">$</span>NOTE.FINALE, <span class="at">na.rm=</span>T), <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <p><img src="img/noteFin.png" /></p>
 </div>
 </div>
