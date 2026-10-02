@@ -13,7 +13,7 @@
 
 <title>Statistiques bi variées - Regression</title>
 
-<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -490,6 +490,9 @@ relation entre vote pour la gauche et frais de personnel.</p>
 ##   13   21   30    2   21   29</code></pre>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># filtre</span></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>GAU <span class="ot">&lt;-</span> data [data<span class="sc">$</span>bloc <span class="sc">==</span> <span class="st">&quot;GAU&quot;</span>,]</span></code></pre></div>
+<p>Sous libre office, on peut utiliser un tableau dynamique pour
+dénombrer le nombre de blocs sur l’ensemble des villes.</p>
+<p><img src="img/tableDynamique.png" /></p>
 </div>
 <div id="nuage-de-points" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Nuage de points</h1>
@@ -532,9 +535,9 @@ chiffres</h2>
 bornes</h3>
 <p>Retour sur les distributions pour enlever les valeurs aberrantes</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>voix)</span></code></pre></div>
-<p><img src="jour3_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" /></p>
+<p><img src="jour3_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>montant)</span></code></pre></div>
-<p><img src="jour3_files/figure-html/unnamed-chunk-3-2.png" alt="" width="672" /></p>
+<p><img src="jour3_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
 <p>On recherche des bornes permettant d’avoir un nuage de points
 “cohérent”. Avec le tableur, on fait le graphique puis on ajuste avec le
 filtre au niveau de la donnée.</p>
@@ -547,7 +550,7 @@ filtre au niveau de la donnée.</p>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">plot</span>(GAU<span class="sc">$</span>voix, GAU<span class="sc">$</span>montant)</span>
 <span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">plot</span>(sel<span class="sc">$</span>voix, sel<span class="sc">$</span>montant)</span></code></pre></div>
-<p><img src="jour3_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672" /></p>
+<p><img src="jour3_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Désormais, on travaille sur la sélection et la totalité de la série
 pour vérifier que la restriction des bornes est utile.</p>
 </div>
@@ -588,7 +591,7 @@ sous R</h2>
 <span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="fu">abline</span>(lm, <span class="at">lty =</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
 <span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="fu">text</span>( sel<span class="sc">$</span>voix, sel<span class="sc">$</span>montant,<span class="at">labels =</span> <span class="fu">as.character</span>(<span class="fu">row.names</span>(sel))</span>
 <span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>      , <span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">pos =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
-<p><img src="jour3_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672" /></p>
+<p><img src="jour3_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Visuellement, on voit bien qu’il existe un lien entre les deux
 variables, mais il y a beaucoup de points éparses (les résidus)</p>
 <p>Il s’agit maintenant de mesurer précisemment l’intensité du lien à
