@@ -13,7 +13,7 @@
 
 <title>Introduction</title>
 
-<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -694,7 +694,7 @@ choix géographique différent par étudiant</h3>
 <span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>data <span class="ot">&lt;-</span> communes [communes<span class="sc">$</span>code <span class="sc">%in%</span> lieu,]</span></code></pre></div>
 <p>5 communes problématiques</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>lieu [<span class="sc">!</span>(lieu <span class="sc">%in%</span> data<span class="sc">$</span>code)]</span></code></pre></div>
-<pre><code>## [1] &quot;94000&quot; &quot;94110&quot; &quot;6088&quot;  &quot;94250&quot; &quot;92800&quot; &quot;94400&quot;</code></pre>
+<pre><code>## character(0)</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>lieu <span class="ot">&lt;-</span> <span class="fu">c</span>(lieu,<span class="st">&quot;94028&quot;</span>, <span class="st">&quot;94003&quot;</span>, <span class="st">&quot;06088&quot;</span>, <span class="st">&quot;94037&quot;</span>, <span class="st">&quot;92062&quot;</span>, <span class="st">&quot;94080&quot;</span> )</span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> communes [communes<span class="sc">$</span>code <span class="sc">%in%</span> lieu,]</span></code></pre></div>
 <p>Cartographie des choix étudiants</p>
@@ -702,8 +702,8 @@ choix géographique différent par étudiant</h3>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">mf_map</span>(region, <span class="at">col =</span> <span class="st">&quot;wheat&quot;</span>, <span class="at">border=</span><span class="st">&quot;cornsilk&quot;</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">mf_map</span>(<span class="fu">st_buffer</span>(data, <span class="dv">10000</span>), <span class="at">col=</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> T, <span class="at">border =</span> <span class="cn">NA</span>)</span>
 <span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Choix des communes</span><span class="sc">\n</span><span class="st">(tampons autour des communes)&quot;</span>, <span class="st">&quot;data.gouv et sources internes</span><span class="sc">\n</span><span class="st">septembre 2026&quot;</span>)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672" /></p>
-<pre><code>## The scale bar cannot be displayed on unprojected (long/lat) maps.</code></pre>
+<p><img src="intro_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre><code>## The scale bar does not work on unprojected (long/lat) maps.</code></pre>
 <p>Enregistrement de la donnée</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">st_write</span>(data, <span class="st">&quot;data/cours.gpkg&quot;</span>, <span class="st">&quot;commune&quot;</span>, <span class="at">append =</span> F, <span class="at">quiet =</span> T)</span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">st_drop_geometry</span>(data)</span>
@@ -909,7 +909,7 @@ département 93</p>
 <span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">write.csv</span>(data [,<span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">28</span>)], <span class="st">&quot;data/agregatBondy.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co"># Les agrégats ont-ils tous la même importance ?</span></span>
 <span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>Montant.en...par.habitant)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" alt="" width="672" /></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 </div>
 </div>
@@ -923,13 +923,13 @@ number="3">
 <ul>
 <li>84 étudiants inscrits sur 3 cours (54 présents environ)</li>
 </ul>
-<p>Les questions posées sont sur le passé / présent / futur des
-étudiants, leur appétence en stats</p>
+<p>Les questions posées sont sur le passé / futur des étudiants, leur
+appétence en stats</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>etudiant <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/etudiantModifie.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/quisontils.png&quot;</span>, <span class="at">width =</span> <span class="dv">10000</span>, <span class="at">height =</span> <span class="dv">10000</span>, <span class="at">res=</span><span class="dv">1000</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co">#par(mar = c(2,16,2,4))</span></span>
 <span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>)){</span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>)){</span>
 <span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a>  (<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">30</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
 <span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="fu">table</span>(etudiant [,i]), <span class="at">border =</span> <span class="cn">NA</span>,</span>
 <span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a>          <span class="at">horiz =</span> T, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">cex.names =</span> <span class="fl">0.8</span>, </span>
@@ -967,9 +967,9 @@ cours</h3>
 </tr>
 <tr class="even">
 <td align="left">C2</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<td align="right">20</td>
+<td align="right">20</td>
+<td align="right">19</td>
 </tr>
 <tr class="odd">
 <td align="left">C3</td>
@@ -1047,7 +1047,7 @@ cours</h3>
 <span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span>
 <span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a><span class="fu">barplot</span>(presence<span class="sc">$</span>TD3<span class="sc">~</span>presence<span class="sc">$</span>numCours, <span class="at">col=</span><span class="st">&quot;darkorange&quot;</span>,<span class="at">beside =</span> T, <span class="at">main =</span> <span class="st">&quot;Evolution de la présence groupe 3&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;cours&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;nb&quot;</span> </span>
 <span id="cb23-8"><a href="#cb23-8" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672" /></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
 <div id="les-rendus-dexercices" class="section level3" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Les rendus

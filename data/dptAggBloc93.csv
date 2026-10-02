@@ -1,0 +1,119 @@
+"dpt","code","ville","bloc","voix"
+"93","93005","Aulnay-sous-Bois","AUT",1.23
+"93","93008","Bobigny","AUT",4.93
+"93","93014","Clichy-sous-Bois","AUT",0.67
+"93","93027","La Courneuve","AUT",4.57
+"93","93013","Le Bourget","AUT",4.26
+"93","93048","Montreuil","AUT",1.99
+"93","93053","Noisy-le-Sec","AUT",0.67
+"93","93064","Rosny-sous-Bois","AUT",0.66
+"93","93066","Saint-Denis","AUT",0.78
+"93","93070","Saint-Ouen-sur-Seine","AUT",0.45
+"93","93071","Sevran","AUT",6.58
+"93","93072","Stains","AUT",1.77
+"93","93074","Vaujours","AUT",10.16
+"93","93001","Aubervilliers","CENT",8.09
+"93","93005","Aulnay-sous-Bois","CENT",4.7
+"93","93006","Bagnolet","CENT",3.11
+"93","93008","Bobigny","CENT",9.42
+"93","93010","Bondy","CENT",4.46
+"93","93014","Clichy-sous-Bois","CENT",1.06
+"93","93029","Drancy","CENT",19.63
+"93","93031","Epinay-sur-Seine","CENT",4.02
+"93","93061","Le Pré-Saint-Gervais","CENT",4
+"93","93062","Le Raincy","CENT",6.68
+"93","93045","Les Lilas","CENT",7.45
+"93","93057","Les Pavillons-sous-Bois","CENT",2.85
+"93","93048","Montreuil","CENT",2.61
+"93","93050","Neuilly-sur-Marne","CENT",2.83
+"93","93051","Noisy-le-Grand","CENT",7.43
+"93","93053","Noisy-le-Sec","CENT",10.63
+"93","93064","Rosny-sous-Bois","CENT",3.85
+"93","93066","Saint-Denis","CENT",2.89
+"93","93070","Saint-Ouen-sur-Seine","CENT",4.09
+"93","93072","Stains","CENT",1.56
+"93","93078","Villepinte","CENT",1.7
+"93","93005","Aulnay-sous-Bois","DTE",18.74
+"93","93010","Bondy","DTE",9.71
+"93","93015","Coubron","DTE",39.25
+"93","93030","Dugny","DTE",32.66
+"93","93031","Epinay-sur-Seine","DTE",20.11
+"93","93032","Gagny","DTE",28.99
+"93","93033","Gournay-sur-Marne","DTE",39.12
+"93","93007","Le Blanc-Mesnil","DTE",20.17
+"93","93013","Le Bourget","DTE",32.85
+"93","93062","Le Raincy","DTE",30.34
+"93","93057","Les Pavillons-sous-Bois","DTE",20.79
+"93","93046","Livry-Gargan","DTE",18.64
+"93","93047","Montfermeil","DTE",22.94
+"93","93048","Montreuil","DTE",0.41
+"93","93049","Neuilly-Plaisance","DTE",27.17
+"93","93050","Neuilly-sur-Marne","DTE",8.31
+"93","93051","Noisy-le-Grand","DTE",13.88
+"93","93053","Noisy-le-Sec","DTE",1.71
+"93","93055","Pantin","DTE",5.17
+"93","93059","Pierrefitte-sur-Seine","DTE",3.43
+"93","93063","Romainville","DTE",3.07
+"93","93064","Rosny-sous-Bois","DTE",16.83
+"93","93066","Saint-Denis","DTE",1.31
+"93","93070","Saint-Ouen-sur-Seine","DTE",11.27
+"93","93071","Sevran","DTE",7.77
+"93","93072","Stains","DTE",8.44
+"93","93073","Tremblay-en-France","DTE",7.47
+"93","93074","Vaujours","DTE",25.09
+"93","93077","Villemomble","DTE",31.46
+"93","93078","Villepinte","DTE",10.99
+"93","93079","Villetaneuse","DTE",4.21
+"93","93051","Noisy-le-Grand","EXD",1.09
+"93","93078","Villepinte","EXD",0.65
+"93","93001","Aubervilliers","EXG",0.4
+"93","93005","Aulnay-sous-Bois","EXG",1.13
+"93","93006","Bagnolet","EXG",0.84
+"93","93008","Bobigny","EXG",0.51
+"93","93014","Clichy-sous-Bois","EXG",0.71
+"93","93029","Drancy","EXG",0.61
+"93","93031","Epinay-sur-Seine","EXG",0.51
+"93","93039","L'Ile-Saint-Denis","EXG",1.82
+"93","93027","La Courneuve","EXG",0.88
+"93","93007","Le Blanc-Mesnil","EXG",0.8
+"93","93061","Le Pré-Saint-Gervais","EXG",1.06
+"93","93045","Les Lilas","EXG",1.59
+"93","93046","Livry-Gargan","EXG",0.78
+"93","93048","Montreuil","EXG",1.88
+"93","93051","Noisy-le-Grand","EXG",0.33
+"93","93053","Noisy-le-Sec","EXG",0.82
+"93","93055","Pantin","EXG",1.06
+"93","93063","Romainville","EXG",0.98
+"93","93066","Saint-Denis","EXG",1.01
+"93","93070","Saint-Ouen-sur-Seine","EXG",0.49
+"93","93078","Villepinte","EXG",0.36
+"93","93001","Aubervilliers","GAU",9.69
+"93","93006","Bagnolet","GAU",26.14
+"93","93008","Bobigny","GAU",18.48
+"93","93010","Bondy","GAU",2.75
+"93","93029","Drancy","GAU",6.71
+"93","93030","Dugny","GAU",2.52
+"93","93031","Epinay-sur-Seine","GAU",2.4
+"93","93032","Gagny","GAU",5.87
+"93","93039","L'Ile-Saint-Denis","GAU",5.78
+"93","93027","La Courneuve","GAU",19.89
+"93","93007","Le Blanc-Mesnil","GAU",16.07
+"93","93061","Le Pré-Saint-Gervais","GAU",22.98
+"93","93045","Les Lilas","GAU",28.33
+"93","93046","Livry-Gargan","GAU",4.43
+"93","93047","Montfermeil","GAU",10.52
+"93","93048","Montreuil","GAU",22.03
+"93","93049","Neuilly-Plaisance","GAU",8.61
+"93","93050","Neuilly-sur-Marne","GAU",12.52
+"93","93051","Noisy-le-Grand","GAU",9.94
+"93","93053","Noisy-le-Sec","GAU",7.29
+"93","93055","Pantin","GAU",26.49
+"93","93059","Pierrefitte-sur-Seine","GAU",25.5
+"93","93063","Romainville","GAU",10.77
+"93","93064","Rosny-sous-Bois","GAU",10.39
+"93","93066","Saint-Denis","GAU",22.79
+"93","93070","Saint-Ouen-sur-Seine","GAU",12.36
+"93","93072","Stains","GAU",16.17
+"93","93077","Villemomble","GAU",10.93
+"93","93078","Villepinte","GAU",0.52
+"93","93079","Villetaneuse","GAU",15.79
