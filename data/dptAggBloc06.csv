@@ -1,0 +1,96 @@
+"dpt","code","ville","bloc","voix"
+"06","06004","Antibes","AUT",1.94
+"06","06011","Beaulieu-sur-Mer","AUT",17.87
+"06","06012","Beausoleil","AUT",21.18
+"06","06018","Biot","AUT",23.43
+"06","06027","Cagnes-sur-Mer","AUT",4.54
+"06","06029","Cannes","AUT",1.09
+"06","06032","Cap-d'Ail","AUT",14.04
+"06","06033","Carros","AUT",21.84
+"06","06038","Châteauneuf-Grasse","AUT",28.79
+"06","06064","Gattières","AUT",33.4
+"06","06069","Grasse","AUT",10.98
+"06","06108","La Roquette-sur-Siagne","AUT",21.16
+"06","06112","Le Rouret","AUT",13.39
+"06","06084","Mouans-Sartoux","AUT",35.68
+"06","06088","Nice","AUT",3.37
+"06","06090","Pégomas","AUT",4.78
+"06","06095","Peymeinade","AUT",21.34
+"06","06104","Roquebrune-Cap-Martin","AUT",9.88
+"06","06118","Saint-Cézaire-sur-Siagne","AUT",38.08
+"06","06122","Saint-Jeannet","AUT",30.96
+"06","06123","Saint-Laurent-du-Var","AUT",4.52
+"06","06136","Sospel","AUT",59.75
+"06","06148","Tourrettes-sur-Loup","AUT",45.9
+"06","06152","Valbonne","AUT",14.81
+"06","06155","Vallauris","AUT",23.2
+"06","06157","Vence","AUT",13.96
+"06","06004","Antibes","CENT",3.48
+"06","06027","Cagnes-sur-Mer","CENT",1.23
+"06","06069","Grasse","CENT",1.35
+"06","06044","La Colle-sur-Loup","CENT",6.83
+"06","06030","Le Cannet","CENT",3.92
+"06","06083","Menton","CENT",3.85
+"06","06095","Peymeinade","CENT",5.81
+"06","06104","Roquebrune-Cap-Martin","CENT",9.18
+"06","06123","Saint-Laurent-du-Var","CENT",1.27
+"06","06147","Tourrette-Levens","CENT",13.78
+"06","06152","Valbonne","CENT",13.08
+"06","06157","Vence","CENT",12.98
+"06","06004","Antibes","DTE",15.6
+"06","06011","Beaulieu-sur-Mer","DTE",39.46
+"06","06018","Biot","DTE",26.31
+"06","06027","Cagnes-sur-Mer","DTE",16.52
+"06","06029","Cannes","DTE",26.72
+"06","06032","Cap-d'Ail","DTE",29.14
+"06","06033","Carros","DTE",20.4
+"06","06048","Contes","DTE",9.52
+"06","06054","Drap","DTE",30.58
+"06","06064","Gattières","DTE",18.09
+"06","06069","Grasse","DTE",18.54
+"06","06044","La Colle-sur-Loup","DTE",24.78
+"06","06065","La Gaude","DTE",50.58
+"06","06149","La Trinité","DTE",11.31
+"06","06030","Le Cannet","DTE",18.38
+"06","06112","Le Rouret","DTE",27.6
+"06","06075","Levens","DTE",26.75
+"06","06079","Mandelieu-la-Napoule","DTE",48.55
+"06","06083","Menton","DTE",29.89
+"06","06084","Mouans-Sartoux","DTE",6.13
+"06","06085","Mougins","DTE",32.83
+"06","06088","Nice","DTE",15.17
+"06","06090","Pégomas","DTE",34.25
+"06","06095","Peymeinade","DTE",13.32
+"06","06104","Roquebrune-Cap-Martin","DTE",18.81
+"06","06105","Roquefort-les-Pins","DTE",19.76
+"06","06114","Saint-André de la Roche","DTE",53.47
+"06","06118","Saint-Cézaire-sur-Siagne","DTE",14.65
+"06","06122","Saint-Jeannet","DTE",16.74
+"06","06123","Saint-Laurent-du-Var","DTE",21.51
+"06","06130","Saint-Vallier-de-Thiey","DTE",33.17
+"06","06147","Tourrette-Levens","DTE",33.38
+"06","06152","Valbonne","DTE",5.25
+"06","06155","Vallauris","DTE",10.31
+"06","06157","Vence","DTE",3.67
+"06","06159","Villefranche-sur-Mer","DTE",50.28
+"06","06161","Villeneuve-Loubet","DTE",33.55
+"06","06004","Antibes","EXD",4
+"06","06012","Beausoleil","EXD",8.67
+"06","06027","Cagnes-sur-Mer","EXD",4.99
+"06","06033","Carros","EXD",2.55
+"06","06069","Grasse","EXD",2.87
+"06","06044","La Colle-sur-Loup","EXD",3.22
+"06","06149","La Trinité","EXD",8.15
+"06","06030","Le Cannet","EXD",4.51
+"06","06088","Nice","EXD",4.61
+"06","06090","Pégomas","EXD",5.52
+"06","06123","Saint-Laurent-du-Var","EXD",4.84
+"06","06155","Vallauris","EXD",4.74
+"06","06161","Villeneuve-Loubet","EXD",4.36
+"06","06033","Carros","EXG",1.01
+"06","06088","Nice","EXG",0.18
+"06","06004","Antibes","GAU",1.77
+"06","06027","Cagnes-sur-Mer","GAU",2.76
+"06","06030","Le Cannet","GAU",3.63
+"06","06083","Menton","GAU",6.33
+"06","06088","Nice","GAU",1.81

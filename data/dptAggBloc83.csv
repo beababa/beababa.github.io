@@ -1,0 +1,137 @@
+"dpt","code","ville","bloc","voix"
+"83","83019","Bormes-les-Mimosas","AUT",8.39
+"83","83023","Brignoles","AUT",7.57
+"83","83034","Carqueiranne","AUT",12.71
+"83","83042","Cogolin","AUT",2.07
+"83","83049","Cuers","AUT",4.6
+"83","83055","Fayence","AUT",14.23
+"83","83057","Flassans-sur-Issole","AUT",25.16
+"83","83064","Garéoult","AUT",8.63
+"83","83068","Grimaud","AUT",13.08
+"83","83069","Hyères","AUT",2.46
+"83","83126","La Seyne-sur-Mer","AUT",1.97
+"83","83016","Le Beausset","AUT",16.7
+"83","83035","Le Castellet","AUT",11.1
+"83","83070","Le Lavandou","AUT",11.32
+"83","83073","Le Luc","AUT",3.55
+"83","83143","Le Val","AUT",44.47
+"83","83004","Les Arcs","AUT",21.77
+"83","83072","Lorgues","AUT",6.75
+"83","83097","Pourrières","AUT",18.32
+"83","83100","Puget-Ville","AUT",10.86
+"83","83106","Rocbaron","AUT",14.6
+"83","83107","Roquebrune-sur-Argens","AUT",14.64
+"83","83153","Saint-Mandrier-sur-Mer","AUT",17.51
+"83","83121","Salernes","AUT",9.58
+"83","83131","Solliès-Toucas","AUT",17.88
+"83","83137","Toulon","AUT",1.18
+"83","83148","Vidauban","AUT",5.01
+"83","83150","Vinon-sur-Verdon","AUT",29.41
+"83","83009","Bandol","CENT",18.9
+"83","83034","Carqueiranne","CENT",3.8
+"83","83042","Cogolin","CENT",16.59
+"83","83049","Cuers","CENT",13.32
+"83","83050","Draguignan","CENT",22.64
+"83","83058","Flayosc","CENT",13.65
+"83","83061","Fréjus","CENT",11.66
+"83","83069","Hyères","CENT",7.11
+"83","83027","La Cadière-d'Azur","CENT",4.9
+"83","83048","La Croix-Valmer","CENT",15.54
+"83","83144","La Valette-du-Var","CENT",7.22
+"83","83016","Le Beausset","CENT",6.68
+"83","83031","Le Cannet-des-Maures","CENT",34.57
+"83","83098","Le Pradet","CENT",1.64
+"83","83004","Les Arcs","CENT",7.95
+"83","83081","Montauroux","CENT",37.26
+"83","83099","Puget-sur-Argens","CENT",16.73
+"83","83100","Puget-Ville","CENT",16.14
+"83","83107","Roquebrune-sur-Argens","CENT",17.3
+"83","83116","Saint-Maximin-la-Sainte-Baume","CENT",6.72
+"83","83118","Saint-Raphaël","CENT",2.48
+"83","83119","Saint-Tropez","CENT",3.65
+"83","83120","Saint-Zacharie","CENT",16.62
+"83","83121","Salernes","CENT",17.3
+"83","83129","Six-Fours-les-Plages","CENT",4.23
+"83","83137","Toulon","CENT",2.21
+"83","83141","Trans-en-Provence","CENT",13.44
+"83","83009","Bandol","DTE",21.84
+"83","83019","Bormes-les-Mimosas","DTE",36.23
+"83","83023","Brignoles","DTE",28.62
+"83","83034","Carqueiranne","DTE",27.15
+"83","83036","Cavalaire-sur-Mer","DTE",57.43
+"83","83042","Cogolin","DTE",6.49
+"83","83049","Cuers","DTE",16.67
+"83","83050","Draguignan","DTE",19.65
+"83","83055","Fayence","DTE",25.17
+"83","83057","Flassans-sur-Issole","DTE",23.71
+"83","83058","Flayosc","DTE",31.48
+"83","83061","Fréjus","DTE",3.79
+"83","83064","Garéoult","DTE",29.29
+"83","83067","Gonfaron","DTE",32.94
+"83","83068","Grimaud","DTE",29.95
+"83","83069","Hyères","DTE",19.77
+"83","83027","La Cadière-d'Azur","DTE",10.26
+"83","83047","La Crau","DTE",34.09
+"83","83048","La Croix-Valmer","DTE",29.2
+"83","83054","La Farlède","DTE",21.22
+"83","83062","La Garde","DTE",15.88
+"83","83071","La Londe-les-Maures","DTE",43.61
+"83","83126","La Seyne-sur-Mer","DTE",14.58
+"83","83144","La Valette-du-Var","DTE",24.1
+"83","83016","Le Beausset","DTE",12.71
+"83","83035","Le Castellet","DTE",35.82
+"83","83070","Le Lavandou","DTE",37.84
+"83","83073","Le Luc","DTE",17.85
+"83","83086","Le Muy","DTE",32.1
+"83","83098","Le Pradet","DTE",21.48
+"83","83103","Le Revest-les-Eaux","DTE",31.07
+"83","83004","Les Arcs","DTE",14.76
+"83","83072","Lorgues","DTE",32.34
+"83","83087","Nans-les-Pins","DTE",42.26
+"83","83090","Ollioules","DTE",29.65
+"83","83091","Pierrefeu-du-Var","DTE",14.08
+"83","83092","Pignans","DTE",54.68
+"83","83097","Pourrières","DTE",30.24
+"83","83099","Puget-sur-Argens","DTE",16.39
+"83","83100","Puget-Ville","DTE",21.56
+"83","83104","Rians","DTE",48.76
+"83","83106","Rocbaron","DTE",20.21
+"83","83107","Roquebrune-sur-Argens","DTE",10.57
+"83","83112","Saint-Cyr-sur-Mer","DTE",32.65
+"83","83153","Saint-Mandrier-sur-Mer","DTE",31.18
+"83","83116","Saint-Maximin-la-Sainte-Baume","DTE",20.62
+"83","83118","Saint-Raphaël","DTE",26.25
+"83","83119","Saint-Tropez","DTE",49.27
+"83","83115","Sainte-Maxime","DTE",40.02
+"83","83123","Sanary-sur-Mer","DTE",26.99
+"83","83129","Six-Fours-les-Plages","DTE",17.32
+"83","83130","Solliès-Pont","DTE",22.14
+"83","83131","Solliès-Toucas","DTE",8.22
+"83","83137","Toulon","DTE",19.24
+"83","83140","Tourves","DTE",22.3
+"83","83141","Trans-en-Provence","DTE",31.2
+"83","83148","Vidauban","DTE",31.17
+"83","83009","Bandol","EXD",3.33
+"83","83042","Cogolin","EXD",22.76
+"83","83049","Cuers","EXD",7.04
+"83","83061","Fréjus","EXD",18.74
+"83","83069","Hyères","EXD",5.4
+"83","83126","La Seyne-sur-Mer","EXD",5.44
+"83","83144","La Valette-du-Var","EXD",6.13
+"83","83016","Le Beausset","EXD",4.54
+"83","83073","Le Luc","EXD",14.46
+"83","83086","Le Muy","EXD",8.02
+"83","83098","Le Pradet","EXD",2.49
+"83","83072","Lorgues","EXD",3.93
+"83","83099","Puget-sur-Argens","EXD",11.33
+"83","83106","Rocbaron","EXD",10.84
+"83","83116","Saint-Maximin-la-Sainte-Baume","EXD",2.16
+"83","83118","Saint-Raphaël","EXD",4.63
+"83","83129","Six-Fours-les-Plages","EXD",6.89
+"83","83130","Solliès-Pont","EXD",5.52
+"83","83137","Toulon","EXD",4.52
+"83","83137","Toulon","EXG",0.27
+"83","83062","La Garde","GAU",4.55
+"83","83126","La Seyne-sur-Mer","GAU",8.02
+"83","83118","Saint-Raphaël","GAU",3.26
+"83","83129","Six-Fours-les-Plages","GAU",3.41
