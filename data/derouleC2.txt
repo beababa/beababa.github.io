@@ -1,0 +1,26 @@
+cours : L5GEABIM - TD - Analyses bivariées et multivariées - BMaranget
+beatrice.maranget@bondy.fr
+mots de passe 
+8h-Lundi
+9h30-Lundi
+17h30-Vendredi
+
+
+
+---------------------------------------------------
+
+correction exercice (pour le C3 - attention à la source et au pdf voir avec Samuel / Latex)
+
+télécharger la donnée sur le site de l'ofcl
+
+exercice suivant : 2 pts attention nom fichier
+
+indicateurs centraux et de dispersion :
+
+- calcul moyenne et médiane
+
+- à quoi ça sert ? distinguer les agrégats pour lesquels moyenne et médiane sont différents
+
+- calcul variance et écart type
+
+- questionnaire en fin de cours

@@ -1,0 +1,29 @@
+prep cours 7
+intersection carreau - bv
+intersection
+regrouper
+
+
+regexp_replace(  "bureau" , '^....._','')
+
+regexp_replace(  "bureau" , '^.+_','')
+
+expression régulirèe
+
+Iris et bv : géotraitement avancé (MAISON)
+
+Reproduire le traitement vu en cours sur un IRIS de votre commune.
+
+Livrable : un fichier .pdf avec votre prénom, shéma de traitement y compris description des calculs étape par étape avec un exemple chiffré (mon IRIS fait tant de m², la densité sera de... ), les chiffres doivent être crédibles (pas d'IRIS de 100 km² par exemple)
+
+barème : 1 = format et nom fichier /  1 = logique du raisonnement / 1 = logique des calculs
+
+
+tdOcsds_2024
+
+
+pour psql 
+sudo service postgresql start
+
+ogr2ogr -f PostgreSQL "PG:user=tachasa password=bonbon2021 dbname=tachasa" rue.gpkg -nlt LINESTRING -skipfailures
+

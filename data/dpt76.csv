@@ -1,0 +1,356 @@
+"dpt","code","ville","nuance","voix"
+"76","76001","Allouville-Bellefosse","LNC",45.49
+"76","76005","Amfreville-la-Mi-Voie","LNC",20.43
+"76","76013","Angerville-la-Martel","LNC",35.64
+"76","76014","Angerville-l'Orcher","LNC",30.49
+"76","76018","Val-de-Saâne","LNC",35.81
+"76","76020","Anneville-Ambourville","LNC",40.57
+"76","76026","Arques-la-Bataille","LNC",23.98
+"76","76034","Val-de-Scie","LNC",34.01
+"76","76035","Aumale","LNC",25.47
+"76","76039","Les Authieux-sur-le-Port-Saint-Ouen","LNC",34.25
+"76","76041","Les Hauts-de-Caux","LNC",24.82
+"76","76043","Auzebosc","LNC",21.67
+"76","76050","Avremesnil","LNC",35.38
+"76","76051","Bacqueville-en-Caux","LNC",15.62
+"76","76057","Barentin","LDVG",27.11
+"76","76069","Belbeuf","LNC",31.05
+"76","76090","Beuzeville-la-Grenier","LNC",33.4
+"76","76095","Bihorel","LDVG",18.83
+"76","76100","Blainville-Crevon","LNC",35.55
+"76","76101","Blangy-sur-Bresle","LNC",17.16
+"76","76103","Bonsecours","LDIV",8.1
+"76","76108","Bois-Guillaume","LDIV",15.08
+"76","76114","Bolbec","LFI",4.74
+"76","76116","Boos","LDVG",21.51
+"76","76125","Bosc-le-Hard","LNC",31.03
+"76","76141","Bréauté","LNC",23.33
+"76","76143","Bretteville-du-Grand-Caux","LNC",32.28
+"76","76146","Buchy","LNC",29.4
+"76","76157","Canteleu","LUG",22.18
+"76","76159","Cany-Barville","LNC",19.56
+"76","76164","Rives-en-Seine","LDVG",36.17
+"76","76165","Caudebec-lès-Elbeuf","LDVG",27.69
+"76","76167","Cauville-sur-Mer","LNC",13.42
+"76","76169","La Cerlangue","LNC",30.3
+"76","76178","Cléon","LSOC",6.4
+"76","76179","Clères","LNC",27.22
+"76","76192","Criel-sur-Mer","LNC",12.13
+"76","76196","Criquetot-l'Esneval","LNC",19.66
+"76","76212","Darnétal","LDVD",22.37
+"76","76216","Déville-lès-Rouen","LUG",15.25
+"76","76217","Dieppe","LCOM",26.15
+"76","76219","Doudeville","LNC",11.3
+"76","76222","Duclair","LDIV",3.24
+"76","76224","Ecrainville","LNC",42.88
+"76","76231","Elbeuf","LVEC",3.82
+"76","76235","Envermeu","LNC",32.52
+"76","76238","Epouville","LNC",27.62
+"76","76240","Epreville","LNC",33.2
+"76","76245","Eslettes","LNC",38.68
+"76","76250","Etainhus","LNC",38.41
+"76","76252","Etalondes","LNC",30.65
+"76","76254","Etretat","LNC",19.14
+"76","76255","Eu","LDVC",8.08
+"76","76258","Terres-de-Caux","LDIV",21.59
+"76","76259","Fécamp","LDVD",19.49
+"76","76260","Ferrières-en-Bray","LNC",18.82
+"76","76263","La Feuillie","LNC",21.44
+"76","76270","Fontaine-la-Mallet","LNC",28.31
+"76","76271","Fontaine-le-Bourg","LNC",26.87
+"76","76275","Fontenay","LNC",30.09
+"76","76276","Forges-les-Eaux","LDVD",21.05
+"76","76281","La Frénaye","LNC",25.39
+"76","76289","Saint-Martin-de-l'If","LNC",31.23
+"76","76291","Froberville","LNC",33.58
+"76","76295","Gaillefontaine","LNC",30.31
+"76","76296","Gainneville","LNC",25.97
+"76","76302","Goderville","LNC",27.05
+"76","76305","Gonfreville-l'Orcher","LCOM",30.29
+"76","76307","Gonneville-la-Mallet","LNC",42.09
+"76","76312","Gournay-en-Bray","LDVD",23.45
+"76","76315","Grainville-la-Teinturière","LNC",41.33
+"76","76319","Grand-Couronne","LCOM",18.34
+"76","76321","Les Grandes-Ventes","LNC",34.41
+"76","76322","Le Grand-Quevilly","LRN",8.28
+"76","76329","Gruchet-le-Valasse","LNC",12.52
+"76","76331","Grugny","LNC",34.58
+"76","76341","Harfleur","LDVG",13.69
+"76","76349","Hautot-sur-Mer","LNC",29.81
+"76","76351","Le Havre","LVEC",3.23
+"76","76354","Hénouville","LNC",27.62
+"76","76366","Le Houlme","LDVG",23.39
+"76","76367","Houppeville","LNC",25.97
+"76","76374","Incheville","LNC",30.97
+"76","76377","Isneauville","LNC",22.09
+"76","76378","Jumièges","LNC",17.1
+"76","76382","Lanquetot","LNC",37.26
+"76","76384","Lillebonne","LDVD",18.27
+"76","76385","Limésy","LNC",34.28
+"76","76390","Les Loges","LNC",34.31
+"76","76391","La Londe","LNC",34.18
+"76","76392","Londinières","LNC",36.62
+"76","76400","Luneray","LNC",19.17
+"76","76401","Arelaune-en-Seine","LNC",25.13
+"76","76402","Malaunay","LSOC",27.3
+"76","76404","Manéglise","LNC",38.22
+"76","76408","Manneville-la-Goupil","LNC",26.6
+"76","76410","Maromme","LDVD",6.56
+"76","76414","Martin-Eglise","LNC",29.41
+"76","76429","Le Mesnil-Esnard","LDVG",7.97
+"76","76434","Mesnil-Raoul","LNC",19.66
+"76","76446","Montigny","LNC",45.48
+"76","76447","Montivilliers","LDVD",15.97
+"76","76448","Montmain","LNC",20.86
+"76","76451","Mont-Saint-Aignan","LDVG",7.84
+"76","76452","Montville","LDIV",16.92
+"76","76453","Morgny-la-Pommeraye","LNC",35.19
+"76","76462","Neufchâtel-en-Bray","LDVD",32.85
+"76","76464","La Neuville-Chant-d'Oisel","LNC",32.75
+"76","76467","Néville","LNC",7.19
+"76","76468","Nointot","LNC",34.6
+"76","76474","Notre-Dame-de-Bondeville","LDVG",18.75
+"76","76475","Franqueville-Saint-Pierre","LDVD",22.71
+"76","76476","Port-Jérôme-sur-Seine","LRN",6.16
+"76","76481","Octeville-sur-Mer","LDIV",17.89
+"76","76482","Offranville","LNC",20.38
+"76","76484","Oissel","LDIV",5.21
+"76","76490","Ourville-en-Caux","LNC",21.62
+"76","76495","Pavilly","LDVG",7.38
+"76","76497","Petit-Couronne","LSOC",24.85
+"76","76498","Le Petit-Quevilly","LUC",3.82
+"76","76499","Petiville","LNC",0
+"76","76503","Pissy-Pôville","LNC",38.99
+"76","76509","Préaux","LNC",27.35
+"76","76517","Quincampoix","LNC",30.6
+"76","76522","La Remuée","LNC",30.43
+"76","76533","Rogerville","LNC",14.98
+"76","76534","Rolleville","LNC",42.63
+"76","76536","Roncherolles-sur-le-Vivier","LNC",39.05
+"76","76540","Rouen","LDIV",0.8
+"76","76541","Roumare","LNC",35.61
+"76","76545","Rouxmesnil-Bouteilles","LNC",4.31
+"76","76550","Sahurs","LNC",27.45
+"76","76552","Sainte-Adresse","LDVD",24.3
+"76","76556","Saint-Antoine-la-Forêt","LNC",32.59
+"76","76557","Saint-Arnoult","LNC",31.81
+"76","76558","Saint-Aubin-Celloville","LNC",41.06
+"76","76560","Saint-Aubin-Epinay","LNC",51.89
+"76","76561","Saint-Aubin-lès-Elbeuf","LDIV",12.2
+"76","76563","Saint-Aubin-Routot","LNC",34.62
+"76","76565","Saint-Aubin-sur-Scie","LNC",38.74
+"76","76575","Saint-Etienne-du-Rouvray","LUG",21.44
+"76","76576","Saint-Eustache-la-Forêt","LNC",34.43
+"76","76591","Saint-Jacques-sur-Darnétal","LNC",25.27
+"76","76594","Saint-Jean-du-Cardonnay","LNC",10.42
+"76","76595","Saint-Jouin-Bruneval","LNC",31.1
+"76","76596","Saint-Laurent-de-Brèvedent","LNC",31
+"76","76599","Saint-Léger-du-Bourg-Denis","LNC",17.95
+"76","76600","Saint-Léonard","LNC",34.59
+"76","76608","Sainte-Marguerite-sur-Duclair","LNC",28.72
+"76","76610","Sainte-Marie-des-Champs","LNC",33.1
+"76","76614","Saint-Martin-de-Boscherville","LNC",26.73
+"76","76616","Saint-Martin-du-Manoir","LNC",38.56
+"76","76617","Saint-Martin-du-Vivier","LNC",14.39
+"76","76618","Petit-Caux","LDIV",23.31
+"76","76621","Saint-Martin-Osmonville","LNC",24.86
+"76","76624","Saint-Nicolas-d'Aliermont","LDVC",30.06
+"76","76627","Saint-Nicolas-de-la-Taille","LNC",42.3
+"76","76631","Saint-Paër","LNC",32.56
+"76","76636","Saint-Pierre-de-Varengeville","LNC",29.62
+"76","76638","Saint-Pierre-en-Val","LNC",26.95
+"76","76640","Saint-Pierre-lès-Elbeuf","LDVG",22.5
+"76","76647","Saint-Romain-de-Colbosc","LDVD",27.09
+"76","76648","Saint-Saëns","LNC",34.23
+"76","76650","Saint-Sauveur-d'Emalleville","LNC",32.24
+"76","76655","Saint-Valery-en-Caux","LDVG",15.15
+"76","76657","Saint-Vigor-d'Ymonville","LNC",47.9
+"76","76663","Sassetot-le-Mauconduit","LNC",39.45
+"76","76673","Servaville-Salmonville","LNC",18.44
+"76","76675","Sierville","LNC",36.75
+"76","76681","Sotteville-lès-Rouen","LDIV",4.01
+"76","76684","Tancarville","LNC",33.37
+"76","76700","Tôtes","LNC",29.39
+"76","76705","Tourville-la-Rivière","LNC",37.72
+"76","76707","Tourville-sur-Arques","LNC",19.44
+"76","76709","Le Trait","LDVG",10.93
+"76","76711","Le Tréport","LDIV",12.64
+"76","76716","Turretot","LNC",33.47
+"76","76718","Valliquerville","LNC",40.76
+"76","76727","Vatteville-la-Rue","LNC",19.45
+"76","76728","La Vaupalière","LNC",34.24
+"76","76743","Villers-Ecalles","LNC",31.16
+"76","76750","Yainville","LNC",32.86
+"76","76751","Yébleron","LNC",23.15
+"76","76752","Yerville","LNC",33.17
+"76","76753","Ymare","LNC",31.98
+"76","76758","Yvetot","LUC",5.55
+"76","76005","Amfreville-la-Mi-Voie","LNC",14.94
+"76","76026","Arques-la-Bataille","LNC",30.63
+"76","76034","Val-de-Scie","LNC",17.41
+"76","76043","Auzebosc","LNC",39.09
+"76","76051","Bacqueville-en-Caux","LNC",31.9
+"76","76095","Bihorel","LDVD",24.58
+"76","76101","Blangy-sur-Bresle","LNC",6.2
+"76","76103","Bonsecours","LDVD",11.79
+"76","76108","Bois-Guillaume","LMDM",3.84
+"76","76114","Bolbec","LDIV",18.58
+"76","76116","Boos","LDVD",27.68
+"76","76159","Cany-Barville","LNC",42.94
+"76","76167","Cauville-sur-Mer","LNC",39.56
+"76","76178","Cléon","LDVG",22.85
+"76","76192","Criel-sur-Mer","LNC",27.87
+"76","76196","Criquetot-l'Esneval","LNC",33.95
+"76","76212","Darnétal","LDVG",12.41
+"76","76216","Déville-lès-Rouen","LDVG",16.33
+"76","76217","Dieppe","LRN",3.64
+"76","76219","Doudeville","LNC",12.09
+"76","76222","Duclair","LDVD",28.32
+"76","76231","Elbeuf","LDIV",2.37
+"76","76235","Envermeu","LNC",26.34
+"76","76252","Etalondes","LNC",35.53
+"76","76254","Etretat","LNC",18.57
+"76","76255","Eu","LDVG",16.1
+"76","76258","Terres-de-Caux","LDIV",29.49
+"76","76259","Fécamp","LDVG",2.48
+"76","76260","Ferrières-en-Bray","LNC",32.91
+"76","76263","La Feuillie","LNC",34.73
+"76","76276","Forges-les-Eaux","LDVD",21.87
+"76","76281","La Frénaye","LNC",31.33
+"76","76296","Gainneville","LNC",21.84
+"76","76312","Gournay-en-Bray","LDVG",18.31
+"76","76319","Grand-Couronne","LDVD",5.03
+"76","76322","Le Grand-Quevilly","LUG",32.65
+"76","76329","Gruchet-le-Valasse","LNC",34.09
+"76","76341","Harfleur","LCOM",19.75
+"76","76349","Hautot-sur-Mer","LNC",26.13
+"76","76351","Le Havre","LRN",2.85
+"76","76354","Hénouville","LNC",30.35
+"76","76366","Le Houlme","LDIV",11.26
+"76","76378","Jumièges","LNC",32.41
+"76","76384","Lillebonne","LDVG",20.46
+"76","76400","Luneray","LNC",36.08
+"76","76410","Maromme","LDVG",32.78
+"76","76429","Le Mesnil-Esnard","LDIV",8.18
+"76","76434","Mesnil-Raoul","LNC",34.99
+"76","76446","Montigny","LNC",14.3
+"76","76447","Montivilliers","LUG",26.86
+"76","76448","Montmain","LNC",29.86
+"76","76451","Mont-Saint-Aignan","LUG",6.4
+"76","76452","Montville","LDVD",32.81
+"76","76462","Neufchâtel-en-Bray","LDVG",13.09
+"76","76467","Néville","LNC",34.51
+"76","76474","Notre-Dame-de-Bondeville","LDVG",19.07
+"76","76475","Franqueville-Saint-Pierre","LDIV",19.81
+"76","76476","Port-Jérôme-sur-Seine","LDVG",4.93
+"76","76481","Octeville-sur-Mer","LDVD",23.71
+"76","76482","Offranville","LNC",9.82
+"76","76484","Oissel","LCOM",24.83
+"76","76495","Pavilly","LDIV",27.92
+"76","76498","Le Petit-Quevilly","LFI",2.72
+"76","76499","Petiville","LNC",39.11
+"76","76517","Quincampoix","LNC",19.85
+"76","76533","Rogerville","LNC",19.78
+"76","76540","Rouen","LRN",2.49
+"76","76541","Roumare","LNC",26.19
+"76","76545","Rouxmesnil-Bouteilles","LNC",4.11
+"76","76558","Saint-Aubin-Celloville","LNC",22.35
+"76","76560","Saint-Aubin-Epinay","LNC",14.34
+"76","76561","Saint-Aubin-lès-Elbeuf","LDVG",21.46
+"76","76563","Saint-Aubin-Routot","LNC",11.78
+"76","76575","Saint-Etienne-du-Rouvray","LEXG",2
+"76","76591","Saint-Jacques-sur-Darnétal","LNC",31.12
+"76","76594","Saint-Jean-du-Cardonnay","LNC",44.7
+"76","76599","Saint-Léger-du-Bourg-Denis","LNC",23.87
+"76","76600","Saint-Léonard","LNC",12.89
+"76","76608","Sainte-Marguerite-sur-Duclair","LNC",30.48
+"76","76614","Saint-Martin-de-Boscherville","LNC",28.84
+"76","76616","Saint-Martin-du-Manoir","LNC",14.53
+"76","76617","Saint-Martin-du-Vivier","LNC",36.95
+"76","76618","Petit-Caux","LDIV",30.41
+"76","76621","Saint-Martin-Osmonville","LNC",30.51
+"76","76624","Saint-Nicolas-d'Aliermont","LDIV",24.96
+"76","76627","Saint-Nicolas-de-la-Taille","LNC",16.09
+"76","76636","Saint-Pierre-de-Varengeville","LNC",25.32
+"76","76638","Saint-Pierre-en-Val","LNC",16.17
+"76","76640","Saint-Pierre-lès-Elbeuf","LSOC",19.63
+"76","76647","Saint-Romain-de-Colbosc","LDIV",21.48
+"76","76648","Saint-Saëns","LNC",32.09
+"76","76655","Saint-Valery-en-Caux","LDVD",26.17
+"76","76657","Saint-Vigor-d'Ymonville","LNC",15.24
+"76","76663","Sassetot-le-Mauconduit","LNC",20.62
+"76","76673","Servaville-Salmonville","LNC",35.86
+"76","76681","Sotteville-lès-Rouen","LRN",5.22
+"76","76707","Tourville-sur-Arques","LNC",41.88
+"76","76709","Le Trait","LDIV",6.22
+"76","76711","Le Tréport","LUG",34.17
+"76","76718","Valliquerville","LNC",16.6
+"76","76727","Vatteville-la-Rue","LNC",43.74
+"76","76751","Yébleron","LNC",30.33
+"76","76752","Yerville","LNC",16.08
+"76","76758","Yvetot","LDVC",11.98
+"76","76005","Amfreville-la-Mi-Voie","LNC",9.46
+"76","76101","Blangy-sur-Bresle","LNC",27.23
+"76","76103","Bonsecours","LDVG",23.97
+"76","76108","Bois-Guillaume","LREM",9.13
+"76","76114","Bolbec","LDVD",8.27
+"76","76178","Cléon","LDVG",8.75
+"76","76192","Criel-sur-Mer","LNC",13.77
+"76","76217","Dieppe","LDVD",7.55
+"76","76219","Doudeville","LNC",12.82
+"76","76222","Duclair","LDVG",19.32
+"76","76231","Elbeuf","LEXD",5.32
+"76","76254","Etretat","LNC",16.12
+"76","76255","Eu","LDVC",11.03
+"76","76259","Fécamp","LUG",17.27
+"76","76276","Forges-les-Eaux","LDIV",6.73
+"76","76319","Grand-Couronne","LDVG",2.02
+"76","76351","Le Havre","LDVG",14
+"76","76429","Le Mesnil-Esnard","LDIV",4.09
+"76","76451","Mont-Saint-Aignan","LREM",6.54
+"76","76467","Néville","LNC",14.47
+"76","76476","Port-Jérôme-sur-Seine","LDIV",27.69
+"76","76482","Offranville","LNC",29.38
+"76","76484","Oissel","LEXG",2.32
+"76","76495","Pavilly","LDVG",7.75
+"76","76498","Le Petit-Quevilly","LRN",7.49
+"76","76533","Rogerville","LNC",24.74
+"76","76540","Rouen","LDVD",3.74
+"76","76545","Rouxmesnil-Bouteilles","LNC",43.96
+"76","76575","Saint-Etienne-du-Rouvray","LDVC",3.72
+"76","76638","Saint-Pierre-en-Val","LNC",11.77
+"76","76655","Saint-Valery-en-Caux","LDVD",9.25
+"76","76681","Sotteville-lès-Rouen","LDVG",16.46
+"76","76709","Le Trait","LDIV",5.56
+"76","76758","Yvetot","LDVG",22.97
+"76","76101","Blangy-sur-Bresle","LNC",4.22
+"76","76108","Bois-Guillaume","LDVD",12.66
+"76","76114","Bolbec","LDIV",4.69
+"76","76178","Cléon","LDIV",7.58
+"76","76217","Dieppe","LDVC",4.67
+"76","76219","Doudeville","LNC",20.07
+"76","76231","Elbeuf","LSOC",22.28
+"76","76255","Eu","LRN",5.99
+"76","76319","Grand-Couronne","LSOC",16.33
+"76","76351","Le Havre","LDVC",17.01
+"76","76429","Le Mesnil-Esnard","LDIV",13.38
+"76","76451","Mont-Saint-Aignan","LUD",17.51
+"76","76498","Le Petit-Quevilly","LUG",18
+"76","76540","Rouen","LFI",1.3
+"76","76638","Saint-Pierre-en-Val","LNC",13.64
+"76","76681","Sotteville-lès-Rouen","LEXG",0.86
+"76","76709","Le Trait","LDVG",21.35
+"76","76114","Bolbec","LDVG",5.88
+"76","76217","Dieppe","LEXG",0.57
+"76","76255","Eu","LDIV",4.67
+"76","76351","Le Havre","LEXG",0.27
+"76","76429","Le Mesnil-Esnard","LDIV",6.61
+"76","76540","Rouen","LUG",10.86
+"76","76681","Sotteville-lès-Rouen","LUG",9.02
+"76","76351","Le Havre","LDIV",0.76
+"76","76540","Rouen","LDVC",6.18
+"76","76351","Le Havre","LDIV",0.89
+"76","76540","Rouen","LEXG",0.25
+"76","76540","Rouen","LEXG",0.39
+"76","76540","Rouen","LVEC",8.52
+"76","76540","Rouen","LDVC",2.26

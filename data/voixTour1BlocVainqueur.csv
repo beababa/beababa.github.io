@@ -1,0 +1,957 @@
+"cle","x","dpt","ville","bloc","voix","tour"
+"06Antibes15.6",15.6,"06","Antibes","DTE",15.6,1
+"06Beaulieu-sur-Mer39.46",39.46,"06","Beaulieu-sur-Mer","DTE",39.46,1
+"06Beausoleil21.18",21.18,"06","Beausoleil","AUT",21.18,1
+"06Biot26.31",26.31,"06","Biot","DTE",26.31,1
+"06Cagnes-sur-Mer16.52",16.52,"06","Cagnes-sur-Mer","DTE",16.52,1
+"06Cannes26.72",26.72,"06","Cannes","DTE",26.72,1
+"06Cap-d'Ail29.14",29.14,"06","Cap-d'Ail","DTE",29.14,1
+"06Carros21.84",21.84,"06","Carros","AUT",21.84,1
+"06Châteauneuf-Grasse28.79",28.79,"06","Châteauneuf-Grasse","AUT",28.79,1
+"06Contes42.18",42.18,"06","Contes","GAU",42.18,1
+"06Drap30.58",30.58,"06","Drap","DTE",30.58,1
+"06Gattières33.4",33.4,"06","Gattières","AUT",33.4,1
+"06Grasse18.54",18.54,"06","Grasse","DTE",18.54,1
+"06La Colle-sur-Loup24.78",24.78,"06","La Colle-sur-Loup","DTE",24.78,1
+"06La Gaude50.58",50.58,"06","La Gaude","DTE",50.58,1
+"06La Roquette-sur-Siagne21.16",21.16,"06","La Roquette-sur-Siagne","AUT",21.16,1
+"06La Trinité28.65",28.65,"06","La Trinité","GAU",28.65,1
+"06Le Cannet18.38",18.38,"06","Le Cannet","DTE",18.38,1
+"06Le Rouret27.6",27.6,"06","Le Rouret","DTE",27.6,1
+"06Levens26.75",26.75,"06","Levens","DTE",26.75,1
+"06Mandelieu-la-Napoule48.55",48.55,"06","Mandelieu-la-Napoule","DTE",48.55,1
+"06Menton29.89",29.89,"06","Menton","DTE",29.89,1
+"06Mouans-Sartoux35.68",35.68,"06","Mouans-Sartoux","AUT",35.68,1
+"06Mougins32.83",32.83,"06","Mougins","DTE",32.83,1
+"06Nice15.17",15.17,"06","Nice","DTE",15.17,1
+"06Pégomas34.25",34.25,"06","Pégomas","DTE",34.25,1
+"06Peymeinade21.34",21.34,"06","Peymeinade","AUT",21.34,1
+"06Roquebrune-Cap-Martin18.81",18.81,"06","Roquebrune-Cap-Martin","DTE",18.81,1
+"06Roquefort-les-Pins19.76",19.76,"06","Roquefort-les-Pins","DTE",19.76,1
+"06Saint-André de la Roche53.47",53.47,"06","Saint-André de la Roche","DTE",53.47,1
+"06Saint-Cézaire-sur-Siagne38.08",38.08,"06","Saint-Cézaire-sur-Siagne","AUT",38.08,1
+"06Saint-Jeannet30.96",30.96,"06","Saint-Jeannet","AUT",30.96,1
+"06Saint-Laurent-du-Var21.51",21.51,"06","Saint-Laurent-du-Var","DTE",21.51,1
+"06Saint-Vallier-de-Thiey33.17",33.17,"06","Saint-Vallier-de-Thiey","DTE",33.17,1
+"06Sospel59.75",59.75,"06","Sospel","AUT",59.75,1
+"06Tourrette-Levens33.38",33.38,"06","Tourrette-Levens","DTE",33.38,1
+"06Tourrettes-sur-Loup45.9",45.9,"06","Tourrettes-sur-Loup","AUT",45.9,1
+"06Valbonne14.81",14.81,"06","Valbonne","AUT",14.81,1
+"06Vallauris23.2",23.2,"06","Vallauris","AUT",23.2,1
+"06Vence13.96",13.96,"06","Vence","AUT",13.96,1
+"06Villefranche-sur-Mer50.28",50.28,"06","Villefranche-sur-Mer","DTE",50.28,1
+"06Villeneuve-Loubet33.55",33.55,"06","Villeneuve-Loubet","DTE",33.55,1
+"29Audierne31.87",31.87,"29","Audierne","GAU",31.87,1
+"29Bannalec25.39",25.39,"29","Bannalec","GAU",25.39,1
+"29Bénodet30.6",30.6,"29","Bénodet","DTE",30.6,1
+"29Bourg-Blanc56.78",56.78,"29","Bourg-Blanc","AUT",56.78,1
+"29Brest17.95",17.95,"29","Brest","GAU",17.95,1
+"29Briec29.61",29.61,"29","Briec","GAU",29.61,1
+"29Carhaix-Plouguer34.34",34.34,"29","Carhaix-Plouguer","GAU",34.34,1
+"29Châteaulin26.5",26.5,"29","Châteaulin","DTE",26.5,1
+"29Châteauneuf-du-Faou37.09",37.09,"29","Châteauneuf-du-Faou","GAU",37.09,1
+"29Cléder48.31",48.31,"29","Cléder","CENT",48.31,1
+"29Clohars-Carnoët30.89",30.89,"29","Clohars-Carnoët","AUT",30.89,1
+"29Combrit35.81",35.81,"29","Combrit","GAU",35.81,1
+"29Concarneau15.26",15.26,"29","Concarneau","DTE",15.26,1
+"29Crozon35.66",35.66,"29","Crozon","CENT",35.66,1
+"29Douarnenez18.79",18.79,"29","Douarnenez","GAU",18.79,1
+"29Ergué-Gabéric37.42",37.42,"29","Ergué-Gabéric","DTE",37.42,1
+"29Fouesnant30.14",30.14,"29","Fouesnant","DTE",30.14,1
+"29Gouesnou35.4",35.4,"29","Gouesnou","DTE",35.4,1
+"29Guilers24.25",24.25,"29","Guilers","DTE",24.25,1
+"29Guipavas19.53",19.53,"29","Guipavas","DTE",19.53,1
+"29Landéda27.09",27.09,"29","Landéda","GAU",27.09,1
+"29Landerneau27.89",27.89,"29","Landerneau","DTE",27.89,1
+"29Landivisiau20.38",20.38,"29","Landivisiau","DTE",20.38,1
+"29Lannilis46.52",46.52,"29","Lannilis","AUT",46.52,1
+"29Le Relecq-Kerhuon18.89",18.89,"29","Le Relecq-Kerhuon","GAU",18.89,1
+"29Lesneven27",27,"29","Lesneven","GAU",27,1
+"29Locmaria-Plouzané31.56",31.56,"29","Locmaria-Plouzané","DTE",31.56,1
+"29Loctudy39.78",39.78,"29","Loctudy","DTE",39.78,1
+"29Loperhet29.51",29.51,"29","Loperhet","AUT",29.51,1
+"29Milizac-Guipronvel48.84",48.84,"29","Milizac-Guipronvel","AUT",48.84,1
+"29Moëlan-sur-Mer27.11",27.11,"29","Moëlan-sur-Mer","GAU",27.11,1
+"29Morlaix23.95",23.95,"29","Morlaix","GAU",23.95,1
+"29Penmarch37.57",37.57,"29","Penmarch","GAU",37.57,1
+"29Plabennec32.17",32.17,"29","Plabennec","DTE",32.17,1
+"29Pleyben54.39",54.39,"29","Pleyben","CENT",54.39,1
+"29Plomelin25.97",25.97,"29","Plomelin","DTE",25.97,1
+"29Plomeur32.31",32.31,"29","Plomeur","DTE",32.31,1
+"29Plonéour-Lanvern32.72",32.72,"29","Plonéour-Lanvern","CENT",32.72,1
+"29Plouarzel26.35",26.35,"29","Plouarzel","DTE",26.35,1
+"29Ploudalmézeau31.36",31.36,"29","Ploudalmézeau","DTE",31.36,1
+"29Ploudaniel29.79",29.79,"29","Ploudaniel","CENT",29.79,1
+"29Plougastel-Daoulas19.65",19.65,"29","Plougastel-Daoulas","DTE",19.65,1
+"29Plougonvelin27.95",27.95,"29","Plougonvelin","AUT",27.95,1
+"29Plouguerneau30.87",30.87,"29","Plouguerneau","GAU",30.87,1
+"29Plouhinec28.07",28.07,"29","Plouhinec","CENT",28.07,1
+"29Plouigneau29.47",29.47,"29","Plouigneau","GAU",29.47,1
+"29Plourin-lès-Morlaix28.27",28.27,"29","Plourin-lès-Morlaix","GAU",28.27,1
+"29Plouvien34.83",34.83,"29","Plouvien","AUT",34.83,1
+"29Plouzané23.6",23.6,"29","Plouzané","GAU",23.6,1
+"29Pluguffan25.32",25.32,"29","Pluguffan","CENT",25.32,1
+"29Pont-de-Buis-lès-Quimerch31.87",31.87,"29","Pont-de-Buis-lès-Quimerch","GAU",31.87,1
+"29Pont-l'Abbé23.38",23.38,"29","Pont-l'Abbé","DTE",23.38,1
+"29Quimper14.08",14.08,"29","Quimper","GAU",14.08,1
+"29Quimperlé29.89",29.89,"29","Quimperlé","GAU",29.89,1
+"29Riec-sur-Belon27.16",27.16,"29","Riec-sur-Belon","GAU",27.16,1
+"29Rosporden28.62",28.62,"29","Rosporden","GAU",28.62,1
+"29Saint-Evarzec37.27",37.27,"29","Saint-Evarzec","DTE",37.27,1
+"29Saint-Martin-des-Champs27.5",27.5,"29","Saint-Martin-des-Champs","GAU",27.5,1
+"29Saint-Pol-de-Léon30.58",30.58,"29","Saint-Pol-de-Léon","DTE",30.58,1
+"29Saint-Renan26.59",26.59,"29","Saint-Renan","DTE",26.59,1
+"29Scaër31.21",31.21,"29","Scaër","DTE",31.21,1
+"29Trégunc25.66",25.66,"29","Trégunc","GAU",25.66,1
+"2AAjaccio19.01",19.01,"2A","Ajaccio","DTE",19.01,1
+"2ABastelicaccia29.59",29.59,"2A","Bastelicaccia","GAU",29.59,1
+"2APorto-Vecchio33.11",33.11,"2A","Porto-Vecchio","AUT",33.11,1
+"2APropriano55.25",55.25,"2A","Propriano","GAU",55.25,1
+"2ASartène31.23",31.23,"2A","Sartène","DTE",31.23,1
+"31Aucamville20.31",20.31,"31","Aucamville","GAU",20.31,1
+"31Aussonne34.78",34.78,"31","Aussonne","GAU",34.78,1
+"31Auterive22.52",22.52,"31","Auterive","GAU",22.52,1
+"31Auzeville-Tolosane49.21",49.21,"31","Auzeville-Tolosane","CENT",49.21,1
+"31Balma32.9",32.9,"31","Balma","CENT",32.9,1
+"31Beauzelle25.42",25.42,"31","Beauzelle","GAU",25.42,1
+"31Bessières28.36",28.36,"31","Bessières","AUT",28.36,1
+"31Blagnac21.04",21.04,"31","Blagnac","GAU",21.04,1
+"31Bouloc31.79",31.79,"31","Bouloc","CENT",31.79,1
+"31Bruguières30.37",30.37,"31","Bruguières","DTE",30.37,1
+"31Carbonne24.59",24.59,"31","Carbonne","GAU",24.59,1
+"31Castanet-Tolosan24.05",24.05,"31","Castanet-Tolosan","GAU",24.05,1
+"31Castelginest30.35",30.35,"31","Castelginest","DTE",30.35,1
+"31Castelmaurou44.24",44.24,"31","Castelmaurou","GAU",44.24,1
+"31Castelnau-d'Estrétefonds27.06",27.06,"31","Castelnau-d'Estrétefonds","GAU",27.06,1
+"31Cazères28.47",28.47,"31","Cazères","GAU",28.47,1
+"31Colomiers28.82",28.82,"31","Colomiers","GAU",28.82,1
+"31Cornebarrieu26.22",26.22,"31","Cornebarrieu","DTE",26.22,1
+"31Cugnaux16.77",16.77,"31","Cugnaux","GAU",16.77,1
+"31Eaunes25.58",25.58,"31","Eaunes","GAU",25.58,1
+"31Escalquens27.89",27.89,"31","Escalquens","GAU",27.89,1
+"31Fenouillet27.27",27.27,"31","Fenouillet","GAU",27.27,1
+"31Fonsorbes36.33",36.33,"31","Fonsorbes","GAU",36.33,1
+"31Fontenilles23.87",23.87,"31","Fontenilles","CENT",23.87,1
+"31Fronton40.43",40.43,"31","Fronton","CENT",40.43,1
+"31Frouzins40.88",40.88,"31","Frouzins","GAU",40.88,1
+"31Gratentour34.74",34.74,"31","Gratentour","GAU",34.74,1
+"31Grenade33.11",33.11,"31","Grenade","GAU",33.11,1
+"31L'Union35.35",35.35,"31","L'Union","GAU",35.35,1
+"31La Salvetat-Saint-Gilles41.32",41.32,"31","La Salvetat-Saint-Gilles","GAU",41.32,1
+"31Labarthe-sur-Lèze19.93",19.93,"31","Labarthe-sur-Lèze","CENT",19.93,1
+"31Labège39.29",39.29,"31","Labège","GAU",39.29,1
+"31Launaguet25.65",25.65,"31","Launaguet","GAU",25.65,1
+"31Léguevin20.04",20.04,"31","Léguevin","CENT",20.04,1
+"31Lherm23.79",23.79,"31","Lherm","GAU",23.79,1
+"31Merville24.92",24.92,"31","Merville","GAU",24.92,1
+"31Mondonville24.03",24.03,"31","Mondonville","CENT",24.03,1
+"31Montrabé25.76",25.76,"31","Montrabé","GAU",25.76,1
+"31Muret21.52",21.52,"31","Muret","GAU",21.52,1
+"31Nailloux31.64",31.64,"31","Nailloux","GAU",31.64,1
+"31Pechbonnieu32.3",32.3,"31","Pechbonnieu","GAU",32.3,1
+"31Pibrac34.63",34.63,"31","Pibrac","GAU",34.63,1
+"31Pins-Justaret47.23",47.23,"31","Pins-Justaret","GAU",47.23,1
+"31Plaisance-du-Touch19.09",19.09,"31","Plaisance-du-Touch","CENT",19.09,1
+"31Portet-sur-Garonne29.7",29.7,"31","Portet-sur-Garonne","GAU",29.7,1
+"31Quint-Fonsegrives50.53",50.53,"31","Quint-Fonsegrives","DTE",50.53,1
+"31Ramonville-Saint-Agne27.62",27.62,"31","Ramonville-Saint-Agne","GAU",27.62,1
+"31Revel31.58",31.58,"31","Revel","CENT",31.58,1
+"31Rieumes33.97",33.97,"31","Rieumes","CENT",33.97,1
+"31Roques19.83",19.83,"31","Roques","DTE",19.83,1
+"31Roquettes32.94",32.94,"31","Roquettes","GAU",32.94,1
+"31Saint-Alban40.62",40.62,"31","Saint-Alban","GAU",40.62,1
+"31Saint-Gaudens40.44",40.44,"31","Saint-Gaudens","GAU",40.44,1
+"31Saint-Jean27.72",27.72,"31","Saint-Jean","GAU",27.72,1
+"31Saint-Jory26.67",26.67,"31","Saint-Jory","DTE",26.67,1
+"31Saint-Lys33.22",33.22,"31","Saint-Lys","GAU",33.22,1
+"31Saint-Orens-de-Gameville31.01",31.01,"31","Saint-Orens-de-Gameville","CENT",31.01,1
+"31Seysses19.87",19.87,"31","Seysses","GAU",19.87,1
+"31Toulouse18.66",18.66,"31","Toulouse","GAU",18.66,1
+"31Tournefeuille21.36",21.36,"31","Tournefeuille","GAU",21.36,1
+"31Verfeil33.12",33.12,"31","Verfeil","GAU",33.12,1
+"31Villefranche-de-Lauragais40.03",40.03,"31","Villefranche-de-Lauragais","GAU",40.03,1
+"31Villemur-sur-Tarn26.32",26.32,"31","Villemur-sur-Tarn","DTE",26.32,1
+"31Villeneuve-Tolosane27.08",27.08,"31","Villeneuve-Tolosane","GAU",27.08,1
+"41Blois20.65",20.65,"41","Blois","GAU",20.65,1
+"41La Chaussée-Saint-Victor27.37",27.37,"41","La Chaussée-Saint-Victor","AUT",27.37,1
+"41Lamotte-Beuvron40.18",40.18,"41","Lamotte-Beuvron","DTE",40.18,1
+"41Le Controis en Sologne43.48",43.48,"41","Le Controis en Sologne","AUT",43.48,1
+"41Mer18.8",18.8,"41","Mer","GAU",18.8,1
+"41Montoire-sur-le-Loir32.95",32.95,"41","Montoire-sur-le-Loir","AUT",32.95,1
+"41Montrichard Val de Cher32.74",32.74,"41","Montrichard Val de Cher","CENT",32.74,1
+"41Romorantin-Lanthenay24.99",24.99,"41","Romorantin-Lanthenay","GAU",24.99,1
+"41Saint-Laurent-Nouan28.33",28.33,"41","Saint-Laurent-Nouan","AUT",28.33,1
+"41Salbris22.7",22.7,"41","Salbris","DTE",22.7,1
+"41Selles-sur-Cher48.73",48.73,"41","Selles-sur-Cher","DTE",48.73,1
+"41Vendôme20.85",20.85,"41","Vendôme","DTE",20.85,1
+"41Veuzain-sur-Loire45.18",45.18,"41","Veuzain-sur-Loire","AUT",45.18,1
+"41Vineuil22.08",22.08,"41","Vineuil","GAU",22.08,1
+"45Amilly26.03",26.03,"45","Amilly","DTE",26.03,1
+"45Beaugency14.39",14.39,"45","Beaugency","DTE",14.39,1
+"45Briare19.96",19.96,"45","Briare","CENT",19.96,1
+"45Chaingy24.55",24.55,"45","Chaingy","DTE",24.55,1
+"45Châlette-sur-Loing16.18",16.18,"45","Châlette-sur-Loing","GAU",16.18,1
+"45Châteauneuf-sur-Loire35.11",35.11,"45","Châteauneuf-sur-Loire","DTE",35.11,1
+"45Chécy25.82",25.82,"45","Chécy","GAU",25.82,1
+"45Courtenay37.45",37.45,"45","Courtenay","CENT",37.45,1
+"45Fay-aux-Loges32.74",32.74,"45","Fay-aux-Loges","AUT",32.74,1
+"45Ferrières25.29",25.29,"45","Ferrières","DTE",25.29,1
+"45Fleury-les-Aubrais18.03",18.03,"45","Fleury-les-Aubrais","GAU",18.03,1
+"45Gien22.28",22.28,"45","Gien","CENT",22.28,1
+"45Ingré24.94",24.94,"45","Ingré","GAU",24.94,1
+"45Jargeau27.21",27.21,"45","Jargeau","GAU",27.21,1
+"45La Chapelle-Saint-Mesmin21.98",21.98,"45","La Chapelle-Saint-Mesmin","GAU",21.98,1
+"45La Ferté-Saint-Aubin33.88",33.88,"45","La Ferté-Saint-Aubin","DTE",33.88,1
+"45Le Malesherbois27.92",27.92,"45","Le Malesherbois","DTE",27.92,1
+"45Meung-sur-Loire29.38",29.38,"45","Meung-sur-Loire","DTE",29.38,1
+"45Montargis13.49",13.49,"45","Montargis","DTE",13.49,1
+"45Neuville-aux-Bois27.87",27.87,"45","Neuville-aux-Bois","GAU",27.87,1
+"45Olivet24.38",24.38,"45","Olivet","DTE",24.38,1
+"45Orléans12.54",12.54,"45","Orléans","DTE",12.54,1
+"45Ormes33.16",33.16,"45","Ormes","DTE",33.16,1
+"45Pannes29.27",29.27,"45","Pannes","DTE",29.27,1
+"45Pithiviers16.45",16.45,"45","Pithiviers","DTE",16.45,1
+"45Saint-Denis-en-Val27.06",27.06,"45","Saint-Denis-en-Val","DTE",27.06,1
+"45Saint-Jean-de-Braye17.78",17.78,"45","Saint-Jean-de-Braye","GAU",17.78,1
+"45Saint-Jean-de-la-Ruelle23.5",23.5,"45","Saint-Jean-de-la-Ruelle","GAU",23.5,1
+"45Saint-Jean-le-Blanc17.36",17.36,"45","Saint-Jean-le-Blanc","AUT",17.36,1
+"45Saint-Pryvé-Saint-Mesmin25.23",25.23,"45","Saint-Pryvé-Saint-Mesmin","DTE",25.23,1
+"45Sandillon26.44",26.44,"45","Sandillon","DTE",26.44,1
+"45Saran22.32",22.32,"45","Saran","GAU",22.32,1
+"45Sully-sur-Loire31.02",31.02,"45","Sully-sur-Loire","DTE",31.02,1
+"45Villemandeur14.54",14.54,"45","Villemandeur","DTE",14.54,1
+"52Chaumont17.24",17.24,"52","Chaumont","CENT",17.24,1
+"52Langres15.53",15.53,"52","Langres","GAU",15.53,1
+"52Nogent29.51",29.51,"52","Nogent","DTE",29.51,1
+"52Saint-Dizier15.48",15.48,"52","Saint-Dizier","DTE",15.48,1
+"60Beauvais17.55",17.55,"60","Beauvais","DTE",17.55,1
+"60Bornel40.51",40.51,"60","Bornel","AUT",40.51,1
+"60Bresles25.98",25.98,"60","Bresles","DTE",25.98,1
+"60Breteuil27.5",27.5,"60","Breteuil","DTE",27.5,1
+"60Chambly25.33",25.33,"60","Chambly","GAU",25.33,1
+"60Chantilly34.78",34.78,"60","Chantilly","DTE",34.78,1
+"60Cires-lès-Mello37.5",37.5,"60","Cires-lès-Mello","DTE",37.5,1
+"60Clermont25.16",25.16,"60","Clermont","GAU",25.16,1
+"60Compiègne21.4",21.4,"60","Compiègne","DTE",21.4,1
+"60Coye-la-Forêt33.41",33.41,"60","Coye-la-Forêt","DTE",33.41,1
+"60Creil17.22",17.22,"60","Creil","GAU",17.22,1
+"60Crépy-en-Valois19.55",19.55,"60","Crépy-en-Valois","DTE",19.55,1
+"60Crèvecoeur-le-Grand27.13",27.13,"60","Crèvecoeur-le-Grand","AUT",27.13,1
+"60Estrées-Saint-Denis34.53",34.53,"60","Estrées-Saint-Denis","CENT",34.53,1
+"60Gouvieux26.99",26.99,"60","Gouvieux","CENT",26.99,1
+"60Lacroix-Saint-Ouen28.97",28.97,"60","Lacroix-Saint-Ouen","DTE",28.97,1
+"60Laigneville43.71",43.71,"60","Laigneville","DTE",43.71,1
+"60Lamorlaye23.99",23.99,"60","Lamorlaye","DTE",23.99,1
+"60Liancourt23.9",23.9,"60","Liancourt","GAU",23.9,1
+"60Margny-lès-Compiègne35.52",35.52,"60","Margny-lès-Compiègne","CENT",35.52,1
+"60Méru20.3",20.3,"60","Méru","DTE",20.3,1
+"60Montataire35.22",35.22,"60","Montataire","GAU",35.22,1
+"60Mouy19.94",19.94,"60","Mouy","GAU",19.94,1
+"60Nanteuil-le-Haudouin27.74",27.74,"60","Nanteuil-le-Haudouin","DTE",27.74,1
+"60Neuilly-en-Thelle23.11",23.11,"60","Neuilly-en-Thelle","GAU",23.11,1
+"60Nogent-sur-Oise15.29",15.29,"60","Nogent-sur-Oise","CENT",15.29,1
+"60Noyon23.06",23.06,"60","Noyon","CENT",23.06,1
+"60Pont-Sainte-Maxence29.21",29.21,"60","Pont-Sainte-Maxence","DTE",29.21,1
+"60Ribécourt-Dreslincourt50.56",50.56,"60","Ribécourt-Dreslincourt","GAU",50.56,1
+"60Saint-Just-en-Chaussée28.16",28.16,"60","Saint-Just-en-Chaussée","DTE",28.16,1
+"60Saint-Leu-d'Esserent35",35,"60","Saint-Leu-d'Esserent","AUT",35,1
+"60Senlis20.85",20.85,"60","Senlis","DTE",20.85,1
+"60Thourotte33.31",33.31,"60","Thourotte","GAU",33.31,1
+"60Verberie22.34",22.34,"60","Verberie","CENT",22.34,1
+"60Verneuil-en-Halatte29.28",29.28,"60","Verneuil-en-Halatte","DTE",29.28,1
+"60Villers-Saint-Paul36.78",36.78,"60","Villers-Saint-Paul","GAU",36.78,1
+"65Argelès-Gazost39.08",39.08,"65","Argelès-Gazost","AUT",39.08,1
+"65Aureilhan25.13",25.13,"65","Aureilhan","GAU",25.13,1
+"65Bagnères-de-Bigorre29.64",29.64,"65","Bagnères-de-Bigorre","CENT",29.64,1
+"65Bordères-sur-l'Echez28.99",28.99,"65","Bordères-sur-l'Echez","GAU",28.99,1
+"65Juillan29.59",29.59,"65","Juillan","AUT",29.59,1
+"65Lannemezan58.36",58.36,"65","Lannemezan","GAU",58.36,1
+"65Lourdes17.6",17.6,"65","Lourdes","AUT",17.6,1
+"65Séméac26.71",26.71,"65","Séméac","GAU",26.71,1
+"65Tarbes14.85",14.85,"65","Tarbes","DTE",14.85,1
+"65Vic-en-Bigorre20.62",20.62,"65","Vic-en-Bigorre","DTE",20.62,1
+"66Alenya33.29",33.29,"66","Alenya","GAU",33.29,1
+"66Argelès-sur-Mer40.87",40.87,"66","Argelès-sur-Mer","GAU",40.87,1
+"66Bages42.98",42.98,"66","Bages","AUT",42.98,1
+"66Banyuls-sur-Mer40.92",40.92,"66","Banyuls-sur-Mer","DTE",40.92,1
+"66Bompas23.91",23.91,"66","Bompas","DTE",23.91,1
+"66Cabestany22.25",22.25,"66","Cabestany","GAU",22.25,1
+"66Canet-en-Roussillon40.2",40.2,"66","Canet-en-Roussillon","DTE",40.2,1
+"66Canohès28.89",28.89,"66","Canohès","GAU",28.89,1
+"66Céret27.15",27.15,"66","Céret","AUT",27.15,1
+"66Claira56.95",56.95,"66","Claira","AUT",56.95,1
+"66Elne25.71",25.71,"66","Elne","AUT",25.71,1
+"66Ille-sur-Têt27.85",27.85,"66","Ille-sur-Têt","GAU",27.85,1
+"66Le Barcarès57.34",57.34,"66","Le Barcarès","DTE",57.34,1
+"66Le Boulou30.61",30.61,"66","Le Boulou","GAU",30.61,1
+"66Le Soler46.14",46.14,"66","Le Soler","DTE",46.14,1
+"66Millas33.44",33.44,"66","Millas","GAU",33.44,1
+"66Perpignan13.87",13.87,"66","Perpignan","EXD",13.87,1
+"66Pézilla-la-Rivière60.9",60.9,"66","Pézilla-la-Rivière","AUT",60.9,1
+"66Pia32.1",32.1,"66","Pia","AUT",32.1,1
+"66Pollestres39.3",39.3,"66","Pollestres","DTE",39.3,1
+"66Port-Vendres63.55",63.55,"66","Port-Vendres","DTE",63.55,1
+"66Prades39.42",39.42,"66","Prades","AUT",39.42,1
+"66Rivesaltes19.45",19.45,"66","Rivesaltes","DTE",19.45,1
+"66Saint-Cyprien27.26",27.26,"66","Saint-Cyprien","DTE",27.26,1
+"66Saint-Estève29.67",29.67,"66","Saint-Estève","DTE",29.67,1
+"66Saint-Laurent-de-la-Salanque49.45",49.45,"66","Saint-Laurent-de-la-Salanque","AUT",49.45,1
+"66Sainte-Marie-la-Mer38.48",38.48,"66","Sainte-Marie-la-Mer","AUT",38.48,1
+"66Saleilles31.42",31.42,"66","Saleilles","DTE",31.42,1
+"66Salses-le-Château35.53",35.53,"66","Salses-le-Château","GAU",35.53,1
+"66Thuir37.06",37.06,"66","Thuir","GAU",37.06,1
+"66Torreilles50.9",50.9,"66","Torreilles","AUT",50.9,1
+"66Toulouges24.47",24.47,"66","Toulouges","GAU",24.47,1
+"66Villeneuve-de-la-Raho39.28",39.28,"66","Villeneuve-de-la-Raho","DTE",39.28,1
+"67Barr29.7",29.7,"67","Barr","DTE",29.7,1
+"67Benfeld15.78",15.78,"67","Benfeld","CENT",15.78,1
+"67Betschdorf24",24,"67","Betschdorf","DTE",24,1
+"67Bischheim13.42",13.42,"67","Bischheim","DTE",13.42,1
+"67Bischwiller28.74",28.74,"67","Bischwiller","CENT",28.74,1
+"67Bouxwiller42.45",42.45,"67","Bouxwiller","DTE",42.45,1
+"67Brumath22.28",22.28,"67","Brumath","DTE",22.28,1
+"67Châtenois25.33",25.33,"67","Châtenois","DTE",25.33,1
+"67Drusenheim23.6",23.6,"67","Drusenheim","DTE",23.6,1
+"67Eckbolsheim14.78",14.78,"67","Eckbolsheim","DTE",14.78,1
+"67Erstein28.83",28.83,"67","Erstein","CENT",28.83,1
+"67Eschau24.37",24.37,"67","Eschau","DTE",24.37,1
+"67Fegersheim20.61",20.61,"67","Fegersheim","DTE",20.61,1
+"67Gambsheim41.94",41.94,"67","Gambsheim","DTE",41.94,1
+"67Geispolsheim27.8",27.8,"67","Geispolsheim","DTE",27.8,1
+"67Gundershoffen31.84",31.84,"67","Gundershoffen","DTE",31.84,1
+"67Haguenau18.87",18.87,"67","Haguenau","DTE",18.87,1
+"67Herrlisheim35.48",35.48,"67","Herrlisheim","DTE",35.48,1
+"67Hochfelden23.01",23.01,"67","Hochfelden","DTE",23.01,1
+"67Hoenheim25.29",25.29,"67","Hoenheim","CENT",25.29,1
+"67Hoerdt27.42",27.42,"67","Hoerdt","DTE",27.42,1
+"67Holtzheim22.12",22.12,"67","Holtzheim","CENT",22.12,1
+"67Illkirch-Graffenstaden16.48",16.48,"67","Illkirch-Graffenstaden","GAU",16.48,1
+"67Ingwiller38.73",38.73,"67","Ingwiller","DTE",38.73,1
+"67La Wantzenau51.52",51.52,"67","La Wantzenau","DTE",51.52,1
+"67Lingolsheim18.07",18.07,"67","Lingolsheim","DTE",18.07,1
+"67Marckolsheim20.2",20.2,"67","Marckolsheim","DTE",20.2,1
+"67Marlenheim40.08",40.08,"67","Marlenheim","DTE",40.08,1
+"67Molsheim32.19",32.19,"67","Molsheim","DTE",32.19,1
+"67Mundolsheim20.7",20.7,"67","Mundolsheim","AUT",20.7,1
+"67Mutzig29.32",29.32,"67","Mutzig","DTE",29.32,1
+"67Niederbronn-les-Bains25.51",25.51,"67","Niederbronn-les-Bains","DTE",25.51,1
+"67Oberhausbergen44.94",44.94,"67","Oberhausbergen","DTE",44.94,1
+"67Obernai23.18",23.18,"67","Obernai","DTE",23.18,1
+"67Ostwald20",20,"67","Ostwald","GAU",20,1
+"67Plobsheim24.22",24.22,"67","Plobsheim","GAU",24.22,1
+"67Reichshoffen23.17",23.17,"67","Reichshoffen","DTE",23.17,1
+"67Reichstett21.64",21.64,"67","Reichstett","DTE",21.64,1
+"67Rosheim27.06",27.06,"67","Rosheim","DTE",27.06,1
+"67Saverne31.71",31.71,"67","Saverne","DTE",31.71,1
+"67Schiltigheim20.1",20.1,"67","Schiltigheim","AUT",20.1,1
+"67Schweighouse-sur-Moder30.86",30.86,"67","Schweighouse-sur-Moder","DTE",30.86,1
+"67Sélestat14.07",14.07,"67","Sélestat","DTE",14.07,1
+"67Souffelweyersheim30.43",30.43,"67","Souffelweyersheim","DTE",30.43,1
+"67Soufflenheim22.32",22.32,"67","Soufflenheim","DTE",22.32,1
+"67Strasbourg17.12",17.12,"67","Strasbourg","GAU",17.12,1
+"67Truchtersheim31.26",31.26,"67","Truchtersheim","DTE",31.26,1
+"67Val de Moder21.11",21.11,"67","Val de Moder","DTE",21.11,1
+"67Vendenheim23.84",23.84,"67","Vendenheim","DTE",23.84,1
+"67Wasselonne26.55",26.55,"67","Wasselonne","DTE",26.55,1
+"67Wissembourg22.57",22.57,"67","Wissembourg","AUT",22.57,1
+"67Wolfisheim25.03",25.03,"67","Wolfisheim","DTE",25.03,1
+"72Allonnes24.41",24.41,"72","Allonnes","GAU",24.41,1
+"72Arnage29.84",29.84,"72","Arnage","GAU",29.84,1
+"72Bonnétable23.42",23.42,"72","Bonnétable","DTE",23.42,1
+"72Champagné30.56",30.56,"72","Champagné","DTE",30.56,1
+"72Changé24.82",24.82,"72","Changé","GAU",24.82,1
+"72Coulaines30.55",30.55,"72","Coulaines","GAU",30.55,1
+"72Ecommoy22.14",22.14,"72","Ecommoy","DTE",22.14,1
+"72La Bazoge40.21",40.21,"72","La Bazoge","DTE",40.21,1
+"72La Ferté-Bernard22.81",22.81,"72","La Ferté-Bernard","CENT",22.81,1
+"72La Flèche31.34",31.34,"72","La Flèche","GAU",31.34,1
+"72La Suze-sur-Sarthe21.87",21.87,"72","La Suze-sur-Sarthe","DTE",21.87,1
+"72Le Lude22.26",22.26,"72","Le Lude","DTE",22.26,1
+"72Le Mans25.31",25.31,"72","Le Mans","GAU",25.31,1
+"72Mamers26.76",26.76,"72","Mamers","DTE",26.76,1
+"72Moncé-en-Belin27.33",27.33,"72","Moncé-en-Belin","CENT",27.33,1
+"72Montval-sur-Loir23.86",23.86,"72","Montval-sur-Loir","CENT",23.86,1
+"72Mulsanne27.96",27.96,"72","Mulsanne","AUT",27.96,1
+"72Parigné-l'Evêque22.05",22.05,"72","Parigné-l'Evêque","GAU",22.05,1
+"72Sablé-sur-Sarthe15.77",15.77,"72","Sablé-sur-Sarthe","AUT",15.77,1
+"72Sargé-lès-le-Mans20.79",20.79,"72","Sargé-lès-le-Mans","DTE",20.79,1
+"72Savigné-l'Evêque29.99",29.99,"72","Savigné-l'Evêque","DTE",29.99,1
+"72Yvré-l'Evêque27.81",27.81,"72","Yvré-l'Evêque","GAU",27.81,1
+"75Paris 10eme secteur27.29",27.29,"75","Paris 10eme secteur","GAU",27.29,1
+"75Paris 11eme secteur26.49",26.49,"75","Paris 11eme secteur","GAU",26.49,1
+"75Paris 12eme secteur21.43",21.43,"75","Paris 12eme secteur","GAU",21.43,1
+"75Paris 13eme secteur22.48",22.48,"75","Paris 13eme secteur","GAU",22.48,1
+"75Paris 14eme secteur21.06",21.06,"75","Paris 14eme secteur","GAU",21.06,1
+"75Paris 15eme secteur18.77",18.77,"75","Paris 15eme secteur","DTE",18.77,1
+"75Paris 16eme secteur22.43",22.43,"75","Paris 16eme secteur","DTE",22.43,1
+"75Paris 17eme secteur16.84",16.84,"75","Paris 17eme secteur","DTE",16.84,1
+"75Paris 18eme secteur22.96",22.96,"75","Paris 18eme secteur","GAU",22.96,1
+"75Paris 19eme secteur23",23,"75","Paris 19eme secteur","GAU",23,1
+"75Paris 1er secteur21.14",21.14,"75","Paris 1er secteur","GAU",21.14,1
+"75Paris 20eme secteur23.79",23.79,"75","Paris 20eme secteur","GAU",23.79,1
+"75Paris 5eme secteur18.65",18.65,"75","Paris 5eme secteur","GAU",18.65,1
+"75Paris 6eme secteur16.73",16.73,"75","Paris 6eme secteur","DTE",16.73,1
+"75Paris 7eme secteur24.25",24.25,"75","Paris 7eme secteur","DTE",24.25,1
+"75Paris 8eme secteur19.71",19.71,"75","Paris 8eme secteur","DTE",19.71,1
+"75Paris 9eme secteur20.01",20.01,"75","Paris 9eme secteur","CENT",20.01,1
+"76Barentin27.11",27.11,"76","Barentin","GAU",27.11,1
+"76Bihorel24.58",24.58,"76","Bihorel","DTE",24.58,1
+"76Bois-Guillaume15.08",15.08,"76","Bois-Guillaume","AUT",15.08,1
+"76Bolbec23.27",23.27,"76","Bolbec","AUT",23.27,1
+"76Bonsecours23.97",23.97,"76","Bonsecours","GAU",23.97,1
+"76Boos27.68",27.68,"76","Boos","DTE",27.68,1
+"76Canteleu22.18",22.18,"76","Canteleu","GAU",22.18,1
+"76Caudebec-lès-Elbeuf27.69",27.69,"76","Caudebec-lès-Elbeuf","GAU",27.69,1
+"76Cléon38",38,"76","Cléon","GAU",38,1
+"76Darnétal22.37",22.37,"76","Darnétal","DTE",22.37,1
+"76Déville-lès-Rouen31.58",31.58,"76","Déville-lès-Rouen","GAU",31.58,1
+"76Dieppe26.15",26.15,"76","Dieppe","GAU",26.15,1
+"76Duclair28.32",28.32,"76","Duclair","DTE",28.32,1
+"76Elbeuf26.1",26.1,"76","Elbeuf","GAU",26.1,1
+"76Eu19.11",19.11,"76","Eu","CENT",19.11,1
+"76Fécamp19.75",19.75,"76","Fécamp","GAU",19.75,1
+"76Forges-les-Eaux42.92",42.92,"76","Forges-les-Eaux","DTE",42.92,1
+"76Franqueville-Saint-Pierre22.71",22.71,"76","Franqueville-Saint-Pierre","DTE",22.71,1
+"76Gonfreville-l'Orcher30.29",30.29,"76","Gonfreville-l'Orcher","GAU",30.29,1
+"76Gournay-en-Bray23.45",23.45,"76","Gournay-en-Bray","DTE",23.45,1
+"76Grand-Couronne36.69",36.69,"76","Grand-Couronne","GAU",36.69,1
+"76Harfleur33.44",33.44,"76","Harfleur","GAU",33.44,1
+"76Le Grand-Quevilly32.65",32.65,"76","Le Grand-Quevilly","GAU",32.65,1
+"76Le Havre17.23",17.23,"76","Le Havre","GAU",17.23,1
+"76Le Houlme23.39",23.39,"76","Le Houlme","GAU",23.39,1
+"76Le Mesnil-Esnard32.26",32.26,"76","Le Mesnil-Esnard","AUT",32.26,1
+"76Le Petit-Quevilly20.72",20.72,"76","Le Petit-Quevilly","GAU",20.72,1
+"76Le Trait32.28",32.28,"76","Le Trait","GAU",32.28,1
+"76Le Tréport34.17",34.17,"76","Le Tréport","GAU",34.17,1
+"76Lillebonne20.46",20.46,"76","Lillebonne","GAU",20.46,1
+"76Malaunay27.3",27.3,"76","Malaunay","GAU",27.3,1
+"76Maromme32.78",32.78,"76","Maromme","GAU",32.78,1
+"76Mont-Saint-Aignan17.51",17.51,"76","Mont-Saint-Aignan","DTE",17.51,1
+"76Montivilliers26.86",26.86,"76","Montivilliers","GAU",26.86,1
+"76Montville32.81",32.81,"76","Montville","DTE",32.81,1
+"76Neufchâtel-en-Bray32.85",32.85,"76","Neufchâtel-en-Bray","DTE",32.85,1
+"76Notre-Dame-de-Bondeville37.82",37.82,"76","Notre-Dame-de-Bondeville","GAU",37.82,1
+"76Octeville-sur-Mer23.71",23.71,"76","Octeville-sur-Mer","DTE",23.71,1
+"76Oissel24.83",24.83,"76","Oissel","GAU",24.83,1
+"76Pavilly27.92",27.92,"76","Pavilly","AUT",27.92,1
+"76Petit-Caux53.72",53.72,"76","Petit-Caux","AUT",53.72,1
+"76Petit-Couronne24.85",24.85,"76","Petit-Couronne","GAU",24.85,1
+"76Port-Jérôme-sur-Seine27.69",27.69,"76","Port-Jérôme-sur-Seine","AUT",27.69,1
+"76Rives-en-Seine36.17",36.17,"76","Rives-en-Seine","GAU",36.17,1
+"76Rouen20.68",20.68,"76","Rouen","GAU",20.68,1
+"76Saint-Aubin-lès-Elbeuf21.46",21.46,"76","Saint-Aubin-lès-Elbeuf","GAU",21.46,1
+"76Saint-Etienne-du-Rouvray21.44",21.44,"76","Saint-Etienne-du-Rouvray","GAU",21.44,1
+"76Saint-Nicolas-d'Aliermont30.06",30.06,"76","Saint-Nicolas-d'Aliermont","CENT",30.06,1
+"76Saint-Pierre-lès-Elbeuf42.13",42.13,"76","Saint-Pierre-lès-Elbeuf","GAU",42.13,1
+"76Saint-Romain-de-Colbosc27.09",27.09,"76","Saint-Romain-de-Colbosc","DTE",27.09,1
+"76Saint-Valery-en-Caux35.42",35.42,"76","Saint-Valery-en-Caux","DTE",35.42,1
+"76Sainte-Adresse24.3",24.3,"76","Sainte-Adresse","DTE",24.3,1
+"76Sotteville-lès-Rouen25.48",25.48,"76","Sotteville-lès-Rouen","GAU",25.48,1
+"76Terres-de-Caux51.08",51.08,"76","Terres-de-Caux","AUT",51.08,1
+"76Yvetot22.97",22.97,"76","Yvetot","GAU",22.97,1
+"77Avon17.03",17.03,"77","Avon","DTE",17.03,1
+"77Bailly-Romainvilliers38.05",38.05,"77","Bailly-Romainvilliers","DTE",38.05,1
+"77Bois-le-Roi15.36",15.36,"77","Bois-le-Roi","CENT",15.36,1
+"77Boissise-le-Roi39.76",39.76,"77","Boissise-le-Roi","DTE",39.76,1
+"77Brie-Comte-Robert17.31",17.31,"77","Brie-Comte-Robert","GAU",17.31,1
+"77Brou-sur-Chantereine21",21,"77","Brou-sur-Chantereine","GAU",21,1
+"77Bussy-Saint-Georges24.05",24.05,"77","Bussy-Saint-Georges","DTE",24.05,1
+"77Cesson27.51",27.51,"77","Cesson","DTE",27.51,1
+"77Champagne-sur-Seine39.9",39.9,"77","Champagne-sur-Seine","GAU",39.9,1
+"77Champs-sur-Marne21.98",21.98,"77","Champs-sur-Marne","GAU",21.98,1
+"77Chanteloup-en-Brie27.55",27.55,"77","Chanteloup-en-Brie","AUT",27.55,1
+"77Chelles19.83",19.83,"77","Chelles","DTE",19.83,1
+"77Chessy37.54",37.54,"77","Chessy","DTE",37.54,1
+"77Chevry-Cossigny23.59",23.59,"77","Chevry-Cossigny","GAU",23.59,1
+"77Claye-Souilly24.76",24.76,"77","Claye-Souilly","CENT",24.76,1
+"77Combs-la-Ville17.3",17.3,"77","Combs-la-Ville","DTE",17.3,1
+"77Coulommiers17.03",17.03,"77","Coulommiers","CENT",17.03,1
+"77Courtry30.05",30.05,"77","Courtry","CENT",30.05,1
+"77Crécy-la-Chapelle19.16",19.16,"77","Crécy-la-Chapelle","CENT",19.16,1
+"77Crégy-lès-Meaux23.57",23.57,"77","Crégy-lès-Meaux","GAU",23.57,1
+"77Dammarie-les-Lys13.24",13.24,"77","Dammarie-les-Lys","DTE",13.24,1
+"77Dammartin-en-Goële12.93",12.93,"77","Dammartin-en-Goële","DTE",12.93,1
+"77Emerainville32.25",32.25,"77","Emerainville","DTE",32.25,1
+"77Esbly22.19",22.19,"77","Esbly","AUT",22.19,1
+"77Fontainebleau24.82",24.82,"77","Fontainebleau","CENT",24.82,1
+"77Fontenay-Trésigny21.82",21.82,"77","Fontenay-Trésigny","GAU",21.82,1
+"77Gretz-Armainvilliers19.1",19.1,"77","Gretz-Armainvilliers","CENT",19.1,1
+"77Guignes43.39",43.39,"77","Guignes","DTE",43.39,1
+"77Jouarre41.32",41.32,"77","Jouarre","DTE",41.32,1
+"77La Ferté-Gaucher45.37",45.37,"77","La Ferté-Gaucher","DTE",45.37,1
+"77La Ferté-sous-Jouarre27.93",27.93,"77","La Ferté-sous-Jouarre","DTE",27.93,1
+"77Lagny-sur-Marne18.94",18.94,"77","Lagny-sur-Marne","CENT",18.94,1
+"77Le Châtelet-en-Brie34.48",34.48,"77","Le Châtelet-en-Brie","DTE",34.48,1
+"77Le Mée-sur-Seine21.83",21.83,"77","Le Mée-sur-Seine","CENT",21.83,1
+"77Lésigny23.27",23.27,"77","Lésigny","DTE",23.27,1
+"77Lieusaint22.21",22.21,"77","Lieusaint","GAU",22.21,1
+"77Lizy-sur-Ourcq26.85",26.85,"77","Lizy-sur-Ourcq","AUT",26.85,1
+"77Lognes17.36",17.36,"77","Lognes","GAU",17.36,1
+"77Magny-le-Hongre21.49",21.49,"77","Magny-le-Hongre","CENT",21.49,1
+"77Meaux24.73",24.73,"77","Meaux","DTE",24.73,1
+"77Melun11.66",11.66,"77","Melun","CENT",11.66,1
+"77Mitry-Mory24.95",24.95,"77","Mitry-Mory","GAU",24.95,1
+"77Moissy-Cramayel18.54",18.54,"77","Moissy-Cramayel","GAU",18.54,1
+"77Montereau-Fault-Yonne25.33",25.33,"77","Montereau-Fault-Yonne","CENT",25.33,1
+"77Montévrain33.67",33.67,"77","Montévrain","CENT",33.67,1
+"77Montry18.19",18.19,"77","Montry","DTE",18.19,1
+"77Moret-Loing-et-Orvanne24.76",24.76,"77","Moret-Loing-et-Orvanne","GAU",24.76,1
+"77Mormant43.19",43.19,"77","Mormant","DTE",43.19,1
+"77Mouroux18.56",18.56,"77","Mouroux","GAU",18.56,1
+"77Nandy26.88",26.88,"77","Nandy","GAU",26.88,1
+"77Nangis20.52",20.52,"77","Nangis","GAU",20.52,1
+"77Nanteuil-lès-Meaux23.43",23.43,"77","Nanteuil-lès-Meaux","DTE",23.43,1
+"77Nemours26.24",26.24,"77","Nemours","DTE",26.24,1
+"77Noisiel27.65",27.65,"77","Noisiel","GAU",27.65,1
+"77Othis37.4",37.4,"77","Othis","GAU",37.4,1
+"77Ozoir-la-Ferrière18.18",18.18,"77","Ozoir-la-Ferrière","CENT",18.18,1
+"77Pomponne18.4",18.4,"77","Pomponne","CENT",18.4,1
+"77Pontault-Combault22.94",22.94,"77","Pontault-Combault","GAU",22.94,1
+"77Provins27.16",27.16,"77","Provins","DTE",27.16,1
+"77Quincy-Voisins26.92",26.92,"77","Quincy-Voisins","AUT",26.92,1
+"77Roissy-en-Brie23.27",23.27,"77","Roissy-en-Brie","CENT",23.27,1
+"77Saint-Fargeau-Ponthierry20.93",20.93,"77","Saint-Fargeau-Ponthierry","DTE",20.93,1
+"77Saint-Germain-sur-Morin16.36",16.36,"77","Saint-Germain-sur-Morin","AUT",16.36,1
+"77Saint-Mard46.26",46.26,"77","Saint-Mard","DTE",46.26,1
+"77Saint-Pathus26.79",26.79,"77","Saint-Pathus","AUT",26.79,1
+"77Saint-Pierre-lès-Nemours23.57",23.57,"77","Saint-Pierre-lès-Nemours","DTE",23.57,1
+"77Saint-Thibault-des-Vignes39.35",39.35,"77","Saint-Thibault-des-Vignes","DTE",39.35,1
+"77Savigny-le-Temple23.79",23.79,"77","Savigny-le-Temple","GAU",23.79,1
+"77Serris31.55",31.55,"77","Serris","CENT",31.55,1
+"77Souppes-sur-Loing20.21",20.21,"77","Souppes-sur-Loing","CENT",20.21,1
+"77Thorigny-sur-Marne25.78",25.78,"77","Thorigny-sur-Marne","GAU",25.78,1
+"77Torcy28.06",28.06,"77","Torcy","GAU",28.06,1
+"77Tournan-en-Brie35.56",35.56,"77","Tournan-en-Brie","GAU",35.56,1
+"77Trilport26.28",26.28,"77","Trilport","GAU",26.28,1
+"77Vaires-sur-Marne18.76",18.76,"77","Vaires-sur-Marne","CENT",18.76,1
+"77Vaux-le-Pénil23.28",23.28,"77","Vaux-le-Pénil","GAU",23.28,1
+"77Vert-Saint-Denis17.73",17.73,"77","Vert-Saint-Denis","GAU",17.73,1
+"77Villenoy25.53",25.53,"77","Villenoy","AUT",25.53,1
+"77Villeparisis12.9",12.9,"77","Villeparisis","GAU",12.9,1
+"78Achères17.47",17.47,"78","Achères","DTE",17.47,1
+"78Andrésy20.83",20.83,"78","Andrésy","DTE",20.83,1
+"78Aubergenville21.2",21.2,"78","Aubergenville","DTE",21.2,1
+"78Bailly30.61",30.61,"78","Bailly","DTE",30.61,1
+"78Beynes25.09",25.09,"78","Beynes","GAU",25.09,1
+"78Bois-d'Arcy26.61",26.61,"78","Bois-d'Arcy","DTE",26.61,1
+"78Bonnières-sur-Seine23.97",23.97,"78","Bonnières-sur-Seine","GAU",23.97,1
+"78Bougival21.06",21.06,"78","Bougival","DTE",21.06,1
+"78Buc31.42",31.42,"78","Buc","DTE",31.42,1
+"78Carrières-sous-Poissy20.33",20.33,"78","Carrières-sous-Poissy","AUT",20.33,1
+"78Carrières-sur-Seine21.69",21.69,"78","Carrières-sur-Seine","DTE",21.69,1
+"78Chambourcy34.84",34.84,"78","Chambourcy","DTE",34.84,1
+"78Chanteloup-les-Vignes25.64",25.64,"78","Chanteloup-les-Vignes","DTE",25.64,1
+"78Chatou24.4",24.4,"78","Chatou","DTE",24.4,1
+"78Chevreuse24.34",24.34,"78","Chevreuse","DTE",24.34,1
+"78Coignières45.83",45.83,"78","Coignières","AUT",45.83,1
+"78Conflans-Sainte-Honorine18.55",18.55,"78","Conflans-Sainte-Honorine","DTE",18.55,1
+"78Croissy-sur-Seine22.3",22.3,"78","Croissy-sur-Seine","DTE",22.3,1
+"78Ecquevilly49.4",49.4,"78","Ecquevilly","AUT",49.4,1
+"78Elancourt20.32",20.32,"78","Elancourt","DTE",20.32,1
+"78Epône23.97",23.97,"78","Epône","DTE",23.97,1
+"78Fontenay-le-Fleury27.77",27.77,"78","Fontenay-le-Fleury","DTE",27.77,1
+"78Freneuse31.87",31.87,"78","Freneuse","AUT",31.87,1
+"78Gargenville31.23",31.23,"78","Gargenville","DTE",31.23,1
+"78Guyancourt14.39",14.39,"78","Guyancourt","GAU",14.39,1
+"78Houdan27.49",27.49,"78","Houdan","DTE",27.49,1
+"78Houilles31.87",31.87,"78","Houilles","CENT",31.87,1
+"78Issou23.96",23.96,"78","Issou","AUT",23.96,1
+"78Jouars-Pontchartrain27.95",27.95,"78","Jouars-Pontchartrain","DTE",27.95,1
+"78Jouy-en-Josas30.92",30.92,"78","Jouy-en-Josas","DTE",30.92,1
+"78Juziers47.84",47.84,"78","Juziers","AUT",47.84,1
+"78L'Etang-la-Ville26.86",26.86,"78","L'Etang-la-Ville","CENT",26.86,1
+"78La Celle-Saint-Cloud25.79",25.79,"78","La Celle-Saint-Cloud","DTE",25.79,1
+"78La Verrière27.17",27.17,"78","La Verrière","GAU",27.17,1
+"78Le Chesnay-Rocquencourt18.86",18.86,"78","Le Chesnay-Rocquencourt","CENT",18.86,1
+"78Le Mesnil-le-Roi42.15",42.15,"78","Le Mesnil-le-Roi","DTE",42.15,1
+"78Le Mesnil-Saint-Denis30.47",30.47,"78","Le Mesnil-Saint-Denis","DTE",30.47,1
+"78Le Pecq23.09",23.09,"78","Le Pecq","DTE",23.09,1
+"78Le Perray-en-Yvelines19.73",19.73,"78","Le Perray-en-Yvelines","DTE",19.73,1
+"78Le Port-Marly28.24",28.24,"78","Le Port-Marly","DTE",28.24,1
+"78Le Vésinet28.58",28.58,"78","Le Vésinet","DTE",28.58,1
+"78Les Clayes-sous-Bois12.49",12.49,"78","Les Clayes-sous-Bois","DTE",12.49,1
+"78Les Essarts-le-Roi17.31",17.31,"78","Les Essarts-le-Roi","CENT",17.31,1
+"78Les Mureaux23.65",23.65,"78","Les Mureaux","GAU",23.65,1
+"78Limay23.34",23.34,"78","Limay","GAU",23.34,1
+"78Louveciennes21.08",21.08,"78","Louveciennes","CENT",21.08,1
+"78Magnanville22.27",22.27,"78","Magnanville","GAU",22.27,1
+"78Magny-les-Hameaux28.35",28.35,"78","Magny-les-Hameaux","GAU",28.35,1
+"78Maisons-Laffitte31.01",31.01,"78","Maisons-Laffitte","DTE",31.01,1
+"78Mantes-la-Jolie18.52",18.52,"78","Mantes-la-Jolie","DTE",18.52,1
+"78Mantes-la-Ville13.93",13.93,"78","Mantes-la-Ville","EXD",13.93,1
+"78Marly-le-Roi23.04",23.04,"78","Marly-le-Roi","DTE",23.04,1
+"78Maule22.71",22.71,"78","Maule","DTE",22.71,1
+"78Maurecourt29.59",29.59,"78","Maurecourt","GAU",29.59,1
+"78Maurepas24.98",24.98,"78","Maurepas","DTE",24.98,1
+"78Meulan-en-Yvelines24.8",24.8,"78","Meulan-en-Yvelines","DTE",24.8,1
+"78Mézières-sur-Seine29.14",29.14,"78","Mézières-sur-Seine","CENT",29.14,1
+"78Montesson23.38",23.38,"78","Montesson","DTE",23.38,1
+"78Montigny-le-Bretonneux23.24",23.24,"78","Montigny-le-Bretonneux","DTE",23.24,1
+"78Noisy-le-Roi39.69",39.69,"78","Noisy-le-Roi","DTE",39.69,1
+"78Orgeval22.62",22.62,"78","Orgeval","DTE",22.62,1
+"78Plaisir13.03",13.03,"78","Plaisir","DTE",13.03,1
+"78Poissy30.48",30.48,"78","Poissy","DTE",30.48,1
+"78Rambouillet17.62",17.62,"78","Rambouillet","DTE",17.62,1
+"78Rosny-sur-Seine27.02",27.02,"78","Rosny-sur-Seine","DTE",27.02,1
+"78Saint-Arnoult-en-Yvelines17",17,"78","Saint-Arnoult-en-Yvelines","GAU",17,1
+"78Saint-Cyr-l'Ecole20.09",20.09,"78","Saint-Cyr-l'Ecole","DTE",20.09,1
+"78Saint-Germain-en-Laye29.34",29.34,"78","Saint-Germain-en-Laye","DTE",29.34,1
+"78Saint-Nom-la-Bretèche29.12",29.12,"78","Saint-Nom-la-Bretèche","DTE",29.12,1
+"78Saint-Rémy-lès-Chevreuse42.06",42.06,"78","Saint-Rémy-lès-Chevreuse","DTE",42.06,1
+"78Sartrouville20.34",20.34,"78","Sartrouville","DTE",20.34,1
+"78Trappes20.99",20.99,"78","Trappes","GAU",20.99,1
+"78Triel-sur-Seine31.64",31.64,"78","Triel-sur-Seine","AUT",31.64,1
+"78Vaux-sur-Seine24.78",24.78,"78","Vaux-sur-Seine","DTE",24.78,1
+"78Vélizy-Villacoublay34.55",34.55,"78","Vélizy-Villacoublay","DTE",34.55,1
+"78Verneuil-sur-Seine13.61",13.61,"78","Verneuil-sur-Seine","DTE",13.61,1
+"78Vernouillet23.84",23.84,"78","Vernouillet","CENT",23.84,1
+"78Versailles26.63",26.63,"78","Versailles","DTE",26.63,1
+"78Villennes-sur-Seine35.25",35.25,"78","Villennes-sur-Seine","CENT",35.25,1
+"78Villepreux26.07",26.07,"78","Villepreux","CENT",26.07,1
+"78Viroflay23.9",23.9,"78","Viroflay","DTE",23.9,1
+"78Voisins-le-Bretonneux21.92",21.92,"78","Voisins-le-Bretonneux","CENT",21.92,1
+"83Bandol21.84",21.84,"83","Bandol","DTE",21.84,1
+"83Bormes-les-Mimosas36.23",36.23,"83","Bormes-les-Mimosas","DTE",36.23,1
+"83Brignoles28.62",28.62,"83","Brignoles","DTE",28.62,1
+"83Carqueiranne27.15",27.15,"83","Carqueiranne","DTE",27.15,1
+"83Cavalaire-sur-Mer57.43",57.43,"83","Cavalaire-sur-Mer","DTE",57.43,1
+"83Cogolin22.76",22.76,"83","Cogolin","EXD",22.76,1
+"83Cuers16.67",16.67,"83","Cuers","DTE",16.67,1
+"83Draguignan22.64",22.64,"83","Draguignan","CENT",22.64,1
+"83Fayence25.17",25.17,"83","Fayence","DTE",25.17,1
+"83Flassans-sur-Issole25.16",25.16,"83","Flassans-sur-Issole","AUT",25.16,1
+"83Flayosc31.48",31.48,"83","Flayosc","DTE",31.48,1
+"83Fréjus18.74",18.74,"83","Fréjus","EXD",18.74,1
+"83Garéoult29.29",29.29,"83","Garéoult","DTE",29.29,1
+"83Gonfaron32.94",32.94,"83","Gonfaron","DTE",32.94,1
+"83Grimaud29.95",29.95,"83","Grimaud","DTE",29.95,1
+"83Hyères19.77",19.77,"83","Hyères","DTE",19.77,1
+"83La Cadière-d'Azur26.78",26.78,"83","La Cadière-d'Azur","GAU",26.78,1
+"83La Crau34.09",34.09,"83","La Crau","DTE",34.09,1
+"83La Croix-Valmer29.2",29.2,"83","La Croix-Valmer","DTE",29.2,1
+"83La Farlède21.22",21.22,"83","La Farlède","DTE",21.22,1
+"83La Garde17.07",17.07,"83","La Garde","GAU",17.07,1
+"83La Londe-les-Maures43.61",43.61,"83","La Londe-les-Maures","DTE",43.61,1
+"83La Seyne-sur-Mer14.58",14.58,"83","La Seyne-sur-Mer","DTE",14.58,1
+"83La Valette-du-Var24.1",24.1,"83","La Valette-du-Var","DTE",24.1,1
+"83Le Beausset16.7",16.7,"83","Le Beausset","AUT",16.7,1
+"83Le Cannet-des-Maures34.57",34.57,"83","Le Cannet-des-Maures","CENT",34.57,1
+"83Le Castellet35.82",35.82,"83","Le Castellet","DTE",35.82,1
+"83Le Lavandou37.84",37.84,"83","Le Lavandou","DTE",37.84,1
+"83Le Luc17.85",17.85,"83","Le Luc","DTE",17.85,1
+"83Le Muy32.1",32.1,"83","Le Muy","DTE",32.1,1
+"83Le Pradet22.57",22.57,"83","Le Pradet","GAU",22.57,1
+"83Le Revest-les-Eaux31.07",31.07,"83","Le Revest-les-Eaux","DTE",31.07,1
+"83Le Val44.47",44.47,"83","Le Val","AUT",44.47,1
+"83Les Arcs21.77",21.77,"83","Les Arcs","AUT",21.77,1
+"83Lorgues32.34",32.34,"83","Lorgues","DTE",32.34,1
+"83Montauroux37.26",37.26,"83","Montauroux","CENT",37.26,1
+"83Nans-les-Pins42.26",42.26,"83","Nans-les-Pins","DTE",42.26,1
+"83Ollioules29.65",29.65,"83","Ollioules","DTE",29.65,1
+"83Pierrefeu-du-Var35.14",35.14,"83","Pierrefeu-du-Var","GAU",35.14,1
+"83Pignans54.68",54.68,"83","Pignans","DTE",54.68,1
+"83Pourrières30.24",30.24,"83","Pourrières","DTE",30.24,1
+"83Puget-sur-Argens16.73",16.73,"83","Puget-sur-Argens","CENT",16.73,1
+"83Puget-Ville21.56",21.56,"83","Puget-Ville","DTE",21.56,1
+"83Rians48.76",48.76,"83","Rians","DTE",48.76,1
+"83Rocbaron20.21",20.21,"83","Rocbaron","DTE",20.21,1
+"83Roquebrune-sur-Argens17.3",17.3,"83","Roquebrune-sur-Argens","CENT",17.3,1
+"83Saint-Cyr-sur-Mer32.65",32.65,"83","Saint-Cyr-sur-Mer","DTE",32.65,1
+"83Saint-Mandrier-sur-Mer31.18",31.18,"83","Saint-Mandrier-sur-Mer","DTE",31.18,1
+"83Saint-Maximin-la-Sainte-Baume20.62",20.62,"83","Saint-Maximin-la-Sainte-Baume","DTE",20.62,1
+"83Saint-Raphaël26.25",26.25,"83","Saint-Raphaël","DTE",26.25,1
+"83Saint-Tropez49.27",49.27,"83","Saint-Tropez","DTE",49.27,1
+"83Saint-Zacharie37.97",37.97,"83","Saint-Zacharie","GAU",37.97,1
+"83Sainte-Maxime40.02",40.02,"83","Sainte-Maxime","DTE",40.02,1
+"83Salernes19.71",19.71,"83","Salernes","GAU",19.71,1
+"83Sanary-sur-Mer26.99",26.99,"83","Sanary-sur-Mer","DTE",26.99,1
+"83Six-Fours-les-Plages17.32",17.32,"83","Six-Fours-les-Plages","DTE",17.32,1
+"83Solliès-Pont22.14",22.14,"83","Solliès-Pont","DTE",22.14,1
+"83Solliès-Toucas17.88",17.88,"83","Solliès-Toucas","AUT",17.88,1
+"83Toulon19.24",19.24,"83","Toulon","DTE",19.24,1
+"83Tourves22.3",22.3,"83","Tourves","DTE",22.3,1
+"83Trans-en-Provence31.2",31.2,"83","Trans-en-Provence","DTE",31.2,1
+"83Vidauban31.17",31.17,"83","Vidauban","DTE",31.17,1
+"83Vinon-sur-Verdon29.41",29.41,"83","Vinon-sur-Verdon","AUT",29.41,1
+"87Aixe-sur-Vienne30.88",30.88,"87","Aixe-sur-Vienne","CENT",30.88,1
+"87Ambazac36.39",36.39,"87","Ambazac","GAU",36.39,1
+"87Bellac31.76",31.76,"87","Bellac","GAU",31.76,1
+"87Condat-sur-Vienne38.73",38.73,"87","Condat-sur-Vienne","GAU",38.73,1
+"87Couzeix35.99",35.99,"87","Couzeix","CENT",35.99,1
+"87Feytiat27.35",27.35,"87","Feytiat","GAU",27.35,1
+"87Isle23.15",23.15,"87","Isle","CENT",23.15,1
+"87Le Palais-sur-Vienne32.46",32.46,"87","Le Palais-sur-Vienne","GAU",32.46,1
+"87Limoges17.93",17.93,"87","Limoges","DTE",17.93,1
+"87Panazol17.77",17.77,"87","Panazol","CENT",17.77,1
+"87Rilhac-Rancon32.67",32.67,"87","Rilhac-Rancon","GAU",32.67,1
+"87Rochechouart31.51",31.51,"87","Rochechouart","GAU",31.51,1
+"87Saint-Junien27.31",27.31,"87","Saint-Junien","GAU",27.31,1
+"87Saint-Léonard-de-Noblat35.24",35.24,"87","Saint-Léonard-de-Noblat","GAU",35.24,1
+"87Saint-Yrieix-la-Perche28.25",28.25,"87","Saint-Yrieix-la-Perche","CENT",28.25,1
+"87Verneuil-sur-Vienne36.79",36.79,"87","Verneuil-sur-Vienne","GAU",36.79,1
+"91Angerville42.84",42.84,"91","Angerville","AUT",42.84,1
+"91Arpajon21.1",21.1,"91","Arpajon","CENT",21.1,1
+"91Athis-Mons19.64",19.64,"91","Athis-Mons","GAU",19.64,1
+"91Ballainvilliers21.1",21.1,"91","Ballainvilliers","DTE",21.1,1
+"91Ballancourt-sur-Essonne39",39,"91","Ballancourt-sur-Essonne","AUT",39,1
+"91Bièvres40.65",40.65,"91","Bièvres","DTE",40.65,1
+"91Boissy-sous-Saint-Yon31.24",31.24,"91","Boissy-sous-Saint-Yon","AUT",31.24,1
+"91Bondoufle16.02",16.02,"91","Bondoufle","AUT",16.02,1
+"91Boussy-Saint-Antoine32.31",32.31,"91","Boussy-Saint-Antoine","GAU",32.31,1
+"91Brétigny-sur-Orge22.11",22.11,"91","Brétigny-sur-Orge","GAU",22.11,1
+"91Breuillet24.9",24.9,"91","Breuillet","DTE",24.9,1
+"91Brunoy18.21",18.21,"91","Brunoy","DTE",18.21,1
+"91Bures-sur-Yvette47.98",47.98,"91","Bures-sur-Yvette","AUT",47.98,1
+"91Chilly-Mazarin24.8",24.8,"91","Chilly-Mazarin","GAU",24.8,1
+"91Corbeil-Essonnes15.28",15.28,"91","Corbeil-Essonnes","AUT",15.28,1
+"91Crosne17.37",17.37,"91","Crosne","DTE",17.37,1
+"91Dourdan20.61",20.61,"91","Dourdan","CENT",20.61,1
+"91Draveil25.82",25.82,"91","Draveil","DTE",25.82,1
+"91Egly22.31",22.31,"91","Egly","DTE",22.31,1
+"91Epinay-sous-Sénart45.71",45.71,"91","Epinay-sous-Sénart","AUT",45.71,1
+"91Epinay-sur-Orge17.76",17.76,"91","Epinay-sur-Orge","AUT",17.76,1
+"91Etampes18.94",18.94,"91","Etampes","DTE",18.94,1
+"91Etréchy38.18",38.18,"91","Etréchy","AUT",38.18,1
+"91Evry-Courcouronnes25.72",25.72,"91","Evry-Courcouronnes","AUT",25.72,1
+"91Fleury-Mérogis39.69",39.69,"91","Fleury-Mérogis","AUT",39.69,1
+"91Forges-les-Bains38.22",38.22,"91","Forges-les-Bains","AUT",38.22,1
+"91Gif-sur-Yvette23.79",23.79,"91","Gif-sur-Yvette","DTE",23.79,1
+"91Grigny15.72",15.72,"91","Grigny","GAU",15.72,1
+"91Igny35.98",35.98,"91","Igny","CENT",35.98,1
+"91Itteville31.55",31.55,"91","Itteville","GAU",31.55,1
+"91Juvisy-sur-Orge18.71",18.71,"91","Juvisy-sur-Orge","DTE",18.71,1
+"91La Ferté-Alais20.64",20.64,"91","La Ferté-Alais","CENT",20.64,1
+"91La Norville23.67",23.67,"91","La Norville","GAU",23.67,1
+"91La Ville-du-Bois19.95",19.95,"91","La Ville-du-Bois","DTE",19.95,1
+"91Lardy29.34",29.34,"91","Lardy","AUT",29.34,1
+"91Le Coudray-Montceaux47.45",47.45,"91","Le Coudray-Montceaux","AUT",47.45,1
+"91Le Plessis-Pâté33.79",33.79,"91","Le Plessis-Pâté","GAU",33.79,1
+"91Les Ulis20.97",20.97,"91","Les Ulis","GAU",20.97,1
+"91Leuville-sur-Orge24.74",24.74,"91","Leuville-sur-Orge","GAU",24.74,1
+"91Limours en Hurepoix27.96",27.96,"91","Limours en Hurepoix","AUT",27.96,1
+"91Linas27.45",27.45,"91","Linas","DTE",27.45,1
+"91Lisses33.76",33.76,"91","Lisses","AUT",33.76,1
+"91Longjumeau22.24",22.24,"91","Longjumeau","DTE",22.24,1
+"91Longpont-sur-Orge34.19",34.19,"91","Longpont-sur-Orge","GAU",34.19,1
+"91Marcoussis26.83",26.83,"91","Marcoussis","GAU",26.83,1
+"91Marolles-en-Hurepoix26.19",26.19,"91","Marolles-en-Hurepoix","CENT",26.19,1
+"91Massy21.09",21.09,"91","Massy","CENT",21.09,1
+"91Mennecy27.88",27.88,"91","Mennecy","AUT",27.88,1
+"91Milly-la-Forêt46.38",46.38,"91","Milly-la-Forêt","AUT",46.38,1
+"91Montgeron21.18",21.18,"91","Montgeron","DTE",21.18,1
+"91Montlhéry32.98",32.98,"91","Montlhéry","DTE",32.98,1
+"91Morangis28.37",28.37,"91","Morangis","DTE",28.37,1
+"91Morigny-Champigny31.17",31.17,"91","Morigny-Champigny","DTE",31.17,1
+"91Morsang-sur-Orge19.92",19.92,"91","Morsang-sur-Orge","GAU",19.92,1
+"91Nozay52.16",52.16,"91","Nozay","AUT",52.16,1
+"91Ollainville32.05",32.05,"91","Ollainville","GAU",32.05,1
+"91Orsay23.96",23.96,"91","Orsay","GAU",23.96,1
+"91Palaiseau22.25",22.25,"91","Palaiseau","DTE",22.25,1
+"91Paray-Vieille-Poste52.47",52.47,"91","Paray-Vieille-Poste","DTE",52.47,1
+"91Quincy-sous-Sénart25",25,"91","Quincy-sous-Sénart","DTE",25,1
+"91Ris-Orangis15.92",15.92,"91","Ris-Orangis","GAU",15.92,1
+"91Saclay49.29",49.29,"91","Saclay","AUT",49.29,1
+"91Saint-Chéron21.67",21.67,"91","Saint-Chéron","DTE",21.67,1
+"91Saint-Germain-lès-Arpajon23.91",23.91,"91","Saint-Germain-lès-Arpajon","DTE",23.91,1
+"91Saint-Germain-lès-Corbeil28.73",28.73,"91","Saint-Germain-lès-Corbeil","DTE",28.73,1
+"91Saint-Michel-sur-Orge18.33",18.33,"91","Saint-Michel-sur-Orge","DTE",18.33,1
+"91Saint-Pierre-du-Perray23.48",23.48,"91","Saint-Pierre-du-Perray","AUT",23.48,1
+"91Sainte-Geneviève-des-Bois20.89",20.89,"91","Sainte-Geneviève-des-Bois","GAU",20.89,1
+"91Saintry-sur-Seine24.86",24.86,"91","Saintry-sur-Seine","AUT",24.86,1
+"91Saulx-les-Chartreux32.92",32.92,"91","Saulx-les-Chartreux","DTE",32.92,1
+"91Savigny-sur-Orge10.64",10.64,"91","Savigny-sur-Orge","CENT",10.64,1
+"91Soisy-sur-Seine37.3",37.3,"91","Soisy-sur-Seine","AUT",37.3,1
+"91Tigery32.11",32.11,"91","Tigery","AUT",32.11,1
+"91Verrières-le-Buisson20.03",20.03,"91","Verrières-le-Buisson","DTE",20.03,1
+"91Vigneux-sur-Seine22.32",22.32,"91","Vigneux-sur-Seine","DTE",22.32,1
+"91Villabé26.88",26.88,"91","Villabé","AUT",26.88,1
+"91Villebon-sur-Yvette24.43",24.43,"91","Villebon-sur-Yvette","DTE",24.43,1
+"91Villemoisson-sur-Orge27.89",27.89,"91","Villemoisson-sur-Orge","DTE",27.89,1
+"91Villiers-sur-Orge39.3",39.3,"91","Villiers-sur-Orge","AUT",39.3,1
+"91Viry-Chatillon21.38",21.38,"91","Viry-Chatillon","DTE",21.38,1
+"91Wissous29.87",29.87,"91","Wissous","DTE",29.87,1
+"91Yerres25.83",25.83,"91","Yerres","AUT",25.83,1
+"92Antony26.23",26.23,"92","Antony","DTE",26.23,1
+"92Asnières-sur-Seine23.41",23.41,"92","Asnières-sur-Seine","DTE",23.41,1
+"92Bagneux19.94",19.94,"92","Bagneux","GAU",19.94,1
+"92Bois-Colombes23.33",23.33,"92","Bois-Colombes","DTE",23.33,1
+"92Boulogne-Billancourt25.62",25.62,"92","Boulogne-Billancourt","DTE",25.62,1
+"92Bourg-la-Reine20.29",20.29,"92","Bourg-la-Reine","CENT",20.29,1
+"92Châtenay-Malabry26",26,"92","Châtenay-Malabry","DTE",26,1
+"92Châtillon18.86",18.86,"92","Châtillon","DTE",18.86,1
+"92Chaville24.28",24.28,"92","Chaville","GAU",24.28,1
+"92Clamart19.61",19.61,"92","Clamart","DTE",19.61,1
+"92Clichy20.76",20.76,"92","Clichy","DTE",20.76,1
+"92Colombes17.77",17.77,"92","Colombes","DTE",17.77,1
+"92Courbevoie17.14",17.14,"92","Courbevoie","DTE",17.14,1
+"92Fontenay-aux-Roses23.6",23.6,"92","Fontenay-aux-Roses","CENT",23.6,1
+"92Garches35.59",35.59,"92","Garches","DTE",35.59,1
+"92Gennevilliers27.41",27.41,"92","Gennevilliers","GAU",27.41,1
+"92Issy-les-Moulineaux22.86",22.86,"92","Issy-les-Moulineaux","CENT",22.86,1
+"92La Garenne-Colombes31.85",31.85,"92","La Garenne-Colombes","DTE",31.85,1
+"92Le Plessis-Robinson31.42",31.42,"92","Le Plessis-Robinson","DTE",31.42,1
+"92Levallois-Perret27.05",27.05,"92","Levallois-Perret","DTE",27.05,1
+"92Malakoff36.3",36.3,"92","Malakoff","GAU",36.3,1
+"92Meudon25.37",25.37,"92","Meudon","CENT",25.37,1
+"92Montrouge20.79",20.79,"92","Montrouge","GAU",20.79,1
+"92Nanterre18.23",18.23,"92","Nanterre","GAU",18.23,1
+"92Neuilly-sur-Seine29.2",29.2,"92","Neuilly-sur-Seine","DTE",29.2,1
+"92Puteaux31.69",31.69,"92","Puteaux","DTE",31.69,1
+"92Rueil-Malmaison24.33",24.33,"92","Rueil-Malmaison","DTE",24.33,1
+"92Saint-Cloud23.23",23.23,"92","Saint-Cloud","DTE",23.23,1
+"92Sceaux25.81",25.81,"92","Sceaux","DTE",25.81,1
+"92Sèvres26.97",26.97,"92","Sèvres","CENT",26.97,1
+"92Suresnes23.46",23.46,"92","Suresnes","DTE",23.46,1
+"92Vanves32.46",32.46,"92","Vanves","CENT",32.46,1
+"92Vaucresson40.81",40.81,"92","Vaucresson","DTE",40.81,1
+"92Ville-d'Avray38.97",38.97,"92","Ville-d'Avray","DTE",38.97,1
+"92Villeneuve-la-Garenne14.03",14.03,"92","Villeneuve-la-Garenne","CENT",14.03,1
+"93Aubervilliers23.01",23.01,"93","Aubervilliers","GAU",23.01,1
+"93Aulnay-sous-Bois18.74",18.74,"93","Aulnay-sous-Bois","DTE",18.74,1
+"93Bagnolet33.07",33.07,"93","Bagnolet","GAU",33.07,1
+"93Bobigny18.48",18.48,"93","Bobigny","GAU",18.48,1
+"93Bondy20.25",20.25,"93","Bondy","GAU",20.25,1
+"93Clichy-sous-Bois33.12",33.12,"93","Clichy-sous-Bois","GAU",33.12,1
+"93Coubron39.25",39.25,"93","Coubron","DTE",39.25,1
+"93Drancy19.63",19.63,"93","Drancy","CENT",19.63,1
+"93Dugny32.66",32.66,"93","Dugny","DTE",32.66,1
+"93Epinay-sur-Seine20.11",20.11,"93","Epinay-sur-Seine","DTE",20.11,1
+"93Gagny28.99",28.99,"93","Gagny","DTE",28.99,1
+"93Gournay-sur-Marne39.12",39.12,"93","Gournay-sur-Marne","DTE",39.12,1
+"93L'Ile-Saint-Denis46.98",46.98,"93","L'Ile-Saint-Denis","GAU",46.98,1
+"93La Courneuve19.89",19.89,"93","La Courneuve","GAU",19.89,1
+"93Le Blanc-Mesnil20.17",20.17,"93","Le Blanc-Mesnil","DTE",20.17,1
+"93Le Bourget32.85",32.85,"93","Le Bourget","DTE",32.85,1
+"93Le Pré-Saint-Gervais34.96",34.96,"93","Le Pré-Saint-Gervais","GAU",34.96,1
+"93Le Raincy30.34",30.34,"93","Le Raincy","DTE",30.34,1
+"93Les Lilas28.33",28.33,"93","Les Lilas","GAU",28.33,1
+"93Les Pavillons-sous-Bois20.79",20.79,"93","Les Pavillons-sous-Bois","DTE",20.79,1
+"93Livry-Gargan18.64",18.64,"93","Livry-Gargan","DTE",18.64,1
+"93Montfermeil22.94",22.94,"93","Montfermeil","DTE",22.94,1
+"93Montreuil25.79",25.79,"93","Montreuil","GAU",25.79,1
+"93Neuilly-Plaisance27.17",27.17,"93","Neuilly-Plaisance","DTE",27.17,1
+"93Neuilly-sur-Marne21.74",21.74,"93","Neuilly-sur-Marne","GAU",21.74,1
+"93Noisy-le-Grand13.88",13.88,"93","Noisy-le-Grand","DTE",13.88,1
+"93Noisy-le-Sec24.16",24.16,"93","Noisy-le-Sec","GAU",24.16,1
+"93Pantin28.44",28.44,"93","Pantin","GAU",28.44,1
+"93Pierrefitte-sur-Seine28.92",28.92,"93","Pierrefitte-sur-Seine","GAU",28.92,1
+"93Romainville28.61",28.61,"93","Romainville","GAU",28.61,1
+"93Rosny-sous-Bois16.83",16.83,"93","Rosny-sous-Bois","DTE",16.83,1
+"93Saint-Denis23.47",23.47,"93","Saint-Denis","GAU",23.47,1
+"93Saint-Ouen-sur-Seine27.64",27.64,"93","Saint-Ouen-sur-Seine","GAU",27.64,1
+"93Sevran11.92",11.92,"93","Sevran","GAU",11.92,1
+"93Stains16.17",16.17,"93","Stains","GAU",16.17,1
+"93Tremblay-en-France22.75",22.75,"93","Tremblay-en-France","GAU",22.75,1
+"93Vaujours25.09",25.09,"93","Vaujours","DTE",25.09,1
+"93Villemomble31.46",31.46,"93","Villemomble","DTE",31.46,1
+"93Villepinte16.46",16.46,"93","Villepinte","GAU",16.46,1
+"93Villetaneuse36.05",36.05,"93","Villetaneuse","GAU",36.05,1
+"94Ablon-sur-Seine33.02",33.02,"94","Ablon-sur-Seine","DTE",33.02,1
+"94Alfortville25.05",25.05,"94","Alfortville","GAU",25.05,1
+"94Arcueil19.23",19.23,"94","Arcueil","GAU",19.23,1
+"94Boissy-Saint-Léger23.29",23.29,"94","Boissy-Saint-Léger","GAU",23.29,1
+"94Bonneuil-sur-Marne21.79",21.79,"94","Bonneuil-sur-Marne","GAU",21.79,1
+"94Bry-sur-Marne28.56",28.56,"94","Bry-sur-Marne","DTE",28.56,1
+"94Cachan22.13",22.13,"94","Cachan","GAU",22.13,1
+"94Champigny-sur-Marne14.52",14.52,"94","Champigny-sur-Marne","GAU",14.52,1
+"94Charenton-le-Pont22.67",22.67,"94","Charenton-le-Pont","DTE",22.67,1
+"94Chennevières-sur-Marne20.69",20.69,"94","Chennevières-sur-Marne","DTE",20.69,1
+"94Chevilly-Larue23.03",23.03,"94","Chevilly-Larue","GAU",23.03,1
+"94Choisy-le-Roi19.59",19.59,"94","Choisy-le-Roi","GAU",19.59,1
+"94Créteil16.42",16.42,"94","Créteil","GAU",16.42,1
+"94Fontenay-sous-Bois21.34",21.34,"94","Fontenay-sous-Bois","GAU",21.34,1
+"94Fresnes21.63",21.63,"94","Fresnes","GAU",21.63,1
+"94Gentilly25.06",25.06,"94","Gentilly","GAU",25.06,1
+"94Ivry-sur-Seine28.04",28.04,"94","Ivry-sur-Seine","GAU",28.04,1
+"94Joinville-le-Pont18.2",18.2,"94","Joinville-le-Pont","DTE",18.2,1
+"94L'Hay-les-Roses21.05",21.05,"94","L'Hay-les-Roses","DTE",21.05,1
+"94La Queue-en-Brie19.82",19.82,"94","La Queue-en-Brie","DTE",19.82,1
+"94Le Kremlin-Bicêtre27.67",27.67,"94","Le Kremlin-Bicêtre","GAU",27.67,1
+"94Le Perreux-sur-Marne22.32",22.32,"94","Le Perreux-sur-Marne","DTE",22.32,1
+"94Le Plessis-Trévise21.57",21.57,"94","Le Plessis-Trévise","CENT",21.57,1
+"94Limeil-Brévannes24.16",24.16,"94","Limeil-Brévannes","DTE",24.16,1
+"94Maisons-Alfort28.87",28.87,"94","Maisons-Alfort","DTE",28.87,1
+"94Mandres-les-Roses40.75",40.75,"94","Mandres-les-Roses","DTE",40.75,1
+"94Marolles-en-Brie49.2",49.2,"94","Marolles-en-Brie","DTE",49.2,1
+"94Nogent-sur-Marne19.59",19.59,"94","Nogent-sur-Marne","DTE",19.59,1
+"94Noiseau41.34",41.34,"94","Noiseau","DTE",41.34,1
+"94Orly27.82",27.82,"94","Orly","GAU",27.82,1
+"94Ormesson-sur-Marne27.12",27.12,"94","Ormesson-sur-Marne","DTE",27.12,1
+"94Rungis52.46",52.46,"94","Rungis","DTE",52.46,1
+"94Saint-Mandé14.45",14.45,"94","Saint-Mandé","DTE",14.45,1
+"94Saint-Maur-des-Fossés19.8",19.8,"94","Saint-Maur-des-Fossés","DTE",19.8,1
+"94Saint-Maurice20.65",20.65,"94","Saint-Maurice","DTE",20.65,1
+"94Santeny49.54",49.54,"94","Santeny","DTE",49.54,1
+"94Sucy-en-Brie21.46",21.46,"94","Sucy-en-Brie","DTE",21.46,1
+"94Thiais20.66",20.66,"94","Thiais","DTE",20.66,1
+"94Valenton18.71",18.71,"94","Valenton","GAU",18.71,1
+"94Villecresnes24.43",24.43,"94","Villecresnes","CENT",24.43,1
+"94Villejuif18.26",18.26,"94","Villejuif","GAU",18.26,1
+"94Villeneuve-le-Roi22.71",22.71,"94","Villeneuve-le-Roi","DTE",22.71,1
+"94Villeneuve-Saint-Georges14.58",14.58,"94","Villeneuve-Saint-Georges","GAU",14.58,1
+"94Villiers-sur-Marne14.63",14.63,"94","Villiers-sur-Marne","GAU",14.63,1
+"94Vincennes25.48",25.48,"94","Vincennes","CENT",25.48,1
+"94Vitry-sur-Seine16.58",16.58,"94","Vitry-sur-Seine","GAU",16.58,1
+"95Argenteuil13.98",13.98,"95","Argenteuil","GAU",13.98,1
+"95Arnouville23.25",23.25,"95","Arnouville","DTE",23.25,1
+"95Auvers-sur-Oise37.62",37.62,"95","Auvers-sur-Oise","AUT",37.62,1
+"95Beauchamp24.61",24.61,"95","Beauchamp","DTE",24.61,1
+"95Beaumont-sur-Oise16.53",16.53,"95","Beaumont-sur-Oise","GAU",16.53,1
+"95Bessancourt24.54",24.54,"95","Bessancourt","AUT",24.54,1
+"95Bezons22.27",22.27,"95","Bezons","GAU",22.27,1
+"95Bouffémont23.01",23.01,"95","Bouffémont","GAU",23.01,1
+"95Bruyères-sur-Oise27.04",27.04,"95","Bruyères-sur-Oise","GAU",27.04,1
+"95Cergy18.2",18.2,"95","Cergy","GAU",18.2,1
+"95Champagne-sur-Oise39.98",39.98,"95","Champagne-sur-Oise","DTE",39.98,1
+"95Cormeilles-en-Parisis27.56",27.56,"95","Cormeilles-en-Parisis","DTE",27.56,1
+"95Courdimanche23.03",23.03,"95","Courdimanche","GAU",23.03,1
+"95Deuil-la-Barre14.56",14.56,"95","Deuil-la-Barre","CENT",14.56,1
+"95Domont20.21",20.21,"95","Domont","DTE",20.21,1
+"95Eaubonne17.07",17.07,"95","Eaubonne","DTE",17.07,1
+"95Ecouen26.1",26.1,"95","Ecouen","GAU",26.1,1
+"95Enghien-les-Bains27.15",27.15,"95","Enghien-les-Bains","DTE",27.15,1
+"95Eragny25.77",25.77,"95","Eragny","DTE",25.77,1
+"95Ermont21.33",21.33,"95","Ermont","DTE",21.33,1
+"95Ezanville13.91",13.91,"95","Ezanville","DTE",13.91,1
+"95Fosses27.35",27.35,"95","Fosses","GAU",27.35,1
+"95Franconville18.93",18.93,"95","Franconville","DTE",18.93,1
+"95Garges-lès-Gonesse14.25",14.25,"95","Garges-lès-Gonesse","CENT",14.25,1
+"95Gonesse29.44",29.44,"95","Gonesse","GAU",29.44,1
+"95Goussainville12.54",12.54,"95","Goussainville","AUT",12.54,1
+"95Groslay25.76",25.76,"95","Groslay","DTE",25.76,1
+"95Herblay-sur-Seine21.91",21.91,"95","Herblay-sur-Seine","DTE",21.91,1
+"95Jouy-le-Moutier34.25",34.25,"95","Jouy-le-Moutier","CENT",34.25,1
+"95L'Isle-Adam35.79",35.79,"95","L'Isle-Adam","DTE",35.79,1
+"95La Frette-sur-Seine25.18",25.18,"95","La Frette-sur-Seine","DTE",25.18,1
+"95Le Plessis-Bouchard25.27",25.27,"95","Le Plessis-Bouchard","DTE",25.27,1
+"95Le Thillay22.81",22.81,"95","Le Thillay","GAU",22.81,1
+"95Louvres19.31",19.31,"95","Louvres","AUT",19.31,1
+"95Luzarches27.11",27.11,"95","Luzarches","DTE",27.11,1
+"95Magny-en-Vexin30.88",30.88,"95","Magny-en-Vexin","DTE",30.88,1
+"95Marly-la-Ville30.87",30.87,"95","Marly-la-Ville","GAU",30.87,1
+"95Menucourt31.28",31.28,"95","Menucourt","AUT",31.28,1
+"95Mériel35.62",35.62,"95","Mériel","AUT",35.62,1
+"95Méry-sur-Oise29.45",29.45,"95","Méry-sur-Oise","CENT",29.45,1
+"95Montigny-lès-Cormeilles21.14",21.14,"95","Montigny-lès-Cormeilles","GAU",21.14,1
+"95Montmagny12.79",12.79,"95","Montmagny","DTE",12.79,1
+"95Montmorency15.98",15.98,"95","Montmorency","DTE",15.98,1
+"95Osny16.38",16.38,"95","Osny","DTE",16.38,1
+"95Parmain38.36",38.36,"95","Parmain","AUT",38.36,1
+"95Persan18.59",18.59,"95","Persan","DTE",18.59,1
+"95Pierrelaye24.68",24.68,"95","Pierrelaye","GAU",24.68,1
+"95Pontoise16.23",16.23,"95","Pontoise","CENT",16.23,1
+"95Presles25.61",25.61,"95","Presles","DTE",25.61,1
+"95Puiseux-en-France43.28",43.28,"95","Puiseux-en-France","AUT",43.28,1
+"95Saint-Brice-sous-Forêt12.89",12.89,"95","Saint-Brice-sous-Forêt","DTE",12.89,1
+"95Saint-Gratien20.4",20.4,"95","Saint-Gratien","DTE",20.4,1
+"95Saint-Leu-la-Forêt22.77",22.77,"95","Saint-Leu-la-Forêt","CENT",22.77,1
+"95Saint-Ouen-l'Aumône18.63",18.63,"95","Saint-Ouen-l'Aumône","GAU",18.63,1
+"95Saint-Prix23.55",23.55,"95","Saint-Prix","DTE",23.55,1
+"95Sannois23.58",23.58,"95","Sannois","DTE",23.58,1
+"95Sarcelles23.4",23.4,"95","Sarcelles","GAU",23.4,1
+"95Soisy-sous-Montmorency17.67",17.67,"95","Soisy-sous-Montmorency","DTE",17.67,1
+"95Survilliers27.93",27.93,"95","Survilliers","AUT",27.93,1
+"95Taverny21.7",21.7,"95","Taverny","DTE",21.7,1
+"95Vauréal18.77",18.77,"95","Vauréal","GAU",18.77,1
+"95Viarmes31.17",31.17,"95","Viarmes","DTE",31.17,1
+"95Villiers-le-Bel25.51",25.51,"95","Villiers-le-Bel","GAU",25.51,1

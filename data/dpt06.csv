@@ -1,0 +1,223 @@
+"dpt","code","ville","nuance","voix"
+"06","06004","Antibes","LSOC",1.77
+"06","06006","Aspremont","LNC",24.87
+"06","06007","Auribeau-sur-Siagne","LNC",20.75
+"06","06010","Le Bar-sur-Loup","LNC",14.02
+"06","06011","Beaulieu-sur-Mer","LLR",39.46
+"06","06012","Beausoleil","LRN",8.67
+"06","06015","Berre-les-Alpes","LNC",34.35
+"06","06018","Biot","LLR",26.31
+"06","06019","Blausasc","LNC",47.22
+"06","06023","Breil-sur-Roya","LNC",3.33
+"06","06025","Le Broc","LNC",35.49
+"06","06026","Cabris","LNC",12.09
+"06","06027","Cagnes-sur-Mer","LLR",11.96
+"06","06029","Cannes","LDVG",1.28
+"06","06030","Le Cannet","LRN",4.51
+"06","06031","Cantaron","LNC",29.06
+"06","06032","Cap-d'Ail","LLR",29.14
+"06","06033","Carros","LDVD",16.08
+"06","06034","Castagniers","LNC",33.68
+"06","06035","Castellar","LNC",39.08
+"06","06038","Châteauneuf-Grasse","LDIV",28.79
+"06","06044","La Colle-sur-Loup","LDVC",6.83
+"06","06046","Colomars","LNC",11.83
+"06","06048","Contes","LDVG",42.18
+"06","06054","Drap","LDVD",30.58
+"06","06057","L'Escarène","LNC",21.65
+"06","06059","Eze","LNC",26.8
+"06","06060","Falicon","LNC",27.66
+"06","06064","Gattières","LDIV",33.4
+"06","06065","La Gaude","LDVD",14.17
+"06","06066","Gilette","LNC",43.91
+"06","06067","Gorbio","LNC",10.08
+"06","06069","Grasse","LDIV",0.49
+"06","06074","Lantosque","LNC",35.08
+"06","06075","Levens","LLR",26.75
+"06","06077","Lucéram","LNC",28.6
+"06","06079","Mandelieu-la-Napoule","LLR",39.59
+"06","06083","Menton","LDVD",11.83
+"06","06084","Mouans-Sartoux","LDIV",3.55
+"06","06085","Mougins","LLR",22.61
+"06","06088","Nice","LDVD",2.02
+"06","06089","Opio","LNC",33.73
+"06","06090","Pégomas","LDIV",4.78
+"06","06091","Peille","LNC",10.89
+"06","06092","Peillon","LNC",43.46
+"06","06095","Peymeinade","LLR",13.32
+"06","06099","Puget-Théniers","LNC",8.74
+"06","06103","Roquebillière","LNC",43.86
+"06","06104","Roquebrune-Cap-Martin","LLR",18.81
+"06","06105","Roquefort-les-Pins","LLR",19.76
+"06","06108","La Roquette-sur-Siagne","LDIV",21.16
+"06","06112","Le Rouret","LDIV",13.39
+"06","06113","Sainte-Agnès","LNC",40.28
+"06","06114","Saint-André de la Roche","LDVD",45.35
+"06","06117","Saint-Blaise","LNC",34.2
+"06","06118","Saint-Cézaire-sur-Siagne","LDIV",13.66
+"06","06120","Saint-Etienne-de-Tinée","LNC",48.51
+"06","06121","Saint-Jean-Cap-Ferrat","LNC",38.22
+"06","06122","Saint-Jeannet","LDIV",15.41
+"06","06123","Saint-Laurent-du-Var","LRN",4.84
+"06","06126","Saint-Martin-du-Var","LNC",8
+"06","06127","Saint-Martin-Vésubie","LNC",18.5
+"06","06128","Saint-Paul-de-Vence","LNC",18.18
+"06","06130","Saint-Vallier-de-Thiey","LDVD",33.17
+"06","06136","Sospel","LDIV",2.35
+"06","06137","Spéracèdes","LNC",15.26
+"06","06138","Théoule-sur-Mer","LNC",6.89
+"06","06140","Le Tignet","LNC",12.89
+"06","06147","Tourrette-Levens","LDVC",13.78
+"06","06148","Tourrettes-sur-Loup","LDIV",18.61
+"06","06149","La Trinité","LLR",11.31
+"06","06150","La Turbie","LNC",33.39
+"06","06152","Valbonne","LDVD",5.25
+"06","06155","Vallauris","LDIV",3.48
+"06","06157","Vence","LDVD",2.56
+"06","06159","Villefranche-sur-Mer","LDVD",19.83
+"06","06161","Villeneuve-Loubet","LLR",33.55
+"06","06163","Tende","LNC",26.36
+"06","06004","Antibes","LREM",3.48
+"06","06006","Aspremont","LNC",8.91
+"06","06007","Auribeau-sur-Siagne","LNC",19.36
+"06","06010","Le Bar-sur-Loup","LNC",20.52
+"06","06011","Beaulieu-sur-Mer","LDIV",17.87
+"06","06012","Beausoleil","LDIV",21.18
+"06","06018","Biot","LDIV",8.31
+"06","06023","Breil-sur-Roya","LNC",19.12
+"06","06026","Cabris","LNC",34.42
+"06","06027","Cagnes-sur-Mer","LDVD",4.56
+"06","06029","Cannes","LDVG",1.25
+"06","06030","Le Cannet","LREM",3.92
+"06","06032","Cap-d'Ail","LDIV",14.04
+"06","06033","Carros","LECO",3.84
+"06","06035","Castellar","LNC",23.36
+"06","06044","La Colle-sur-Loup","LRN",3.22
+"06","06046","Colomars","LNC",29.48
+"06","06048","Contes","LDVD",3.9
+"06","06054","Drap","LDVG",19.85
+"06","06060","Falicon","LNC",36.34
+"06","06064","Gattières","LDVD",18.09
+"06","06065","La Gaude","LDVD",5.82
+"06","06067","Gorbio","LNC",31.09
+"06","06069","Grasse","LDVG",1.62
+"06","06074","Lantosque","LNC",41.96
+"06","06079","Mandelieu-la-Napoule","LDVD",8.96
+"06","06083","Menton","LUDI",3.85
+"06","06084","Mouans-Sartoux","LDIV",32.13
+"06","06085","Mougins","LDVG",2.88
+"06","06088","Nice","LDIV",0.25
+"06","06090","Pégomas","LRN",5.52
+"06","06091","Peille","LNC",46.3
+"06","06095","Peymeinade","LDIV",12.95
+"06","06099","Puget-Théniers","LNC",40.09
+"06","06104","Roquebrune-Cap-Martin","LDIV",9.88
+"06","06112","Le Rouret","LLR",27.6
+"06","06114","Saint-André de la Roche","LDVD",8.12
+"06","06118","Saint-Cézaire-sur-Siagne","LDIV",9.4
+"06","06122","Saint-Jeannet","LDIV",15.55
+"06","06123","Saint-Laurent-du-Var","LLR",19.32
+"06","06126","Saint-Martin-du-Var","LNC",49.08
+"06","06127","Saint-Martin-Vésubie","LNC",33.08
+"06","06128","Saint-Paul-de-Vence","LNC",11.54
+"06","06136","Sospel","LDIV",29.53
+"06","06137","Spéracèdes","LNC",6.98
+"06","06138","Théoule-sur-Mer","LNC",21.36
+"06","06140","Le Tignet","LNC",19.03
+"06","06147","Tourrette-Levens","LLR",33.38
+"06","06148","Tourrettes-sur-Loup","LDIV",10.08
+"06","06149","La Trinité","LDVG",28.65
+"06","06150","La Turbie","LNC",10.34
+"06","06152","Valbonne","LECO",14.81
+"06","06155","Vallauris","LDVD",1
+"06","06157","Vence","LDIV",8.59
+"06","06159","Villefranche-sur-Mer","LLR",30.45
+"06","06161","Villeneuve-Loubet","LRN",4.36
+"06","06163","Tende","LNC",22.29
+"06","06004","Antibes","LRN",4
+"06","06006","Aspremont","LNC",13.85
+"06","06007","Auribeau-sur-Siagne","LNC",13.01
+"06","06010","Le Bar-sur-Loup","LNC",10.99
+"06","06011","Beaulieu-sur-Mer","LDIV",0
+"06","06018","Biot","LDIV",15.12
+"06","06023","Breil-sur-Roya","LNC",37.19
+"06","06027","Cagnes-sur-Mer","LCOM",2.76
+"06","06029","Cannes","LDIV",0.63
+"06","06030","Le Cannet","LLR",18.38
+"06","06033","Carros","LDVD",4.32
+"06","06044","La Colle-sur-Loup","LLR",24.78
+"06","06048","Contes","LLR",5.62
+"06","06065","La Gaude","LDVD",24.23
+"06","06067","Gorbio","LNC",25.3
+"06","06069","Grasse","LDIV",1.95
+"06","06083","Menton","LUG",3.32
+"06","06084","Mouans-Sartoux","LDVD",6.13
+"06","06085","Mougins","LDVD",10.22
+"06","06088","Nice","LDVD",13.15
+"06","06090","Pégomas","LDVD",10.62
+"06","06095","Peymeinade","LDIV",8.39
+"06","06099","Puget-Théniers","LNC",20.41
+"06","06104","Roquebrune-Cap-Martin","LDVC",9.18
+"06","06118","Saint-Cézaire-sur-Siagne","LDIV",15.02
+"06","06122","Saint-Jeannet","LDVD",16.74
+"06","06123","Saint-Laurent-du-Var","LDVG",3.26
+"06","06127","Saint-Martin-Vésubie","LNC",18.58
+"06","06128","Saint-Paul-de-Vence","LNC",7.81
+"06","06136","Sospel","LDIV",27.87
+"06","06137","Spéracèdes","LNC",14.22
+"06","06138","Théoule-sur-Mer","LNC",9.39
+"06","06140","Le Tignet","LNC",16.03
+"06","06148","Tourrettes-sur-Loup","LDIV",17.21
+"06","06149","La Trinité","LRN",8.15
+"06","06152","Valbonne","LDVG",11.5
+"06","06155","Vallauris","LDIV",3.07
+"06","06157","Vence","LDVC",7.89
+"06","06163","Tende","LNC",14.16
+"06","06004","Antibes","LDVG",1.44
+"06","06027","Cagnes-sur-Mer","LECO",2.5
+"06","06029","Cannes","LDIV",0.46
+"06","06030","Le Cannet","LSOC",3.63
+"06","06033","Carros","LEXG",1.01
+"06","06065","La Gaude","LDVD",6.36
+"06","06069","Grasse","LLR",18.54
+"06","06083","Menton","LUD",18.06
+"06","06088","Nice","LSOC",1.81
+"06","06090","Pégomas","LDVD",23.63
+"06","06095","Peymeinade","LREM",5.81
+"06","06118","Saint-Cézaire-sur-Siagne","LDVD",14.65
+"06","06123","Saint-Laurent-du-Var","LDVD",2.19
+"06","06128","Saint-Paul-de-Vence","LNC",10.05
+"06","06137","Spéracèdes","LNC",17.93
+"06","06138","Théoule-sur-Mer","LNC",21.5
+"06","06152","Valbonne","LDVC",13.08
+"06","06155","Vallauris","LRN",4.74
+"06","06157","Vence","LDIV",1.01
+"06","06004","Antibes","LDIV",0.64
+"06","06027","Cagnes-sur-Mer","LRN",4.99
+"06","06029","Cannes","LLR",26.72
+"06","06033","Carros","LDIV",18
+"06","06069","Grasse","LECO",3.1
+"06","06083","Menton","LVEC",3.01
+"06","06088","Nice","LRN",4.61
+"06","06123","Saint-Laurent-du-Var","LDVC",1.27
+"06","06155","Vallauris","LDIV",9.02
+"06","06157","Vence","LDVC",5.09
+"06","06004","Antibes","LDVG",1.26
+"06","06027","Cagnes-sur-Mer","LDVC",1.23
+"06","06033","Carros","LEXD",2.55
+"06","06069","Grasse","LDIV",5.44
+"06","06088","Nice","LECO",3.12
+"06","06123","Saint-Laurent-du-Var","LDIV",4.52
+"06","06155","Vallauris","LDIV",7.63
+"06","06157","Vence","LDVD",1.11
+"06","06004","Antibes","LDIV",0.89
+"06","06027","Cagnes-sur-Mer","LDIV",2.04
+"06","06069","Grasse","LRN",2.87
+"06","06088","Nice","LDVG",2.46
+"06","06155","Vallauris","LLR",9.31
+"06","06157","Vence","LDVG",3.13
+"06","06004","Antibes","LDIV",0.41
+"06","06069","Grasse","LDVC",1.35
+"06","06088","Nice","LEXG",0.18
+"06","06157","Vence","LECO",4.36
+"06","06004","Antibes","LLR",15.6

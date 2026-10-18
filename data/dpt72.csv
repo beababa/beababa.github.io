@@ -1,0 +1,196 @@
+"dpt","code","ville","nuance","voix"
+"72","72001","Aigné","LNC",10.08
+"72","72003","Allonnes","LDVG",3.49
+"72","72006","Arçonnay","LNC",27.01
+"72","72008","Arnage","LUG",29.84
+"72","72013","Aubigné-Racan","LNC",34.27
+"72","72016","Auvers-le-Hamon","LNC",27.31
+"72","72022","Le Bailleul","LNC",29.96
+"72","72023","Ballon-Saint Mars","LNC",27.28
+"72","72024","La Bazoge","LDVD",16.95
+"72","72025","Bazouges Cré sur Loir","LNC",31.53
+"72","72026","Beaufay","LNC",40.55
+"72","72029","Beaumont-sur-Sarthe","LNC",38.01
+"72","72035","Bessé-sur-Braye","LNC",33.52
+"72","72039","Bonnétable","LDVD",23.42
+"72","72042","Bouloire","LNC",23.19
+"72","72046","Le Breil-sur-Mérize","LNC",34.17
+"72","72047","Brette-les-Pins","LNC",25.02
+"72","72050","Brûlon","LNC",31.66
+"72","72051","Cérans-Foulletourte","LNC",16.21
+"72","72053","Challes","LNC",19.53
+"72","72054","Champagné","LDVG",30.48
+"72","72056","Champfleur","LNC",27.55
+"72","72058","Changé","LDVG",24.82
+"72","72061","La Chapelle-d'Aligné","LNC",39.2
+"72","72065","La Chapelle-Saint-Aubin","LNC",34.03
+"72","72068","La Chartre-sur-le-Loir","LNC",31.88
+"72","72071","Montval-sur-Loir","LDVC",23.86
+"72","72073","Chaufour-Notre-Dame","LNC",39.72
+"72","72080","Cherré-au","LNC",36.27
+"72","72084","Clermont-Créans","LNC",21.24
+"72","72089","Conlie","LNC",14.35
+"72","72090","Connerré","LNC",25.35
+"72","72095","Coulaines","LDVG",24.64
+"72","72096","Coulans-sur-Gée","LNC",15.65
+"72","72110","Crosmières","LNC",41.56
+"72","72118","Dollon","LNC",29.63
+"72","72119","Domfront-en-Champagne","LNC",42.93
+"72","72122","Duneau","LNC",36.67
+"72","72124","Ecommoy","LDVD",7.93
+"72","72127","Etival-lès-le-Mans","LNC",39.51
+"72","72132","La Ferté-Bernard","LDVC",22.81
+"72","72133","Fillé-sur-Sarthe","LNC",32.46
+"72","72137","Villeneuve en Perseigne","LNC",13.73
+"72","72138","Fresnay-sur-Sarthe","LNC",29.15
+"72","72143","Le Grand-Lucé","LNC",2.55
+"72","72146","Guécélard","LNC",24.55
+"72","72147","La Guierche","LNC",44.91
+"72","72150","Joué-l'Abbé","LNC",29.79
+"72","72151","Juigné-sur-Sarthe","LNC",31.24
+"72","72154","La Flèche","LDVD",13.48
+"72","72155","Laigné-en-Belin","LNC",28.46
+"72","72165","Lombron","LNC",25.6
+"72","72168","Loué","LNC",21.87
+"72","72169","Louplande","LNC",32.92
+"72","72172","Le Luart","LNC",37.08
+"72","72173","Luceau","LNC",23.92
+"72","72175","Luché-Pringé","LNC",33.65
+"72","72176","Le Lude","LDVG",15.55
+"72","72179","Malicorne-sur-Sarthe","LNC",14.54
+"72","72180","Mamers","LLR",26.76
+"72","72181","Le Mans","LSOC",15.03
+"72","72182","Mansigné","LNC",30.82
+"72","72183","Marçon","LNC",32.19
+"72","72187","Marigné-Laillé","LNC",33.31
+"72","72189","Marolles-les-Braults","LNC",36.15
+"72","72191","Mayet","LNC",20.28
+"72","72195","Mézeray","LNC",26.44
+"72","72198","La Milesse","LNC",29.08
+"72","72200","Moncé-en-Belin","LDVC",27.33
+"72","72205","Montbizot","LNC",33.64
+"72","72213","Mulsanne","LDIV",27.96
+"72","72215","Neufchâtel-en-Saosnois","LNC",34.49
+"72","72217","Neuville-sur-Sarthe","LNC",35.88
+"72","72223","Noyen-sur-Sarthe","LNC",34.07
+"72","72226","Oizé","LNC",29.17
+"72","72228","Parcé-sur-Sarthe","LNC",25.61
+"72","72230","Parigné-le-Pôlin","LNC",13.87
+"72","72231","Parigné-l'Evêque","LDVG",22.05
+"72","72241","Montfort-le-Gesnois","LNC",26.48
+"72","72243","Pontvallain","LNC",23.59
+"72","72244","Précigné","LNC",25.36
+"72","72247","Pruillé-le-Chétif","LNC",41.28
+"72","72252","Requeil","LNC",38.04
+"72","72253","Roézé-sur-Sarthe","LNC",22.84
+"72","72257","Rouillon","LNC",31.1
+"72","72260","Ruaudin","LNC",14.58
+"72","72262","Loir en Vallée","LNC",32.54
+"72","72264","Sablé-sur-Sarthe","LDVG",4.09
+"72","72269","Saint-Calais","LNC",8.72
+"72","72275","Saint-Corneille","LNC",37.01
+"72","72276","Saint-Cosme-en-Vairais","LNC",31.45
+"72","72280","Saint-Georges-du-Bois","LNC",30.31
+"72","72287","Saint-Gervais-en-Belin","LNC",27.53
+"72","72289","Sainte-Jamme-sur-Sarthe","LNC",25.6
+"72","72290","Saint-Jean-d'Assé","LNC",13.73
+"72","72299","Saint-Mars-d'Outillé","LNC",32.08
+"72","72300","Saint-Mars-la-Brière","LNC",24.67
+"72","72305","Saint-Ouen-de-Mimbré","LNC",49.06
+"72","72306","Saint-Ouen-en-Belin","LNC",35.92
+"72","72308","Saint Paterne-Le Chevain","LNC",23.79
+"72","72310","Saint-Pavace","LNC",28.06
+"72","72320","Saint-Saturnin","LNC",26.93
+"72","72328","Sargé-lès-le-Mans","LDVD",20.79
+"72","72329","Savigné-l'Evêque","LDVD",7.82
+"72","72334","Sillé-le-Guillaume","LNC",28.19
+"72","72335","Sillé-le-Philippe","LNC",14.65
+"72","72336","Solesmes","LNC",40
+"72","72340","Souligné-sous-Ballon","LNC",45.89
+"72","72344","Spay","LNC",15.08
+"72","72346","La Suze-sur-Sarthe","LDVD",21.87
+"72","72350","Teloché","LNC",32.35
+"72","72351","Tennie","LNC",29.7
+"72","72358","Thorigné-sur-Dué","LNC",30.78
+"72","72359","Torcé-en-Vallée","LNC",19.1
+"72","72360","Trangé","LNC",38.19
+"72","72363","Tuffé Val de la Chéronne","LNC",28.2
+"72","72364","Vaas","LNC",10.4
+"72","72373","Vibraye","LNC",34.37
+"72","72377","Villaines-sous-Malicorne","LNC",45.91
+"72","72378","Vion","LNC",21.48
+"72","72381","Voivres-lès-le-Mans","LNC",15.95
+"72","72385","Yvré-le-Pôlin","LNC",36.78
+"72","72386","Yvré-l'Evêque","LDVG",9.02
+"72","72001","Aigné","LNC",23.72
+"72","72003","Allonnes","LDVG",20.92
+"72","72013","Aubigné-Racan","LNC",18.59
+"72","72022","Le Bailleul","LNC",32.46
+"72","72024","La Bazoge","LDVD",23.26
+"72","72025","Bazouges Cré sur Loir","LNC",16.47
+"72","72026","Beaufay","LNC",9.7
+"72","72029","Beaumont-sur-Sarthe","LNC",7.69
+"72","72051","Cérans-Foulletourte","LNC",28.75
+"72","72053","Challes","LNC",34.84
+"72","72054","Champagné","LDVD",30.56
+"72","72058","Changé","LDIV",13.73
+"72","72068","La Chartre-sur-le-Loir","LNC",20.59
+"72","72084","Clermont-Créans","LNC",31.61
+"72","72089","Conlie","LNC",32.71
+"72","72095","Coulaines","LDVG",5.91
+"72","72096","Coulans-sur-Gée","LNC",38.24
+"72","72118","Dollon","LNC",22.81
+"72","72124","Ecommoy","LDVD",14.21
+"72","72137","Villeneuve en Perseigne","LNC",39.11
+"72","72143","Le Grand-Lucé","LNC",11.89
+"72","72146","Guécélard","LNC",23.06
+"72","72150","Joué-l'Abbé","LNC",24.88
+"72","72154","La Flèche","LSOC",31.34
+"72","72168","Loué","LNC",35.98
+"72","72172","Le Luart","LNC",18.08
+"72","72173","Luceau","LNC",27.76
+"72","72176","Le Lude","LDVD",22.26
+"72","72179","Malicorne-sur-Sarthe","LNC",39.76
+"72","72181","Le Mans","LDVC",1.74
+"72","72187","Marigné-Laillé","LNC",12.65
+"72","72189","Marolles-les-Braults","LNC",19.35
+"72","72191","Mayet","LNC",29.72
+"72","72200","Moncé-en-Belin","LDVD",18.98
+"72","72230","Parigné-le-Pôlin","LNC",32.72
+"72","72241","Montfort-le-Gesnois","LNC",26.3
+"72","72252","Requeil","LNC",14.01
+"72","72260","Ruaudin","LNC",25.15
+"72","72264","Sablé-sur-Sarthe","LLR",14.01
+"72","72269","Saint-Calais","LNC",23.76
+"72","72290","Saint-Jean-d'Assé","LNC",32.77
+"72","72299","Saint-Mars-d'Outillé","LNC",10.71
+"72","72300","Saint-Mars-la-Brière","LNC",21.08
+"72","72310","Saint-Pavace","LNC",26.28
+"72","72329","Savigné-l'Evêque","LDVG",16.44
+"72","72335","Sillé-le-Philippe","LNC",46.79
+"72","72344","Spay","LNC",38.29
+"72","72351","Tennie","LNC",26.41
+"72","72359","Torcé-en-Vallée","LNC",28.32
+"72","72364","Vaas","LNC",40.41
+"72","72378","Vion","LNC",20.28
+"72","72381","Voivres-lès-le-Mans","LNC",41.52
+"72","72386","Yvré-l'Evêque","LDVD",19.13
+"72","72001","Aigné","LNC",17.67
+"72","72003","Allonnes","LDVD",14.48
+"72","72029","Beaumont-sur-Sarthe","LNC",16.28
+"72","72124","Ecommoy","LDVC",20.72
+"72","72143","Le Grand-Lucé","LNC",33.92
+"72","72181","Le Mans","LUD",3.05
+"72","72264","Sablé-sur-Sarthe","LREM",2.01
+"72","72269","Saint-Calais","LNC",17.69
+"72","72329","Savigné-l'Evêque","LDVD",22.17
+"72","72378","Vion","LNC",11.67
+"72","72386","Yvré-l'Evêque","LDVG",18.79
+"72","72181","Le Mans","LREM",2.51
+"72","72264","Sablé-sur-Sarthe","LDIV",15.77
+"72","72181","Le Mans","LEXG",0.24
+"72","72181","Le Mans","LDVG",1.97
+"72","72181","Le Mans","LDVG",4.74
+"72","72181","Le Mans","LRN",2.17
+"72","72181","Le Mans","LDIV",0.77
+"72","72181","Le Mans","LVEC",3.57

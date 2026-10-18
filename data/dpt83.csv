@@ -1,0 +1,339 @@
+"dpt","code","ville","nuance","voix"
+"83","83001","Les Adrets-de-l'Estérel","LNC",24.94
+"83","83004","Les Arcs","LDIV",21.77
+"83","83007","Aups","LNC",21.54
+"83","83008","Bagnols-en-Forêt","LNC",12.29
+"83","83009","Bandol","LRN",3.33
+"83","83011","Bargemon","LNC",26.14
+"83","83012","Barjols","LNC",8.07
+"83","83016","Le Beausset","LDVD",6.22
+"83","83017","Belgentier","LNC",29.9
+"83","83018","Besse-sur-Issole","LNC",22.16
+"83","83019","Bormes-les-Mimosas","LDVD",36.23
+"83","83021","Bras","LNC",8.95
+"83","83023","Brignoles","LDVD",28.62
+"83","83025","Brue-Auriac","LNC",34.28
+"83","83026","Cabasse","LNC",35.28
+"83","83027","La Cadière-d'Azur","LDVC",4.9
+"83","83028","Callas","LNC",41.44
+"83","83029","Callian","LNC",21.83
+"83","83030","Camps-la-Source","LNC",27.26
+"83","83031","Le Cannet-des-Maures","LDVC",34.57
+"83","83032","Carcès","LNC",10.41
+"83","83033","Carnoules","LNC",30.73
+"83","83034","Carqueiranne","LDVD",13.82
+"83","83035","Le Castellet","LDIV",7.41
+"83","83036","Cavalaire-sur-Mer","LDVD",41.85
+"83","83037","La Celle","LNC",36.99
+"83","83042","Cogolin","LDVC",9.76
+"83","83043","Collobrières","LNC",47.79
+"83","83046","Cotignac","LNC",24.38
+"83","83047","La Crau","LDVD",34.09
+"83","83048","La Croix-Valmer","LDVC",15.54
+"83","83049","Cuers","LDVD",5.33
+"83","83050","Draguignan","LLR",11.69
+"83","83051","Entrecasteaux","LNC",43.23
+"83","83053","Evenos","LNC",32.18
+"83","83054","La Farlède","LDVD",21.22
+"83","83055","Fayence","LDVD",13.23
+"83","83056","Figanières","LNC",33.68
+"83","83057","Flassans-sur-Issole","LDVD",2.76
+"83","83058","Flayosc","LDVC",13.65
+"83","83059","Forcalqueiret","LNC",22.47
+"83","83061","Fréjus","LRN",18.74
+"83","83062","La Garde","LCOM",4.55
+"83","83063","La Garde-Freinet","LNC",32.64
+"83","83064","Garéoult","LDVD",10.53
+"83","83065","Gassin","LNC",30.7
+"83","83066","Ginasservis","LNC",35.64
+"83","83067","Gonfaron","LDVD",32.94
+"83","83068","Grimaud","LDVD",29.95
+"83","83069","Hyères","LDVG",2.47
+"83","83070","Le Lavandou","LDVD",10.77
+"83","83071","La Londe-les-Maures","LLR",43.61
+"83","83072","Lorgues","LDIV",6.75
+"83","83073","Le Luc","LDVD",1.11
+"83","83077","Méounes-lès-Montrieux","LNC",8.39
+"83","83079","La Môle","LNC",28.8
+"83","83081","Montauroux","LDVC",11.37
+"83","83082","Montferrat","LNC",25.61
+"83","83083","Montfort-sur-Argens","LNC",37.54
+"83","83085","La Motte","LNC",26.35
+"83","83086","Le Muy","LDVD",10.91
+"83","83087","Nans-les-Pins","LDVD",10.37
+"83","83088","Néoules","LNC",34.45
+"83","83090","Ollioules","LDVD",29.65
+"83","83091","Pierrefeu-du-Var","LDVD",14.08
+"83","83092","Pignans","LDVD",9.62
+"83","83093","Plan-d'Aups-Sainte-Baume","LNC",3.6
+"83","83094","Le Plan-de-la-Tour","LNC",9.2
+"83","83096","Pourcieux","LNC",27.09
+"83","83097","Pourrières","LDVD",30.24
+"83","83098","Le Pradet","LDVG",6.2
+"83","83099","Puget-sur-Argens","LRN",11.33
+"83","83100","Puget-Ville","LDIV",10.86
+"83","83101","Ramatuelle","LNC",41.43
+"83","83102","Régusse","LNC",6.67
+"83","83103","Le Revest-les-Eaux","LDVD",31.07
+"83","83104","Rians","LDVD",12.73
+"83","83106","Rocbaron","LDIV",3.83
+"83","83107","Roquebrune-sur-Argens","LDVD",6.46
+"83","83108","La Roquebrussanne","LNC",25.46
+"83","83110","Rougiers","LNC",21.56
+"83","83111","Sainte-Anastasie-sur-Issole","LNC",10.81
+"83","83112","Saint-Cyr-sur-Mer","LDVD",13.45
+"83","83113","Saint-Julien","LNC",24.73
+"83","83115","Sainte-Maxime","LDVD",26.14
+"83","83116","Saint-Maximin-la-Sainte-Baume","LDVD",1.95
+"83","83117","Saint-Paul-en-Forêt","LNC",23.13
+"83","83118","Saint-Raphaël","LRN",4.63
+"83","83119","Saint-Tropez","LDVD",15.58
+"83","83120","Saint-Zacharie","LDVC",16.62
+"83","83121","Salernes","LDVC",8.48
+"83","83123","Sanary-sur-Mer","LDVD",6.71
+"83","83124","Seillans","LNC",19.51
+"83","83125","Seillons-Source-d'Argens","LNC",41.19
+"83","83126","La Seyne-sur-Mer","LDVD",7.6
+"83","83127","Signes","LNC",21.34
+"83","83129","Six-Fours-les-Plages","LDVD",3.26
+"83","83130","Solliès-Pont","LEXD",5.52
+"83","83131","Solliès-Toucas","LDIV",17.88
+"83","83132","Solliès-Ville","LNC",5.79
+"83","83133","Tanneron","LNC",28.96
+"83","83134","Taradeau","LNC",37.91
+"83","83135","Tavernes","LNC",36.26
+"83","83136","Le Thoronet","LNC",20.34
+"83","83137","Toulon","LRN",4.52
+"83","83138","Tourrettes","LNC",24.2
+"83","83140","Tourves","LDVD",22.3
+"83","83141","Trans-en-Provence","LLR",23.35
+"83","83143","Le Val","LDIV",31.94
+"83","83144","La Valette-du-Var","LDVD",24.1
+"83","83145","Varages","LNC",18.96
+"83","83146","La Verdière","LNC",20.21
+"83","83148","Vidauban","LDIV",5.01
+"83","83149","Villecroze","LNC",31.94
+"83","83150","Vinon-sur-Verdon","LDIV",29.41
+"83","83151","Vins-sur-Caramy","LNC",41.53
+"83","83153","Saint-Mandrier-sur-Mer","LDIV",17.51
+"83","83001","Les Adrets-de-l'Estérel","LNC",28.74
+"83","83004","Les Arcs","LDVD",10.68
+"83","83007","Aups","LNC",35.95
+"83","83008","Bagnols-en-Forêt","LNC",8.7
+"83","83009","Bandol","LDVD",3.44
+"83","83011","Bargemon","LNC",10.79
+"83","83012","Barjols","LNC",18.9
+"83","83016","Le Beausset","LDVD",2.47
+"83","83018","Besse-sur-Issole","LNC",35.98
+"83","83019","Bormes-les-Mimosas","LDIV",8.39
+"83","83021","Bras","LNC",11.39
+"83","83023","Brignoles","LDIV",7.57
+"83","83026","Cabasse","LNC",25.32
+"83","83027","La Cadière-d'Azur","LDVG",26.78
+"83","83032","Carcès","LNC",27.42
+"83","83034","Carqueiranne","LLR",13.33
+"83","83035","Le Castellet","LDVD",12.19
+"83","83036","Cavalaire-sur-Mer","LDVD",15.58
+"83","83037","La Celle","LNC",26.27
+"83","83042","Cogolin","LECO",2.07
+"83","83043","Collobrières","LNC",21.42
+"83","83047","La Crau","LDVG",5.07
+"83","83048","La Croix-Valmer","LDVD",29.2
+"83","83049","Cuers","LLR",3.26
+"83","83050","Draguignan","LDVD",5.33
+"83","83053","Evenos","LNC",25.33
+"83","83055","Fayence","LDVD",2.9
+"83","83057","Flassans-sur-Issole","LDIV",25.16
+"83","83058","Flayosc","LDVD",14.59
+"83","83059","Forcalqueiret","LNC",8
+"83","83061","Fréjus","LDVC",6.85
+"83","83062","La Garde","LDVG",12.52
+"83","83063","La Garde-Freinet","LNC",35.44
+"83","83064","Garéoult","LDVD",3.41
+"83","83068","Grimaud","LDIV",13.08
+"83","83069","Hyères","LDVC",4.92
+"83","83070","Le Lavandou","LLR",20.9
+"83","83072","Lorgues","LRN",3.93
+"83","83073","Le Luc","LDIV",3.55
+"83","83077","Méounes-lès-Montrieux","LNC",32.4
+"83","83079","La Môle","LNC",26.39
+"83","83081","Montauroux","LDVC",25.89
+"83","83082","Montferrat","LNC",53.69
+"83","83085","La Motte","LNC",27.51
+"83","83086","Le Muy","LDVD",21.19
+"83","83087","Nans-les-Pins","LDVD",31.89
+"83","83090","Ollioules","LDVG",5.37
+"83","83091","Pierrefeu-du-Var","LDVG",35.14
+"83","83092","Pignans","LDVD",13.94
+"83","83093","Plan-d'Aups-Sainte-Baume","LNC",30.93
+"83","83094","Le Plan-de-la-Tour","LNC",12.62
+"83","83096","Pourcieux","LNC",21.35
+"83","83097","Pourrières","LDIV",18.32
+"83","83098","Le Pradet","LDVG",9.89
+"83","83099","Puget-sur-Argens","LDVD",12.8
+"83","83100","Puget-Ville","LDVC",16.14
+"83","83101","Ramatuelle","LNC",11.28
+"83","83102","Régusse","LNC",26.9
+"83","83103","Le Revest-les-Eaux","LDVG",15.52
+"83","83104","Rians","LDVD",11.8
+"83","83106","Rocbaron","LDVD",20.21
+"83","83107","Roquebrune-sur-Argens","LDVC",17.3
+"83","83108","La Roquebrussanne","LNC",20.8
+"83","83110","Rougiers","LNC",25.92
+"83","83111","Sainte-Anastasie-sur-Issole","LNC",28.08
+"83","83112","Saint-Cyr-sur-Mer","LDVD",19.2
+"83","83113","Saint-Julien","LNC",34.18
+"83","83115","Sainte-Maxime","LDVD",10.63
+"83","83116","Saint-Maximin-la-Sainte-Baume","LDVD",11.29
+"83","83117","Saint-Paul-en-Forêt","LNC",33.07
+"83","83118","Saint-Raphaël","LDLF",0.8
+"83","83119","Saint-Tropez","LDVC",3.65
+"83","83120","Saint-Zacharie","LDVG",37.97
+"83","83121","Salernes","LDVC",5.01
+"83","83123","Sanary-sur-Mer","LDVD",20.28
+"83","83124","Seillans","LNC",32.71
+"83","83126","La Seyne-sur-Mer","LRN",5.44
+"83","83127","Signes","LNC",10.42
+"83","83129","Six-Fours-les-Plages","LCOM",3.41
+"83","83130","Solliès-Pont","LDVG",5.78
+"83","83131","Solliès-Toucas","LDVD",8.22
+"83","83132","Solliès-Ville","LNC",14.98
+"83","83133","Tanneron","LNC",18.09
+"83","83135","Tavernes","LNC",30.13
+"83","83136","Le Thoronet","LNC",30.13
+"83","83137","Toulon","LLR",18.52
+"83","83141","Trans-en-Provence","LDVD",7.85
+"83","83143","Le Val","LDIV",12.53
+"83","83144","La Valette-du-Var","LRN",6.13
+"83","83145","Varages","LNC",30.21
+"83","83146","La Verdière","LNC",16.96
+"83","83148","Vidauban","LDVD",31.17
+"83","83153","Saint-Mandrier-sur-Mer","LLR",31.18
+"83","83004","Les Arcs","LDVC",7.95
+"83","83008","Bagnols-en-Forêt","LNC",10.78
+"83","83009","Bandol","LDVD",2.7
+"83","83011","Bargemon","LNC",24.07
+"83","83012","Barjols","LNC",9.23
+"83","83016","Le Beausset","LDIV",16.7
+"83","83021","Bras","LNC",29.97
+"83","83027","La Cadière-d'Azur","LDVD",10.26
+"83","83032","Carcès","LNC",19.98
+"83","83034","Carqueiranne","LDIV",12.71
+"83","83035","Le Castellet","LDIV",3.69
+"83","83042","Cogolin","LDVD",6.49
+"83","83049","Cuers","LDVC",8.76
+"83","83050","Draguignan","LDVC",22.64
+"83","83055","Fayence","LDVD",9.04
+"83","83057","Flassans-sur-Issole","LDVD",20.95
+"83","83058","Flayosc","LDVD",11.78
+"83","83059","Forcalqueiret","LNC",13.08
+"83","83061","Fréjus","LDVG",2.84
+"83","83062","La Garde","LLR",15.88
+"83","83064","Garéoult","LDIV",8.63
+"83","83069","Hyères","LRN",5.4
+"83","83070","Le Lavandou","LDVD",6.17
+"83","83072","Lorgues","LLR",32.34
+"83","83073","Le Luc","LDVG",2.24
+"83","83086","Le Muy","LRN",8.02
+"83","83092","Pignans","LDVD",24.97
+"83","83093","Plan-d'Aups-Sainte-Baume","LNC",22.79
+"83","83094","Le Plan-de-la-Tour","LNC",13.29
+"83","83098","Le Pradet","LRN",2.49
+"83","83099","Puget-sur-Argens","LDVC",6.41
+"83","83100","Puget-Ville","LDVD",21.56
+"83","83102","Régusse","LNC",17.56
+"83","83104","Rians","LDVD",24.23
+"83","83106","Rocbaron","LDIV",10.77
+"83","83107","Roquebrune-sur-Argens","LDIV",2.37
+"83","83110","Rougiers","LNC",13.94
+"83","83111","Sainte-Anastasie-sur-Issole","LNC",15.29
+"83","83112","Saint-Cyr-sur-Mer","LDVG",6.65
+"83","83115","Sainte-Maxime","LDVD",3.25
+"83","83116","Saint-Maximin-la-Sainte-Baume","LREM",6.72
+"83","83118","Saint-Raphaël","LREM",2.48
+"83","83119","Saint-Tropez","LLR",1.52
+"83","83121","Salernes","LDIV",9.58
+"83","83123","Sanary-sur-Mer","LDVG",2.53
+"83","83126","La Seyne-sur-Mer","LUG",8.02
+"83","83127","Signes","LNC",24.21
+"83","83129","Six-Fours-les-Plages","LRN",6.89
+"83","83130","Solliès-Pont","LDVD",22.14
+"83","83131","Solliès-Toucas","LDVG",14.84
+"83","83132","Solliès-Ville","LNC",21.88
+"83","83133","Tanneron","LNC",12.34
+"83","83136","Le Thoronet","LNC",4.8
+"83","83137","Toulon","LDVG",2.75
+"83","83141","Trans-en-Provence","LDVC",13.44
+"83","83144","La Valette-du-Var","LREM",7.22
+"83","83145","Varages","LNC",13.23
+"83","83146","La Verdière","LNC",13.86
+"83","83004","Les Arcs","LDVD",4.08
+"83","83008","Bagnols-en-Forêt","LNC",20.32
+"83","83009","Bandol","LLR",15.7
+"83","83012","Barjols","LNC",16.89
+"83","83016","Le Beausset","LDVD",4.02
+"83","83034","Carqueiranne","LDVC",3.8
+"83","83035","Le Castellet","LDVD",23.63
+"83","83042","Cogolin","LEXD",22.76
+"83","83049","Cuers","LDVD",7.09
+"83","83050","Draguignan","LDVD",2.63
+"83","83055","Fayence","LDIV",14.23
+"83","83058","Flayosc","LDVD",5.11
+"83","83059","Forcalqueiret","LNC",5
+"83","83061","Fréjus","LDVD",0.96
+"83","83064","Garéoult","LDVD",15.35
+"83","83069","Hyères","LLR",12.45
+"83","83070","Le Lavandou","LECO",11.32
+"83","83073","Le Luc","LDVD",16.74
+"83","83092","Pignans","LDVD",6.15
+"83","83094","Le Plan-de-la-Tour","LNC",19.71
+"83","83098","Le Pradet","LDVG",6.48
+"83","83099","Puget-sur-Argens","LDVD",3.59
+"83","83106","Rocbaron","LRN",10.84
+"83","83107","Roquebrune-sur-Argens","LDVD",3.35
+"83","83116","Saint-Maximin-la-Sainte-Baume","LDVD",2.47
+"83","83118","Saint-Raphaël","LVEC",3.26
+"83","83119","Saint-Tropez","LDVD",19.84
+"83","83121","Salernes","LDVC",3.81
+"83","83126","La Seyne-sur-Mer","LDVD",3.08
+"83","83129","Six-Fours-les-Plages","LDVC",4.23
+"83","83137","Toulon","LECO",1.18
+"83","83008","Bagnols-en-Forêt","LNC",2.35
+"83","83009","Bandol","LDVC",18.9
+"83","83016","Le Beausset","LREM",6.68
+"83","83042","Cogolin","LDVC",6.83
+"83","83049","Cuers","LRN",7.04
+"83","83061","Fréjus","LUC",4.81
+"83","83069","Hyères","LECO",2.46
+"83","83073","Le Luc","LRN",14.46
+"83","83098","Le Pradet","LLR",16.36
+"83","83099","Puget-sur-Argens","LDVC",10.32
+"83","83107","Roquebrune-sur-Argens","LDIV",3.66
+"83","83116","Saint-Maximin-la-Sainte-Baume","LEXD",2.16
+"83","83118","Saint-Raphaël","LDVD",4.52
+"83","83119","Saint-Tropez","LDVD",12.33
+"83","83121","Salernes","LDVG",9.3
+"83","83126","La Seyne-sur-Mer","LDVG",4.82
+"83","83129","Six-Fours-les-Plages","LDVD",14.06
+"83","83137","Toulon","LEXG",0.27
+"83","83016","Le Beausset","LRN",4.54
+"83","83049","Cuers","LREM",4.56
+"83","83061","Fréjus","LDVD",2.83
+"83","83069","Hyères","LDVC",2.19
+"83","83098","Le Pradet","LMDM",1.64
+"83","83107","Roquebrune-sur-Argens","LDLF",0.76
+"83","83116","Saint-Maximin-la-Sainte-Baume","LDVG",10.92
+"83","83118","Saint-Raphaël","LDVD",20.93
+"83","83121","Salernes","LDVG",10.41
+"83","83126","La Seyne-sur-Mer","LDIV",0.94
+"83","83137","Toulon","LDVD",0.72
+"83","83049","Cuers","LDIV",4.6
+"83","83069","Hyères","LDVD",7.32
+"83","83098","Le Pradet","LDVD",5.12
+"83","83107","Roquebrune-sur-Argens","LDIV",6.17
+"83","83116","Saint-Maximin-la-Sainte-Baume","LDVD",4.91
+"83","83126","La Seyne-sur-Mer","LDVD",3.9
+"83","83137","Toulon","LREM",2.21
+"83","83049","Cuers","LDVD",0.99
+"83","83107","Roquebrune-sur-Argens","LDIV",2.44
+"83","83126","La Seyne-sur-Mer","LDIV",1.03

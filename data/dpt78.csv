@@ -1,0 +1,376 @@
+"dpt","code","ville","nuance","voix"
+"78","78003","Ablis","LNC",12.51
+"78","78005","Achères","LDVC",6.43
+"78","78007","Aigremont","LNC",38.49
+"78","78010","Les Alluets-le-Roi","LNC",37.05
+"78","78015","Andrésy","LDVC",6.24
+"78","78029","Aubergenville","LEXG",2.5
+"78","78030","Auffargis","LNC",8.66
+"78","78033","Aulnay-sur-Mauldre","LNC",21.97
+"78","78043","Bailly","LDVC",17.01
+"78","78048","Bazainville","LNC",33.97
+"78","78049","Bazemont","LNC",28.38
+"78","78057","Bennecourt","LNC",25.95
+"78","78062","Beynes","LDVG",25.09
+"78","78073","Bois-d'Arcy","LDVD",26.61
+"78","78087","Bonnelles","LNC",33.31
+"78","78089","Bonnières-sur-Seine","LDVD",10.84
+"78","78090","Bouafle","LNC",17.39
+"78","78092","Bougival","LDIV",7.67
+"78","78107","Bréval","LNC",32.63
+"78","78108","Les Bréviaires","LNC",33.87
+"78","78117","Buc","LDVD",10.01
+"78","78118","Buchelay","LNC",28.1
+"78","78120","Bullion","LNC",24.56
+"78","78123","Carrières-sous-Poissy","LREM",7.26
+"78","78124","Carrières-sur-Seine","LDVD",21.69
+"78","78126","La Celle-Saint-Cloud","LDVD",6.46
+"78","78128","Cernay-la-Ville","LNC",13.95
+"78","78133","Chambourcy","LDVD",34.84
+"78","78138","Chanteloup-les-Vignes","LDVD",25.64
+"78","78140","Chapet","LNC",21.21
+"78","78143","Châteaufort","LNC",34.74
+"78","78146","Chatou","LDVG",8.04
+"78","78152","Chavenay","LNC",30.13
+"78","78158","Le Chesnay-Rocquencourt","LDVC",18.86
+"78","78160","Chevreuse","LDIV",24.32
+"78","78165","Les Clayes-sous-Bois","LDVD",12.49
+"78","78168","Coignières","LDIV",10.67
+"78","78171","Condé-sur-Vesgre","LNC",32.24
+"78","78172","Conflans-Sainte-Honorine","LEXG",0.5
+"78","78189","Crespières","LNC",31.85
+"78","78190","Croissy-sur-Seine","LECO",10.47
+"78","78192","Dammartin-en-Serve","LNC",43.04
+"78","78193","Dampierre-en-Yvelines","LNC",28.2
+"78","78206","Ecquevilly","LDIV",35.55
+"78","78208","Elancourt","LREM",4.46
+"78","78217","Epône","LDVD",23.97
+"78","78220","Les Essarts-le-Roi","LDVC",17.31
+"78","78224","L'Etang-la-Ville","LDVC",17.19
+"78","78233","Feucherolles","LNC",17.7
+"78","78238","Flins-sur-Seine","LNC",44.32
+"78","78239","Follainville-Dennemont","LNC",38.42
+"78","78242","Fontenay-le-Fleury","LDVD",27.77
+"78","78255","Freneuse","LDIV",17.69
+"78","78262","Galluis","LNC",19.31
+"78","78263","Gambais","LNC",26.11
+"78","78265","Garancières","LNC",28.36
+"78","78267","Gargenville","LDVD",31.23
+"78","78269","Gazeran","LNC",29.77
+"78","78290","Guernes","LNC",38.88
+"78","78291","Guerville","LNC",16.49
+"78","78297","Guyancourt","LREM",6.45
+"78","78299","Hardricourt","LNC",24
+"78","78310","Houdan","LDVD",27.49
+"78","78311","Houilles","LUG",9.51
+"78","78314","Issou","LDVG",20.94
+"78","78321","Jouars-Pontchartrain","LDVD",15.75
+"78","78322","Jouy-en-Josas","LDVC",16.03
+"78","78327","Juziers","LDIV",28.05
+"78","78334","Lévis-Saint-Nom","LNC",27.32
+"78","78335","Limay","LCOM",13.04
+"78","78337","Limetz-Villez","LNC",31.89
+"78","78343","Les Loges-en-Josas","LNC",34.28
+"78","78346","Longnes","LNC",26.7
+"78","78350","Louveciennes","LDVD",20.89
+"78","78354","Magnanville","LDVC",21.42
+"78","78356","Magny-les-Hameaux","LDVG",28.35
+"78","78358","Maisons-Laffitte","LDVD",4.38
+"78","78361","Mantes-la-Jolie","LEXG",1.4
+"78","78362","Mantes-la-Ville","LUG",7.34
+"78","78367","Mareil-Marly","LNC",16.84
+"78","78368","Mareil-sur-Mauldre","LNC",23.81
+"78","78372","Marly-le-Roi","LDVD",23.04
+"78","78380","Maule","LDVC",10.73
+"78","78382","Maurecourt","LDVG",29.59
+"78","78383","Maurepas","LDVD",20.72
+"78","78384","Médan","LNC",30.01
+"78","78389","Méré","LNC",12.76
+"78","78396","Le Mesnil-le-Roi","LDVD",33.21
+"78","78397","Le Mesnil-Saint-Denis","LDVD",12.84
+"78","78401","Meulan-en-Yvelines","LDLF",5.01
+"78","78402","Mézières-sur-Seine","LDVC",29.14
+"78","78403","Mézy-sur-Seine","LNC",33.18
+"78","78418","Montesson","LREM",13.82
+"78","78420","Montfort-l'Amaury","LNC",28.58
+"78","78423","Montigny-le-Bretonneux","LDVD",23.24
+"78","78431","Morainvilliers","LNC",26.98
+"78","78440","Les Mureaux","LDVD",8.14
+"78","78442","Neauphle-le-Château","LNC",16.02
+"78","78451","Nézel","LNC",30.81
+"78","78455","Noisy-le-Roi","LDVD",11.59
+"78","78460","Oinville-sur-Montcient","LNC",18.46
+"78","78464","Orcemont","LNC",43.46
+"78","78465","Orgerus","LNC",25.16
+"78","78466","Orgeval","LDVC",21.19
+"78","78481","Le Pecq","LDVG",7.7
+"78","78486","Le Perray-en-Yvelines","LDIV",5.97
+"78","78490","Plaisir","LDVG",6.83
+"78","78498","Poissy","LDIV",6.91
+"78","78501","Porcheville","LNC",25
+"78","78502","Le Port-Marly","LDVC",9.84
+"78","78513","La Queue-les-Yvelines","LNC",28.72
+"78","78517","Rambouillet","LDVG",2.53
+"78","78520","Richebourg","LNC",25.28
+"78","78531","Rosny-sur-Seine","LDVD",27.02
+"78","78537","Saint-Arnoult-en-Yvelines","LDVC",7.48
+"78","78545","Saint-Cyr-l'Ecole","LDVD",20.09
+"78","78550","Saint-Germain-de-la-Grange","LNC",16.61
+"78","78551","Saint-Germain-en-Laye","LDVD",3.31
+"78","78562","Saint-Léger-en-Yvelines","LNC",30.57
+"78","78571","Saint-Nom-la-Bretèche","LDVC",13.42
+"78","78575","Saint-Rémy-lès-Chevreuse","LDVD",10.74
+"78","78576","Saint-Rémy-l'Honoré","LNC",35.24
+"78","78586","Sartrouville","LDVG",7.88
+"78","78591","Septeuil","LNC",30.47
+"78","78601","Sonchamp","LNC",28.77
+"78","78605","Tacoignières","LNC",34.19
+"78","78609","Tessancourt-sur-Aubette","LNC",25.96
+"78","78615","Thiverval-Grignon","LNC",37.74
+"78","78616","Thoiry","LNC",26.87
+"78","78620","Toussus-le-Noble","LNC",28.74
+"78","78621","Trappes","LDVD",8.97
+"78","78624","Triel-sur-Seine","LDIV",3.42
+"78","78638","Vaux-sur-Seine","LDVD",24.78
+"78","78640","Vélizy-Villacoublay","LDVG",6.35
+"78","78642","Verneuil-sur-Seine","LREM",8.33
+"78","78643","Vernouillet","LDVC",23.84
+"78","78644","La Verrière","LDVG",6.97
+"78","78646","Versailles","LDVG",2.14
+"78","78650","Le Vésinet","LUG",3.74
+"78","78672","Villennes-sur-Seine","LDVD",12.86
+"78","78674","Villepreux","LDVD",3.77
+"78","78683","Villiers-Saint-Fréderic","LNC",30.89
+"78","78686","Viroflay","LDVG",9.43
+"78","78688","Voisins-le-Bretonneux","LDVC",21.92
+"78","78003","Ablis","LNC",15.4
+"78","78005","Achères","LUG",6.31
+"78","78007","Aigremont","LNC",24.19
+"78","78015","Andrésy","LDVD",5.34
+"78","78029","Aubergenville","LDVC",17.21
+"78","78030","Auffargis","LNC",37.61
+"78","78033","Aulnay-sur-Mauldre","LNC",29.33
+"78","78043","Bailly","LDVD",18.51
+"78","78062","Beynes","LDIV",2.8
+"78","78073","Bois-d'Arcy","LDVG",15.18
+"78","78089","Bonnières-sur-Seine","LDVD",5.01
+"78","78090","Bouafle","LNC",24.16
+"78","78092","Bougival","LDVD",21.06
+"78","78117","Buc","LDIV",19.6
+"78","78120","Bullion","LNC",25.33
+"78","78123","Carrières-sous-Poissy","LEXG",1.2
+"78","78124","Carrières-sur-Seine","LECO",13.93
+"78","78126","La Celle-Saint-Cloud","LDVG",4.72
+"78","78128","Cernay-la-Ville","LNC",31.91
+"78","78133","Chambourcy","LDVC",12.89
+"78","78138","Chanteloup-les-Vignes","LDVC",14.9
+"78","78140","Chapet","LNC",30.69
+"78","78143","Châteaufort","LNC",18.61
+"78","78146","Chatou","LDVD",24.4
+"78","78152","Chavenay","LNC",7.34
+"78","78158","Le Chesnay-Rocquencourt","LLR",18.53
+"78","78160","Chevreuse","LDVD",24.34
+"78","78165","Les Clayes-sous-Bois","LDIV",6.29
+"78","78168","Coignières","LDIV",35.16
+"78","78171","Condé-sur-Vesgre","LNC",19.56
+"78","78172","Conflans-Sainte-Honorine","LUG",12.08
+"78","78190","Croissy-sur-Seine","LDVD",22.3
+"78","78192","Dammartin-en-Serve","LNC",18.53
+"78","78193","Dampierre-en-Yvelines","LNC",8.84
+"78","78206","Ecquevilly","LDIV",13.85
+"78","78208","Elancourt","LDVD",20.32
+"78","78217","Epône","LDIV",17.11
+"78","78220","Les Essarts-le-Roi","LDVD",10.98
+"78","78224","L'Etang-la-Ville","LLR",3.58
+"78","78233","Feucherolles","LNC",28.95
+"78","78238","Flins-sur-Seine","LNC",8.09
+"78","78242","Fontenay-le-Fleury","LDVG",9.58
+"78","78255","Freneuse","LDIV",11.48
+"78","78262","Galluis","LNC",36.14
+"78","78263","Gambais","LNC",15.28
+"78","78267","Gargenville","LDVC",9.41
+"78","78290","Guernes","LNC",14.73
+"78","78291","Guerville","LNC",32.72
+"78","78297","Guyancourt","LDVC",7.77
+"78","78311","Houilles","LDVC",16.66
+"78","78314","Issou","LDIV",23.96
+"78","78321","Jouars-Pontchartrain","LDVD",12.2
+"78","78322","Jouy-en-Josas","LDVD",30.92
+"78","78327","Juziers","LDIV",19.79
+"78","78335","Limay","LDVC",4.31
+"78","78350","Louveciennes","LDVC",16.32
+"78","78354","Magnanville","LDVG",22.27
+"78","78356","Magny-les-Hameaux","LDIV",13.2
+"78","78358","Maisons-Laffitte","LLR",15.38
+"78","78361","Mantes-la-Jolie","LDVG",5.73
+"78","78362","Mantes-la-Ville","LDVD",2.68
+"78","78367","Mareil-Marly","LNC",9.13
+"78","78368","Mareil-sur-Mauldre","LNC",34.44
+"78","78372","Marly-le-Roi","LUG",7.13
+"78","78380","Maule","LDVD",22.71
+"78","78383","Maurepas","LDVG",7.28
+"78","78384","Médan","LNC",13.21
+"78","78389","Méré","LNC",38.99
+"78","78396","Le Mesnil-le-Roi","LDVD",8.94
+"78","78397","Le Mesnil-Saint-Denis","LLR",17.63
+"78","78401","Meulan-en-Yvelines","LDVD",19.79
+"78","78402","Mézières-sur-Seine","LDVD",15.42
+"78","78403","Mézy-sur-Seine","LNC",13.98
+"78","78418","Montesson","LDVD",23.38
+"78","78423","Montigny-le-Bretonneux","LECO",9.87
+"78","78440","Les Mureaux","LRN",2.1
+"78","78442","Neauphle-le-Château","LNC",25.3
+"78","78455","Noisy-le-Roi","LDVD",28.1
+"78","78460","Oinville-sur-Montcient","LNC",38.26
+"78","78466","Orgeval","LDVD",22.62
+"78","78481","Le Pecq","LDVD",23.09
+"78","78486","Le Perray-en-Yvelines","LDVG",17.8
+"78","78490","Plaisir","LRN",2.47
+"78","78498","Poissy","LDIV",1.61
+"78","78501","Porcheville","LNC",13.6
+"78","78502","Le Port-Marly","LDVD",28.24
+"78","78513","La Queue-les-Yvelines","LNC",21.65
+"78","78517","Rambouillet","LECO",10.95
+"78","78531","Rosny-sur-Seine","LDVG",17.8
+"78","78537","Saint-Arnoult-en-Yvelines","LDVD",12.56
+"78","78545","Saint-Cyr-l'Ecole","LDIV",16.05
+"78","78550","Saint-Germain-de-la-Grange","LNC",32.95
+"78","78551","Saint-Germain-en-Laye","LDVD",3.53
+"78","78571","Saint-Nom-la-Bretèche","LDVD",6.85
+"78","78575","Saint-Rémy-lès-Chevreuse","LDVD",31.32
+"78","78576","Saint-Rémy-l'Honoré","LNC",10.24
+"78","78586","Sartrouville","LDVG",1.36
+"78","78591","Septeuil","LNC",20
+"78","78609","Tessancourt-sur-Aubette","LNC",32.35
+"78","78620","Toussus-le-Noble","LNC",34.11
+"78","78621","Trappes","LEXG",0.98
+"78","78624","Triel-sur-Seine","LREM",7.2
+"78","78638","Vaux-sur-Seine","LDIV",14.85
+"78","78640","Vélizy-Villacoublay","LDVD",8.09
+"78","78642","Verneuil-sur-Seine","LDVC",4.58
+"78","78643","Vernouillet","LDIV",16.86
+"78","78644","La Verrière","LCOM",17.18
+"78","78646","Versailles","LECO",2.83
+"78","78650","Le Vésinet","LDVD",2.93
+"78","78672","Villennes-sur-Seine","LDVC",9.95
+"78","78674","Villepreux","LDVD",8.32
+"78","78686","Viroflay","LDVD",23.9
+"78","78688","Voisins-le-Bretonneux","LDVD",16.02
+"78","78003","Ablis","LNC",20.81
+"78","78005","Achères","LDVG",7.67
+"78","78015","Andrésy","LVEC",13.65
+"78","78029","Aubergenville","LDVD",21.2
+"78","78033","Aulnay-sur-Mauldre","LNC",19.25
+"78","78043","Bailly","LDVD",12.1
+"78","78062","Beynes","LDVD",10.07
+"78","78089","Bonnières-sur-Seine","LDVG",5.49
+"78","78117","Buc","LDVD",21.41
+"78","78123","Carrières-sous-Poissy","LECO",15.68
+"78","78124","Carrières-sur-Seine","LDVC",5.75
+"78","78126","La Celle-Saint-Cloud","LDVD",19.33
+"78","78128","Cernay-la-Ville","LNC",12.55
+"78","78152","Chavenay","LNC",20.93
+"78","78165","Les Clayes-sous-Bois","LDVC",9.53
+"78","78172","Conflans-Sainte-Honorine","LDVD",18.55
+"78","78193","Dampierre-en-Yvelines","LNC",16.25
+"78","78208","Elancourt","LDVG",10.91
+"78","78220","Les Essarts-le-Roi","LDVD",6.25
+"78","78224","L'Etang-la-Ville","LDVC",9.67
+"78","78255","Freneuse","LDVD",10.81
+"78","78297","Guyancourt","LECO",5.63
+"78","78311","Houilles","LDVC",15.21
+"78","78321","Jouars-Pontchartrain","LDVC",18.4
+"78","78335","Limay","LDVG",10.3
+"78","78350","Louveciennes","LREM",4.76
+"78","78358","Maisons-Laffitte","LUG",4.56
+"78","78361","Mantes-la-Jolie","LDVD",18.52
+"78","78362","Mantes-la-Ville","LDVC",11.25
+"78","78367","Mareil-Marly","LNC",22.35
+"78","78372","Marly-le-Roi","LDVC",13.79
+"78","78380","Maule","LVEC",4.52
+"78","78383","Maurepas","LDVD",4.26
+"78","78384","Médan","LNC",8.63
+"78","78397","Le Mesnil-Saint-Denis","LREM",14.34
+"78","78401","Meulan-en-Yvelines","LDVG",12.58
+"78","78418","Montesson","LDIV",6.42
+"78","78423","Montigny-le-Bretonneux","LDVG",3.95
+"78","78440","Les Mureaux","LDVG",7.44
+"78","78486","Le Perray-en-Yvelines","LDVD",14.28
+"78","78490","Plaisir","LDVD",13.03
+"78","78498","Poissy","LEXG",1.32
+"78","78501","Porcheville","LNC",14.22
+"78","78517","Rambouillet","LREM",9.1
+"78","78537","Saint-Arnoult-en-Yvelines","LDVG",17
+"78","78551","Saint-Germain-en-Laye","LUG",5.87
+"78","78571","Saint-Nom-la-Bretèche","LDVD",22.27
+"78","78576","Saint-Rémy-l'Honoré","LNC",12.46
+"78","78586","Sartrouville","LSOC",3.08
+"78","78621","Trappes","LDVG",8.83
+"78","78624","Triel-sur-Seine","LECO",3.93
+"78","78640","Vélizy-Villacoublay","LDVD",24.59
+"78","78642","Verneuil-sur-Seine","LDVD",2.19
+"78","78644","La Verrière","LDVG",3.02
+"78","78646","Versailles","LDVC",2.38
+"78","78650","Le Vésinet","LDVD",5.11
+"78","78672","Villennes-sur-Seine","LDVC",9.55
+"78","78674","Villepreux","LDVC",8.73
+"78","78686","Viroflay","LDVC",9.6
+"78","78688","Voisins-le-Bretonneux","LDVG",8
+"78","78005","Achères","LDVD",17.47
+"78","78015","Andrésy","LDVG",1.76
+"78","78062","Beynes","LDIV",5.57
+"78","78089","Bonnières-sur-Seine","LDVG",18.48
+"78","78123","Carrières-sous-Poissy","LDIV",4.65
+"78","78165","Les Clayes-sous-Bois","LEXG",0.96
+"78","78172","Conflans-Sainte-Honorine","LECO",1.51
+"78","78220","Les Essarts-le-Roi","LDVG",4.96
+"78","78224","L'Etang-la-Ville","LDVD",15.94
+"78","78255","Freneuse","LDIV",2.7
+"78","78297","Guyancourt","LDVG",14.39
+"78","78335","Limay","LDVD",11.51
+"78","78350","Louveciennes","LDVG",4.61
+"78","78358","Maisons-Laffitte","LUC",8.23
+"78","78362","Mantes-la-Ville","LDVG",6.12
+"78","78383","Maurepas","LDVC",8.26
+"78","78440","Les Mureaux","LEXG",0.76
+"78","78486","Le Perray-en-Yvelines","LDVD",5.45
+"78","78490","Plaisir","LDVG",2.52
+"78","78498","Poissy","LDVD",30.48
+"78","78517","Rambouillet","LDVD",17.62
+"78","78537","Saint-Arnoult-en-Yvelines","LDIV",4.93
+"78","78551","Saint-Germain-en-Laye","LDVD",22.5
+"78","78586","Sartrouville","LLR",20.34
+"78","78621","Trappes","LDIV",1.65
+"78","78624","Triel-sur-Seine","LDIV",13.54
+"78","78640","Vélizy-Villacoublay","LDVD",1.87
+"78","78642","Verneuil-sur-Seine","LDIV",7.3
+"78","78644","La Verrière","LDVD",15.43
+"78","78646","Versailles","LRN",2.17
+"78","78650","Le Vésinet","LLR",6.92
+"78","78672","Villennes-sur-Seine","LDVC",15.75
+"78","78674","Villepreux","LDVD",6.32
+"78","78015","Andrésy","LDVD",11.18
+"78","78123","Carrières-sous-Poissy","LDVD",12.23
+"78","78165","Les Clayes-sous-Bois","LDVG",10.16
+"78","78172","Conflans-Sainte-Honorine","LDVG",1.27
+"78","78224","L'Etang-la-Ville","LDVD",4.02
+"78","78358","Maisons-Laffitte","LDVD",5.04
+"78","78362","Mantes-la-Ville","LRN",13.93
+"78","78440","Les Mureaux","LDVG",16.21
+"78","78490","Plaisir","LDVC",10.3
+"78","78621","Trappes","LDVG",12.16
+"78","78624","Triel-sur-Seine","LDVD",3.44
+"78","78642","Verneuil-sur-Seine","LDVD",11.42
+"78","78646","Versailles","LDVD",22.81
+"78","78650","Le Vésinet","LREM",9.02
+"78","78674","Villepreux","LDVC",17.34
+"78","78015","Andrésy","LDVD",4.31
+"78","78172","Conflans-Sainte-Honorine","LDVC",1.81
+"78","78358","Maisons-Laffitte","LDVD",6.21
+"78","78624","Triel-sur-Seine","LDIV",10.75
+"78","78642","Verneuil-sur-Seine","LUG",4.23
+"78","78646","Versailles","LDVD",3.82
+"78","78650","Le Vésinet","LDVD",3.89
+"78","78650","Le Vésinet","LDVD",3.64
+"78","78650","Le Vésinet","LDVD",6.09
+"78","78650","Le Vésinet","LDIV",1.21
