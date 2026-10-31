@@ -473,7 +473,7 @@ div.tocify {
 d’exemple</h2>
 <p>hypothèse : relation entre la couleur du vote majoritaire du 1er tour
 victorieux et le celui du second tour. Les vainqueurs du 1er tour sont
-également celui du 2e tour par département.</p>
+également ceux du 2e tour par département.</p>
 <p>l’hypothèse nulle (H<sub>0</sub>) : indépendance entre couleur
 politique 1er tour et résultat final élections par dpt</p>
 <p>Deux distributions de variables de catégorie</p>
@@ -537,13 +537,15 @@ base égale à 100.</p>
 <p><img src="img/frequenceLG.png" /></p>
 <p>Analyse après avoir mis le format conditionnel.</p>
 <ul>
-<li>Quelles est le bloc gagnant au 1er et au 2e tour ?</li>
+<li>Quelle est le bloc gagnant au 1er et au 2e tour ?</li>
 </ul>
 <p>Les écarts à la moyenne par bloc sont peut-être plus parlants</p>
 <p><img src="img/ecMoyenneGraph.png" /></p>
 <p><img src="img/ecMoyenne.png" /></p>
 <p>Qu’apporterait une étude des fréquences conditionnelles en colonnes
 ?</p>
+<p>Exercice conseillé = utiliser le fichier baseKhi2.csv et commencer
+l’analyse sur les classes de montant de dépense et les blocs.</p>
 </div>
 </div>
 </div>
@@ -769,15 +771,14 @@ se tromper sur 100)</p></li>
 </div>
 </div>
 </div>
-<div id="mise-en-pratique-sur-les-agrégats-financiers"
+<div id="mise-en-pratique-sur-les-blocs-1er-et-2e-tour"
 class="section level1" number="5">
 <h1><span class="header-section-number">5</span> Mise en pratique sur
-les agrégats financiers</h1>
+les blocs 1er et 2e tour</h1>
 <div id="ennoncer-lhypothèse-h0" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Ennoncer l’hypothèse
 H<sub>0</sub></h2>
-<p>Il n’y a pas de lien entre les villes et la sélection d’agrégats
-financiers retenue.</p>
+<p>Il n’y a pas de lien entre le bloc élu 1er et 2e tour</p>
 </div>
 <div id="effectif-théorique" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Effectif
@@ -800,13 +801,13 @@ et théoriques</h2>
 <li>sur représentation / sous représentation</li>
 </ul>
 <p><img src="img/ecartsTableauComplet.png" /></p>
-<p>Sur Tremblay, on observe une sur-représentation des impôts locaux et
-des frais de personnel et une sous-représentation de la DGF. C’est le
-contraire sur Clichy sous Bois. On voit également bien l’importance des
-impôts locaux au Raincy.</p>
-<p>A noter que la ville d’Aulnay sous Bois se rapproche du modèle défini
-par le hasard.</p>
-<p>Bref, les villes semblent très différentes.</p>
+<p>Sur le 93, on observe une sur-représentation de chaque bloc du 1er
+tour au 2e tour et une sous-représentation du bloc de gauche pour tous
+les blocs sauf la gauche…au profit du bloc des droites.</p>
+<p>Bref, la gauche a perdu plus que le hasard et surtout par rapport à
+la droite.</p>
+<p>Le résultat est facile à percevoir sur le 93.</p>
+<p>Le calcul du khi2 va confirmer cette impression.</p>
 </div>
 <div id="le-khi2" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Le Khi2</h2>
@@ -828,8 +829,8 @@ au carré (on mesure ainsi une <em>distance</em>)</p></li>
 <h3><span class="header-section-number">5.4.2</span> Le Khi2</h3>
 <p>C’est le total des khi2 partiels (dans notre exemple 768)</p>
 <p><img src="img/khi2Total.png" /></p>
-<p>Ici le montant du khi2 est très élevé. On sait tout de suite qu’il
-sera supérieur au khi2 théorique.</p>
+<p>Ici le montant du khi2 est élevé. On sait tout de suite qu’il sera
+supérieur au khi2 théorique.</p>
 <p>Quel est le maximum dans le tableau ?</p>
 </div>
 <div id="test-du-khi2-1" class="section level3" number="5.4.3">
@@ -838,9 +839,9 @@ sera supérieur au khi2 théorique.</p>
 <ul>
 <li>degré de liberté lg -1 * col -1</li>
 </ul>
-<p>5 agrégats et 40 villes</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="dv">4</span><span class="sc">*</span><span class="dv">39</span></span></code></pre></div>
-<pre><code>## [1] 156</code></pre>
+<p>4 blocs au 1er et au 2e tour</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="dv">3</span><span class="sc">*</span><span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
 <p>Le risque est extrêmement faible puisque nous sommes hors
 tableau.</p>
 <ul>
@@ -849,15 +850,15 @@ tableau.</p>
 <p>Sur internet, dans n’importe quelle table, on cherche les valeurs
 correspondantes.</p>
 <p><a
-href="https://jeanpaullaurent.fr/media/docetud/table_khi2_complete.pdf"
-class="uri">https://jeanpaullaurent.fr/media/docetud/table_khi2_complete.pdf</a></p>
+href="https://oraprdnt.uqtr.uquebec.ca/Gscdepot/paf1010/13/loi_khi_deux.pdf"
+class="uri">https://oraprdnt.uqtr.uquebec.ca/Gscdepot/paf1010/13/loi_khi_deux.pdf</a></p>
 </div>
 <div id="rejet-de-h0-ou-pas" class="section level3" number="5.4.4">
 <h3><span class="header-section-number">5.4.4</span> Rejet de H0 ou
 pas</h3>
 <p>HO hypothèse d’indépendance. son rejet implique qu’il y a une
 relation.</p>
-<p>Les villes et les agrégats financiers ont une relation avec une marge
+<p>Les vainqueurs des blocs 1er tour / 2e tour sont liés avec un risque
 d’erreur faible puisque le khi2 augmente quand le risque d’erreur
 baisse.</p>
 <p>Les logiciels de stats proposent le risque limite, la valeur de
@@ -873,77 +874,43 @@ des calculs</h1>
 number="6.1">
 <h2><span class="header-section-number">6.1</span> Constitution de la
 table de contingence</h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/data93_2024.csv&quot;</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="fu">c</span>(<span class="st">&quot;Nom.2024.Commune&quot;</span>, <span class="st">&quot;Agrégat&quot;</span>, <span class="st">&quot;Montant.en...par.habitant&quot;</span>)]</span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>agregat <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>Agrégat))</span>
-<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>agregat <span class="ot">&lt;-</span> agregat [<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">14</span>, <span class="dv">23</span>, <span class="dv">36</span>, <span class="dv">38</span>)] </span>
-<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>Agrégat <span class="sc">%in%</span> agregat,]</span>
-<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> data [data<span class="sc">$</span>Agrégat <span class="sc">==</span> agregat [<span class="dv">1</span>], <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</span>
-<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="fu">names</span>(jointure) [<span class="dv">2</span>] <span class="ot">&lt;-</span> agregat [<span class="dv">1</span>]</span>
-<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a>agregat <span class="ot">&lt;-</span> agregat [<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a><span class="cf">for</span> (a <span class="cf">in</span> agregat){</span>
-<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> data [data<span class="sc">$</span>Agrégat <span class="sc">==</span> a, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</span>
-<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a>  <span class="fu">names</span>(tmp) [<span class="dv">2</span>] <span class="ot">&lt;-</span> a</span>
-<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a>  jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(jointure, tmp, <span class="at">by=</span><span class="st">&quot;Nom.2024.Commune&quot;</span>)</span>
-<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a>}</span>
-<span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a><span class="fu">summary</span>(jointure)</span></code></pre></div>
-<pre><code>##   Nom.2024.Commune Annuité de la dette Dépenses d&#39;équipement
-##  Length   :40      Min.   :  4.164     Min.   : 130.6       
-##  N.unique :40      1st Qu.: 75.868     1st Qu.: 316.6       
-##  N.blank  : 0      Median :155.981     Median : 441.8       
-##  Min.nchar: 5      Mean   :141.625     Mean   : 468.1       
-##  Max.nchar:23      3rd Qu.:197.103     3rd Qu.: 527.5       
-##                    Max.   :369.778     Max.   :1161.2       
-##  Dotation globale de fonctionnement Frais de personnel Impôts locaux   
-##  Min.   :  5.355                    Min.   : 459.0     Min.   : 761.6  
-##  1st Qu.:126.346                    1st Qu.: 865.4     1st Qu.: 972.2  
-##  Median :241.123                    Median : 959.8     Median :1080.0  
-##  Mean   :261.720                    Mean   : 979.8     Mean   :1170.1  
-##  3rd Qu.:378.380                    3rd Qu.:1042.9     3rd Qu.:1344.6  
-##  Max.   :924.843                    Max.   :1766.1     Max.   :2331.0</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>(test <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(jointure [,<span class="sc">-</span><span class="dv">1</span>]))</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/data93_2020.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>(test <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(data))</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
-## data:  jointure[, -1]
-## X-squared = 11608, df = 156, p-value &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>distance <span class="ot">&lt;-</span> (test<span class="sc">$</span>observed <span class="sc">-</span> test<span class="sc">$</span>expected)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>test<span class="sc">$</span>observed</span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>khi2Partiel <span class="ot">&lt;-</span> <span class="fu">apply</span>(distance,<span class="dv">1</span>, sum)</span>
-<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>khi2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(khi2Partiel)</span>
-<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a>contribution <span class="ot">&lt;-</span> <span class="fu">round</span>((khi2Partiel<span class="sc">/</span>khi2)<span class="sc">*</span><span class="dv">100</span>, <span class="dv">1</span>)</span></code></pre></div>
-</div>
-<div id="cartographie-contribution-au-khi2" class="section level2"
-number="6.2">
-<h2><span class="header-section-number">6.2</span> Cartographie :
-contribution au khi2</h2>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">hist</span>(contribution)</span></code></pre></div>
-<p><img src="jour4_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672" /></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>name <span class="ot">&lt;-</span> jointure<span class="sc">$</span>Nom.<span class="fl">2024.</span>Commune</span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(name, contribution)</span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
-<pre><code>## Linking to GEOS 3.14.1, GDAL 3.12.1, PROJ 9.7.1; sf_use_s2() is TRUE</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>geo <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/communes93.geojson&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `communes93&#39; from data source 
-##   `C:\Users\forma\01_stat\data\communes93.geojson&#39; using driver `GeoJSON&#39;
-## Simple feature collection with 307 features and 48 fields
-## Geometry type: GEOMETRY
-## Dimension:     XY
-## Bounding box:  xmin: 2.288278 ymin: 48.80725 xmax: 2.6033 ymax: 49.01233
-## Geodetic CRS:  WGS 84</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>geo <span class="ot">&lt;-</span> geo [<span class="sc">!</span><span class="fu">is.na</span>(geo<span class="sc">$</span>ref.INSEE), <span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;ref.INSEE&quot;</span>)]</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(geo [, <span class="fu">c</span>(<span class="st">&quot;name&quot;</span>)], df, <span class="at">all.x=</span>T, <span class="at">by =</span> <span class="st">&quot;name&quot;</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="fu">mf_choro</span>(jointure, <span class="at">var =</span> <span class="st">&quot;contribution&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">leg_pos =</span> <span class="st">&quot;right&quot;</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a><span class="fu">mf_label</span>(jointure, <span class="at">var=</span><span class="st">&quot;name&quot;</span>, <span class="at">cex =</span> <span class="fl">0.4</span>, <span class="at">overlap =</span> F)</span>
-<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="fu">mf_layout</span>(<span class="st">&quot;Contribution au khi2&quot;</span>, <span class="st">&quot;OFGL 2024&quot;</span> )</span></code></pre></div>
-<p><img src="jour4_files/figure-html/unnamed-chunk-9-2.png" alt="" width="672" /></p>
-<pre><code>## The scale bar cannot be displayed on unprojected (long/lat) maps.</code></pre>
+## data:  data
+## X-squared = 256.39, df = 9, p-value &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>test<span class="sc">$</span>observed</span></code></pre></div>
+<pre><code>##         t2_AUT t2_CENT t2_DTE t2_GAU
+## t1_AUT      15       1      1      3
+## t1_CENT      1      15      2      2
+## t1_DTE       2       3     51      4
+## t1_GAU       5       6     14     70</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>test<span class="sc">$</span>expected</span></code></pre></div>
+<pre><code>##            t2_AUT   t2_CENT    t2_DTE    t2_GAU
+## t1_AUT   2.358974  2.564103  6.974359  8.102564
+## t1_CENT  2.358974  2.564103  6.974359  8.102564
+## t1_DTE   7.076923  7.692308 20.923077 24.307692
+## t1_GAU  11.205128 12.179487 33.128205 38.487179</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>(test<span class="sc">$</span>observed <span class="sc">-</span> test<span class="sc">$</span>expected)</span></code></pre></div>
+<pre><code>##            t2_AUT   t2_CENT     t2_DTE     t2_GAU
+## t1_AUT  12.641026 -1.564103  -5.974359  -5.102564
+## t1_CENT -1.358974 12.435897  -4.974359  -6.102564
+## t1_DTE  -5.076923 -4.692308  30.076923 -20.307692
+## t1_GAU  -6.205128 -6.179487 -19.128205  31.512821</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>distance <span class="ot">&lt;-</span> (test<span class="sc">$</span>observed <span class="sc">-</span> test<span class="sc">$</span>expected)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>test<span class="sc">$</span>expected</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>khi2Partiel <span class="ot">&lt;-</span> <span class="fu">apply</span>(distance,<span class="dv">1</span>, sum)</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>khi2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(khi2Partiel)</span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>contribution <span class="ot">&lt;-</span> <span class="fu">round</span>((khi2Partiel<span class="sc">/</span>khi2)<span class="sc">*</span><span class="dv">100</span>, <span class="dv">1</span>)</span></code></pre></div>
+<p>Ici ce sont les Autres qui ont permis au khi2 d’être élevé et donc de
+s’éloigner d’une situation d’indépendance.</p>
 </div>
 </div>
-<div id="correction-de-lexercice-sur-le-khi2" class="section level1"
-number="7">
+<div id="correction-de-lexercice-sur-le-khi2-attention-exercice-2025"
+class="section level1" number="7">
 <h1><span class="header-section-number">7</span> Correction de
-l’exercice sur le Khi2</h1>
+l’exercice sur le Khi2 (attention exercice 2025)</h1>
 <div id="rappel-de-la-consigne" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Rappel de la
 consigne</h2>
@@ -1002,8 +969,8 @@ khi<sup>2</sup> Celui va nous permettre de tester l’hypothèse
 H<sub>0</sub>, à savoir les variables communes et agrégats sont
 indépendantes.</p>
 <p>Mise en forme de la donnée</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/caCergy.csv&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/caCergy.csv&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
 <pre><code>##  [1] &quot;Exercice&quot;                             
 ##  [2] &quot;Outre.mer&quot;                            
 ##  [3] &quot;Code.Insee.2024.Région&quot;               
@@ -1046,14 +1013,14 @@ indépendantes.</p>
 ## [40] &quot;ordre_analyse4_section1&quot;              
 ## [41] &quot;annee_join&quot;                           
 ## [42] &quot;Population.totale.du.dernier.exercice&quot;</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">24</span>, <span class="dv">28</span>)]</span>
-<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>Agrégat <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Dépenses de fonctionnement&quot;</span>, <span class="st">&quot;Frais de personnel&quot;</span>,<span class="st">&quot;Impôts locaux&quot;</span>),]           </span>
-<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>eclat <span class="ot">&lt;-</span> <span class="fu">split</span>(data,  <span class="fu">list</span>(data<span class="sc">$</span>Agrégat))</span>
-<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(eclat [[<span class="dv">1</span>]], eclat [[<span class="dv">2</span>]], <span class="at">by =</span> <span class="st">&quot;Nom.2024.Commune&quot;</span>)</span>
-<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(jointure, eclat [[<span class="dv">3</span>]], <span class="at">by =</span> <span class="st">&quot;Nom.2024.Commune&quot;</span>)</span>
-<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> jointure [, <span class="fu">c</span>(<span class="st">&quot;Nom.2024.Commune&quot;</span>, <span class="st">&quot;Montant.en...par.habitant.x&quot;</span>, <span class="st">&quot;Montant.en...par.habitant.y&quot;</span>, <span class="st">&quot;Montant.en...par.habitant&quot;</span>)]</span>
-<span id="cb31-7"><a href="#cb31-7" tabindex="-1"></a><span class="fu">names</span>(jointure) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ville&quot;</span>,<span class="st">&quot;fonctionnement&quot;</span>, <span class="st">&quot;personnel&quot;</span>, <span class="st">&quot;impots&quot;</span>)</span>
-<span id="cb31-8"><a href="#cb31-8" tabindex="-1"></a><span class="fu">head</span>(jointure)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [, <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">24</span>, <span class="dv">28</span>)]</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> data [data<span class="sc">$</span>Agrégat <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Dépenses de fonctionnement&quot;</span>, <span class="st">&quot;Frais de personnel&quot;</span>,<span class="st">&quot;Impôts locaux&quot;</span>),]           </span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>eclat <span class="ot">&lt;-</span> <span class="fu">split</span>(data,  <span class="fu">list</span>(data<span class="sc">$</span>Agrégat))</span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(eclat [[<span class="dv">1</span>]], eclat [[<span class="dv">2</span>]], <span class="at">by =</span> <span class="st">&quot;Nom.2024.Commune&quot;</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> <span class="fu">merge</span>(jointure, eclat [[<span class="dv">3</span>]], <span class="at">by =</span> <span class="st">&quot;Nom.2024.Commune&quot;</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a>jointure <span class="ot">&lt;-</span> jointure [, <span class="fu">c</span>(<span class="st">&quot;Nom.2024.Commune&quot;</span>, <span class="st">&quot;Montant.en...par.habitant.x&quot;</span>, <span class="st">&quot;Montant.en...par.habitant.y&quot;</span>, <span class="st">&quot;Montant.en...par.habitant&quot;</span>)]</span>
+<span id="cb28-7"><a href="#cb28-7" tabindex="-1"></a><span class="fu">names</span>(jointure) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ville&quot;</span>,<span class="st">&quot;fonctionnement&quot;</span>, <span class="st">&quot;personnel&quot;</span>, <span class="st">&quot;impots&quot;</span>)</span>
+<span id="cb28-8"><a href="#cb28-8" tabindex="-1"></a><span class="fu">head</span>(jointure)</span></code></pre></div>
 <pre><code>##             ville fonctionnement personnel impots
 ## 1       Boisemont          812.7     283.7  583.9
 ## 2           Cergy         1250.1     818.7  835.4
@@ -1061,29 +1028,29 @@ indépendantes.</p>
 ## 4          Éragny         1187.1     797.5  838.7
 ## 5 Jouy-le-Moutier         1174.2     799.2  878.7
 ## 6       Menucourt          934.5     612.7  794.8</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">rownames</span>(jointure) <span class="ot">&lt;-</span> jointure<span class="sc">$</span>ville</span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> jointure [,<span class="sc">-</span><span class="dv">1</span>]</span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">chisq.test</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="fu">rownames</span>(jointure) <span class="ot">&lt;-</span> jointure<span class="sc">$</span>ville</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> jointure [,<span class="sc">-</span><span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">chisq.test</span>(data)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  data
 ## X-squared = 279.3, df = 22, p-value &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(data)</span>
-<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>chi2partiel <span class="ot">&lt;-</span> <span class="fu">apply</span>((test<span class="sc">$</span>observed <span class="sc">-</span> test<span class="sc">$</span>expected)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>test<span class="sc">$</span>observed, <span class="dv">1</span>, sum)</span>
-<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a>contrib <span class="ot">&lt;-</span> <span class="fu">round</span> (chi2partiel <span class="sc">/</span> <span class="fu">sum</span>(chi2partiel), <span class="dv">2</span>)<span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a><span class="fu">hist</span>(contrib, <span class="at">xlab =</span> <span class="st">&quot;contribution au khi2 (%)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Nb de communes&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Fréquence des contributions au khi2&quot;</span>)</span></code></pre></div>
-<p><img src="jour4_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672" /></p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="fu">barplot</span>(contrib, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;Communes et contribution au khi2 (%)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Contribution au khi2 (%)&quot;</span>)</span></code></pre></div>
-<p><img src="jour4_files/figure-html/unnamed-chunk-12-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(data)</span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>chi2partiel <span class="ot">&lt;-</span> <span class="fu">apply</span>((test<span class="sc">$</span>observed <span class="sc">-</span> test<span class="sc">$</span>expected)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>test<span class="sc">$</span>observed, <span class="dv">1</span>, sum)</span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a>contrib <span class="ot">&lt;-</span> <span class="fu">round</span> (chi2partiel <span class="sc">/</span> <span class="fu">sum</span>(chi2partiel), <span class="dv">2</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a><span class="fu">hist</span>(contrib, <span class="at">xlab =</span> <span class="st">&quot;contribution au khi2 (%)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Nb de communes&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Fréquence des contributions au khi2&quot;</span>)</span></code></pre></div>
+<p><img src="jour4_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="fu">barplot</span>(contrib, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;Communes et contribution au khi2 (%)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Contribution au khi2 (%)&quot;</span>)</span></code></pre></div>
+<p><img src="jour4_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672" /></p>
 <p>Analyse :</p>
 <p>Boisemont et Neuville sur Oise contribuent fortement au
 khi<sup>2</sup>. Boisement est un petit village qui ne doit pas avoir
 beaucoup d’agent. Neuville sur Oise est un peu plus gros mais a des
 impôts élevés. Dans les deux cas, ces deux communes sont différentes des
 autres communes de la ca de Cergy.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="fu">round</span>(test<span class="sc">$</span>residuals, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="fu">round</span>(test<span class="sc">$</span>residuals, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##                     fonctionnement personnel impots
 ## Boisemont                     3.80     -7.10   1.98
 ## Cergy                         0.59      2.70  -3.09
@@ -1115,7 +1082,8 @@ conditionnelles suffisent-t-elles ?</h2>
 <p><img src="img/frequenceLG.png" /></p>
 <p>La distance entre les données observées et théoriques</p>
 <p><img src="img/tabObsTheo.png" /></p>
-<p>Estimation des écarts fondés sur la pondération des masses</p>
+<p>L’estimation des écarts fondés sur la pondération des masses permet
+ici de repérer le jeu droite / gauche.</p>
 </div>
 </div>
 
