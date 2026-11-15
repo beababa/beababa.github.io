@@ -474,6 +474,9 @@ cours</h1>
 <p>Le cours est mis à jour mais seul compte le cours en présentiel.
 Actuellement, seuls les étudiants du groupe 1 et 2 ont vu les bases de
 la régression.</p>
+<p>Mise à jour du 16/11 :</p>
+<p>Un cours sur les calculs régresssion et khi2 a eu lieu pour le groupe
+1.</p>
 <p><em>“L5GEABIM Analyses bivariées et multivariées”</em></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deroule2026.csv&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data)</span></code></pre></div>
@@ -521,7 +524,7 @@ la régression.</p>
 <td align="right">3</td>
 <td align="left">05.10.26</td>
 <td align="left">02.10.26</td>
-<td align="left">blocus au 2/10 et 5/ 10</td>
+<td align="left">blocus au 2/10 et 5/10</td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="right">NA</td>
@@ -541,8 +544,9 @@ début</td>
 <td align="right">5</td>
 <td align="left">19.10.26</td>
 <td align="left">16.10.26</td>
-<td align="left">fermeture administrative le 16/10</td>
-<td align="left">Gr lunid : régression fin + khi début (tableau de
+<td align="left">fermeture administrative le 16/10, le 19/10 et le
+23/10</td>
+<td align="left">Gr lundi : régression fin + khi début (tableau de
 contingence)</td>
 <td align="left"></td>
 <td align="right">NA</td>
@@ -550,18 +554,18 @@ contingence)</td>
 <tr class="even">
 <td align="right">NA</td>
 <td align="left">26.10.26</td>
-<td align="left">23.10.26</td>
+<td align="left">30.10.26</td>
 <td align="left">CONGES</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="right">2</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="right">6</td>
 <td align="left">02.11.26</td>
 <td align="left">06.11.26</td>
-<td align="left">REPRISE vacances</td>
-<td align="left">régression et khi2</td>
+<td align="left">fermeture administrative</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="right">NA</td>
 </tr>
@@ -569,9 +573,9 @@ contingence)</td>
 <td align="right">7</td>
 <td align="left">09.11.26</td>
 <td align="left">13.11.26</td>
+<td align="left">fermeture administrative après gr1 le 9/11</td>
+<td align="left">cours gr1 (calculs régression khi2)</td>
 <td align="left"></td>
-<td align="left">initiation R / fin khi2</td>
-<td align="left">R</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
@@ -580,7 +584,7 @@ contingence)</td>
 <td align="left">20.11.26</td>
 <td align="left"></td>
 <td align="left">initiation R / boite à moustaches</td>
-<td align="left"></td>
+<td align="left">R</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
@@ -996,6 +1000,7 @@ devoirs : chiffres clés</h2>
 <div id="effectif-et-cours" class="section level3" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Effectif et
 cours</h3>
+<p>La donnée tient compte des perturbations actuelles.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>presence <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/presence.csv&quot;</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(presence)</span></code></pre></div>
 <table>
@@ -1028,8 +1033,8 @@ cours</h3>
 </tr>
 <tr class="even">
 <td align="left">C4</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<td align="right">10</td>
+<td align="right">10</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
@@ -1046,7 +1051,7 @@ cours</h3>
 </tr>
 <tr class="odd">
 <td align="left">C7</td>
-<td align="right">NA</td>
+<td align="right">20</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
@@ -1098,9 +1103,10 @@ cours</h3>
 <span id="cb23-8"><a href="#cb23-8" tabindex="-1"></a>        , <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">legend =</span>  F)</span></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672" /></p>
 </div>
-<div id="les-rendus-dexercices" class="section level3" number="3.2.2">
+<div id="les-rendus-dexercices-attention-2025" class="section level3"
+number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Les rendus
-d’exercices</h3>
+d’exercices (attention 2025)</h3>
 <p>Attention, les exercices sont à rendre 2 jours avant le cours (temps
 de la correction),</p>
 <ul>
@@ -1145,8 +1151,10 @@ de la correction),</p>
 <p>Attention à la consigne !</p>
 </div>
 </div>
-<div id="notes-finales" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Notes finales</h2>
+<div id="notes-finales-attention-2025" class="section level2"
+number="3.3">
+<h2><span class="header-section-number">3.3</span> Notes finales
+(attention 2025)</h2>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>note <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/noteFinales.csv&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">&quot;EN ATTENTE&quot;</span>, <span class="st">&quot;NA&quot;</span>,<span class="st">&quot;-&quot;</span>), <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="fu">summary</span>(note)</span>
 <span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;img/noteFin.png&quot;</span>)</span>
@@ -1157,14 +1165,31 @@ de la correction),</p>
 <p><img src="img/noteFin.png" /></p>
 </div>
 </div>
-<div id="ressources-autre-que-la-bibliographie-officielle"
-class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Ressources autre que la
-bibliographie officielle</h1>
-<p>Pour R, la base de tout est</p>
+<div id="ressources-ouvrages-essentiels" class="section level1"
+number="4">
+<h1><span class="header-section-number">4</span> Ressources : ouvrages
+essentiels</h1>
+<p>Pas beaucoup de ressources en statistiques pour les géographes pour
+ce cours :</p>
+<ul>
+<li><p>le <em>Chadule</em>, Initiation aux pratiques statistiques en
+géographie, qui décrit les fondamentaux mathématiques. Il date déjà
+(ré-édition de 1987).</p></li>
+<li><p>Un étudiant de l’année dernière m’a dit qu’il avait mieux compris
+le cours avec le manuel de <em>Dumolard</em> (les statistiques en
+géographie) qui est plus récent (2019).</p></li>
+</ul>
+<p>Plus complexe, le manuel de géographie quantitative,
+<em>Feuillet</em> (2019 également) permet de comprendre ce qu’est la
+statistique spatiale mais attention, ce n’est pas l’objet du cours
+(uniquement statistiques <em>classiques</em>).</p>
+<p>pour R, la base de tout est</p>
 <p>R et espace (<a
 href="https://archives.framabook.org/r-et-espace/index.html"
 class="uri">https://archives.framabook.org/r-et-espace/index.html</a>)</p>
+<p>pas mal de ressource sur la page d’ElementR <a
+href="https://elementr.cnrs.fr/programme.html"
+class="uri">https://elementr.cnrs.fr/programme.html</a></p>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
